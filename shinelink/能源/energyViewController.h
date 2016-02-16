@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  energyViewController.h
 //  shinelink
 //
 //  Created by sky on 16/2/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface energyViewController : UIViewController
 
 @end
-
