@@ -12,6 +12,7 @@
 #import "energyViewController.h"
 #import "deviceViewController.h"
 #import "meViewController.h"
+#import "loginViewController.h"
 
 @interface AppDelegate ()
 
@@ -57,8 +58,9 @@
     UITabBarController *tabbar=[[UITabBarController alloc]init];
     tabbar.viewControllers=controllers;
     
+    loginViewController *root=[[loginViewController alloc]init];
     
-    self.window.rootViewController=tabbar;
+    self.window.rootViewController=root;
      [self.window makeKeyAndVisible];
     
     return YES;

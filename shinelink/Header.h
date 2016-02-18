@@ -25,5 +25,8 @@
 #define root_Cancel       NSLocalizedString(@"Cancel", @"Cancel")
 
 
+//登陆
+#define root_Enter_your_username       NSLocalizedString(@"Enter your username", @"Enter your username")
+#define root_Enter_your_pwd       NSLocalizedString(@"Enter your pwd", @"Enter your pwd")
 
 #endif /* Header_h */

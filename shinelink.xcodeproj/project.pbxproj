@@ -11,6 +11,11 @@
 		3349A7B01C75B7AC009172C2 /* loginbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7AF1C75B7AC009172C2 /* loginbg.jpg */; };
 		3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */; };
 		3349A7B61C75B8F4009172C2 /* loginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349A7B51C75B8F4009172C2 /* loginViewController.m */; };
+		3349A7B81C75BCDB009172C2 /* 账号3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7B71C75BCDB009172C2 /* 账号3.png */; };
+		3349A7BA1C75BCED009172C2 /* 密码3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7B91C75BCED009172C2 /* 密码3.png */; };
+		3349A7BF1C75BF3B009172C2 /* LoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349A7BC1C75BF3B009172C2 /* LoginButton.m */; };
+		3349A7C01C75BF3B009172C2 /* SpinerLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349A7BE1C75BF3B009172C2 /* SpinerLayer.m */; };
+		3349A7C31C75C215009172C2 /* StTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3349A7C21C75C215009172C2 /* StTransitions.m */; };
 		335088D51C72C68B00D7AA03 /* demo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 335088D41C72C68B00D7AA03 /* demo2.png */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
 		3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350891A1C73112000D7AA03 /* EditStationMenuView.m */; };
@@ -144,6 +149,14 @@
 		3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形3.png"; sourceTree = "<group>"; };
 		3349A7B41C75B8F4009172C2 /* loginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = loginViewController.h; sourceTree = "<group>"; };
 		3349A7B51C75B8F4009172C2 /* loginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = loginViewController.m; sourceTree = "<group>"; };
+		3349A7B71C75BCDB009172C2 /* 账号3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "账号3.png"; sourceTree = "<group>"; };
+		3349A7B91C75BCED009172C2 /* 密码3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "密码3.png"; sourceTree = "<group>"; };
+		3349A7BB1C75BF3B009172C2 /* LoginButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginButton.h; sourceTree = "<group>"; };
+		3349A7BC1C75BF3B009172C2 /* LoginButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginButton.m; sourceTree = "<group>"; };
+		3349A7BD1C75BF3B009172C2 /* SpinerLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinerLayer.h; sourceTree = "<group>"; };
+		3349A7BE1C75BF3B009172C2 /* SpinerLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinerLayer.m; sourceTree = "<group>"; };
+		3349A7C11C75C215009172C2 /* StTransitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StTransitions.h; sourceTree = "<group>"; };
+		3349A7C21C75C215009172C2 /* StTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StTransitions.m; sourceTree = "<group>"; };
 		335088D41C72C68B00D7AA03 /* demo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = demo2.png; sourceTree = "<group>"; };
 		335088D71C73011300D7AA03 /* addDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addDevice.h; sourceTree = "<group>"; };
 		335088D81C73011300D7AA03 /* addDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addDevice.m; sourceTree = "<group>"; };
@@ -314,6 +327,12 @@
 			children = (
 				3349A7B41C75B8F4009172C2 /* loginViewController.h */,
 				3349A7B51C75B8F4009172C2 /* loginViewController.m */,
+				3349A7BB1C75BF3B009172C2 /* LoginButton.h */,
+				3349A7BC1C75BF3B009172C2 /* LoginButton.m */,
+				3349A7C11C75C215009172C2 /* StTransitions.h */,
+				3349A7C21C75C215009172C2 /* StTransitions.m */,
+				3349A7BD1C75BF3B009172C2 /* SpinerLayer.h */,
+				3349A7BE1C75BF3B009172C2 /* SpinerLayer.m */,
 			);
 			path = "登陆";
 			sourceTree = "<group>";
@@ -480,6 +499,8 @@
 		337F9D6E1C71B1020016FE43 /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
+				3349A7B91C75BCED009172C2 /* 密码3.png */,
+				3349A7B71C75BCDB009172C2 /* 账号3.png */,
 				3349A7AF1C75B7AC009172C2 /* loginbg.jpg */,
 				3349A7AD1C75B76F009172C2 /* icon_logo.png */,
 				3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */,
@@ -695,6 +716,7 @@
 				337F9DCA1C71B1020016FE43 /* icon---Password@2x.png in Resources */,
 				3349A7AE1C75B76F009172C2 /* icon_logo.png in Resources */,
 				337F9DE21C71B1020016FE43 /* iconfont-shouji@2x.png in Resources */,
+				3349A7B81C75BCDB009172C2 /* 账号3.png in Resources */,
 				337F9DE51C71B1020016FE43 /* shebei@3x.png in Resources */,
 				337F9E001C71B1020016FE43 /* 登录界面.png in Resources */,
 				3355F25E1C741AC3006DDE5A /* client.png in Resources */,
@@ -749,6 +771,7 @@
 				337F9DD81C71B1020016FE43 /* iconfont-faxian_press@3x.png in Resources */,
 				337F9E041C71B1020016FE43 /* 维修.png in Resources */,
 				337F9DD11C71B1020016FE43 /* icon_press@2x.png in Resources */,
+				3349A7BA1C75BCED009172C2 /* 密码3.png in Resources */,
 				337F9DF21C71B1020016FE43 /* 关于ios.png in Resources */,
 				337F9DFF1C71B1020016FE43 /* 电子邮箱@3x.png in Resources */,
 				337F9DE71C71B1020016FE43 /* shebei_press@3x.png in Resources */,
@@ -785,6 +808,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */,
+				3349A7BF1C75BF3B009172C2 /* LoginButton.m in Sources */,
+				3349A7C01C75BF3B009172C2 /* SpinerLayer.m in Sources */,
+				3349A7C31C75C215009172C2 /* StTransitions.m in Sources */,
 				335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */,
 				337F9CBB1C71AACB0016FE43 /* rootviewViewController.m in Sources */,
 				337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */,
