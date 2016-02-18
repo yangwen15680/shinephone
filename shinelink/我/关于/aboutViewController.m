@@ -6,28 +6,29 @@
 //  Copyright © 2016年 sky. All rights reserved.
 //
 
-#import "meViewController.h"
-#import "meTableViewCell.h"
+
+#import "aboutTableViewCell.h"
 #import "aboutViewController.h"
+#import "aboutOneTableViewCell.h"
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
 
-@interface meViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface aboutViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
 
 @end
 
-@implementation meViewController
+@implementation aboutViewController
 {
     UITableView *_tableView;
     UIPageControl *_pageControl;
     UIScrollView *_scrollerView;
     NSString *_indenty;
+    NSString *_indenty1;
     
-    NSArray *arrayImage;
-    NSArray *arrayName;
+   
     
     
     //全局变量 用来控制偏移量
@@ -38,8 +39,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    arrayName=@[@"资料管理",@"客户服务",@"系统设置",@"关于"];
-    arrayImage=@[@"about.png",@"client.png",@"setup.png",@"userdata.png"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -51,7 +50,7 @@
     //创建tableView的头视图
     [self _createHeaderView];
     
-  
+    
     
 }
 
@@ -62,37 +61,37 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+  
+    
     [self.view addSubview:_tableView];
-    _indenty = @"indenty";
-    //注册单元格类型
-    [_tableView registerClass:[meTableViewCell class] forCellReuseIdentifier:_indenty];
+  
 }
 
 - (void)_createHeaderView {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
     UIColor *color=[UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1];
-
+    
     //UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_list_popver"]];
- [headerView setBackgroundColor:color];
+    [headerView setBackgroundColor:color];
     
     
     double imageSize=150;
     
-   UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25, imageSize, imageSize)];
-      [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
+    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25, imageSize, imageSize)];
+    [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
     userImage.layer.masksToBounds=YES;
     userImage.layer.cornerRadius=imageSize/2.0;
     [userImage setUserInteractionEnabled:YES];
     
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
     longPressGesture.minimumPressDuration = 1.0f;
-     [userImage addGestureRecognizer:longPressGesture];
+    [userImage addGestureRecognizer:longPressGesture];
     
     
     _tableView.tableHeaderView = headerView;
     [headerView addSubview:userImage];
-
+    
 }
 
 - (void)pickUpImage{
@@ -102,13 +101,13 @@
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-         //处理点击拍照
+        //处理点击拍照
         self.cameraImagePicker = [[UIImagePickerController alloc] init];
         self.cameraImagePicker.allowsEditing = YES;
         self.cameraImagePicker.delegate = self;
         self.cameraImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:_cameraImagePicker animated:YES completion:nil];
-
+        
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //处理点击从相册选取
@@ -123,7 +122,7 @@
     
     [self presentViewController: alertController animated: YES completion: nil];
     
-    }
+}
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -137,52 +136,70 @@
     
 }
 
-#pragma mark pageAction的实现方法
-- (void)pageAction:(UIPageControl *)control {
-    NSInteger page = control.currentPage;
-    [_scrollerView setContentOffset:CGPointMake(Kwidth*page,0) animated:YES];
-}
 
-
-#pragma mark _scrollerView的协议方法
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    CGFloat x = scrollView.contentOffset.x / Kwidth;
-    _pageControl.currentPage = x;
-}
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    meTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_indenty forIndexPath:indexPath];
-    //   cell.textLabel.text = [NSString stringWithFormat:@"Cell:%ld",indexPath.row];
-    if (!cell) {
-        cell=[[meTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
+    static NSString *cell11=@"cell1";
+        static NSString *cell22=@"cell2";
+     static NSString *cell33=@"cell3";
+     static NSString *cell44=@"cell4";
+    aboutTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:cell11];
+    aboutOneTableViewCell *cell2=[tableView dequeueReusableCellWithIdentifier:cell22];
+    aboutTableViewCell *cell4=[tableView dequeueReusableCellWithIdentifier:cell44];
+    aboutOneTableViewCell *cell3=[tableView dequeueReusableCellWithIdentifier:cell33];
+    if(indexPath.row==0)
+    {
+        if (!cell1) {
+            cell1=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell11];
+        }
+        [cell1.imageLog setImage:[UIImage imageNamed:@"用户协议@2x.png"]];
+        cell1.tableName.text = @"用户协议";
+        
+        return cell1;
+    }else if(indexPath.row==1)
+    {
+        if (!cell2) {
+            cell2=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell22];
+        }
+        [cell2.imageLog setImage:[UIImage imageNamed:@"电子邮箱@2x.png"]];
+        cell2.tableName.text = @"电子邮箱";
+        cell2.tableDetail.text=@"123456789@qq.com";
+        
+        
+         return cell2;
+    }   else if(indexPath.row==2)
+    {
+        if (!cell3) {
+            cell3=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell33];
+        }
+        [cell3.imageLog setImage:[UIImage imageNamed:@"客服电话@2x.png"]];
+        cell3.tableName.text = @"客服电话";
+        cell3.tableDetail.text=@"186666666";
+        
+          return cell3;
+    } else if(indexPath.row==3)
+    {
+        if (!cell4) {
+            cell4=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell44];
+        }
+        [cell4.imageLog setImage:[UIImage imageNamed:@"版本更新@2x.png"]];
+        cell4.tableName.text = @"检查更新";
+        
+        return cell4;
     }
-    
-    [cell.imageLog setImage:[UIImage imageNamed:arrayImage[indexPath.row]]];
-    cell.tableName.text = arrayName[indexPath.row];
-    
-    
-    return cell;
+    else return nil;
+
 }
+
+
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    if (indexPath.row==1) {
-        aboutViewController *aboutView = [[aboutViewController alloc]init];
-        
-        [self.navigationController pushViewController:aboutView animated:YES];
-    }
-    
-    if (indexPath.row==3) {
-        aboutViewController *aboutView = [[aboutViewController alloc]init];
-        
-        [self.navigationController pushViewController:aboutView animated:YES];
-    }
-   
+ 
     
 }
 - (void)didReceiveMemoryWarning {

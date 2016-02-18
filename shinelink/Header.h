@@ -18,4 +18,12 @@
 #define frameMake(a,b,c,d) CGRectMake(a*NOW_SIZE,b*NOW_SIZE,c*NOW_SIZE,d*NOW_SIZE)
 
 
+//设备
+#define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")
+#define root_Remove_Station       NSLocalizedString(@"Remove Station", @"Remove Station")
+#define root_Upload_Picture       NSLocalizedString(@"Upload Picture", @"Upload Picture")
+#define root_Cancel       NSLocalizedString(@"Cancel", @"Cancel")
+
+
+
 #endif /* Header_h */

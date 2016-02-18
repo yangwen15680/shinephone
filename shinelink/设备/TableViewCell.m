@@ -17,6 +17,7 @@
 @interface TableViewCell ()
 @property (nonatomic, strong) UIImageView *coverImageView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *detail;
 @property (nonatomic, strong) UILabel *state;
 @property (nonatomic, strong) UILabel *stateValue;
 @property (nonatomic, strong) UILabel *power;
@@ -35,7 +36,8 @@
 if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
      self.backgroundColor = [UIColor clearColor];
 
-    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0, SCREEN_Width/5, SCREEN_Width/5)];
+    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE, SCREEN_Width/5-10, SCREEN_Width/5-10)];
+    [self.coverImageView setImage:[UIImage imageNamed:@"demo2.png"]];
     [self.contentView addSubview:_coverImageView];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10, 0, 120*NOW_SIZE, 50*NOW_SIZE)];
@@ -44,6 +46,18 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
     self.titleLabel.textColor = [UIColor orangeColor];
     [self.contentView addSubview:_titleLabel];
+    
+    UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width-30, 21, 20*NOW_SIZE, 15*NOW_SIZE)];
+    arrowView.image = IMAGE(@"frag4.png");
+    [self.contentView addSubview:arrowView];
+    
+    self.detail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-30-30, 12, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.detail.text = @"详情";
+    self.detail.font=[UIFont systemFontOfSize:16];
+    self.detail.textAlignment = NSTextAlignmentLeft;
+    self.detail.textColor = [UIColor labelColor];
+    [self.contentView addSubview:_detail];
+    
     
     self.state = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10, 50*NOW_SIZE-10, labelWidth1, labelHeight)];
     self.state.text = @"状态：";
@@ -87,6 +101,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.electricValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_electricValue];
     
+ 
     
     
     
@@ -96,6 +111,16 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
       return self;
 }
 
+- (void)drawRect:(CGRect)rect
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
+    CGContextFillRect(context, rect);
+    
+    CGContextSetStrokeColorWithColor(context, [UIColor colorWithRed:0xE2/255.0f green:0xE2/255.0f blue:0xE2/255.0f alpha:1].CGColor);
+    CGContextStrokeRect(context, CGRectMake(0, rect.size.height - 1, rect.size.width, 1));
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
