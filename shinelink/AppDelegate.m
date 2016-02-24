@@ -13,6 +13,7 @@
 #import "deviceViewController.h"
 #import "meViewController.h"
 #import "loginViewController.h"
+#import "countryViewController.h"
 
 @interface AppDelegate ()
 
@@ -26,39 +27,8 @@
        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
    
-    //rootviewViewController *rootView=[[rootviewViewController alloc]init];
-    //UINavigationController *navc=[[UINavigationController alloc]initWithRootViewController:rootView];
-    findViewController *findVc=[[findViewController alloc]init];
-    energyViewController *energyVc=[[energyViewController alloc]init];
-    deviceViewController *deviceVc=[[deviceViewController alloc]init];
-    meViewController *meVc=[[meViewController alloc]init];
-    
-    UINavigationController *Vc3=[[UINavigationController alloc]initWithRootViewController:findVc];
-    UINavigationController *Vc2=[[UINavigationController alloc]initWithRootViewController:energyVc];
-    UINavigationController *Vc1=[[UINavigationController alloc]initWithRootViewController:deviceVc];
-    UINavigationController *Vc4=[[UINavigationController alloc]initWithRootViewController:meVc];
-    
-    
-    
-    Vc1.title=@"Device";
-    Vc2.title=@"Energy";
-    Vc3.title=@"Find";
-    Vc4.title=@"Me";
-    
-    Vc1.tabBarItem.image=[UIImage imageNamed:@"shebei@2x.png"];
-    Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"shebei_press@2x.png"];
-    Vc2.tabBarItem.image=[UIImage imageNamed:@"iconfont-nengyuanlei@2x.png"];
-    Vc2.tabBarItem.selectedImage=[UIImage imageNamed:@"iconfont-nengyuanlei_press@2x.png"];
-    Vc3.tabBarItem.image=[UIImage imageNamed:@"iconfont-faxian@2x.png"];
-    Vc3.tabBarItem.selectedImage=[UIImage imageNamed:@"iconfont-faxian_press@2x.png"];
-    Vc4.tabBarItem.image=[UIImage imageNamed:@"icon@2x.png"];
-    Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"icon_press@2x.png"];
-    
-    NSArray *controllers=[NSArray arrayWithObjects:Vc1,Vc2,Vc3,Vc4,nil];
-    UITabBarController *tabbar=[[UITabBarController alloc]init];
-    tabbar.viewControllers=controllers;
-    
     loginViewController *root=[[loginViewController alloc]init];
+    //countryViewController *root=[[countryViewController alloc]init];
     
     self.window.rootViewController=root;
      [self.window makeKeyAndVisible];

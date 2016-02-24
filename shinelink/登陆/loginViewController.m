@@ -14,13 +14,18 @@
 #import "energyViewController.h"
 #import "deviceViewController.h"
 #import "meViewController.h"
+#import "registerViewController.h"
+#import "countryViewController.h"
 
-@interface loginViewController ()
+@interface loginViewController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextField *userTextField;
 @property (nonatomic, strong) UITextField *pwdTextField;
 //@property (nonatomic, strong) UIButton *loginButton;
 @property (nonatomic, strong) UIButton *registButton;
+@property (nonatomic, strong) UILabel *registLable;
+@property (nonatomic, strong) UILabel *forgetLable;
+
 @end
 
 @implementation loginViewController
@@ -30,6 +35,7 @@
     // Do any additional setup after loading the view.
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
+  
     
     //添加布局
     [self addSubViews];
@@ -84,6 +90,41 @@
     [self.view addSubview:loginBtn];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(180*NOW_SIZE, 400*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.registLable.text=@"注册";
+    self.registLable.textColor=[UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+    self.registLable.textAlignment = NSTextAlignmentLeft;
+     self.registLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    self.registLable.userInteractionEnabled=YES;
+     [self.view addSubview:self.registLable];
+    UITapGestureRecognizer * labelTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
+    [self.registLable addGestureRecognizer:labelTap];
+   
+    
+    
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(110*NOW_SIZE, 400*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
+    self.forgetLable.text=@"没有账号?";
+    self.forgetLable.textColor=[UIColor whiteColor];
+        self.forgetLable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    self.forgetLable.textAlignment = NSTextAlignmentLeft;
+    [self.view addSubview:self.forgetLable];
+    
+    
+}
+
+
+
+-(void)tapLable{
+    NSLog(@"注册");
+    self.registLable.highlighted=YES;
+    self.registLable.highlightedTextColor=[UIColor whiteColor];
+    
+    countryViewController *registerRoot=[[countryViewController alloc]init];
+   [self presentViewController:registerRoot animated:YES completion:nil];
+    
+  //  [self.navigationController pushViewController:registerRoot animated:YES];
+    
 
 }
 

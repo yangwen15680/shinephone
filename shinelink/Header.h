@@ -16,7 +16,9 @@
 #define SCREEN_Height [UIScreen mainScreen].bounds.size.height
 #define kiPhone6 ([UIScreen mainScreen].bounds.size.width==375)
 #define frameMake(a,b,c,d) CGRectMake(a*NOW_SIZE,b*NOW_SIZE,c*NOW_SIZE,d*NOW_SIZE)
-
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")
@@ -28,5 +30,13 @@
 //登陆
 #define root_Enter_your_username       NSLocalizedString(@"Enter your username", @"Enter your username")
 #define root_Enter_your_pwd       NSLocalizedString(@"Enter your pwd", @"Enter your pwd")
+
+//注册
+#define root_Enter_your_username       NSLocalizedString(@"Enter your username", @"Enter your username")
+#define root_Enter_your_pwd       NSLocalizedString(@"Enter your pwd", @"Enter your pwd")
+#define root_Enter_email       NSLocalizedString(@"Enter email", @"Enter email")
+#define root_Enter_phone_number       NSLocalizedString(@"Enter phone number", @"Enter phone number")
+
+
 
 #endif /* Header_h */
