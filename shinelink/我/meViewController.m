@@ -9,6 +9,9 @@
 #import "meViewController.h"
 #import "meTableViewCell.h"
 #import "aboutViewController.h"
+#import "userdataViewController.h"
+
+
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
 
@@ -72,11 +75,7 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
     UIColor *color=[UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1];
-
-    //UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_list_popver"]];
  [headerView setBackgroundColor:color];
-    
-    
     double imageSize=150;
     
    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25, imageSize, imageSize)];
@@ -171,8 +170,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    if (indexPath.row==1) {
-        aboutViewController *aboutView = [[aboutViewController alloc]init];
+    if (indexPath.row==0) {
+        userdataViewController *aboutView = [[userdataViewController alloc]init];
         
         [self.navigationController pushViewController:aboutView animated:YES];
     }

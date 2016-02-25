@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "rootviewViewController.h"
+
 #import "findViewController.h"
 #import "energyViewController.h"
 #import "deviceViewController.h"

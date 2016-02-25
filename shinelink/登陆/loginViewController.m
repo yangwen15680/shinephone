@@ -9,13 +9,13 @@
 #import "loginViewController.h"
 #import "LoginButton.h"
 #import "StTransitions.h"
-#import "rootviewViewController.h"
 #import "findViewController.h"
 #import "energyViewController.h"
 #import "deviceViewController.h"
 #import "meViewController.h"
 #import "registerViewController.h"
 #import "countryViewController.h"
+#import "UserInfo.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -35,10 +35,25 @@
     // Do any additional setup after loading the view.
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
-  
     
-    //添加布局
-    [self addSubViews];
+ NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+   NSString *reUsername=[ud objectForKey:@"userName"];
+   NSString *rePassword=[ud objectForKey:@"userPassword"];
+ //  [self addSubViews];
+    
+   // NSString *reUsername=@"123";
+    //NSString *rePassword=@"234";
+    
+    NSLog(@"reUsername=%@",reUsername);
+    NSLog(@"rePassword=%@",rePassword);
+    if (reUsername==nil || reUsername==NULL) {
+        [self addSubViews];
+        // didPresentControllerButtonTouch
+    }else{
+      //  [self didPresentControllerButtonTouch];
+          [self performSelectorOnMainThread:@selector(didPresentControllerButtonTouch) withObject:nil waitUntilDone:NO];
+        //添加布局
+    }
 }
 
 //添加布局
@@ -110,6 +125,7 @@
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
     [self.view addSubview:self.forgetLable];
     
+
     
 }
 
@@ -167,7 +183,8 @@
     }else {
         //用户名和密码输入正确跳转页面
         [loginBtn ExitAnimationCompletion:^{
-            
+            [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
+            [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
             [weak didPresentControllerButtonTouch];
         }];
     }
@@ -194,6 +211,8 @@
 
     //登录成功条跳转的方法
     - (void)didPresentControllerButtonTouch {
+        
+        
         findViewController *findVc=[[findViewController alloc]init];
         energyViewController *energyVc=[[energyViewController alloc]init];
         deviceViewController *deviceVc=[[deviceViewController alloc]init];

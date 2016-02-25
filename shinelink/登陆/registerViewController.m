@@ -12,6 +12,7 @@
 
 @interface registerViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong) UILabel *name;
+@property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
 
 @end
 
@@ -26,6 +27,7 @@
 -(void)initUI{
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
+     _textFieldMutableArray=[NSMutableArray new];
     
     NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",nil];
     NSArray *labelArray=[NSArray arrayWithObjects:@"用户名", @"密码", @"电子邮箱", @"联系电话", nil];
@@ -58,15 +60,16 @@
         textField.tag = i;
         textField.delegate = self;
         [self.view addSubview:textField];
+         [_textFieldMutableArray addObject:textField];
         if (i == 1 ) {
-            textField.keyboardType = UIKeyboardTypeASCIICapable;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
             textField.secureTextEntry = YES;
         }
         if (i == 2) {
             textField.keyboardType = UIKeyboardTypeEmailAddress;
         }
         if (i == 3) {
-            textField.keyboardType = UIKeyboardTypePhonePad;
+            textField.keyboardType = UIKeyboardTypeEmailAddress;
         }
     }
     
@@ -77,7 +80,7 @@
     backBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [backBut setTitle:@"返回" forState:UIControlStateNormal];
     [backBut addTarget:self action:@selector(Presentback) forControlEvents:UIControlEventTouchUpInside];
-    backBut.highlighted=[UIColor grayColor];
+    //backBut.highlighted=[UIColor grayColor];
     [self.view addSubview:backBut];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
@@ -87,10 +90,25 @@
     goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [goBut setTitle:@"完成" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
-    goBut.highlighted=[UIColor grayColor];
+  //  goBut.highlighted=[UIColor grayColor];
     [self.view addSubview:goBut];
     
 
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    for (UITextField *textField in _textFieldMutableArray) {
+        [textField resignFirstResponder];
+    }
+    
+    return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    
+   for (UITextField *textField in _textFieldMutableArray) {
+        [textField resignFirstResponder];
+    }
 }
 
 -(void)PresentGo{

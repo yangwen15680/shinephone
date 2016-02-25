@@ -60,7 +60,7 @@
     backBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [backBut setTitle:@"返回" forState:UIControlStateNormal];
     [backBut addTarget:self action:@selector(Presentback) forControlEvents:UIControlEventTouchUpInside];
-    backBut.highlighted=[UIColor grayColor];
+ 
      [self.view addSubview:backBut];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
@@ -70,7 +70,7 @@
     goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
-    goBut.highlighted=[UIColor grayColor];
+   
     [self.view addSubview:goBut];
 }
 
