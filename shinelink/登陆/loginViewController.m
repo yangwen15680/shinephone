@@ -16,6 +16,8 @@
 #import "registerViewController.h"
 #import "countryViewController.h"
 #import "UserInfo.h"
+#import <CommonCrypto/CommonDigest.h>
+#import "MBProgressHUD.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -50,6 +52,9 @@
         [self addSubViews];
         // didPresentControllerButtonTouch
     }else{
+        [_userTextField setText:[NSString stringWithString:reUsername]];
+       // _userTextField.text=[ud objectForKey:@"userName"];;
+     // _pwdTextField.text=rePassword;
       //  [self didPresentControllerButtonTouch];
           [self performSelectorOnMainThread:@selector(didPresentControllerButtonTouch) withObject:nil waitUntilDone:NO];
         //添加布局
@@ -144,6 +149,21 @@
 
 }
 
+- (NSString *)MD5:(NSString *)str {
+    const char *cStr = [str UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        NSString *tStr = [NSString stringWithFormat:@"%x", digest[i]];
+        if (tStr.length == 1) {
+            [result appendString:@"c"];
+        }
+        [result appendFormat:@"%@", tStr];
+    }
+    return result;
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
     [_userTextField resignFirstResponder];
@@ -183,9 +203,49 @@
     }else {
         //用户名和密码输入正确跳转页面
         [loginBtn ExitAnimationCompletion:^{
-            [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
-            [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
-            [weak didPresentControllerButtonTouch];
+            
+            [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/LoginAPI.do" sucessBlock:^(id content) {
+                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                NSLog(@"TEST:%@",content);
+                if ([content[@"userLevel"] integerValue]==2) {
+                    [[NSUserDefaults standardUserDefaults] setObject:@"isDemo" forKey:@"isDemo"];
+                }else{
+                    [[NSUserDefaults standardUserDefaults] setObject:@"isNotDemo" forKey:@"isDemo"];
+                }
+                if (content) {
+                    if ([content[@"success"] integerValue] == 0) {
+                        //登陆失败
+                        if ([content[@"errCode"] integerValue] == 101) {
+                           
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"User name or password is blank" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                            [alertView show];
+                        }
+                        if ([content[@"errCode"] integerValue] == 102) {
+                            
+                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"username password error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                               [alertView show];
+                        }
+                    } else {
+                        //登陆成功
+                        [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
+                        [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
+                        [weak didPresentControllerButtonTouch];
+                    }
+                }
+                
+            } failure:^(NSError *error) {
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                //[self showToastViewWithTitle:root_Networking];
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                hud.mode = MBProgressHUDModeText;
+                hud.animationType = MBProgressHUDAnimationZoom;
+                hud.labelText = @"Networking Timeout";
+                hud.margin = 10.f;
+                hud.removeFromSuperViewOnHide = YES;
+                [hud hide:YES afterDelay:1.5];
+            }];
+            
+         
         }];
     }
 }

@@ -7,6 +7,7 @@
 //
 
 #import "userdataViewController.h"
+#import "editViewController.h"
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 #define moveHeight 220*NOW_SIZE
 #define moveHeight2 12*NOW_SIZE
@@ -23,6 +24,12 @@
     [self.navigationItem setRightBarButtonItem:right];
     
     [self initUI];
+}
+
+-(void)toEdit{
+    editViewController *toView=[[editViewController alloc]init];
+    [self.navigationController pushViewController:toView animated:YES];
+
 }
 
 -(void)initUI{

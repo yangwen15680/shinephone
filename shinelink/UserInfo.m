@@ -10,6 +10,7 @@
 #import "UserInfo.h"
 
 static UserInfo *userInfo = nil;
+static int timerNumber=0;
 
 @implementation UserInfo
 
@@ -26,7 +27,12 @@ static UserInfo *userInfo = nil;
         
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         
-       
+        if (![ud objectForKey:@"isAutoLogin"]) {
+            [ud setBool:NO forKey:@"isAutoLogin"];
+            _isAutoLogin = NO;
+        } else {
+            _isAutoLogin = [ud boolForKey:@"isAutoLogin"];
+        }
         
         if (![ud objectForKey:@"userName"]) {
             [ud setObject:@"" forKey:@"userName"];
@@ -69,6 +75,11 @@ static UserInfo *userInfo = nil;
     return self;
 }
 
+- (void)setIsAutoLogin:(BOOL)isAutoLogin {
+    _isAutoLogin = isAutoLogin;
+    
+    [[NSUserDefaults standardUserDefaults] setBool:_isAutoLogin forKey:@"isAutoLogin"];
+}
 
 - (void)setUserPassword:(NSString *)userPassword {
     _userPassword = userPassword;
@@ -101,6 +112,24 @@ static UserInfo *userInfo = nil;
     [[NSUserDefaults standardUserDefaults] setObject:_server forKey:@"server"];
 }
 
+#pragma mark - Tool Method
 
+-(NSTimer *)R_timer{
+    timerNumber=0;
+    if (!_R_timer) {
+        _R_timer=[NSTimer scheduledTimerWithTimeInterval:3540 target:self selector:@selector(stopDownload) userInfo:nil repeats:true];
+    }
+    return _R_timer;
+}
+
+-(void)stopDownload{
+    if (timerNumber==1) {
+        NSLog(@"test1111");
+        self.R_timer.fireDate=[NSDate distantFuture];
+        [[UserInfo defaultUserInfo] setIsAutoLogin:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:nil];
+    }
+    timerNumber=timerNumber+1;
+}
 
 @end
