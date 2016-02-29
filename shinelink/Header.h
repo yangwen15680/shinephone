@@ -24,6 +24,7 @@
 #define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
 #define HEAD_URL  @"http://server.growatt.com"
+#define mainColor [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1]
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")
 #define root_Remove_Station       NSLocalizedString(@"Remove Station", @"Remove Station")

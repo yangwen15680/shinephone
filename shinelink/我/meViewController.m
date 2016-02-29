@@ -10,7 +10,7 @@
 #import "meTableViewCell.h"
 #import "aboutViewController.h"
 #import "userdataViewController.h"
-
+#import "listViewController.h"
 
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
@@ -175,7 +175,11 @@
         
         [self.navigationController pushViewController:aboutView animated:YES];
     }
-    
+    if (indexPath.row==1) {
+       listViewController  *listView = [[listViewController alloc]init];
+        
+        [self.navigationController pushViewController:listView animated:YES];
+    }
     if (indexPath.row==3) {
         aboutViewController *aboutView = [[aboutViewController alloc]init];
         

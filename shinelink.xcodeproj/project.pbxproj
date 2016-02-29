@@ -51,6 +51,8 @@
 		335089231C73179400D7AA03 /* bg_list_popver.png in Resources */ = {isa = PBXBuildFile; fileRef = 335089221C73179400D7AA03 /* bg_list_popver.png */; };
 		335089251C7323C200D7AA03 /* frag4.png in Resources */ = {isa = PBXBuildFile; fileRef = 335089241C7323C200D7AA03 /* frag4.png */; };
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
+		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
+		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
 		3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3355F2591C74178E006DDE5A /* meTableViewCell.m */; };
 		3355F25C1C741ABB006DDE5A /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 3355F25B1C741ABB006DDE5A /* about.png */; };
 		3355F25E1C741AC3006DDE5A /* client.png in Resources */ = {isa = PBXBuildFile; fileRef = 3355F25D1C741AC3006DDE5A /* client.png */; };
@@ -258,6 +260,10 @@
 		335089241C7323C200D7AA03 /* frag4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frag4.png; sourceTree = "<group>"; };
 		335089261C73267A00D7AA03 /* findTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = findTableViewCell.h; sourceTree = "<group>"; };
 		335089271C73267A00D7AA03 /* findTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findTableViewCell.m; sourceTree = "<group>"; };
+		33528FEE1C83E41D00D07889 /* listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listViewController.h; sourceTree = "<group>"; };
+		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listViewController.m; sourceTree = "<group>"; };
+		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewCell.h; sourceTree = "<group>"; };
+		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
 		3355F2581C74178E006DDE5A /* meTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meTableViewCell.h; sourceTree = "<group>"; };
 		3355F2591C74178E006DDE5A /* meTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = meTableViewCell.m; sourceTree = "<group>"; };
 		3355F25B1C741ABB006DDE5A /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
@@ -540,6 +546,17 @@
 			path = "第三方库";
 			sourceTree = "<group>";
 		};
+		33528FED1C83E34500D07889 /* 客服系统 */ = {
+			isa = PBXGroup;
+			children = (
+				33528FEE1C83E41D00D07889 /* listViewController.h */,
+				33528FEF1C83E41D00D07889 /* listViewController.m */,
+				33528FF41C83E95F00D07889 /* listTableViewCell.h */,
+				33528FF51C83E95F00D07889 /* listTableViewCell.m */,
+			);
+			path = "客服系统";
+			sourceTree = "<group>";
+		};
 		3355F2651C746983006DDE5A /* 关于 */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +699,7 @@
 		337F9CC41C71ABD80016FE43 /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				33528FED1C83E34500D07889 /* 客服系统 */,
 				3349A7AC1C75A201009172C2 /* 资料管理 */,
 				3355F2651C746983006DDE5A /* 关于 */,
 				3355F25B1C741ABB006DDE5A /* about.png */,
@@ -1053,6 +1071,7 @@
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,
 				3343F3DF1C80405D009F69BC /* UIProgressView+AFNetworking.m in Sources */,
+				33528FF01C83E41D00D07889 /* listViewController.m in Sources */,
 				3343F3EC1C805BD2009F69BC /* MBProgressHUD.m in Sources */,
 				3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */,
 				3355F2681C7469AB006DDE5A /* aboutViewController.m in Sources */,
@@ -1072,6 +1091,7 @@
 				33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */,
 				3343F3DD1C80405D009F69BC /* UIButton+AFNetworking.m in Sources */,
 				3349A7B61C75B8F4009172C2 /* loginViewController.m in Sources */,
+				33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */,
 				3343F3C31C80403C009F69BC /* AFSecurityPolicy.m in Sources */,
 				3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */,
 			);
