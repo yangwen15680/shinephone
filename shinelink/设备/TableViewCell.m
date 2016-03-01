@@ -15,15 +15,9 @@
 
 
 @interface TableViewCell ()
-@property (nonatomic, strong) UIImageView *coverImageView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *detail;
-@property (nonatomic, strong) UILabel *state;
-@property (nonatomic, strong) UILabel *stateValue;
-@property (nonatomic, strong) UILabel *power;
-@property (nonatomic, strong) UILabel *powerValue;
-@property (nonatomic, strong) UILabel *electric;
-@property (nonatomic, strong) UILabel *electricValue;
+
+
+
 @end
 
 @implementation TableViewCell
@@ -37,11 +31,11 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
      self.backgroundColor = [UIColor clearColor];
 
     self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE, SCREEN_Width/5-10, SCREEN_Width/5-10)];
-    [self.coverImageView setImage:[UIImage imageNamed:@"demo2.png"]];
+    
     [self.contentView addSubview:_coverImageView];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10, 0, 120*NOW_SIZE, 50*NOW_SIZE)];
-    self.titleLabel.text = @"逆变器";
+    
     self.titleLabel.font=[UIFont systemFontOfSize:16*NOW_SIZE];
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
     self.titleLabel.textColor = [UIColor orangeColor];
@@ -67,7 +61,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:_state];
     
     self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10+labelWidth-12, 50*NOW_SIZE-10, labelWidth, labelHeight)];
-    self.stateValue.text = @"已连接";
+ 
     self.stateValue.font=[UIFont systemFontOfSize:fontSize];
     self.stateValue.textAlignment = NSTextAlignmentLeft;
     self.stateValue.textColor = [UIColor labelColor];
@@ -81,7 +75,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:_power];
     
     self.powerValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+labelWidth+labelWidth+labelWidth-12, 50*NOW_SIZE-10, labelWidth+5, labelHeight)];
-    self.powerValue.text = @"500KW";
+   
     self.powerValue.font=[UIFont systemFontOfSize:fontSize];
     self.powerValue.textAlignment = NSTextAlignmentLeft;
     self.powerValue.textColor = [UIColor labelColor];
@@ -95,7 +89,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:_electric];
     
     self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+labelWidth+labelWidth+labelWidth+labelWidth+labelWidth-5, 50*NOW_SIZE-10, labelWidth+5, labelHeight)];
-    self.electricValue.text = @"50kw/h";
+   
     self.electricValue.font=[UIFont systemFontOfSize:fontSize];
     self.electricValue.textAlignment = NSTextAlignmentLeft;
     self.electricValue.textColor = [UIColor labelColor];

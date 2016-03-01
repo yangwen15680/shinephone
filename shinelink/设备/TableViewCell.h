@@ -10,4 +10,14 @@
 
 @interface TableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIImageView *coverImageView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *detail;
+@property (nonatomic, strong) UILabel *state;
+@property (nonatomic, strong) UILabel *stateValue;
+@property (nonatomic, strong) UILabel *power;
+@property (nonatomic, strong) UILabel *powerValue;
+@property (nonatomic, strong) UILabel *electric;
+@property (nonatomic, strong) UILabel *electricValue;
+
 @end

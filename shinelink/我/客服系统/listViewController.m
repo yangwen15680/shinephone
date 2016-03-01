@@ -38,6 +38,7 @@
     _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    
     [self.view addSubview:_tableView];
     
     
@@ -68,7 +69,7 @@
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
      cell.contentLabel.frame =CGRectMake(10*Width, 45*Width, 300*Width, fcRect.size.height);
    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 45*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);
 
     

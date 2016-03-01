@@ -17,6 +17,11 @@
 @property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
+@property (nonatomic, strong)  NSMutableArray* imageArray;
+@property (nonatomic, strong) NSMutableArray *nameArray;
+@property (nonatomic, strong) NSMutableArray *statueArray;
+@property (nonatomic, strong) NSMutableArray *powerArray;
+@property (nonatomic, strong) NSMutableArray *dayArray;
 
 @end
 
@@ -35,6 +40,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _imageArray=[[NSMutableArray alloc]initWithObjects:@"1.jpg", @"2.jpg", @"3.jpg", nil];
+    _nameArray=[[NSMutableArray alloc]initWithObjects:@"逆变器", @"储能机", @"采集器", nil];
+    _statueArray=[[NSMutableArray alloc]initWithObjects:@"未连接", @"已连接", @"未连接", nil];
+    _powerArray=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", nil];
+    _dayArray=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", nil];
     // Do any additional setup after loading the view.
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
     self.navigationItem.rightBarButtonItem = rightButton;
@@ -114,10 +125,17 @@
     if (!cell) {
     cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
     }
+   
+   [cell.coverImageView  setImage:[UIImage imageNamed:_imageArray[indexPath.row]]];
+    cell.titleLabel.text = _nameArray[indexPath.row];
+       cell.stateValue.text = _statueArray[indexPath.row];
+     cell.powerValue.text = _powerArray[indexPath.row];
+     cell.electricValue.text =_dayArray[indexPath.row];
     
-    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
+    
+    /*UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
     longPressGesture.minimumPressDuration = 1.0f;
-    [cell addGestureRecognizer:longPressGesture];
+    [cell addGestureRecognizer:longPressGesture];*/
     
     return cell;
 }
