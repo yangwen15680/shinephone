@@ -42,12 +42,14 @@
         _statusLabel.textAlignment =NSTextAlignmentRight;
         [titleView addSubview:_statusLabel];
         
+    
+        
         _contentLabel =[[UILabel alloc]init];
         _contentLabel.font =[UIFont systemFontOfSize:18];
-        _contentLabel.textColor = [UIColor redColor];
+        _contentLabel.textColor = [UIColor grayColor];
         _contentLabel.textAlignment =NSTextAlignmentLeft;
         _contentLabel.numberOfLines=0;
-        NSLog(@"self.content=%@",self.content);
+        //NSLog(@"self.content=%@",self.content);
         //CGRect rect =[FormValidator rectWidthAndHeightWithStr:_contentLabel.text AndFont:18 WithStrWidth:300];
         /* CGRect fcRect = [self.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
         
@@ -57,7 +59,7 @@
         
        _timeLabel=[[UILabel alloc]init];
        _timeLabel.font =[UIFont systemFontOfSize:16];
-        _timeLabel.textColor = [UIColor redColor];
+        _timeLabel.textColor = [UIColor grayColor];
         _timeLabel.textAlignment =NSTextAlignmentRight;
         [self.contentView addSubview:_timeLabel];
         

@@ -9,6 +9,7 @@
 #import "registerViewController.h"
 #import "loginViewController.h"
 #import "countryViewController.h"
+#import "AddCellectViewController.h"
 
 @interface registerViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong) UILabel *name;
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+       //[self.navigationController setNavigationBarHidden:NO];
     [self initUI];
 }
 
@@ -73,22 +75,14 @@
         }
     }
     
-    UIButton *backBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    backBut.frame=CGRectMake(30*NOW_SIZE,280*NOW_SIZE+moveHeight, 100*NOW_SIZE, 30*NOW_SIZE);
-    [backBut.layer setMasksToBounds:YES];
-    [backBut.layer setCornerRadius:15.0];
-    backBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    [backBut setTitle:@"返回" forState:UIControlStateNormal];
-    [backBut addTarget:self action:@selector(Presentback) forControlEvents:UIControlEventTouchUpInside];
-    //backBut.highlighted=[UIColor grayColor];
-    [self.view addSubview:backBut];
+    
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(190*NOW_SIZE,280*NOW_SIZE+moveHeight, 100*NOW_SIZE, 30*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE+moveHeight, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:15.0];
+    [goBut.layer setCornerRadius:25.0];
     goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
     [self.view addSubview:goBut];
@@ -112,17 +106,12 @@
 }
 
 -(void)PresentGo{
-    loginViewController *reg=[[loginViewController alloc]init];
-    [self presentViewController:reg animated:YES completion:nil];
-    // [self. navigationController pushViewController:reg animated:YES];
+    AddCellectViewController *reg=[[AddCellectViewController alloc]init];
+    //[self presentViewController:reg animated:YES completion:nil];
+   [self. navigationController pushViewController:reg animated:YES];
 }
 
--(void)Presentback{
-    countryViewController *log=[[countryViewController alloc]init];
-    
-    [self presentViewController:log animated:YES completion:nil];
-    
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

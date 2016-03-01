@@ -53,6 +53,18 @@
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
+		335456B61C852E6200275478 /* AddCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B51C852E6200275478 /* AddCellectViewController.m */; };
+		335456B91C852EB000275478 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B81C852EB000275478 /* RootViewController.m */; };
+		335456BC1C852ED900275478 /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456BB1C852ED900275478 /* TempViewController.m */; };
+		335456BF1C852EEB00275478 /* SHBQRView.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456BE1C852EEB00275478 /* SHBQRView.m */; };
+		335456C11C852FF600275478 /* 圆角矩形空心.png in Resources */ = {isa = PBXBuildFile; fileRef = 335456C01C852FF600275478 /* 圆角矩形空心.png */; };
+		335456C31C85301200275478 /* 圆角矩形.png in Resources */ = {isa = PBXBuildFile; fileRef = 335456C21C85301200275478 /* 圆角矩形.png */; };
+		335456C51C853AFD00275478 /* scanLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335456C41C853AFD00275478 /* scanLine@2x.png */; };
+		335456C71C853B4900275478 /* btn_cha.png in Resources */ = {isa = PBXBuildFile; fileRef = 335456C61C853B4900275478 /* btn_cha.png */; };
+		335456C91C853C2F00275478 /* scanscanBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 335456C81C853C2F00275478 /* scanscanBg.png */; };
+		335456CE1C8584E100275478 /* forgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456CD1C8584E100275478 /* forgetViewController.m */; };
+		335456D11C8588D500275478 /* emailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456D01C8588D500275478 /* emailViewController.m */; };
+		335456D41C8588E200275478 /* SNViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456D31C8588E200275478 /* SNViewController.m */; };
 		3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3355F2591C74178E006DDE5A /* meTableViewCell.m */; };
 		3355F25C1C741ABB006DDE5A /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 3355F25B1C741ABB006DDE5A /* about.png */; };
 		3355F25E1C741AC3006DDE5A /* client.png in Resources */ = {isa = PBXBuildFile; fileRef = 3355F25D1C741AC3006DDE5A /* client.png */; };
@@ -264,6 +276,25 @@
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewCell.h; sourceTree = "<group>"; };
 		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
+		335456B41C852E6200275478 /* AddCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController.h; sourceTree = "<group>"; };
+		335456B51C852E6200275478 /* AddCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellectViewController.m; sourceTree = "<group>"; };
+		335456B71C852EB000275478 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		335456B81C852EB000275478 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		335456BA1C852ED900275478 /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
+		335456BB1C852ED900275478 /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
+		335456BD1C852EEB00275478 /* SHBQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBQRView.h; sourceTree = "<group>"; };
+		335456BE1C852EEB00275478 /* SHBQRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHBQRView.m; sourceTree = "<group>"; };
+		335456C01C852FF600275478 /* 圆角矩形空心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形空心.png"; sourceTree = "<group>"; };
+		335456C21C85301200275478 /* 圆角矩形.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形.png"; sourceTree = "<group>"; };
+		335456C41C853AFD00275478 /* scanLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanLine@2x.png"; sourceTree = "<group>"; };
+		335456C61C853B4900275478 /* btn_cha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_cha.png; sourceTree = "<group>"; };
+		335456C81C853C2F00275478 /* scanscanBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scanscanBg.png; sourceTree = "<group>"; };
+		335456CC1C8584E100275478 /* forgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = forgetViewController.h; sourceTree = "<group>"; };
+		335456CD1C8584E100275478 /* forgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = forgetViewController.m; sourceTree = "<group>"; };
+		335456CF1C8588D500275478 /* emailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emailViewController.h; sourceTree = "<group>"; };
+		335456D01C8588D500275478 /* emailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = emailViewController.m; sourceTree = "<group>"; };
+		335456D21C8588E200275478 /* SNViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNViewController.h; sourceTree = "<group>"; };
+		335456D31C8588E200275478 /* SNViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNViewController.m; sourceTree = "<group>"; };
 		3355F2581C74178E006DDE5A /* meTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = meTableViewCell.h; sourceTree = "<group>"; };
 		3355F2591C74178E006DDE5A /* meTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = meTableViewCell.m; sourceTree = "<group>"; };
 		3355F25B1C741ABB006DDE5A /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
@@ -276,10 +307,10 @@
 		3355F26A1C746BF5006DDE5A /* aboutTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutTableViewCell.m; sourceTree = "<group>"; };
 		3355F26C1C747307006DDE5A /* aboutOneTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aboutOneTableViewCell.h; sourceTree = "<group>"; };
 		3355F26D1C747307006DDE5A /* aboutOneTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aboutOneTableViewCell.m; sourceTree = "<group>"; };
-		3363DD1C1C7C48F100D740FB /* registerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerViewController.h; sourceTree = "<group>"; };
-		3363DD1D1C7C48F100D740FB /* registerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerViewController.m; sourceTree = "<group>"; };
-		3363DD201C7C598B00D740FB /* countryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = countryViewController.h; sourceTree = "<group>"; };
-		3363DD211C7C598B00D740FB /* countryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = countryViewController.m; sourceTree = "<group>"; };
+		3363DD1C1C7C48F100D740FB /* registerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = registerViewController.h; path = ../registerViewController.h; sourceTree = "<group>"; };
+		3363DD1D1C7C48F100D740FB /* registerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = registerViewController.m; path = ../registerViewController.m; sourceTree = "<group>"; };
+		3363DD201C7C598B00D740FB /* countryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = countryViewController.h; path = ../countryViewController.h; sourceTree = "<group>"; };
+		3363DD211C7C598B00D740FB /* countryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = countryViewController.m; path = ../countryViewController.m; sourceTree = "<group>"; };
 		3363DD231C7C610A00D740FB /* 语言.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "语言.png"; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -508,13 +539,12 @@
 		3349A7B31C75B893009172C2 /* 登陆 */ = {
 			isa = PBXGroup;
 			children = (
+				335456CB1C8582ED00275478 /* 忘记密码 */,
+				335456CA1C8582A100275478 /* 注册 */,
+				335456B31C852E3600275478 /* 配置设备 */,
 				3363DD1F1C7C491300D740FB /* 登陆动画 */,
 				3349A7B41C75B8F4009172C2 /* loginViewController.h */,
 				3349A7B51C75B8F4009172C2 /* loginViewController.m */,
-				3363DD1C1C7C48F100D740FB /* registerViewController.h */,
-				3363DD1D1C7C48F100D740FB /* registerViewController.m */,
-				3363DD201C7C598B00D740FB /* countryViewController.h */,
-				3363DD211C7C598B00D740FB /* countryViewController.m */,
 				33FEFCD71C7D9DCD00324374 /* 圆角矩形3.png */,
 				3363DD231C7C610A00D740FB /* 语言.png */,
 				33FEFCCF1C7D8A9500324374 /* Address.plist */,
@@ -555,6 +585,50 @@
 				33528FF51C83E95F00D07889 /* listTableViewCell.m */,
 			);
 			path = "客服系统";
+			sourceTree = "<group>";
+		};
+		335456B31C852E3600275478 /* 配置设备 */ = {
+			isa = PBXGroup;
+			children = (
+				335456C41C853AFD00275478 /* scanLine@2x.png */,
+				335456C81C853C2F00275478 /* scanscanBg.png */,
+				335456B41C852E6200275478 /* AddCellectViewController.h */,
+				335456B51C852E6200275478 /* AddCellectViewController.m */,
+				335456B71C852EB000275478 /* RootViewController.h */,
+				335456B81C852EB000275478 /* RootViewController.m */,
+				335456BA1C852ED900275478 /* TempViewController.h */,
+				335456BB1C852ED900275478 /* TempViewController.m */,
+				335456BD1C852EEB00275478 /* SHBQRView.h */,
+				335456BE1C852EEB00275478 /* SHBQRView.m */,
+				335456C21C85301200275478 /* 圆角矩形.png */,
+				335456C01C852FF600275478 /* 圆角矩形空心.png */,
+				335456C61C853B4900275478 /* btn_cha.png */,
+			);
+			path = "配置设备";
+			sourceTree = "<group>";
+		};
+		335456CA1C8582A100275478 /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				3363DD1C1C7C48F100D740FB /* registerViewController.h */,
+				3363DD1D1C7C48F100D740FB /* registerViewController.m */,
+				3363DD201C7C598B00D740FB /* countryViewController.h */,
+				3363DD211C7C598B00D740FB /* countryViewController.m */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		335456CB1C8582ED00275478 /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+				335456CC1C8584E100275478 /* forgetViewController.h */,
+				335456CD1C8584E100275478 /* forgetViewController.m */,
+				335456CF1C8588D500275478 /* emailViewController.h */,
+				335456D01C8588D500275478 /* emailViewController.m */,
+				335456D21C8588E200275478 /* SNViewController.h */,
+				335456D31C8588E200275478 /* SNViewController.m */,
+			);
+			path = "忘记密码";
 			sourceTree = "<group>";
 		};
 		3355F2651C746983006DDE5A /* 关于 */ = {
@@ -917,6 +991,7 @@
 			files = (
 				33FEFD4B1C7DB38400324374 /* 账号3.png in Resources */,
 				33FEFD511C7DB38400324374 /* 组-1@2x.png in Resources */,
+				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
 				33FEFD481C7DB38400324374 /* 用户协议@2x.png in Resources */,
 				33FEFD5B1C7DB38400324374 /* icon---Email@3x.png in Resources */,
 				33FEFD5C1C7DB38400324374 /* icon---Name.png in Resources */,
@@ -982,11 +1057,14 @@
 				3349A7AE1C75B76F009172C2 /* icon_logo.png in Resources */,
 				3349A7B81C75BCDB009172C2 /* 账号3.png in Resources */,
 				33FEFD5D1C7DB38400324374 /* icon---Name@2x.png in Resources */,
+				335456C11C852FF600275478 /* 圆角矩形空心.png in Resources */,
 				33FEFD681C7DB38400324374 /* iconfont-address@3x.png in Resources */,
+				335456C51C853AFD00275478 /* scanLine@2x.png in Resources */,
 				3343F3EB1C805BD2009F69BC /* LICENSE in Resources */,
 				33FEFD3E1C7DB38400324374 /* 客服电话@2x.png in Resources */,
 				33FEFD5E1C7DB38400324374 /* icon---Name@3x.png in Resources */,
 				3349BB3D1C7EFC6B00E6E34B /* 1.jpg in Resources */,
+				335456C71C853B4900275478 /* btn_cha.png in Resources */,
 				33FEFD711C7DB38400324374 /* iconfont-nengyuanlei_press@2x.png in Resources */,
 				3355F25E1C741AC3006DDE5A /* client.png in Resources */,
 				33FEFD751C7DB38400324374 /* iconfont-shouji.png in Resources */,
@@ -1002,6 +1080,7 @@
 				33FEFD431C7DB38400324374 /* 荣誉@3x.png in Resources */,
 				33FEFD461C7DB38400324374 /* 维修@3x.png in Resources */,
 				3349A7B01C75B7AC009172C2 /* loginbg.jpg in Resources */,
+				335456C91C853C2F00275478 /* scanscanBg.png in Resources */,
 				33FEFD381C7DB38400324374 /* 电子邮箱.png in Resources */,
 				33FEFD741C7DB38400324374 /* iconfont-nengyuanlei@3x.png in Resources */,
 				33FEFD371C7DB38400324374 /* 登录界面.png in Resources */,
@@ -1055,11 +1134,15 @@
 				3343F3AA1C803DC9009F69BC /* BaseRequest.m in Sources */,
 				3363DD221C7C598B00D740FB /* countryViewController.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
+				335456B91C852EB000275478 /* RootViewController.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
+				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
+				335456CE1C8584E100275478 /* forgetViewController.m in Sources */,
 				3349A7C01C75BF3B009172C2 /* SpinerLayer.m in Sources */,
 				3343F3C11C80403C009F69BC /* AFHTTPSessionManager.m in Sources */,
 				3343F3DB1C80405D009F69BC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				3343F3C61C80403C009F69BC /* AFURLResponseSerialization.m in Sources */,
+				335456BF1C852EEB00275478 /* SHBQRView.m in Sources */,
 				3343F3BF1C80403C009F69BC /* AFHTTPRequestOperation.m in Sources */,
 				3343F3ED1C805BD2009F69BC /* README.mdown in Sources */,
 				3349A7C31C75C215009172C2 /* StTransitions.m in Sources */,
@@ -1079,6 +1162,7 @@
 				337F9CC51C71ABD80016FE43 /* deviceViewController.m in Sources */,
 				337F9C851C71A6710016FE43 /* main.m in Sources */,
 				3343F3E51C805BBF009F69BC /* FXBlurView.m in Sources */,
+				335456B61C852E6200275478 /* AddCellectViewController.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,
 				3355F26E1C747307006DDE5A /* aboutOneTableViewCell.m in Sources */,
@@ -1093,6 +1177,8 @@
 				3349A7B61C75B8F4009172C2 /* loginViewController.m in Sources */,
 				33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */,
 				3343F3C31C80403C009F69BC /* AFSecurityPolicy.m in Sources */,
+				335456D41C8588E200275478 /* SNViewController.m in Sources */,
+				335456D11C8588D500275478 /* emailViewController.m in Sources */,
 				3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

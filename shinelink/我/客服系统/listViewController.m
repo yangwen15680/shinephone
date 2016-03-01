@@ -69,7 +69,7 @@
      cell.contentLabel.frame =CGRectMake(10*Width, 45*Width, 300*Width, fcRect.size.height);
    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 45*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
     
-     NSLog(@"content=%@",cell.content);
+     //NSLog(@"content=%@",cell.content);
 
     
     return cell;

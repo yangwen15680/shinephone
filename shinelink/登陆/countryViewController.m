@@ -10,6 +10,8 @@
 #import "AddressPickView.h"
 #import "loginViewController.h"
 #import "registerViewController.h"
+
+
 @interface countryViewController ()<UINavigationControllerDelegate>
 @property(nonatomic,strong)UILabel *label;
 
@@ -20,11 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.navigationItem.title=@"设置国家";
-   
+   // [self.navigationController setNavigationBarHidden:NO];
     
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
 
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"loginbg.jpg"]]];
+    
     // Do any additional setup after loading the view.
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,202*NOW_SIZE, 22*NOW_SIZE, 22*NOW_SIZE)];
     imageView.contentMode=UIViewContentModeScaleAspectFit;
@@ -53,31 +58,22 @@
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickadress)];
     [_label addGestureRecognizer:tap];
     
-    UIButton *backBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    backBut.frame=CGRectMake(30*NOW_SIZE,280*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE);
-    [backBut.layer setMasksToBounds:YES];
-    [backBut.layer setCornerRadius:15.0];
-    backBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    [backBut setTitle:@"返回" forState:UIControlStateNormal];
-    [backBut addTarget:self action:@selector(Presentback) forControlEvents:UIControlEventTouchUpInside];
- 
-     [self.view addSubview:backBut];
+   
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(190*NOW_SIZE,280*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:15.0];
+    [goBut.layer setCornerRadius:25.0];
     goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
-   
     [self.view addSubview:goBut];
 }
 
 -(void)PresentGo{
  registerViewController *reg=[[registerViewController alloc]init];
-  [self presentViewController:reg animated:YES completion:nil];
-   // [self. navigationController pushViewController:reg animated:YES];
+ // [self presentViewController:reg animated:YES completion:nil];
+    [self. navigationController pushViewController:reg animated:YES];
 }
 
 -(void)Presentback{

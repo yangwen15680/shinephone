@@ -18,6 +18,7 @@
 #import "UserInfo.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
+#import "forgetViewController.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -37,6 +38,8 @@
     // Do any additional setup after loading the view.
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
+  
+       //[self.navigationController setNavigationBarHidden:YES];
     
  NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
    NSString *reUsername=[ud objectForKey:@"userName"];
@@ -105,16 +108,16 @@
     
  
 
-    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 330*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 380*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [self.view addSubview:loginBtn];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(180*NOW_SIZE, 400*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 440*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
     self.registLable.text=@"注册";
-    self.registLable.textColor=[UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    self.registLable.textAlignment = NSTextAlignmentLeft;
+    self.registLable.textColor=[UIColor whiteColor];
+    self.registLable.textAlignment = NSTextAlignmentRight;
      self.registLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     self.registLable.userInteractionEnabled=YES;
      [self.view addSubview:self.registLable];
@@ -123,17 +126,27 @@
    
     
     
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(110*NOW_SIZE, 400*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
-    self.forgetLable.text=@"没有账号?";
-    self.forgetLable.textColor=[UIColor whiteColor];
-        self.forgetLable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 440*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
+    self.forgetLable.text=@"忘记密码";
+     self.forgetLable.textColor=[UIColor whiteColor];
+        self.forgetLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
+     self.forgetLable.userInteractionEnabled=YES;
+    UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
+    [self.forgetLable addGestureRecognizer:forget];
+    
     [self.view addSubview:self.forgetLable];
     
 
     
 }
 
+-(void)forget{
+    forgetViewController *registerRoot=[[forgetViewController alloc]init];
+    //[self presentViewController:registerRoot animated:YES completion:nil];
+    
+    [self.navigationController pushViewController:registerRoot animated:YES];
+}
 
 
 -(void)tapLable{
@@ -142,9 +155,9 @@
     self.registLable.highlightedTextColor=[UIColor whiteColor];
     
     countryViewController *registerRoot=[[countryViewController alloc]init];
-   [self presentViewController:registerRoot animated:YES completion:nil];
+  //[self presentViewController:registerRoot animated:YES completion:nil];
     
-  //  [self.navigationController pushViewController:registerRoot animated:YES];
+    [self.navigationController pushViewController:registerRoot animated:YES];
     
 
 }

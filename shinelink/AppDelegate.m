@@ -28,9 +28,13 @@
     self.window.backgroundColor = [UIColor whiteColor];
    
     loginViewController *root=[[loginViewController alloc]init];
-    //countryViewController *root=[[countryViewController alloc]init];
     
-    self.window.rootViewController=root;
+    //countryViewController *root=[[countryViewController alloc]init];
+
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
+    
+    
+    self.window.rootViewController=nav;
      [self.window makeKeyAndVisible];
     
     return YES;
