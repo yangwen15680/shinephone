@@ -117,7 +117,7 @@
     [[UserInfo defaultUserInfo] setUserPassword:nil];
     [[UserInfo defaultUserInfo] setUserName:nil];
     loginViewController *login =[[loginViewController alloc]init];
-    [self presentViewController:login animated:YES completion:nil];
+    [self.navigationController pushViewController:login animated:YES];
 
 }
 -(void)PresentGo{

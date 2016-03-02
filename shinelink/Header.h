@@ -11,6 +11,7 @@
 
 #import "UserInfo.h"
 #import "BaseRequest.h"
+#import "MBProgressHUD.h"
 
 #define IMAGE(_NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:_NAME]]
 #define COLOR(_R,_G,_B,_A) [UIColor colorWithRed:_R / 255.0f green:_G / 255.0f blue:_B / 255.0f alpha:_A]
@@ -23,7 +24,7 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
-#define HEAD_URL  @"http://server.growatt.com"
+#define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
 #define mainColor [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1]
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")
@@ -41,7 +42,8 @@
 #define root_Enter_your_pwd       NSLocalizedString(@"Enter your pwd", @"Enter your pwd")
 #define root_Enter_email       NSLocalizedString(@"Enter email", @"Enter email")
 #define root_Enter_phone_number       NSLocalizedString(@"Enter phone number", @"Enter phone number")
-
+#define root_Networking      NSLocalizedString(@"Networking Timeout", @"Networking Timeout")
+#define root_Yes       NSLocalizedString(@"Yes", @"Yes")
 
 
 #endif /* Header_h */

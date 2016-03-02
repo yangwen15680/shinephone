@@ -10,4 +10,6 @@
 
 @interface registerViewController : UIViewController
 
+- (instancetype)initWithDataDict:(NSMutableDictionary *)dataDict;
+
 @end

@@ -15,9 +15,17 @@
 @interface AddCellectViewController ()<SHBQRViewDelegate>
 @property(nonatomic,strong)UITextField *cellectId;
 @property(nonatomic,strong)UITextField *cellectNo;
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
 @end
 
 @implementation AddCellectViewController
+
+- (instancetype)initWithDataDict:(NSMutableDictionary *)dataDict {
+    if (self = [super init]) {
+        self.dataDic = [NSMutableDictionary dictionaryWithDictionary:dataDict];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -106,33 +114,10 @@
     NSLog(@"_cellectNo.text=%@",_cellectNo.text);
     _cellectId.text=result;
     NSLog(@"_cellectId.text=%@",_cellectId.text);
-    
+    [_dataDic setObject:_cellectId.text forKey:@"regDataLoggerNo"];
+    [_dataDic setObject:_cellectNo.text forKey:@"regValidateCode"];
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantID":_stationId,@"datalogSN":_cellectId.text,@"validCode":_cellectNo.text} paramarsSite:@"/datalogA.do?op=add" sucessBlock:^(id content) {
-        [self hideProgressView];
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
-            if ([[jsonObj objectForKey:@"msg"] isEqual:@"errDatalogSN"]) {
-       
-        }else{
-            
-               // [self showAlertViewWithTitle:nil message:root_Added_successfully cancelButtonTitle:root_Yes];
-            
-         
-                
-            }
-             //UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-             //MainViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-             //AddCellectViewController *addCellect=[[AddCellectViewController alloc]init];
-             //  addCellect.stationId=_stationId;
-             //[self.navigationController pushViewController:rootView animated:YES];
-           
-     
-        }
-    } failure:^(NSError *error) {
-        [self hideProgressView];
-        [self showToastViewWithTitle:@"网络连接超时"];
-    }];
+    
   //  [self presentViewController:alert animated:true completion:nil];
 }
 
@@ -193,24 +178,73 @@
         [self showAlertViewWithTitle:nil message:@"请输入正确的采集器校验码" cancelButtonTitle:@"确定"];
         return;
     }
+     [_dataDic setObject:_cellectId.text forKey:@"regDataLoggerNo"];
+     [_dataDic setObject:_cellectNo.text forKey:@"regValidateCode"];
+    
+    NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
+ 
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantID":_stationId,@"datalogSN":_cellectId.text,@"validCode":_cellectNo.text} paramarsSite:@"/datalogA.do?op=add" sucessBlock:^(id content) {
-        [self hideProgressView];
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
-           
-        }else{
-            
-            NSString *IdString1= _cellectId.text;
-            NSString *IdString=[IdString1 substringWithRange:NSMakeRange(0, 2)];
-      
-
-         
-        }
-    } failure:^(NSError *error) {
-        [self hideProgressView];
-        [self showToastViewWithTitle:@"网络连接超时"];
-    }];
+ [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/NewRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+     NSLog(@"checkUserExist: %@", content);
+     [self hideProgressView];
+     if (content) {
+         if ([content[@"success"] integerValue] == 0) {
+             [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/registerAPI.do?action=creatAccount" sucessBlock:^(id content) {
+                 NSLog(@"creatAccount: %@", content);
+                 [self hideProgressView];
+                 if (content) {
+                     if ([content[@"back"][@"success"] integerValue] == 0) {
+                         //注册失败
+                         if ([content[@"back"][@"msg"] isEqual:@"error_userCountLimit"]) {
+                             [self showAlertViewWithTitle:nil message:@"超出版本限制注册用户数量" cancelButtonTitle:root_Yes];
+                         }else if ([content[@"back"][@"msg"] isEqual:@"server error."]){
+                             
+                                 [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
+                         }
+                         else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
+                             
+                                 [self showAlertViewWithTitle:nil message:@"register error" cancelButtonTitle:root_Yes];
+                         }
+                         else{
+                             //注册成功
+                             [self succeedRegister];
+                              [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                             }
+                          }
+                else {
+                         //注册成功
+                         [self succeedRegister];
+                         [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                     }
+                 }
+                 
+             } failure:^(NSError *error) {
+                 [self hideProgressView];
+                 [self showToastViewWithTitle:root_Networking];
+             }];
+             
+             
+         }else{
+             [self showAlertViewWithTitle:nil message:@"用户名已被使用" cancelButtonTitle:root_Yes];
+         }
 }
+     
+     
+ } failure:^(NSError *error) {
+     [self hideProgressView];
+     [self showToastViewWithTitle:root_Networking];
+ }];
+  
+    
+}
+
+-(void)succeedRegister{
+
+
+}
+
+
+
+
 
 @end

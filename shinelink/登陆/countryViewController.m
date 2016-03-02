@@ -14,6 +14,7 @@
 
 @interface countryViewController ()<UINavigationControllerDelegate>
 @property(nonatomic,strong)UILabel *label;
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
 
 @end
 
@@ -21,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.navigationItem.title=@"设置国家";
-   // [self.navigationController setNavigationBarHidden:NO];
+    
+      self.dataDic = [NSMutableDictionary dictionary];
     
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
@@ -70,9 +71,24 @@
     [self.view addSubview:goBut];
 }
 
+- (void)showToastViewWithTitle:(NSString *)title {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.animationType = MBProgressHUDAnimationZoom;
+    hud.labelText = title;
+    hud.margin = 10.f;
+    hud.removeFromSuperViewOnHide = YES;
+    [hud hide:YES afterDelay:1.5];
+}
+
 -(void)PresentGo{
- registerViewController *reg=[[registerViewController alloc]init];
- // [self presentViewController:reg animated:YES completion:nil];
+    NSString *city=[self.dataDic objectForKey:@"regCountry"];
+    if (city == nil || city == NULL) {
+        [self showToastViewWithTitle:@"请选择国家和城市"];
+        return;
+    }
+    
+ registerViewController *reg=[[registerViewController alloc]initWithDataDict:_dataDic];
     [self. navigationController pushViewController:reg animated:YES];
 }
 
@@ -87,6 +103,8 @@
     AddressPickView *addressPickView = [AddressPickView shareInstance];
     [self.view addSubview:addressPickView];
     addressPickView.block = ^(NSString *province,NSString *city,NSString *town){
+        [self.dataDic setObject:city forKey:@"regCountry"];
+        [self.dataDic setObject:town forKey:@"regCity"];
         _label.text = [NSString stringWithFormat:@"%@ %@ %@",province,city,town] ;
         
     };

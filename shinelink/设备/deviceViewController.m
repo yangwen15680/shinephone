@@ -9,6 +9,9 @@
 #import "deviceViewController.h"
 #import "TableViewCell.h"
 #import "EditStationMenuView.h"
+#import "DTKDropdownMenuView.h"
+
+#define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
 @interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 
@@ -41,15 +44,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _imageArray=[[NSMutableArray alloc]initWithObjects:@"1.jpg", @"2.jpg", @"3.jpg", nil];
+    _imageArray=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", nil];
     _nameArray=[[NSMutableArray alloc]initWithObjects:@"逆变器", @"储能机", @"采集器", nil];
     _statueArray=[[NSMutableArray alloc]initWithObjects:@"未连接", @"已连接", @"未连接", nil];
     _powerArray=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", nil];
     _dayArray=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", nil];
     // Do any additional setup after loading the view.
+  [self.navigationController.navigationBar setTranslucent:YES];
+    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    self.view.layer.contents = (id)bgImage.CGImage;
+    
+
+    //self.navigationController.navigationBar.tintColor=[UIColor blueColor];
+    
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
+  //  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.f],NSForegroundColorAttributeName:[UIColor blueColor]} forState:UIControlStateNormal];
+  //  [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
+   
+    
+       [self addTitleMenu];
     //创建tableView的方法
     [self _createTableView];
     
@@ -62,6 +77,36 @@
     NSLog(@"adddevice");
 
 }
+
+- (void)addTitleMenu
+{
+    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"家庭能源系统0" callBack:^(NSUInteger index, id info) {
+        NSLog(@"家庭能源系统%lu",(unsigned long)index);
+    }];
+    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"家庭能源系统1" callBack:^(NSUInteger index, id info) {
+        NSLog(@"家庭能源系统%lu",(unsigned long)index);
+    }];
+    DTKDropdownItem *item2 = [DTKDropdownItem itemWithTitle:@"家庭能源系统2" callBack:^(NSUInteger index, id info) {
+        NSLog(@"家庭能源系统%lu",(unsigned long)index);
+    }];
+    DTKDropdownItem *item3 = [DTKDropdownItem itemWithTitle:@"家庭能源系统3" callBack:^(NSUInteger index, id info) {
+        NSLog(@"家庭能源系统%lu",(unsigned long)index);
+    }];
+    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:@[item0,item1,item2,item3]];
+    menuView.currentNav = self.navigationController;
+    menuView.dropWidth = 150.f;
+    menuView.titleColor=[UIColor blueColor];
+    menuView.titleFont = [UIFont systemFontOfSize:18.f];
+    menuView.textColor = [UIColor blueColor];;
+    menuView.textFont = [UIFont systemFontOfSize:13.f];
+    menuView.cellSeparatorColor =[UIColor blueColor];;
+    menuView.textFont = [UIFont systemFontOfSize:14.f];
+    menuView.animationDuration = 0.2f;
+    menuView.selectedIndex = 0;
+    self.navigationItem.titleView = menuView;
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -113,7 +158,7 @@
 #pragma mark tableView的协议方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 3;
+    return _imageArray.count;
 }
 
 
@@ -131,14 +176,71 @@
        cell.stateValue.text = _statueArray[indexPath.row];
      cell.powerValue.text = _powerArray[indexPath.row];
      cell.electricValue.text =_dayArray[indexPath.row];
-    
-    
     /*UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
     longPressGesture.minimumPressDuration = 1.0f;
     [cell addGestureRecognizer:longPressGesture];*/
-    
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        //更新数据
+        [_imageArray removeObjectAtIndex:indexPath.row];
+        [_nameArray removeObjectAtIndex:indexPath.row];
+        [_statueArray removeObjectAtIndex:indexPath.row];
+        [_powerArray removeObjectAtIndex:indexPath.row];
+        [_dayArray removeObjectAtIndex:indexPath.row];
+        //更新UI
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        
+    }
+}
+
+- (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    //添加一个删除按钮
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"删除 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        NSLog(@"点击了删除");
+        
+        //1.更新数据
+        [_imageArray removeObjectAtIndex:indexPath.row];
+        [_nameArray removeObjectAtIndex:indexPath.row];
+        [_statueArray removeObjectAtIndex:indexPath.row];
+        [_powerArray removeObjectAtIndex:indexPath.row];
+        [_dayArray removeObjectAtIndex:indexPath.row];
+        //2.更新UI
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
+        
+    }];
+    //删除按钮颜色
+    deleteAction.backgroundColor = [UIColor cyanColor];
+    //添加一个置顶按钮
+    UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"置顶 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+        NSLog(@"点击了置顶");
+        //1.更新数据
+        [_imageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [_nameArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [_statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [_powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [_dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        //2.更新UI
+        NSIndexPath *firstIndexPath =[NSIndexPath indexPathForRow:0 inSection:indexPath.section];
+        [tableView moveRowAtIndexPath:indexPath toIndexPath:firstIndexPath];
+    }];
+    
+    //置顶按钮颜色
+    topRowAction.backgroundColor = [UIColor magentaColor];
+    
+     return @[deleteAction,topRowAction];
+    
+}
+
 
 - (void)cellDidLongPressed:(UIGestureRecognizer *)recognizer{
     if(recognizer.state == UIGestureRecognizerStateBegan) {
@@ -161,7 +263,6 @@
         [_menuView removeFromSuperview];
         return;
     }
-    
     if (row == 1) {
         //添加电站
         [_menuView removeFromSuperview];
@@ -170,18 +271,14 @@
     }
     if (row == 2) {
         //删除电站
-  
     }
-    
     if (row == 3) {
         //上传电站图片
         [_menuView removeFromSuperview];
-        
         self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choice", @"Choice") delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Shooting", @"Shooting"), NSLocalizedString(@"Album", @"Album"), nil];
         self.uploadImageActionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
         [self.uploadImageActionSheet showInView:self.view];
     }
-    
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {

@@ -11,4 +11,5 @@
 
 @interface AddCellectViewController : RootViewController
 @property(nonatomic,strong)NSString *stationId;
+- (instancetype)initWithDataDict:(NSMutableDictionary *)dataDict;
 @end
