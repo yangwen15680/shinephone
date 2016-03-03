@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *userPassword;
+@property (nonatomic, strong) NSString *userID;
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *TelNumber;
 @property (nonatomic, strong) NSString *email;

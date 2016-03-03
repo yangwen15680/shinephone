@@ -25,7 +25,7 @@
     [self.view addSubview:userBgImageView];
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectId.placeholder = @"请输入采集器序列号";
+    _cellectId.placeholder = @"请输入用户名";
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -43,6 +43,42 @@
     [self.view addSubview:goBut];
 }
 
+- (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelTitle{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:nil];
+    [alertView show];
+}
+
+-(void)addButtonPressed{
+    if ([_cellectId.text isEqual:@""]) {
+        [self showAlertViewWithTitle:nil message:@"请输入正确的用户名" cancelButtonTitle:@"确定"];
+        return;
+    }
+      NSDictionary *userCheck=[NSDictionary dictionaryWithObject:_cellectId.text forKey:@"accountName"];
+        [self showProgressView];
+        [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailByAccount" sucessBlock:^(id content) {
+            NSLog(@"sendResetEmailByAccount: %@", content);
+            [self hideProgressView];
+            if (content) {
+                if ([content[@"success"] integerValue] == 0) {
+                    if ([content[@"msg"] integerValue] ==501) {
+                        [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                    }
+                    else if ([content[@"msg"] integerValue] ==502) {
+                        [self showAlertViewWithTitle:nil message:@"不能找到用户名" cancelButtonTitle:root_Yes];
+                    }
+                }else{
+                    NSString *email=content[@"msg"];
+                    [self showAlertViewWithTitle:nil message:email cancelButtonTitle:root_Yes];
+                    
+                }
+            }
+        }failure:^(NSError *error) {
+            [self hideProgressView];
+            [self showToastViewWithTitle:root_Networking];
+        }];
+    
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

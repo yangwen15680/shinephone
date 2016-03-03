@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface emailViewController : UIViewController
+@interface emailViewController : RootViewController
 
 @end

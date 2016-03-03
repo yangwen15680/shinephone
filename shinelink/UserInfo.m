@@ -48,6 +48,13 @@ static int timerNumber=0;
             _userPassword = [ud objectForKey:@"userPassword"];
         }
         
+        if (![ud objectForKey:@"userID"]) {
+            [ud setObject:@"" forKey:@"userID"];
+            _userID = @"";
+        } else {
+            _userID = [ud objectForKey:@"userID"];
+        }
+        
         if (![ud objectForKey:@"TelNumber"]) {
             [ud setObject:@"" forKey:@"TelNumber"];
             _TelNumber = @"";
@@ -92,6 +99,11 @@ static int timerNumber=0;
     _userName = userName;
     
     [[NSUserDefaults standardUserDefaults] setObject:_userName forKey:@"userName"];
+}
+
+-(void)setUserID:(NSString *)userID{
+    _userID=userID;
+      [[NSUserDefaults standardUserDefaults] setObject:_userID forKey:@"userID"];
 }
 
 -(void)setTelNumber:(NSString *)TelNumber{

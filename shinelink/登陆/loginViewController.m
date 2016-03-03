@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UIButton *registButton;
 @property (nonatomic, strong) UILabel *registLable;
 @property (nonatomic, strong) UILabel *forgetLable;
+@property (nonatomic, strong) NSDictionary *dataSource;
 
 @end
 
@@ -51,7 +52,7 @@
     
     NSLog(@"reUsername=%@",reUsername);
     NSLog(@"rePassword=%@",rePassword);
-    if (reUsername==nil || reUsername==NULL) {
+    if (reUsername==nil || reUsername==NULL||[reUsername isEqual:@""]) {
         [self addSubViews];
         // didPresentControllerButtonTouch
     }else{
@@ -217,32 +218,39 @@
         //用户名和密码输入正确跳转页面
         [loginBtn ExitAnimationCompletion:^{
             
-            [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/LoginAPI.do" sucessBlock:^(id content) {
+            [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/NewLoginAPI.do" sucessBlock:^(id content) {
                  [MBProgressHUD hideHUDForView:self.view animated:YES];
-                NSLog(@"TEST:%@",content);
-                if ([content[@"userLevel"] integerValue]==2) {
-                    [[NSUserDefaults standardUserDefaults] setObject:@"isDemo" forKey:@"isDemo"];
-                }else{
-                    [[NSUserDefaults standardUserDefaults] setObject:@"isNotDemo" forKey:@"isDemo"];
-                }
+                NSLog(@"loginIn:%@",content);
                 if (content) {
                     if ([content[@"success"] integerValue] == 0) {
                         //登陆失败
-                        if ([content[@"errCode"] integerValue] == 101) {
+                        if ([content[@"msg"] integerValue] == 501) {
                            
                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"User name or password is blank" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
                             [alertView show];
                         }
-                        if ([content[@"errCode"] integerValue] == 102) {
-                            
+                        if ([content[@"msg"] integerValue] ==502) {
                              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"username password error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
                                [alertView show];
+                        }
+                        if ([content[@"msg"] integerValue] ==503) {
+                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                            [alertView show];
                         }
                     } else {
                         //登陆成功
                         [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
                         [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
+                         self.dataSource = [NSDictionary dictionaryWithDictionary:content];
+                        [[UserInfo defaultUserInfo] setTelNumber:_dataSource[@"user"][@"phoneNum"]];
+                         [[UserInfo defaultUserInfo] setUserID:_dataSource[@"user"][@"id"]];
+                             [[UserInfo defaultUserInfo] setEmail:_dataSource[@"user"][@"email"]];
+                        
+                        NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
+                        NSLog(@"ID=%@",ID);
+                        
                         [weak didPresentControllerButtonTouch];
+                        
                     }
                 }
                 

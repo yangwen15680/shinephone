@@ -105,32 +105,34 @@
     NSLog(@"_cellectId.text=%@",_cellectId.text);
     
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantID":_stationId,@"datalogSN":_cellectId.text,@"validCode":_cellectNo.text} paramarsSite:@"/datalogA.do?op=add" sucessBlock:^(id content) {
+    
+    NSMutableDictionary *userCheck=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"dataLogSn"];
+    [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
+        NSLog(@"sendResetEmailByAccount: %@", content);
         [self hideProgressView];
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
-            if ([[jsonObj objectForKey:@"msg"] isEqual:@"errDatalogSN"]) {
-                
+        if (content) {
+            if ([content[@"success"] integerValue] == 0) {
+                if ([content[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:@"校验码错误" cancelButtonTitle:root_Yes];
+                }
+                else if ([content[@"msg"] integerValue] ==502) {
+                    [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                }
+                else if ([content[@"msg"] integerValue] ==503) {
+                    [self showAlertViewWithTitle:nil message:@"找不到用户" cancelButtonTitle:root_Yes];
+                }
             }else{
-                
-                // [self showAlertViewWithTitle:nil message:root_Added_successfully cancelButtonTitle:root_Yes];
-                
-                
+                NSString *email=content[@"msg"];
+                [self showAlertViewWithTitle:nil message:email cancelButtonTitle:root_Yes];
                 
             }
-            //UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            //MainViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-            //AddCellectViewController *addCellect=[[AddCellectViewController alloc]init];
-            //  addCellect.stationId=_stationId;
-            //[self.navigationController pushViewController:rootView animated:YES];
-            
-            
         }
-    } failure:^(NSError *error) {
+    }failure:^(NSError *error) {
         [self hideProgressView];
-        [self showToastViewWithTitle:@"网络连接超时"];
+        [self showToastViewWithTitle:root_Networking];
     }];
-    //  [self presentViewController:alert animated:true completion:nil];
+  
 }
 
 -(void)delButtonPressed{
@@ -191,23 +193,37 @@
         return;
     }
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantID":_stationId,@"datalogSN":_cellectId.text,@"validCode":_cellectNo.text} paramarsSite:@"/datalogA.do?op=add" sucessBlock:^(id content) {
+    NSMutableDictionary *userCheck=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"dataLogSn"];
+    [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
+    
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
+        NSLog(@"sendResetEmailByAccount: %@", content);
         [self hideProgressView];
-        id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
-            
-        }else{
-            
-            NSString *IdString1= _cellectId.text;
-            NSString *IdString=[IdString1 substringWithRange:NSMakeRange(0, 2)];
-            
-            
-            
+        if (content) {
+            if ([content[@"success"] integerValue] == 0) {
+                if ([content[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:@"校验码错误" cancelButtonTitle:root_Yes];
+                }
+                else if ([content[@"msg"] integerValue] ==502) {
+                    [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                }
+                else if ([content[@"msg"] integerValue] ==503) {
+                    [self showAlertViewWithTitle:nil message:@"找不到用户" cancelButtonTitle:root_Yes];
+                }
+            }else{
+                NSString *email=content[@"msg"];
+                [self showAlertViewWithTitle:nil message:email cancelButtonTitle:root_Yes];
+                
+            }
         }
-    } failure:^(NSError *error) {
+    }failure:^(NSError *error) {
         [self hideProgressView];
-        [self showToastViewWithTitle:@"网络连接超时"];
+        [self showToastViewWithTitle:root_Networking];
     }];
+
+    
+    
+    
 }
 
 @end

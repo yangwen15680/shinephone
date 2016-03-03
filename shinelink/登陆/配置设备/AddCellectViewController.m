@@ -9,7 +9,7 @@
 #import "AddCellectViewController.h"
 #import "TempViewController.h"
 #import "SHBQRView.h"
-
+#import "loginViewController.h"
 
 
 @interface AddCellectViewController ()<SHBQRViewDelegate>
@@ -116,6 +116,58 @@
     NSLog(@"_cellectId.text=%@",_cellectId.text);
     [_dataDic setObject:_cellectId.text forKey:@"regDataLoggerNo"];
     [_dataDic setObject:_cellectNo.text forKey:@"regValidateCode"];
+    
+    NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/NewRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+        NSLog(@"checkUserExist: %@", content);
+        [self hideProgressView];
+        if (content) {
+            if ([content[@"success"] integerValue] == 0) {
+                [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/registerAPI.do?action=creatAccount" sucessBlock:^(id content) {
+                    NSLog(@"creatAccount: %@", content);
+                    [self hideProgressView];
+                    if (content) {
+                        if ([content[@"back"][@"success"] integerValue] == 0) {
+                            //注册失败
+                            if ([content[@"back"][@"msg"] isEqual:@"error_userCountLimit"]) {
+                                [self showAlertViewWithTitle:nil message:@"超出版本限制注册用户数量" cancelButtonTitle:root_Yes];
+                            }else if ([content[@"back"][@"msg"] isEqual:@"server error."]){
+                                
+                                [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
+                            }
+                            else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
+                                
+                                [self showAlertViewWithTitle:nil message:@"register error" cancelButtonTitle:root_Yes];
+                            }
+                            else{
+                                //注册成功
+                                [self succeedRegister];
+                                [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                            }
+                        }
+                        else {
+                            //注册成功
+                            [self succeedRegister];
+                            [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                        }
+                    }
+                    
+                } failure:^(NSError *error) {
+                    [self hideProgressView];
+                    [self showToastViewWithTitle:root_Networking];
+                }];
+                
+                
+            }else{
+                [self showAlertViewWithTitle:nil message:@"用户名已被使用" cancelButtonTitle:root_Yes];
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+    }];
+    
     [self showProgressView];
     
   //  [self presentViewController:alert animated:true completion:nil];
@@ -131,29 +183,23 @@
     }
     NSData *testData = [serialNum dataUsingEncoding: NSUTF8StringEncoding];
       int sum=0;
-    
     Byte *snBytes=(Byte*)[testData bytes];
-  
     for(int i=0;i<[testData length];i++)
     {
         sum+=snBytes[i];
     }
     NSInteger B=sum%8;
-    NSString *B1= [NSString stringWithFormat: @"%d", B];
+    NSString *B1= [NSString stringWithFormat: @"%ld", (long)B];
     int C=sum*sum;
-    
    NSString *text = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",C]];
     int length = [text length];
     NSString *resultTemp;
     NSString *resultTemp3;
     NSString *resultTemp1=[text substringWithRange:NSMakeRange(0, 2)];
      NSString *resultTemp2=[text substringWithRange:NSMakeRange(length - 2, 2)];
-  
    resultTemp3= [resultTemp1 stringByAppendingString:resultTemp2];
     resultTemp=[resultTemp3 stringByAppendingString:B1];
-    
     NSString *result = @"";
-
     char *charArray = [resultTemp cStringUsingEncoding:NSASCIIStringEncoding];
     for (int i=0; i<[resultTemp length]; i++) {
         if (charArray[i]==0x30||charArray[i]==0x4F||charArray[i]==0x4F) {
@@ -161,10 +207,7 @@
         }
         result=[result stringByAppendingFormat:@"%c",charArray[i]];
     }
-   
-   
     return [result uppercaseString];
-    
 }
 
 
@@ -229,17 +272,24 @@
          }
 }
      
-     
  } failure:^(NSError *error) {
      [self hideProgressView];
      [self showToastViewWithTitle:root_Networking];
- }];
+ }
+  
+  ];
   
     
 }
 
 -(void)succeedRegister{
-
+    /*NSString *user=[_dataDic objectForKey:@"regUserName"];
+    NSString *pwd=[_dataDic objectForKey:@"regPassword"];
+    [[UserInfo defaultUserInfo] setUserPassword:user];
+    [[UserInfo defaultUserInfo] setUserName:pwd];*/
+     
+    loginViewController *goView=[[loginViewController alloc]init];
+    [self presentViewController:goView animated:YES completion:nil];
 
 }
 
