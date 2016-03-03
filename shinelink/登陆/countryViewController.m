@@ -64,7 +64,7 @@
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
     goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+    [goBut.layer setCornerRadius:20.0];
     goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];

@@ -72,12 +72,12 @@
     [self.view addSubview:_scrollView];
     
     //logo
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 80*NOW_SIZE, SCREEN_Width - 40*NOW_SIZE, 60*NOW_SIZE)];
+    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 60*NOW_SIZE, SCREEN_Width - 40*NOW_SIZE, 60*NOW_SIZE)];
     logo.image = IMAGE(@"icon_logo.png");
     [_scrollView addSubview:logo];
     
     //用户名
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 210*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 60*NOW_SIZE+60*NOW_SIZE+30*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
     userBgImageView.image = IMAGE(@"账号3.png");
     [_scrollView addSubview:userBgImageView];
@@ -92,7 +92,7 @@
     [userBgImageView addSubview:_userTextField];
     
     //密码
-    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 270*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 60*NOW_SIZE+60*NOW_SIZE+30*NOW_SIZE+45*NOW_SIZE+20*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     pwdBgImageView.image = IMAGE(@"密码3.png");
     pwdBgImageView.userInteractionEnabled = YES;
     [_scrollView addSubview:pwdBgImageView];
@@ -109,13 +109,13 @@
     
  
 
-    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 380*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 420*NOW_SIZE-70*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [self.view addSubview:loginBtn];
     [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     
-    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 440*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 420*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
     self.registLable.text=@"注册";
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.textAlignment = NSTextAlignmentRight;
@@ -127,7 +127,7 @@
    
     
     
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 440*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
     self.forgetLable.text=@"忘记密码";
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -248,7 +248,7 @@
                         
                         NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
                         NSLog(@"ID=%@",ID);
-                        
+                              
                         [weak didPresentControllerButtonTouch];
                         
                     }
@@ -292,11 +292,16 @@
 
     //登录成功条跳转的方法
     - (void)didPresentControllerButtonTouch {
-        
-        
+        NSMutableArray *stationID1=_dataSource[@"data"];
+        NSMutableArray *stationID=[NSMutableArray array];
+        for(int i=0;i<stationID1.count;i++){
+         NSString *a=stationID1[i][@"plantId"];
+           // NSLog(@"a=%@",a);
+            [stationID addObject:a];
+        }
         findViewController *findVc=[[findViewController alloc]init];
         energyViewController *energyVc=[[energyViewController alloc]init];
-        deviceViewController *deviceVc=[[deviceViewController alloc]init];
+        deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID];
         meViewController *meVc=[[meViewController alloc]init];
         
         UINavigationController *Vc3=[[UINavigationController alloc]initWithRootViewController:findVc];

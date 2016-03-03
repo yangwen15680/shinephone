@@ -25,7 +25,12 @@
 @property (nonatomic, strong) NSMutableArray *statueArray;
 @property (nonatomic, strong) NSMutableArray *powerArray;
 @property (nonatomic, strong) NSMutableArray *dayArray;
-
+@property (nonatomic, strong)  NSMutableArray* imageArray2;
+@property (nonatomic, strong) NSMutableArray *nameArray2;
+@property (nonatomic, strong) NSMutableArray *statueArray2;
+@property (nonatomic, strong) NSMutableArray *powerArray2;
+@property (nonatomic, strong) NSMutableArray *dayArray2;
+@property (nonatomic, strong) NSMutableArray *stationID;
 @end
 
 @implementation deviceViewController
@@ -40,15 +45,28 @@
     NSInteger pageName;
 }
 
+- (instancetype)initWithDataDict:(NSMutableArray *)stationID {
+    if (self = [super init]) {
+        self.stationID = [NSMutableArray arrayWithArray:stationID];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     
     _imageArray=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", nil];
     _nameArray=[[NSMutableArray alloc]initWithObjects:@"逆变器", @"储能机", @"采集器", nil];
     _statueArray=[[NSMutableArray alloc]initWithObjects:@"未连接", @"已连接", @"未连接", nil];
     _powerArray=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", nil];
     _dayArray=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", nil];
+    
+    _imageArray2=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", @"1.jpg",@"1.jpg",@"1.jpg",nil];
+    _nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"RF", @"BOX",@"switch", @"charge",  nil];
+    _statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
+    _powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
+    _dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
     // Do any additional setup after loading the view.
   [self.navigationController.navigationBar setTranslucent:YES];
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
@@ -80,9 +98,11 @@
 
 - (void)addTitleMenu
 {
-    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"家庭能源系统0" callBack:^(NSUInteger index, id info) {
+    
+    DTKDropdownItem *item0= [DTKDropdownItem itemWithTitle:@"家庭能源系统0" callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
     }];
+  
     DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"家庭能源系统1" callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
     }];
@@ -92,6 +112,7 @@
     DTKDropdownItem *item3 = [DTKDropdownItem itemWithTitle:@"家庭能源系统3" callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
     }];
+     
     DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:@[item0,item1,item2,item3]];
     menuView.currentNav = self.navigationController;
     menuView.dropWidth = 150.f;
@@ -156,14 +177,32 @@
 }
 
 #pragma mark tableView的协议方法
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
+-(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if (section==0) {
+        return @"已配置设备";
+    }
+    else{
+        return  @"未配置设备";
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-    return _imageArray.count;
+    if (section==0) {
+        return _imageArray.count;
+    }
+    else{
+         return _imageArray2.count;
+    }
 }
 
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section==0) {
     
    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_indenty forIndexPath:indexPath];
  //   cell.textLabel.text = [NSString stringWithFormat:@"Cell:%ld",indexPath.row];
@@ -173,13 +212,30 @@
    
    [cell.coverImageView  setImage:[UIImage imageNamed:_imageArray[indexPath.row]]];
     cell.titleLabel.text = _nameArray[indexPath.row];
+        cell.titleLabel.textColor = [UIColor orangeColor];
        cell.stateValue.text = _statueArray[indexPath.row];
      cell.powerValue.text = _powerArray[indexPath.row];
      cell.electricValue.text =_dayArray[indexPath.row];
-    /*UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
-    longPressGesture.minimumPressDuration = 1.0f;
-    [cell addGestureRecognizer:longPressGesture];*/
-    return cell;
+ 
+        return cell;
+    }
+    else{
+        TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_indenty forIndexPath:indexPath];
+        //   cell.textLabel.text = [NSString stringWithFormat:@"Cell:%ld",indexPath.row];
+        if (!cell) {
+            cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
+        }
+        
+        [cell.coverImageView  setImage:[UIImage imageNamed:_imageArray2[indexPath.row]]];
+        cell.titleLabel.text = _nameArray2[indexPath.row];
+        cell.titleLabel.textColor = [UIColor grayColor];
+        cell.stateValue.text = _statueArray2[indexPath.row];
+        cell.powerValue.text = _powerArray2[indexPath.row];
+        cell.electricValue.text =_dayArray2[indexPath.row];
+        return cell;
+        
+        }
+    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -257,51 +313,9 @@
     }
 }
 
-- (void)menuDidSelectAtRow:(NSInteger)row {
-    if (row == 0) {
-        //取消菜单
-        [_menuView removeFromSuperview];
-        return;
-    }
-    if (row == 1) {
-        //添加电站
-        [_menuView removeFromSuperview];
-       // AddStationViewController *asvc = [[AddStationViewController alloc] init];
-       // [self.navigationController pushViewController:asvc animated:YES];
-    }
-    if (row == 2) {
-        //删除电站
-    }
-    if (row == 3) {
-        //上传电站图片
-        [_menuView removeFromSuperview];
-        self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choice", @"Choice") delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Shooting", @"Shooting"), NSLocalizedString(@"Album", @"Album"), nil];
-        self.uploadImageActionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
-        [self.uploadImageActionSheet showInView:self.view];
-    }
-}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (actionSheet == _uploadImageActionSheet) {
-        //拍照
-        if (buttonIndex == 0) {
-            self.cameraImagePicker = [[UIImagePickerController alloc] init];
-            self.cameraImagePicker.allowsEditing = YES;
-            self.cameraImagePicker.delegate = self;
-            self.cameraImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:_cameraImagePicker animated:YES completion:nil];
-        }
-        //从相册选择
-        if (buttonIndex == 1) {
-            
-            self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
-            self.photoLibraryImagePicker.allowsEditing = YES;
-            self.photoLibraryImagePicker.delegate = self;
-            self.photoLibraryImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
-        }
-    }
-}
+
+
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

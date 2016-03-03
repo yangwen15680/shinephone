@@ -15,7 +15,7 @@
 @property(nonatomic,strong) UILabel *name;
 @property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
-
+@property(nonatomic,strong)UIScrollView *backScroll;
 
 @end
 
@@ -51,6 +51,12 @@
     self.view.layer.contents = (id)bgImage.CGImage;
      _textFieldMutableArray=[NSMutableArray new];
     
+     self.automaticallyAdjustsScrollViewInsets = NO;
+    _backScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height+60*NOW_SIZE)];
+    _backScroll.scrollEnabled=YES;
+       _backScroll.contentSize = CGSizeMake(SCREEN_Width,750*NOW_SIZE);
+    [self.view addSubview:_backScroll];
+    
     NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",nil];
     NSArray *labelArray=[NSArray arrayWithObjects:@"用户名", @"密码", @"重复密码",@"电子邮箱", @"联系电话", nil];
     NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, @"Enter your pwd again", root_Enter_email, root_Enter_phone_number, nil];
@@ -60,17 +66,17 @@
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
         imageView.image=[UIImage imageNamed:imageArray[i]];
-        [self.view addSubview:imageView];
+        [_backScroll addSubview:imageView];
         
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(50*NOW_SIZE,10*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 100*NOW_SIZE, 30*NOW_SIZE)];
         label.text=labelArray[i];
         label.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
-        [self.view addSubview:label];
+        [_backScroll addSubview:label];
         
         UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,40*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 260*NOW_SIZE, 0.5)];
         line.backgroundColor=[UIColor whiteColor];
-        [self.view addSubview:line];
+        [_backScroll addSubview:line];
         
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(155*NOW_SIZE,10*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 135*NOW_SIZE, 30*NOW_SIZE)];
         textField.placeholder =textFieldArray[i];
@@ -81,7 +87,7 @@
         textField.font = [UIFont systemFontOfSize:11*NOW_SIZE];
         textField.tag = i;
         textField.delegate = self;
-        [self.view addSubview:textField];
+        [_backScroll addSubview:textField];
          [_textFieldMutableArray addObject:textField];
         if (i == 1|| i == 2) {
             textField.keyboardType = UIKeyboardTypeEmailAddress;
@@ -105,7 +111,7 @@
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
-    [self.view addSubview:goBut];
+    [_backScroll addSubview:goBut];
     
 
 }

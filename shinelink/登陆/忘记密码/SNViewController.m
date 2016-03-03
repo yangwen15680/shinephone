@@ -209,8 +209,13 @@
                 }
                 else if ([content[@"msg"] integerValue] ==503) {
                     [self showAlertViewWithTitle:nil message:@"找不到用户" cancelButtonTitle:root_Yes];
+                }else if ([content[@"msg"] integerValue] ==504) {
+                    [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
                 }
-            }else{
+                
+            }
+            
+            else{
                 NSString *email=content[@"msg"];
                 [self showAlertViewWithTitle:nil message:email cancelButtonTitle:root_Yes];
                 

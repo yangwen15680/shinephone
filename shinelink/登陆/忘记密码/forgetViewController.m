@@ -27,7 +27,7 @@
     [byEmail.layer setMasksToBounds:YES];
     [byEmail.layer setCornerRadius:25.0];
     byEmail.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    [byEmail setTitle:@"通过邮箱" forState:UIControlStateNormal];
+    [byEmail setTitle:@"通过用户名" forState:UIControlStateNormal];
     [byEmail addTarget:self action:@selector(bymail) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:byEmail];
     

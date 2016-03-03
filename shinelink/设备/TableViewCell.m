@@ -38,7 +38,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
     self.titleLabel.font=[UIFont systemFontOfSize:16*NOW_SIZE];
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
-    self.titleLabel.textColor = [UIColor orangeColor];
+    
     [self.contentView addSubview:_titleLabel];
     
     UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width-30, 21, 20*NOW_SIZE, 15*NOW_SIZE)];

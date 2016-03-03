@@ -65,12 +65,14 @@
                     }
                     else if ([content[@"msg"] integerValue] ==502) {
                         [self showAlertViewWithTitle:nil message:@"不能找到用户名" cancelButtonTitle:root_Yes];
+                    }else if ([content[@"msg"] integerValue] ==503) {
+                        [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
                     }
                 }else{
                     NSString *email=content[@"msg"];
                     [self showAlertViewWithTitle:nil message:email cancelButtonTitle:root_Yes];
                     
-                }
+                } 
             }
         }failure:^(NSError *error) {
             [self hideProgressView];

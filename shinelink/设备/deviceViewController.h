@@ -11,4 +11,6 @@
 
 @interface deviceViewController : UIViewController 
 
+- (instancetype)initWithDataDict:(NSMutableArray *)stationID ;
+
 @end
