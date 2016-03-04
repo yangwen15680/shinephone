@@ -54,6 +54,21 @@ static int timerNumber=0;
         } else {
             _userID = [ud objectForKey:@"userID"];
         }
+       
+        
+        if (![ud objectForKey:@"plantNum"]) {
+            [ud setObject:@"" forKey:@"plantNum"];
+            _plantNum= nil;
+        } else {
+            _plantNum =[ud objectForKey:@"plantNum"];
+        }
+        
+        if (![ud objectForKey:@"plantID"]) {
+            [ud setObject:@"" forKey:@"plantID"];
+            _plantID= @"";
+        } else {
+            _plantID = [ud objectForKey:@"userID"];
+        }
         
         if (![ud objectForKey:@"TelNumber"]) {
             [ud setObject:@"" forKey:@"TelNumber"];
@@ -94,6 +109,15 @@ static int timerNumber=0;
     [[NSUserDefaults standardUserDefaults] setObject:_userPassword forKey:@"userPassword"];
 }
 
+-(void)setPlantNum:(NSString *)plantNum{
+    _plantNum=plantNum;
+    [[NSUserDefaults standardUserDefaults] setObject:_plantNum forKey:@"plantNum"];
+}
+
+-(void)setPlantID:(NSString *)plantID{
+    _plantID=plantID;
+     [[NSUserDefaults standardUserDefaults] setObject:_plantID forKey:@"plantID"];
+}
 
 - (void)setUserName:(NSString *)userName {
     _userName = userName;

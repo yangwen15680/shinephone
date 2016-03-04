@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSMutableArray *powerArray2;
 @property (nonatomic, strong) NSMutableArray *dayArray2;
 @property (nonatomic, strong) NSMutableArray *stationID;
+@property (nonatomic, strong) NSMutableArray *stationName;
 @end
 
 @implementation deviceViewController
@@ -45,9 +46,10 @@
     NSInteger pageName;
 }
 
-- (instancetype)initWithDataDict:(NSMutableArray *)stationID {
+- (instancetype)initWithDataDict:(NSMutableArray *)stationID stationName:(NSMutableArray *)stationName{
     if (self = [super init]) {
         self.stationID = [NSMutableArray arrayWithArray:stationID];
+        self.stationName = [NSMutableArray arrayWithArray:stationName];
     }
     return self;
 }
@@ -98,12 +100,18 @@
 
 - (void)addTitleMenu
 {
-    
-    DTKDropdownItem *item0= [DTKDropdownItem itemWithTitle:@"家庭能源系统0" callBack:^(NSUInteger index, id info) {
+    NSMutableArray *DTK=[NSMutableArray array];
+    for(int i=0;i<_stationID.count;i++)
+    {
+        NSString *DTKtitle=[[NSString alloc]initWithFormat:_stationName[i]];
+    DTKDropdownItem *DTKname= [DTKDropdownItem itemWithTitle:DTKtitle callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
+        [ [UserInfo defaultUserInfo]setPlantID:_stationID[index]];
+        [ [UserInfo defaultUserInfo]setPlantNum:[NSString stringWithFormat:@"%lu",(unsigned long)index]];
     }];
-  
-    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"家庭能源系统1" callBack:^(NSUInteger index, id info) {
+         [DTK addObject:DTKname];
+    }
+   /* DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"家庭能源系统1" callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
     }];
     DTKDropdownItem *item2 = [DTKDropdownItem itemWithTitle:@"家庭能源系统2" callBack:^(NSUInteger index, id info) {
@@ -111,9 +119,9 @@
     }];
     DTKDropdownItem *item3 = [DTKDropdownItem itemWithTitle:@"家庭能源系统3" callBack:^(NSUInteger index, id info) {
         NSLog(@"家庭能源系统%lu",(unsigned long)index);
-    }];
+    }];*/
      
-    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:@[item0,item1,item2,item3]];
+    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:DTK];
     menuView.currentNav = self.navigationController;
     menuView.dropWidth = 150.f;
     menuView.titleColor=[UIColor blueColor];
@@ -123,8 +131,15 @@
     menuView.cellSeparatorColor =[UIColor blueColor];;
     menuView.textFont = [UIFont systemFontOfSize:14.f];
     menuView.animationDuration = 0.2f;
+    NSString *sel=[[NSUserDefaults standardUserDefaults]objectForKey:@"plantNum"];
+    if (sel==nil || sel==NULL||[sel isEqual:@""])
+    {
     menuView.selectedIndex = 0;
+    }
+    NSInteger selected= [sel integerValue];
+    menuView.selectedIndex = selected;
     self.navigationItem.titleView = menuView;
+    
     
 }
 

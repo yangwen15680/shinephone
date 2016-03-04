@@ -56,11 +56,15 @@
         [self addSubViews];
         // didPresentControllerButtonTouch
     }else{
-        [_userTextField setText:[NSString stringWithString:reUsername]];
+        _userTextField=[[UITextField alloc]init];
+        _userTextField.text=reUsername;
+      //  [_userTextField setText:[NSString stringWithString:reUsername]];
        // _userTextField.text=[ud objectForKey:@"userName"];;
      // _pwdTextField.text=rePassword;
       //  [self didPresentControllerButtonTouch];
-          [self performSelectorOnMainThread:@selector(didPresentControllerButtonTouch) withObject:nil waitUntilDone:NO];
+        _pwdTextField=[[UITextField alloc]init];
+        _pwdTextField.text=rePassword;
+          [self performSelectorOnMainThread:@selector(netRequest) withObject:nil waitUntilDone:NO];
         //添加布局
     }
 }
@@ -202,7 +206,7 @@
 }
 //判断登录
 - (void)loginBtnAction:(LoginButton *)loginBtn {
-    typeof(self) __weak weak = self;
+   
     
     if (_userTextField.text == nil || _userTextField.text == NULL || [_userTextField.text isEqualToString:@""]) {//判断用户名为空
         //按钮动画还原
@@ -218,57 +222,63 @@
         //用户名和密码输入正确跳转页面
         [loginBtn ExitAnimationCompletion:^{
             
-            [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/NewLoginAPI.do" sucessBlock:^(id content) {
-                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                NSLog(@"loginIn:%@",content);
-                if (content) {
-                    if ([content[@"success"] integerValue] == 0) {
-                        //登陆失败
-                        if ([content[@"msg"] integerValue] == 501) {
-                           
-                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"User name or password is blank" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
-                            [alertView show];
-                        }
-                        if ([content[@"msg"] integerValue] ==502) {
-                             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"username password error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
-                               [alertView show];
-                        }
-                        if ([content[@"msg"] integerValue] ==503) {
-                            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
-                            [alertView show];
-                        }
-                    } else {
-                        //登陆成功
-                        [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
-                        [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
-                         self.dataSource = [NSDictionary dictionaryWithDictionary:content];
-                        [[UserInfo defaultUserInfo] setTelNumber:_dataSource[@"user"][@"phoneNum"]];
-                         [[UserInfo defaultUserInfo] setUserID:_dataSource[@"user"][@"id"]];
-                             [[UserInfo defaultUserInfo] setEmail:_dataSource[@"user"][@"email"]];
-                        
-                        NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
-                        NSLog(@"ID=%@",ID);
-                              
-                        [weak didPresentControllerButtonTouch];
-                        
-                    }
-                }
-                
-            } failure:^(NSError *error) {
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                //[self showToastViewWithTitle:root_Networking];
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                hud.mode = MBProgressHUDModeText;
-                hud.animationType = MBProgressHUDAnimationZoom;
-                hud.labelText = @"Networking Timeout";
-                hud.margin = 10.f;
-                hud.removeFromSuperViewOnHide = YES;
-                [hud hide:YES afterDelay:1.5];
-            }];
-            
+           
+            [self netRequest];
          
         }];
     }
+}
+
+-(void)netRequest{
+
+    [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/NewLoginAPI.do" sucessBlock:^(id content) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSLog(@"loginIn:%@",content);
+        if (content) {
+            if ([content[@"success"] integerValue] == 0) {
+                //登陆失败
+                if ([content[@"msg"] integerValue] == 501) {
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"User name or password is blank" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+                if ([content[@"msg"] integerValue] ==502) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"username password error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+                if ([content[@"msg"] integerValue] ==503) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+            } else {
+                //登陆成功
+                [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
+                [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
+                self.dataSource = [NSDictionary dictionaryWithDictionary:content];
+                [[UserInfo defaultUserInfo] setTelNumber:_dataSource[@"user"][@"phoneNum"]];
+                [[UserInfo defaultUserInfo] setUserID:_dataSource[@"user"][@"id"]];
+                [[UserInfo defaultUserInfo] setEmail:_dataSource[@"user"][@"email"]];
+                
+                NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
+                NSLog(@"ID=%@",ID);
+                
+                [self didPresentControllerButtonTouch];
+                
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        //[self showToastViewWithTitle:root_Networking];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.animationType = MBProgressHUDAnimationZoom;
+        hud.labelText = @"Networking Timeout";
+        hud.margin = 10.f;
+        hud.removeFromSuperViewOnHide = YES;
+        [hud hide:YES afterDelay:1.5];
+    }];
+
 }
 
 //弹出输入用户提示框方法
@@ -296,12 +306,17 @@
         NSMutableArray *stationID=[NSMutableArray array];
         for(int i=0;i<stationID1.count;i++){
          NSString *a=stationID1[i][@"plantId"];
-           // NSLog(@"a=%@",a);
             [stationID addObject:a];
+        }
+        NSMutableArray *stationName1=_dataSource[@"data"];
+        NSMutableArray *stationName=[NSMutableArray array];
+        for(int i=0;i<stationID1.count;i++){
+            NSString *a=stationName1[i][@"plantName"];
+            [stationName addObject:a];
         }
         findViewController *findVc=[[findViewController alloc]init];
         energyViewController *energyVc=[[energyViewController alloc]init];
-        deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID];
+        deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];
         meViewController *meVc=[[meViewController alloc]init];
         
         UINavigationController *Vc3=[[UINavigationController alloc]initWithRootViewController:findVc];

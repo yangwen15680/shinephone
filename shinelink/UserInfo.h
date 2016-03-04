@@ -18,6 +18,8 @@
 @property (nonatomic, strong) NSString *server;
 @property (nonatomic, strong) NSString *TelNumber;
 @property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *plantID;
+@property (nonatomic, strong) NSString *plantNum;
 @property(weak ,nonatomic)NSTimer *R_timer;
 @property (nonatomic, assign) BOOL isAutoLogin;
 
