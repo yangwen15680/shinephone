@@ -290,8 +290,8 @@
 		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
 		335456B41C852E6200275478 /* AddCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController.h; sourceTree = "<group>"; };
 		335456B51C852E6200275478 /* AddCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellectViewController.m; sourceTree = "<group>"; };
-		335456B71C852EB000275478 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		335456B81C852EB000275478 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		335456B71C852EB000275478 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "登陆/配置设备/RootViewController.h"; sourceTree = "<group>"; };
+		335456B81C852EB000275478 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = "登陆/配置设备/RootViewController.m"; sourceTree = "<group>"; };
 		335456BA1C852ED900275478 /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
 		335456BB1C852ED900275478 /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
 		335456BD1C852EEB00275478 /* SHBQRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHBQRView.h; sourceTree = "<group>"; };
@@ -628,8 +628,6 @@
 				335456C81C853C2F00275478 /* scanscanBg.png */,
 				335456B41C852E6200275478 /* AddCellectViewController.h */,
 				335456B51C852E6200275478 /* AddCellectViewController.m */,
-				335456B71C852EB000275478 /* RootViewController.h */,
-				335456B81C852EB000275478 /* RootViewController.m */,
 				335456BA1C852ED900275478 /* TempViewController.h */,
 				335456BB1C852ED900275478 /* TempViewController.m */,
 				335456BD1C852EEB00275478 /* SHBQRView.h */,
@@ -794,6 +792,8 @@
 				337F9CC41C71ABD80016FE43 /* 我 */,
 				337F9C861C71A6710016FE43 /* AppDelegate.h */,
 				337F9C871C71A6710016FE43 /* AppDelegate.m */,
+				335456B71C852EB000275478 /* RootViewController.h */,
+				335456B81C852EB000275478 /* RootViewController.m */,
 				337F9C921C71A6710016FE43 /* Assets.xcassets */,
 				337F9C971C71A6710016FE43 /* Info.plist */,
 				337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */,

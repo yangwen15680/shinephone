@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
-@interface deviceViewController : UIViewController 
+@interface deviceViewController : RootViewController
 
 - (instancetype)initWithDataDict:(NSMutableArray *)stationID stationName:(NSMutableArray *)stationName;
 

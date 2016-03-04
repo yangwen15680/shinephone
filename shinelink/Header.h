@@ -12,6 +12,8 @@
 #import "UserInfo.h"
 #import "BaseRequest.h"
 #import "MBProgressHUD.h"
+#import "RootViewController.h"
+
 
 #define IMAGE(_NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:_NAME]]
 #define COLOR(_R,_G,_B,_A) [UIColor colorWithRed:_R / 255.0f green:_G / 255.0f blue:_B / 255.0f alpha:_A]
@@ -25,6 +27,7 @@
 #define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
 #define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
+//#define HEAD_URL  @"http://server.growatt.com"
 #define mainColor [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1]
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")

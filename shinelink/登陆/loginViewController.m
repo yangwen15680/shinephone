@@ -233,7 +233,7 @@
 
     [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/NewLoginAPI.do" sucessBlock:^(id content) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        NSLog(@"loginIn:%@",content);
+      NSLog(@"loginIn:%@",content);
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
                 //登陆失败

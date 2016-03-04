@@ -20,23 +20,27 @@
 @property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
-@property (nonatomic, strong)  NSMutableArray* imageArray;
-@property (nonatomic, strong) NSMutableArray *nameArray;
-@property (nonatomic, strong) NSMutableArray *statueArray;
-@property (nonatomic, strong) NSMutableArray *powerArray;
-@property (nonatomic, strong) NSMutableArray *dayArray;
-@property (nonatomic, strong)  NSMutableArray* imageArray2;
-@property (nonatomic, strong) NSMutableArray *nameArray2;
-@property (nonatomic, strong) NSMutableArray *statueArray2;
-@property (nonatomic, strong) NSMutableArray *powerArray2;
-@property (nonatomic, strong) NSMutableArray *dayArray2;
+
 @property (nonatomic, strong) NSMutableArray *stationID;
 @property (nonatomic, strong) NSMutableArray *stationName;
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) NSMutableArray *typeArr;
+@property (nonatomic, strong) NSMutableDictionary *plantId;
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation deviceViewController
 {
-    UITableView *_tableView;
+     NSMutableArray* imageArray;
+     NSMutableArray *nameArray;
+     NSMutableArray *statueArray;
+    NSMutableArray *powerArray;
+    NSMutableArray *dayArray;
+     NSMutableArray* imageArray2;
+     NSMutableArray *nameArray2;
+     NSMutableArray *statueArray2;
+     NSMutableArray *powerArray2;
+     NSMutableArray *dayArray2;
     UIPageControl *_pageControl;
     UIScrollView *_scrollerView;
     NSString *_indenty;
@@ -56,19 +60,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    _imageArray=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", nil];
-    _nameArray=[[NSMutableArray alloc]initWithObjects:@"逆变器", @"储能机", @"采集器", nil];
-    _statueArray=[[NSMutableArray alloc]initWithObjects:@"未连接", @"已连接", @"未连接", nil];
-    _powerArray=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", nil];
-    _dayArray=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", nil];
-    
-    _imageArray2=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", @"1.jpg",@"1.jpg",@"1.jpg",nil];
-    _nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"RF", @"BOX",@"switch", @"charge",  nil];
-    _statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
-    _powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
-    _dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
+    _typeArr=[NSMutableArray array];
+    nameArray=[NSMutableArray array];
+    statueArray=[NSMutableArray array];
+    dayArray=[NSMutableArray array];
+    imageArray=[NSMutableArray array];
+    powerArray=[NSMutableArray array];
+    imageArray2=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", @"1.jpg",@"1.jpg",@"1.jpg",nil];
+    nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"RF", @"BOX",@"switch", @"charge",  nil];
+    statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
+    powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
+    dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
     // Do any additional setup after loading the view.
   [self.navigationController.navigationBar setTranslucent:YES];
     UIImage *bgImage = IMAGE(@"loginbg.jpg");
@@ -139,8 +141,60 @@
     NSInteger selected= [sel integerValue];
     menuView.selectedIndex = selected;
     self.navigationItem.titleView = menuView;
-    
-    
+    NSString *plantid1=[[NSString alloc]initWithString:_stationID[selected]];
+   // int plantid= [plantid1 intValue];
+    //_plantId=[NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:plantid] forKey:@"plantId"];
+    _plantId=[NSMutableDictionary dictionaryWithObject:plantid1 forKey:@"plantId"];
+    NSString *a=@"1";
+    NSString *b=@"6";
+    //[_plantId setObject:[NSNumber numberWithInteger:a] forKey:@"pageNum"];
+   // [_plantId setObject:[NSNumber numberWithInteger:b] forKey:@"pageSize"];
+    [_plantId setObject:a forKey:@"pageNum"];
+    [_plantId setObject:b forKey:@"pageSize"];
+    [self netRequest];
+}
+
+-(void)netRequest{
+    [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:_plantId paramarsSite:@"/questionAPI.do?op=getAllDeviceList" sucessBlock:^(id content) {
+        [self hideProgressView];
+          NSLog(@"getAllDeviceList:%@",content);
+       
+         self.dataArr = [NSMutableArray arrayWithArray:content];
+        for (int i=0; i<_dataArr.count; i++) {
+            [_typeArr addObject:content[i][@"deviceType"]];
+            [nameArray addObject:content[i][@"deviceType"]];
+            //[statueArray addObject:content[i][@"deviceStatus"]];
+           // [dayArray addObject:content[i][@"energy"]];
+             [statueArray addObject:@"5000KW"];
+             [dayArray addObject:@"5000KW"];
+             [imageArray addObject:@"4.gif"];
+             [powerArray addObject:@"5000KW"];
+        }
+        
+ 
+        for (int i=0; i<_typeArr.count; i++) {
+            for (int j=0; j<nameArray2.count; j++)
+            if([_typeArr[i] isEqualToString:nameArray2[j]])
+            {
+               
+                [imageArray2 removeObjectAtIndex:j];
+                [nameArray2 removeObjectAtIndex:j];
+                [statueArray2 removeObjectAtIndex:j];
+                [powerArray2 removeObjectAtIndex:j];
+                 [dayArray2 removeObjectAtIndex:j];
+            }
+        }
+        
+         [self.tableView reloadData];
+            
+          //  [self showToastViewWithTitle:@"添加设备成功"];
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -207,10 +261,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0) {
-        return _imageArray.count;
+        return imageArray.count;
     }
     else{
-         return _imageArray2.count;
+         return imageArray2.count;
     }
 }
 
@@ -225,12 +279,12 @@
     cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
     }
    
-   [cell.coverImageView  setImage:[UIImage imageNamed:_imageArray[indexPath.row]]];
-    cell.titleLabel.text = _nameArray[indexPath.row];
+   [cell.coverImageView  setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
+    cell.titleLabel.text = nameArray[indexPath.row];
         cell.titleLabel.textColor = [UIColor orangeColor];
-       cell.stateValue.text = _statueArray[indexPath.row];
-     cell.powerValue.text = _powerArray[indexPath.row];
-     cell.electricValue.text =_dayArray[indexPath.row];
+       cell.stateValue.text = statueArray[indexPath.row];
+     cell.powerValue.text = powerArray[indexPath.row];
+     cell.electricValue.text =dayArray[indexPath.row];
  
         return cell;
     }
@@ -241,12 +295,12 @@
             cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
         }
         
-        [cell.coverImageView  setImage:[UIImage imageNamed:_imageArray2[indexPath.row]]];
-        cell.titleLabel.text = _nameArray2[indexPath.row];
+        [cell.coverImageView  setImage:[UIImage imageNamed:imageArray2[indexPath.row]]];
+        cell.titleLabel.text = nameArray2[indexPath.row];
         cell.titleLabel.textColor = [UIColor grayColor];
-        cell.stateValue.text = _statueArray2[indexPath.row];
-        cell.powerValue.text = _powerArray2[indexPath.row];
-        cell.electricValue.text =_dayArray2[indexPath.row];
+        cell.stateValue.text = statueArray2[indexPath.row];
+        cell.powerValue.text = powerArray2[indexPath.row];
+        cell.electricValue.text =dayArray2[indexPath.row];
         return cell;
         
         }
@@ -261,11 +315,11 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         //更新数据
-        [_imageArray removeObjectAtIndex:indexPath.row];
-        [_nameArray removeObjectAtIndex:indexPath.row];
-        [_statueArray removeObjectAtIndex:indexPath.row];
-        [_powerArray removeObjectAtIndex:indexPath.row];
-        [_dayArray removeObjectAtIndex:indexPath.row];
+        [imageArray removeObjectAtIndex:indexPath.row];
+        [nameArray removeObjectAtIndex:indexPath.row];
+        [statueArray removeObjectAtIndex:indexPath.row];
+        [powerArray removeObjectAtIndex:indexPath.row];
+        [dayArray removeObjectAtIndex:indexPath.row];
         //更新UI
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -280,11 +334,11 @@
         NSLog(@"点击了删除");
         
         //1.更新数据
-        [_imageArray removeObjectAtIndex:indexPath.row];
-        [_nameArray removeObjectAtIndex:indexPath.row];
-        [_statueArray removeObjectAtIndex:indexPath.row];
-        [_powerArray removeObjectAtIndex:indexPath.row];
-        [_dayArray removeObjectAtIndex:indexPath.row];
+        [imageArray removeObjectAtIndex:indexPath.row];
+        [nameArray removeObjectAtIndex:indexPath.row];
+        [statueArray removeObjectAtIndex:indexPath.row];
+        [powerArray removeObjectAtIndex:indexPath.row];
+        [dayArray removeObjectAtIndex:indexPath.row];
         //2.更新UI
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
         
@@ -295,11 +349,11 @@
     UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"置顶 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了置顶");
         //1.更新数据
-        [_imageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [_nameArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [_statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [_powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [_dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [imageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [nameArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+        [dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         //2.更新UI
         NSIndexPath *firstIndexPath =[NSIndexPath indexPathForRow:0 inSection:indexPath.section];
         [tableView moveRowAtIndexPath:indexPath toIndexPath:firstIndexPath];
