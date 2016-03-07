@@ -134,11 +134,15 @@
     menuView.textFont = [UIFont systemFontOfSize:14.f];
     menuView.animationDuration = 0.2f;
     NSString *sel=[[NSUserDefaults standardUserDefaults]objectForKey:@"plantNum"];
+      NSInteger selected= [sel integerValue];
     if (sel==nil || sel==NULL||[sel isEqual:@""])
     {
-    menuView.selectedIndex = 0;
+       selected = 0;
     }
-    NSInteger selected= [sel integerValue];
+  
+    if (selected>_stationID.count) {
+        selected= 0;
+    }
     menuView.selectedIndex = selected;
     self.navigationItem.titleView = menuView;
     NSString *plantid1=[[NSString alloc]initWithString:_stationID[selected]];
@@ -159,15 +163,16 @@
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:_plantId paramarsSite:@"/questionAPI.do?op=getAllDeviceList" sucessBlock:^(id content) {
         [self hideProgressView];
           NSLog(@"getAllDeviceList:%@",content);
-       
+       // id jsonObj=[NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
          self.dataArr = [NSMutableArray arrayWithArray:content];
         for (int i=0; i<_dataArr.count; i++) {
             [_typeArr addObject:content[i][@"deviceType"]];
             [nameArray addObject:content[i][@"deviceType"]];
-            //[statueArray addObject:content[i][@"deviceStatus"]];
-           // [dayArray addObject:content[i][@"energy"]];
-             [statueArray addObject:@"5000KW"];
-             [dayArray addObject:@"5000KW"];
+          // [statueArray addObject:content[i][@"deviceStatus"]];
+        NSString *ST=[NSString stringWithFormat:@"%@",content[i][@"deviceStatus"]];
+            [statueArray addObject:ST];
+             NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
+            [dayArray addObject:DY];
              [imageArray addObject:@"4.gif"];
              [powerArray addObject:@"5000KW"];
         }
@@ -315,11 +320,22 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         //更新数据
+        if(indexPath.section==0)
+        {
         [imageArray removeObjectAtIndex:indexPath.row];
         [nameArray removeObjectAtIndex:indexPath.row];
         [statueArray removeObjectAtIndex:indexPath.row];
         [powerArray removeObjectAtIndex:indexPath.row];
         [dayArray removeObjectAtIndex:indexPath.row];
+        }
+        if(indexPath.section==1)
+        {
+            [imageArray2 removeObjectAtIndex:indexPath.row];
+            [nameArray2 removeObjectAtIndex:indexPath.row];
+            [statueArray2 removeObjectAtIndex:indexPath.row];
+            [powerArray2 removeObjectAtIndex:indexPath.row];
+            [dayArray2 removeObjectAtIndex:indexPath.row];
+        }
         //更新UI
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
@@ -334,11 +350,23 @@
         NSLog(@"点击了删除");
         
         //1.更新数据
-        [imageArray removeObjectAtIndex:indexPath.row];
-        [nameArray removeObjectAtIndex:indexPath.row];
-        [statueArray removeObjectAtIndex:indexPath.row];
-        [powerArray removeObjectAtIndex:indexPath.row];
-        [dayArray removeObjectAtIndex:indexPath.row];
+        if(indexPath.section==0)
+        {
+            [imageArray removeObjectAtIndex:indexPath.row];
+            [nameArray removeObjectAtIndex:indexPath.row];
+            [statueArray removeObjectAtIndex:indexPath.row];
+            [powerArray removeObjectAtIndex:indexPath.row];
+            [dayArray removeObjectAtIndex:indexPath.row];
+        }
+        if(indexPath.section==1)
+        {
+            [imageArray2 removeObjectAtIndex:indexPath.row];
+            [nameArray2 removeObjectAtIndex:indexPath.row];
+            [statueArray2 removeObjectAtIndex:indexPath.row];
+            [powerArray2 removeObjectAtIndex:indexPath.row];
+            [dayArray2 removeObjectAtIndex:indexPath.row];
+        }
+        
         //2.更新UI
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationAutomatic)];
         
@@ -349,11 +377,18 @@
     UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"置顶 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了置顶");
         //1.更新数据
+        if(indexPath.section==0){
         [imageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         [nameArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         [statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         [powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+            [dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];}
+        if(indexPath.section==1){
+            [imageArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+            [nameArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+            [statueArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+            [powerArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
+            [dayArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];}
         //2.更新UI
         NSIndexPath *firstIndexPath =[NSIndexPath indexPathForRow:0 inSection:indexPath.section];
         [tableView moveRowAtIndexPath:indexPath toIndexPath:firstIndexPath];
