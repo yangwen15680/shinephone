@@ -41,8 +41,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    arrayName=@[@"资料管理",@"客户服务",@"系统设置",@"关于"];
-    arrayImage=@[@"about.png",@"client.png",@"setup.png",@"userdata.png"];
+    arrayName=@[@"资料管理",@"系统设置",@"关于"];
+    arrayImage=@[@"about.png",@"setup.png",@"userdata.png"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -127,7 +127,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -173,14 +173,10 @@
     if (indexPath.row==0) {
         userdataViewController *aboutView = [[userdataViewController alloc]init];
         
-        [self.navigationController pushViewController:aboutView animated:YES];
+        [self.navigationController pushViewController:aboutView animated:NO];
     }
-    if (indexPath.row==1) {
-       listViewController  *listView = [[listViewController alloc]init];
-        
-        [self.navigationController pushViewController:listView animated:YES];
-    }
-    if (indexPath.row==3) {
+   
+    if (indexPath.row==2) {
         aboutViewController *aboutView = [[aboutViewController alloc]init];
         
         [self.navigationController pushViewController:aboutView animated:YES];

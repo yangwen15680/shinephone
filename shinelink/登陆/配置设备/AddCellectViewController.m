@@ -118,12 +118,12 @@
     [_dataDic setObject:_cellectNo.text forKey:@"regValidateCode"];
     
     NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
-    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/NewRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
         NSLog(@"checkUserExist: %@", content);
         [self hideProgressView];
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
-                [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/registerAPI.do?action=creatAccount" sucessBlock:^(id content) {
+                [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?action=creatAccount" sucessBlock:^(id content) {
                     NSLog(@"creatAccount: %@", content);
                     [self hideProgressView];
                     if (content) {
@@ -227,12 +227,12 @@
     NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
  
     [self showProgressView];
- [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/NewRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+ [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
      NSLog(@"checkUserExist: %@", content);
      [self hideProgressView];
      if (content) {
          if ([content[@"success"] integerValue] == 0) {
-             [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/registerAPI.do?action=creatAccount" sucessBlock:^(id content) {
+             [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?action=creatAccount" sucessBlock:^(id content) {
                  NSLog(@"creatAccount: %@", content);
                  [self hideProgressView];
                  if (content) {
@@ -289,7 +289,7 @@
     [[UserInfo defaultUserInfo] setUserName:pwd];*/
      
     loginViewController *goView=[[loginViewController alloc]init];
-    [self presentViewController:goView animated:YES completion:nil];
+    [self.navigationController pushViewController:goView animated:NO];
 
 }
 

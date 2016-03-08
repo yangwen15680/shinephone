@@ -108,7 +108,7 @@
     
     NSMutableDictionary *userCheck=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"dataLogSn"];
     [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
-    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/newForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
         NSLog(@"sendResetEmailByAccount: %@", content);
         [self hideProgressView];
         if (content) {
@@ -196,7 +196,7 @@
     NSMutableDictionary *userCheck=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"dataLogSn"];
     [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
     
-    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/newForgetAPI.do?op=sendResetEmailBySn" sucessBlock:^(id content) {
         NSLog(@"sendResetEmailByAccount: %@", content);
         [self hideProgressView];
         if (content) {

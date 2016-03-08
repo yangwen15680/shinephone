@@ -28,7 +28,7 @@
 
 -(void)toEdit{
     editViewController *toView=[[editViewController alloc]init];
-    [self.navigationController pushViewController:toView animated:YES];
+    [self.navigationController pushViewController:toView animated:NO];
 
 }
 

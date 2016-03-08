@@ -231,7 +231,7 @@
 
 -(void)netRequest{
 
-    [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/NewLoginAPI.do" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/newLoginAPI.do" sucessBlock:^(id content) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
       NSLog(@"loginIn:%@",content);
         if (content) {
@@ -315,9 +315,12 @@
             [stationName addObject:a];
         }
         findViewController *findVc=[[findViewController alloc]init];
+        findVc.title=@"服务";
         energyViewController *energyVc=[[energyViewController alloc]init];
+           energyVc.title=@"能源分析";
         deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];
         meViewController *meVc=[[meViewController alloc]init];
+         meVc.title=@"我";
         
         UINavigationController *Vc3=[[UINavigationController alloc]initWithRootViewController:findVc];
         UINavigationController *Vc2=[[UINavigationController alloc]initWithRootViewController:energyVc];
@@ -328,7 +331,7 @@
         
         Vc1.title=@"Device";
         Vc2.title=@"Energy";
-        Vc3.title=@"Find";
+        Vc3.title=@"Service";
         Vc4.title=@"Me";
         
         Vc1.tabBarItem.image=[UIImage imageNamed:@"shebei@2x.png"];

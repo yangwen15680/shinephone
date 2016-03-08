@@ -9,7 +9,7 @@
 #import "findViewController.h"
 #import "findTableViewCell.h"
 #define Kwidth [UIScreen mainScreen].bounds.size.width
-
+#import "listViewController.h"
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
@@ -34,8 +34,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    arrayName=@[@"质保查询",@"保养维修",@"更多产品",@"荣誉排名"];
-    arrayImage=@[@"质保@2x.png",@"维修@2x.png",@"产品@2x.png",@"荣誉@2x.png"];
+    arrayName=@[@"客户服务",@"质保查询",@"增值业务",@"更多产品"];
+    arrayImage=@[@"维修@2x.png",@"质保@2x.png",@"产品@2x.png",@"荣誉@2x.png"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -142,9 +142,17 @@
     
     [cell.imageLog setImage:[UIImage imageNamed:arrayImage[indexPath.row]]];
   cell.tableName.text = arrayName[indexPath.row];
-   
-    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+
+{
+    if (indexPath.row==0) {
+        listViewController *aboutView = [[listViewController alloc]init];
+        
+        [self.navigationController pushViewController:aboutView animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

@@ -55,7 +55,7 @@
     }
       NSDictionary *userCheck=[NSDictionary dictionaryWithObject:_cellectId.text forKey:@"accountName"];
         [self showProgressView];
-        [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/NewForgetAPI.do?op=sendResetEmailByAccount" sucessBlock:^(id content) {
+        [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/newForgetAPI.do?op=sendResetEmailByAccount" sucessBlock:^(id content) {
             NSLog(@"sendResetEmailByAccount: %@", content);
             [self hideProgressView];
             if (content) {

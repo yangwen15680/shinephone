@@ -10,6 +10,7 @@
 #import "TableViewCell.h"
 #import "EditStationMenuView.h"
 #import "DTKDropdownMenuView.h"
+#import "addDevice.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -96,7 +97,8 @@
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 }
 -(void)selectRightAction{
-    NSLog(@"adddevice");
+    addDevice *add=[[addDevice alloc]init];
+    [self.navigationController pushViewController:add animated:YES];
 
 }
 
@@ -170,7 +172,15 @@
             [nameArray addObject:content[i][@"deviceType"]];
           // [statueArray addObject:content[i][@"deviceStatus"]];
         NSString *ST=[NSString stringWithFormat:@"%@",content[i][@"deviceStatus"]];
-            [statueArray addObject:ST];
+            NSString *SD;
+            if([ST isEqualToString:@"-1"])
+            {
+            SD=@"未连接";
+            }else
+            {
+            SD=@"已连接";
+            }
+            [statueArray addObject:SD];
              NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
             [dayArray addObject:DY];
              [imageArray addObject:@"4.gif"];

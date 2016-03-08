@@ -30,6 +30,7 @@
 		3343F3EB1C805BD2009F69BC /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 3343F3E71C805BD2009F69BC /* LICENSE */; };
 		3343F3EC1C805BD2009F69BC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3E91C805BD2009F69BC /* MBProgressHUD.m */; };
 		3343F3ED1C805BD2009F69BC /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3EA1C805BD2009F69BC /* README.mdown */; };
+		334720E11C8E7048006388C8 /* energyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334720E01C8E7048006388C8 /* energyTableViewCell.m */; };
 		3349A7AE1C75B76F009172C2 /* icon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7AD1C75B76F009172C2 /* icon_logo.png */; };
 		3349A7B01C75B7AC009172C2 /* loginbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7AF1C75B7AC009172C2 /* loginbg.jpg */; };
 		3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */; };
@@ -254,6 +255,8 @@
 		3343F3E81C805BD2009F69BC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		3343F3E91C805BD2009F69BC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		3343F3EA1C805BD2009F69BC /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		334720DF1C8E7048006388C8 /* energyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = energyTableViewCell.h; sourceTree = "<group>"; };
+		334720E01C8E7048006388C8 /* energyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = energyTableViewCell.m; sourceTree = "<group>"; };
 		3349A7AD1C75B76F009172C2 /* icon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_logo.png; sourceTree = "<group>"; };
 		3349A7AF1C75B7AC009172C2 /* loginbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginbg.jpg; sourceTree = "<group>"; };
 		3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形3.png"; sourceTree = "<group>"; };
@@ -618,7 +621,8 @@
 				33528FF41C83E95F00D07889 /* listTableViewCell.h */,
 				33528FF51C83E95F00D07889 /* listTableViewCell.m */,
 			);
-			path = "客服系统";
+			name = "客服系统";
+			path = "../我/客服系统";
 			sourceTree = "<group>";
 		};
 		335456B31C852E3600275478 /* 配置设备 */ = {
@@ -786,7 +790,7 @@
 				3349A7B31C75B893009172C2 /* 登陆 */,
 				3350891C1C73119B00D7AA03 /* 第三方库 */,
 				337F9D6E1C71B1020016FE43 /* 图片 */,
-				337F9CBF1C71ABD80016FE43 /* 发现 */,
+				337F9CBF1C71ABD80016FE43 /* 服务 */,
 				337F9CC01C71ABD80016FE43 /* 能源 */,
 				337F9CC11C71ABD80016FE43 /* 设备 */,
 				337F9CC41C71ABD80016FE43 /* 我 */,
@@ -834,14 +838,16 @@
 			path = shinelinkUITests;
 			sourceTree = "<group>";
 		};
-		337F9CBF1C71ABD80016FE43 /* 发现 */ = {
+		337F9CBF1C71ABD80016FE43 /* 服务 */ = {
 			isa = PBXGroup;
 			children = (
+				33528FED1C83E34500D07889 /* 客服系统 */,
 				337F9CC61C71ABFB0016FE43 /* findViewController.h */,
 				337F9CC71C71ABFB0016FE43 /* findViewController.m */,
 				335089261C73267A00D7AA03 /* findTableViewCell.h */,
 				335089271C73267A00D7AA03 /* findTableViewCell.m */,
 			);
+			name = "服务";
 			path = "发现";
 			sourceTree = "<group>";
 		};
@@ -850,6 +856,8 @@
 			children = (
 				337F9CC91C71AC200016FE43 /* energyViewController.h */,
 				337F9CCA1C71AC200016FE43 /* energyViewController.m */,
+				334720DF1C8E7048006388C8 /* energyTableViewCell.h */,
+				334720E01C8E7048006388C8 /* energyTableViewCell.m */,
 			);
 			path = "能源";
 			sourceTree = "<group>";
@@ -873,7 +881,6 @@
 		337F9CC41C71ABD80016FE43 /* 我 */ = {
 			isa = PBXGroup;
 			children = (
-				33528FED1C83E34500D07889 /* 客服系统 */,
 				3349A7AC1C75A201009172C2 /* 资料管理 */,
 				3355F2651C746983006DDE5A /* 关于 */,
 				3355F25B1C741ABB006DDE5A /* about.png */,
@@ -1270,6 +1277,7 @@
 				3367CB4A1C86806600EF460C /* MASConstraint.m in Sources */,
 				3343F3E51C805BBF009F69BC /* FXBlurView.m in Sources */,
 				3367CB4B1C86806600EF460C /* MASConstraintMaker.m in Sources */,
+				334720E11C8E7048006388C8 /* energyTableViewCell.m in Sources */,
 				335456B61C852E6200275478 /* AddCellectViewController.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,

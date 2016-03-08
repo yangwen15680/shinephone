@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface addDevice : UIViewController
+@interface addDevice : RootViewController
 
 @end
