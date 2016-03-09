@@ -64,6 +64,7 @@
       //  [self didPresentControllerButtonTouch];
         _pwdTextField=[[UITextField alloc]init];
         _pwdTextField.text=rePassword;
+                //[self didPresentControllerButtonTouch];
           [self performSelectorOnMainThread:@selector(netRequest) withObject:nil waitUntilDone:NO];
         //添加布局
     }

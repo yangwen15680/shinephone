@@ -45,6 +45,9 @@
 		3349BB3D1C7EFC6B00E6E34B /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349BB3C1C7EFC6B00E6E34B /* 1.jpg */; };
 		3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349BB3E1C7EFD8500E6E34B /* 2.jpg */; };
 		3349BB411C7EFD8500E6E34B /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349BB3F1C7EFD8500E6E34B /* 3.jpg */; };
+		334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7001C9028BB0095FFBC /* secondViewController.m */; };
+		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
+		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
 		335088D51C72C68B00D7AA03 /* demo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 335088D41C72C68B00D7AA03 /* demo2.png */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
 		3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350891A1C73112000D7AA03 /* EditStationMenuView.m */; };
@@ -277,6 +280,11 @@
 		3349BB3C1C7EFC6B00E6E34B /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = ../1.jpg; sourceTree = "<group>"; };
 		3349BB3E1C7EFD8500E6E34B /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = ../2.jpg; sourceTree = "<group>"; };
 		3349BB3F1C7EFD8500E6E34B /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = ../3.jpg; sourceTree = "<group>"; };
+		334ED6FF1C9028BB0095FFBC /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = secondViewController.h; sourceTree = "<group>"; };
+		334ED7001C9028BB0095FFBC /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = secondViewController.m; sourceTree = "<group>"; };
+		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DTK_bi@2x.png"; sourceTree = "<group>"; };
 		335088D41C72C68B00D7AA03 /* demo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = demo2.png; path = ../demo2.png; sourceTree = "<group>"; };
 		335088D71C73011300D7AA03 /* addDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addDevice.h; sourceTree = "<group>"; };
 		335088D81C73011300D7AA03 /* addDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addDevice.m; sourceTree = "<group>"; };
@@ -593,6 +601,18 @@
 			path = "登陆";
 			sourceTree = "<group>";
 		};
+		334ED6FE1C9028560095FFBC /* 设备二级界面 */ = {
+			isa = PBXGroup;
+			children = (
+				334ED7051C9039270095FFBC /* DTK_bi@2x.png */,
+				334ED6FF1C9028BB0095FFBC /* secondViewController.h */,
+				334ED7001C9028BB0095FFBC /* secondViewController.m */,
+				334ED7021C902AE60095FFBC /* CircleView.h */,
+				334ED7031C902AE60095FFBC /* CircleView.m */,
+			);
+			path = "设备二级界面";
+			sourceTree = "<group>";
+		};
 		335088D61C7300C400D7AA03 /* 添加设备 */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,6 +885,7 @@
 		337F9CC11C71ABD80016FE43 /* 设备 */ = {
 			isa = PBXGroup;
 			children = (
+				334ED6FE1C9028560095FFBC /* 设备二级界面 */,
 				3367CB2B1C86801700EF460C /* 下拉库 */,
 				335456D51C85A03D00275478 /* 图片 */,
 				337F9CC21C71ABD80016FE43 /* deviceViewController.h */,
@@ -1129,6 +1150,7 @@
 				33FEFD3D1C7DB38400324374 /* 客服电话.png in Resources */,
 				33FEFD811C7DB38400324374 /* Switch-(on)@2x.png in Resources */,
 				33FEFD621C7DB38400324374 /* icon---Username.png in Resources */,
+				334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */,
 				33FEFD821C7DB38400324374 /* Switch-(on)@3x.png in Resources */,
 				33FEFCD81C7D9DCD00324374 /* 圆角矩形3.png in Resources */,
 				33FEFD501C7DB38400324374 /* 组-1.png in Resources */,
@@ -1266,6 +1288,7 @@
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,
 				3343F3DF1C80405D009F69BC /* UIProgressView+AFNetworking.m in Sources */,
+				334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */,
 				33528FF01C83E41D00D07889 /* listViewController.m in Sources */,
 				3343F3EC1C805BD2009F69BC /* MBProgressHUD.m in Sources */,
 				3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */,
@@ -1277,6 +1300,7 @@
 				3367CB4A1C86806600EF460C /* MASConstraint.m in Sources */,
 				3343F3E51C805BBF009F69BC /* FXBlurView.m in Sources */,
 				3367CB4B1C86806600EF460C /* MASConstraintMaker.m in Sources */,
+				334ED7041C902AE60095FFBC /* CircleView.m in Sources */,
 				334720E11C8E7048006388C8 /* energyTableViewCell.m in Sources */,
 				335456B61C852E6200275478 /* AddCellectViewController.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,

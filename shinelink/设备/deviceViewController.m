@@ -11,6 +11,7 @@
 #import "EditStationMenuView.h"
 #import "DTKDropdownMenuView.h"
 #import "addDevice.h"
+#import "secondViewController.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -272,6 +273,12 @@
     else{
         return  @"未配置设备";
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    secondViewController *sd=[[secondViewController alloc ]init];
+    [self.navigationController pushViewController:sd animated:YES];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
