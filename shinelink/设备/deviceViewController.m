@@ -54,8 +54,13 @@
 
 - (instancetype)initWithDataDict:(NSMutableArray *)stationID stationName:(NSMutableArray *)stationName{
     if (self = [super init]) {
+        if (stationID.count>0) {
         self.stationID = [NSMutableArray arrayWithArray:stationID];
         self.stationName = [NSMutableArray arrayWithArray:stationName];
+        }else{
+            self.stationID =[NSMutableArray arrayWithObjects:@"1", nil];
+             self. stationName =[NSMutableArray arrayWithObjects:@"示范电站", nil];
+        }
     }
     return self;
 }
@@ -176,11 +181,9 @@
             NSString *SD;
             if([ST isEqualToString:@"-1"])
             {
-            SD=@"未连接";
-            }else
+            SD=@"未连接";}else
             {
-            SD=@"已连接";
-            }
+            SD=@"已连接";}
             [statueArray addObject:SD];
              NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
             [dayArray addObject:DY];
@@ -277,8 +280,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     secondViewController *sd=[[secondViewController alloc ]init];
-    [self.navigationController pushViewController:sd animated:YES];
-
+    sd.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:sd animated:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

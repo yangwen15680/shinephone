@@ -10,7 +10,7 @@
 
 #define DefaultTrackLineWidth               12.0f           // 默认轨迹宽度
 #define DefaultProgressLineWidth            10.0f           // 默认进度宽度
-#define radiusSize  50*NOW_SIZE
+#define radiusSize  70*NOW_SIZE
 @interface CircleView ()
 
 // 轨迹layer
@@ -54,7 +54,7 @@
 
 - (void)drawDefaultUI {
     
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 100*NOW_SIZE);
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 120*NOW_SIZE);
     // 半径： 取 self.frame的宽高最小值进行计算
     CGFloat radius =radiusSize;
     _circlePath = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:_startAngle endAngle:_endAngle clockwise:_colockwise];
@@ -77,9 +77,11 @@
     _progressLayer.fillColor    = [UIColor clearColor].CGColor;
     _progressLayer.lineCap      = kCALineCapRound;
     _progressLayer.strokeEnd    = _progress / 100;
+   // [self.layer addSublayer:_progressLayer];
     
     _gradientLayer              = [CAGradientLayer layer];
-    _gradientLayer.colors       = @[(__bridge id)[UIColor yellowColor].CGColor,(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor blueColor].CGColor,(__bridge id)[UIColor purpleColor].CGColor];
+    _gradientLayer.colors       = @[(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor];
+   // _gradientLayer.colors  =@[(__bridge id)[UIColor orangeColor].CGColor];
     _gradientLayer.locations    = @[@(0.0f),@(0.3f),@(0.7f),@(1.0f)];
     _gradientLayer.startPoint   = CGPointMake(1.0f, 0.0f);
     _gradientLayer.endPoint     = CGPointMake(1.0f, 1.0f);
@@ -87,10 +89,11 @@
     [_gradientLayer setMask:_progressLayer];
     [self.layer addSublayer:_gradientLayer];
     
+    
 }
 
 - (void)updateCirclePath {
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 100*NOW_SIZE);
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 120*NOW_SIZE);
     // 半径： 取 self.frame的宽高最小值进行计算
     CGFloat radius =radiusSize;
     //    startAngle,endAngle 是以M_PI为单位，不是以度数，，，

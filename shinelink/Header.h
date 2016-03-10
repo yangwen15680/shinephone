@@ -18,6 +18,7 @@
 #define IMAGE(_NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:_NAME]]
 #define COLOR(_R,_G,_B,_A) [UIColor colorWithRed:_R / 255.0f green:_G / 255.0f blue:_B / 255.0f alpha:_A]
 #define NOW_SIZE [UIScreen mainScreen].bounds.size.width/320
+
 #define SCREEN_Width [UIScreen mainScreen].bounds.size.width
 #define SCREEN_Height [UIScreen mainScreen].bounds.size.height
 #define kiPhone6 ([UIScreen mainScreen].bounds.size.width==375)
@@ -28,7 +29,7 @@
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
 #define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
 //#define HEAD_URL  @"http://192.168.3.32:8081/ShineServer"
-//#define HEAD_URL  @"http://server.growatt.com"
+//#define HEAD_URL  @"http://server-cn.growatt.com"
 #define mainColor [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1]
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")

@@ -58,13 +58,9 @@
     }else{
         _userTextField=[[UITextField alloc]init];
         _userTextField.text=reUsername;
-      //  [_userTextField setText:[NSString stringWithString:reUsername]];
-       // _userTextField.text=[ud objectForKey:@"userName"];;
-     // _pwdTextField.text=rePassword;
-      //  [self didPresentControllerButtonTouch];
         _pwdTextField=[[UITextField alloc]init];
         _pwdTextField.text=rePassword;
-                //[self didPresentControllerButtonTouch];
+       
           [self performSelectorOnMainThread:@selector(netRequest) withObject:nil waitUntilDone:NO];
         //添加布局
     }
@@ -269,6 +265,7 @@
         }
         
     } failure:^(NSError *error) {
+         [self didPresentControllerButtonTouch];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         //[self showToastViewWithTitle:root_Networking];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
@@ -303,17 +300,22 @@
 
     //登录成功条跳转的方法
     - (void)didPresentControllerButtonTouch {
+        
         NSMutableArray *stationID1=_dataSource[@"data"];
         NSMutableArray *stationID=[NSMutableArray array];
+        if (stationID1.count>0) {
         for(int i=0;i<stationID1.count;i++){
          NSString *a=stationID1[i][@"plantId"];
             [stationID addObject:a];
         }
+        }
         NSMutableArray *stationName1=_dataSource[@"data"];
         NSMutableArray *stationName=[NSMutableArray array];
+        if (stationID1.count>0) {
         for(int i=0;i<stationID1.count;i++){
             NSString *a=stationName1[i][@"plantName"];
             [stationName addObject:a];
+        }
         }
         findViewController *findVc=[[findViewController alloc]init];
         findVc.title=@"服务";
