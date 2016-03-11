@@ -8,6 +8,7 @@
 
 #import "energyViewController.h"
 #import "energyTableViewCell.h"
+#import "engrgySencondViewController.h"
 
 @interface energyViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -82,10 +83,13 @@
             cell.state.text=monthArray[indexPath.row];
     cell.electric.text=dayArray[indexPath.row];
         return cell;
-   
     
-   
-    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    engrgySencondViewController *sd=[[engrgySencondViewController alloc ]init];
+    sd.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:sd animated:NO];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

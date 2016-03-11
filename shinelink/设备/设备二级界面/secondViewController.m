@@ -10,6 +10,7 @@
 #import "CircleView.h"
 #import"DTKDropdownMenuView.h"
 #import "Line2View.h"
+#import "threeViewController.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -72,6 +73,7 @@
     
     UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [fourB setImage:[UIImage imageNamed:@"client.png"] forState:UIControlStateNormal];
+    [fourB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:fourB];
     UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     fourL.text=@"数据报表";
@@ -81,6 +83,11 @@
     [self.view addSubview:fourL];
 }
 
+-(void)goThree{
+    threeViewController *goThree=[[threeViewController alloc]init];
+    [self.navigationController pushViewController:goThree animated:YES];
+    
+}
 -(void)addGraph{
     NSDate*currentDate=[NSDate date];
     NSDateFormatter *formatter=[[NSDateFormatter alloc]init];

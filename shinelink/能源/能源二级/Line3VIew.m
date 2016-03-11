@@ -1,17 +1,17 @@
 //
-//  Line2View.m
-//  ShinePhone
+//  Line3VIew.m
+//  shinelink
 //
-//  Created by LinKai on 15/5/26.
-//  Copyright (c) 2015年 binghe168. All rights reserved.
+//  Created by sky on 16/3/11.
+//  Copyright © 2016年 sky. All rights reserved.
 //
 
-#import "Line2View.h"
+#import "Line3VIew.h"
 #import "SHLineGraphView.h"
 #import "SHPlot.h"
 #import "PNChart.h"
 
-@interface Line2View () <PNChartDelegate>
+@interface Line3VIew ()<PNChartDelegate>
 
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation Line2View
+@implementation Line3VIew
 
 - (void)setDataDict:(NSMutableDictionary *)dataDict {
     self.moneyLabel.text = dataDict[@"plantData"][@"plantMoneyText"];
@@ -54,7 +54,7 @@
         [dict setObject:@"0.0" forKey:@"15:30"];
         [dict setObject:@"0.0" forKey:@"16:30"];
         [dict setObject:@"0.0" forKey:@"17:30"];
-
+        
     } else {
         if (_noDataLabel) {
             [_noDataLabel removeFromSuperview];
@@ -116,9 +116,9 @@
         self.backgroundColor = [UIColor clearColor];
         if([_flag isEqualToString:@"2"])
         {
-        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+            self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
         }else{
-         self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+            self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
         }
         self.unitLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
         self.unitLabel.textColor = [UIColor whiteColor];
@@ -127,7 +127,7 @@
     }
     
     //self.energyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
-  //  [self addSubview:self.energyTitleLabel];
+    //  [self addSubview:self.energyTitleLabel];
     return self;
 }
 
@@ -135,7 +135,7 @@
 #pragma mark - line chart
 - (SHLineGraphView *)lineChartView {
     if (!_lineChartView) {
-
+        
         NSString *test=@"test";
         NSLog(@"TEST:%@",[_valuesArray[0] class]);
         NSLog(@"TEST:%@",[test class]);
@@ -159,19 +159,19 @@
         {
             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
         }else{
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 0*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
                                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
                                            kYAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
                                            kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
-//                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
+                                           //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
                                            kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                                            kDotSizeKey : @0
                                            };
         self.lineChartView.themeAttributes = _themeAttributes;
         NSLog(@"TEST:%d",j);
-
+        
         NSMutableArray *tempXArr = [NSMutableArray array];
         if (_xArray.count > 0) {
             NSString *flag = [[NSMutableString stringWithString:_xArray[0]] substringWithRange:NSMakeRange(1, 1)];
@@ -203,7 +203,7 @@
         }
         
         self.lineChartView.xAxisValues = tempXArr;
-  
+        
         self.lineChartPlot = [[SHPlot alloc] init];
         NSDictionary *_plotThemeAttributes = @{
                                                kPlotFillColorKey : [UIColor colorWithRed:0.47 green:0.75 blue:0.78 alpha:0.5],
@@ -222,7 +222,7 @@
     [self setDataDict:dataDict];
     
     //
-//    [self setType:1];
+    //    [self setType:1];
     
     if (_barChartView) {
         [_barChartView removeFromSuperview];
@@ -292,9 +292,9 @@
     if (!_barChartView) {
         if([_flag isEqualToString:@"2"])
         {
-           self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
+            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
         }else{
-            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
+            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
         self.barChartView.backgroundColor = [UIColor clearColor];
         self.barChartView.barBackgroundColor = [UIColor clearColor];
         [self.barChartView setStrokeColor:[UIColor whiteColor]];

@@ -116,6 +116,12 @@
 		3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB451C86806600EF460C /* View+MASAdditions.m */; };
 		3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB481C86806600EF460C /* ViewController+MASAdditions.m */; };
 		3367CB541C86E3D500EF460C /* 4.gif in Resources */ = {isa = PBXBuildFile; fileRef = 3367CB531C86E3D500EF460C /* 4.gif */; };
+		33692BE91C92527500698375 /* threeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BE81C92527500698375 /* threeViewController.m */; };
+		33692BF11C926B4500698375 /* rili.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF01C926B4500698375 /* rili.png */; };
+		33692BF31C926B4B00698375 /* shang.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF21C926B4B00698375 /* shang.png */; };
+		33692BF51C926B5000698375 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF41C926B5000698375 /* xia.png */; };
+		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
+		33692BFC1C92964D00698375 /* Line3VIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BFB1C92964D00698375 /* Line3VIew.m */; };
 		337F9C851C71A6710016FE43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C841C71A6710016FE43 /* main.m */; };
 		337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C871C71A6710016FE43 /* AppDelegate.m */; };
 		337F9C911C71A6710016FE43 /* shinelink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */; };
@@ -434,6 +440,15 @@
 		3367CB471C86806600EF460C /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		3367CB481C86806600EF460C /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		3367CB531C86E3D500EF460C /* 4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 4.gif; sourceTree = "<group>"; };
+		33692BE71C92527500698375 /* threeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = threeViewController.h; sourceTree = "<group>"; };
+		33692BE81C92527500698375 /* threeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = threeViewController.m; sourceTree = "<group>"; };
+		33692BF01C926B4500698375 /* rili.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rili.png; sourceTree = "<group>"; };
+		33692BF21C926B4B00698375 /* shang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shang.png; sourceTree = "<group>"; };
+		33692BF41C926B5000698375 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xia.png; sourceTree = "<group>"; };
+		33692BF71C92952000698375 /* engrgySencondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engrgySencondViewController.h; sourceTree = "<group>"; };
+		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = engrgySencondViewController.m; sourceTree = "<group>"; };
+		33692BFA1C92964D00698375 /* Line3VIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line3VIew.h; sourceTree = "<group>"; };
+		33692BFB1C92964D00698375 /* Line3VIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line3VIew.m; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		337F9C861C71A6710016FE43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -768,9 +783,14 @@
 			isa = PBXGroup;
 			children = (
 				334ED7051C9039270095FFBC /* DTK_bi@2x.png */,
+				33692BF01C926B4500698375 /* rili.png */,
+				33692BF21C926B4B00698375 /* shang.png */,
+				33692BF41C926B5000698375 /* xia.png */,
 				3355F25D1C741AC3006DDE5A /* client.png */,
 				334ED6FF1C9028BB0095FFBC /* secondViewController.h */,
 				334ED7001C9028BB0095FFBC /* secondViewController.m */,
+				33692BE71C92527500698375 /* threeViewController.h */,
+				33692BE81C92527500698375 /* threeViewController.m */,
 				334ED7021C902AE60095FFBC /* CircleView.h */,
 				334ED7031C902AE60095FFBC /* CircleView.m */,
 				334B8F241C91281600798A69 /* Line2View.h */,
@@ -950,6 +970,17 @@
 			path = "登陆第三方";
 			sourceTree = "<group>";
 		};
+		33692BF61C9294D300698375 /* 能源二级 */ = {
+			isa = PBXGroup;
+			children = (
+				33692BF71C92952000698375 /* engrgySencondViewController.h */,
+				33692BF81C92952000698375 /* engrgySencondViewController.m */,
+				33692BFA1C92964D00698375 /* Line3VIew.h */,
+				33692BFB1C92964D00698375 /* Line3VIew.m */,
+			);
+			path = "能源二级";
+			sourceTree = "<group>";
+		};
 		337F9C771C71A6710016FE43 = {
 			isa = PBXGroup;
 			children = (
@@ -1041,6 +1072,7 @@
 		337F9CC01C71ABD80016FE43 /* 能源 */ = {
 			isa = PBXGroup;
 			children = (
+				33692BF61C9294D300698375 /* 能源二级 */,
 				337F9CC91C71AC200016FE43 /* energyViewController.h */,
 				337F9CCA1C71AC200016FE43 /* energyViewController.m */,
 				334720DF1C8E7048006388C8 /* energyTableViewCell.h */,
@@ -1295,6 +1327,7 @@
 				335089251C7323C200D7AA03 /* frag4.png in Resources */,
 				33FEFD311C7DB38400324374 /* 版本更新.png in Resources */,
 				33FEFD651C7DB38400324374 /* icon@2x.png in Resources */,
+				33692BF11C926B4500698375 /* rili.png in Resources */,
 				33FEFD491C7DB38400324374 /* 用户协议@3x.png in Resources */,
 				33FEFD531C7DB38400324374 /* icon_arrow.png in Resources */,
 				3367CB541C86E3D500EF460C /* 4.gif in Resources */,
@@ -1308,6 +1341,7 @@
 				33FEFD411C7DB38400324374 /* 荣誉.png in Resources */,
 				334B8F631C915A1B00798A69 /* bg.png in Resources */,
 				33FEFD4F1C7DB38400324374 /* 注册.png in Resources */,
+				33692BF31C926B4B00698375 /* shang.png in Resources */,
 				33FEFD331C7DB38400324374 /* 版本更新@3x.png in Resources */,
 				3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */,
 				33FEFD471C7DB38400324374 /* 用户协议.png in Resources */,
@@ -1336,6 +1370,7 @@
 				33FEFD541C7DB38400324374 /* icon_logo.png in Resources */,
 				33FEFD3B1C7DB38400324374 /* 个人资料ios.png in Resources */,
 				33FEFD441C7DB38400324374 /* 维修.png in Resources */,
+				33692BF51C926B5000698375 /* xia.png in Resources */,
 				33FEFD3A1C7DB38400324374 /* 电子邮箱@3x.png in Resources */,
 				33FEFD601C7DB38400324374 /* icon---Password@2x.png in Resources */,
 				3355F25C1C741ABB006DDE5A /* about.png in Resources */,
@@ -1438,6 +1473,7 @@
 				334B8F4E1C914A6D00798A69 /* PNColor.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
 				335456B91C852EB000275478 /* RootViewController.m in Sources */,
+				33692BFC1C92964D00698375 /* Line3VIew.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
 				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
 				3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1463,6 +1499,7 @@
 				335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */,
 				3343F3E01C80405D009F69BC /* UIRefreshControl+AFNetworking.m in Sources */,
 				334B8F501C914A6D00798A69 /* PNLineChart.m in Sources */,
+				33692BE91C92527500698375 /* threeViewController.m in Sources */,
 				337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */,
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
@@ -1488,6 +1525,7 @@
 				334B8F261C91281600798A69 /* Line2View.m in Sources */,
 				334B8F531C914A6D00798A69 /* PNPieChart.m in Sources */,
 				334B8F4F1C914A6D00798A69 /* PNGenericChart.m in Sources */,
+				33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */,
 				334B8F511C914A6D00798A69 /* PNLineChartData.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,
