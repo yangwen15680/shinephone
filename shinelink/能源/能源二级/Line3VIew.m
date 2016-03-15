@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UILabel *energyLabel;
 @property (nonatomic, strong) NSArray *xArray;
 @property (nonatomic, strong) NSMutableArray *valuesArray;
+@property (nonatomic, strong) NSMutableArray *valuesArrayBar;
 
 @property (nonatomic, assign) NSInteger lineType;
 
@@ -28,6 +29,7 @@
 @property (nonatomic, strong) SHPlot *lineChartPlot;
 
 @property (nonatomic, strong) PNBarChart *barChartView;
+@property (nonatomic, strong) PNBarChart *barChartView1;
 
 @property (nonatomic, strong) UILabel *noDataLabel;
 
@@ -72,8 +74,66 @@
     for (NSString *key in self.xArray) {
         [self.valuesArray addObject:dict[key]];
     }
+}
+
+- (void)setDataDict1:(NSMutableDictionary *)dataDict barDict:barDict {
     
+    NSMutableDictionary *dict = dataDict;
+    if (dict.count == 0) {
+        self.unitLabel.hidden = NO;
+        //[self addSubview:self.noDataLabel];
+        dict=[NSMutableDictionary new];
+        [dict setObject:@"0.0" forKey:@"08:30"];
+        [dict setObject:@"0.0" forKey:@"09:30"];
+        [dict setObject:@"0.0" forKey:@"10:30"];
+        [dict setObject:@"0.0" forKey:@"11:30"];
+        [dict setObject:@"0.0" forKey:@"12:30"];
+        [dict setObject:@"0.0" forKey:@"13:30"];
+        [dict setObject:@"0.0" forKey:@"14:30"];
+        [dict setObject:@"0.0" forKey:@"15:30"];
+        [dict setObject:@"0.0" forKey:@"16:30"];
+        [dict setObject:@"0.0" forKey:@"17:30"];
+        
+    } else {
+        if (_noDataLabel) {
+            [_noDataLabel removeFromSuperview];
+        }
+        self.unitLabel.hidden = NO;
+    }
     
+    NSMutableDictionary *dict1 = barDict;
+    if (dict1.count == 0) {
+        self.unitLabel.hidden = NO;
+        //[self addSubview:self.noDataLabel];
+        dict1=[NSMutableDictionary new];
+        [dict1 setObject:@"0" forKey:@"08:30"];
+        [dict1 setObject:@"0" forKey:@"09:30"];
+        [dict1 setObject:@"0" forKey:@"10:30"];
+        [dict1 setObject:@"0" forKey:@"11:30"];
+        [dict1 setObject:@"0" forKey:@"12:30"];
+        [dict1 setObject:@"0" forKey:@"13:30"];
+        [dict1 setObject:@"0" forKey:@"14:30"];
+        [dict1 setObject:@"0" forKey:@"15:30"];
+        [dict1 setObject:@"0" forKey:@"16:30"];
+        [dict1 setObject:@"0" forKey:@"17:30"];
+        
+    }
+    
+    self.xArray = dict.allKeys;
+    NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch;
+    NSComparator sort = ^(NSString *obj1, NSString *obj2){
+        NSRange range = NSMakeRange(0, obj1.length);
+        return [obj1 compare:obj2 options:comparisonOptions range:range];
+    };
+    self.xArray = [dict.allKeys sortedArrayUsingComparator:sort];
+    self.valuesArray = [NSMutableArray array];
+    for (NSString *key in self.xArray) {
+        [self.valuesArray addObject:dict[key]];
+    }
+      self.valuesArrayBar= [NSMutableArray array];
+    for (NSString *key in self.xArray) {
+        [self.valuesArrayBar addObject:dict1[key]];
+    }
 }
 
 - (UILabel *)noDataLabel {
@@ -159,7 +219,7 @@
         {
             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
         }else{
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 0*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 0*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];}
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
                                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
@@ -217,13 +277,85 @@
     return _lineChartView;
 }
 
+- (void)refreshLineAndBarWithDataDict:(NSMutableDictionary *)dataDict  barDict:(NSMutableDictionary *)barDict{
+    [self setDataDict1:dataDict barDict:barDict];
+    
+    if (_xArray.count == 0) {
+        [_lineChartView removeFromSuperview];
+           [_barChartView1 removeFromSuperview];
+        _lineChartView = nil;
+        return;
+    }
+    if (_lineChartView) {
+        [_lineChartView removeFromSuperview];
+        _lineChartView = nil;
+        [self addSubview:self.lineChartView];
+    } else {
+        [self addSubview:self.lineChartView];
+    }
+    if (_barChartView1) {
+        [_barChartView1 removeFromSuperview];
+        _barChartView1 = nil;
+        [self addSubview:self.barChartView1];
+    } else {
+        [self addSubview:self.barChartView1];
+        
+    }
+    
+    if (_valuesArray.count > 0) {
+        //
+        NSNumber *avg = [_valuesArray valueForKeyPath:@"@avg.floatValue"];
+        if ([avg floatValue] != 0) {
+            NSNumber *maxyAxisValue = [_valuesArray valueForKeyPath:@"@max.floatValue"];
+            self.lineChartView.yAxisRange = maxyAxisValue;
+            self.lineChartView.yAxisSuffix = @"";
+            
+            NSMutableArray *tempValuesArray = [NSMutableArray array];
+            for (int i = 0; i < _valuesArray.count; i++) {
+                NSDictionary *tempDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:[_valuesArray[i] floatValue]]forKey:[NSNumber numberWithInt:(i+1)]];
+                [tempValuesArray addObject:tempDict];
+            }
+            
+            self.lineChartPlot.plottingValues = tempValuesArray;
+            self.lineChartPlot.plottingPointsLabels = _valuesArray;
+            [self.barChartView1 setXLabels:nil];
+            [self.barChartView1 setYValues:_valuesArrayBar];
+            [self.barChartView1 strokeChart];
+            
+            self.barChartView1.delegate = self;
+            
+            [self addSubview:self.barChartView1];
+            self.barChartView1.frame=CGRectMake(0, 0, 315*NOW_SIZE, 300*NOW_SIZE);
+            [self.lineChartView addPlot:self.lineChartPlot];
+             [self.lineChartView setupTheView];
+           
+        } else {
+            self.lineChartView.yAxisRange = @9000;
+            self.lineChartView.yAxisSuffix = @"";
+            
+            NSMutableArray *tempValuesArray = [NSMutableArray array];
+            for (int i = 0; i < _valuesArray.count; i++) {
+                if (i == 0) {
+                    NSDictionary *tempDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:1]forKey:[NSNumber numberWithInt:(i+1)]];
+                    [tempValuesArray addObject:tempDict];
+                } else {
+                    NSDictionary *tempDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:[_valuesArray[i] floatValue]]forKey:[NSNumber numberWithInt:(i+1)]];
+                    [tempValuesArray addObject:tempDict];
+                }
+            }
+            self.lineChartPlot.plottingValues = tempValuesArray;
+            self.lineChartPlot.plottingPointsLabels = _valuesArray;
+            [self.lineChartView addPlot:self.lineChartPlot];
+            [self.lineChartView setupTheView];
+        }
+    }
+    
+    
+}
 - (void)refreshLineChartViewWithDataDict:(NSMutableDictionary *)dataDict {
     //
     [self setDataDict:dataDict];
-    
-    //
-    //    [self setType:1];
-    
+
     if (_barChartView) {
         [_barChartView removeFromSuperview];
     }
@@ -281,20 +413,18 @@
             self.lineChartPlot.plottingPointsLabels = _valuesArray;
             
             [self.lineChartView addPlot:self.lineChartPlot];
-            [self.lineChartView setupTheView];
+            
         }
     }
+   
+  
 }
 
 
 #pragma mark - bar chart
 - (PNBarChart *)barChartView {
     if (!_barChartView) {
-        if([_flag isEqualToString:@"2"])
-        {
-            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
-        }else{
-            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
+        self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 0*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
         self.barChartView.backgroundColor = [UIColor clearColor];
         self.barChartView.barBackgroundColor = [UIColor clearColor];
         [self.barChartView setStrokeColor:[UIColor whiteColor]];
@@ -358,6 +488,10 @@
     
     [self addSubview:self.barChartView];
 }
+
+
+    
+   
 
 -(int)changeLineY:(int)sender{
     int i=0;

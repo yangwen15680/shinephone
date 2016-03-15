@@ -50,5 +50,32 @@
 #define root_Networking      NSLocalizedString(@"Networking Timeout", @"Networking Timeout")
 #define root_Yes       NSLocalizedString(@"Yes", @"Yes")
 
+//数据采集器/编辑采集器
+#define root_Add       NSLocalizedString(@"Add", @"Add")
+#define root_aliases       NSLocalizedString(@"aliases", @"aliases")
+#define root_datalog_sn       NSLocalizedString(@"datalog sn", @"datalog sn")
+#define root_group       NSLocalizedString(@"group", @"group")
+#define root_device_type       NSLocalizedString(@"device type", @"device type")
+#define root_data_update_interval       NSLocalizedString(@"data update interval", @"data update interval")
+#define root_Add       NSLocalizedString(@"Add", @"Add")
+#define root_Modified       NSLocalizedString(vvvv, @"Modified")
+#define root_Delete       NSLocalizedString(@"Delete", @"Delete")
+#define root_Aliases_can_not_be_empty       NSLocalizedString(@"Aliases can not be empty", @"Aliases can not be empty")
+#define root_Successfully_modified       NSLocalizedString(@"Successfully modified", @"Successfully modified")
+#define root_Modification_fails       NSLocalizedString(@"Modification fails", @"Modification fails")
+#define root_Successfully_deleted       NSLocalizedString(@"Successfully deleted", @"Successfully deleted")
+#define root_Delete_failed       NSLocalizedString(@"Delete failed", @"Delete failed")
+#define root_Added_successfully       NSLocalizedString(@"Added successfully", @"Added successfully")
+
+//添加数据采集器
+#define root_Add       NSLocalizedString(@"Add", @"Add")
+#define root_Enter_DatalogSN       NSLocalizedString(@"Enter DatalogSN", @"Enter DatalogSN")
+#define root_Datalog_Valicode       NSLocalizedString(@"Datalog Valicode", @"Datalog Valicode")
+#define root_Insert_true_datalog_sn       NSLocalizedString(@"Insert true datalog sn", @"Insert true datalog sn")
+#define root_Datalog_verification_code_is_incorrect       NSLocalizedString(@"Datalog verification code is incorrect", @"Datalog verification code is incorrect")
+#define root_Datalog_verification_code_is_incorrect       NSLocalizedString(@"Datalog verification code is incorrect", @"Datalog verification code is incorrect")
+#define root_Added_Successfully       NSLocalizedString(@"Added Successfully", @"Added Successfully")
+#define root_Add_Failed       NSLocalizedString(@"Add Failed", @"Add Failed")
+#define root_Insert_datalog_code       NSLocalizedString(@"Insert datalog code", @"Insert datalog code")
 
 #endif /* Header_h */

@@ -1,40 +1,33 @@
 //
-//  secondViewController.m
+//  secondCNJ.m
 //  shinelink
 //
-//  Created by sky on 16/3/9.
+//  Created by sky on 16/3/15.
 //  Copyright © 2016年 sky. All rights reserved.
 //
 
-#import "secondViewController.h"
-#import "CircleView.h"
+#import "secondCNJ.h"
 #import"DTKDropdownMenuView.h"
 #import "Line2View.h"
 #import "threeViewController.h"
+#import"VWWWaterView.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
-
-@interface secondViewController ()
-// 进度增长步长
-@property (nonatomic, assign) CGFloat step;
-@property (nonatomic, strong) CircleView *progressView;
-@property (nonatomic, strong) NSTimer *timer;
-
+@interface secondCNJ ()
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
 @property (nonatomic, strong) Line2View *line2View;
-
 @end
 
-@implementation secondViewController
+@implementation secondCNJ
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-UIImage *bgImage = IMAGE(@"bg.png");
-  self.view.layer.contents = (id)bgImage.CGImage;
+   UIImage *bgImage = IMAGE(@"bg.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
     // UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,320*NOW_SIZE )];
     //[self.view addSubview:lineView];
     [self addProcess];
-     [self addRightItem];
+    [self addRightItem];
     [self addGraph];
     [self addbutton];
     
@@ -52,7 +45,7 @@ UIImage *bgImage = IMAGE(@"bg.png");
     [self.view addSubview:firstL];
     
     UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
-    [secondB setImage:[UIImage imageNamed:@"设备切图.png"] forState:UIControlStateNormal];
+    [secondB setImage:[UIImage imageNamed:@"client.png"] forState:UIControlStateNormal];
     [self.view addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     secondL.text=@"电量校正";
@@ -108,75 +101,63 @@ UIImage *bgImage = IMAGE(@"bg.png");
     [dict setObject:@"151.0" forKey:@"16:30"];
     [dict setObject:@"124.0" forKey:@"17:30"];
     [self.line2View refreshLineChartViewWithDataDict:dict];
-
     
- /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {
-        
-        if (content) {
-            self.dayDict=[NSMutableDictionary new];
-            //[self.dayDict setObject:content forKey:@"data"];
-            self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,300*NOW_SIZE )];
-            self.line2View.flag=@"1";
-            [lineView addSubview:self.line2View];
-            [self.line2View refreshLineChartViewWithDataDict:content];
-        }
-    } failure:^(NSError *error) {
-      
-    }];*/
-
+    
+    /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {
+     
+     if (content) {
+     self.dayDict=[NSMutableDictionary new];
+     //[self.dayDict setObject:content forKey:@"data"];
+     self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,300*NOW_SIZE )];
+     self.line2View.flag=@"1";
+     [lineView addSubview:self.line2View];
+     [self.line2View refreshLineChartViewWithDataDict:content];
+     }
+     } failure:^(NSError *error) {
+     
+     }];*/
+    
 }
 
 -(void)addProcess{
     UIView *processView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 200*NOW_SIZE)];
     [self.view addSubview:processView];
     UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    leftName.text=@"正常";
+    leftName.text=@"50KW";
     leftName.textAlignment=NSTextAlignmentCenter;
     leftName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:leftName];
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 200*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    leftState.text=@"当前状态";
+    leftState.text=@"日放电量";
     leftState.textAlignment=NSTextAlignmentCenter;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:leftState];
     
-    UILabel *centName=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2, 120*NOW_SIZE, 120*NOW_SIZE,40*NOW_SIZE )];
-    centName.text=@"2000KW";
-    centName.textAlignment=NSTextAlignmentCenter;
-    centName.textColor=[UIColor redColor];
-    centName.font = [UIFont systemFontOfSize:25*NOW_SIZE];
-    [self.view addSubview:centName];
-    UILabel *centState=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2,150*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    centState.text=@"已提供总电量";
-    centState.textAlignment=NSTextAlignmentCenter;
-    centState.textColor=[UIColor blackColor];
-    centState.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [self.view addSubview:centState];
     
     UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    rightName.text=@"480h";
+    rightName.text=@"200KW";
     rightName.textAlignment=NSTextAlignmentCenter;
     rightName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightName];
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-100*NOW_SIZE, 200*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
-    rightState.text=@"累计运行时长";
+    rightState.text=@"总放电量";
     rightState.textAlignment=NSTextAlignmentCenter;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightState];
     
-    _progressView = [[CircleView alloc] initWithFrame:CGRectMake(0, 0, 150*NOW_SIZE, 150*NOW_SIZE)];
-    CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 100*NOW_SIZE);
-    _progressView.center = center;
-    _progressView.startAngle = - M_PI*1 ;
-    _progressView.endAngle   = 0;
-    [processView addSubview:_progressView];
-    self.step = 1.0 / 30;
-    _timer = [NSTimer scheduledTimerWithTimeInterval:self.step target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
-
+    VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 20*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
+    CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 150*NOW_SIZE);
+    waterView.center = center;
+    waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+    waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
+    //   waterView.currentWaterColor1 = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:0.5];
+    waterView.percentum = 0.66f;//百分比
+    [self.view addSubview:waterView];
+    
 }
 
 - (void)addRightItem
@@ -199,16 +180,7 @@ UIImage *bgImage = IMAGE(@"bg.png");
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:menuView];
 }
 
-- (void)updateProgress {
-    CGFloat progress = self.progressView.progress;
-    if (progress > 100) {
-        [_timer invalidate];
-        _timer = nil;
-        return;
-    }
-    progress += 0.3;
-    self.progressView.progress = progress;
-}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -216,13 +188,13 @@ UIImage *bgImage = IMAGE(@"bg.png");
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

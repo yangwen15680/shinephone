@@ -189,10 +189,24 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [dict setObject:@"151.0" forKey:@"16:30"];
     [dict setObject:@"124.0" forKey:@"17:30"];
     
-    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:dict];
-    [self.line2View refreshLineChartViewWithDataDict:dict];
+    NSMutableDictionary *dict1=[NSMutableDictionary new];
+    [dict1 setObject:@"11.0" forKey:@"08:30"];
+    [dict1 setObject:@"51.0" forKey:@"09:30"];
+    [dict1 setObject:@"21.0" forKey:@"10:30"];
+    [dict1 setObject:@"11.0" forKey:@"11:30"];
+    [dict1 setObject:@"43.0" forKey:@"12:30"];
+    [dict1 setObject:@"55.0" forKey:@"13:30"];
+    [dict1 setObject:@"35.0" forKey:@"14:30"];
+    [dict1 setObject:@"83.0" forKey:@"15:30"];
+    [dict1 setObject:@"81.0" forKey:@"16:30"];
+    [dict1 setObject:@"24.0" forKey:@"17:30"];
+   
+    
+    [self.line2View refreshLineAndBarWithDataDict:dict barDict:dict1];
     
 }
+
+
 
 - (void)requestMonthDatasWithMonthString:(NSString *)monthString {
     

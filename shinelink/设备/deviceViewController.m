@@ -12,6 +12,8 @@
 #import "DTKDropdownMenuView.h"
 #import "addDevice.h"
 #import "secondViewController.h"
+#import "StationCellectViewController.h"
+#import "secondCNJ.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -91,9 +93,11 @@
     
   //  [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14.f],NSForegroundColorAttributeName:[UIColor blueColor]} forState:UIControlStateNormal];
   //  [[UIBarButtonItem appearance] setTintColor:[UIColor blueColor]];
-   
+    
     
        [self addTitleMenu];
+    
+    [self addRightItem];
     //创建tableView的方法
     [self _createTableView];
     
@@ -102,12 +106,37 @@
     
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 }
+
+#pragma mark - navigationItem
 -(void)selectRightAction{
     addDevice *add=[[addDevice alloc]init];
     [self.navigationController pushViewController:add animated:YES];
 
 }
 
+- (void)addRightItem
+{
+    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"添加设备" iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
+        NSLog(@"rightItem%lu",(unsigned long)index);
+        [self selectRightAction];
+    }];
+    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"采集器列表" iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
+        NSLog(@"rightItem%lu",(unsigned long)index);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"等待接口" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alertView show];
+    }];
+    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1] icon:@"DTK_bi"];
+    
+    menuView.dropWidth = 150.f;
+    menuView.titleFont = [UIFont systemFontOfSize:18.f];
+    menuView.textColor = ColorWithRGB(102.f, 102.f, 102.f);
+    menuView.textFont = [UIFont systemFontOfSize:13.f];
+    menuView.cellSeparatorColor = ColorWithRGB(229.f, 229.f, 229.f);
+    menuView.textFont = [UIFont systemFontOfSize:14.f];
+    menuView.animationDuration = 0.2f;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:menuView];
+}
+    
 - (void)addTitleMenu
 {
     NSMutableArray *DTK=[NSMutableArray array];
@@ -121,16 +150,7 @@
     }];
          [DTK addObject:DTKname];
     }
-   /* DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"家庭能源系统1" callBack:^(NSUInteger index, id info) {
-        NSLog(@"家庭能源系统%lu",(unsigned long)index);
-    }];
-    DTKDropdownItem *item2 = [DTKDropdownItem itemWithTitle:@"家庭能源系统2" callBack:^(NSUInteger index, id info) {
-        NSLog(@"家庭能源系统%lu",(unsigned long)index);
-    }];
-    DTKDropdownItem *item3 = [DTKDropdownItem itemWithTitle:@"家庭能源系统3" callBack:^(NSUInteger index, id info) {
-        NSLog(@"家庭能源系统%lu",(unsigned long)index);
-    }];*/
-     
+  
     DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:DTK];
     menuView.currentNav = self.navigationController;
     menuView.dropWidth = 150.f;
@@ -190,13 +210,10 @@
              [imageArray addObject:@"4.gif"];
              [powerArray addObject:@"5000KW"];
         }
-        
- 
         for (int i=0; i<_typeArr.count; i++) {
             for (int j=0; j<nameArray2.count; j++)
             if([_typeArr[i] isEqualToString:nameArray2[j]])
             {
-               
                 [imageArray2 removeObjectAtIndex:j];
                 [nameArray2 removeObjectAtIndex:j];
                 [statueArray2 removeObjectAtIndex:j];
@@ -279,9 +296,17 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+ 
+    TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if([cell.titleLabel.text isEqualToString:@"inverter"]){
     secondViewController *sd=[[secondViewController alloc ]init];
     sd.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:sd animated:NO];
+        [self.navigationController pushViewController:sd animated:NO];}
+    if([cell.titleLabel.text isEqualToString:@"storage"]){
+        secondCNJ *sd=[[secondCNJ alloc ]init];
+        sd.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:sd animated:NO];}
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

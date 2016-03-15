@@ -16,4 +16,5 @@
 - (void)refreshLineChartViewWithDataDict:(NSMutableDictionary *)dataDict;
 
 - (void)refreshBarChartViewWithDataDict:(NSMutableDictionary *)dataDict chartType:(NSInteger)type;
+- (void)refreshLineAndBarWithDataDict:(NSMutableDictionary *)dataDict  barDict:(NSMutableDictionary *)barDict;
 @end
