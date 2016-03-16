@@ -25,12 +25,12 @@
     
       self.dataDic = [NSMutableDictionary dictionary];
     
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
 
     [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"loginbg.jpg"]]];
-    
+     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
+
     // Do any additional setup after loading the view.
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,202*NOW_SIZE, 22*NOW_SIZE, 22*NOW_SIZE)];
     imageView.contentMode=UIViewContentModeScaleAspectFit;
@@ -65,7 +65,8 @@
     goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:20.0];
-    goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+       [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+  
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

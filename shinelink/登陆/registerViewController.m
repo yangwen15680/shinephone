@@ -47,7 +47,7 @@
 }
 
 -(void)initUI{
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
      _textFieldMutableArray=[NSMutableArray new];
     
@@ -62,7 +62,7 @@
     NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, @"Enter your pwd again", root_Enter_email, root_Enter_phone_number, nil];
    
     for (int i=0; i<5; i++) {
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,17*NOW_SIZE+i*60*NOW_SIZE+moveHeight,15*NOW_SIZE, 15*NOW_SIZE)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,17*NOW_SIZE+i*60*NOW_SIZE+moveHeight,17*NOW_SIZE, 17*NOW_SIZE)];
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
         imageView.image=[UIImage imageNamed:imageArray[i]];
@@ -107,7 +107,8 @@
     goBut.frame=CGRectMake(60*NOW_SIZE,310*NOW_SIZE+moveHeight, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
-    goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+
     [goBut setTitle:@"下一步" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
@@ -124,12 +125,6 @@
     return YES;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-   for (UITextField *textField in _textFieldMutableArray) {
-        [textField resignFirstResponder];
-    }
-}
 
 - (void)showToastViewWithTitle:(NSString *)title {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];

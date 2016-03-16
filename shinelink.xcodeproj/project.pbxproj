@@ -156,6 +156,23 @@
 		33EFB63A1C97E0C8003F336F /* secondCNJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6391C97E0C8003F336F /* secondCNJ.m */; };
 		33EFB63D1C97E1E3003F336F /* VWWWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB63C1C97E1E3003F336F /* VWWWaterView.m */; };
 		33EFB63F1C97E875003F336F /* 设备切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB63E1C97E875003F336F /* 设备切图.png */; };
+		33EFB6651C98F9B1003F336F /* NSString+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6431C98F9B1003F336F /* NSString+Zirkfied.m */; };
+		33EFB6661C98F9B1003F336F /* UIColor+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6451C98F9B1003F336F /* UIColor+Zirkfied.m */; };
+		33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6471C98F9B1003F336F /* UIView+Zirkfied.m */; };
+		33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB64C1C98F9B1003F336F /* ZFConst.m */; };
+		33EFB6691C98F9B1003F336F /* ZFBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB64F1C98F9B1003F336F /* ZFBar.m */; };
+		33EFB66A1C98F9B1003F336F /* ZFBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6511C98F9B1003F336F /* ZFBarChart.m */; };
+		33EFB66B1C98F9B1003F336F /* ZFAxisLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6541C98F9B1003F336F /* ZFAxisLine.m */; };
+		33EFB66C1C98F9B1003F336F /* ZFGenericChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6561C98F9B1003F336F /* ZFGenericChart.m */; };
+		33EFB66D1C98F9B1003F336F /* ZFLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6581C98F9B1003F336F /* ZFLabel.m */; };
+		33EFB66E1C98F9B1003F336F /* ZFCirque.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB65B1C98F9B1003F336F /* ZFCirque.m */; };
+		33EFB66F1C98F9B1003F336F /* ZFLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB65D1C98F9B1003F336F /* ZFLine.m */; };
+		33EFB6701C98F9B1003F336F /* ZFLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB65F1C98F9B1003F336F /* ZFLineChart.m */; };
+		33EFB6711C98F9B1003F336F /* ZFPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6621C98F9B1003F336F /* ZFPieChart.m */; };
+		33EFB6721C98F9B1003F336F /* ZFTranslucencePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6641C98F9B1003F336F /* ZFTranslucencePath.m */; };
+		33EFB6781C98FA7F003F336F /* newLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6771C98FA7F003F336F /* newLine.m */; };
+		33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6791C9931D2003F336F /* 按钮2.png */; };
+		33EFB67C1C99320B003F336F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB67B1C99320B003F336F /* logo.png */; };
 		33FEFCD21C7D8A9500324374 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33FEFCCF1C7D8A9500324374 /* Address.plist */; };
 		33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEFCD11C7D8A9500324374 /* AddressPickView.m */; };
 		33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEFCD51C7D8E8300324374 /* UIViewExt.m */; };
@@ -539,6 +556,40 @@
 		33EFB63B1C97E1E3003F336F /* VWWWaterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWWWaterView.h; sourceTree = "<group>"; };
 		33EFB63C1C97E1E3003F336F /* VWWWaterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWWWaterView.m; sourceTree = "<group>"; };
 		33EFB63E1C97E875003F336F /* 设备切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备切图.png"; sourceTree = "<group>"; };
+		33EFB6421C98F9B1003F336F /* NSString+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Zirkfied.h"; sourceTree = "<group>"; };
+		33EFB6431C98F9B1003F336F /* NSString+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Zirkfied.m"; sourceTree = "<group>"; };
+		33EFB6441C98F9B1003F336F /* UIColor+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Zirkfied.h"; sourceTree = "<group>"; };
+		33EFB6451C98F9B1003F336F /* UIColor+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Zirkfied.m"; sourceTree = "<group>"; };
+		33EFB6461C98F9B1003F336F /* UIView+Zirkfied.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Zirkfied.h"; sourceTree = "<group>"; };
+		33EFB6471C98F9B1003F336F /* UIView+Zirkfied.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Zirkfied.m"; sourceTree = "<group>"; };
+		33EFB6491C98F9B1003F336F /* ZFChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFChart.h; sourceTree = "<group>"; };
+		33EFB64A1C98F9B1003F336F /* ZFColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFColor.h; sourceTree = "<group>"; };
+		33EFB64B1C98F9B1003F336F /* ZFConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFConst.h; sourceTree = "<group>"; };
+		33EFB64C1C98F9B1003F336F /* ZFConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFConst.m; sourceTree = "<group>"; };
+		33EFB64E1C98F9B1003F336F /* ZFBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBar.h; sourceTree = "<group>"; };
+		33EFB64F1C98F9B1003F336F /* ZFBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBar.m; sourceTree = "<group>"; };
+		33EFB6501C98F9B1003F336F /* ZFBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBarChart.h; sourceTree = "<group>"; };
+		33EFB6511C98F9B1003F336F /* ZFBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBarChart.m; sourceTree = "<group>"; };
+		33EFB6531C98F9B1003F336F /* ZFAxisLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFAxisLine.h; sourceTree = "<group>"; };
+		33EFB6541C98F9B1003F336F /* ZFAxisLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFAxisLine.m; sourceTree = "<group>"; };
+		33EFB6551C98F9B1003F336F /* ZFGenericChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFGenericChart.h; sourceTree = "<group>"; };
+		33EFB6561C98F9B1003F336F /* ZFGenericChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFGenericChart.m; sourceTree = "<group>"; };
+		33EFB6571C98F9B1003F336F /* ZFLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLabel.h; sourceTree = "<group>"; };
+		33EFB6581C98F9B1003F336F /* ZFLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLabel.m; sourceTree = "<group>"; };
+		33EFB65A1C98F9B1003F336F /* ZFCirque.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFCirque.h; sourceTree = "<group>"; };
+		33EFB65B1C98F9B1003F336F /* ZFCirque.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFCirque.m; sourceTree = "<group>"; };
+		33EFB65C1C98F9B1003F336F /* ZFLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLine.h; sourceTree = "<group>"; };
+		33EFB65D1C98F9B1003F336F /* ZFLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLine.m; sourceTree = "<group>"; };
+		33EFB65E1C98F9B1003F336F /* ZFLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFLineChart.h; sourceTree = "<group>"; };
+		33EFB65F1C98F9B1003F336F /* ZFLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFLineChart.m; sourceTree = "<group>"; };
+		33EFB6611C98F9B1003F336F /* ZFPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPieChart.h; sourceTree = "<group>"; };
+		33EFB6621C98F9B1003F336F /* ZFPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPieChart.m; sourceTree = "<group>"; };
+		33EFB6631C98F9B1003F336F /* ZFTranslucencePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTranslucencePath.h; sourceTree = "<group>"; };
+		33EFB6641C98F9B1003F336F /* ZFTranslucencePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTranslucencePath.m; sourceTree = "<group>"; };
+		33EFB6761C98FA7F003F336F /* newLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLine.h; sourceTree = "<group>"; };
+		33EFB6771C98FA7F003F336F /* newLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newLine.m; sourceTree = "<group>"; };
+		33EFB6791C9931D2003F336F /* 按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "按钮2.png"; sourceTree = "<group>"; };
+		33EFB67B1C99320B003F336F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		33FEFCCF1C7D8A9500324374 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Address.plist; path = ../Address.plist; sourceTree = "<group>"; };
 		33FEFCD01C7D8A9500324374 /* AddressPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressPickView.h; path = ../AddressPickView.h; sourceTree = "<group>"; };
 		33FEFCD11C7D8A9500324374 /* AddressPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressPickView.m; path = ../AddressPickView.m; sourceTree = "<group>"; };
@@ -841,6 +892,8 @@
 			isa = PBXGroup;
 			children = (
 				334B8F621C915A1B00798A69 /* bg.png */,
+				33EFB6791C9931D2003F336F /* 按钮2.png */,
+				33EFB67B1C99320B003F336F /* logo.png */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1039,8 +1092,11 @@
 		33692BF61C9294D300698375 /* 能源二级 */ = {
 			isa = PBXGroup;
 			children = (
+				33EFB6401C98F9B1003F336F /* ZFChart */,
 				33692BF71C92952000698375 /* engrgySencondViewController.h */,
 				33692BF81C92952000698375 /* engrgySencondViewController.m */,
+				33EFB6761C98FA7F003F336F /* newLine.h */,
+				33EFB6771C98FA7F003F336F /* newLine.m */,
 				33692BFA1C92964D00698375 /* Line3VIew.h */,
 				33692BFB1C92964D00698375 /* Line3VIew.m */,
 			);
@@ -1375,6 +1431,91 @@
 			path = "逆变器二级";
 			sourceTree = "<group>";
 		};
+		33EFB6401C98F9B1003F336F /* ZFChart */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB6411C98F9B1003F336F /* Category */,
+				33EFB6481C98F9B1003F336F /* Other */,
+				33EFB64D1C98F9B1003F336F /* ZFBarChart */,
+				33EFB6521C98F9B1003F336F /* ZFGenericChart */,
+				33EFB6591C98F9B1003F336F /* ZFLineChart */,
+				33EFB6601C98F9B1003F336F /* ZFPieChart */,
+			);
+			path = ZFChart;
+			sourceTree = "<group>";
+		};
+		33EFB6411C98F9B1003F336F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB6421C98F9B1003F336F /* NSString+Zirkfied.h */,
+				33EFB6431C98F9B1003F336F /* NSString+Zirkfied.m */,
+				33EFB6441C98F9B1003F336F /* UIColor+Zirkfied.h */,
+				33EFB6451C98F9B1003F336F /* UIColor+Zirkfied.m */,
+				33EFB6461C98F9B1003F336F /* UIView+Zirkfied.h */,
+				33EFB6471C98F9B1003F336F /* UIView+Zirkfied.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		33EFB6481C98F9B1003F336F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB6491C98F9B1003F336F /* ZFChart.h */,
+				33EFB64A1C98F9B1003F336F /* ZFColor.h */,
+				33EFB64B1C98F9B1003F336F /* ZFConst.h */,
+				33EFB64C1C98F9B1003F336F /* ZFConst.m */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		33EFB64D1C98F9B1003F336F /* ZFBarChart */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB64E1C98F9B1003F336F /* ZFBar.h */,
+				33EFB64F1C98F9B1003F336F /* ZFBar.m */,
+				33EFB6501C98F9B1003F336F /* ZFBarChart.h */,
+				33EFB6511C98F9B1003F336F /* ZFBarChart.m */,
+			);
+			path = ZFBarChart;
+			sourceTree = "<group>";
+		};
+		33EFB6521C98F9B1003F336F /* ZFGenericChart */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB6531C98F9B1003F336F /* ZFAxisLine.h */,
+				33EFB6541C98F9B1003F336F /* ZFAxisLine.m */,
+				33EFB6551C98F9B1003F336F /* ZFGenericChart.h */,
+				33EFB6561C98F9B1003F336F /* ZFGenericChart.m */,
+				33EFB6571C98F9B1003F336F /* ZFLabel.h */,
+				33EFB6581C98F9B1003F336F /* ZFLabel.m */,
+			);
+			path = ZFGenericChart;
+			sourceTree = "<group>";
+		};
+		33EFB6591C98F9B1003F336F /* ZFLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB65A1C98F9B1003F336F /* ZFCirque.h */,
+				33EFB65B1C98F9B1003F336F /* ZFCirque.m */,
+				33EFB65C1C98F9B1003F336F /* ZFLine.h */,
+				33EFB65D1C98F9B1003F336F /* ZFLine.m */,
+				33EFB65E1C98F9B1003F336F /* ZFLineChart.h */,
+				33EFB65F1C98F9B1003F336F /* ZFLineChart.m */,
+			);
+			path = ZFLineChart;
+			sourceTree = "<group>";
+		};
+		33EFB6601C98F9B1003F336F /* ZFPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				33EFB6611C98F9B1003F336F /* ZFPieChart.h */,
+				33EFB6621C98F9B1003F336F /* ZFPieChart.m */,
+				33EFB6631C98F9B1003F336F /* ZFTranslucencePath.h */,
+				33EFB6641C98F9B1003F336F /* ZFTranslucencePath.m */,
+			);
+			path = ZFPieChart;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1520,6 +1661,7 @@
 				33FEFD621C7DB38400324374 /* icon---Username.png in Resources */,
 				334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */,
 				33FEFD821C7DB38400324374 /* Switch-(on)@3x.png in Resources */,
+				33EFB67C1C99320B003F336F /* logo.png in Resources */,
 				33FEFCD81C7D9DCD00324374 /* 圆角矩形3.png in Resources */,
 				33FEFD501C7DB38400324374 /* 组-1.png in Resources */,
 				33FEFD7D1C7DB38400324374 /* Switch-(off).png in Resources */,
@@ -1530,6 +1672,7 @@
 				33FEFD4D1C7DB38400324374 /* 质保@2x.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33FEFD4E1C7DB38400324374 /* 质保@3x.png in Resources */,
+				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
 				33FEFD401C7DB38400324374 /* 密码3.png in Resources */,
 				33FEFD591C7DB38400324374 /* icon---Email.png in Resources */,
 				33FEFD541C7DB38400324374 /* icon_logo.png in Resources */,
@@ -1627,6 +1770,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				33EFB62E1C979CB3003F336F /* UIScrollView+MJExtension.m in Sources */,
+				33EFB6651C98F9B1003F336F /* NSString+Zirkfied.m in Sources */,
+				33EFB6661C98F9B1003F336F /* UIColor+Zirkfied.m in Sources */,
 				334B8F4A1C914A6D00798A69 /* PNBar.m in Sources */,
 				337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */,
 				33EFB6051C979B5F003F336F /* ChangeCellectViewController.m in Sources */,
@@ -1636,6 +1781,7 @@
 				3349A7BF1C75BF3B009172C2 /* LoginButton.m in Sources */,
 				3343F3DA1C80405D009F69BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
+				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
 				3343F3AA1C803DC9009F69BC /* BaseRequest.m in Sources */,
 				33EFB62B1C979CB3003F336F /* MJRefreshHeader.m in Sources */,
 				3363DD221C7C598B00D740FB /* countryViewController.m in Sources */,
@@ -1646,6 +1792,7 @@
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
 				335456B91C852EB000275478 /* RootViewController.m in Sources */,
 				33692BFC1C92964D00698375 /* Line3VIew.m in Sources */,
+				33EFB66A1C98F9B1003F336F /* ZFBarChart.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
 				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
 				3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1657,7 +1804,10 @@
 				33EFB62D1C979CB3003F336F /* MJRefreshLegendHeader.m in Sources */,
 				3343F3DB1C80405D009F69BC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				334B8F4C1C914A6D00798A69 /* PNChartLabel.m in Sources */,
+				33EFB66F1C98F9B1003F336F /* ZFLine.m in Sources */,
 				33EFB6301C979CB3003F336F /* UIView+MJExtension.m in Sources */,
+				33EFB66D1C98F9B1003F336F /* ZFLabel.m in Sources */,
+				33EFB66B1C98F9B1003F336F /* ZFAxisLine.m in Sources */,
 				334B8F541C914A6D00798A69 /* PNPieChartDataItem.m in Sources */,
 				334B8F4D1C914A6D00798A69 /* PNCircleChart.m in Sources */,
 				334B8F231C91250300798A69 /* SHPlot.m in Sources */,
@@ -1676,10 +1826,12 @@
 				33EFB6281C979CB3003F336F /* MJRefreshFooter.m in Sources */,
 				335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */,
 				3343F3E01C80405D009F69BC /* UIRefreshControl+AFNetworking.m in Sources */,
+				33EFB6721C98F9B1003F336F /* ZFTranslucencePath.m in Sources */,
 				334B8F501C914A6D00798A69 /* PNLineChart.m in Sources */,
 				33692BE91C92527500698375 /* threeViewController.m in Sources */,
 				337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */,
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
+				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,
 				334B8F5F1C914B4E00798A69 /* README.md in Sources */,
@@ -1690,6 +1842,7 @@
 				3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */,
 				33EFB63A1C97E0C8003F336F /* secondCNJ.m in Sources */,
 				33EFB6011C979B5F003F336F /* StationCellectViewController.m in Sources */,
+				33EFB6701C98F9B1003F336F /* ZFLineChart.m in Sources */,
 				3355F2681C7469AB006DDE5A /* aboutViewController.m in Sources */,
 				3343F3DC1C80405D009F69BC /* UIAlertView+AFNetworking.m in Sources */,
 				337F9CC51C71ABD80016FE43 /* deviceViewController.m in Sources */,
@@ -1708,13 +1861,16 @@
 				334B8F531C914A6D00798A69 /* PNPieChart.m in Sources */,
 				334B8F4F1C914A6D00798A69 /* PNGenericChart.m in Sources */,
 				33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */,
+				33EFB66E1C98F9B1003F336F /* ZFCirque.m in Sources */,
 				334B8F511C914A6D00798A69 /* PNLineChartData.m in Sources */,
+				33EFB6711C98F9B1003F336F /* ZFPieChart.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,
 				334B8F551C914A6D00798A69 /* PNScatterChart.m in Sources */,
 				33EFB62C1C979CB3003F336F /* MJRefreshLegendFooter.m in Sources */,
 				3355F26E1C747307006DDE5A /* aboutOneTableViewCell.m in Sources */,
 				3343F3A71C7FDD5A009F69BC /* editViewController.m in Sources */,
+				33EFB6691C98F9B1003F336F /* ZFBar.m in Sources */,
 				334B8F521C914A6D00798A69 /* PNLineChartDataItem.m in Sources */,
 				3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */,
 				33EFB6271C979CB3003F336F /* MJRefreshConst.m in Sources */,
@@ -1727,9 +1883,11 @@
 				33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */,
 				3343F3DD1C80405D009F69BC /* UIButton+AFNetworking.m in Sources */,
 				3349A7B61C75B8F4009172C2 /* loginViewController.m in Sources */,
+				33EFB66C1C98F9B1003F336F /* ZFGenericChart.m in Sources */,
 				3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */,
 				334B8F4B1C914A6D00798A69 /* PNBarChart.m in Sources */,
 				33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */,
+				33EFB6781C98FA7F003F336F /* newLine.m in Sources */,
 				3343F3C31C80403C009F69BC /* AFSecurityPolicy.m in Sources */,
 				33EFB6021C979B5F003F336F /* StationCellectTableViewCell.m in Sources */,
 				33EFB62F1C979CB3003F336F /* UIScrollView+MJRefresh.m in Sources */,

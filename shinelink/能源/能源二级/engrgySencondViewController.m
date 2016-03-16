@@ -8,6 +8,7 @@
 
 #import "engrgySencondViewController.h"
 #import "Line3VIew.h"
+#import "newLine.h"
 #define dateHeight 30*NOW_SIZE
 
 static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
@@ -44,9 +45,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 @property (nonatomic, strong) UIPickerView *yearPicker;
 
 @property (nonatomic, strong) UIToolbar *toolBar;
-@property (nonatomic, strong) Line3VIew *line2View;
+@property (nonatomic, strong) newLine *line2View;
 @property(nonatomic,strong)NSString *type;
 @property(nonatomic,strong)UIButton *selectButton;
+
+
 @end
 
 @implementation engrgySencondViewController
@@ -169,8 +172,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.datePickerButton addTarget:self action:@selector(pickDate) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.datePickerButton];
     
-    self.line2View = [[Line3VIew alloc] initWithFrame:CGRectMake(0, 130*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
-    self.line2View.flag=@"1";
+    self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 130*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
     [self.view addSubview:self.line2View];
     
 }
@@ -202,7 +204,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [dict1 setObject:@"24.0" forKey:@"17:30"];
    
     
-    [self.line2View refreshLineAndBarWithDataDict:dict barDict:dict1];
+    [self.line2View showBarAndLineChartWithDataDict:dict barDict:dict1];
     
 }
 
@@ -222,7 +224,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [dict setObject:@"151.0" forKey:@"18"];
     [dict setObject:@"124.0" forKey:@"20"];
     
-    [self.line2View refreshBarChartViewWithDataDict:dict chartType:2];
+    [self.line2View showBarChartWithDataDict:dict];
     
     
 }
@@ -239,7 +241,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [dict setObject:@"23.0" forKey:@"16"];
     [dict setObject:@"151.0" forKey:@"18"];
     [dict setObject:@"124.0" forKey:@"20"];
-    [self.line2View refreshBarChartViewWithDataDict:dict chartType:3];
+    [self.line2View showBarChartWithDataDict:dict];
     
     //    }
 }
@@ -256,7 +258,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [dict setObject:@"23.0" forKey:@"16"];
     [dict setObject:@"151.0" forKey:@"18"];
     [dict setObject:@"124.0" forKey:@"20"];
-    [self.line2View refreshBarChartViewWithDataDict:dict chartType:4];
+    [self.line2View showBarChartWithDataDict:dict];
 }
 #pragma mark - 上一个时间  下一个时间  按钮事件
 //上一个时间

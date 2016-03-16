@@ -18,15 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
-    
+     [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     
     UIButton *byEmail =  [UIButton buttonWithType:UIButtonTypeCustom];
     byEmail.frame=CGRectMake(60*NOW_SIZE,200*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [byEmail.layer setMasksToBounds:YES];
     [byEmail.layer setCornerRadius:25.0];
-    byEmail.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+        [byEmail setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+   
     [byEmail setTitle:@"通过用户名" forState:UIControlStateNormal];
     [byEmail addTarget:self action:@selector(bymail) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:byEmail];
@@ -35,7 +37,7 @@
     goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
-    goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:@"通过序列号" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(bySN) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

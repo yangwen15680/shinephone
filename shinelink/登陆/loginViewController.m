@@ -20,7 +20,7 @@
 #import "MBProgressHUD.h"
 #import "forgetViewController.h"
 
-@interface loginViewController ()<UINavigationControllerDelegate>
+@interface loginViewController ()<UINavigationControllerDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextField *userTextField;
 @property (nonatomic, strong) UITextField *pwdTextField;
@@ -33,14 +33,19 @@
 @end
 
 @implementation loginViewController
+-(void)viewDidAppear:(BOOL)animated{
+     animated=NO;
+   [self.navigationController setNavigationBarHidden:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
-  
-       //[self.navigationController setNavigationBarHidden:YES];
+   
+   // [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:17/255.0f green:183/255.0f blue:243/255.0f alpha:0]];
+     [self.navigationController setNavigationBarHidden:YES];
     
  NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
    NSString *reUsername=[ud objectForKey:@"userName"];
@@ -59,8 +64,7 @@
         _userTextField=[[UITextField alloc]init];
         _userTextField.text=reUsername;
         _pwdTextField=[[UITextField alloc]init];
-        _pwdTextField.text=rePassword;
-       
+        _pwdTextField.text=rePassword; 
           [self performSelectorOnMainThread:@selector(netRequest) withObject:nil waitUntilDone:NO];
         //添加布局
     }
@@ -72,9 +76,15 @@
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     [self.view addSubview:_scrollView];
     
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
     //logo
     UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 60*NOW_SIZE, SCREEN_Width - 40*NOW_SIZE, 60*NOW_SIZE)];
-    logo.image = IMAGE(@"icon_logo.png");
+    logo.image = IMAGE(@"logo.png");
     [_scrollView addSubview:logo];
     
     //用户名
@@ -108,41 +118,52 @@
     [self.pwdTextField setValue:[UIFont systemFontOfSize:13*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
     [pwdBgImageView addSubview:_pwdTextField];
     
- 
-
-    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 420*NOW_SIZE-70*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
-    loginBtn.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
-    [self.view addSubview:loginBtn];
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
-    [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 420*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
     self.registLable.text=@"注册";
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.textAlignment = NSTextAlignmentRight;
-     self.registLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+     self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     self.registLable.userInteractionEnabled=YES;
-     [self.view addSubview:self.registLable];
+     [_scrollView addSubview:self.registLable];
     UITapGestureRecognizer * labelTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
     [self.registLable addGestureRecognizer:labelTap];
    
-    
-    
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
     self.forgetLable.text=@"忘记密码";
      self.forgetLable.textColor=[UIColor whiteColor];
-        self.forgetLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
      self.forgetLable.userInteractionEnabled=YES;
     UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
     [self.forgetLable addGestureRecognizer:forget];
+    [_scrollView addSubview:self.forgetLable];
     
-    [self.view addSubview:self.forgetLable];
-    
-
+    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 320*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
+    [_scrollView addSubview:loginBtn];
+    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
+-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+    [_userTextField resignFirstResponder];
+    [_pwdTextField resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+        [_userTextField resignFirstResponder];
+    [_pwdTextField resignFirstResponder];
+    return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [_userTextField resignFirstResponder];
+    [_pwdTextField resignFirstResponder];
+}
+- (BOOL)disablesAutomaticKeyboardDismissal
+{
+    return NO;
+}
 -(void)forget{
     forgetViewController *registerRoot=[[forgetViewController alloc]init];
     //[self presentViewController:registerRoot animated:YES completion:nil];
@@ -155,9 +176,7 @@
     NSLog(@"注册");
     self.registLable.highlighted=YES;
     self.registLable.highlightedTextColor=[UIColor whiteColor];
-    
     countryViewController *registerRoot=[[countryViewController alloc]init];
-  //[self presentViewController:registerRoot animated:YES completion:nil];
     
     [self.navigationController pushViewController:registerRoot animated:YES];
     
@@ -179,18 +198,7 @@
     return result;
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    [_userTextField resignFirstResponder];
-    [_pwdTextField resignFirstResponder];
-}
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    
-    [_userTextField resignFirstResponder];
-    [_pwdTextField resignFirstResponder];
-    
-    return YES;
-}
+
 
 //模拟网络访问
 - (void)PresentCtrl:(LoginButton *)loginBtn {
