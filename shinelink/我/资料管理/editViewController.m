@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 
 #define Kwidth [UIScreen mainScreen].bounds.size.width
-#define moveHeight 235*NOW_SIZE
+#define moveHeight 270*NOW_SIZE
 #define moveHeight2 12*NOW_SIZE
 
 
@@ -20,7 +20,7 @@
 @property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
-
+@property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
 @implementation editViewController
@@ -38,6 +38,12 @@
 
 }
 -(void)initUI{
+    double imageSize=150;
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView.scrollEnabled=YES;
+    _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
+    [self.view addSubview:_scrollView];
+    
     NSArray *imageArray=[NSArray arrayWithObjects:@"iconfont-gongsijianjie@3x.png", @"icon---Email---Full@3x.png", @"iconfont-nengyuanlei@3x.png", @"iconfont-address@3x.png",nil];
     NSArray *labelArray=[NSArray arrayWithObjects:@"公司名字:", @"邮箱:", @"电话:", @"地址:", nil];
     NSArray *labelArray2=[NSArray arrayWithObjects:@"请输入公司名字", @"请输入邮箱", @"请输入电话", @"请输入地址", nil];
@@ -46,10 +52,10 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,250*NOW_SIZE)];
     UIColor *color=[UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1];
     [headerView setBackgroundColor:color];
-    [self.view addSubview:headerView];
+    [_scrollView addSubview:headerView];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake((Kwidth-80*NOW_SIZE)/2,210*NOW_SIZE, 80*NOW_SIZE, 25*NOW_SIZE);
+    goBut.frame=CGRectMake((Kwidth-80*NOW_SIZE)/2,(210*NOW_SIZE-imageSize)/2+imageSize+10*NOW_SIZE, 80*NOW_SIZE, 25*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:15.0];
     goBut.backgroundColor = [UIColor whiteColor];
@@ -58,10 +64,10 @@
     [goBut setTitleColor: [UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1] forState:(UIControlStateNormal)];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
     //  goBut.highlighted=[UIColor grayColor];
-    [self.view addSubview:goBut];
+    [_scrollView  addSubview:goBut];
     
     UIButton *registerUser =  [UIButton buttonWithType:UIButtonTypeCustom];
-    registerUser.frame=CGRectMake((Kwidth-150*NOW_SIZE)/2,450*NOW_SIZE, 150*NOW_SIZE, 40*NOW_SIZE);
+    registerUser.frame=CGRectMake((Kwidth-150*NOW_SIZE)/2,500*NOW_SIZE, 150*NOW_SIZE, 40*NOW_SIZE);
     [registerUser.layer setMasksToBounds:YES];
     [registerUser.layer setCornerRadius:20.0];
     registerUser.backgroundColor = [UIColor redColor];
@@ -70,10 +76,10 @@
     [registerUser setTitleColor: [UIColor whiteColor]forState:UIControlStateNormal];
     [registerUser addTarget:self action:@selector(registerUser) forControlEvents:UIControlEventTouchUpInside];
     //  goBut.highlighted=[UIColor grayColor];
-    [self.view addSubview:registerUser];
+    [_scrollView addSubview:registerUser];
     
-    double imageSize=150;
-    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, (250-imageSize+60)/2, imageSize, imageSize)];
+    
+    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, (210*NOW_SIZE-imageSize)/2, imageSize, imageSize)];
     [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
     userImage.layer.masksToBounds=YES;
     userImage.layer.cornerRadius=imageSize/2.0;
@@ -84,18 +90,18 @@
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
         imageView.image=[UIImage imageNamed:imageArray[i]];
-        [self.view addSubview:imageView];
+        [_scrollView addSubview:imageView];
         
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(70*NOW_SIZE,10*NOW_SIZE+i*50*NOW_SIZE+moveHeight+moveHeight2, 70*NOW_SIZE, 30*NOW_SIZE)];
         label.text=labelArray[i];
         label.textAlignment=NSTextAlignmentLeft;
         label.font = [UIFont systemFontOfSize:15*NOW_SIZE];
         label.textColor=[UIColor grayColor];
-        [self.view addSubview:label];
+        [_scrollView addSubview:label];
         
         UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,40*NOW_SIZE+i*50*NOW_SIZE+moveHeight+moveHeight2, 260*NOW_SIZE, 1)];
         line.backgroundColor=[UIColor grayColor];
-        [self.view addSubview:line];
+        [_scrollView addSubview:line];
         
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(150*NOW_SIZE,10*NOW_SIZE+i*50*NOW_SIZE+moveHeight+moveHeight2, 180*NOW_SIZE, 30*NOW_SIZE)];
         textField.placeholder =labelArray2[i];
@@ -107,7 +113,7 @@
         textField.font = [UIFont systemFontOfSize:15*NOW_SIZE];
         textField.tag = i;
         textField.delegate = self;
-        [self.view addSubview:textField];
+        [_scrollView addSubview:textField];
         [_textFieldMutableArray addObject:textField];
     }
     

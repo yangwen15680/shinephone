@@ -161,10 +161,11 @@
         }else{
             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
         NSDictionary *_themeAttributes = @{
-                                           kXAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
+                                           kXAxisLabelColorKey : [UIColor blackColor],
                                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
-                                           kYAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
+                                           kYAxisLabelColorKey : [UIColor blackColor],
                                            kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                          
 //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
                                            kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                                            kDotSizeKey : @0

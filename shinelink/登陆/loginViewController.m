@@ -345,14 +345,15 @@
         Vc3.title=@"Service";
         Vc4.title=@"Me";
         
-        Vc1.tabBarItem.image=[UIImage imageNamed:@"shebei@2x.png"];
-        Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"shebei_press@2x.png"];
-        Vc2.tabBarItem.image=[UIImage imageNamed:@"iconfont-nengyuanlei@2x.png"];
-        Vc2.tabBarItem.selectedImage=[UIImage imageNamed:@"iconfont-nengyuanlei_press@2x.png"];
-        Vc3.tabBarItem.image=[UIImage imageNamed:@"iconfont-faxian@2x.png"];
-        Vc3.tabBarItem.selectedImage=[UIImage imageNamed:@"iconfont-faxian_press@2x.png"];
-        Vc4.tabBarItem.image=[UIImage imageNamed:@"icon@2x.png"];
-        Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"icon_press@2x.png"];
+     
+        Vc1.tabBarItem.image=[UIImage imageNamed:@"设备切图.png"];
+        Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"设备切图.png"];
+        Vc2.tabBarItem.image=[UIImage imageNamed:@"能源.png"];
+        Vc2.tabBarItem.selectedImage=[UIImage imageNamed:@"energy.png"];
+        Vc3.tabBarItem.image=[UIImage imageNamed:@"服务.png"];
+        Vc3.tabBarItem.selectedImage=[UIImage imageNamed:@"server.png"];
+        Vc4.tabBarItem.image=[UIImage imageNamed:@"我的.png"];
+        Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"mine.png"];
         
         NSArray *controllers=[NSArray arrayWithObjects:Vc1,Vc2,Vc3,Vc4,nil];
         UITabBarController *tabbar=[[UITabBarController alloc]init];

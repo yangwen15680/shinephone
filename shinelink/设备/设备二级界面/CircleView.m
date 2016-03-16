@@ -8,8 +8,8 @@
 
 #import "CircleView.h"
 
-#define DefaultTrackLineWidth               12.0f           // 默认轨迹宽度
-#define DefaultProgressLineWidth            10.0f           // 默认进度宽度
+#define DefaultTrackLineWidth               16.0f           // 默认轨迹宽度
+#define DefaultProgressLineWidth            14.0f           // 默认进度宽度
 #define radiusSize  70*NOW_SIZE
 @interface CircleView ()
 
@@ -45,7 +45,7 @@
     _progress           = 0;
     _trackLineWidth     = DefaultTrackLineWidth;
     _progressLineWidth  = DefaultProgressLineWidth;
-    _trackColor         = [[UIColor greenColor] colorWithAlphaComponent:0.25];
+    _trackColor         = COLOR(2, 156, 217, 1);
     _startAngle         = CoverToRadian(-360);
     _endAngle           = CoverToRadian(0);
     _colockwise         = YES;
@@ -73,15 +73,16 @@
     _progressLayer.path         = _circlePath.CGPath;
     _progressLayer.frame        = self.bounds;
     _progressLayer.lineWidth    = _progressLineWidth;
-    _progressLayer.strokeColor  = [UIColor purpleColor].CGColor;
+    _progressLayer.strokeColor  = COLOR(2, 156, 217, 1).CGColor;
     _progressLayer.fillColor    = [UIColor clearColor].CGColor;
     _progressLayer.lineCap      = kCALineCapRound;
     _progressLayer.strokeEnd    = _progress / 100;
    // [self.layer addSublayer:_progressLayer];
     
     _gradientLayer              = [CAGradientLayer layer];
-    _gradientLayer.colors       = @[(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor,(__bridge id)[UIColor orangeColor].CGColor];
-   // _gradientLayer.colors  =@[(__bridge id)[UIColor orangeColor].CGColor];
+    UIColor *kk=COLOR(76, 224, 79, 1);
+    _gradientLayer.colors       = @[(__bridge id)kk.CGColor,(__bridge id)kk.CGColor,(__bridge id)kk.CGColor,(__bridge id)kk.CGColor];
+   //_gradientLayer.colors  =@[(__bridge id)kk.CGColor];
     _gradientLayer.locations    = @[@(0.0f),@(0.3f),@(0.7f),@(1.0f)];
     _gradientLayer.startPoint   = CGPointMake(1.0f, 0.0f);
     _gradientLayer.endPoint     = CGPointMake(1.0f, 1.0f);

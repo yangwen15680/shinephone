@@ -92,7 +92,7 @@
     
     _chartBottomLine = [CAShapeLayer layer];
     _chartBottomLine.lineCap      = kCALineCapButt;
-    _chartBottomLine.fillColor    = [[UIColor whiteColor] CGColor];
+    _chartBottomLine.fillColor    = [[UIColor blueColor] CGColor];
     _chartBottomLine.lineWidth    = 1.0;
     _chartBottomLine.strokeEnd    = 0.0;
     
@@ -123,7 +123,7 @@
     
     _chartLeftLine = [CAShapeLayer layer];
     _chartLeftLine.lineCap      = kCALineCapButt;
-    _chartLeftLine.fillColor    = [[UIColor clearColor] CGColor];
+    _chartLeftLine.fillColor    = [[UIColor blueColor] CGColor];
     _chartLeftLine.lineWidth    = 1.0;
     _chartLeftLine.strokeEnd    = 0.0;
     
@@ -404,7 +404,7 @@
     
     CAShapeLayer *linesLayer = [CAShapeLayer layer];
     linesLayer.frame = self.bounds;
-    linesLayer.fillColor = [UIColor clearColor].CGColor;
+    linesLayer.fillColor = [UIColor blueColor].CGColor;
     linesLayer.backgroundColor = [UIColor clearColor].CGColor;
     linesLayer.strokeColor = ((UIColor *)_themeAttributes[kPlotBackgroundLineColorKey]).CGColor;
     linesLayer.lineWidth = 1;

@@ -75,7 +75,7 @@
     dayArray=[NSMutableArray array];
     imageArray=[NSMutableArray array];
     powerArray=[NSMutableArray array];
-    imageArray2=[[NSMutableArray alloc]initWithObjects:@"4.gif", @"2.jpg", @"3.jpg", @"1.jpg",@"1.jpg",@"1.jpg",nil];
+    imageArray2=[[NSMutableArray alloc]initWithObjects:@"逆变器.png", @"储能机.png", @"3.jpg", @"1.jpg",@"1.jpg",@"充电桩.png",nil];
     nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"RF", @"BOX",@"switch", @"charge",  nil];
     statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
     powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
