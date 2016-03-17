@@ -151,6 +151,7 @@
         self.photoLibraryImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
         
+        
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
     

@@ -52,44 +52,44 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:_detail];
     
     
-    self.state = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE, 18*NOW_SIZE, labelWidth1, labelHeight)];
+    /*self.state = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE, 18*NOW_SIZE, labelWidth1, labelHeight)];
     self.state.text = @"状态：";
     self.state.font=[UIFont systemFontOfSize:fontSize];
     self.state.textAlignment = NSTextAlignmentLeft;
     self.state.textColor = [UIColor labelColor];
-    [self.contentView addSubview:_state];
+    [self.contentView addSubview:_state];*/
     
-    UIImageView *stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+70*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
+    UIImageView *stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
     stateView.image = IMAGE(@"1.jpg");
     [self.contentView addSubview:stateView];
     
-    self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+70*NOW_SIZE+labelWidth1+labelWidth1/2, 18*NOW_SIZE, labelWidth1, labelHeight)];
+    self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1+labelWidth1/2, 18*NOW_SIZE, labelWidth1, labelHeight)];
     self.stateValue.font=[UIFont systemFontOfSize:fontSize];
     self.stateValue.textAlignment = NSTextAlignmentLeft;
     self.stateValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_stateValue];
     
-    self.power = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10, 50*NOW_SIZE-10, labelWidth1, labelHeight)];
+    self.power = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10*NOW_SIZE, 40*NOW_SIZE, labelWidth1, labelHeight)];
     self.power.text = @"功率：";
     self.power.font=[UIFont systemFontOfSize:fontSize];
     self.power.textAlignment = NSTextAlignmentLeft;
     self.power.textColor = [UIColor labelColor];
     [self.contentView addSubview:_power];
     
-    self.powerValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10+labelWidth-12, 50*NOW_SIZE-10, labelWidth+30*NOW_SIZE, labelHeight)];
+    self.powerValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10*NOW_SIZE+labelWidth-12*NOW_SIZE, 40*NOW_SIZE, labelWidth+30*NOW_SIZE, labelHeight)];
     self.powerValue.font=[UIFont systemFontOfSize:fontSize];
     self.powerValue.textAlignment = NSTextAlignmentLeft;
     self.powerValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_powerValue];
     
-    self.electric = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+labelWidth+labelWidth+labelWidth+labelWidth-5, 50*NOW_SIZE-10, labelWidth1+5, labelHeight)];
+    self.electric = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 40*NOW_SIZE, labelWidth1+5, labelHeight)];
     self.electric.text = @"日电量:";
     self.electric.font=[UIFont systemFontOfSize:fontSize];
     self.electric.textAlignment = NSTextAlignmentLeft;
     self.electric.textColor = [UIColor labelColor];
     [self.contentView addSubview:_electric];
     
-    self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+labelWidth+labelWidth+labelWidth+labelWidth+labelWidth-5, 50*NOW_SIZE-10, labelWidth+30*NOW_SIZE, labelHeight)];
+    self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1+labelWidth, 40*NOW_SIZE, labelWidth+30*NOW_SIZE, labelHeight)];
    
     self.electricValue.font=[UIFont systemFontOfSize:fontSize];
     self.electricValue.textAlignment = NSTextAlignmentLeft;

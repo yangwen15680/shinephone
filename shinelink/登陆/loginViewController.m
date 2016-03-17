@@ -337,23 +337,18 @@
         UINavigationController *Vc2=[[UINavigationController alloc]initWithRootViewController:energyVc];
         UINavigationController *Vc1=[[UINavigationController alloc]initWithRootViewController:deviceVc];
         UINavigationController *Vc4=[[UINavigationController alloc]initWithRootViewController:meVc];
-        
-        
-        
         Vc1.title=@"Device";
         Vc2.title=@"Energy";
         Vc3.title=@"Service";
         Vc4.title=@"Me";
-        
-     
-        Vc1.tabBarItem.image=[UIImage imageNamed:@"设备切图.png"];
-        Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"设备切图.png"];
-        Vc2.tabBarItem.image=[UIImage imageNamed:@"能源.png"];
-        Vc2.tabBarItem.selectedImage=[UIImage imageNamed:@"energy.png"];
-        Vc3.tabBarItem.image=[UIImage imageNamed:@"服务.png"];
-        Vc3.tabBarItem.selectedImage=[UIImage imageNamed:@"server.png"];
-        Vc4.tabBarItem.image=[UIImage imageNamed:@"我的.png"];
-        Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"mine.png"];
+        Vc1.tabBarItem.image=[UIImage imageNamed:@"equipment@2x.png"];
+        Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"equipment@2x.png"];
+        Vc2.tabBarItem.image=[UIImage imageNamed:@"energy@2x.png"];
+        Vc2.tabBarItem.selectedImage=[UIImage imageNamed:@"energy@2x.png"];
+        Vc3.tabBarItem.image=[UIImage imageNamed:@"server@2x.png"];
+        Vc3.tabBarItem.selectedImage=[UIImage imageNamed:@"server@2x.png"];
+        Vc4.tabBarItem.image=[UIImage imageNamed:@"mine@2x.png"];
+        Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"mine@2x.png"];
         
         NSArray *controllers=[NSArray arrayWithObjects:Vc1,Vc2,Vc3,Vc4,nil];
         UITabBarController *tabbar=[[UITabBarController alloc]init];
@@ -361,9 +356,6 @@
 
         [self presentViewController:tabbar animated:YES completion:nil];
     }
-
-
-    
     - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
 presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     
@@ -380,15 +372,5 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -31,6 +31,11 @@
 		3343F3EC1C805BD2009F69BC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3E91C805BD2009F69BC /* MBProgressHUD.m */; };
 		3343F3ED1C805BD2009F69BC /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3EA1C805BD2009F69BC /* README.mdown */; };
 		334720E11C8E7048006388C8 /* energyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 334720E01C8E7048006388C8 /* energyTableViewCell.m */; };
+		334770FA1C9A3D91003A6F13 /* server@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334770F91C9A3D91003A6F13 /* server@2x.png */; };
+		334770FC1C9A3DEE003A6F13 /* energy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334770FB1C9A3DEE003A6F13 /* energy@2x.png */; };
+		334770FE1C9A3E35003A6F13 /* equipment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334770FD1C9A3E35003A6F13 /* equipment@2x.png */; };
+		334771001C9A3E57003A6F13 /* mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334770FF1C9A3E57003A6F13 /* mine@2x.png */; };
+		334771041C9A6219003A6F13 /* aliasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334771031C9A6219003A6F13 /* aliasViewController.m */; };
 		3349A7AE1C75B76F009172C2 /* icon_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7AD1C75B76F009172C2 /* icon_logo.png */; };
 		3349A7B01C75B7AC009172C2 /* loginbg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7AF1C75B7AC009172C2 /* loginbg.jpg */; };
 		3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */ = {isa = PBXBuildFile; fileRef = 3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */; };
@@ -172,21 +177,12 @@
 		33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6791C9931D2003F336F /* 按钮2.png */; };
 		33EFB67C1C99320B003F336F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB67B1C99320B003F336F /* logo.png */; };
 		33EFB67E1C996FB6003F336F /* 储能机.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB67D1C996FB6003F336F /* 储能机.png */; };
-		33EFB6801C997001003F336F /* 逆变器.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB67F1C997001003F336F /* 逆变器.png */; };
+		33EFB6801C997001003F336F /* inverter.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB67F1C997001003F336F /* inverter.png */; };
 		33EFB6821C997050003F336F /* 充电桩.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6811C997050003F336F /* 充电桩.png */; };
 		33EFB6841C99732F003F336F /* 参数.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6831C99732F003F336F /* 参数.png */; };
 		33EFB6861C99737C003F336F /* 数据.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6851C99737C003F336F /* 数据.png */; };
 		33EFB6881C9973AB003F336F /* 日志.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6871C9973AB003F336F /* 日志.png */; };
 		33EFB68A1C9973D2003F336F /* bg3.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6891C9973D2003F336F /* bg3.png */; };
-		33EFB68E1C997646003F336F /* 能源.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB68D1C997646003F336F /* 能源.png */; };
-		33EFB6901C997652003F336F /* 我的.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB68F1C997652003F336F /* 我的.png */; };
-		33EFB6921C99766A003F336F /* 服务.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6911C99766A003F336F /* 服务.png */; };
-		33EFB6941C997A76003F336F /* server.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6931C997A76003F336F /* server.png */; };
-		33EFB6961C997A7B003F336F /* mine.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6951C997A7B003F336F /* mine.png */; };
-		33EFB6981C997A86003F336F /* energy.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6971C997A86003F336F /* energy.png */; };
-		33EFB69A1C997A98003F336F /* 设备.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6991C997A98003F336F /* 设备.png */; };
-		33EFB69C1C997D42003F336F /* equipment.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB69B1C997D42003F336F /* equipment.png */; };
-		33EFB69E1C997ED2003F336F /* 设备切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB69D1C997ED2003F336F /* 设备切图.png */; };
 		33FEFCD21C7D8A9500324374 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33FEFCCF1C7D8A9500324374 /* Address.plist */; };
 		33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEFCD11C7D8A9500324374 /* AddressPickView.m */; };
 		33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 33FEFCD51C7D8E8300324374 /* UIViewExt.m */; };
@@ -344,6 +340,12 @@
 		3343F3EA1C805BD2009F69BC /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		334720DF1C8E7048006388C8 /* energyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = energyTableViewCell.h; sourceTree = "<group>"; };
 		334720E01C8E7048006388C8 /* energyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = energyTableViewCell.m; sourceTree = "<group>"; };
+		334770F91C9A3D91003A6F13 /* server@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "server@2x.png"; sourceTree = "<group>"; };
+		334770FB1C9A3DEE003A6F13 /* energy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "energy@2x.png"; sourceTree = "<group>"; };
+		334770FD1C9A3E35003A6F13 /* equipment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "equipment@2x.png"; sourceTree = "<group>"; };
+		334770FF1C9A3E57003A6F13 /* mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine@2x.png"; sourceTree = "<group>"; };
+		334771021C9A6219003A6F13 /* aliasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aliasViewController.h; sourceTree = "<group>"; };
+		334771031C9A6219003A6F13 /* aliasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = aliasViewController.m; sourceTree = "<group>"; };
 		3349A7AD1C75B76F009172C2 /* icon_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_logo.png; sourceTree = "<group>"; };
 		3349A7AF1C75B7AC009172C2 /* loginbg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loginbg.jpg; sourceTree = "<group>"; };
 		3349A7B11C75B7DF009172C2 /* 圆角矩形3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆角矩形3.png"; sourceTree = "<group>"; };
@@ -418,8 +420,8 @@
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
 		335088D71C73011300D7AA03 /* addDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addDevice.h; sourceTree = "<group>"; };
 		335088D81C73011300D7AA03 /* addDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addDevice.m; sourceTree = "<group>"; };
-		335089191C73112000D7AA03 /* EditStationMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditStationMenuView.h; sourceTree = "<group>"; };
-		3350891A1C73112000D7AA03 /* EditStationMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditStationMenuView.m; sourceTree = "<group>"; };
+		335089191C73112000D7AA03 /* EditStationMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditStationMenuView.h; path = ../../EditStationMenuView.h; sourceTree = "<group>"; };
+		3350891A1C73112000D7AA03 /* EditStationMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditStationMenuView.m; path = ../../EditStationMenuView.m; sourceTree = "<group>"; };
 		335089201C73178100D7AA03 /* btn_cha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_cha.png; path = "../设备/btn_cha.png"; sourceTree = "<group>"; };
 		335089221C73179400D7AA03 /* bg_list_popver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_list_popver.png; path = "../设备/bg_list_popver.png"; sourceTree = "<group>"; };
 		335089241C7323C200D7AA03 /* frag4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frag4.png; path = "../设备/frag4.png"; sourceTree = "<group>"; };
@@ -603,21 +605,12 @@
 		33EFB6791C9931D2003F336F /* 按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "按钮2.png"; sourceTree = "<group>"; };
 		33EFB67B1C99320B003F336F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		33EFB67D1C996FB6003F336F /* 储能机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "储能机.png"; sourceTree = "<group>"; };
-		33EFB67F1C997001003F336F /* 逆变器.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "逆变器.png"; sourceTree = "<group>"; };
+		33EFB67F1C997001003F336F /* inverter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverter.png; sourceTree = "<group>"; };
 		33EFB6811C997050003F336F /* 充电桩.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "充电桩.png"; sourceTree = "<group>"; };
 		33EFB6831C99732F003F336F /* 参数.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "参数.png"; path = "../设备二级界面/储能机二级/参数.png"; sourceTree = "<group>"; };
 		33EFB6851C99737C003F336F /* 数据.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "数据.png"; path = "../设备二级界面/数据.png"; sourceTree = "<group>"; };
 		33EFB6871C9973AB003F336F /* 日志.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "日志.png"; path = "../设备二级界面/日志.png"; sourceTree = "<group>"; };
 		33EFB6891C9973D2003F336F /* bg3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg3.png; sourceTree = "<group>"; };
-		33EFB68D1C997646003F336F /* 能源.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "能源.png"; sourceTree = "<group>"; };
-		33EFB68F1C997652003F336F /* 我的.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的.png"; sourceTree = "<group>"; };
-		33EFB6911C99766A003F336F /* 服务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "服务.png"; sourceTree = "<group>"; };
-		33EFB6931C997A76003F336F /* server.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = server.png; sourceTree = "<group>"; };
-		33EFB6951C997A7B003F336F /* mine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine.png; sourceTree = "<group>"; };
-		33EFB6971C997A86003F336F /* energy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy.png; sourceTree = "<group>"; };
-		33EFB6991C997A98003F336F /* 设备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备.png"; sourceTree = "<group>"; };
-		33EFB69B1C997D42003F336F /* equipment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = equipment.png; sourceTree = "<group>"; };
-		33EFB69D1C997ED2003F336F /* 设备切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备切图.png"; sourceTree = "<group>"; };
 		33FEFCCF1C7D8A9500324374 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Address.plist; path = ../Address.plist; sourceTree = "<group>"; };
 		33FEFCD01C7D8A9500324374 /* AddressPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddressPickView.h; path = ../AddressPickView.h; sourceTree = "<group>"; };
 		33FEFCD11C7D8A9500324374 /* AddressPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddressPickView.m; path = ../AddressPickView.m; sourceTree = "<group>"; };
@@ -806,6 +799,18 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		334771011C9A61B1003A6F13 /* 编辑设备 */ = {
+			isa = PBXGroup;
+			children = (
+				334771021C9A6219003A6F13 /* aliasViewController.h */,
+				334771031C9A6219003A6F13 /* aliasViewController.m */,
+				335089191C73112000D7AA03 /* EditStationMenuView.h */,
+				3350891A1C73112000D7AA03 /* EditStationMenuView.m */,
+			);
+			name = "编辑设备";
+			path = "设备二级界面/编辑设备";
+			sourceTree = "<group>";
+		};
 		3349A7AC1C75A201009172C2 /* 资料管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -926,15 +931,10 @@
 				335089201C73178100D7AA03 /* btn_cha.png */,
 				335089241C7323C200D7AA03 /* frag4.png */,
 				33EFB6891C9973D2003F336F /* bg3.png */,
-				33EFB68D1C997646003F336F /* 能源.png */,
-				33EFB68F1C997652003F336F /* 我的.png */,
-				33EFB6911C99766A003F336F /* 服务.png */,
-				33EFB6991C997A98003F336F /* 设备.png */,
-				33EFB6971C997A86003F336F /* energy.png */,
-				33EFB6951C997A7B003F336F /* mine.png */,
-				33EFB69B1C997D42003F336F /* equipment.png */,
-				33EFB6931C997A76003F336F /* server.png */,
-				33EFB69D1C997ED2003F336F /* 设备切图.png */,
+				334770F91C9A3D91003A6F13 /* server@2x.png */,
+				334770FB1C9A3DEE003A6F13 /* energy@2x.png */,
+				334770FF1C9A3E57003A6F13 /* mine@2x.png */,
+				334770FD1C9A3E35003A6F13 /* equipment@2x.png */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -1043,7 +1043,7 @@
 				3349BB3E1C7EFD8500E6E34B /* 2.jpg */,
 				3349BB3F1C7EFD8500E6E34B /* 3.jpg */,
 				33EFB67D1C996FB6003F336F /* 储能机.png */,
-				33EFB67F1C997001003F336F /* 逆变器.png */,
+				33EFB67F1C997001003F336F /* inverter.png */,
 				33EFB6811C997050003F336F /* 充电桩.png */,
 			);
 			path = "图片";
@@ -1253,12 +1253,11 @@
 				334ED6FE1C9028560095FFBC /* 设备二级界面 */,
 				3367CB2B1C86801700EF460C /* 下拉库 */,
 				335456D51C85A03D00275478 /* 图片 */,
+				334771011C9A61B1003A6F13 /* 编辑设备 */,
 				337F9CC21C71ABD80016FE43 /* deviceViewController.h */,
 				337F9CC31C71ABD80016FE43 /* deviceViewController.m */,
 				337F9E0F1C71C4D90016FE43 /* TableViewCell.h */,
 				337F9E101C71C4D90016FE43 /* TableViewCell.m */,
-				335089191C73112000D7AA03 /* EditStationMenuView.h */,
-				3350891A1C73112000D7AA03 /* EditStationMenuView.m */,
 				335088D61C7300C400D7AA03 /* 添加设备 */,
 			);
 			path = "设备";
@@ -1673,10 +1672,10 @@
 				3355F2621C741ACF006DDE5A /* userdata.png in Resources */,
 				335089251C7323C200D7AA03 /* frag4.png in Resources */,
 				33FEFD311C7DB38400324374 /* 版本更新.png in Resources */,
+				334771001C9A3E57003A6F13 /* mine@2x.png in Resources */,
 				33FEFD651C7DB38400324374 /* icon@2x.png in Resources */,
 				33692BF11C926B4500698375 /* rili.png in Resources */,
 				33EFB63F1C97E875003F336F /* 设备切图.png in Resources */,
-				33EFB6901C997652003F336F /* 我的.png in Resources */,
 				33FEFD491C7DB38400324374 /* 用户协议@3x.png in Resources */,
 				33FEFD531C7DB38400324374 /* icon_arrow.png in Resources */,
 				33FEFD7E1C7DB38400324374 /* Switch-(off)@2x.png in Resources */,
@@ -1689,16 +1688,15 @@
 				33FEFD411C7DB38400324374 /* 荣誉.png in Resources */,
 				334B8F631C915A1B00798A69 /* bg.png in Resources */,
 				33FEFD4F1C7DB38400324374 /* 注册.png in Resources */,
+				334770FC1C9A3DEE003A6F13 /* energy@2x.png in Resources */,
 				33692BF31C926B4B00698375 /* shang.png in Resources */,
 				33FEFD331C7DB38400324374 /* 版本更新@3x.png in Resources */,
 				3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */,
 				33FEFD471C7DB38400324374 /* 用户协议.png in Resources */,
 				33FEFD7B1C7DB38400324374 /* shebei@2x.png in Resources */,
 				33FEFD351C7DB38400324374 /* 产品@2x.png in Resources */,
-				33EFB6941C997A76003F336F /* server.png in Resources */,
 				33FEFD641C7DB38400324374 /* icon---Username@3x.png in Resources */,
 				334B8F491C914A6D00798A69 /* LICENSE in Resources */,
-				33EFB6961C997A7B003F336F /* mine.png in Resources */,
 				33FEFD3D1C7DB38400324374 /* 客服电话.png in Resources */,
 				33FEFD811C7DB38400324374 /* Switch-(on)@2x.png in Resources */,
 				33FEFD621C7DB38400324374 /* icon---Username.png in Resources */,
@@ -1710,9 +1708,7 @@
 				33EFB68A1C9973D2003F336F /* bg3.png in Resources */,
 				33FEFD7D1C7DB38400324374 /* Switch-(off).png in Resources */,
 				33FEFD6B1C7DB38400324374 /* iconfont-faxian@2x.png in Resources */,
-				33EFB68E1C997646003F336F /* 能源.png in Resources */,
 				33FEFD3C1C7DB38400324374 /* 关于ios.png in Resources */,
-				33EFB6921C99766A003F336F /* 服务.png in Resources */,
 				33FEFD5F1C7DB38400324374 /* icon---Password.png in Resources */,
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
 				33FEFD4D1C7DB38400324374 /* 质保@2x.png in Resources */,
@@ -1720,10 +1716,9 @@
 				33FEFD4E1C7DB38400324374 /* 质保@3x.png in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
 				33FEFD401C7DB38400324374 /* 密码3.png in Resources */,
-				33EFB69C1C997D42003F336F /* equipment.png in Resources */,
 				33FEFD591C7DB38400324374 /* icon---Email.png in Resources */,
 				33EFB6841C99732F003F336F /* 参数.png in Resources */,
-				33EFB6801C997001003F336F /* 逆变器.png in Resources */,
+				33EFB6801C997001003F336F /* inverter.png in Resources */,
 				33FEFD541C7DB38400324374 /* icon_logo.png in Resources */,
 				33FEFD3B1C7DB38400324374 /* 个人资料ios.png in Resources */,
 				33FEFD441C7DB38400324374 /* 维修.png in Resources */,
@@ -1745,8 +1740,6 @@
 				33FEFD321C7DB38400324374 /* 版本更新@2x.png in Resources */,
 				33FEFD6F1C7DB38400324374 /* iconfont-klmlianxifangshi@2x.png in Resources */,
 				33FEFD631C7DB38400324374 /* icon---Username@2x.png in Resources */,
-				33EFB6981C997A86003F336F /* energy.png in Resources */,
-				33EFB69E1C997ED2003F336F /* 设备切图.png in Resources */,
 				33FEFD521C7DB38400324374 /* 组-1@3x.png in Resources */,
 				33FEFD561C7DB38400324374 /* icon_press@3x.png in Resources */,
 				33FEFD761C7DB38400324374 /* iconfont-shouji@2x.png in Resources */,
@@ -1767,7 +1760,7 @@
 				33FEFD751C7DB38400324374 /* iconfont-shouji.png in Resources */,
 				33FEFD2E1C7DB38400324374 /* )-拷贝-3.png in Resources */,
 				33EFB6861C99737C003F336F /* 数据.png in Resources */,
-				33EFB69A1C997A98003F336F /* 设备.png in Resources */,
+				334770FA1C9A3D91003A6F13 /* server@2x.png in Resources */,
 				3349BB411C7EFD8500E6E34B /* 3.jpg in Resources */,
 				33FEFD771C7DB38400324374 /* iconfont-shouji@3x.png in Resources */,
 				33FEFD301C7DB38400324374 /* )-拷贝-3@3x.png in Resources */,
@@ -1799,6 +1792,7 @@
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
 				33FEFD421C7DB38400324374 /* 荣誉@2x.png in Resources */,
 				33FEFD6E1C7DB38400324374 /* iconfont-gongsijianjie@3x.png in Resources */,
+				334770FE1C9A3E35003A6F13 /* equipment@2x.png in Resources */,
 				337F9C931C71A6710016FE43 /* Assets.xcassets in Resources */,
 				33FEFD6C1C7DB38400324374 /* iconfont-faxian@3x.png in Resources */,
 			);
@@ -1860,6 +1854,7 @@
 				33EFB62D1C979CB3003F336F /* MJRefreshLegendHeader.m in Sources */,
 				3343F3DB1C80405D009F69BC /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				334B8F4C1C914A6D00798A69 /* PNChartLabel.m in Sources */,
+				334771041C9A6219003A6F13 /* aliasViewController.m in Sources */,
 				33EFB66F1C98F9B1003F336F /* ZFLine.m in Sources */,
 				33EFB6301C979CB3003F336F /* UIView+MJExtension.m in Sources */,
 				33EFB66D1C98F9B1003F336F /* ZFLabel.m in Sources */,

@@ -21,14 +21,14 @@
         [cancelButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelButton];
         
-        UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55*NOW_SIZE, 180*NOW_SIZE, frame.size.width - 110*NOW_SIZE, 230*NOW_SIZE)];
+        UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55*NOW_SIZE, 180*NOW_SIZE, frame.size.width - 110*NOW_SIZE, 210*NOW_SIZE)];
         bgImageView.image = IMAGE(@"bg_list_popver.png");
         bgImageView.userInteractionEnabled = YES;
         [self addSubview:bgImageView];
         
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [addButton setTitle:root_Add_Plant forState:UIControlStateNormal];
+        [addButton setTitle:@"修改别名" forState:UIControlStateNormal];
         [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [addButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         addButton.tag = 1051;
@@ -37,7 +37,7 @@
         
         UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         deleteButton.frame = CGRectMake(0, 1 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [deleteButton setTitle:root_Remove_Station forState:UIControlStateNormal];
+        [deleteButton setTitle:@"修改头像" forState:UIControlStateNormal];
         [deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [deleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         deleteButton.tag = 1052;
@@ -46,7 +46,7 @@
         
         UIButton *uploadStationImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
         uploadStationImageButton.frame = CGRectMake(0, 2 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [uploadStationImageButton setTitle:root_Upload_Picture forState:UIControlStateNormal];
+        [uploadStationImageButton setTitle:@"删除设备" forState:UIControlStateNormal];
         [uploadStationImageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [uploadStationImageButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         uploadStationImageButton.tag = 1053;
