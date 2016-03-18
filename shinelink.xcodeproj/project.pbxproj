@@ -77,6 +77,8 @@
 		334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7001C9028BB0095FFBC /* secondViewController.m */; };
 		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
 		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
+		335047201C9BA6F600BF8683 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350471F1C9BA6F600BF8683 /* EGOCache.m */; };
+		335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335047231C9BF39A00BF8683 /* homeDeviceViewController.m */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
 		3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350891A1C73112000D7AA03 /* EditStationMenuView.m */; };
 		335089211C73178100D7AA03 /* btn_cha.png in Resources */ = {isa = PBXBuildFile; fileRef = 335089201C73178100D7AA03 /* btn_cha.png */; };
@@ -124,7 +126,6 @@
 		33692BF31C926B4B00698375 /* shang.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF21C926B4B00698375 /* shang.png */; };
 		33692BF51C926B5000698375 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF41C926B5000698375 /* xia.png */; };
 		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
-		33692BFC1C92964D00698375 /* Line3VIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BFB1C92964D00698375 /* Line3VIew.m */; };
 		337F9C851C71A6710016FE43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C841C71A6710016FE43 /* main.m */; };
 		337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C871C71A6710016FE43 /* AppDelegate.m */; };
 		337F9C911C71A6710016FE43 /* shinelink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */; };
@@ -418,6 +419,10 @@
 		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
+		3350471E1C9BA6F600BF8683 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
+		3350471F1C9BA6F600BF8683 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
+		335047221C9BF39A00BF8683 /* homeDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeDeviceViewController.h; sourceTree = "<group>"; };
+		335047231C9BF39A00BF8683 /* homeDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = homeDeviceViewController.m; sourceTree = "<group>"; };
 		335088D71C73011300D7AA03 /* addDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addDevice.h; sourceTree = "<group>"; };
 		335088D81C73011300D7AA03 /* addDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addDevice.m; sourceTree = "<group>"; };
 		335089191C73112000D7AA03 /* EditStationMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditStationMenuView.h; path = ../../EditStationMenuView.h; sourceTree = "<group>"; };
@@ -501,8 +506,6 @@
 		33692BF41C926B5000698375 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xia.png; path = "../设备二级界面/xia.png"; sourceTree = "<group>"; };
 		33692BF71C92952000698375 /* engrgySencondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engrgySencondViewController.h; sourceTree = "<group>"; };
 		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = engrgySencondViewController.m; sourceTree = "<group>"; };
-		33692BFA1C92964D00698375 /* Line3VIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line3VIew.h; sourceTree = "<group>"; };
-		33692BFB1C92964D00698375 /* Line3VIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line3VIew.m; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		337F9C861C71A6710016FE43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 				334771031C9A6219003A6F13 /* aliasViewController.m */,
 				335089191C73112000D7AA03 /* EditStationMenuView.h */,
 				3350891A1C73112000D7AA03 /* EditStationMenuView.m */,
+				3350471E1C9BA6F600BF8683 /* EGOCache.h */,
+				3350471F1C9BA6F600BF8683 /* EGOCache.m */,
 			);
 			name = "编辑设备";
 			path = "设备二级界面/编辑设备";
@@ -950,6 +955,15 @@
 				334B8F251C91281600798A69 /* Line2View.m */,
 			);
 			path = "设备二级界面";
+			sourceTree = "<group>";
+		};
+		335047211C9BF37D00BF8683 /* 家庭设备二级 */ = {
+			isa = PBXGroup;
+			children = (
+				335047221C9BF39A00BF8683 /* homeDeviceViewController.h */,
+				335047231C9BF39A00BF8683 /* homeDeviceViewController.m */,
+			);
+			path = "家庭设备二级";
 			sourceTree = "<group>";
 		};
 		335088D61C7300C400D7AA03 /* 添加设备 */ = {
@@ -1139,8 +1153,6 @@
 				33692BF81C92952000698375 /* engrgySencondViewController.m */,
 				33EFB6761C98FA7F003F336F /* newLine.h */,
 				33EFB6771C98FA7F003F336F /* newLine.m */,
-				33692BFA1C92964D00698375 /* Line3VIew.h */,
-				33692BFB1C92964D00698375 /* Line3VIew.m */,
 			);
 			path = "能源二级";
 			sourceTree = "<group>";
@@ -1236,6 +1248,7 @@
 		337F9CC01C71ABD80016FE43 /* 能源 */ = {
 			isa = PBXGroup;
 			children = (
+				335047211C9BF37D00BF8683 /* 家庭设备二级 */,
 				33692BF61C9294D300698375 /* 能源二级 */,
 				337F9CC91C71AC200016FE43 /* energyViewController.h */,
 				337F9CCA1C71AC200016FE43 /* energyViewController.m */,
@@ -1833,6 +1846,7 @@
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
 				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
 				3343F3AA1C803DC9009F69BC /* BaseRequest.m in Sources */,
+				335047201C9BA6F600BF8683 /* EGOCache.m in Sources */,
 				33EFB62B1C979CB3003F336F /* MJRefreshHeader.m in Sources */,
 				3363DD221C7C598B00D740FB /* countryViewController.m in Sources */,
 				334B8F561C914A6D00798A69 /* PNScatterChartData.m in Sources */,
@@ -1841,7 +1855,6 @@
 				334B8F4E1C914A6D00798A69 /* PNColor.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
 				335456B91C852EB000275478 /* RootViewController.m in Sources */,
-				33692BFC1C92964D00698375 /* Line3VIew.m in Sources */,
 				33EFB66A1C98F9B1003F336F /* ZFBarChart.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
 				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
@@ -1917,6 +1930,7 @@
 				33EFB6711C98F9B1003F336F /* ZFPieChart.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,
+				335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */,
 				334B8F551C914A6D00798A69 /* PNScatterChart.m in Sources */,
 				33EFB62C1C979CB3003F336F /* MJRefreshLegendFooter.m in Sources */,
 				3355F26E1C747307006DDE5A /* aboutOneTableViewCell.m in Sources */,

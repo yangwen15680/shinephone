@@ -7,7 +7,6 @@
 //
 
 #import "engrgySencondViewController.h"
-#import "Line3VIew.h"
 #import "newLine.h"
 #define dateHeight 30*NOW_SIZE
 

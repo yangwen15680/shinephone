@@ -7,6 +7,8 @@
 //
 
 #import "TableViewCell.h"
+#import "EGOCache.h"
+
 #define labelWidth  38*NOW_SIZE
 #define labelWidth1  38*NOW_SIZE
 #define labelHeight  20*NOW_SIZE
@@ -105,6 +107,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
       return self;
 }
+
 
 - (void)drawRect:(CGRect)rect
 {

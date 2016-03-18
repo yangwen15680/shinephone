@@ -21,7 +21,6 @@
 @interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
-
 @property(nonatomic,strong)EditStationMenuView  *editCellect;
 @property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
@@ -33,6 +32,7 @@
 @property (nonatomic, strong) NSMutableArray *typeArr;
 @property (nonatomic, strong) NSMutableDictionary *plantId;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
 @end
 
 @implementation deviceViewController
@@ -361,18 +361,28 @@
     
     UIImage *image = info[@"UIImagePickerControllerEditedImage"];
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
-    
     NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
-    [dataImageDict setObject:imageData forKey:@"plantImg"];
-    NSString *plantId = _dataArr[_indexPath.row][@"plantId"];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:@{@"id":[NSNumber numberWithInteger:[plantId integerValue]]} paramarsSite:@"/plantA.do?op=updateImg" dataImageDict:dataImageDict sucessBlock:^(id content) {
-        NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-        if ([res isEqualToString:@"true"]) {
-            [self showToastViewWithTitle:NSLocalizedString(@"Successfully modified", @"Successfully modified")];
-            NSArray *indexPaths = @[_indexPath];
-            [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        } else {
-            [self showToastViewWithTitle:NSLocalizedString(@"Modification fails", @"Modification fails")];
+    [dataImageDict setObject:imageData forKey:@"image"];
+    _dataDic=[NSMutableDictionary dictionaryWithObject:@"" forKey:@"alias"];
+      [_dataDic setObject:SNArray[_indexPath.row] forKey:@"inverterId"];
+    
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newInverterAPI.do?op=updateInvInfo" dataImageDict:dataImageDict sucessBlock:^(id content) {
+        NSLog(@"updateInvInfo: %@", content);
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        if (content1) {
+            if ([content1[@"success"] integerValue] == 0) {
+                if ([content1[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                }
+            }else{
+                
+                [self showAlertViewWithTitle:nil message:@"修改成功" cancelButtonTitle:root_Yes];
+                NSArray *indexPaths = @[_indexPath];
+                TableViewCell *cell = (TableViewCell *)[self.tableView cellForRowAtIndexPath:_indexPath];
+              
+                [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+                
+            }
         }
     } failure:^(NSError *error) {
         [self showToastViewWithTitle:root_Networking];
@@ -487,11 +497,10 @@
 }
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-    //添加一个删除按钮
+    if(indexPath.section==0){
+    //添加一个编辑按钮
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleNormal) title:@"编辑 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了编辑");
-        
         _indexPath=indexPath;
         _editCellect = [[EditStationMenuView alloc] initWithFrame:self.view.bounds];
         _editCellect.delegate = self;
@@ -500,8 +509,8 @@
         _editCellect.blurRadius = 10.0f;
         [[UIApplication sharedApplication].keyWindow addSubview:_editCellect];
     }];
-    //删除按钮颜色
     deleteAction.backgroundColor = [UIColor redColor];
+    
     //添加一个置顶按钮
     UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"置顶 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了置顶");
@@ -526,7 +535,7 @@
     //置顶按钮颜色
     topRowAction.backgroundColor = [UIColor blueColor];
     
-     return @[deleteAction,topRowAction];
+        return @[deleteAction,topRowAction];}else return nil;
     
 }
 

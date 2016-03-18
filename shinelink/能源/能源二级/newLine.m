@@ -133,9 +133,15 @@
         [_lineChart removeFromSuperview];
     }
     _pieChart = [[ZFPieChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT)];
-    _pieChart.title = @"xx小学各年级人数占比";
-    _pieChart.valueArray = [NSMutableArray arrayWithObjects:@"280", @"255", @"308", @"273", @"236", @"267", nil];
-    _pieChart.nameArray = [NSMutableArray arrayWithObjects:@"一年级", @"二年级", @"三年级", @"四年级", @"五年级", @"六年级", nil];
+    _pieChart.title = @"家庭用电占比";
+    
+      _pieChart.nameArray = [NSMutableArray array];
+    _pieChart.nameArray=(NSMutableArray*)dataDict.allKeys;
+    NSMutableArray *value = [NSMutableArray array];
+    for (NSString *key in  dataDict) {
+        [value addObject:dataDict[key]];
+    }
+   _pieChart.valueArray = [NSMutableArray arrayWithArray:value];
     _pieChart.colorArray = [NSMutableArray arrayWithObjects:ZFColor(71, 204, 255, 1), ZFColor(253, 203, 76, 1), ZFColor(214, 205, 153, 1), ZFColor(78, 250, 188, 1), ZFColor(16, 140, 39, 1), ZFColor(45, 92, 34, 1), nil];
     _pieChart.percentType = kPercentTypeInteger;
     [self addSubview:_pieChart];

@@ -9,6 +9,7 @@
 #import "energyViewController.h"
 #import "energyTableViewCell.h"
 #import "engrgySencondViewController.h"
+#import "homeDeviceViewController.h"
 
 @interface energyViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -87,9 +88,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row==0){
     engrgySencondViewController *sd=[[engrgySencondViewController alloc ]init];
     sd.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:sd animated:NO];
+        [self.navigationController pushViewController:sd animated:NO];}
+    if (indexPath.row==1) {
+        homeDeviceViewController *home=[[homeDeviceViewController alloc]init];
+        [self.navigationController pushViewController:home animated:YES];
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
