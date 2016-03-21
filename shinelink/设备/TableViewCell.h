@@ -19,5 +19,6 @@
 @property (nonatomic, strong) UILabel *powerValue;
 @property (nonatomic, strong) UILabel *electric;
 @property (nonatomic, strong) UILabel *electricValue;
+@property (nonatomic, strong) UIImageView *stateView;
 
 @end

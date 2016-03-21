@@ -33,10 +33,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName :[UIColor whiteColor]
+                                                                      }];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self setTitle:@"服务"];
+      [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     arrayName=@[@"客户服务",@"质保查询",@"增值业务",@"更多产品"];
     arrayImage=@[@"维修@2x.png",@"质保@2x.png",@"产品@2x.png",@"荣誉@2x.png"];
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 

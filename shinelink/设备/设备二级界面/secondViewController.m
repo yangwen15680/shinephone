@@ -169,6 +169,13 @@
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightState];
     
+    UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+    dayDate.text=@"日发电量";
+    dayDate.textAlignment=NSTextAlignmentLeft;
+    dayDate.textColor=[UIColor blackColor];
+    dayDate.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [self.view addSubview:dayDate];
+    
     _progressView = [[CircleView alloc] initWithFrame:CGRectMake(0, 0, 180*NOW_SIZE, 200*NOW_SIZE)];
     CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 120*NOW_SIZE);
     _progressView.center = center;

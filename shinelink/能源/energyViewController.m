@@ -28,13 +28,19 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    nameArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量",@"家庭用电设备",@"光伏收益",@"储能收益",@"光伏电量", nil];
-    monthArray=[[NSMutableArray alloc]initWithObjects:@"月:",@"最省电:",@"月:",@"月:",@"月:", nil];
-    monthDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m", nil];
-    dayDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m", nil];
-    dayArray=[[NSMutableArray alloc]initWithObjects:@"日:",@"最耗电:",@"日:",@"日:",@"日:", nil];
-    imageArray=[[NSMutableArray alloc]initWithObjects:@"2.jpg",@"2.jpg",@"2.jpg",@"2.jpg",@"2.jpg", nil];
+    [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName :[UIColor whiteColor]
+                                                                      }];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self setTitle:@"能源分析"];
+    
+    nameArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量",@"家庭用电设备",@"光伏电量",@"储能电量", nil];
+    monthArray=[[NSMutableArray alloc]initWithObjects:@"月:",@"最省电:",@"月:",@"月:",nil];
+    monthDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",nil];
+    dayDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",nil];
+    dayArray=[[NSMutableArray alloc]initWithObjects:@"日:",@"最耗电:",@"日:",@"日:", nil];
+    imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"光伏收益.png",@"光伏电量.png", nil];
     // Do any additional setup after loading the view.
     [self _createTableView];
 }

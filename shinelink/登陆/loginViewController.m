@@ -325,10 +325,13 @@
             [stationName addObject:a];
         }
         }
+
         findViewController *findVc=[[findViewController alloc]init];
         findVc.title=@"服务";
+        
         energyViewController *energyVc=[[energyViewController alloc]init];
-           energyVc.title=@"能源分析";
+          // energyVc.title=@"能源分析";
+        
         deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];
         meViewController *meVc=[[meViewController alloc]init];
          meVc.title=@"我";

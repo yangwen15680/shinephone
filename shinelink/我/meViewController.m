@@ -40,7 +40,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName :[UIColor whiteColor]
+                                                                      }];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self setTitle:@"我"];
+      [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     arrayName=@[@"资料管理",@"系统设置",@"关于"];
     arrayImage=@[@"about.png",@"setup.png",@"userdata.png"];
     
@@ -74,7 +79,7 @@
 - (void)_createHeaderView {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
-    UIColor *color=[UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1];
+    UIColor *color=COLOR(17, 183, 243, 1);
  [headerView setBackgroundColor:color];
     double imageSize=150;
     

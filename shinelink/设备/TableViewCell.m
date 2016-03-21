@@ -61,9 +61,9 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.state.textColor = [UIColor labelColor];
     [self.contentView addSubview:_state];*/
     
-    UIImageView *stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
-    stateView.image = IMAGE(@"1.jpg");
-    [self.contentView addSubview:stateView];
+   _stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
+  
+    [self.contentView addSubview:_stateView];
     
     self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1+labelWidth1/2, 18*NOW_SIZE, labelWidth1, labelHeight)];
     self.stateValue.font=[UIFont systemFontOfSize:fontSize];

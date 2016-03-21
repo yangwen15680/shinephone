@@ -53,7 +53,7 @@
     UIScrollView *_scrollerView;
     NSString *_indenty;
     
-    
+       NSMutableArray* imageStatueArray;
     //全局变量 用来控制偏移量
     NSInteger pageName;
 }
@@ -78,8 +78,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   [self.navigationController.navigationBar setTranslucent:YES];
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
-    self.view.layer.contents = (id)bgImage.CGImage;
+    [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
+ 
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
@@ -101,11 +101,12 @@
     imageArray=[NSMutableArray array];
     powerArray=[NSMutableArray array];
     SNArray=[NSMutableArray array];
-    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"3.jpg", @"1.jpg",@"1.jpg",@"充电桩.png",nil];
-    nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"RF", @"BOX",@"switch", @"charge",  nil];
+    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
+    nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"Plug", @"Regulator",@"controller", @"charge",  nil];
     statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
     powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
     dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
+    imageStatueArray=[NSMutableArray array];
 }
 
 #pragma mark - navigationItem
@@ -154,9 +155,9 @@
     DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:DTK];
     menuView.currentNav = self.navigationController;
     menuView.dropWidth = 150.f;
-    menuView.titleColor=[UIColor blueColor];
+    menuView.titleColor=[UIColor whiteColor];
     menuView.titleFont = [UIFont systemFontOfSize:18.f];
-    menuView.textColor = [UIColor blueColor];;
+    menuView.textColor =COLOR(17, 183, 243, 1);
     menuView.textFont = [UIFont systemFontOfSize:13.f];
     menuView.cellSeparatorColor =[UIColor blueColor];;
     menuView.textFont = [UIFont systemFontOfSize:14.f];
@@ -204,8 +205,10 @@
              [powerArray addObject:PO];
         NSString *ST=[NSString stringWithFormat:@"%@",content[i][@"deviceStatus"]];
             NSString *SD;
-            if([ST isEqualToString:@"-1"]){SD=@"未连接";}
-            else{SD=@"已连接";}
+            if([ST isEqualToString:@"-1"])
+            {SD=@"未连接";
+                [imageStatueArray addObject:@"connected@2x.png"];}
+            else{SD=@"已连接";[imageStatueArray addObject:@"disconnect@2x.png"];}
             [statueArray addObject:SD];
              NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"eToday"]];
             [dayArray addObject:DY];
@@ -406,14 +409,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
     TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if([cell.titleLabel.text isEqualToString:@"inverter"]){
+    if(indexPath.section==0){
+    if([_typeArr[indexPath.row] isEqualToString:@"inverter"]){
     secondViewController *sd=[[secondViewController alloc ]init];
     sd.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:sd animated:NO];}
-    if([cell.titleLabel.text isEqualToString:@"storage"]){
+        [self.navigationController pushViewController:sd animated:NO];}}
+    else{
+    if([cell.titleLabel.text  isEqualToString:@"storage"]){
         secondCNJ *sd=[[secondCNJ alloc ]init];
         sd.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:sd animated:NO];}
+        [self.navigationController pushViewController:sd animated:NO];}}
     
 }
 
@@ -442,7 +447,7 @@
        cell.stateValue.text = statueArray[indexPath.row];
      cell.powerValue.text = powerArray[indexPath.row];
      cell.electricValue.text =dayArray[indexPath.row];
- 
+       cell.stateView.image = IMAGE(imageStatueArray[indexPath.row]);
         return cell;
     }
     else{
@@ -458,6 +463,7 @@
         cell.stateValue.text = statueArray2[indexPath.row];
         cell.powerValue.text = powerArray2[indexPath.row];
         cell.electricValue.text =dayArray2[indexPath.row];
+        cell.stateView.image = IMAGE(@"disconnect@2x.png");
         return cell;
         
         }
