@@ -13,7 +13,9 @@
 #import "BaseRequest.h"
 #import "MBProgressHUD.h"
 #import "RootViewController.h"
+#import "CoreDataManager.h"
 
+#define ManagerObjectModelFileName @"deviceCore" //数据库名字
 
 #define IMAGE(_NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:_NAME]]
 #define COLOR(_R,_G,_B,_A) [UIColor colorWithRed:_R / 255.0f green:_G / 255.0f blue:_B / 255.0f alpha:_A]

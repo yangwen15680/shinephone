@@ -58,7 +58,11 @@
     NSLog(@"reUsername=%@",reUsername);
     NSLog(@"rePassword=%@",rePassword);
     if (reUsername==nil || reUsername==NULL||[reUsername isEqual:@""]) {
+           NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.sqlite",  [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], ManagerObjectModelFileName]];
+        [[NSFileManager defaultManager]removeItemAtPath:url.path error:nil];
+        
         [self addSubViews];
+        
         // didPresentControllerButtonTouch
     }else{
         _userTextField=[[UITextField alloc]init];

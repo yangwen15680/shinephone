@@ -87,6 +87,11 @@
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
+		3353B19F1CA116FF00577595 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3353B19E1CA116FF00577595 /* CoreData.framework */; };
+		3353B1AD1CA125E300577595 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */; };
+		3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */; };
+		3353B1B31CA126EB00577595 /* DemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B11CA126EB00577595 /* DemoDevice.m */; };
+		3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B51CA1272C00577595 /* CoreDataManager.m */; };
 		335456B61C852E6200275478 /* AddCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B51C852E6200275478 /* AddCellectViewController.m */; };
 		335456B91C852EB000275478 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B81C852EB000275478 /* RootViewController.m */; };
 		335456BC1C852ED900275478 /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456BB1C852ED900275478 /* TempViewController.m */; };
@@ -128,7 +133,6 @@
 		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
 		337F9C851C71A6710016FE43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C841C71A6710016FE43 /* main.m */; };
 		337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C871C71A6710016FE43 /* AppDelegate.m */; };
-		337F9C911C71A6710016FE43 /* shinelink.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */; };
 		337F9C931C71A6710016FE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 337F9C921C71A6710016FE43 /* Assets.xcassets */; };
 		337F9CA11C71A6710016FE43 /* shinelinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9CA01C71A6710016FE43 /* shinelinkTests.m */; };
 		337F9CAC1C71A6710016FE43 /* shinelinkUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9CAB1C71A6710016FE43 /* shinelinkUITests.m */; };
@@ -149,7 +153,6 @@
 		3383EFA31C9F8A6F0075E834 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF951C9F8A6F0075E834 /* UIScrollView+MJExtension.m */; };
 		3383EFA41C9F8A6F0075E834 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF971C9F8A6F0075E834 /* UIScrollView+MJRefresh.m */; };
 		3383EFA51C9F8A6F0075E834 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF991C9F8A6F0075E834 /* UIView+MJExtension.m */; };
-		3383F12C1C9FD4B00075E834 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383F12B1C9FD4B00075E834 /* CoreDataHelper.m */; };
 		3383F12E1C9FF4190075E834 /* Plug.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F12D1C9FF4190075E834 /* Plug.png */; };
 		3383F1311C9FF4210075E834 /* PowerRegulator.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F12F1C9FF4210075E834 /* PowerRegulator.png */; };
 		3383F1321C9FF4210075E834 /* TemperatureController.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F1301C9FF4210075E834 /* TemperatureController.png */; };
@@ -444,6 +447,14 @@
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewCell.h; sourceTree = "<group>"; };
 		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
+		3353B19E1CA116FF00577595 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
+		3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DemoDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3353B1B01CA126EB00577595 /* DemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoDevice.h; sourceTree = "<group>"; };
+		3353B1B11CA126EB00577595 /* DemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDevice.m; sourceTree = "<group>"; };
+		3353B1B41CA1272C00577595 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		3353B1B51CA1272C00577595 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		335456B41C852E6200275478 /* AddCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController.h; sourceTree = "<group>"; };
 		335456B51C852E6200275478 /* AddCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellectViewController.m; sourceTree = "<group>"; };
 		335456B71C852EB000275478 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "登陆/配置设备/RootViewController.h"; sourceTree = "<group>"; };
@@ -518,7 +529,6 @@
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		337F9C861C71A6710016FE43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		337F9C871C71A6710016FE43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		337F9C901C71A6710016FE43 /* shinelink.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = shinelink.xcdatamodel; sourceTree = "<group>"; };
 		337F9C921C71A6710016FE43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		337F9C971C71A6710016FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		337F9C9C1C71A6710016FE43 /* shinelinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shinelinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -563,8 +573,6 @@
 		3383EF971C9F8A6F0075E834 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		3383EF981C9F8A6F0075E834 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		3383EF991C9F8A6F0075E834 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		3383F12A1C9FD4B00075E834 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
-		3383F12B1C9FD4B00075E834 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		3383F12D1C9FF4190075E834 /* Plug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Plug.png; sourceTree = "<group>"; };
 		3383F12F1C9FF4210075E834 /* PowerRegulator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PowerRegulator.png; sourceTree = "<group>"; };
 		3383F1301C9FF4210075E834 /* TemperatureController.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemperatureController.png; sourceTree = "<group>"; };
@@ -729,6 +737,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3353B19F1CA116FF00577595 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1221,7 +1230,6 @@
 				335456B81C852EB000275478 /* RootViewController.m */,
 				337F9C921C71A6710016FE43 /* Assets.xcassets */,
 				337F9C971C71A6710016FE43 /* Info.plist */,
-				337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */,
 				337F9C831C71A6710016FE43 /* Supporting Files */,
 				337F9E0D1C71BF9E0016FE43 /* Header.h */,
 				337F9E0E1C71BFC10016FE43 /* PrefixHeader.pch */,
@@ -1236,6 +1244,7 @@
 		337F9C831C71A6710016FE43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3353B19E1CA116FF00577595 /* CoreData.framework */,
 				337F9C841C71A6710016FE43 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1450,8 +1459,13 @@
 		3383F1291C9FD1760075E834 /* datacore */ = {
 			isa = PBXGroup;
 			children = (
-				3383F12A1C9FD4B00075E834 /* CoreDataHelper.h */,
-				3383F12B1C9FD4B00075E834 /* CoreDataHelper.m */,
+				3353B1B41CA1272C00577595 /* CoreDataManager.h */,
+				3353B1B51CA1272C00577595 /* CoreDataManager.m */,
+				3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */,
+				3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */,
+				3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */,
+				3353B1B01CA126EB00577595 /* DemoDevice.h */,
+				3353B1B11CA126EB00577595 /* DemoDevice.m */,
 			);
 			path = datacore;
 			sourceTree = "<group>";
@@ -1914,6 +1928,7 @@
 				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,
+				3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */,
 				334B8F5F1C914B4E00798A69 /* README.md in Sources */,
 				3343F3DF1C80405D009F69BC /* UIProgressView+AFNetworking.m in Sources */,
 				334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */,
@@ -1938,13 +1953,13 @@
 				334B8F261C91281600798A69 /* Line2View.m in Sources */,
 				334B8F531C914A6D00798A69 /* PNPieChart.m in Sources */,
 				334B8F4F1C914A6D00798A69 /* PNGenericChart.m in Sources */,
-				3383F12C1C9FD4B00075E834 /* CoreDataHelper.m in Sources */,
 				33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */,
 				33EFB66E1C98F9B1003F336F /* ZFCirque.m in Sources */,
 				334B8F511C914A6D00798A69 /* PNLineChartData.m in Sources */,
 				33EFB6711C98F9B1003F336F /* ZFPieChart.m in Sources */,
 				337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */,
 				3343F3C21C80403C009F69BC /* AFNetworkReachabilityManager.m in Sources */,
+				3353B1B31CA126EB00577595 /* DemoDevice.m in Sources */,
 				335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */,
 				334B8F551C914A6D00798A69 /* PNScatterChart.m in Sources */,
 				3355F26E1C747307006DDE5A /* aboutOneTableViewCell.m in Sources */,
@@ -1953,7 +1968,6 @@
 				334B8F521C914A6D00798A69 /* PNLineChartDataItem.m in Sources */,
 				3383EFA51C9F8A6F0075E834 /* UIView+MJExtension.m in Sources */,
 				3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */,
-				337F9C911C71A6710016FE43 /* shinelink.xcdatamodeld in Sources */,
 				3343F3C41C80403C009F69BC /* AFURLConnectionOperation.m in Sources */,
 				3355F26B1C746BF5006DDE5A /* aboutTableViewCell.m in Sources */,
 				3349BB3B1C7EF66200E6E34B /* userdataViewController.m in Sources */,
@@ -1962,6 +1976,7 @@
 				3367CB4D1C86806600EF460C /* MASViewAttribute.m in Sources */,
 				3383EFA41C9F8A6F0075E834 /* UIScrollView+MJRefresh.m in Sources */,
 				3383EF9B1C9F8A6F0075E834 /* MJRefreshComponent.m in Sources */,
+				3353B1AD1CA125E300577595 /* deviceCore.xcdatamodeld in Sources */,
 				33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */,
 				3383EF9C1C9F8A6F0075E834 /* MJRefreshConst.m in Sources */,
 				3383EF9E1C9F8A6F0075E834 /* MJRefreshGifFooter.m in Sources */,
@@ -1975,6 +1990,7 @@
 				3343F3C31C80403C009F69BC /* AFSecurityPolicy.m in Sources */,
 				33EFB6021C979B5F003F336F /* StationCellectTableViewCell.m in Sources */,
 				3367CB4F1C86806700EF460C /* NSArray+MASAdditions.m in Sources */,
+				3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */,
 				334B8F581C914A6D00798A69 /* README.md in Sources */,
 				334B8F221C91250300798A69 /* SHLineGraphView.m in Sources */,
 				335456D41C8588E200275478 /* SNViewController.m in Sources */,
@@ -2215,13 +2231,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		337F9C8F1C71A6710016FE43 /* shinelink.xcdatamodeld */ = {
+		3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				337F9C901C71A6710016FE43 /* shinelink.xcdatamodel */,
+				3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */,
 			);
-			currentVersion = 337F9C901C71A6710016FE43 /* shinelink.xcdatamodel */;
-			path = shinelink.xcdatamodeld;
+			currentVersion = 3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */;
+			path = deviceCore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

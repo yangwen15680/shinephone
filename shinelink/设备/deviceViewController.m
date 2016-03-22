@@ -15,6 +15,8 @@
 #import "StationCellectViewController.h"
 #import "secondCNJ.h"
 #import "aliasViewController.h"
+#import "DemoDevice.h"
+
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -33,6 +35,9 @@
 @property (nonatomic, strong) NSMutableDictionary *plantId;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
+@property (nonatomic, strong) CoreDataManager *manager;
+@property (nonatomic, strong) NSMutableArray *managerArray;
+@property (nonatomic, strong) DemoDevice *demoDevice;
 @end
 
 @implementation deviceViewController
@@ -56,6 +61,8 @@
        NSMutableArray* imageStatueArray;
     //全局变量 用来控制偏移量
     NSInteger pageName;
+    //coredata
+   
 }
 
 - (instancetype)initWithDataDict:(NSMutableArray *)stationID stationName:(NSMutableArray *)stationName{
@@ -82,7 +89,8 @@
  
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
     self.navigationItem.rightBarButtonItem = rightButton;
-    
+
+   
     [self initData];
        [self addTitleMenu];
     [self addRightItem];
@@ -93,6 +101,84 @@
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 }
 
+#pragma mark - CoreData
+-(void)initDatacore{
+    _manager=[CoreDataManager sharedCoreDataManager];
+    _managerArray=[NSMutableArray array];
+      BOOL firstRun = !_manager.hasStore;
+    if (firstRun){
+        [self initDemoData];}
+    else{[self request];}
+}
+
+-(void)initDemoData{
+  
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    //    设置要检索哪种类型的实体对象
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DemoDevice" inManagedObjectContext:_manager.managedObjContext];
+    //    设置请求实体
+    [request setEntity:entity];
+    
+    //    指定对结果的排序方式
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptions];
+    
+    NSError *error = nil;
+    //    执行获取数据请求，返回数组
+    NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+    for (NSManagedObject *obj in fetchResult)
+    {
+        [_manager.managedObjContext deleteObject:obj];
+    }       
+    
+    for(int i=0;i<imageArray2.count;i++)
+    {
+       _demoDevice=[NSEntityDescription insertNewObjectForEntityForName:@"DemoDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
+        
+        _demoDevice.name=nameArray2[i];
+        _demoDevice.power=powerArray2[i];
+        _demoDevice.dayPower=dayArray2[i];
+        UIImage *image=IMAGE(imageArray2[i]);
+        NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
+        _demoDevice.image=imagedata;
+       
+    }
+    
+    BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }else
+    {
+        NSLog(@"Save successFull");
+    }
+    [self request];
+}
+
+-(void)request{
+    //    创建取回数据请求
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    //    设置要检索哪种类型的实体对象
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"DemoDevice" inManagedObjectContext:_manager.managedObjContext];
+    //    设置请求实体
+    [request setEntity:entity];
+    
+    //    指定对结果的排序方式
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptions];
+    
+    NSError *error = nil;
+    //    执行获取数据请求，返回数组
+    NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+    if (!fetchResult)
+    {
+        NSLog(@"error:%@,%@",error,[error userInfo]);
+    }
+    [self.managerArray removeAllObjects];
+    [self.managerArray addObjectsFromArray:fetchResult];
+}
+
 -(void)initData{
     _typeArr=[NSMutableArray array];
     nameArray=[NSMutableArray array];
@@ -101,12 +187,12 @@
     imageArray=[NSMutableArray array];
     powerArray=[NSMutableArray array];
     SNArray=[NSMutableArray array];
+    imageStatueArray=[NSMutableArray array];
     imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
     nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"Plug", @"Regulator",@"controller", @"charge",  nil];
     statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
     powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
     dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
-    imageStatueArray=[NSMutableArray array];
 }
 
 #pragma mark - navigationItem
@@ -217,6 +303,7 @@
             }
             
         }
+        
         for (int i=0; i<_typeArr.count; i++) {
             for (int j=0; j<nameArray2.count; j++)
             if([_typeArr[i] isEqualToString:nameArray2[j]])
@@ -228,7 +315,7 @@
                  [dayArray2 removeObjectAtIndex:j];
             }
         }
-        
+         [self initDatacore];
          [self.tableView reloadData];
             
           //  [self showToastViewWithTitle:@"添加设备成功"];
@@ -427,7 +514,7 @@
         return imageArray.count;
     }
     else{
-         return imageArray2.count;
+         return _managerArray.count;
     }
 }
 
@@ -456,14 +543,13 @@
         if (!cell) {
             cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
         }
-        
-        [cell.coverImageView  setImage:[UIImage imageNamed:imageArray2[indexPath.row]]];
-        cell.titleLabel.text = nameArray2[indexPath.row];
+        DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
+        [cell.coverImageView  setImage:[UIImage imageWithData:demoDevice.image]];
+        cell.titleLabel.text = demoDevice.name;
         cell.titleLabel.textColor = [UIColor grayColor];
-        cell.stateValue.text = statueArray2[indexPath.row];
-        cell.powerValue.text = powerArray2[indexPath.row];
-        cell.electricValue.text =dayArray2[indexPath.row];
-        cell.stateView.image = IMAGE(@"disconnect@2x.png");
+        cell.powerValue.text = demoDevice.power;
+        cell.electricValue.text =demoDevice.dayPower;
+        cell.stateView.image =IMAGE(@"disconnect@2x.png");
         return cell;
         
         }
@@ -480,19 +566,22 @@
         //更新数据
         if(indexPath.section==0)
         {
-        [imageArray removeObjectAtIndex:indexPath.row];
-        [nameArray removeObjectAtIndex:indexPath.row];
-        [statueArray removeObjectAtIndex:indexPath.row];
-        [powerArray removeObjectAtIndex:indexPath.row];
-        [dayArray removeObjectAtIndex:indexPath.row];
         }
         if(indexPath.section==1)
         {
-            [imageArray2 removeObjectAtIndex:indexPath.row];
-            [nameArray2 removeObjectAtIndex:indexPath.row];
-            [statueArray2 removeObjectAtIndex:indexPath.row];
-            [powerArray2 removeObjectAtIndex:indexPath.row];
-            [dayArray2 removeObjectAtIndex:indexPath.row];
+            DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
+         [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:demoDevice];
+            NSError *error = nil;
+            
+            //    托管对象准备好后，调用托管对象上下文的save方法将数据写入数据库
+            BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+            if (!isSaveSuccess) {
+                NSLog(@"Error: %@,%@",error,[error userInfo]);
+            }else
+            {
+                NSLog(@"del successFull");
+            }
+           [self request];
         }
         //更新UI
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -527,12 +616,7 @@
         [statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
         [powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
             [dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];}
-        if(indexPath.section==1){
-            [imageArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-            [nameArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-            [statueArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-            [powerArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-            [dayArray2 exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];}
+   
         //2.更新UI
         NSIndexPath *firstIndexPath =[NSIndexPath indexPathForRow:0 inSection:indexPath.section];
         [tableView moveRowAtIndexPath:indexPath toIndexPath:firstIndexPath];
