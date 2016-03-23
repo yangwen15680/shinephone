@@ -22,4 +22,5 @@
 @dynamic ailasName;
 @dynamic statueImage;
 @dynamic statueData;
+@dynamic type;
 @end

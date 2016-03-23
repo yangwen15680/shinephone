@@ -370,6 +370,7 @@
                 _getDevice.dayPower=dayArray[i];
                 _getDevice.statueData=statueArray[i];
                 _getDevice.deviceSN=SNArray[i];
+                _getDevice.type=_typeArr[i];
                 UIImage *image=IMAGE(imageArray[i]);
                 NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                 _getDevice.demoImage=imagedata;
@@ -380,6 +381,7 @@
                 if (![SN containsObject:SNArray[i]]) {
                     _getDevice=[NSEntityDescription insertNewObjectForEntityForName:@"GetDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
                     _getDevice.name=nameArray[i];
+                     _getDevice.type=_typeArr[i];
                     _getDevice.power=powerArray[i];
                     _getDevice.dayPower=dayArray[i];
                     _getDevice.statueData=statueArray[i];
@@ -622,17 +624,29 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
  
-    TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(indexPath.section==0){
-    if([_typeArr[indexPath.row] isEqualToString:@"inverter"]){
+        GetDevice *getDevice=[_managerNowArray objectAtIndex:indexPath.row];
+    if([getDevice.type isEqualToString:@"inverter"]){
     secondViewController *sd=[[secondViewController alloc ]init];
     sd.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:sd animated:NO];}}
-    else{
-    if([cell.titleLabel.text  isEqualToString:@"storage"]){
+        [self.navigationController pushViewController:sd animated:NO];}
+    else if([getDevice.type  isEqualToString:@"storage"]){
         secondCNJ *sd=[[secondCNJ alloc ]init];
         sd.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:sd animated:NO];}}
+    else{
+         DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
+       if([demoDevice.name isEqualToString:@"inverter"]){
+            secondViewController *sd=[[secondViewController alloc ]init];
+            sd.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:sd animated:NO];}
+        else if([demoDevice.name  isEqualToString:@"storage"]){
+            secondCNJ *sd=[[secondCNJ alloc ]init];
+            sd.hidesBottomBarWhenPushed=YES;
+            [self.navigationController pushViewController:sd animated:NO];}
+    
+    }
     
 }
 

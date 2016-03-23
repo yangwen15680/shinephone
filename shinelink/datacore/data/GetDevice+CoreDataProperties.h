@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *ailasName;
 @property (nullable, nonatomic, retain) NSData *statueImage;
 @property (nullable, nonatomic, retain) NSString *statueData;
+@property (nullable, nonatomic, retain) NSString *type;
 @end
 
 NS_ASSUME_NONNULL_END
