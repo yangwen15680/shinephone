@@ -133,7 +133,8 @@
             }else{
                 if ([content[@"msg"] integerValue] ==200){
                     [self showAlertViewWithTitle:nil message:@"设备添加成功" cancelButtonTitle:root_Yes];}
-                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeName" object:nil];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             }
         }
     }failure:^(NSError *error) {

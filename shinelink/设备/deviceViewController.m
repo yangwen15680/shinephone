@@ -95,6 +95,7 @@
     _managerArray=[NSMutableArray array];
     _managerNowArray=[NSMutableArray array];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initDemoData) name:@"reroadDemo" object:nil];
+  
     
     [self initData];
        [self addTitleMenu];
@@ -235,9 +236,41 @@
     {
         NSString *DTKtitle=[[NSString alloc]initWithFormat:_stationName[i]];
     DTKDropdownItem *DTKname= [DTKDropdownItem itemWithTitle:DTKtitle callBack:^(NSUInteger index, id info) {
-        NSLog(@"家庭能源系统%lu",(unsigned long)index);
+        NSLog(@"电站%lu",(unsigned long)index);
         [ [UserInfo defaultUserInfo]setPlantID:_stationID[index]];
         [ [UserInfo defaultUserInfo]setPlantNum:[NSString stringWithFormat:@"%lu",(unsigned long)index]];
+        [_plantId setObject:_stationID[index] forKey:@"plantId"];
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+        [request setEntity:entity];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
+        NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+        [request setSortDescriptors:sortDescriptions];
+        NSError *error = nil;
+        NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+        for (NSManagedObject *obj in fetchResult)
+        {
+            [_manager.managedObjContext deleteObject:obj];
+        }
+        BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+        if (!isSaveSuccess) {
+            NSLog(@"Error: %@,%@",error,[error userInfo]);
+        }else
+        {
+            NSLog(@"Save successFull");
+        }
+    
+        _typeArr=[NSMutableArray array];
+        nameArray=[NSMutableArray array];
+        statueArray=[NSMutableArray array];
+        dayArray=[NSMutableArray array];
+        imageArray=[NSMutableArray array];
+        powerArray=[NSMutableArray array];
+        SNArray=[NSMutableArray array];
+        imageStatueArray=[NSMutableArray array];
+        
+        [self netRequest];
+        
     }];
          [DTK addObject:DTKname];
     }
@@ -297,13 +330,19 @@
             NSString *SD;
             if([ST isEqualToString:@"-1"])
             {SD=@"未连接";
-                [imageStatueArray addObject:@"connected@2x.png"];}
-            else{SD=@"已连接";[imageStatueArray addObject:@"disconnect@2x.png"];}
+                [imageStatueArray addObject:@"disconnect@2x.png"];}
+            else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
             [statueArray addObject:SD];
              NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"eToday"]];
             [dayArray addObject:DY];
+          //  imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
+          //  nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"Plug", @"Regulator",@"controller", @"charge",  nil];
             if ([content[i][@"deviceType"]isEqualToString:@"inverter"]) {
-                 [imageArray addObject:imageArray2[0]];
+                 [imageArray addObject:@"inverter.png"];
+            }else if ([content[i][@"deviceType"]isEqualToString:@"storage"]){
+             [imageArray addObject:@"storage.png"];
+            }else{
+            [imageArray addObject:@"Plug.png"];
             }
         }
         
@@ -315,6 +354,12 @@
         [request setSortDescriptors:sortDescriptions];
         NSError *error = nil;
         NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+        NSMutableArray *SN=[NSMutableArray array];
+        for (NSManagedObject *obj in fetchResult)
+        {
+            GetDevice *get=obj;
+            [SN addObject:get.deviceSN];
+        }
        
         for(int i=0;i<SNArray.count;i++)
         {
@@ -324,30 +369,30 @@
                 _getDevice.power=powerArray[i];
                 _getDevice.dayPower=dayArray[i];
                 _getDevice.statueData=statueArray[i];
+                _getDevice.deviceSN=SNArray[i];
                 UIImage *image=IMAGE(imageArray[i]);
                 NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                 _getDevice.demoImage=imagedata;
                 _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
    
             }else{
-            for (NSManagedObject *obj in fetchResult)
-            {
-                if(![SNArray[i] isEqualToString:[obj valueForKey:@"deviceSN"]])
-                {
+                
+                if (![SN containsObject:SNArray[i]]) {
                     _getDevice=[NSEntityDescription insertNewObjectForEntityForName:@"GetDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
                     _getDevice.name=nameArray[i];
                     _getDevice.power=powerArray[i];
                     _getDevice.dayPower=dayArray[i];
                     _getDevice.statueData=statueArray[i];
+                    _getDevice.deviceSN=SNArray[i];
                     UIImage *image=IMAGE(imageArray[i]);
                     NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                     _getDevice.demoImage=imagedata;
                     _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
+
                 }
-            }
         }
     }
-        BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+        BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
         if (!isSaveSuccess) {
             NSLog(@"Error: %@,%@",error,[error userInfo]);
         }else
@@ -455,19 +500,38 @@
     if (row==3) {
         [_editCellect removeFromSuperview];
         [self showProgressView];
-        /*[BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"datalogSN":_arrayData[_indexPath.row][@"datalog_sn"]} paramarsSite:@"/datalogA.do?op=del" sucessBlock:^(id content) {
+        NSMutableDictionary *dict=[NSMutableDictionary dictionary];
+        GetDevice *get=[_managerNowArray objectAtIndex:_indexPath.row];
+          [dict setObject:get.deviceSN forKey:@"inverterId"];
+        
+        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:@"/newInverterAPI.do?op=deleteInverter" sucessBlock:^(id content) {
+            //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+            NSLog(@"updateInvInfo: %@", content);
             [self hideProgressView];
-            id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
-                [self showAlertViewWithTitle:nil message:root_Delete_failed cancelButtonTitle:root_Yes];
-            }else{
-                [self showAlertViewWithTitle:nil message:root_Successfully_modified cancelButtonTitle:root_Yes];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+            id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            if (content1) {
+                if ([content1[@"success"] integerValue] == 0) {
+                    if ([content1[@"msg"] integerValue] ==501) {
+                        [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                         //[self.tableView reloadData];
+                    }
+                }else{
+                    [self showAlertViewWithTitle:nil message:@"删除成功" cancelButtonTitle:root_Yes];
+                    [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:get];
+                    NSError *error = nil;
+                    BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+                    if (!isSaveSuccess) {
+                        NSLog(@"Error: %@,%@",error,[error userInfo]);
+                    }else
+                    {
+                        NSLog(@"del successFull");
+                        [self netRequest];
+                    }
+                }
             }
         } failure:^(NSError *error) {
-            [self hideProgressView];
             [self showToastViewWithTitle:root_Networking];
-        }];*/
+        }];
     }
 }
 
@@ -574,7 +638,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section==0) {
-        return imageArray.count;
+        return _managerNowArray.count;
     }
     else{
          return _managerArray.count;
