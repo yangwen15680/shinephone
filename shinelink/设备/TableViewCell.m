@@ -32,7 +32,10 @@
 if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
      self.backgroundColor = [UIColor clearColor];
 
-    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE, SCREEN_Width/5-10, SCREEN_Width/5-10)];
+    double imageSize=SCREEN_Width/5-10*NOW_SIZE;
+    self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE, imageSize, imageSize)];
+    self.coverImageView.layer.masksToBounds=YES;
+    self.coverImageView.layer.cornerRadius=imageSize/2.0;
     [self.contentView addSubview:_coverImageView];
     
     
@@ -62,7 +65,8 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:_state];*/
     
    _stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
-  
+    _stateView.layer.masksToBounds=YES;
+    _stateView.layer.cornerRadius=labelWidth1/2/2.0;
     [self.contentView addSubview:_stateView];
     
     self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1+labelWidth1/2, 18*NOW_SIZE, labelWidth1, labelHeight)];

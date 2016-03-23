@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *power;
 @property (nullable, nonatomic, retain) NSString *dayPower;
 @property (nullable, nonatomic, retain) NSData *image;
+@property (nullable, nonatomic, retain) NSString *statueData;
 
 @end
 

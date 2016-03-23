@@ -1,21 +1,25 @@
 //
-//  DemoDevice+CoreDataProperties.m
+//  GetDevice+CoreDataProperties.m
 //  shinelink
 //
-//  Created by sky on 16/3/22.
+//  Created by sky on 16/3/23.
 //  Copyright © 2016年 sky. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
 //  to delete and recreate this implementation file for your updated model.
 //
 
-#import "DemoDevice+CoreDataProperties.h"
+#import "GetDevice+CoreDataProperties.h"
 
-@implementation DemoDevice (CoreDataProperties)
+@implementation GetDevice (CoreDataProperties)
 
-@dynamic name;
+@dynamic deviceSN;
+@dynamic demoImage;
+@dynamic nowImage;
 @dynamic power;
 @dynamic dayPower;
-@dynamic image;
+@dynamic name;
+@dynamic ailasName;
+@dynamic statueImage;
 @dynamic statueData;
 @end

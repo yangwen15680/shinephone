@@ -16,7 +16,7 @@
 #import "secondCNJ.h"
 #import "aliasViewController.h"
 #import "DemoDevice.h"
-
+#import "GetDevice.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -37,7 +37,9 @@
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
 @property (nonatomic, strong) CoreDataManager *manager;
 @property (nonatomic, strong) NSMutableArray *managerArray;
+@property (nonatomic, strong) NSMutableArray *managerNowArray;
 @property (nonatomic, strong) DemoDevice *demoDevice;
+@property (nonatomic, strong) GetDevice *getDevice;
 @end
 
 @implementation deviceViewController
@@ -89,8 +91,11 @@
  
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
     self.navigationItem.rightBarButtonItem = rightButton;
-
-   
+    _manager=[CoreDataManager sharedCoreDataManager];
+    _managerArray=[NSMutableArray array];
+    _managerNowArray=[NSMutableArray array];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initDemoData) name:@"reroadDemo" object:nil];
+    
     [self initData];
        [self addTitleMenu];
     [self addRightItem];
@@ -103,8 +108,7 @@
 
 #pragma mark - CoreData
 -(void)initDatacore{
-    _manager=[CoreDataManager sharedCoreDataManager];
-    _managerArray=[NSMutableArray array];
+   
       BOOL firstRun = !_manager.hasStore;
     if (firstRun){
         [self initDemoData];}
@@ -139,10 +143,10 @@
         _demoDevice.name=nameArray2[i];
         _demoDevice.power=powerArray2[i];
         _demoDevice.dayPower=dayArray2[i];
+        _demoDevice.statueData=statueArray2[i];
         UIImage *image=IMAGE(imageArray2[i]);
         NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
         _demoDevice.image=imagedata;
-       
     }
     
     BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
@@ -301,8 +305,59 @@
             if ([content[i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:imageArray2[0]];
             }
-            
         }
+        
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+        [request setEntity:entity];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
+        NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+        [request setSortDescriptors:sortDescriptions];
+        NSError *error = nil;
+        NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+       
+        for(int i=0;i<SNArray.count;i++)
+        {
+            if (fetchResult.count==0) {
+                _getDevice=[NSEntityDescription insertNewObjectForEntityForName:@"GetDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
+                _getDevice.name=nameArray[i];
+                _getDevice.power=powerArray[i];
+                _getDevice.dayPower=dayArray[i];
+                _getDevice.statueData=statueArray[i];
+                UIImage *image=IMAGE(imageArray[i]);
+                NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
+                _getDevice.demoImage=imagedata;
+                _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
+   
+            }else{
+            for (NSManagedObject *obj in fetchResult)
+            {
+                if(![SNArray[i] isEqualToString:[obj valueForKey:@"deviceSN"]])
+                {
+                    _getDevice=[NSEntityDescription insertNewObjectForEntityForName:@"GetDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
+                    _getDevice.name=nameArray[i];
+                    _getDevice.power=powerArray[i];
+                    _getDevice.dayPower=dayArray[i];
+                    _getDevice.statueData=statueArray[i];
+                    UIImage *image=IMAGE(imageArray[i]);
+                    NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
+                    _getDevice.demoImage=imagedata;
+                    _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
+                }
+            }
+        }
+    }
+        BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+        if (!isSaveSuccess) {
+            NSLog(@"Error: %@,%@",error,[error userInfo]);
+        }else
+        {
+            NSLog(@"Save successFull");
+        }
+
+           NSArray *fetchResult1 = [_manager.managedObjContext executeFetchRequest:request error:&error];
+        [self.managerNowArray removeAllObjects];
+        [self.managerNowArray addObjectsFromArray:fetchResult1];
         
         for (int i=0; i<_typeArr.count; i++) {
             for (int j=0; j<nameArray2.count; j++)
@@ -467,10 +522,18 @@
             }else{
                 
                 [self showAlertViewWithTitle:nil message:@"修改成功" cancelButtonTitle:root_Yes];
-                NSArray *indexPaths = @[_indexPath];
-                TableViewCell *cell = (TableViewCell *)[self.tableView cellForRowAtIndexPath:_indexPath];
-              
-                [self.tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            
+                GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
+                [getDevice setValue:imageData forKey:@"nowImage"];
+                NSError *error;
+                BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+                if (!isSaveSuccess) {
+                    NSLog(@"Error: %@,%@",error,[error userInfo]);
+                }else
+                {
+                    NSLog(@"Save successFull");
+                }
+                [self.tableView reloadData];
                 
             }
         }
@@ -528,13 +591,18 @@
     cell=[[TableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_indenty];
     }
    
-   [cell.coverImageView  setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
-    cell.titleLabel.text = nameArray[indexPath.row];
+        GetDevice *getDevice=[_managerNowArray objectAtIndex:indexPath.row];
+        if (getDevice.nowImage) {
+            [cell.coverImageView  setImage:[UIImage imageWithData:getDevice.nowImage]];
+        }else{
+            [cell.coverImageView  setImage:[UIImage imageWithData:getDevice.demoImage]];}
+      
+            cell.titleLabel.text = getDevice.name;
         cell.titleLabel.textColor = [UIColor orangeColor];
-       cell.stateValue.text = statueArray[indexPath.row];
-     cell.powerValue.text = powerArray[indexPath.row];
-     cell.electricValue.text =dayArray[indexPath.row];
-       cell.stateView.image = IMAGE(imageStatueArray[indexPath.row]);
+       cell.stateValue.text = getDevice.statueData;
+     cell.powerValue.text = getDevice.power;
+     cell.electricValue.text =getDevice.dayPower;
+       [cell.stateView setImage:[UIImage imageWithData:getDevice.statueImage] ];
         return cell;
     }
     else{
@@ -550,6 +618,7 @@
         cell.powerValue.text = demoDevice.power;
         cell.electricValue.text =demoDevice.dayPower;
         cell.stateView.image =IMAGE(@"disconnect@2x.png");
+        cell.stateValue.text=demoDevice.statueData;
         return cell;
         
         }

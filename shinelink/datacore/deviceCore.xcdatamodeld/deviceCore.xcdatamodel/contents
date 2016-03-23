@@ -5,8 +5,21 @@
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statueData" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="GetDevice" representedClassName="GetDevice" syncable="YES">
+        <attribute name="ailasName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dayPower" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="demoImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="deviceSN" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nowImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statueData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statueImage" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DemoDevice" positionX="-36" positionY="9" width="128" height="105"/>
+        <element name="DemoDevice" positionX="-36" positionY="9" width="128" height="120"/>
+        <element name="GetDevice" positionX="-36" positionY="36" width="128" height="180"/>
     </elements>
 </model>

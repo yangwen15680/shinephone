@@ -58,8 +58,10 @@
     NSLog(@"reUsername=%@",reUsername);
     NSLog(@"rePassword=%@",rePassword);
     if (reUsername==nil || reUsername==NULL||[reUsername isEqual:@""]) {
-           NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.sqlite",  [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], ManagerObjectModelFileName]];
-        [[NSFileManager defaultManager]removeItemAtPath:url.path error:nil];
+        [ [NSNotificationCenter defaultCenter]postNotificationName:@"reroadDemo" object:nil];
+       
+        //NSURL *url = [NSURL fileURLWithPath:[NSString stringWithFormat:@"%@/%@.sqlite",  [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"], ManagerObjectModelFileName]];
+        //[[NSFileManager defaultManager]removeItemAtPath:url.path error:nil];
         
         [self addSubViews];
         

@@ -87,6 +87,8 @@
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
+		335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */; };
+		335317441CA2423D003F106D /* GetDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335317421CA2423D003F106D /* GetDevice.m */; };
 		3353B19F1CA116FF00577595 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3353B19E1CA116FF00577595 /* CoreData.framework */; };
 		3353B1AD1CA125E300577595 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */; };
 		3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */; };
@@ -447,12 +449,16 @@
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewCell.h; sourceTree = "<group>"; };
 		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
+		3353173F1CA2423D003F106D /* GetDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
+		335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
+		335317411CA2423D003F106D /* GetDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDevice.h; sourceTree = "<group>"; };
+		335317421CA2423D003F106D /* GetDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDevice.m; sourceTree = "<group>"; };
 		3353B19E1CA116FF00577595 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
-		3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DemoDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
-		3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DemoDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
-		3353B1B01CA126EB00577595 /* DemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoDevice.h; sourceTree = "<group>"; };
-		3353B1B11CA126EB00577595 /* DemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDevice.m; sourceTree = "<group>"; };
+		3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DemoDevice+CoreDataProperties.h"; path = "../DemoDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DemoDevice+CoreDataProperties.m"; path = "../DemoDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3353B1B01CA126EB00577595 /* DemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoDevice.h; path = ../DemoDevice.h; sourceTree = "<group>"; };
+		3353B1B11CA126EB00577595 /* DemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoDevice.m; path = ../DemoDevice.m; sourceTree = "<group>"; };
 		3353B1B41CA1272C00577595 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		3353B1B51CA1272C00577595 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		335456B41C852E6200275478 /* AddCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController.h; sourceTree = "<group>"; };
@@ -1033,6 +1039,21 @@
 			path = "../我/客服系统";
 			sourceTree = "<group>";
 		};
+		3353173E1CA23211003F106D /* data */ = {
+			isa = PBXGroup;
+			children = (
+				3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */,
+				3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */,
+				3353B1B01CA126EB00577595 /* DemoDevice.h */,
+				3353B1B11CA126EB00577595 /* DemoDevice.m */,
+				3353173F1CA2423D003F106D /* GetDevice+CoreDataProperties.h */,
+				335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */,
+				335317411CA2423D003F106D /* GetDevice.h */,
+				335317421CA2423D003F106D /* GetDevice.m */,
+			);
+			path = data;
+			sourceTree = "<group>";
+		};
 		335456B31C852E3600275478 /* 配置设备 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,19 +1245,10 @@
 				337F9CC01C71ABD80016FE43 /* 能源 */,
 				337F9CC11C71ABD80016FE43 /* 设备 */,
 				337F9CC41C71ABD80016FE43 /* 我 */,
-				337F9C861C71A6710016FE43 /* AppDelegate.h */,
-				337F9C871C71A6710016FE43 /* AppDelegate.m */,
-				335456B71C852EB000275478 /* RootViewController.h */,
-				335456B81C852EB000275478 /* RootViewController.m */,
+				337F9C831C71A6710016FE43 /* Supporting Files */,
 				337F9C921C71A6710016FE43 /* Assets.xcassets */,
 				337F9C971C71A6710016FE43 /* Info.plist */,
-				337F9C831C71A6710016FE43 /* Supporting Files */,
-				337F9E0D1C71BF9E0016FE43 /* Header.h */,
-				337F9E0E1C71BFC10016FE43 /* PrefixHeader.pch */,
-				3349BB361C7ED28100E6E34B /* UserInfo.h */,
-				3349BB371C7ED28100E6E34B /* UserInfo.m */,
-				3343F3A81C803DC9009F69BC /* BaseRequest.h */,
-				3343F3A91C803DC9009F69BC /* BaseRequest.m */,
+				3353B19E1CA116FF00577595 /* CoreData.framework */,
 			);
 			path = shinelink;
 			sourceTree = "<group>";
@@ -1244,7 +1256,16 @@
 		337F9C831C71A6710016FE43 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3353B19E1CA116FF00577595 /* CoreData.framework */,
+				337F9E0D1C71BF9E0016FE43 /* Header.h */,
+				337F9E0E1C71BFC10016FE43 /* PrefixHeader.pch */,
+				3349BB361C7ED28100E6E34B /* UserInfo.h */,
+				3349BB371C7ED28100E6E34B /* UserInfo.m */,
+				3343F3A81C803DC9009F69BC /* BaseRequest.h */,
+				3343F3A91C803DC9009F69BC /* BaseRequest.m */,
+				337F9C861C71A6710016FE43 /* AppDelegate.h */,
+				337F9C871C71A6710016FE43 /* AppDelegate.m */,
+				335456B71C852EB000275478 /* RootViewController.h */,
+				335456B81C852EB000275478 /* RootViewController.m */,
 				337F9C841C71A6710016FE43 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1459,13 +1480,10 @@
 		3383F1291C9FD1760075E834 /* datacore */ = {
 			isa = PBXGroup;
 			children = (
+				3353173E1CA23211003F106D /* data */,
 				3353B1B41CA1272C00577595 /* CoreDataManager.h */,
 				3353B1B51CA1272C00577595 /* CoreDataManager.m */,
 				3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */,
-				3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */,
-				3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */,
-				3353B1B01CA126EB00577595 /* DemoDevice.h */,
-				3353B1B11CA126EB00577595 /* DemoDevice.m */,
 			);
 			path = datacore;
 			sourceTree = "<group>";
@@ -1886,6 +1904,7 @@
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
 				335456B91C852EB000275478 /* RootViewController.m in Sources */,
 				33EFB66A1C98F9B1003F336F /* ZFBarChart.m in Sources */,
+				335317441CA2423D003F106D /* GetDevice.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
 				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
 				3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
@@ -1973,6 +1992,7 @@
 				3349BB3B1C7EF66200E6E34B /* userdataViewController.m in Sources */,
 				335088D91C73011300D7AA03 /* addDevice.m in Sources */,
 				3383EFA01C9F8A6F0075E834 /* MJRefreshHeader.m in Sources */,
+				335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */,
 				3367CB4D1C86806600EF460C /* MASViewAttribute.m in Sources */,
 				3383EFA41C9F8A6F0075E834 /* UIScrollView+MJRefresh.m in Sources */,
 				3383EF9B1C9F8A6F0075E834 /* MJRefreshComponent.m in Sources */,
