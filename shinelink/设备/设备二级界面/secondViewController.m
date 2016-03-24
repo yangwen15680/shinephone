@@ -11,6 +11,7 @@
 #import"DTKDropdownMenuView.h"
 #import "Line2View.h"
 #import "threeViewController.h"
+#import "KongZhiNi.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -41,6 +42,7 @@
 -(void)addbutton{
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
+     [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstB];
     UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     firstL.text=@"控制";
@@ -61,6 +63,7 @@
     
     UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
+     [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     threeL.text=@"数据";
@@ -71,7 +74,7 @@
     
     UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
-    [fourB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
+   
     [self.view addSubview:fourB];
     UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     fourL.text=@"日志";
@@ -79,6 +82,11 @@
     fourL.textColor=[UIColor blackColor];
     fourL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [self.view addSubview:fourL];
+}
+
+-(void)controlThree{
+    KongZhiNi *go=[[KongZhiNi alloc]init];
+    [self.navigationController pushViewController:go animated:YES];
 }
 
 -(void)goThree{

@@ -40,7 +40,7 @@
     [self setTitle:@"服务"];
       [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     arrayName=@[@"客户服务",@"质保查询",@"增值业务",@"更多产品"];
-    arrayImage=@[@"维修@2x.png",@"质保@2x.png",@"产品@2x.png",@"荣誉@2x.png"];
+    arrayImage=@[@"客户服务.png",@"质保查询.png",@"增值服务.png",@"更多.png"];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 

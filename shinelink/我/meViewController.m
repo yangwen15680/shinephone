@@ -47,7 +47,7 @@
     [self setTitle:@"我"];
       [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     arrayName=@[@"资料管理",@"系统设置",@"关于"];
-    arrayImage=@[@"about.png",@"setup.png",@"userdata.png"];
+    arrayImage=@[@"资料管理.png",@"系统设置.png",@"关于.png"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.

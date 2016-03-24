@@ -770,7 +770,7 @@
     }];
     
     //置顶按钮颜色
-    topRowAction.backgroundColor = [UIColor blueColor];
+    topRowAction.backgroundColor =COLOR(99, 209, 249, 1);
     
         return @[deleteAction,topRowAction];}else return nil;
     
