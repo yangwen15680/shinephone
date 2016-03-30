@@ -535,7 +535,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         if (!self.dayPicker) {
             self.dayPicker = [[UIDatePicker alloc] init];
             self.dayPicker.backgroundColor = [UIColor whiteColor];
-            self.dayPicker.datePickerMode = UIDatePickerModeDate;
+         
             self.dayPicker.date = currentDayDate;
             self.dayPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
             [self.view addSubview:self.dayPicker];

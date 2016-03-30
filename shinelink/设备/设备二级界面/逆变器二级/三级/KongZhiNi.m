@@ -9,13 +9,22 @@
 #import "KongZhiNi.h"
 #import "ASValueTrackingSlider.h"
 @interface KongZhiNi ()
-
+@property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) UIDatePicker *date;
+@property (nonatomic, strong) NSDateFormatter *dayFormatter;
+@property (nonatomic, strong) NSString *currentDay;
+@property (nonatomic, strong) UIButton *datePickerButton;
+@property (nonatomic, strong) NSMutableDictionary *dataDic;
+@property (nonatomic, strong) ASValueTrackingSlider *slider;
+@property (nonatomic, strong) ASValueTrackingSlider *slider1;
+@property (nonatomic, strong) ASValueTrackingSlider *slider2;
 @end
 
 @implementation KongZhiNi
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataDic=[NSMutableDictionary new];
     UIImage *bgImage = IMAGE(@"bg4.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     [self initUI];
@@ -42,9 +51,9 @@
     PVLable.textColor=[UIColor whiteColor];
     PVLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [self.view addSubview:PVLable];
-    ASValueTrackingSlider *slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
-   slider.maximumValue = 1.0;
-    [self.view addSubview:slider];
+    _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
+   _slider.maximumValue = 1.0;
+    [self.view addSubview:_slider];
     UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVLable1.text=@"0";
     PVLable1.textAlignment=NSTextAlignmentLeft;
@@ -64,9 +73,9 @@
     PV1Lable.textColor=[UIColor whiteColor];
     PV1Lable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [self.view addSubview:PV1Lable];
-    ASValueTrackingSlider *slider1=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE+85*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
-    slider1.maximumValue = 1;
-    [self.view addSubview:slider1];
+    _slider1=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE+85*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
+    _slider1.maximumValue = 1;
+    [self.view addSubview:_slider1];
     UILabel *PV1Lable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PV1Lable1.text=@"0";
     PV1Lable1.textAlignment=NSTextAlignmentLeft;
@@ -86,10 +95,10 @@
     PV2Lable.textColor=[UIColor whiteColor];
     PV2Lable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [self.view addSubview:PV2Lable];
-    ASValueTrackingSlider *slider2=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
-    slider2.maximumValue = 0.8;
-    slider2.minimumValue=-0.8;
-    [self.view addSubview:slider2];
+    _slider2=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
+    _slider2.maximumValue = 0.8;
+    _slider2.minimumValue=-0.8;
+    [self.view addSubview:_slider2];
     UILabel *PV2Lable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2, 150*NOW_SIZE,20*NOW_SIZE )];
     PV2Lable1.text=@"-0.8";
     PV2Lable1.textAlignment=NSTextAlignmentLeft;
@@ -102,8 +111,76 @@
     PV2Lable2.textColor=[UIColor whiteColor];
     PV2Lable2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [self.view addSubview:PV2Lable2];
+    
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+85*NOW_SIZE*3, 150*NOW_SIZE,20*NOW_SIZE )];
+    PVData.text=@"设置逆变器时间:";
+    PVData.textAlignment=NSTextAlignmentLeft;
+    PVData.textColor=[UIColor whiteColor];
+    PVData.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [self.view addSubview:PVData];
 
+    self.dayFormatter = [[NSDateFormatter alloc] init];
+    [self.dayFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+  self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
+    
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(120*NOW_SIZE,85*NOW_SIZE+buttonSize+6*NOW_SIZE+85*NOW_SIZE*3, 200*NOW_SIZE, 20*NOW_SIZE)];
+    [_datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
+    [_datePickerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _datePickerButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    _datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16*NOW_SIZE];
+    [_datePickerButton addTarget:self action:@selector(pickDate) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_datePickerButton];
+    
+    UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    goBut.frame=CGRectMake(120*NOW_SIZE,85*NOW_SIZE+buttonSize+6*NOW_SIZE+85*NOW_SIZE*3, 200*NOW_SIZE, 40*NOW_SIZE);
+    [goBut.layer setMasksToBounds:YES];
+    [goBut.layer setCornerRadius:25.0];
+    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut addTarget:self action:@selector(finishSet) forControlEvents:UIControlEventTouchUpInside];
 
+}
+
+-(void)finishSet{
+    [_dataDic removeAllObjects];
+
+   // [_dataDic setObject:_slider.value forKey:@"pv1"];
+
+}
+
+-(void)pickDate{
+    float buttonSize=70*NOW_SIZE;
+  _date=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width, 216*NOW_SIZE)];
+    _date.backgroundColor=[UIColor whiteColor];
+    _date.datePickerMode=UIDatePickerModeDateAndTime;
+    [self.view addSubview:_date];
+    
+    if (self.toolBar) {
+        [UIView animateWithDuration:0.3f animations:^{
+            self.toolBar.alpha = 1;
+            self.toolBar.frame = CGRectMake(0, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2-44*NOW_SIZE, SCREEN_Width, 44*NOW_SIZE);
+            [self.view addSubview:_toolBar];
+        }];
+    } else {
+        self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2-44*NOW_SIZE, SCREEN_Width, 44*NOW_SIZE)];
+        self.toolBar.barStyle = UIBarStyleDefault;
+        self.toolBar.barTintColor = COLOR(17, 183, 243, 1);
+        [self.view addSubview:self.toolBar];
+        
+        UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
+        doneButton.tintColor = [UIColor whiteColor];
+        self.toolBar.items = @[spaceButton, doneButton];
+   }
+}
+
+- (void)completeSelectDate:(UIToolbar *)toolBar {
+    self.currentDay = [self.dayFormatter stringFromDate:self.date.date];
+    [self.datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
+    [self.toolBar removeFromSuperview];
+    [self.date removeFromSuperview];
+    
 }
 
 -(void)control{
