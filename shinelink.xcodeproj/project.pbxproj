@@ -85,6 +85,10 @@
 		334B8F5F1C914B4E00798A69 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 334B8F5B1C914B4E00798A69 /* README.md */; };
 		334B8F601C914B4E00798A69 /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 334B8F5D1C914B4E00798A69 /* UICountingLabel.m */; };
 		334B8F631C915A1B00798A69 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 334B8F621C915A1B00798A69 /* bg.png */; };
+		334E9BE41CACB78900C8271F /* ControlCNJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 334E9BE31CACB78900C8271F /* ControlCNJ.m */; };
+		334E9BEF1CAD036700C8271F /* parameterCNJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 334E9BEE1CAD036700C8271F /* parameterCNJ.m */; };
+		334E9BF21CAD263700C8271F /* parameterPV.m in Sources */ = {isa = PBXBuildFile; fileRef = 334E9BF11CAD263700C8271F /* parameterPV.m */; };
+		334E9BF51CAD2B8900C8271F /* PvLogTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334E9BF41CAD2B8900C8271F /* PvLogTableViewController.m */; };
 		334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7001C9028BB0095FFBC /* secondViewController.m */; };
 		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
 		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
@@ -405,6 +409,14 @@
 		334B8F5C1C914B4E00798A69 /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
 		334B8F5D1C914B4E00798A69 /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
 		334B8F621C915A1B00798A69 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		334E9BE21CACB78900C8271F /* ControlCNJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlCNJ.h; sourceTree = "<group>"; };
+		334E9BE31CACB78900C8271F /* ControlCNJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlCNJ.m; sourceTree = "<group>"; };
+		334E9BED1CAD036700C8271F /* parameterCNJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameterCNJ.h; sourceTree = "<group>"; };
+		334E9BEE1CAD036700C8271F /* parameterCNJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parameterCNJ.m; sourceTree = "<group>"; };
+		334E9BF01CAD263700C8271F /* parameterPV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parameterPV.h; sourceTree = "<group>"; };
+		334E9BF11CAD263700C8271F /* parameterPV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parameterPV.m; sourceTree = "<group>"; };
+		334E9BF31CAD2B8900C8271F /* PvLogTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PvLogTableViewController.h; sourceTree = "<group>"; };
+		334E9BF41CAD2B8900C8271F /* PvLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PvLogTableViewController.m; sourceTree = "<group>"; };
 		334ED6FF1C9028BB0095FFBC /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = secondViewController.h; path = ../secondViewController.h; sourceTree = "<group>"; };
 		334ED7001C9028BB0095FFBC /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = secondViewController.m; path = ../secondViewController.m; sourceTree = "<group>"; };
 		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
@@ -812,6 +824,10 @@
 				33692BE81C92527500698375 /* threeViewController.m */,
 				334AED681CA38164007E39F3 /* KongZhiNi.h */,
 				334AED691CA38164007E39F3 /* KongZhiNi.m */,
+				334E9BF01CAD263700C8271F /* parameterPV.h */,
+				334E9BF11CAD263700C8271F /* parameterPV.m */,
+				334E9BF31CAD2B8900C8271F /* PvLogTableViewController.h */,
+				334E9BF41CAD2B8900C8271F /* PvLogTableViewController.m */,
 			);
 			path = "三级";
 			sourceTree = "<group>";
@@ -946,6 +962,17 @@
 				334AED741CA386B8007E39F3 /* bg4.png */,
 			);
 			path = ui;
+			sourceTree = "<group>";
+		};
+		334E9BE11CACB66600C8271F /* 储能机三级 */ = {
+			isa = PBXGroup;
+			children = (
+				334E9BE21CACB78900C8271F /* ControlCNJ.h */,
+				334E9BE31CACB78900C8271F /* ControlCNJ.m */,
+				334E9BED1CAD036700C8271F /* parameterCNJ.h */,
+				334E9BEE1CAD036700C8271F /* parameterCNJ.m */,
+			);
+			path = "储能机三级";
 			sourceTree = "<group>";
 		};
 		334ED6FE1C9028560095FFBC /* 设备二级界面 */ = {
@@ -1423,6 +1450,7 @@
 		33EFB6361C97DF62003F336F /* 储能机二级 */ = {
 			isa = PBXGroup;
 			children = (
+				334E9BE11CACB66600C8271F /* 储能机三级 */,
 				33EFB6381C97E0C8003F336F /* secondCNJ.h */,
 				33EFB6391C97E0C8003F336F /* secondCNJ.m */,
 				33EFB63B1C97E1E3003F336F /* VWWWaterView.h */,
@@ -1761,12 +1789,14 @@
 				33EFB6661C98F9B1003F336F /* UIColor+Zirkfied.m in Sources */,
 				334B8F4A1C914A6D00798A69 /* PNBar.m in Sources */,
 				337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */,
+				334E9BEF1CAD036700C8271F /* parameterCNJ.m in Sources */,
 				33EFB6051C979B5F003F336F /* ChangeCellectViewController.m in Sources */,
 				3363DD1E1C7C48F100D740FB /* registerViewController.m in Sources */,
 				3343F3E11C80405D009F69BC /* UIWebView+AFNetworking.m in Sources */,
 				3343F3C01C80403C009F69BC /* AFHTTPRequestOperationManager.m in Sources */,
 				3349A7BF1C75BF3B009172C2 /* LoginButton.m in Sources */,
 				334AED711CA381D0007E39F3 /* ASValueTrackingSlider.m in Sources */,
+				334E9BF51CAD2B8900C8271F /* PvLogTableViewController.m in Sources */,
 				3343F3DA1C80405D009F69BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
 				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
@@ -1783,6 +1813,7 @@
 				335317441CA2423D003F106D /* GetDevice.m in Sources */,
 				3343F3C71C80403C009F69BC /* AFURLSessionManager.m in Sources */,
 				335456BC1C852ED900275478 /* TempViewController.m in Sources */,
+				334E9BF21CAD263700C8271F /* parameterPV.m in Sources */,
 				3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				3383EF9F1C9F8A6F0075E834 /* MJRefreshGifHeader.m in Sources */,
 				334AED6A1CA38164007E39F3 /* KongZhiNi.m in Sources */,
@@ -1848,6 +1879,7 @@
 				335456B61C852E6200275478 /* AddCellectViewController.m in Sources */,
 				334B8F261C91281600798A69 /* Line2View.m in Sources */,
 				334B8F531C914A6D00798A69 /* PNPieChart.m in Sources */,
+				334E9BE41CACB78900C8271F /* ControlCNJ.m in Sources */,
 				334B8F4F1C914A6D00798A69 /* PNGenericChart.m in Sources */,
 				33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */,
 				33EFB66E1C98F9B1003F336F /* ZFCirque.m in Sources */,

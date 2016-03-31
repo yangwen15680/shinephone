@@ -11,6 +11,8 @@
 #import "Line2View.h"
 #import "threeViewController.h"
 #import"VWWWaterView.h"
+#import "ControlCNJ.h"
+#import "parameterCNJ.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface secondCNJ ()
@@ -36,6 +38,7 @@
 -(void)addbutton{
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
+    [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstB];
     UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     firstL.text=@"控制";
@@ -46,6 +49,7 @@
     
     UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [secondB setImage:[UIImage imageNamed:@"参数.png"] forState:UIControlStateNormal];
+     [secondB addTarget:self action:@selector(parameterCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     secondL.text=@"参数";
@@ -76,16 +80,25 @@
     [self.view addSubview:fourL];
 }
 
+
+-(void)controlCNJ{
+    ControlCNJ *CNJ=[[ControlCNJ alloc]init];
+    [self.navigationController pushViewController:CNJ animated:YES];
+}
+
+-(void)parameterCNJ{
+    parameterCNJ *PC=[[parameterCNJ alloc]init];
+    [self.navigationController pushViewController:PC animated:NO];
+}
+
 -(void)goThree{
     threeViewController *goThree=[[threeViewController alloc]init];
     [self.navigationController pushViewController:goThree animated:YES];
     
 }
 -(void)addGraph{
-    NSDate*currentDate=[NSDate date];
-    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *current=[formatter stringFromDate:currentDate];
+  
+    
     self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 100*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
     self.line2View.flag=@"1";
     [self.view addSubview:self.line2View];

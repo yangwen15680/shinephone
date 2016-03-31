@@ -12,6 +12,7 @@
 #import "Line2View.h"
 #import "threeViewController.h"
 #import "KongZhiNi.h"
+#import "parameterPV.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -53,6 +54,7 @@
     
     UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [secondB setImage:[UIImage imageNamed:@"参数.png"] forState:UIControlStateNormal];
+     [secondB addTarget:self action:@selector(parameterPV) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     secondL.text=@"参数";
@@ -89,16 +91,18 @@
     [self.navigationController pushViewController:go animated:YES];
 }
 
+-(void)parameterPV{
+    parameterPV *pv=[[parameterPV alloc]init];
+    [self.navigationController pushViewController:pv animated:NO];
+}
+
 -(void)goThree{
     threeViewController *goThree=[[threeViewController alloc]init];
     [self.navigationController pushViewController:goThree animated:YES];
     
 }
 -(void)addGraph{
-    NSDate*currentDate=[NSDate date];
-    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *current=[formatter stringFromDate:currentDate];
+    
     self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 100*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
     self.line2View.flag=@"1";
     [self.view addSubview:self.line2View];
