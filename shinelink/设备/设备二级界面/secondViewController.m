@@ -13,6 +13,7 @@
 #import "threeViewController.h"
 #import "KongZhiNi.h"
 #import "parameterPV.h"
+#import "PvLogTableViewController.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -75,6 +76,7 @@
     [self.view addSubview:threeL];
     
     UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+        [fourB addTarget:self action:@selector(goFour) forControlEvents:UIControlEventTouchUpInside];
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
    
     [self.view addSubview:fourB];
@@ -86,6 +88,11 @@
     [self.view addSubview:fourL];
 }
 
+-(void)goFour{
+    PvLogTableViewController *four=[[PvLogTableViewController alloc]init];
+    [self.navigationController pushViewController:four animated:NO];
+
+}
 -(void)controlThree{
     KongZhiNi *go=[[KongZhiNi alloc]init];
     [self.navigationController pushViewController:go animated:YES];

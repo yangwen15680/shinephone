@@ -307,7 +307,15 @@
    // [_plantId setObject:[NSNumber numberWithInteger:b] forKey:@"pageSize"];
     [_plantId setObject:a forKey:@"pageNum"];
     [_plantId setObject:b forKey:@"pageSize"];
-    [self netRequest];
+    
+    //没有网络的功能测试开关
+    BOOL netOk=0;
+    if(netOk==1){
+        [self netRequest];
+    }
+    else{
+         [self initDemoData];
+        }
 }
 
 -(void)netRequest{
