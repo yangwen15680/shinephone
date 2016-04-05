@@ -10,6 +10,8 @@
 #import "findTableViewCell.h"
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 #import "listViewController.h"
+#import "commonTableViewController.h"
+#import "LZPageViewController.h"
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
@@ -153,9 +155,12 @@
 
 {
     if (indexPath.row==0) {
-        listViewController *aboutView = [[listViewController alloc]init];
+    
+        LZPageViewController *pageVc = [[LZPageViewController alloc] initWithTitles:@[@"我的问题",@"常见问题",] controllersClass:@[[listViewController class],[commonTableViewController class]]];
+        [self.navigationController pushViewController:pageVc animated:YES];
         
-        [self.navigationController pushViewController:aboutView animated:YES];
+      //  serverViewController *aboutView = [[serverViewController alloc]init];
+      //  [self.navigationController pushViewController:aboutView animated:YES];
     }
 }
 

@@ -121,15 +121,7 @@
     [self.pwdTextField setValue:[UIFont systemFontOfSize:13*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
     [pwdBgImageView addSubview:_pwdTextField];
     
-    self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(230*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
-    self.registLable.text=@"注册";
-    self.registLable.textColor=[UIColor whiteColor];
-    self.registLable.textAlignment = NSTextAlignmentRight;
-     self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    self.registLable.userInteractionEnabled=YES;
-     [_scrollView addSubview:self.registLable];
-    UITapGestureRecognizer * labelTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
-    [self.registLable addGestureRecognizer:labelTap];
+ 
    
     self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
     self.forgetLable.text=@"忘记密码";

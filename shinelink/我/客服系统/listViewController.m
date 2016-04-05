@@ -28,6 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    
     self.titleArray =[NSMutableArray arrayWithObjects:@"第一",@"第二",@"第三",nil];
     self.statusArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
     self.contentArray =[NSMutableArray arrayWithObjects:@"这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是是比较简单的图这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图",
@@ -35,7 +37,7 @@
                         @"这个是比较简单的图文混排", nil];
     self.timeArray=[NSMutableArray arrayWithObjects:@"2016.3.3",@"2016.3.3",@"2016.3.3",nil];
     self.navigationItem.title = @"问题列表";
-    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*NOW_SIZE)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     

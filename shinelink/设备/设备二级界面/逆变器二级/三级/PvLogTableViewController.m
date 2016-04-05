@@ -9,7 +9,18 @@
 #import "PvLogTableViewController.h"
 #import "pvLogTableViewCell.h"
 
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define Width [UIScreen mainScreen].bounds.size.width/320.0
+#define Height [UIScreen mainScreen].bounds.size.height/568.0
+
 @interface PvLogTableViewController ()
+@property(nonatomic,strong)NSMutableArray *SNTextArray;
+@property(nonatomic,strong)NSMutableArray *typtTextArray;
+@property(nonatomic,strong)NSMutableArray *eventTextArray;
+@property(nonatomic,strong)NSMutableArray *LogTextArray;
+@property(nonatomic,strong)NSMutableArray *contentTextArray;
+@property(nonatomic,strong)NSMutableArray *timeTextArray;
 
 @end
 
@@ -18,7 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-  
+    [self initData];
+}
+
+-(void)initData{
+    self.SNTextArray =[NSMutableArray arrayWithObjects:@"第一",@"第二",@"第三",nil];
+    self.typtTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
+     self.eventTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
+     self.LogTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
+    self.contentTextArray =[NSMutableArray arrayWithObjects:@"这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是是比较简单的图这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图",
+                        @"自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自高",
+                        @"这个是比较简单的图文混排", nil];
+    self.timeTextArray=[NSMutableArray arrayWithObjects:@"2016.3.3",@"2016.3.3",@"2016.3.3",nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,15 +59,36 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     
-    return 1;
+    return _SNTextArray.count;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
+    CGRect fcRect = [self.contentTextArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
+    return 85*Height+fcRect.size.height;
+    
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     pvLogTableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[pvLogTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    cell.SNText.text=_SNTextArray[indexPath.row];
+      cell.typtText.text=_typtTextArray[indexPath.row];
+      cell.eventText.text=_eventTextArray[indexPath.row];
+      cell.LogText.text=_LogTextArray[indexPath.row];
+    cell.timeLabel.text=self.timeTextArray[indexPath.row];
+    cell.contentLabel.text=self.contentTextArray[indexPath.row];
+    cell.content=self.contentTextArray[indexPath.row];
+   
+    
+    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
+    cell.contentLabel.frame =CGRectMake(10*Width, 65*Width, 300*Width, fcRect.size.height);
+    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 65*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
+
     
     return cell;
 }

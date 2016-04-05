@@ -27,13 +27,11 @@
     self =[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        _scrollView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width,60*NOW_SIZE)];
+        _scrollView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width,65*NOW_SIZE)];
         UIImage *bgImage = IMAGE(@"bg4.png");
        _scrollView.layer.contents = (id)bgImage.CGImage;
            [self addSubview:_scrollView];
         
-     
-
         float wSize=80*NOW_SIZE,Size1=15*NOW_SIZE,Size2=40*NOW_SIZE;
        _SN=[[UILabel alloc]initWithFrame:CGRectMake(Size1, 15*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
         _SN.text=@"序列号:";
@@ -44,7 +42,7 @@
         _SNText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize, 15*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
        // _SNText.text=@"序列号";
         _SNText.textAlignment=NSTextAlignmentLeft;
-        _SNText.textColor=[UIColor blackColor];
+        _SNText.textColor=[UIColor whiteColor];
         _SNText.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_SNText];
         
@@ -57,7 +55,7 @@
         _typtText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize*3, 15*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
         //_typtText.text=@"序列号";
         _typtText.textAlignment=NSTextAlignmentLeft;
-        _typtText.textColor=[UIColor blackColor];
+        _typtText.textColor=[UIColor whiteColor];
         _typtText.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_typtText];
         
@@ -70,7 +68,7 @@
         _eventText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize*1, Size2, 80*NOW_SIZE,20*NOW_SIZE )];
        // _eventText.text=@"序列号";
         _eventText.textAlignment=NSTextAlignmentLeft;
-        _eventText.textColor=[UIColor blackColor];
+        _eventText.textColor=[UIColor whiteColor];
         _eventText.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_eventText];
         
@@ -83,7 +81,7 @@
         _LogText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize*3, Size2, 80*NOW_SIZE,20*NOW_SIZE )];
        // _LogText.text=@"序列号";
         _LogText.textAlignment=NSTextAlignmentLeft;
-        _LogText.textColor=[UIColor blackColor];
+        _LogText.textColor=[UIColor whiteColor];
         _LogText.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_LogText];
         

@@ -13,6 +13,7 @@
 #import"VWWWaterView.h"
 #import "ControlCNJ.h"
 #import "parameterCNJ.h"
+#import "PvLogTableViewController.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface secondCNJ ()
@@ -60,6 +61,7 @@
     
     UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
+      [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     threeL.text=@"数据";
@@ -70,7 +72,7 @@
     
     UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
-    [fourB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
+  [fourB addTarget:self action:@selector(gofour) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:fourB];
     UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     fourL.text=@"日志";
@@ -80,6 +82,10 @@
     [self.view addSubview:fourL];
 }
 
+-(void)gofour{
+    PvLogTableViewController *four=[[PvLogTableViewController alloc]init];
+    [self.navigationController pushViewController:four animated:NO];
+}
 
 -(void)controlCNJ{
     ControlCNJ *CNJ=[[ControlCNJ alloc]init];

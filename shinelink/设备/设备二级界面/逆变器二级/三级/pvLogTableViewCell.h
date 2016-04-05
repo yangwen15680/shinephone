@@ -20,5 +20,6 @@
 @property (nonatomic, strong) UILabel *LogText;
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,strong)UILabel *timeLabel;
+@property(nonatomic,strong)NSString *content;
 
 @end
