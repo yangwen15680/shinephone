@@ -8,21 +8,30 @@
 
 #import "addServerViewController.h"
 
-@interface addServerViewController ()
+@interface addServerViewController ()<UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) NSArray *labelArray;
+@property (nonatomic, strong) NSMutableArray *labelArray;
 @property (nonatomic, strong) UITextField *userTextField;
 @property (nonatomic, strong) UITextField *SNTextField;
 @property (nonatomic, strong) UILabel* registLable;
 @property (nonatomic, strong) UITextView *contentView;
+@property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
+@property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
+@property (nonatomic, strong) NSMutableArray *picArray;
+
 @end
 
 @implementation addServerViewController
+{
+    int picTime;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"提交问题";
+    picTime=0;
      _labelArray=[[NSMutableArray alloc]initWithObjects:@"标题：", @"问题类型：", @"序列号：",@"内容：",nil];
+    _picArray=[NSMutableArray array];
     [self initUI];
 }
 -(void)initUI{
@@ -110,6 +119,8 @@
     registLable1.textAlignment = NSTextAlignmentLeft;
     registLable1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     registLable1.userInteractionEnabled=YES;
+    UITapGestureRecognizer * labelTap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(controlPhoto)];
+    [registLable1 addGestureRecognizer:labelTap1];
     [_scrollView addSubview:registLable1];
     
     /*UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 25*NOW_SIZE+Size1*3+200*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
@@ -119,9 +130,78 @@
     
     }
 
--(void)controlThree{
-
+-(void)controlPhoto{
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    //添加Button
+    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //处理点击拍照
+        self.cameraImagePicker = [[UIImagePickerController alloc] init];
+        self.cameraImagePicker.allowsEditing = YES;
+        self.cameraImagePicker.delegate = self;
+        self.cameraImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:_cameraImagePicker animated:YES completion:nil];
+        
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        //处理点击从相册选取
+        self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
+        self.photoLibraryImagePicker.allowsEditing = YES;
+        self.photoLibraryImagePicker.delegate = self;
+        self.photoLibraryImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
+        
+        
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
     
+    [self presentViewController: alertController animated: YES completion: nil];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[@"UIImagePickerControllerEditedImage"];
+    //NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    [_picArray addObject:image];
+    float size2=60*NOW_SIZE;
+    
+        if (picTime<4) {
+            UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size2*picTime, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+            image2.userInteractionEnabled = YES;
+            image2.image = _picArray[picTime];
+            image2.tag=picTime;
+            [_scrollView addSubview:image2];
+            
+            UILabel *del= [[UILabel alloc] initWithFrame:CGRectMake(70*NOW_SIZE+size2*picTime, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE+55*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
+            del.text=@"删除";
+            del.textColor=[UIColor redColor];
+            del.textAlignment = NSTextAlignmentCenter;
+            del.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+            del.userInteractionEnabled=YES;
+            del.tag=picTime;
+            [_scrollView addSubview:del];
+            UITapGestureRecognizer * labelTap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(delPicture:)];
+            [del addGestureRecognizer:labelTap2];
+            
+        }else if(4<picTime && picTime<8){
+            UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size2*(picTime-4), 25*NOW_SIZE+50*NOW_SIZE*4+160*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+            image2.userInteractionEnabled = YES;
+            image2.image = _picArray[picTime];
+            image2.tag=picTime;
+            [_scrollView addSubview:image2];
+      }
+    
+     picTime++;
+    }
+
+-(void)delPicture:(UILabel*)del{
+    
+    [_picArray removeObjectAtIndex:(long)del.tag];
+    UIImageView *image3=[_scrollView viewWithTag:del.tag];
+    [image3 removeFromSuperview];
 }
 
 -(void)tapLable{
