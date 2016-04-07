@@ -123,12 +123,25 @@
     [registLable1 addGestureRecognizer:labelTap1];
     [_scrollView addSubview:registLable1];
     
+    UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    goBut.frame=CGRectMake(60*NOW_SIZE,  25*NOW_SIZE+50*NOW_SIZE*4+160*NOW_SIZE+100*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [goBut.layer setMasksToBounds:YES];
+    [goBut.layer setCornerRadius:25.0];
+    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    
+    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut addTarget:self action:@selector(finishDone) forControlEvents:UIControlEventTouchUpInside];
+    [_scrollView addSubview:goBut];
     /*UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 25*NOW_SIZE+Size1*3+200*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [firstB setBackgroundImage:[UIImage imageNamed:@"add2@2x.png"] forState:UIControlStateNormal];
     [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstB];*/
     
     }
+
+-(void)finishDone{
+
+}
 
 -(void)controlPhoto{
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
@@ -172,35 +185,52 @@
             UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size2*picTime, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
             image2.userInteractionEnabled = YES;
             image2.image = _picArray[picTime];
-            image2.tag=picTime;
+            image2.tag=picTime+3000;
             [_scrollView addSubview:image2];
             
-            UILabel *del= [[UILabel alloc] initWithFrame:CGRectMake(70*NOW_SIZE+size2*picTime, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE+55*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
-            del.text=@"删除";
-            del.textColor=[UIColor redColor];
-            del.textAlignment = NSTextAlignmentCenter;
-            del.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-            del.userInteractionEnabled=YES;
-            del.tag=picTime;
+            UIButton *del= [[UIButton alloc] initWithFrame:CGRectMake(70*NOW_SIZE+size2*picTime, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE+55*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
+            [del setTitle:@"删除" forState:UIControlStateNormal];
+            del.backgroundColor=[UIColor clearColor];
+            [del setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                      // del.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+            //del.userInteractionEnabled=YES;
+            del.tag=2000+picTime;
+            [del addTarget:self action:@selector(delPicture:) forControlEvents:UIControlEventTouchUpInside];
             [_scrollView addSubview:del];
-            UITapGestureRecognizer * labelTap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(delPicture:)];
-            [del addGestureRecognizer:labelTap2];
+           // UITapGestureRecognizer * labelTap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(delPicture:)];
+           // [del addGestureRecognizer:labelTap2];
             
-        }else if(4<picTime && picTime<8){
-            UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size2*(picTime-4), 25*NOW_SIZE+50*NOW_SIZE*4+160*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+        }else if(4<=picTime && picTime<8){
+            UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size2*(picTime-4), 25*NOW_SIZE+50*NOW_SIZE*4+175*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
             image2.userInteractionEnabled = YES;
             image2.image = _picArray[picTime];
-            image2.tag=picTime;
+            image2.tag=picTime+3000;
             [_scrollView addSubview:image2];
+            
+            UIButton *del2= [[UIButton alloc] initWithFrame:CGRectMake(70*NOW_SIZE+size2*(picTime-4), 25*NOW_SIZE+50*NOW_SIZE*4+175*NOW_SIZE+55*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
+            [del2 setTitle:@"删除" forState:UIControlStateNormal];
+            del2.backgroundColor=[UIColor clearColor];
+            [del2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+            // del.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+            //del.userInteractionEnabled=YES;
+            del2.tag=2000+picTime;
+            [del2 addTarget:self action:@selector(delPicture:) forControlEvents:UIControlEventTouchUpInside];
+            [_scrollView addSubview:del2];
       }
     
      picTime++;
     }
 
--(void)delPicture:(UILabel*)del{
-    
-    [_picArray removeObjectAtIndex:(long)del.tag];
-    UIImageView *image3=[_scrollView viewWithTag:del.tag];
+-(void)delPicture:(UIButton*)del{
+    //NSLog(@"del.tag=%ld",del.tag);
+    //int a=del.tag;
+    UIButton  *a=del;
+    NSString *replaceName=@"del";
+  //  [_picArray removeObjectAtIndex:a.tag-2000];
+    [_picArray replaceObjectAtIndex:a.tag-2000 withObject:replaceName];
+    UIImageView *image3=[_scrollView viewWithTag:a.tag+1000];
+    UIButton *button3=[_scrollView viewWithTag:a.tag];
+    [button3 removeFromSuperview];
     [image3 removeFromSuperview];
 }
 
