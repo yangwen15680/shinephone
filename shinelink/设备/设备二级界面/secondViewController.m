@@ -14,6 +14,8 @@
 #import "KongZhiNi.h"
 #import "parameterPV.h"
 #import "PvLogTableViewController.h"
+#import "EquipGraphViewController.h"
+#import "newLine.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -22,9 +24,9 @@
 @property (nonatomic, assign) CGFloat step;
 @property (nonatomic, strong) CircleView *progressView;
 @property (nonatomic, strong) NSTimer *timer;
-
+@property (nonatomic, strong) NSMutableArray *invsDataArr;
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
-@property (nonatomic, strong) Line2View *line2View;
+@property (nonatomic, strong) newLine *line2View;
 
 @end
 
@@ -35,7 +37,7 @@
       //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     [self addProcess];
-     [self addRightItem];
+     //[self addRightItem];
     [self addGraph];
     [self addbutton];
     
@@ -104,14 +106,19 @@
 }
 
 -(void)goThree{
-    threeViewController *goThree=[[threeViewController alloc]init];
-    [self.navigationController pushViewController:goThree animated:YES];
+    EquipGraphViewController *equipGraph=[[EquipGraphViewController alloc]init];
+    equipGraph.dictInfo=@{@"equipId":@"逆变器",
+                          @"daySite":@"/inverterA.do?op=getDps",
+                          @"monthSite":@"/inverterA.do?op=getMps",
+                          @"yearSite":@"/inverterA.do?op=getYps",
+                          @"allSite":@"/inverterA.do?op=getTps"};
+    equipGraph.dict=@{@"1":root_PV_POWER, @"2":root_PV1_VOLTAGE, @"3":root_PV1_ELEC_CURRENT, @"4":root_PV2_VOLTAGE, @"5":root_PV2_ELEC_CURRENT, @"6":root_R_PHASE_POWER, @"7":root_S_PHASE_POWER, @"8":root_T_PHASE_POWER};
+    [self.navigationController pushViewController:equipGraph animated:YES];
     
 }
 -(void)addGraph{
     
-    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 100*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
-    self.line2View.flag=@"1";
+   self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 275*NOW_SIZE, SCREEN_Width,250*NOW_SIZE )];
     [self.view addSubview:self.line2View];
     NSMutableDictionary *dict=[NSMutableDictionary new];
     [dict setObject:@"3.0" forKey:@"08:30"];
@@ -124,7 +131,8 @@
     [dict setObject:@"23.0" forKey:@"15:30"];
     [dict setObject:@"151.0" forKey:@"16:30"];
     [dict setObject:@"124.0" forKey:@"17:30"];
-    [self.line2View refreshLineChartViewWithDataDict:dict];
+    
+    [self.line2View showLineChartWithDataDict:dict];
 
     
  /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {

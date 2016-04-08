@@ -6,12 +6,12 @@
 //  Copyright (c) 2015年 binghe168. All rights reserved.
 //
 
-#import "Line2View.h"
+#import "Line4View.h"
 #import "SHLineGraphView.h"
 #import "SHPlot.h"
 #import "PNChart.h"
 
-@interface Line2View () <PNChartDelegate>
+@interface Line4View () <PNChartDelegate>
 
 @property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
@@ -33,7 +33,7 @@
 
 @end
 
-@implementation Line2View
+@implementation Line4View
 
 - (void)setDataDict:(NSMutableDictionary *)dataDict {
     self.moneyLabel.text = dataDict[@"plantData"][@"plantMoneyText"];

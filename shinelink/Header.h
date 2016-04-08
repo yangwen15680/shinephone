@@ -22,6 +22,7 @@
 #define NOW_SIZE [UIScreen mainScreen].bounds.size.width/320
 
 #define SCREEN_Width [UIScreen mainScreen].bounds.size.width
+#define colorGary COLOR(212, 212, 212, 1)
 #define SCREEN_Height [UIScreen mainScreen].bounds.size.height
 #define kiPhone6 ([UIScreen mainScreen].bounds.size.width==375)
 #define frameMake(a,b,c,d) CGRectMake(a*NOW_SIZE,b*NOW_SIZE,c*NOW_SIZE,d*NOW_SIZE)
@@ -79,5 +80,78 @@
 #define root_Added_Successfully       NSLocalizedString(@"Added Successfully", @"Added Successfully")
 #define root_Add_Failed       NSLocalizedString(@"Add Failed", @"Add Failed")
 #define root_Insert_datalog_code       NSLocalizedString(@"Insert datalog code", @"Insert datalog code")
+
+//电站列表
+#define root_Plant_List       NSLocalizedString(@"Plant List", @"Plant List")
+#define root_Today_Energy       NSLocalizedString(@"Today Energy", @"Today Energy")
+#define root_Total_Energy       NSLocalizedString(@"Total Energy", @"Total Energy")
+#define root_Current_Power       NSLocalizedString(@"Current Power", @"Current Power")
+#define root_Gains       NSLocalizedString(@"Gains", @"Gains")
+#define root_Percentage       NSLocalizedString(@"Percentage", @"Percentage")
+#define root_Storage_Status       NSLocalizedString(@"Storage Status", @"Storage Status")
+#define root_Charge_Power       NSLocalizedString(@"Charge Power", @"Charge Power")
+#define root_Discharge_Power       NSLocalizedString(@"Discharge Power", @"Discharge Power")
+#define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")
+#define root_Remove_Station       NSLocalizedString(@"Remove Station", @"Remove Station")
+#define root_Upload_Picture       NSLocalizedString(@"Upload Picture", @"Upload Picture")
+#define root_Setting_Station_Map       NSLocalizedString(@"Setting Station Map", @"Setting Station Map")
+#define root_Installation_Information       NSLocalizedString(@"Installation Information", @"Installation Information")
+#define root_plant_name       NSLocalizedString(@"plant name", @"plant name")
+#define root_instal_date       NSLocalizedString(@"instal date", @"instal date")
+#define root_company       NSLocalizedString(@"company", @"company")
+#define root_power       NSLocalizedString(@"power", @"power")
+#define root_Next       NSLocalizedString(@"Next", @"Next")
+
+//电站详情
+#define root_Plant_Detail       NSLocalizedString(@"Plant Detail", @"Plant Detail")
+#define root_DAY       NSLocalizedString(@"DAY", @"DAY")
+#define root_MONTH       NSLocalizedString(@"MONTH", @"MONTH")
+#define root_YEAR       NSLocalizedString(@"YEAR", @"YEAR")
+#define root_TOTAL       NSLocalizedString(@"TOTAL", @"TOTAL")
+#define root_Daily_Returns       NSLocalizedString(@"Daily Returns", @"Daily Returns")
+#define root_Daily_Electricity       NSLocalizedString(@"Daily Electricity", @"Daily Electricity")
+#define root_Earnings       NSLocalizedString(@"Earnings", @"Earnings")
+#define root_Month_energy       NSLocalizedString(@"Month energy", @"Month energy")
+#define root_Earnings       NSLocalizedString(@"Earnings", @"Earnings")
+#define root_Year_energy       NSLocalizedString(@"Year energy", @"Year energy")
+#define root_Earnings       NSLocalizedString(@"Earnings", @"Earnings")
+#define root_Total_energy       NSLocalizedString(@"Total energy", @"Total energy")
+#define root_Powre       NSLocalizedString(@"Powre", @"Power")
+#define root_Plant_Overview       NSLocalizedString(@"Plant Overview", @"Plant Overview")
+#define root_Device_List       NSLocalizedString(@"Device List", @"Device List")
+#define root_Event_List       NSLocalizedString(@"Event List", @"Event List")
+#define root_Map       NSLocalizedString(@"Map", @"Map")
+#define root_Voltage      NSLocalizedString(@"Voltage", @"Voltage")
+#define root_Electron_flow      NSLocalizedString(@"Electron flow", @"Electron flow")
+
+//详情（逆变器）
+#define root_PV_POWER       NSLocalizedString(@"PV POWER", @"PV POWER")
+#define root_PV1_VOLTAGE       NSLocalizedString(@"PV1 VOLTAGE", @"PV1 VOLTAGE")
+#define root_PV1_ELEC_CURRENT       NSLocalizedString(@"PV1 ELEC-CURRENT", @"PV1 ELEC-CURRENT")
+#define root_PV2_VOLTAGE       NSLocalizedString(@"PV2 VOLTAGE", @"PV2 VOLTAGE")
+#define root_PV2_ELEC_CURRENT       NSLocalizedString(@"PV2 ELEC-CURRENT", @"PV2 ELEC-CURRENT")
+#define root_R_PHASE_POWER       NSLocalizedString(@"R-PHASE POWER", @"R-PHASE POWER")
+#define root_S_PHASE_POWER       NSLocalizedString(@"S-PHASE POWER", @"S-PHASE POWER")
+#define root_T_PHASE_POWER       NSLocalizedString(@"T-PHASE POWER", @"T-PHASE POWER")
+#define root_POWER       NSLocalizedString(@"POWER", @"POWER")
+#define root_Energy       NSLocalizedString(@"Energy", @"Energy")
+
+//详情（储能机）
+#define root_CHARGING_POWER       NSLocalizedString(@"CHARGING POWER", @"CHARGING POWER")
+#define root_DISCHARGING_POWER       NSLocalizedString(@"DISCHARGING POWER", @"DISCHARGING POWER")
+#define root_INPUT_VOLTAGE       NSLocalizedString(@"INPUT VOLTAGE", @"INPUT VOLTAGE")
+#define root_INPUT_CURRENT       NSLocalizedString(@"INPUT CURRENT", @"INPUT CURRENT")
+#define root_USER_SIDE_POWER       NSLocalizedString(@"USER-SIDE POWER", @"USER-SIDE POWER")
+#define root_GRID_SIDE_POWER       NSLocalizedString(@"GRID-SIDE POWER", @"GRID-SIDE POWER")
+
+#define root_MONTH_BATTERY_CHARGE     NSLocalizedString(@"MONTH BATTERY CHARGE" , @"MONTH BATTERY CHARGE")
+#define root_MONTHLY_CHARGED     NSLocalizedString(@"MONTHLY CHARGED", @"MONTHLY CHARGED")
+#define root_MONTHLY_DISCHARGED     NSLocalizedString(@"MONTHLY DISCHARGED", @"MONTHLY DISCHARGED")
+#define root_YEAR_BATTERY_CHARGE     NSLocalizedString(@"YEAR BATTERY CHARGE", @"YEAR BATTERY CHARGE")
+#define root_YEAR_CHARGED     NSLocalizedString(@"YEAR CHARGED", @"YEAR CHARGED")
+#define root_YEAR_DISCHARGED     NSLocalizedString(@"YEAR DISCHARGED", @"YEAR DISCHARGED")
+#define root_TOTAL_BATTERY_CHARGE     NSLocalizedString(@"TOTAL BATTERY CHARGE", @"TOTAL BATTERY CHARGE")
+#define root_TOTAL_CHARGED     NSLocalizedString(@"TOTAL CHARGED", @"TOTAL CHARGED")
+#define root_TOTAL_DISCHARGED     NSLocalizedString(@"TOTAL DISCHARGED", @"TOTAL DISCHARGED")
 
 #endif /* Header_h */

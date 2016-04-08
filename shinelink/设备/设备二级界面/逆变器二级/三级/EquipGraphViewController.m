@@ -1,21 +1,19 @@
 //
-//  engrgySencondViewController.m
-//  shinelink
+//  EquipGraphViewController.m
+//  ShinePhone
 //
-//  Created by sky on 16/3/11.
-//  Copyright © 2016年 sky. All rights reserved.
+//  Created by LinKai on 15/5/25.
+//  Copyright (c) 2015年 binghe168. All rights reserved.
 //
 
-#import "engrgySencondViewController.h"
-#import "newLine.h"
-#define dateHeight 30*NOW_SIZE
+#import "EquipGraphViewController.h"
+#import "Line2View.h"
+#import "EditGraphView.h"
 
 static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 
-@interface engrgySencondViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
-@property (nonatomic, strong) NSMutableArray *yearsArr;
-@property (nonatomic, strong) NSMutableArray *monthArr;
-@property(nonatomic,strong)UIScrollView *scrollView;
+@interface EquipGraphViewController () <UIPickerViewDelegate, UIPickerViewDataSource,EditGraphViewDelegate>
+
 @property (nonatomic, strong) UIView *timeDisplayView;
 @property (nonatomic, strong) UIButton *dayButton;
 @property (nonatomic, strong) UIButton *monthButton;
@@ -39,36 +37,52 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 @property (nonatomic, strong) NSDateFormatter *yearFormatter;
 @property (nonatomic, strong) NSDateFormatter *onlyMonthFormatter;
 
+@property (nonatomic, strong) NSMutableArray *yearsArr;
+@property (nonatomic, strong) NSMutableArray *monthArr;
+
 @property (nonatomic, strong) UIDatePicker *dayPicker;
 @property (nonatomic, strong) UIPickerView *monthPicker;
 @property (nonatomic, strong) UIPickerView *yearPicker;
 
 @property (nonatomic, strong) UIToolbar *toolBar;
-@property (nonatomic, strong) newLine *line2View;
+
+@property (nonatomic, strong) Line2View *line2View;
+@property(nonatomic,strong)EditGraphView *editGraph;
 @property(nonatomic,strong)NSString *type;
 @property(nonatomic,strong)UIButton *selectButton;
-
+@property(nonatomic,strong)UIScrollView *scrollView;
 
 @end
 
-@implementation engrgySencondViewController
+@implementation EquipGraphViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+   // self.title = _dictInfo[@"equipId"];
+    //self.navigationItem.title.
+    _type=@"1";
+    UIImage *bgImage = IMAGE(@"bg5.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
     [self initData];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *bgImage = IMAGE(@"bg.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+    // Do any additional setup after loading the view.
     [self initUI];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//初始化PickerView 数据源
 - (void)initData {
     self.yearsArr = [NSMutableArray array];
     for (int i = 1900; i<2100; i++) {
         [self.yearsArr addObject:[NSString stringWithFormat:@"%d", i]];
     }
+    
     self.monthArr = [NSMutableArray array];
     for (int i = 1; i<13; i++) {
         [self.monthArr addObject:[NSString stringWithFormat:@"%02d", i]];
@@ -78,7 +92,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 - (void)initUI {
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     [self.view addSubview:_scrollView];
-    
+
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
     [self.dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -131,7 +145,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [_scrollView addSubview:self.timeDisplayView];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_Width - 120*NOW_SIZE)/2, 4*NOW_SIZE, 120*NOW_SIZE, 30*NOW_SIZE - 8*NOW_SIZE)];
-    bgImageView.image = IMAGE(@"rili.png");
+   // bgImageView.backgroundColor=COLOR(123, 239, 227, 1);
+   bgImageView.image = IMAGE(@"rili.png");
     bgImageView.userInteractionEnabled = YES;
     [self.timeDisplayView addSubview:bgImageView];
     
@@ -173,94 +188,106 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.datePickerButton addTarget:self action:@selector(pickDate) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.datePickerButton];
     
-    self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 130*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
-    [self.view addSubview:self.line2View];
-    
+    [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+        [self hideProgressView];
+        if (content) {
+            self.dayDict=[NSMutableDictionary new];
+            //[self.dayDict setObject:content forKey:@"data"];
+            self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
+            self.line2View.flag=@"1";
+            [_scrollView addSubview:self.line2View];
+            [self.line2View refreshLineChartViewWithDataDict:content];
+            self.line2View.energyTitleLabel.text = root_Today_Energy;
+            self.line2View.unitLabel.text = root_Powre;
+            _selectButton=[[UIButton alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 50*NOW_SIZE, 210*NOW_SIZE, 30*NOW_SIZE)];
+            [_selectButton setTitle:_dict[@"1"] forState:0];
+            [_selectButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+            _selectButton.backgroundColor = COLOR(39, 183, 99, 1);
+            _selectButton.layer.cornerRadius = 5*NOW_SIZE;
+            _selectButton.clipsToBounds = YES;
+            [_line2View addSubview:_selectButton];
+            _scrollView.contentSize=CGSizeMake(SCREEN_Width, CGRectGetMaxY(_line2View.frame)+20*NOW_SIZE);
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
 }
+
 
 #pragma mark - 获取、保存曲线图数据
 - (void)requestDayDatasWithDayString:(NSString *)datString {
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"08:30"];
-    [dict setObject:@"5.0" forKey:@"09:30"];
-    [dict setObject:@"12.0" forKey:@"10:30"];
-    [dict setObject:@"21.0" forKey:@"11:30"];
-    [dict setObject:@"33.0" forKey:@"12:30"];
-    [dict setObject:@"45.0" forKey:@"13:30"];
-    [dict setObject:@"65.0" forKey:@"14:30"];
-    [dict setObject:@"23.0" forKey:@"15:30"];
-    [dict setObject:@"151.0" forKey:@"16:30"];
-    [dict setObject:@"124.0" forKey:@"17:30"];
-    
-    NSMutableDictionary *dict1=[NSMutableDictionary new];
-    [dict1 setObject:@"11.0" forKey:@"08:30"];
-    [dict1 setObject:@"51.0" forKey:@"09:30"];
-    [dict1 setObject:@"21.0" forKey:@"10:30"];
-    [dict1 setObject:@"11.0" forKey:@"11:30"];
-    [dict1 setObject:@"43.0" forKey:@"12:30"];
-    [dict1 setObject:@"55.0" forKey:@"13:30"];
-    [dict1 setObject:@"35.0" forKey:@"14:30"];
-    [dict1 setObject:@"83.0" forKey:@"15:30"];
-    [dict1 setObject:@"81.0" forKey:@"16:30"];
-    [dict1 setObject:@"24.0" forKey:@"17:30"];
-   
-    
-    [self.line2View showBarAndLineChartWithDataDict:dict barDict:dict1];
-    
+
+        [self showProgressView];
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+             NSLog(@"day: %@", content);
+            [self hideProgressView];
+            if (content) {
+                self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content];
+                [self.line2View refreshLineChartViewWithDataDict:content];
+            }
+            
+        } failure:^(NSError *error) {
+            [self hideProgressView];
+        }];
+//    }
 }
 
-
-
 - (void)requestMonthDatasWithMonthString:(NSString *)monthString {
-    
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"2"];
-    [dict setObject:@"5.0" forKey:@"4"];
-    [dict setObject:@"12.0" forKey:@"6"];
-    [dict setObject:@"21.0" forKey:@"8"];
-    [dict setObject:@"33.0" forKey:@"10"];
-    [dict setObject:@"45.0" forKey:@"12"];
-    [dict setObject:@"65.0" forKey:@"14"];
-    [dict setObject:@"23.0" forKey:@"16"];
-    [dict setObject:@"151.0" forKey:@"18"];
-    [dict setObject:@"124.0" forKey:@"20"];
-    
-    [self.line2View showBarChartWithDataDict:dict];
-    
-    
+
+        [self showProgressView];
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type,@"date":monthString} paramarsSite:_dictInfo[@"monthSite"] sucessBlock:^(id content) {
+            NSLog(@"tttt3: %@", content);
+            [self hideProgressView];
+            if (content) {
+                self.monthDict = [NSMutableDictionary dictionaryWithDictionary:content];
+                [self.line2View refreshBarChartViewWithDataDict:content chartType:2];
+            }
+            
+        } failure:^(NSError *error) {
+            [self hideProgressView];
+        }];
+//    }
 }
 
 - (void)requestYearDatasWithYearString:(NSString *)yearString {
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"2"];
-    [dict setObject:@"5.0" forKey:@"4"];
-    [dict setObject:@"12.0" forKey:@"6"];
-    [dict setObject:@"21.0" forKey:@"8"];
-    [dict setObject:@"33.0" forKey:@"10"];
-    [dict setObject:@"45.0" forKey:@"12"];
-    [dict setObject:@"65.0" forKey:@"14"];
-    [dict setObject:@"23.0" forKey:@"16"];
-    [dict setObject:@"151.0" forKey:@"18"];
-    [dict setObject:@"124.0" forKey:@"20"];
-    [self.line2View showBarChartWithDataDict:dict];
-    
-    //    }
+//    if (_yearDict.count) {
+//        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:3];
+//    } else {
+        [self showProgressView];
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type, @"date":yearString} paramarsSite:_dictInfo[@"yearSite"] sucessBlock:^(id content) {
+            NSLog(@"tttttt4: %@", content);
+            [self hideProgressView];
+            if (content) {
+                self.yearDict = [NSMutableDictionary dictionaryWithDictionary:content];
+                [self.line2View refreshBarChartViewWithDataDict:content chartType:3];
+            }
+            
+        } failure:^(NSError *error) {
+            [self hideProgressView];
+        }];
+//    }
 }
 
 - (void)requestTotalDatas {
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"2"];
-    [dict setObject:@"5.0" forKey:@"4"];
-    [dict setObject:@"12.0" forKey:@"6"];
-    [dict setObject:@"21.0" forKey:@"8"];
-    [dict setObject:@"33.0" forKey:@"10"];
-    [dict setObject:@"45.0" forKey:@"12"];
-    [dict setObject:@"65.0" forKey:@"14"];
-    [dict setObject:@"23.0" forKey:@"16"];
-    [dict setObject:@"151.0" forKey:@"18"];
-    [dict setObject:@"124.0" forKey:@"20"];
-    [self.line2View showBarChartWithDataDict:dict];
+//    if (_totalDict.count) {
+//        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:4];
+//    } else {
+        [self showProgressView];
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type} paramarsSite:_dictInfo[@"allSite"] sucessBlock:^(id content) {
+            [self hideProgressView];
+            if (content) {
+                self.yearDict = [NSMutableDictionary dictionaryWithDictionary:content];
+                [self.line2View refreshBarChartViewWithDataDict:content chartType:4];
+            }
+            
+        } failure:^(NSError *error) {
+            [self hideProgressView];
+        }];
+//    }
 }
+
 #pragma mark - 上一个时间  下一个时间  按钮事件
 //上一个时间
 - (void)lastDate:(UIButton *)sender {
@@ -402,6 +429,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         self.monthButton.selected = NO;
         self.yearButton.selected = NO;
         self.totalButton.selected = NO;
+        if (_dict[@"1"]) {
+            [_line2View addSubview:_selectButton];
+            [_selectButton setTitle:_dict[@"1"] forState:0];
+            self.line2View.energyTitleLabel.text = root_Today_Energy;
+            self.line2View.unitLabel.text = root_Powre;
+        }else{
+            [_selectButton removeFromSuperview];
+        }
         
         [UIView animateWithDuration:0.3f animations:^{
             self.timeDisplayView.alpha = 1;
@@ -435,7 +470,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         self.monthButton.selected = YES;
         self.yearButton.selected = NO;
         self.totalButton.selected = NO;
-        
+        if (_dictMonth[@"1"]) {
+            [_selectButton setTitle:_dictMonth[@"1"] forState:0];
+        }else{
+            [_selectButton removeFromSuperview];
+        }
         [UIView animateWithDuration:0.3f animations:^{
             self.timeDisplayView.alpha = 1;
         }];
@@ -469,7 +508,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         self.monthButton.selected = NO;
         self.yearButton.selected = YES;
         self.totalButton.selected = NO;
-        
+        if (_dictYear[@"1"]) {
+            [_selectButton setTitle:_dictYear[@"1"] forState:0];
+        }else{
+            [_selectButton removeFromSuperview];
+        }
         [UIView animateWithDuration:0.3f animations:^{
             self.timeDisplayView.alpha = 1;
         }];
@@ -503,7 +546,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         self.monthButton.selected = NO;
         self.yearButton.selected = NO;
         self.totalButton.selected = YES;
-        
+        if (_dictAll[@"1"]) {
+            [_selectButton setTitle:_dictAll[@"1"] forState:0];
+        }else{
+            [_selectButton removeFromSuperview];
+        }
         [UIView animateWithDuration:0.3f animations:^{
             self.timeDisplayView.alpha = 0;
         }];
@@ -811,23 +858,87 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 
 
 
+-(void)buttonPressed{
+    NSArray *array=[[NSArray alloc]initWithObjects:_dayButton, _monthButton, _yearButton, _totalButton, nil];
+    NSArray *arrayDict=[[NSArray alloc]initWithObjects:_dict, _dictMonth, _dictYear, _dictAll, nil];
+    for (int i=0; i<4; i++) {
+        UIButton *button=array[i];
+        if (button.selected) {
+            _editGraph = [[EditGraphView alloc] initWithFrame:self.view.bounds dictionary:arrayDict[i]];
+            break;
+        }
+    }
+    _editGraph.delegate = self;
+    _editGraph.tintColor = [UIColor blackColor];
+    _editGraph.dynamic = NO;
+    _editGraph.blurRadius = 10.0f;
+    [[UIApplication sharedApplication].keyWindow addSubview:_editGraph];
+}
 
 
 
 #pragma mark - EditCellectViewDelegate
 - (void)menuDidSelectAtRow:(NSInteger)row {
+    if (row==0) {
+        //取消菜单
+        [_editGraph removeFromSuperview];
+    }
     
-}
+    if (_dayButton.selected) {
+        for (int i=0; i<_dict.count; i++) {
+            if (row==i+1) {
+                [_editGraph removeFromSuperview];
+                NSString *string=[NSString stringWithFormat:@"%d",i+1];
+                [_selectButton setTitle:_dict[string] forState:0];
+                _type=string;
+                [self requestDayDatasWithDayString:self.currentDay];
+                if ([_dict[string] isEqualToString:root_INPUT_VOLTAGE]||
+                    [_dict[string] isEqualToString:root_PV1_VOLTAGE]||
+                    [_dict[string] isEqualToString:root_PV2_VOLTAGE]) {
+                    _line2View.unitLabel.text=root_Voltage;
+                }else if([_dict[string] isEqualToString:root_INPUT_CURRENT]||
+                         [_dict[string] isEqualToString:root_PV1_ELEC_CURRENT]||
+                         [_dict[string] isEqualToString:root_PV2_ELEC_CURRENT]){
+                    _line2View.unitLabel.text=root_Electron_flow;
+                }else{
+                    _line2View.unitLabel.text=root_Powre;
+                }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+            }
+      
+        }
+    }else if (_monthButton.selected){
+        for (int i=0; i<_dictMonth.count; i++) {
+            if (row==i+1) {
+                [_editGraph removeFromSuperview];
+                NSString *string=[NSString stringWithFormat:@"%d",i+1];
+                [_selectButton setTitle:_dictMonth[string] forState:0];
+                _type=string;
+                [self requestMonthDatasWithMonthString:self.currentMonth];
+            }
+        }
+    }else if (_yearButton.selected){
+        for (int i=0; i<_dictYear.count; i++) {
+            if (row==i+1) {
+                [_editGraph removeFromSuperview];
+                NSString *string=[NSString stringWithFormat:@"%d",i+1];
+                [_selectButton setTitle:_dictYear[string] forState:0];
+                _type=string;
+                [self requestYearDatasWithYearString:self.currentYear];
+            }
+        }
+    }else if (_totalButton.selected){
+        for (int i=0; i<_dict.count; i++) {
+            if (row==i+1) {
+                [_editGraph removeFromSuperview];
+                NSString *string=[NSString stringWithFormat:@"%d",i+1];
+                [_selectButton setTitle:_dictAll[string] forState:0];
+                _type=string;
+                [self requestTotalDatas];
+            }
+        }
+    }
 }
-
 
 
 @end
-
-
-
-

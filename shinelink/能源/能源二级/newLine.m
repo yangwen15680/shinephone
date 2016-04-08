@@ -108,17 +108,23 @@
 
 - (void)showLineChartWithDataDict:(NSMutableDictionary *)dataDict{
      [self setDataDict:dataDict];
+    self.valuesArrayLine=[NSMutableArray array];
+    for (NSString *key in self.xArray) {
+        [self.valuesArrayLine addObject:dataDict[key]];
+    }
+    
     if (_barChart) {
         [_barChart removeFromSuperview];
     }
     if (_lineChart) {
         [_lineChart removeFromSuperview];
     }
-    _lineChart = [[ZFLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64)];
-    _lineChart.title = @"曲线图";
+    _lineChart = [[ZFLineChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-10*NOW_SIZE, 200*NOW_SIZE)];
+    //_lineChart.title = @"曲线图";
     _lineChart.xLineValueArray = [NSMutableArray arrayWithArray:self.valuesArrayLine];
-    _lineChart.xLineTitleArray =[NSMutableArray arrayWithArray:self.xArray];
-    _lineChart.yLineMaxValue = 500;
+   // _lineChart.xLineTitleArray =[NSMutableArray arrayWithArray:self.xArray];
+    NSNumber *maxyAxisValue = [_valuesArray valueForKeyPath:@"@max.floatValue"];
+    _lineChart.yLineMaxValue = maxyAxisValue.floatValue;
     _lineChart.yLineSectionCount = 10;
     [self addSubview:_lineChart];
     [_lineChart strokePath];

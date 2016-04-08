@@ -132,10 +132,22 @@
     [goBut setTitle:@"完成" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishDone) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:goBut];
-    /*UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 25*NOW_SIZE+Size1*3+200*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
-    [firstB setBackgroundImage:[UIImage imageNamed:@"add2@2x.png"] forState:UIControlStateNormal];
-    [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:firstB];*/
+    
+     float size5=60*NOW_SIZE;
+    for(int i=0;i<4;i++){
+    UIImageView *image5=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size5*i, 25*NOW_SIZE+50*NOW_SIZE*3+150*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+   // image5.userInteractionEnabled = YES;
+    image5.image = IMAGE(@"add2@2x.png");
+    [_scrollView addSubview:image5];
+    }
+    
+    for(int i=0;i<4;i++){
+        UIImageView *image5=[[UIImageView alloc]initWithFrame:CGRectMake(70*NOW_SIZE+size5*i, 25*NOW_SIZE+50*NOW_SIZE*4+175*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+        // image5.userInteractionEnabled = YES;
+        image5.image = IMAGE(@"add2@2x.png");
+        [_scrollView addSubview:image5];
+    }
+ 
     
     }
 

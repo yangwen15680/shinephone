@@ -127,7 +127,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 4;
+    return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -155,37 +155,26 @@
         if (!cell1) {
             cell1=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell11];
         }
-        [cell1.imageLog setImage:[UIImage imageNamed:@"用户协议@2x.png"]];
+        [cell1.imageLog setImage:[UIImage imageNamed:@"update.png"]];
         cell1.tableName.text = @"用户协议";
         
         return cell1;
-    }else if(indexPath.row==1)
-    {
-        if (!cell2) {
-            cell2=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell22];
-        }
-        [cell2.imageLog setImage:[UIImage imageNamed:@"电子邮箱@2x.png"]];
-        cell2.tableName.text = @"电子邮箱";
-        cell2.tableDetail.text=@"123456789@qq.com";
-        
-        
-         return cell2;
-    }   else if(indexPath.row==2)
+    }   else if(indexPath.row==1)
     {
         if (!cell3) {
             cell3=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell33];
         }
-        [cell3.imageLog setImage:[UIImage imageNamed:@"客服电话@2x.png"]];
+        [cell3.imageLog setImage:[UIImage imageNamed:@"user-agreement.png"]];
         cell3.tableName.text = @"客服电话";
         cell3.tableDetail.text=@"186666666";
         
           return cell3;
-    } else if(indexPath.row==3)
+    } else if(indexPath.row==2)
     {
         if (!cell4) {
             cell4=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell44];
         }
-        [cell4.imageLog setImage:[UIImage imageNamed:@"版本更新@2x.png"]];
+        [cell4.imageLog setImage:[UIImage imageNamed:@"service.png"]];
         cell4.tableName.text = @"检查更新";
         
         return cell4;

@@ -34,7 +34,7 @@
         self.tableName.textColor = [UIColor orangeColor];
         [self.contentView addSubview:_tableName];
         
-        self.tableDetail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-200*NOW_SIZE, 7*NOW_SIZE, 200*NOW_SIZE, SCREEN_Width/5-10)];
+        self.tableDetail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-200*NOW_SIZE, 7*NOW_SIZE, 180*NOW_SIZE, SCREEN_Width/5-10)];
         self.tableDetail.font=[UIFont systemFontOfSize:15*NOW_SIZE];
         self.tableDetail.textAlignment = NSTextAlignmentRight;
         self.tableDetail.textColor = [UIColor blackColor];

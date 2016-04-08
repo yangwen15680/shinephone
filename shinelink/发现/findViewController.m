@@ -12,6 +12,8 @@
 #import "listViewController.h"
 #import "commonTableViewController.h"
 #import "LZPageViewController.h"
+#import "qualityTableViewController.h"
+#import "moreTableViewController.h"
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
@@ -157,10 +159,13 @@
     if (indexPath.row==0) {
     
         LZPageViewController *pageVc = [[LZPageViewController alloc] initWithTitles:@[@"我的问题",@"常见问题",] controllersClass:@[[listViewController class],[commonTableViewController class]]];
-        [self.navigationController pushViewController:pageVc animated:YES];
-        
-      //  serverViewController *aboutView = [[serverViewController alloc]init];
-      //  [self.navigationController pushViewController:aboutView animated:YES];
+        [self.navigationController pushViewController:pageVc animated:NO];
+    }else if (indexPath.row==1){
+        qualityTableViewController *page2 = [[qualityTableViewController alloc] init];
+        [self.navigationController pushViewController:page2 animated:NO];
+    }else if (indexPath.row==3){
+        moreTableViewController *page4 = [[moreTableViewController alloc] init];
+        [self.navigationController pushViewController:page4 animated:NO];
     }
 }
 
