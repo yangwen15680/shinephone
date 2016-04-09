@@ -191,11 +191,13 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
         [self hideProgressView];
+        NSLog(@"dayDate:%@",content);
         if (content) {
             self.dayDict=[NSMutableDictionary new];
             //[self.dayDict setObject:content forKey:@"data"];
             self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
+               self.line2View.frameType=@"2";
             [_scrollView addSubview:self.line2View];
             [self.line2View refreshLineChartViewWithDataDict:content];
             self.line2View.energyTitleLabel.text = root_Today_Energy;
@@ -213,6 +215,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
+    
 }
 
 

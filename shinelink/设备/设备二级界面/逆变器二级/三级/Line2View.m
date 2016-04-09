@@ -189,8 +189,20 @@
         }
         
         
-        
-        self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];
+        if ([_frameType isEqualToString:@"1"]) {
+             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 0*NOW_SIZE, 300*NOW_SIZE, 220*NOW_SIZE)];
+            NSDictionary *_themeAttributes = @{
+                                               kXAxisLabelColorKey : [UIColor blackColor],
+                                               kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                               kYAxisLabelColorKey : [UIColor blackColor],
+                                               kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                               //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
+                                               kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
+                                               kDotSizeKey : @0
+                                               };
+            self.lineChartView.themeAttributes = _themeAttributes;
+        }else {
+        self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(5, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
                                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
@@ -200,7 +212,9 @@
                                            kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                                            kDotSizeKey : @0
                                            };
-        self.lineChartView.themeAttributes = _themeAttributes;
+            self.lineChartView.themeAttributes = _themeAttributes;
+        }
+       
         NSLog(@"TEST:%d",j);
 
         NSMutableArray *tempXArr = [NSMutableArray array];
@@ -236,14 +250,27 @@
         self.lineChartView.xAxisValues = tempXArr;
   
         self.lineChartPlot = [[SHPlot alloc] init];
+        if ([_frameType isEqualToString:@"1"]) {
         NSDictionary *_plotThemeAttributes = @{
                                                kPlotFillColorKey : [UIColor colorWithRed:0.47 green:0.75 blue:0.78 alpha:0.5],
                                                kPlotStrokeWidthKey : @2,
-                                               kPlotStrokeColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1],
+                                               kPlotStrokeColorKey : [UIColor blueColor],
                                                kPlotPointFillColorKey : [UIColor colorWithRed:0.18 green:0.36 blue:0.41 alpha:1],
                                                kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10]
                                                };
-        self.lineChartPlot.plotThemeAttributes = _plotThemeAttributes;
+            self.lineChartPlot.plotThemeAttributes = _plotThemeAttributes;
+          }else{
+              NSDictionary *_plotThemeAttributes = @{
+                                                     kPlotFillColorKey : [UIColor colorWithRed:0.47 green:0.75 blue:0.78 alpha:0.5],
+                                                     kPlotStrokeWidthKey : @2,
+                                                     kPlotStrokeColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1],
+                                                     kPlotPointFillColorKey : [UIColor colorWithRed:0.18 green:0.36 blue:0.41 alpha:1],
+                                                     kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10]
+                                                     };
+              self.lineChartPlot.plotThemeAttributes = _plotThemeAttributes;
+            
+            }
+        
     }
     return _lineChartView;
 }

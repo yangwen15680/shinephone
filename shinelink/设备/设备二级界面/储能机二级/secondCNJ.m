@@ -98,6 +98,7 @@
 }
 
 -(void)goThree{
+    
     threeViewController *goThree=[[threeViewController alloc]init];
     [self.navigationController pushViewController:goThree animated:YES];
     
@@ -105,7 +106,7 @@
 -(void)addGraph{
   
     
-    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 100*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
+    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
     self.line2View.flag=@"1";
     [self.view addSubview:self.line2View];
     NSMutableDictionary *dict=[NSMutableDictionary new];
@@ -119,6 +120,7 @@
     [dict setObject:@"23.0" forKey:@"15:30"];
     [dict setObject:@"151.0" forKey:@"16:30"];
     [dict setObject:@"124.0" forKey:@"17:30"];
+    self.line2View.frameType=@"1";
     [self.line2View refreshLineChartViewWithDataDict:dict];
     
     
@@ -169,6 +171,14 @@
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightState];
+    
+    UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 245*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    dataName.text=@"当日储能";
+    dataName.textAlignment=NSTextAlignmentCenter;
+    dataName.textColor=[UIColor blackColor];
+    dataName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [self.view addSubview:dataName];
+    
     
     VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 20*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
     CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 150*NOW_SIZE);

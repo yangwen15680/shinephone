@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) NSMutableArray *invsDataArr;
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
-@property (nonatomic, strong) newLine *line2View;
+@property (nonatomic, strong) Line2View *line2View;
 
 @end
 
@@ -68,7 +68,7 @@
     
     UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
-     [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
+     [threeB addTarget:self action:@selector(goPVThree) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
     threeL.text=@"数据";
@@ -105,7 +105,7 @@
     [self.navigationController pushViewController:pv animated:NO];
 }
 
--(void)goThree{
+-(void)goPVThree{
     EquipGraphViewController *equipGraph=[[EquipGraphViewController alloc]init];
     equipGraph.dictInfo=@{@"equipId":@"逆变器",
                           @"daySite":@"/inverterA.do?op=getDps",
@@ -118,10 +118,10 @@
 }
 -(void)addGraph{
     
-   self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 275*NOW_SIZE, SCREEN_Width,250*NOW_SIZE )];
+   self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 275*NOW_SIZE, SCREEN_Width,250*NOW_SIZE )];
     [self.view addSubview:self.line2View];
     NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"08:30"];
+    /*[dict setObject:@"3.0" forKey:@"08:30"];
     [dict setObject:@"5.0" forKey:@"09:30"];
     [dict setObject:@"12.0" forKey:@"10:30"];
     [dict setObject:@"21.0" forKey:@"11:30"];
@@ -130,9 +130,52 @@
     [dict setObject:@"65.0" forKey:@"14:30"];
     [dict setObject:@"23.0" forKey:@"15:30"];
     [dict setObject:@"151.0" forKey:@"16:30"];
-    [dict setObject:@"124.0" forKey:@"17:30"];
+    [dict setObject:@"124.0" forKey:@"17:30"];*/
     
-    [self.line2View showLineChartWithDataDict:dict];
+    [dict setObject:@"5.0" forKey:@"01:30"];
+    [dict setObject:@"2.0" forKey:@"09:30"];
+    [dict setObject:@"4" forKey:@"10:30"];
+    [dict setObject:@"51" forKey:@"11:30"];
+    [dict setObject:@"81" forKey:@"12:30"];
+    [dict setObject:@"61" forKey:@"13:30"];
+    [dict setObject:@"12" forKey:@"14:30"];
+    [dict setObject:@"15" forKey:@"15:30"];
+    [dict setObject:@"44" forKey:@"16:30"];
+    [dict setObject:@"121" forKey:@"17:30"];
+    [dict setObject:@"53.0" forKey:@"01:32"];
+    [dict setObject:@"42.0" forKey:@"09:32"];
+    [dict setObject:@"43" forKey:@"10:32"];
+    [dict setObject:@"25" forKey:@"11:35"];
+    [dict setObject:@"83" forKey:@"12:35"];
+    [dict setObject:@"61" forKey:@"13:35"];
+    [dict setObject:@"312" forKey:@"14:35"];
+    [dict setObject:@"135" forKey:@"15:35"];
+    [dict setObject:@"444" forKey:@"16:35"];
+    [dict setObject:@"112" forKey:@"17:35"];
+    [dict setObject:@"51.0" forKey:@"01:50"];
+    [dict setObject:@"2.0" forKey:@"09:50"];
+    [dict setObject:@"4" forKey:@"10:50"];
+    [dict setObject:@"5" forKey:@"11:50"];
+    [dict setObject:@"8" forKey:@"12:50"];
+    [dict setObject:@"6" forKey:@"13:50"];
+    [dict setObject:@"12" forKey:@"14:50"];
+    [dict setObject:@"15" forKey:@"15:50"];
+    [dict setObject:@"44" forKey:@"16:50"];
+    [dict setObject:@"12" forKey:@"17:50"];
+    [dict setObject:@"5.0" forKey:@"01:40"];
+    [dict setObject:@"22.0" forKey:@"09:40"];
+    [dict setObject:@"44" forKey:@"10:40"];
+    [dict setObject:@"35" forKey:@"11:40"];
+    [dict setObject:@"8" forKey:@"12:40"];
+    [dict setObject:@"6" forKey:@"13:40"];
+    [dict setObject:@"142" forKey:@"14:40"];
+    [dict setObject:@"115" forKey:@"15:40"];
+    [dict setObject:@"424" forKey:@"16:40"];
+    [dict setObject:@"122" forKey:@"17:40"];
+
+    
+self.line2View.frameType=@"1";
+  [self.line2View refreshLineChartViewWithDataDict:dict];
 
     
  /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {

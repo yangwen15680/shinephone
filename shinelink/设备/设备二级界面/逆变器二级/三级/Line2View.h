@@ -13,6 +13,7 @@
 @property(nonatomic,strong)NSString *flag;
 @property (nonatomic, strong) UILabel *unitLabel;
 @property (nonatomic, strong) UILabel *energyTitleLabel;
+@property (nonatomic, strong) NSString *frameType;
 
 - (void)refreshLineChartViewWithDataDict:(NSMutableDictionary *)dataDict;
 

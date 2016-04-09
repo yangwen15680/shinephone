@@ -325,7 +325,7 @@
 - (void)drawXLabels:(SHPlot *)plot {
     int xIntervalCount = _xAxisValues.count;
     double xIntervalInPx = PLOT_WIDTH / _xAxisValues.count;
-    
+    NSMutableArray *lableName=[NSMutableArray array];
     //initialize actual x points values where the circle will be
     plot.xPoints = calloc(sizeof(CGPoint), xIntervalCount);
     
@@ -347,8 +347,13 @@
         [dic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
             xLabel = (NSString *)obj;
         }];
-        
-        xAxisLabel.text = [NSString stringWithFormat:@"%@", xLabel];
+        if (![lableName containsObject:xLabel]) {
+            [lableName addObject:xLabel];
+            xAxisLabel.text = [NSString stringWithFormat:@"%@", xLabel];
+        }else{
+            xAxisLabel.text = nil;
+        }
+       
         [self addSubview:xAxisLabel];
     }
 }
