@@ -49,11 +49,7 @@
         _contentLabel.textColor = [UIColor grayColor];
         _contentLabel.textAlignment =NSTextAlignmentLeft;
         _contentLabel.numberOfLines=0;
-        //NSLog(@"self.content=%@",self.content);
-        //CGRect rect =[FormValidator rectWidthAndHeightWithStr:_contentLabel.text AndFont:18 WithStrWidth:300];
-        /* CGRect fcRect = [self.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-        
-       _contentLabel.frame =CGRectMake(10*Width, 45*Width, 300*Width, fcRect.size.height);*/
+     
       
         [self addSubview:_contentLabel];
         

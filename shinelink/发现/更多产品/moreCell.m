@@ -28,12 +28,16 @@
         self.name.textColor = [UIColor blackColor];
         [self.contentView addSubview:_name];
         
+        _image=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*NOW_SIZE, 20*NOW_SIZE,20*NOW_SIZE )];
+        _image.image = IMAGE(@"更多产品2.png");
+        [self.contentView addSubview:_image];
+        
         self.connent = [[UILabel alloc] initWithFrame:CGRectMake(size2+imageSize+kongXi, size1+20*NOW_SIZE, 200*NOW_SIZE, 60*NOW_SIZE)];
-        self.connent.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        self.connent.font=[UIFont systemFontOfSize:13*NOW_SIZE];
         self.connent.text=@"逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器逆变器";
         self.connent.numberOfLines=0;
         self.connent.textAlignment = NSTextAlignmentLeft;
-        self.connent.textColor = [UIColor blackColor];
+        self.connent.textColor = [UIColor grayColor];
         [self.contentView addSubview:_connent];
         
 

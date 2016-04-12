@@ -180,6 +180,21 @@
 		337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9CCA1C71AC200016FE43 /* energyViewController.m */; };
 		337F9CCE1C71AC2E0016FE43 /* meViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9CCD1C71AC2E0016FE43 /* meViewController.m */; };
 		337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9E101C71C4D90016FE43 /* TableViewCell.m */; };
+		3381ECE51CBC900900DCF0D2 /* EquitGraph2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ECE41CBC900900DCF0D2 /* EquitGraph2ViewController.m */; };
+		3381ECE81CBC906600DCF0D2 /* Line3View.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ECE71CBC906600DCF0D2 /* Line3View.m */; };
+		3381ECEE1CBCA3ED00DCF0D2 /* energyDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ECED1CBCA3ED00DCF0D2 /* energyDemo.m */; };
+		3381ECF11CBCA5F900DCF0D2 /* 峰谷电价设置切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */; };
+		3381ECF31CBCA60C00DCF0D2 /* 智能调整优先设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */; };
+		3381ECF51CBCA61200DCF0D2 /* 智能联动设置切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */; };
+		3381ECF71CBCA62700DCF0D2 /* 峰谷段动作使能切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */; };
+		3381ECF91CBCA63000DCF0D2 /* 控制优先级设置切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */; };
+		3381ECFB1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */; };
+		3381ECFE1CBCCADB00DCF0D2 /* myListSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */; };
+		3381ED011CBCD85700DCF0D2 /* myListSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ED001CBCD85700DCF0D2 /* myListSecondTableViewCell.m */; };
+		3381ED041CBCDB1500DCF0D2 /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED021CBCDB1500DCF0D2 /* service@2x.png */; };
+		3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED031CBCDB1500DCF0D2 /* service@3x.png */; };
+		3381ED091CBCE94200DCF0D2 /* AnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */; };
+		3381ED0B1CBCF70400DCF0D2 /* 更多产品2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */; };
 		3383EF9A1C9F8A6F0075E834 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3383EF821C9F8A6F0075E834 /* MJRefresh.bundle */; };
 		3383EF9B1C9F8A6F0075E834 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF851C9F8A6F0075E834 /* MJRefreshComponent.m */; };
 		3383EF9C1C9F8A6F0075E834 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF871C9F8A6F0075E834 /* MJRefreshConst.m */; };
@@ -459,10 +474,10 @@
 		335089241C7323C200D7AA03 /* frag4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frag4.png; path = "../设备/frag4.png"; sourceTree = "<group>"; };
 		335089261C73267A00D7AA03 /* findTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = findTableViewCell.h; sourceTree = "<group>"; };
 		335089271C73267A00D7AA03 /* findTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findTableViewCell.m; sourceTree = "<group>"; };
-		33528FEE1C83E41D00D07889 /* listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listViewController.h; sourceTree = "<group>"; };
-		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listViewController.m; sourceTree = "<group>"; };
-		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = listTableViewCell.h; sourceTree = "<group>"; };
-		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = listTableViewCell.m; sourceTree = "<group>"; };
+		33528FEE1C83E41D00D07889 /* listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listViewController.h; path = ../listViewController.h; sourceTree = "<group>"; };
+		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listViewController.m; path = ../listViewController.m; sourceTree = "<group>"; };
+		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listTableViewCell.h; path = ../listTableViewCell.h; sourceTree = "<group>"; };
+		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listTableViewCell.m; path = ../listTableViewCell.m; sourceTree = "<group>"; };
 		3353173F1CA2423D003F106D /* GetDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
 		335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
 		335317411CA2423D003F106D /* GetDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDevice.h; sourceTree = "<group>"; };
@@ -515,9 +530,9 @@
 		335614951CB3A6A30071BAC9 /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		3356149A1CB3AFE30071BAC9 /* addServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addServerViewController.h; sourceTree = "<group>"; };
 		3356149B1CB3AFE30071BAC9 /* addServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addServerViewController.m; sourceTree = "<group>"; };
-		3356149F1CB3B8E90071BAC9 /* frame2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame2@2x.png"; sourceTree = "<group>"; };
-		335614A31CB3E0210071BAC9 /* frame4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frame4@2x.png"; sourceTree = "<group>"; };
-		335614A51CB3E09D0071BAC9 /* add2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add2@2x.png"; sourceTree = "<group>"; };
+		3356149F1CB3B8E90071BAC9 /* frame2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame2@2x.png"; path = "../frame2@2x.png"; sourceTree = "<group>"; };
+		335614A31CB3E0210071BAC9 /* frame4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame4@2x.png"; path = "../frame4@2x.png"; sourceTree = "<group>"; };
+		335614A51CB3E09D0071BAC9 /* add2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add2@2x.png"; path = "../add2@2x.png"; sourceTree = "<group>"; };
 		3358812C1CB66E250068EFAD /* qualityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qualityTableViewController.h; sourceTree = "<group>"; };
 		3358812D1CB66E250068EFAD /* qualityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qualityTableViewController.m; sourceTree = "<group>"; };
 		3358812F1CB66E460068EFAD /* qualityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qualityCell.h; sourceTree = "<group>"; };
@@ -576,8 +591,8 @@
 		33692BF01C926B4500698375 /* rili.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rili.png; path = "../设备二级界面/rili.png"; sourceTree = "<group>"; };
 		33692BF21C926B4B00698375 /* shang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shang.png; path = "../设备二级界面/shang.png"; sourceTree = "<group>"; };
 		33692BF41C926B5000698375 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xia.png; path = "../设备二级界面/xia.png"; sourceTree = "<group>"; };
-		33692BF71C92952000698375 /* engrgySencondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engrgySencondViewController.h; sourceTree = "<group>"; };
-		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = engrgySencondViewController.m; sourceTree = "<group>"; };
+		33692BF71C92952000698375 /* engrgySencondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engrgySencondViewController.h; path = ../engrgySencondViewController.h; sourceTree = "<group>"; };
+		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = engrgySencondViewController.m; path = ../engrgySencondViewController.m; sourceTree = "<group>"; };
 		33744DE21CAE597A0065DC01 /* pvLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvLogTableViewCell.h; sourceTree = "<group>"; };
 		33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pvLogTableViewCell.m; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -604,6 +619,27 @@
 		337F9E0E1C71BFC10016FE43 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		337F9E0F1C71C4D90016FE43 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
 		337F9E101C71C4D90016FE43 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
+		3381ECE31CBC900900DCF0D2 /* EquitGraph2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquitGraph2ViewController.h; sourceTree = "<group>"; };
+		3381ECE41CBC900900DCF0D2 /* EquitGraph2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EquitGraph2ViewController.m; sourceTree = "<group>"; };
+		3381ECE61CBC906600DCF0D2 /* Line3View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line3View.h; sourceTree = "<group>"; };
+		3381ECE71CBC906600DCF0D2 /* Line3View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line3View.m; sourceTree = "<group>"; };
+		3381ECEC1CBCA3ED00DCF0D2 /* energyDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = energyDemo.h; sourceTree = "<group>"; };
+		3381ECED1CBCA3ED00DCF0D2 /* energyDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = energyDemo.m; sourceTree = "<group>"; };
+		3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "峰谷电价设置切图.png"; sourceTree = "<group>"; };
+		3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智能调整优先设置.png"; sourceTree = "<group>"; };
+		3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智能联动设置切图.png"; sourceTree = "<group>"; };
+		3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "峰谷段动作使能切图.png"; sourceTree = "<group>"; };
+		3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "控制优先级设置切图.png"; sourceTree = "<group>"; };
+		3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "光伏零功率输出使能切图.png"; sourceTree = "<group>"; };
+		3381ECFC1CBCCADB00DCF0D2 /* myListSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myListSecond.h; path = ../myListSecond.h; sourceTree = "<group>"; };
+		3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myListSecond.m; path = ../myListSecond.m; sourceTree = "<group>"; };
+		3381ECFF1CBCD85700DCF0D2 /* myListSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myListSecondTableViewCell.h; path = ../Classes/myListSecondTableViewCell.h; sourceTree = "<group>"; };
+		3381ED001CBCD85700DCF0D2 /* myListSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myListSecondTableViewCell.m; path = ../Classes/myListSecondTableViewCell.m; sourceTree = "<group>"; };
+		3381ED021CBCDB1500DCF0D2 /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@2x.png"; sourceTree = "<group>"; };
+		3381ED031CBCDB1500DCF0D2 /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@3x.png"; sourceTree = "<group>"; };
+		3381ED071CBCE94200DCF0D2 /* AnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerViewController.h; sourceTree = "<group>"; };
+		3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerViewController.m; sourceTree = "<group>"; };
+		3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多产品2.png"; sourceTree = "<group>"; };
 		3383EF821C9F8A6F0075E834 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		3383EF831C9F8A6F0075E834 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		3383EF841C9F8A6F0075E834 /* MJRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -683,8 +719,8 @@
 		33EFB6621C98F9B1003F336F /* ZFPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPieChart.m; sourceTree = "<group>"; };
 		33EFB6631C98F9B1003F336F /* ZFTranslucencePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFTranslucencePath.h; sourceTree = "<group>"; };
 		33EFB6641C98F9B1003F336F /* ZFTranslucencePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFTranslucencePath.m; sourceTree = "<group>"; };
-		33EFB6761C98FA7F003F336F /* newLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newLine.h; sourceTree = "<group>"; };
-		33EFB6771C98FA7F003F336F /* newLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newLine.m; sourceTree = "<group>"; };
+		33EFB6761C98FA7F003F336F /* newLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = newLine.h; path = ../newLine.h; sourceTree = "<group>"; };
+		33EFB6771C98FA7F003F336F /* newLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = newLine.m; path = ../newLine.m; sourceTree = "<group>"; };
 		33EFB6791C9931D2003F336F /* 按钮2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "按钮2.png"; sourceTree = "<group>"; };
 		33EFB67B1C99320B003F336F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		33EFB67D1C996FB6003F336F /* 储能机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "储能机.png"; sourceTree = "<group>"; };
@@ -1082,18 +1118,12 @@
 		33528FED1C83E34500D07889 /* 客服系统 */ = {
 			isa = PBXGroup;
 			children = (
-				33528FEE1C83E41D00D07889 /* listViewController.h */,
-				33528FEF1C83E41D00D07889 /* listViewController.m */,
-				33528FF41C83E95F00D07889 /* listTableViewCell.h */,
-				33528FF51C83E95F00D07889 /* listTableViewCell.m */,
+				3381ED061CBCE8C300DCF0D2 /* 我的问题 */,
 				335614611CB397220071BAC9 /* Classes */,
 				335614921CB3A0AA0071BAC9 /* commonTableViewController.h */,
 				335614931CB3A0AA0071BAC9 /* commonTableViewController.m */,
 				3356149A1CB3AFE30071BAC9 /* addServerViewController.h */,
 				3356149B1CB3AFE30071BAC9 /* addServerViewController.m */,
-				335614A31CB3E0210071BAC9 /* frame4@2x.png */,
-				3356149F1CB3B8E90071BAC9 /* frame2@2x.png */,
-				335614A51CB3E09D0071BAC9 /* add2@2x.png */,
 			);
 			name = "客服系统";
 			path = "../我/客服系统";
@@ -1201,6 +1231,11 @@
 		335614611CB397220071BAC9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3381ED021CBCDB1500DCF0D2 /* service@2x.png */,
+				3381ED031CBCDB1500DCF0D2 /* service@3x.png */,
+				335614A31CB3E0210071BAC9 /* frame4@2x.png */,
+				3356149F1CB3B8E90071BAC9 /* frame2@2x.png */,
+				335614A51CB3E09D0071BAC9 /* add2@2x.png */,
 				335614621CB397220071BAC9 /* LZPageContentView.h */,
 				335614631CB397220071BAC9 /* LZPageContentView.m */,
 				335614641CB397220071BAC9 /* LZPageMainCell.h */,
@@ -1242,6 +1277,7 @@
 				336664E01CB75213005573FB /* moreTableViewController.m */,
 				336664E21CB7524C005573FB /* moreCell.h */,
 				336664E31CB7524C005573FB /* moreCell.m */,
+				3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */,
 			);
 			path = "更多产品";
 			sourceTree = "<group>";
@@ -1323,11 +1359,12 @@
 		33692BF61C9294D300698375 /* 能源二级 */ = {
 			isa = PBXGroup;
 			children = (
+				3381ECDF1CBC8F7100DCF0D2 /* 能源二级旧版 */,
 				33EFB6401C98F9B1003F336F /* ZFChart */,
-				33692BF71C92952000698375 /* engrgySencondViewController.h */,
-				33692BF81C92952000698375 /* engrgySencondViewController.m */,
-				33EFB6761C98FA7F003F336F /* newLine.h */,
-				33EFB6771C98FA7F003F336F /* newLine.m */,
+				3381ECE31CBC900900DCF0D2 /* EquitGraph2ViewController.h */,
+				3381ECE41CBC900900DCF0D2 /* EquitGraph2ViewController.m */,
+				3381ECE61CBC906600DCF0D2 /* Line3View.h */,
+				3381ECE71CBC906600DCF0D2 /* Line3View.m */,
 			);
 			path = "能源二级";
 			sourceTree = "<group>";
@@ -1426,12 +1463,21 @@
 		337F9CC01C71ABD80016FE43 /* 能源 */ = {
 			isa = PBXGroup;
 			children = (
+				3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */,
+				3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */,
+				3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */,
+				3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */,
+				3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */,
+				3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */,
+				3381ECEF1CBCA59900DCF0D2 /* 能源图片 */,
 				335047211C9BF37D00BF8683 /* 家庭设备二级 */,
 				33692BF61C9294D300698375 /* 能源二级 */,
 				337F9CC91C71AC200016FE43 /* energyViewController.h */,
 				337F9CCA1C71AC200016FE43 /* energyViewController.m */,
 				334720DF1C8E7048006388C8 /* energyTableViewCell.h */,
 				334720E01C8E7048006388C8 /* energyTableViewCell.m */,
+				3381ECEC1CBCA3ED00DCF0D2 /* energyDemo.h */,
+				3381ECED1CBCA3ED00DCF0D2 /* energyDemo.m */,
 			);
 			path = "能源";
 			sourceTree = "<group>";
@@ -1516,6 +1562,41 @@
 				33FEFD271C7DB38400324374 /* shebei@3x.png */,
 			);
 			path = "图片";
+			sourceTree = "<group>";
+		};
+		3381ECDF1CBC8F7100DCF0D2 /* 能源二级旧版 */ = {
+			isa = PBXGroup;
+			children = (
+				33692BF71C92952000698375 /* engrgySencondViewController.h */,
+				33692BF81C92952000698375 /* engrgySencondViewController.m */,
+				33EFB6761C98FA7F003F336F /* newLine.h */,
+				33EFB6771C98FA7F003F336F /* newLine.m */,
+			);
+			path = "能源二级旧版";
+			sourceTree = "<group>";
+		};
+		3381ECEF1CBCA59900DCF0D2 /* 能源图片 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "能源图片";
+			sourceTree = "<group>";
+		};
+		3381ED061CBCE8C300DCF0D2 /* 我的问题 */ = {
+			isa = PBXGroup;
+			children = (
+				33528FEE1C83E41D00D07889 /* listViewController.h */,
+				33528FEF1C83E41D00D07889 /* listViewController.m */,
+				33528FF41C83E95F00D07889 /* listTableViewCell.h */,
+				33528FF51C83E95F00D07889 /* listTableViewCell.m */,
+				3381ECFC1CBCCADB00DCF0D2 /* myListSecond.h */,
+				3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */,
+				3381ECFF1CBCD85700DCF0D2 /* myListSecondTableViewCell.h */,
+				3381ED001CBCD85700DCF0D2 /* myListSecondTableViewCell.m */,
+				3381ED071CBCE94200DCF0D2 /* AnswerViewController.h */,
+				3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */,
+			);
+			path = "我的问题";
 			sourceTree = "<group>";
 		};
 		3383EF811C9F8A6F0075E834 /* MJRefresh */ = {
@@ -1804,8 +1885,10 @@
 				33FEFD531C7DB38400324374 /* icon_arrow.png in Resources */,
 				33FEFD731C7DB38400324374 /* iconfont-nengyuanlei@2x.png in Resources */,
 				334AED641CA3765A007E39F3 /* 关于.png in Resources */,
+				3381ECF31CBCA60C00DCF0D2 /* 智能调整优先设置.png in Resources */,
 				33FEFD551C7DB38400324374 /* icon_press@2x.png in Resources */,
 				335614A61CB3E09D0071BAC9 /* add2@2x.png in Resources */,
+				3381ECF11CBCA5F900DCF0D2 /* 峰谷电价设置切图.png in Resources */,
 				3383EF9A1C9F8A6F0075E834 /* MJRefresh.bundle in Resources */,
 				334B8F631C915A1B00798A69 /* bg.png in Resources */,
 				334770FC1C9A3DEE003A6F13 /* energy@2x.png in Resources */,
@@ -1822,6 +1905,7 @@
 				334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */,
 				33EFB67C1C99320B003F336F /* logo.png in Resources */,
 				3383F13A1C9FFD3E0075E834 /* 家庭用电设备.png in Resources */,
+				3381ECFB1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png in Resources */,
 				33FEFCD81C7D9DCD00324374 /* 圆角矩形3.png in Resources */,
 				33EFB68A1C9973D2003F336F /* bg3.png in Resources */,
 				33FEFD6B1C7DB38400324374 /* iconfont-faxian@2x.png in Resources */,
@@ -1829,6 +1913,9 @@
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
+				3381ED041CBCDB1500DCF0D2 /* service@2x.png in Resources */,
+				3381ED0B1CBCF70400DCF0D2 /* 更多产品2.png in Resources */,
+				3381ECF91CBCA63000DCF0D2 /* 控制优先级设置切图.png in Resources */,
 				33FEFD591C7DB38400324374 /* icon---Email.png in Resources */,
 				33EFB6841C99732F003F336F /* 参数.png in Resources */,
 				33EFB6801C997001003F336F /* inverter.png in Resources */,
@@ -1838,6 +1925,7 @@
 				33FEFD791C7DB38400324374 /* shebei_press@2x.png in Resources */,
 				334AED5C1CA37583007E39F3 /* 增值服务.png in Resources */,
 				33FEFD691C7DB38400324374 /* iconfont-faxian_press@2x.png in Resources */,
+				3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */,
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
 				336664F01CB77CD3005573FB /* user-agreement@3x.png in Resources */,
@@ -1865,6 +1953,7 @@
 				3349BB3D1C7EFC6B00E6E34B /* 1.jpg in Resources */,
 				335456C71C853B4900275478 /* btn_cha.png in Resources */,
 				336664E81CB77CC2005573FB /* service@3x.png in Resources */,
+				3381ECF51CBCA61200DCF0D2 /* 智能联动设置切图.png in Resources */,
 				33FEFD711C7DB38400324374 /* iconfont-nengyuanlei_press@2x.png in Resources */,
 				3355F25E1C741AC3006DDE5A /* client.png in Resources */,
 				33FEFD751C7DB38400324374 /* iconfont-shouji.png in Resources */,
@@ -1896,6 +1985,7 @@
 				33FEFD571C7DB38400324374 /* icon---Email---Full@2x.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
+				3381ECF71CBCA62700DCF0D2 /* 峰谷段动作使能切图.png in Resources */,
 				336664FC1CB78CF0005573FB /* bg5.png in Resources */,
 				334AED661CA3774C007E39F3 /* 密码3.png in Resources */,
 				33FEFD6E1C7DB38400324374 /* iconfont-gongsijianjie@3x.png in Resources */,
@@ -1942,6 +2032,7 @@
 				335614691CB397220071BAC9 /* LZPageMainCell.m in Sources */,
 				334AED711CA381D0007E39F3 /* ASValueTrackingSlider.m in Sources */,
 				334E9BF51CAD2B8900C8271F /* PvLogTableViewController.m in Sources */,
+				3381ECE81CBC906600DCF0D2 /* Line3View.m in Sources */,
 				3343F3DA1C80405D009F69BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
 				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
@@ -1954,6 +2045,7 @@
 				3383EFA21C9F8A6F0075E834 /* MJRefreshLegendHeader.m in Sources */,
 				334B8F561C914A6D00798A69 /* PNScatterChartData.m in Sources */,
 				334B8F4E1C914A6D00798A69 /* PNColor.m in Sources */,
+				3381ECEE1CBCA3ED00DCF0D2 /* energyDemo.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
 				335456B91C852EB000275478 /* RootViewController.m in Sources */,
 				33EFB66A1C98F9B1003F336F /* ZFBarChart.m in Sources */,
@@ -1984,6 +2076,7 @@
 				33EFB63D1C97E1E3003F336F /* VWWWaterView.m in Sources */,
 				3367CB4E1C86806700EF460C /* MASViewConstraint.m in Sources */,
 				33EFB6041C979B5F003F336F /* AddCellectViewController2.m in Sources */,
+				3381ED011CBCD85700DCF0D2 /* myListSecondTableViewCell.m in Sources */,
 				3343F3C61C80403C009F69BC /* AFURLResponseSerialization.m in Sources */,
 				335456BF1C852EEB00275478 /* SHBQRView.m in Sources */,
 				3343F3BF1C80403C009F69BC /* AFHTTPRequestOperation.m in Sources */,
@@ -2019,6 +2112,7 @@
 				3343F3DC1C80405D009F69BC /* UIAlertView+AFNetworking.m in Sources */,
 				337F9CC51C71ABD80016FE43 /* deviceViewController.m in Sources */,
 				334B8F571C914A6D00798A69 /* PNScatterChartDataItem.m in Sources */,
+				3381ED091CBCE94200DCF0D2 /* AnswerViewController.m in Sources */,
 				337F9C851C71A6710016FE43 /* main.m in Sources */,
 				3367CB491C86806600EF460C /* MASCompositeConstraint.m in Sources */,
 				3367CB4A1C86806600EF460C /* MASConstraint.m in Sources */,
@@ -2067,6 +2161,7 @@
 				3343F3DD1C80405D009F69BC /* UIButton+AFNetworking.m in Sources */,
 				3349A7B61C75B8F4009172C2 /* loginViewController.m in Sources */,
 				33EFB66C1C98F9B1003F336F /* ZFGenericChart.m in Sources */,
+				3381ECE51CBC900900DCF0D2 /* EquitGraph2ViewController.m in Sources */,
 				3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */,
 				334B8F4B1C914A6D00798A69 /* PNBarChart.m in Sources */,
 				33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */,
@@ -2080,6 +2175,7 @@
 				335456D41C8588E200275478 /* SNViewController.m in Sources */,
 				335456D11C8588D500275478 /* emailViewController.m in Sources */,
 				3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */,
+				3381ECFE1CBCCADB00DCF0D2 /* myListSecond.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

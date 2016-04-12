@@ -19,6 +19,9 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "MBProgressHUD.h"
 #import "forgetViewController.h"
+#import "LZPageViewController.h"
+#import "energyViewController.h"
+#import "energyDemo.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -324,7 +327,8 @@
         findViewController *findVc=[[findViewController alloc]init];
         findVc.title=@"服务";
         
-        energyViewController *energyVc=[[energyViewController alloc]init];
+         LZPageViewController *energyVc = [[LZPageViewController alloc] initWithTitles:@[@"能源分析",@"智能能源",] controllersClass:@[[energyViewController class],[energyDemo class]]];
+       // energyViewController *energyVc=[[energyViewController alloc]init];
           // energyVc.title=@"能源分析";
         
         deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];

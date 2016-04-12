@@ -8,6 +8,7 @@
 
 #import "listViewController.h"
 #import "listTableViewCell.h"
+#import "myListSecond.h"
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -34,7 +35,7 @@
     self.statusArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
     self.contentArray =[NSMutableArray arrayWithObjects:@"这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是是比较简单的图这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图",
                         @"自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自高",
-                        @"这个是比较简单的图文混排", nil];
+                        @"这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排", nil];
     self.timeArray=[NSMutableArray arrayWithObjects:@"2016.3.3",@"2016.3.3",@"2016.3.3",nil];
     self.navigationItem.title = @"问题列表";
     _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*NOW_SIZE)];
@@ -73,9 +74,16 @@
    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 45*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);
-
     
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    myListSecond *second=[[myListSecond alloc]init];
+    [self.navigationController pushViewController:second animated:NO];
+    
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -86,6 +94,7 @@
     return 70*Height+fcRect.size.height;
     
 }
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

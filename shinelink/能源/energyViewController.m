@@ -10,6 +10,7 @@
 #import "energyTableViewCell.h"
 #import "engrgySencondViewController.h"
 #import "homeDeviceViewController.h"
+#import "EquitGraph2ViewController.h"
 
 @interface energyViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -95,9 +96,17 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row==0){
-    engrgySencondViewController *sd=[[engrgySencondViewController alloc ]init];
-    sd.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:sd animated:NO];}
+        EquitGraph2ViewController *equipGraph=[[EquitGraph2ViewController alloc]init];
+        equipGraph.dictInfo=@{@"equipId":@"家庭用电",
+                              @"daySite":@"/inverterA.do?op=getDps",
+                              @"monthSite":@"/inverterA.do?op=getMps",
+                              @"yearSite":@"/inverterA.do?op=getYps",
+                              @"allSite":@"/inverterA.do?op=getTps"};
+        //equipGraph.dict=@{@"1":root_PV_POWER, @"2":root_PV1_VOLTAGE, @"3":root_PV1_ELEC_CURRENT, @"4":root_PV2_VOLTAGE, @"5":root_PV2_ELEC_CURRENT, @"6":root_R_PHASE_POWER, @"7":root_S_PHASE_POWER, @"8":root_T_PHASE_POWER};
+        [self.navigationController pushViewController:equipGraph animated:YES];
+    }
+    
+    
     if (indexPath.row==1) {
         homeDeviceViewController *home=[[homeDeviceViewController alloc]init];
         [self.navigationController pushViewController:home animated:YES];

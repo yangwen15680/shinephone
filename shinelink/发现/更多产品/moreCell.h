@@ -10,6 +10,7 @@
 
 @interface moreCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *typeImageView;
+@property (nonatomic, strong) UIImageView *image;
 @property (nonatomic, strong) UILabel *name;
 @property (nonatomic, strong) UILabel *connent;
 
