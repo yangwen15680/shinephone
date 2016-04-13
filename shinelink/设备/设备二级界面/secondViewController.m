@@ -27,6 +27,9 @@
 @property (nonatomic, strong) NSMutableArray *invsDataArr;
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
 @property (nonatomic, strong) Line2View *line2View;
+@property (nonatomic, strong) NSDateFormatter *dayFormatter;
+@property (nonatomic, strong) NSString *currentDay;
+@property (nonatomic, strong) NSString *nominalPower;
 
 @end
 
@@ -36,9 +39,10 @@
     [super viewDidLoad];
       //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
-    [self addProcess];
+  
      //[self addRightItem];
     [self addGraph];
+    
     [self addbutton];
     
 }
@@ -107,8 +111,9 @@
 
 -(void)goPVThree{
     EquipGraphViewController *equipGraph=[[EquipGraphViewController alloc]init];
-    equipGraph.dictInfo=@{@"equipId":@"逆变器",
-                          @"daySite":@"/inverterA.do?op=getDps",
+    equipGraph.SnID=_SnData;
+    equipGraph.dictInfo=@{@"equipId":_SnData,
+                          @"daySite":@"/newInverterAPI.do?op=getInverterData",
                           @"monthSite":@"/inverterA.do?op=getMps",
                           @"yearSite":@"/inverterA.do?op=getYps",
                           @"allSite":@"/inverterA.do?op=getTps"};
@@ -120,77 +125,29 @@
     
    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 275*NOW_SIZE, SCREEN_Width,250*NOW_SIZE )];
     [self.view addSubview:self.line2View];
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    /*[dict setObject:@"3.0" forKey:@"08:30"];
-    [dict setObject:@"5.0" forKey:@"09:30"];
-    [dict setObject:@"12.0" forKey:@"10:30"];
-    [dict setObject:@"21.0" forKey:@"11:30"];
-    [dict setObject:@"33.0" forKey:@"12:30"];
-    [dict setObject:@"45.0" forKey:@"13:30"];
-    [dict setObject:@"65.0" forKey:@"14:30"];
-    [dict setObject:@"23.0" forKey:@"15:30"];
-    [dict setObject:@"151.0" forKey:@"16:30"];
-    [dict setObject:@"124.0" forKey:@"17:30"];*/
-    
-    [dict setObject:@"5.0" forKey:@"01:30"];
-    [dict setObject:@"2.0" forKey:@"09:30"];
-    [dict setObject:@"4" forKey:@"10:30"];
-    [dict setObject:@"51" forKey:@"11:30"];
-    [dict setObject:@"81" forKey:@"12:30"];
-    [dict setObject:@"61" forKey:@"13:30"];
-    [dict setObject:@"12" forKey:@"14:30"];
-    [dict setObject:@"15" forKey:@"15:30"];
-    [dict setObject:@"44" forKey:@"16:30"];
-    [dict setObject:@"121" forKey:@"17:30"];
-    [dict setObject:@"53.0" forKey:@"01:32"];
-    [dict setObject:@"42.0" forKey:@"09:32"];
-    [dict setObject:@"43" forKey:@"10:32"];
-    [dict setObject:@"25" forKey:@"11:35"];
-    [dict setObject:@"83" forKey:@"12:35"];
-    [dict setObject:@"61" forKey:@"13:35"];
-    [dict setObject:@"312" forKey:@"14:35"];
-    [dict setObject:@"135" forKey:@"15:35"];
-    [dict setObject:@"444" forKey:@"16:35"];
-    [dict setObject:@"112" forKey:@"17:35"];
-    [dict setObject:@"51.0" forKey:@"01:50"];
-    [dict setObject:@"2.0" forKey:@"09:50"];
-    [dict setObject:@"4" forKey:@"10:50"];
-    [dict setObject:@"5" forKey:@"11:50"];
-    [dict setObject:@"8" forKey:@"12:50"];
-    [dict setObject:@"6" forKey:@"13:50"];
-    [dict setObject:@"12" forKey:@"14:50"];
-    [dict setObject:@"15" forKey:@"15:50"];
-    [dict setObject:@"44" forKey:@"16:50"];
-    [dict setObject:@"12" forKey:@"17:50"];
-    [dict setObject:@"5.0" forKey:@"01:40"];
-    [dict setObject:@"22.0" forKey:@"09:40"];
-    [dict setObject:@"44" forKey:@"10:40"];
-    [dict setObject:@"35" forKey:@"11:40"];
-    [dict setObject:@"8" forKey:@"12:40"];
-    [dict setObject:@"6" forKey:@"13:40"];
-    [dict setObject:@"142" forKey:@"14:40"];
-    [dict setObject:@"115" forKey:@"15:40"];
-    [dict setObject:@"424" forKey:@"16:40"];
-    [dict setObject:@"122" forKey:@"17:40"];
-
-    
-self.line2View.frameType=@"1";
-  [self.line2View refreshLineChartViewWithDataDict:dict];
-
-    
- /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {
-        
+    self.dayFormatter = [[NSDateFormatter alloc] init];
+    [self.dayFormatter setDateFormat:@"yyyy-MM-dd"];
+  self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
+      [self showProgressView];
+[BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"inverterId":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
+        [self hideProgressView];
+   
         if (content) {
-            self.dayDict=[NSMutableDictionary new];
-            //[self.dayDict setObject:content forKey:@"data"];
-            self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,300*NOW_SIZE )];
-            self.line2View.flag=@"1";
-            [lineView addSubview:self.line2View];
-            [self.line2View refreshLineChartViewWithDataDict:content];
+               //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+             id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[jsonObj objectForKey:@"invPacData"]];
+            _nominalPower=[jsonObj objectForKey:@"nominalPower"];
+           NSLog(@"getInverterData: %@", jsonObj);
+            self.line2View.frameType=@"1";
+            [self.line2View refreshLineChartViewWithDataDict:_dayDict];
+            [self addProcess];
         }
     } failure:^(NSError *error) {
-      
-    }];*/
+      [self hideProgressView];
+         [self addProcess];
+    }];
+    
+
 
 }
 
@@ -200,40 +157,40 @@ self.line2View.frameType=@"1";
     processView.layer.contents = (id)bgImage.CGImage;
     [self.view addSubview:processView];
     
-    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    leftName.text=@"正常";
-    leftName.textAlignment=NSTextAlignmentCenter;
-    leftName.textColor=[UIColor greenColor];
-    leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:leftName];
+    UILabel *dayData=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    dayData.text=_dayData;
+    dayData.textAlignment=NSTextAlignmentCenter;
+    dayData.textColor=[UIColor greenColor];
+    dayData.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [self.view addSubview:dayData];
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 200*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    leftState.text=@"当前状态";
+    leftState.text=@"日电量";
     leftState.textAlignment=NSTextAlignmentCenter;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:leftState];
     
-    UILabel *centName=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2, 120*NOW_SIZE, 120*NOW_SIZE,40*NOW_SIZE )];
-    centName.text=@"2000KW";
-    centName.textAlignment=NSTextAlignmentCenter;
-    centName.textColor=[UIColor redColor];
-    centName.font = [UIFont systemFontOfSize:25*NOW_SIZE];
-    [self.view addSubview:centName];
+     UILabel *powerData=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2, 120*NOW_SIZE, 120*NOW_SIZE,40*NOW_SIZE )];
+    powerData.text=_powerData;
+    powerData.textAlignment=NSTextAlignmentCenter;
+    powerData.textColor=[UIColor redColor];
+    powerData.font = [UIFont systemFontOfSize:25*NOW_SIZE];
+    [self.view addSubview:powerData];
     UILabel *centState=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2,150*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    centState.text=@"已提供总电量";
+    centState.text=@"当前功率";
     centState.textAlignment=NSTextAlignmentCenter;
     centState.textColor=[UIColor blackColor];
     centState.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [self.view addSubview:centState];
     
-    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    rightName.text=@"480h";
-    rightName.textAlignment=NSTextAlignmentCenter;
-    rightName.textColor=[UIColor greenColor];
-    leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:rightName];
+    UILabel *totalData=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    totalData.text=_totalData;
+    totalData.textAlignment=NSTextAlignmentCenter;
+    totalData.textColor=[UIColor greenColor];
+    totalData.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [self.view addSubview:totalData];
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-100*NOW_SIZE, 200*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
-    rightState.text=@"累计运行时长";
+    rightState.text=@"总电量";
     rightState.textAlignment=NSTextAlignmentCenter;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -249,8 +206,10 @@ self.line2View.frameType=@"1";
     _progressView = [[CircleView alloc] initWithFrame:CGRectMake(0, 0, 180*NOW_SIZE, 200*NOW_SIZE)];
     CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 120*NOW_SIZE);
     _progressView.center = center;
+    float K=[_powerData floatValue]/[_nominalPower floatValue];
+    //K=0.3;
     _progressView.startAngle = - M_PI*1/2 ;
-    _progressView.endAngle   = - M_PI*1;
+    _progressView.endAngle   =- M_PI*1/2 +M_PI*2*K;
     [processView addSubview:_progressView];
     self.step = 1.0 / 30;
     _timer = [NSTimer scheduledTimerWithTimeInterval:self.step target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];

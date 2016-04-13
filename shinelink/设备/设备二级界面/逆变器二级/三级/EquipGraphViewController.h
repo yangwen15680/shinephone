@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString *stationId;
 @property (nonatomic, strong) NSString *equipId;
+@property (nonatomic, strong) NSString *SnID;
+
 @property (nonatomic, strong) NSDictionary *dictInfo;
 @property (nonatomic, strong) NSDictionary *dict;
 @property (nonatomic, strong) NSDictionary *dictMonth;

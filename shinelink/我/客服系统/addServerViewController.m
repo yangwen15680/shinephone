@@ -18,6 +18,9 @@
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
 @property (nonatomic, strong) NSMutableArray *picArray;
+@property (nonatomic, strong) NSMutableDictionary *allDict;
+@property (nonatomic, strong) NSString *typeName;
+
 
 @end
 
@@ -151,8 +154,64 @@
     
     }
 
--(void)finishDone{
 
+
+-(void)finishDone{
+      NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
+    [_picArray removeObject:@"del"];
+
+    for (int i=0; i<_picArray.count; i++) {
+         NSData *imageData = UIImageJPEGRepresentation(_picArray[i], 0.5);
+        NSString *imageName=[NSString stringWithFormat:@"image%d",i+1];
+            [dataImageDict setObject:imageData forKey:imageName];
+    }
+    
+    _allDict=[NSMutableDictionary dictionary];
+    
+    if ([[_userTextField text] isEqual:@""]) {
+        [self showToastViewWithTitle:@"请输入标题"];
+        return;
+    }
+    if (!_typeName) {
+        [self showToastViewWithTitle:@"请输入问题类型"];
+        return;
+    }
+    if ([[_SNTextField text] isEqual:@""]) {
+        [self showToastViewWithTitle:@"请输入序列号"];
+        return;
+    }
+    if ([[_contentView text] isEqual:@""]) {
+        [self showToastViewWithTitle:@"请输入内容"];
+        return;
+    }
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *userID=[ud objectForKey:@"userID"];
+    
+    [_allDict setObject:[_userTextField text] forKey:@"title"];
+   [_allDict setObject:_typeName forKey:@"questionType"];
+    [_allDict setObject:[_SNTextField text] forKey:@"questionDevice"];
+    [_allDict setObject:[_contentView text] forKey:@"content"];
+       [_allDict setObject:userID forKey:@"userId"];
+    //NSError *error;
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_allDict paramarsSite:@"/questionAPI.do?op=addCustomerQuestion" dataImageDict:dataImageDict sucessBlock:^(id content) {
+        NSLog(@"addCustomerQuestion==%@", content);
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        if (content1) {
+            if ([content1 integerValue] == 1) {
+               
+                    [self showAlertViewWithTitle:nil message:@"添加成功" cancelButtonTitle:root_Yes];
+                }
+            }else{
+                
+                [self showAlertViewWithTitle:nil message:@"添加错误" cancelButtonTitle:root_Yes];
+                
+                
+            }
+        }
+     failure:^(NSError *error) {
+        [self showToastViewWithTitle:root_Networking];
+    }];
+    
 }
 
 -(void)controlPhoto{
@@ -253,37 +312,38 @@
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: @"逆变器故障" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-       
-        NSLog(@"问题");
-        
+       _typeName=@"逆变器故障";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"储能机故障" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-      
-        
-        
+      _typeName=@"储能机故障";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"软件建议" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-    
-        
-        
+    _typeName=@"软件建议";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"软件故障" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        
-        
+        _typeName=@"软件故障";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"其他设备故障" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        
-        
+        _typeName=@"其他设备故障";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"其他问题" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-        
-        
-        
+        _typeName=@"其他问题";
+          self.registLable.text=_typeName;
+        self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
     
+  
     [self presentViewController: alertController animated: YES completion: nil];
 
 

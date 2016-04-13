@@ -10,7 +10,7 @@
 #import "qualityCell.h"
 
 @interface qualityTableViewController ()
-
+@property (nonatomic, strong) NSMutableDictionary *dataDict;
 @end
 
 @implementation qualityTableViewController
@@ -18,11 +18,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initData];
+}
+
+-(void)initData{
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *plantId=[ud objectForKey:@"plantID"];
+    
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantId":plantId,@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:@"/newQualityAPI.do?op=getQualityInformation" sucessBlock:^(id content) {
+        [self hideProgressView];
+        
+        if (content) {
+            //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
+       
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+   
+    }];
+    
+}
+
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

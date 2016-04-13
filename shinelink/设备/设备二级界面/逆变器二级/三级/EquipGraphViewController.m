@@ -189,17 +189,21 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [bgImageView addSubview:self.datePickerButton];
     
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+  [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"inverterId":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"dayDate:%@",content);
         if (content) {
-            self.dayDict=[NSMutableDictionary new];
+           // self.dayDict=[NSMutableDictionary new];
             //[self.dayDict setObject:content forKey:@"data"];
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[jsonObj objectForKey:@"invPacData"]];
+
             self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
                self.line2View.frameType=@"2";
             [_scrollView addSubview:self.line2View];
-            [self.line2View refreshLineChartViewWithDataDict:content];
+            [self.line2View refreshLineChartViewWithDataDict: self.dayDict];
+            
             self.line2View.energyTitleLabel.text = root_Today_Energy;
             self.line2View.unitLabel.text = root_Powre;
             _selectButton=[[UIButton alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 50*NOW_SIZE, 210*NOW_SIZE, 30*NOW_SIZE)];

@@ -524,7 +524,7 @@ UITableViewDataSource
 {
     if (!_arrowImageView)
     {
-        UIImage *image = [UIImage imageNamed:DTKMenuSrcName(@"arrow_down_icon.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"arrow_down_icon.png")];
+        UIImage *image = [UIImage imageNamed:DTKMenuSrcName(@"triangular@3x.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"triangular@3x.png")];
         _arrowImageView = [[UIImageView alloc] initWithImage:image];
         [self addSubview:_arrowImageView];
         _arrowImageView.userInteractionEnabled = YES;
@@ -536,7 +536,7 @@ UITableViewDataSource
 - (UIImageView *)tableViewTopArrow
 {
     if (!_tableViewTopArrow) {
-        UIImage *tempImage = [UIImage imageNamed:DTKMenuSrcName(@"tableView_arrow_icon.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"tableView_arrow_icon.png")];
+        UIImage *tempImage = [UIImage imageNamed:DTKMenuSrcName(@"2triangular@3x.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"2triangular@3x.png")];
         UIImage *image=[tempImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _tableViewTopArrow = [[UIImageView alloc] initWithImage:image];
         [_tableViewTopArrow setTintColor:self.cellColor];

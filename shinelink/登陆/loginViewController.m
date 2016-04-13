@@ -330,6 +330,7 @@
          LZPageViewController *energyVc = [[LZPageViewController alloc] initWithTitles:@[@"能源分析",@"智能能源",] controllersClass:@[[energyViewController class],[energyDemo class]]];
        // energyViewController *energyVc=[[energyViewController alloc]init];
           // energyVc.title=@"能源分析";
+        energyVc.type=@"1";
         
         deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];
         meViewController *meVc=[[meViewController alloc]init];

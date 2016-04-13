@@ -64,15 +64,24 @@ static NSString *mainCell = @"mainCellmainCell";
     _pageBarHeight = pageBarHeight;
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    if ([_type isEqualToString:@"1"]) {
+        self.title = @"能源";
+    }else{
+        self.title = @"客户服务";
+        
+        UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 0, 15*NOW_SIZE, 15*NOW_SIZE)];
+        [addButton setBackgroundImage:[UIImage imageNamed:@"add@2x.png"] forState:UIControlStateNormal];
+        [addButton addTarget:self action:@selector(doAdd) forControlEvents:UIControlEventTouchUpInside];
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:addButton];
+    }
+
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.title = @"客户服务";
 
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 0, 15*NOW_SIZE, 15*NOW_SIZE)];
-    [addButton setBackgroundImage:[UIImage imageNamed:@"add@2x.png"] forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(doAdd) forControlEvents:UIControlEventTouchUpInside];
-   self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:addButton];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.edgesForExtendedLayout = UIRectEdgeNone;

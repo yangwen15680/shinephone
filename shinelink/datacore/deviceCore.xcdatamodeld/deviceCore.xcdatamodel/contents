@@ -17,10 +17,11 @@
         <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statueData" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statueImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="totalPower" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="DemoDevice" positionX="-36" positionY="9" width="128" height="120"/>
-        <element name="GetDevice" positionX="-36" positionY="36" width="128" height="195"/>
+        <element name="GetDevice" positionX="-36" positionY="36" width="128" height="210"/>
     </elements>
 </model>

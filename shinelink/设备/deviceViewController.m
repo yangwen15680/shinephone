@@ -50,6 +50,7 @@
     NSMutableArray *powerArray;
     NSMutableArray *dayArray;
      NSMutableArray *SNArray;
+    NSMutableArray *totalPowerArray;
     //DEMO设备属性
      NSMutableArray* imageArray2;
      NSMutableArray *nameArray2;
@@ -191,6 +192,7 @@
     dayArray=[NSMutableArray array];
     imageArray=[NSMutableArray array];
     powerArray=[NSMutableArray array];
+    totalPowerArray=[NSMutableArray array];
     SNArray=[NSMutableArray array];
     imageStatueArray=[NSMutableArray array];
     imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
@@ -217,7 +219,7 @@
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"等待接口" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alertView show];
     }];
-    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1] icon:@"DTK_bi"];
+    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1] icon:@"add@2x.png"];
     
     menuView.dropWidth = 150.f;
     menuView.titleFont = [UIFont systemFontOfSize:18.f];
@@ -309,7 +311,7 @@
     [_plantId setObject:b forKey:@"pageSize"];
     
     //没有网络的功能测试开关
-    BOOL netOk=0;
+    BOOL netOk=1;
     if(netOk==1){
         [self netRequest];
     }
@@ -334,6 +336,9 @@
                 [nameArray addObject:content[i][@"deviceAilas"]];}
              NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"power"]];
              [powerArray addObject:PO];
+            NSString *TO=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
+            [totalPowerArray addObject:TO];
+            
         NSString *ST=[NSString stringWithFormat:@"%@",content[i][@"deviceStatus"]];
             NSString *SD;
             if([ST isEqualToString:@"-1"])
@@ -379,6 +384,7 @@
                 _getDevice.statueData=statueArray[i];
                 _getDevice.deviceSN=SNArray[i];
                 _getDevice.type=_typeArr[i];
+                _getDevice.totalPower=totalPowerArray[i];
                 UIImage *image=IMAGE(imageArray[i]);
                 NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                 _getDevice.demoImage=imagedata;
@@ -394,6 +400,7 @@
                     _getDevice.dayPower=dayArray[i];
                     _getDevice.statueData=statueArray[i];
                     _getDevice.deviceSN=SNArray[i];
+                      _getDevice.totalPower=totalPowerArray[i];
                     UIImage *image=IMAGE(imageArray[i]);
                     NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                     _getDevice.demoImage=imagedata;
@@ -635,10 +642,16 @@
     //TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(indexPath.section==0){
         GetDevice *getDevice=[_managerNowArray objectAtIndex:indexPath.row];
-    if([getDevice.type isEqualToString:@"inverter"]){
+    if([getDevice.type isEqualToString:@"inverter"])
+    {
     secondViewController *sd=[[secondViewController alloc ]init];
-    sd.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:sd animated:NO];}
+        sd.dayData=getDevice.dayPower;
+        sd.totalData=getDevice.totalPower;
+        sd.powerData=getDevice.power;
+        sd.SnData=getDevice.deviceSN;
+               sd.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:sd animated:NO];
+    }
     else if([getDevice.type  isEqualToString:@"storage"]){
         secondCNJ *sd=[[secondCNJ alloc ]init];
         sd.hidesBottomBarWhenPushed=YES;

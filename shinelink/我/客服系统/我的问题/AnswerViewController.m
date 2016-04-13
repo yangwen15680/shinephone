@@ -115,6 +115,8 @@ int picTime;
 
 -(void)finishDone{
     
+    
+    
 }
 
 -(void)controlPhoto{

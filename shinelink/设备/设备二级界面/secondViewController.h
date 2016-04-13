@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface secondViewController : UIViewController
+@interface secondViewController : RootViewController
 
+@property (nonatomic, strong) NSString *dayData;
+@property (nonatomic, strong) NSString *totalData;
+@property (nonatomic, strong) NSString *powerData;
+@property (nonatomic, strong) NSString *SnData;
 @end

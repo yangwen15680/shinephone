@@ -12,4 +12,6 @@
 
 - (instancetype)initWithTitles:(NSArray *)titlesArray controllersClass:(NSArray *)controllersClass;
 
+@property (strong, nonatomic) NSString *type;
+
 @end
