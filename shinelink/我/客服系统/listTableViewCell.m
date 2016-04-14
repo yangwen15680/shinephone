@@ -36,7 +36,7 @@
         _titleLabel.textAlignment =NSTextAlignmentLeft;
         [titleView addSubview:_titleLabel];
         
-        _statusLabel =[[UILabel alloc]initWithFrame:CGRectMake(205*NOW_SIZE, 5*NOW_SIZE,SCREEN_WIDTH-205*NOW_SIZE, 30*NOW_SIZE) ];
+        _statusLabel =[[UILabel alloc]initWithFrame:CGRectMake(205*NOW_SIZE, 5*NOW_SIZE,SCREEN_WIDTH-215*NOW_SIZE, 30*NOW_SIZE) ];
         _statusLabel.font =[UIFont systemFontOfSize:18];
         _statusLabel.textColor = [UIColor whiteColor];
         _statusLabel.textAlignment =NSTextAlignmentRight;

@@ -129,7 +129,7 @@
     [self.dayFormatter setDateFormat:@"yyyy-MM-dd"];
   self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
       [self showProgressView];
-[BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"inverterId":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
+[BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"id":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
         [self hideProgressView];
    
         if (content) {
@@ -157,7 +157,7 @@
     processView.layer.contents = (id)bgImage.CGImage;
     [self.view addSubview:processView];
     
-    UILabel *dayData=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *dayData=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 180*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
     dayData.text=_dayData;
     dayData.textAlignment=NSTextAlignmentCenter;
     dayData.textColor=[UIColor greenColor];
@@ -183,13 +183,13 @@
     centState.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [self.view addSubview:centState];
     
-    UILabel *totalData=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *totalData=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-80*NOW_SIZE, 180*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
     totalData.text=_totalData;
     totalData.textAlignment=NSTextAlignmentCenter;
     totalData.textColor=[UIColor greenColor];
     totalData.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:totalData];
-    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-100*NOW_SIZE, 200*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-80*NOW_SIZE, 200*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
     rightState.text=@"总电量";
     rightState.textAlignment=NSTextAlignmentCenter;
     rightState.textColor=[UIColor blackColor];

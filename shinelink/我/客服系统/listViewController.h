@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface listViewController : UIViewController
+@interface listViewController : RootViewController
 
 @end
