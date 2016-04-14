@@ -14,5 +14,7 @@
 @property(nonatomic,strong)UILabel *statusLabel;
 @property(nonatomic,strong)UILabel *contentLabel;
 @property(nonatomic,strong)UILabel *timeLabel;
+@property(nonatomic,strong)UIView *titleView;
+
 @property(nonatomic,strong)NSString *content;
 @end

@@ -15,5 +15,6 @@
 @property(nonatomic,strong)UILabel *contentLabel;
 @property (nonatomic, strong) UIImageView *image;
 @property(nonatomic,strong)NSString *content;
+@property(nonatomic,strong)UIView *titleView;
 
 @end

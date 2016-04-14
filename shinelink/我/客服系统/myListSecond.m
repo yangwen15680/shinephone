@@ -22,28 +22,104 @@
 @property (nonatomic, strong) NSMutableArray *labelArray;
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *nameArray;
+@property(nonatomic,strong)NSMutableArray *nameID;
 @property(nonatomic,strong)NSMutableArray *contentArray;
 @property(nonatomic,strong)NSMutableArray *timeArray;
+@property(nonatomic,strong)NSMutableArray *questionAll;
+@property(nonatomic,strong)NSString *titleString;
+@property(nonatomic,strong)NSString *typeString;
+
+@property(nonatomic,strong)NSMutableDictionary *allDic;
 
 @end
 
 @implementation myListSecond
 
+-(void)viewDidAppear:(BOOL)animated
+{
+   // [self.view removeFromSuperview];
+    [self netGetAgain];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _labelArray=[[NSMutableArray alloc]initWithObjects:@"标题：", @"类型：", @"回复记录：",nil];
-    self.nameArray =[NSMutableArray arrayWithObjects:@"张三",@"李四",@"王老五",nil];
-    self.contentArray =[NSMutableArray arrayWithObjects:@"这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是是比较简单的图这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图",
-                        @"自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自高",
-                        @"这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排自适应宽高这个是比较简单的图文混排", nil];
-    self.timeArray=[NSMutableArray arrayWithObjects:@"2016.3.3",@"2016.3.3",@"2016.3.3",nil];
     
-    [self initUI];
+    [self netGet];
+}
 
+-(void)netGetAgain{
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *userID=[ud objectForKey:@"userID"];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"questionId":_qusetionId,@"userId":userID} paramarsSite:@"/questionAPI.do?op=getQuestionInfo" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getQuestionInfo=: %@", content);
+        if(content){
+            _allDic=[NSMutableDictionary dictionaryWithDictionary:content];
+            _titleString=content[@"title"];
+            _questionAll=[NSMutableArray arrayWithArray:content[@"questionAnswerBeans"]];
+            
+           // NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];
+         //   [_questionAll sortUsingDescriptors:[NSArray arrayWithObject:sort1]];
+            
+            for(int i=0;i<_questionAll.count;i++){
+                NSString *nameU=[NSString stringWithFormat:@"%@",_questionAll[i][@"userName"]];
+                NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
+                NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
+                NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
+                [_nameArray addObject:nameU];
+                [_nameID addObject:nameId];
+                [_timeArray addObject:timeA];
+                [_contentArray addObject:contentA];
+            }
+            [_tableView reloadData];
+            
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+    }];
+}
+
+-(void)netGet{
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *userID=[ud objectForKey:@"userID"];
+    
+    self.nameArray =[NSMutableArray array];
+    self.contentArray =[NSMutableArray array];
+    self.timeArray =[NSMutableArray array];
+    self.nameID =[NSMutableArray array];
+    self.labelArray=[NSMutableArray arrayWithObjects:@"标题:",@"类型:", @"回复记录",nil];
+    // self.questionAll =[NSMutableArray array];
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"questionId":_qusetionId,@"userId":userID} paramarsSite:@"/questionAPI.do?op=getQuestionInfo" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getQuestionInfo=: %@", content);
+        if(content){
+            _allDic=[NSMutableDictionary dictionaryWithDictionary:content];
+            _titleString=content[@"title"];
+            _questionAll=[NSMutableArray arrayWithArray:content[@"questionAnswerBeans"]];
+            
+            for(int i=0;i<_questionAll.count;i++){
+                NSString *nameU=[NSString stringWithFormat:@"%@",_questionAll[i][@"userName"]];
+                NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
+                NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
+                NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
+                [_nameArray addObject:nameU];
+                [_nameID addObject:nameId];
+                [_timeArray addObject:timeA];
+                [_contentArray addObject:contentA];
+            }
+            [self initUI];
+            
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+    }];
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 45*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
     [self.view addSubview:_scrollView];
@@ -51,9 +127,9 @@
     
     for(int i=0;i<_labelArray.count;i++)
     {
-        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 17*NOW_SIZE+Size1*i, 80*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*NOW_SIZE+Size1*i, 80*NOW_SIZE,28*NOW_SIZE )];
         PV1Lable.text=_labelArray[i];
-        PV1Lable.textAlignment=NSTextAlignmentRight;
+        PV1Lable.textAlignment=NSTextAlignmentCenter;
         PV1Lable.textColor=[UIColor blackColor];
         PV1Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:PV1Lable];
@@ -61,15 +137,26 @@
     
     for(int i=0;i<2;i++)
     {
-        UIImageView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 15*NOW_SIZE+Size1*i, 220*NOW_SIZE,30*NOW_SIZE )];
-        image1.userInteractionEnabled = YES;
-        image1.image = IMAGE(@"frame2@2x.png");
-        [_scrollView addSubview:image1];
+        UIView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 42*NOW_SIZE+Size1*i, 310*NOW_SIZE,2*NOW_SIZE )];
+        image1.backgroundColor=mainColor;
+                [_scrollView addSubview:image1];
+        
+        UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 16*NOW_SIZE+Size1*i, 210*NOW_SIZE,28*NOW_SIZE )];
+        if (i==0) {
+               PV2Lable.text=_titleString;
+        }else{
+          PV2Lable.text=_typeString;
+        }
+        
+        PV2Lable.textAlignment=NSTextAlignmentLeft;
+        PV2Lable.textColor=[UIColor blackColor];
+        PV2Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        [_scrollView addSubview:PV2Lable];
     }
     
     UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE+Size1*3, 310*NOW_SIZE,300*NOW_SIZE )];
     image2.userInteractionEnabled = YES;
-    image2.image = IMAGE(@"frame2@2x.png");
+    image2.image = IMAGE(@"外框@3x.png");
     [_scrollView addSubview:image2];
     
     /*_scrollView2=[[UIScrollView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 55*NOW_SIZE+Size1*3, 300*NOW_SIZE,300*NOW_SIZE )];
@@ -82,7 +169,7 @@
     _tableView.dataSource = self;
        [_scrollView addSubview:_tableView];
     
-    UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 315*NOW_SIZE+Size1*3, 300*NOW_SIZE,30*NOW_SIZE )];
+    UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 315*NOW_SIZE+Size1*3, 310*NOW_SIZE,30*NOW_SIZE )];
     image3.userInteractionEnabled = YES;
     image3.image = IMAGE(@"frame2@2x.png");
     UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Answer)];
@@ -102,6 +189,7 @@
 
 -(void)Answer{
     AnswerViewController *AN=[[AnswerViewController alloc]init];
+    AN.qusetionId=_qusetionId;
     [self.navigationController pushViewController:AN animated:NO];
 
 }
@@ -115,16 +203,23 @@
     
     [cell.contentView setBackgroundColor: [UIColor whiteColor] ];
     
+    if ([_nameID[indexPath.row] isEqualToString:@"1"]) {
+          cell.image.image = IMAGE(@"server3@3x.png");
+    }else{
+    cell.image.image = IMAGE(@"client@3x.png");
+    }
     cell.nameLabel.text= self.nameArray[indexPath.row];
     cell.timeLabel.text= self.timeArray[indexPath.row];
     cell.contentLabel.text= self.contentArray[indexPath.row];
    
     cell.content=self.contentArray[indexPath.row];
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    cell.contentLabel.frame =CGRectMake(10*Width, 25*Width, 280*Width, fcRect.size.height);
+    cell.contentLabel.frame =CGRectMake(5*NOW_SIZE, 55*NOW_SIZE, 280*Width, fcRect.size.height);
+    
+    cell.titleView.frame=CGRectMake(0, 70*NOW_SIZE+fcRect.size.height,SCREEN_WIDTH, 2*NOW_SIZE);
   //  cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 45*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
-    //NSLog(@"content=%@",cell.content);
+    
     
     return cell;
 }
@@ -143,7 +238,7 @@
     
     
     CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    return 5*Height+fcRect.size.height;
+    return 70*Height+fcRect.size.height;
     
 }
 

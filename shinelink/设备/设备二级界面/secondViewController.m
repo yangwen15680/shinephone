@@ -129,15 +129,15 @@
     [self.dayFormatter setDateFormat:@"yyyy-MM-dd"];
   self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
       [self showProgressView];
-[BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"id":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
+[BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
         [self hideProgressView];
    
         if (content) {
                //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-             id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[jsonObj objectForKey:@"invPacData"]];
-            _nominalPower=[jsonObj objectForKey:@"nominalPower"];
-           NSLog(@"getInverterData: %@", jsonObj);
+           //  id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            _nominalPower=[content objectForKey:@"nominalPower"];
+           NSLog(@"getInverterData: %@", content);
             self.line2View.frameType=@"1";
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             [self addProcess];

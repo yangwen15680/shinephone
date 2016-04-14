@@ -7,6 +7,7 @@
 //
 
 #import "AnswerViewController.h"
+#import "myListSecond.h"
 
 @interface AnswerViewController ()<UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
 @property (nonatomic, strong) NSMutableArray *picArray;
+@property (nonatomic, strong) NSMutableDictionary *allDict;
 @end
 
 @implementation AnswerViewController
@@ -52,7 +54,7 @@ int picTime;
     
     UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 17, 220*NOW_SIZE,205*NOW_SIZE )];
     image2.userInteractionEnabled = YES;
-    image2.image = IMAGE(@"frame2@2x.png");
+    image2.image = IMAGE(@"外框@3x.png");
     [_scrollView addSubview:image2];
     
     self.contentView = [[UITextView alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 17*NOW_SIZE, 205*NOW_SIZE,200*NOW_SIZE )];
@@ -114,9 +116,49 @@ int picTime;
 }
 
 -(void)finishDone{
+    NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
+    for (int i=0; i<_picArray.count; i++) {
+        NSData *imageData = UIImageJPEGRepresentation(_picArray[i], 0.5);
+        NSString *imageName=@"imageName";
+        [dataImageDict setObject:imageData forKey:imageName];
+    }
     
+    if ([[_contentView text] isEqual:@""]) {
+        [self showToastViewWithTitle:@"请输入内容"];
+        return;
+    }
     
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *userID=[ud objectForKey:@"userID"];
+    _allDict=[NSMutableDictionary dictionary];
+      [_allDict setObject:[_contentView text] forKey:@"message"];
+     [_allDict setObject:_qusetionId forKey:@"questionId"];
+     [_allDict setObject:userID forKey:@"userId"];
     
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_allDict paramarsSite:@"/questionAPI.do?op=replyMessage" dataImageDict:dataImageDict sucessBlock:^(id content) {
+        NSLog(@"addCustomerQuestion==%@", content);
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        if (content1) {
+            if ([content1[@"success"] integerValue] == 1) {
+                
+                [self goback];
+                [self showAlertViewWithTitle:nil message:@"添加成功" cancelButtonTitle:root_Yes];
+               
+            }
+        }else{
+            [self showAlertViewWithTitle:nil message:@"添加错误" cancelButtonTitle:root_Yes];
+        }
+    }
+                              failure:^(NSError *error) {
+                                  [self showToastViewWithTitle:root_Networking];
+                              }];
+    
+}
+
+-(void)goback{
+   // myListSecond *second=[[myListSecond alloc]init];
+    [self.navigationController popViewControllerAnimated:NO];
+
 }
 
 -(void)controlPhoto{

@@ -30,12 +30,12 @@
     self =[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        UIView *titleView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 5*NOW_SIZE) ];
-        titleView.backgroundColor=mainColor;
-        [self addSubview:titleView];
+        _titleView= [[UIView alloc]init];
+        _titleView.backgroundColor=mainColor;
+        [self addSubview:_titleView];
         
         _image=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 10*NOW_SIZE, 40*NOW_SIZE,40*NOW_SIZE )];
-        _image.image = IMAGE(@"service@3x.png");
+        
         [self.contentView addSubview:_image];
         
         

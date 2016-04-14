@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface myListSecond : UIViewController
+@interface myListSecond : RootViewController
+
+@property(nonatomic,strong)NSString *qusetionId;
 
 @end

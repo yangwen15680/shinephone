@@ -33,6 +33,8 @@
 #define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
 //#define HEAD_URL  @"http://192.168.3.32:8081/ShineServer"
 //#define HEAD_URL  @"http://server-cn.growatt.com"
+//#define HEAD_URL  @"http://192.168.3.98:8081/ShineServer_2016"
+
 #define mainColor [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1]
 //设备
 #define root_Add_Plant       NSLocalizedString(@"Add Plant", @"Add Plant")

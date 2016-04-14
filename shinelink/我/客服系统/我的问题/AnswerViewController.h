@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AnswerViewController : UIViewController
+@interface AnswerViewController : RootViewController
+
+@property(nonatomic,strong)NSString *qusetionId;
 
 @end
