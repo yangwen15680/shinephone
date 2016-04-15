@@ -9,6 +9,7 @@
 #import "myListSecond.h"
 #import "myListSecondTableViewCell.h"
 #import "AnswerViewController.h"
+#import "GetServerViewController.h"
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -26,6 +27,7 @@
 @property(nonatomic,strong)NSMutableArray *contentArray;
 @property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *questionAll;
+@property(nonatomic,strong)NSMutableArray *imageName;
 @property(nonatomic,strong)NSString *titleString;
 @property(nonatomic,strong)NSString *typeString;
 
@@ -66,10 +68,12 @@
                 NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
                 NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
                 NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
+                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"imageName"]];
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];
                 [_contentArray addObject:contentA];
+                  [_imageName addObject:imageNameA];
             }
             [_tableView reloadData];
             
@@ -88,6 +92,7 @@
     self.contentArray =[NSMutableArray array];
     self.timeArray =[NSMutableArray array];
     self.nameID =[NSMutableArray array];
+      self.imageName =[NSMutableArray array];
     self.labelArray=[NSMutableArray arrayWithObjects:@"标题:",@"类型:", @"回复记录",nil];
     // self.questionAll =[NSMutableArray array];
     
@@ -104,10 +109,12 @@
                 NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
                 NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
                 NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
+                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"imageName"]];
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];
                 [_contentArray addObject:contentA];
+                  [_imageName addObject:imageNameA];
             }
             [self initUI];
             
@@ -182,7 +189,7 @@
     answerLable.text=@"回 复";
     answerLable.textAlignment=NSTextAlignmentCenter;
     answerLable.textColor=[UIColor blueColor];
-    answerLable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    answerLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [image3 addSubview:answerLable];
     
 }
@@ -207,6 +214,12 @@
           cell.image.image = IMAGE(@"server3@3x.png");
     }else{
     cell.image.image = IMAGE(@"client@3x.png");
+    }
+    if ([_imageName[indexPath.row] containsString:@".png"] || [_imageName[indexPath.row] containsString:@".jpg"]) {
+        cell.picLabel.hidden=NO;
+        [cell.picArray addObject:_imageName[indexPath.row]];
+    }else{
+        cell.picLabel.hidden=YES;
     }
     cell.nameLabel.text= self.nameArray[indexPath.row];
     cell.timeLabel.text= self.timeArray[indexPath.row];
@@ -243,7 +256,22 @@
 }
 
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if ([_imageName[indexPath.row] containsString:@".png"] || [_imageName[indexPath.row] containsString:@".jpg"])
+  {
+      NSMutableArray *test=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
+      
+      GetServerViewController *get=[[GetServerViewController alloc]init];
+      
+      get.picArray=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
+      get.picString=_imageName[indexPath.row];
+      
+      [self.navigationController pushViewController:get animated:NO];
+  }
+    
+    
+}
 
 
 

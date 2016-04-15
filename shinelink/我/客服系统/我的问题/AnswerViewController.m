@@ -8,6 +8,7 @@
 
 #import "AnswerViewController.h"
 #import "myListSecond.h"
+#import "GetServerViewController.h"
 
 @interface AnswerViewController ()<UITextFieldDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -42,7 +43,7 @@ int picTime;
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
     [self.view addSubview:_scrollView];
-    float Size1=50*NOW_SIZE;
+ //   float Size1=50*NOW_SIZE;
     
  
         UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 17*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];

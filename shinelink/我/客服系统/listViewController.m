@@ -23,6 +23,7 @@
 @property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *allArray;
 @property(nonatomic,strong)NSMutableArray *questionID;
+@property(nonatomic,strong)NSString *delQuestionID;
 
 @end
 
@@ -72,11 +73,8 @@
         [self showToastViewWithTitle:root_Networking];
     }];
     
-   
-    
-    
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -116,7 +114,29 @@
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);
     
+    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed)];
+    longPressGesture.minimumPressDuration = 1.0f;
+    [cell addGestureRecognizer:longPressGesture];
+    
     return cell;
+}
+
+-(void)cellDidLongPressed{
+
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+    //添加Button
+    [alertController addAction: [UIAlertAction actionWithTitle: @"删除列表" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    
+        
+        
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

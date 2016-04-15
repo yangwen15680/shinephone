@@ -40,6 +40,7 @@
 @property (nonatomic, strong) NSMutableArray *managerNowArray;
 @property (nonatomic, strong) DemoDevice *demoDevice;
 @property (nonatomic, strong) GetDevice *getDevice;
+@property (nonatomic, strong) UIRefreshControl *control;
 @end
 
 @implementation deviceViewController
@@ -236,42 +237,14 @@
     NSMutableArray *DTK=[NSMutableArray array];
     for(int i=0;i<_stationID.count;i++)
     {
+        
         NSString *DTKtitle=[[NSString alloc]initWithFormat:_stationName[i]];
     DTKDropdownItem *DTKname= [DTKDropdownItem itemWithTitle:DTKtitle callBack:^(NSUInteger index, id info) {
         NSLog(@"电站%lu",(unsigned long)index);
         [ [UserInfo defaultUserInfo]setPlantID:_stationID[index]];
         [ [UserInfo defaultUserInfo]setPlantNum:[NSString stringWithFormat:@"%lu",(unsigned long)index]];
         [_plantId setObject:_stationID[index] forKey:@"plantId"];
-        NSFetchRequest *request = [[NSFetchRequest alloc] init];
-        NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
-        [request setEntity:entity];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
-        NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-        [request setSortDescriptors:sortDescriptions];
-        NSError *error = nil;
-        NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
-        for (NSManagedObject *obj in fetchResult)
-        {
-            [_manager.managedObjContext deleteObject:obj];
-        }
-        BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
-        if (!isSaveSuccess) {
-            NSLog(@"Error: %@,%@",error,[error userInfo]);
-        }else
-        {
-            NSLog(@"Save successFull");
-        }
-    
-        _typeArr=[NSMutableArray array];
-        nameArray=[NSMutableArray array];
-        statueArray=[NSMutableArray array];
-        dayArray=[NSMutableArray array];
-        imageArray=[NSMutableArray array];
-        powerArray=[NSMutableArray array];
-        SNArray=[NSMutableArray array];
-        imageStatueArray=[NSMutableArray array];
-        
-        [self netRequest];
+        [self refreshData];
         
     }];
          [DTK addObject:DTKname];
@@ -305,8 +278,7 @@
     _plantId=[NSMutableDictionary dictionaryWithObject:plantid1 forKey:@"plantId"];
     NSString *a=@"1";
     NSString *b=@"10";
-    //[_plantId setObject:[NSNumber numberWithInteger:a] forKey:@"pageNum"];
-   // [_plantId setObject:[NSNumber numberWithInteger:b] forKey:@"pageSize"];
+
     [_plantId setObject:a forKey:@"pageNum"];
     [_plantId setObject:b forKey:@"pageSize"];
     
@@ -320,10 +292,51 @@
         }
 }
 
+-(void)refreshData{
+   
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+    [request setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
+    NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptions];
+    NSError *error = nil;
+    NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+    for (NSManagedObject *obj in fetchResult)
+    {
+        [_manager.managedObjContext deleteObject:obj];
+    }
+    BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }else
+    {
+        NSLog(@"Save successFull");
+    }
+    
+  
+    
+    [self netRequest];
+
+
+}
+
+
 -(void)netRequest{
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:_plantId paramarsSite:@"/newPlantAPI.do?op=getAllDeviceList" sucessBlock:^(id content) {
         [self hideProgressView];
+        
+        _typeArr=[NSMutableArray array];
+        nameArray=[NSMutableArray array];
+        statueArray=[NSMutableArray array];
+        dayArray=[NSMutableArray array];
+        imageArray=[NSMutableArray array];
+        powerArray=[NSMutableArray array];
+        SNArray=[NSMutableArray array];
+        imageStatueArray=[NSMutableArray array];
+        
+        [_control endRefreshing];
           NSLog(@"getAllDeviceList:%@",content);
        // id jsonObj=[NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
          self.dataArr = [NSMutableArray arrayWithArray:content];
@@ -439,16 +452,15 @@
         
     } failure:^(NSError *error) {
         [self hideProgressView];
+         [_control endRefreshing];
         [self showToastViewWithTitle:root_Networking];
     }];
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+
+#pragma mark 创建tableView的方法
 - (void)_createTableView {
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -456,13 +468,34 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    _control=[[UIRefreshControl alloc]init];
+    [_control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [_tableView addSubview:_control];
+    
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [_control beginRefreshing];
+    
+    // 3.加载数据
+    [self refreshStateChange:_control];
+    
+    
+    
     [self.view addSubview:_tableView];
     _indenty = @"indenty";
     //注册单元格类型
     [_tableView registerClass:[TableViewCell class] forCellReuseIdentifier:_indenty];
 }
 
-#pragma mark 创建tableView的头视图的方法
+-(void)refreshStateChange:(UIRefreshControl *)control{
+
+    //NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+   // _plantId=[ud objectForKey:@"plantID"];
+    
+    [self refreshData];
+    
+}
+
+
 - (void)_createHeaderView {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
@@ -825,6 +858,11 @@
         pageName = -1;
     }
     
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

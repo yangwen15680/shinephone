@@ -7,6 +7,7 @@
 //
 
 #import "myListSecondTableViewCell.h"
+#import "GetServerViewController.h"
 
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -39,6 +40,17 @@
         [self.contentView addSubview:_image];
         
         
+        _picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 10*NOW_SIZE,100*NOW_SIZE, 15*NOW_SIZE)];
+        _picLabel.text=@"查看图片";
+        _picLabel.textColor=[UIColor blueColor];
+        _picLabel.textAlignment = NSTextAlignmentCenter;
+        _picLabel.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+      //  _picLabel.userInteractionEnabled=YES;
+       // UITapGestureRecognizer * labelTap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GetPhoto)];
+       // [_picLabel addGestureRecognizer:labelTap1];
+        [self.contentView addSubview:_picLabel];
+        
+        
         _nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 10*NOW_SIZE,150*NOW_SIZE, 15*NOW_SIZE) ];
         _nameLabel.font =[UIFont systemFontOfSize:14];
         _nameLabel.textColor = [UIColor blackColor];
@@ -60,12 +72,11 @@
         _contentLabel.numberOfLines=0;
         [self addSubview:_contentLabel];
         
-      
-        
-        
-        
+
     }
     return self;
 }
+
+
 
 @end
