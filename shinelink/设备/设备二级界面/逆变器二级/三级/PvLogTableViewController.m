@@ -28,20 +28,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self initData];
+    [self netLog];
+
 }
 
--(void)initData{
-    self.SNTextArray =[NSMutableArray arrayWithObjects:@"第一",@"第二",@"第三",nil];
-    self.typtTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
-     self.eventTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
-     self.LogTextArray =[NSMutableArray arrayWithObjects:@"已处理",@"已处理",@"已处理",nil];
-    self.contentTextArray =[NSMutableArray arrayWithObjects:@"这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图文混排这个是是比较简单的图这个是比较简单的图文混排这个是比较简单的图文混排这个是比较简单的图",
-                        @"自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自适应宽高自适应宽高这个是比较简单的图文混排,自高",
-                        @"这个是比较简单的图文混排", nil];
-    self.timeTextArray=[NSMutableArray arrayWithObjects:@"2016.3.3",@"2016.3.3",@"2016.3.3",nil];
+-(void)netLog{
+      self.SNTextArray=[NSMutableArray array];
+     self.typtTextArray=[NSMutableArray array];
+     self.eventTextArray=[NSMutableArray array];
+    self.LogTextArray =[NSMutableArray array];
+    self.contentTextArray=[NSMutableArray array];
+        self.timeTextArray=[NSMutableArray array];
+    
+
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"inverterId":@"SAMP524004",@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:@"/newInverterAPI.do?op=getInverterAlarm" sucessBlock:^(id content) {
+        [self hideProgressView];
+            NSLog(@"getInverterAlarm: %@", content);
+        if (content) {
+          
+             NSMutableArray *allArray=[NSMutableArray arrayWithArray:content];
+            for(int i=0;i<allArray.count;i++){
+                
+                NSString *SN=[NSString stringWithFormat:@"%@",content[i][@"deviceSerialNum"]];
+                NSString *TY=[NSString stringWithFormat:@"%@",content[i][@"deviceType"]];
+                NSString *EV=[NSString stringWithFormat:@"%@",content[i][@"eventId"]];
+                 NSString *LOG=[NSString stringWithFormat:@"%@",content[i][@"eventName"]];
+                NSString *time=[NSString stringWithFormat:@"%@",content[i][@"occurTime"]];
+                NSString *CO=[NSString stringWithFormat:@"%@",content[i][@"eventName"]];
+                [self.SNTextArray addObject:SN];
+                [self.typtTextArray addObject:TY];
+                [self.eventTextArray addObject:EV];
+                [self.LogTextArray addObject:LOG];
+                [self.contentTextArray addObject:CO];
+                 [self.timeTextArray addObject:time];
+                
+                [self.tableView reloadData];
+            }
+
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+     
+    }];
+
 }
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,7 +126,7 @@
     
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
     cell.contentLabel.frame =CGRectMake(10*Width, 65*Width, 300*Width, fcRect.size.height);
-    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 65*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
+    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-200*NOW_SIZE, 65*NOW_SIZE+fcRect.size.height,200*NOW_SIZE, 20*NOW_SIZE );
 
     
     return cell;

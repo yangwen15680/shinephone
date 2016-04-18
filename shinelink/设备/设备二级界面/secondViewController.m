@@ -96,6 +96,7 @@
 
 -(void)goFour{
     PvLogTableViewController *four=[[PvLogTableViewController alloc]init];
+    four.PvSn=_SnData;
     [self.navigationController pushViewController:four animated:NO];
 
 }
@@ -106,6 +107,7 @@
 
 -(void)parameterPV{
     parameterPV *pv=[[parameterPV alloc]init];
+    pv.PvSn=_SnData;
     [self.navigationController pushViewController:pv animated:NO];
 }
 

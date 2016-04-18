@@ -29,27 +29,98 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [super viewDidLoad];
+    [self netParameter];
     [self initdata];
-    [self initUI];
+    
+}
+
+-(void)netParameter{
+    _dateN2=[NSMutableArray array];
+    _dateY2=[NSMutableArray array];
+       _pv12=[NSMutableArray array];
+       _pv22=[NSMutableArray array];
+       _pv32=[NSMutableArray array];
+    
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"inverterId":_PvSn} paramarsSite:@"/newInverterAPI.do?op=getInverterParams" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getInverterParams: %@", content);
+        if (content) {
+              NSString *A2=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
+              NSString *A3=[NSString stringWithFormat:@"%@",content[@"nominalPower"]];
+              NSString *B1=[NSString stringWithFormat:@"%@",content[@"alias"]];
+              NSString *B2=[NSString stringWithFormat:@"%@",content[@"fwVersion"]];
+              NSString *B3=[NSString stringWithFormat:@"%@",content[@"innerVersion"]];
+            NSString *B4=[NSString stringWithFormat:@"%@",content[@"model"]];
+            NSString *B5=[NSString stringWithFormat:@"%@",content[@"modelText"]];
+              [_dateN2 addObject:_PvSn];
+            [_dateN2 addObject:A2];
+            [_dateN2 addObject:A3];
+            NSString *par=[NSString stringWithFormat:@"%@/%@/%@",B2,B3,B4];
+            [_dateY2 addObject:B1];
+             [_dateY2 addObject:par];
+             [_dateY2 addObject:B5];
+            //[self initUI];
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"inverterId":_PvSn} paramarsSite:@"/newInverterAPI.do?op=getInverterDetailData" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getInverterDetailData: %@", content);
+        if (content) {
+            
+            
+            NSString *C1=[NSString stringWithFormat:@"%@",content[@"vpv1"]];
+            NSString *C2=[NSString stringWithFormat:@"%@",content[@"vpv2"]];
+            NSString *D1=[NSString stringWithFormat:@"%@",content[@"ipv1"]];
+            NSString *D2=[NSString stringWithFormat:@"%@",content[@"ipv2"]];
+            NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppv1"]];
+            NSString *E2=[NSString stringWithFormat:@"%@",content[@"ppv2"]];
+             [_pv12 addObject:C1];
+            [_pv12 addObject:C2];
+            [_pv22 addObject:D1];
+          
+            [_pv22 addObject:D2];
+            [_pv32 addObject:E1];
+            [_pv32 addObject:E2];
+            
+            
+            [self initUI];
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
+    
+}
+
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 -(void)initdata{
     _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定功率",nil];
-    _dateN2=[[NSMutableArray alloc]initWithObjects:@"S333444", @"SSDFF", @"33W",nil];
+  
     _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"属性", @"模式",nil];
-    _dateY2=[[NSMutableArray alloc]initWithObjects:@"S333444", @"SSDFF", @"123123",nil];
+    
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt", @"Current", @"Watt",nil];
-    _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2", @"PV3",nil];
-    _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)", @"VPV3(V)",nil];
-    _pv12=[[NSMutableArray alloc]initWithObjects:@"123", @"312", @"312",nil];
-    _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)", @"IPV3(A)",nil];
-    _pv22=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
-    _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)", @"WPV3(W)",nil];
-    _pv32=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
+    _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2",nil];
+    _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)",nil];
+
+    _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)",nil];
+
+    _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)",nil];
+  
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 45*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
@@ -75,7 +146,7 @@
         Lable1.text=_dateN2[i];
         Lable1.textAlignment=NSTextAlignmentCenter;
         Lable1.textColor=[UIColor whiteColor];
-        Lable1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        Lable1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         [_scrollView addSubview:Lable1];
         
         UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 15*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
@@ -88,7 +159,7 @@
         Lable2.text=_dateY2[i];
         Lable2.textAlignment=NSTextAlignmentCenter;
         Lable2.textColor=[UIColor whiteColor];
-        Lable2.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        Lable2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         [_scrollView addSubview:Lable2];
         
         UIView *line=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,70*NOW_SIZE+SIZE1*i, 300*NOW_SIZE, 1*NOW_SIZE)];
