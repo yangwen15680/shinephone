@@ -193,10 +193,15 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         [self hideProgressView];
         NSLog(@"dayDate:%@",content);
         if (content) {
-           // self.dayDict=[NSMutableDictionary new];
-            //[self.dayDict setObject:content forKey:@"data"];
-           // id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+          
+            NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            self.dayDict=[NSMutableDictionary new];
+            for (NSString *key in dayDict0) {
+                NSRange rang = NSMakeRange(11, 5);
+                NSString *key0=[key substringWithRange:rang];
+                NSString *value0=dayDict0[key];
+                [_dayDict setValue:value0 forKey:key0];
+            }
 
             self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
@@ -231,8 +236,15 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
              NSLog(@"day: %@", content);
             [self hideProgressView];
             if (content) {
-                self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content];
-                [self.line2View refreshLineChartViewWithDataDict:[content objectForKey:@"invPacData"]];
+                NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+                [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             }
             
         } failure:^(NSError *error) {

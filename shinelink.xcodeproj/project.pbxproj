@@ -177,6 +177,8 @@
 		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
 		336A108F1CBDDBA500E30E83 /* triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108D1CBDDBA500E30E83 /* triangular@3x.png */; };
 		336A10901CBDDBA500E30E83 /* 2triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */; };
+		3370424F1CC4B4810069D3AA /* bgweather@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3370424E1CC4B4810069D3AA /* bgweather@3x.png */; };
+		337042521CC4E4340069D3AA /* kongZhiNi0.m in Sources */ = {isa = PBXBuildFile; fileRef = 337042511CC4E4340069D3AA /* kongZhiNi0.m */; };
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
 		337F9C851C71A6710016FE43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C841C71A6710016FE43 /* main.m */; };
 		337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C871C71A6710016FE43 /* AppDelegate.m */; };
@@ -610,6 +612,9 @@
 		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = engrgySencondViewController.m; path = ../engrgySencondViewController.m; sourceTree = "<group>"; };
 		336A108D1CBDDBA500E30E83 /* triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "triangular@3x.png"; path = "Masonry/triangular@3x.png"; sourceTree = "<group>"; };
 		336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "2triangular@3x.png"; path = "Masonry/2triangular@3x.png"; sourceTree = "<group>"; };
+		3370424E1CC4B4810069D3AA /* bgweather@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bgweather@3x.png"; sourceTree = "<group>"; };
+		337042501CC4E4340069D3AA /* kongZhiNi0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kongZhiNi0.h; sourceTree = "<group>"; };
+		337042511CC4E4340069D3AA /* kongZhiNi0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kongZhiNi0.m; sourceTree = "<group>"; };
 		33744DE21CAE597A0065DC01 /* pvLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvLogTableViewCell.h; sourceTree = "<group>"; };
 		33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pvLogTableViewCell.m; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -947,6 +952,8 @@
 				334AED6B1CA381BF007E39F3 /* 滑块第三方 */,
 				334AED681CA38164007E39F3 /* KongZhiNi.h */,
 				334AED691CA38164007E39F3 /* KongZhiNi.m */,
+				337042501CC4E4340069D3AA /* kongZhiNi0.h */,
+				337042511CC4E4340069D3AA /* kongZhiNi0.m */,
 				334E9BF01CAD263700C8271F /* parameterPV.h */,
 				334E9BF11CAD263700C8271F /* parameterPV.m */,
 				334E9BF31CAD2B8900C8271F /* PvLogTableViewController.h */,
@@ -1216,6 +1223,7 @@
 		335456D51C85A03D00275478 /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
+				3370424E1CC4B4810069D3AA /* bgweather@3x.png */,
 				33EFB6321C97DAB5003F336F /* 控制.jpg */,
 				33EFB6831C99732F003F336F /* 参数.png */,
 				33EFB6871C9973AB003F336F /* 日志.png */,
@@ -2024,6 +2032,7 @@
 				33FEFD6D1C7DB38400324374 /* iconfont-gongsijianjie@2x.png in Resources */,
 				33FEFD7C1C7DB38400324374 /* shebei@3x.png in Resources */,
 				33FEFD571C7DB38400324374 /* icon---Email---Full@2x.png in Resources */,
+				3370424F1CC4B4810069D3AA /* bgweather@3x.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
 				3381ECF71CBCA62700DCF0D2 /* 峰谷段动作使能切图.png in Resources */,
@@ -2057,6 +2066,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337042521CC4E4340069D3AA /* kongZhiNi0.m in Sources */,
 				33EFB6651C98F9B1003F336F /* NSString+Zirkfied.m in Sources */,
 				3356146A1CB397220071BAC9 /* LZPageViewController.m in Sources */,
 				33EFB6661C98F9B1003F336F /* UIColor+Zirkfied.m in Sources */,

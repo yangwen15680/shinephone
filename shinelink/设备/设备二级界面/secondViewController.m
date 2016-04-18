@@ -11,7 +11,7 @@
 #import"DTKDropdownMenuView.h"
 #import "Line2View.h"
 #import "threeViewController.h"
-#import "KongZhiNi.h"
+#import "kongZhiNi0.h"
 #import "parameterPV.h"
 #import "PvLogTableViewController.h"
 #import "EquipGraphViewController.h"
@@ -101,7 +101,8 @@
 
 }
 -(void)controlThree{
-    KongZhiNi *go=[[KongZhiNi alloc]init];
+    kongZhiNi0 *go=[[kongZhiNi0 alloc]init];
+    go.PvSn=_SnData;
     [self.navigationController pushViewController:go animated:YES];
 }
 
@@ -135,9 +136,18 @@
         [self hideProgressView];
    
         if (content) {
-               //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-           //  id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            
+            NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            self.dayDict=[NSMutableDictionary new];
+        for (NSString *key in dayDict0) {
+            NSRange rang = NSMakeRange(11, 5);
+            NSString *key0=[key substringWithRange:rang];
+            NSString *value0=dayDict0[key];
+            [_dayDict setValue:value0 forKey:key0];
+        }
+           // self.dayDict=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            
+            
             _nominalPower=[content objectForKey:@"nominalPower"];
            NSLog(@"getInverterData: %@", content);
             self.line2View.frameType=@"1";

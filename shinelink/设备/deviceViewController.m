@@ -503,9 +503,9 @@
     
     _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
     
-    NSArray *imgArray = @[@"3.jpg",
-                          @"2.jpg",
-                          @"1.jpg"];
+    NSArray *imgArray = @[@"bgweather@3x.png",
+                          @"bgweather@3x.png",
+                          @"bgweather@3x.png"];
     for (int i=0; i<imgArray.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
         imageView.image = [UIImage imageNamed:imgArray[i]];
