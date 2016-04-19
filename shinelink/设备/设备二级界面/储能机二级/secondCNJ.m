@@ -20,6 +20,7 @@
 @interface secondCNJ ()
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
 @property (nonatomic, strong) Line2View *line2View;
+@property (nonatomic, strong) NSString *status;
 @end
 
 @implementation secondCNJ
@@ -192,6 +193,19 @@
     VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 20*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
     CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 150*NOW_SIZE);
     waterView.center = center;
+    if ([_status isEqualToString:@"0"]) {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:45/ 255.0f green:226/ 255.0f blue:233/ 255.0f alpha:1];//水波颜色
+    }else if ([_status isEqualToString:@"1"]) {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:121/ 255.0f green:230/ 255.0f blue:239/ 255.0f alpha:1];//水波颜色
+    } if ([_status isEqualToString:@"2"]) {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:222/ 255.0f green:211/ 255.0f blue:91/ 255.0f alpha:1];//水波颜色
+    } if ([_status isEqualToString:@"3"]) {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
+    }
     waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
     waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
     //   waterView.currentWaterColor1 = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:0.5];

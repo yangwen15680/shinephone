@@ -59,7 +59,7 @@
     [_dataDic setObject:@"" forKey:@"image"];
    // NSMutableDictionary *data1=[NSMutableDictionary dictionaryWithObject:@"" forKey:@"image"];
     [self showProgressView];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newInverterAPI.do?op=updateInvInfo" dataImageDict:nil sucessBlock:^(id content) {
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_dataDic paramarsSite:_netType dataImageDict:nil sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"updateInvInfo: %@", content);
          id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];

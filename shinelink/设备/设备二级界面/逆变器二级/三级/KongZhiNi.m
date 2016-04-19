@@ -79,7 +79,7 @@
     PVLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVLable];
     _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
-   _slider.maximumValue = 1.0;
+   _slider.maximumValue = 100;
     [_scrollView addSubview:_slider];
     UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVLable1.text=@"0";
@@ -87,8 +87,8 @@
     PVLable1.textColor=[UIColor whiteColor];
     PVLable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVLable1];
-    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE,  85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    PVLable2.text=@"1";
+    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-31*NOW_SIZE,  85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    PVLable2.text=@"100";
     PVLable2.textAlignment=NSTextAlignmentLeft;
     PVLable2.textColor=[UIColor whiteColor];
     PVLable2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -103,7 +103,7 @@
     PV1Lable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV1Lable];
     _slider1=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
-    _slider1.maximumValue = 1;
+    _slider1.maximumValue = 100;
     [_scrollView addSubview:_slider1];
     UILabel *PV1Lable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PV1Lable1.text=@"0";
@@ -111,8 +111,8 @@
     PV1Lable1.textColor=[UIColor whiteColor];
     PV1Lable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV1Lable1];
-    UILabel *PV1Lable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE,  85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    PV1Lable2.text=@"1";
+    UILabel *PV1Lable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-31*NOW_SIZE,  85*NOW_SIZE+20*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    PV1Lable2.text=@"100";
     PV1Lable2.textAlignment=NSTextAlignmentLeft;
     PV1Lable2.textColor=[UIColor whiteColor];
     PV1Lable2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -181,18 +181,19 @@
 -(void)finishSet{
     if(_slider){
     NSString *S1=[NSString stringWithFormat:@"%.2f",_slider.value];
-        _commandValue=S1;
+        _commandValue=[NSString stringWithString:S1];
         _paramId=@"pv_active_p_rate";
     }else if (_slider1){
     NSString *S2=[NSString stringWithFormat:@"%.2f",_slider1.value];
-         _commandValue=S2;
+         _commandValue=[NSString stringWithString:S2];
          _paramId=@"pv_reactive_p_rate";
     }else if (_slider2){
     NSString *S3=[NSString stringWithFormat:@"%.2f",_slider2.value];
-         _commandValue=S3;
+         _commandValue=[NSString stringWithString:S3];
          _paramId=@"pv_power_factor";
     }
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"serialNum":_PvSn,@"paramId":_paramId,@"command_1":_commandValue} paramarsSite:@"/newTcpsetAPI.do?op=inverterSet" sucessBlock:^(id content) {
+     [self showProgressView];
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"serialNum":_PvSn,@"paramId":_paramId,@"command_1":_commandValue,@"command_2":@""} paramarsSite:@"/newTcpsetAPI.do?op=inverterSet" sucessBlock:^(id content) {
         //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
         id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"inverterSet: %@", content1);
@@ -201,12 +202,29 @@
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
-                    //[self.tableView reloadData];
-                }
-            }else{
-              
+                    [self showAlertViewWithTitle:nil message:@"参数设置失败,系统错误" cancelButtonTitle:root_Yes];
                 
+            }else if ([content1[@"msg"] integerValue] ==502) {
+                [self showAlertViewWithTitle:nil message:@"逆变器所属服务器错误" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==503) {
+                [self showAlertViewWithTitle:nil message:@"逆变器不在线" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==504) {
+                [self showAlertViewWithTitle:nil message:@"采集器序列号为空" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==505) {
+                [self showAlertViewWithTitle:nil message:@"采集器不在线" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==506) {
+                [self showAlertViewWithTitle:nil message:@"参数Id不存在" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==507) {
+                [self showAlertViewWithTitle:nil message:@"参数为空" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==508) {
+                [self showAlertViewWithTitle:nil message:@"参数不在范围内" cancelButtonTitle:root_Yes];
+            }else if ([content1[@"msg"] integerValue] ==509) {
+                [self showAlertViewWithTitle:nil message:@"时间参数不正确" cancelButtonTitle:root_Yes];
+            }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [self showAlertViewWithTitle:nil message:@"参数设置成功" cancelButtonTitle:root_Yes];
+                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
     } failure:^(NSError *error) {

@@ -11,5 +11,5 @@
 @interface aliasViewController : RootViewController
 
 @property (nonatomic, strong) NSString *deviceSN;
-
+@property (nonatomic, strong) NSString *netType;
 @end

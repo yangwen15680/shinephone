@@ -331,7 +331,7 @@
     
     for(int i=0; i < xIntervalCount; i++){
         CGPoint currentLabelPoint = CGPointMake((xIntervalInPx * i) + _leftMarginToLeave, self.bounds.size.height - BOTTOM_MARGIN_TO_LEAVE);
-        CGRect xLabelFrame = CGRectMake(currentLabelPoint.x, currentLabelPoint.y, xIntervalInPx + 5, BOTTOM_MARGIN_TO_LEAVE);
+        CGRect xLabelFrame = CGRectMake(currentLabelPoint.x, currentLabelPoint.y, xIntervalInPx + 10*NOW_SIZE, BOTTOM_MARGIN_TO_LEAVE);
         
         plot.xPoints[i] = CGPointMake((int) xLabelFrame.origin.x + (xLabelFrame.size.width /2) , (int) 0);
         

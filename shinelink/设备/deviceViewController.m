@@ -347,8 +347,7 @@
                 [nameArray addObject:content[i][@"deviceType"]];
             }else{
                 [nameArray addObject:content[i][@"deviceAilas"]];}
-             NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"power"]];
-             [powerArray addObject:PO];
+           
             NSString *TO=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
             [totalPowerArray addObject:TO];
             
@@ -359,17 +358,24 @@
                 [imageStatueArray addObject:@"disconnect@2x.png"];}
             else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
             [statueArray addObject:SD];
-             NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"eToday"]];
-            [dayArray addObject:DY];
-          //  imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
-          //  nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"Plug", @"Regulator",@"controller", @"charge",  nil];
+           
+            
             if ([content[i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:@"inverter.png"];
+                NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"power"]];
+                [powerArray addObject:PO];
+                NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"eToday"]];
+                [dayArray addObject:DY];
             }else if ([content[i][@"deviceType"]isEqualToString:@"storage"]){
              [imageArray addObject:@"storage.png"];
+                NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"pCharge"]];
+                [powerArray addObject:PO];
+                NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"capacity"]];
+                [dayArray addObject:DY];
             }else{
             [imageArray addObject:@"Plug.png"];
             }
+            
         }
         
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -541,6 +547,12 @@
         [_editCellect removeFromSuperview];
         aliasViewController *alias=[[aliasViewController alloc]init];
         alias.deviceSN=SNArray[_indexPath.row];
+        if ([_typeArr[_indexPath.row] isEqualToString:@"inverter"]) {
+            alias.netType=@"/newInverterAPI.do?op=updateInvInfo";
+        }else if ([_typeArr[_indexPath.row] isEqualToString:@"storage"]){
+        
+         alias.netType=@"/newStorageAPI.do?op=updateStorageInfo";
+        }
         [self.navigationController pushViewController:alias animated:YES];
     }
     if (row==2) {
@@ -729,6 +741,11 @@
         }else{
             [cell.coverImageView  setImage:[UIImage imageWithData:getDevice.demoImage]];}
       
+        if ([getDevice.type isEqualToString:@"inverter"]) {
+            cell.electric.text = @"日电量:";
+        }else if (([getDevice.type isEqualToString:@"storage"])){
+         cell.electric.text = @"电池百分比:";
+        }
             cell.titleLabel.text = getDevice.name;
         cell.titleLabel.textColor = [UIColor orangeColor];
        cell.stateValue.text = getDevice.statueData;
