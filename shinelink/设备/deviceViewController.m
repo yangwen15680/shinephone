@@ -41,6 +41,7 @@
 @property (nonatomic, strong) DemoDevice *demoDevice;
 @property (nonatomic, strong) GetDevice *getDevice;
 @property (nonatomic, strong) UIRefreshControl *control;
+@property (nonatomic, strong) NSString *netType;
 @end
 
 @implementation deviceViewController
@@ -277,7 +278,7 @@
     //_plantId=[NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:plantid] forKey:@"plantId"];
     _plantId=[NSMutableDictionary dictionaryWithObject:plantid1 forKey:@"plantId"];
     NSString *a=@"1";
-    NSString *b=@"10";
+    NSString *b=@"15";
 
     [_plantId setObject:a forKey:@"pageNum"];
     [_plantId setObject:b forKey:@"pageSize"];
@@ -533,6 +534,9 @@
 
 #pragma mark - EditCellectViewDelegate
 - (void)menuDidSelectAtRow:(NSInteger)row {
+    
+    GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
+    
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
         [_editCellect removeFromSuperview];
         [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
@@ -546,27 +550,51 @@
     if (row==1) {
         [_editCellect removeFromSuperview];
         aliasViewController *alias=[[aliasViewController alloc]init];
-        alias.deviceSN=SNArray[_indexPath.row];
-        if ([_typeArr[_indexPath.row] isEqualToString:@"inverter"]) {
+        alias.deviceSN=getDevice.deviceSN;
+        if ([getDevice.type isEqualToString:@"inverter"]) {
             alias.netType=@"/newInverterAPI.do?op=updateInvInfo";
-        }else if ([_typeArr[_indexPath.row] isEqualToString:@"storage"]){
-        
+            alias.deviceSnKey=@"inverterId";
+        }else if ([getDevice.type isEqualToString:@"storage"]){
+        alias.deviceSnKey=@"storageId";
          alias.netType=@"/newStorageAPI.do?op=updateStorageInfo";
         }
         [self.navigationController pushViewController:alias animated:YES];
     }
     if (row==2) {
         [_editCellect removeFromSuperview];
+        _dataDic=[NSMutableDictionary dictionaryWithObject:@"" forKey:@"alias"];
+        if ([getDevice.type isEqualToString:@"inverter"]) {
+               [_dataDic setObject:getDevice.deviceSN forKey:@"inverterId"];
+            _netType=@"/newInverterAPI.do?op=updateInvInfo";
+            
+        }else if ([getDevice.type isEqualToString:@"storage"]){
+             [_dataDic setObject:getDevice.deviceSN forKey:@"storageId"];
+     
+           _netType=@"/newStorageAPI.do?op=updateStorageInfo";
+        }
+        [_dataDic setObject:SNArray[_indexPath.row] forKey:@"inverterId"];
+        
         [self addPicture];
     }
     if (row==3) {
         [_editCellect removeFromSuperview];
         [self showProgressView];
         NSMutableDictionary *dict=[NSMutableDictionary dictionary];
+        NSString *netType;
         GetDevice *get=[_managerNowArray objectAtIndex:_indexPath.row];
+        if ([getDevice.type isEqualToString:@"inverter"]) {
+            [dict setObject:getDevice.deviceSN forKey:@"inverterId"];
+            netType=@"/newInverterAPI.do?op=deleteInverter";
+            
+        }else if ([getDevice.type isEqualToString:@"storage"]){
+            [dict setObject:getDevice.deviceSN forKey:@"storageId"];
+            
+            netType=@"/newStorageAPI.do?op=deleteStorage";
+        }
+
           [dict setObject:get.deviceSN forKey:@"inverterId"];
         
-        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:@"/newInverterAPI.do?op=deleteInverter" sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:netType sucessBlock:^(id content) {
             //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
             NSLog(@"updateInvInfo: %@", content);
             [self hideProgressView];
@@ -634,12 +662,12 @@
     NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
     NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
     [dataImageDict setObject:imageData forKey:@"image"];
-    _dataDic=[NSMutableDictionary dictionaryWithObject:@"" forKey:@"alias"];
-      [_dataDic setObject:SNArray[_indexPath.row] forKey:@"inverterId"];
+   
     
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newInverterAPI.do?op=updateInvInfo" dataImageDict:dataImageDict sucessBlock:^(id content) {
-        NSLog(@"updateInvInfo: %@", content);
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_dataDic paramarsSite:_netType dataImageDict:dataImageDict sucessBlock:^(id content) {
+      
         id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+          NSLog(@"updateInvInfo: %@", content1);
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
@@ -699,6 +727,7 @@
     }
     else if([getDevice.type  isEqualToString:@"storage"]){
         secondCNJ *sd=[[secondCNJ alloc ]init];
+        sd.deviceSN=getDevice.deviceSN;
         sd.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:sd animated:NO];}}
     else{

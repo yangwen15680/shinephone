@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ControlCNJ : UIViewController
-
+@interface ControlCNJ : RootViewController
+@property (nonatomic, strong) NSString *type;
+@property (nonatomic, strong) NSString *CnjSN;
 @end

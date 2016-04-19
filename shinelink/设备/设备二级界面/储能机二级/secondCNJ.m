@@ -15,27 +15,52 @@
 #import "parameterCNJ.h"
 #import "PvLogTableViewController.h"
 #import "EquipGraphViewController.h"
+#import "controlCNJTable.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface secondCNJ ()
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
 @property (nonatomic, strong) Line2View *line2View;
 @property (nonatomic, strong) NSString *status;
+@property (nonatomic, strong) NSString *statusText;
+@property (nonatomic, strong) NSString *dayDischarge;
+@property (nonatomic, strong) NSString *totalDischarge;
+@property (nonatomic, strong) NSDateFormatter *dayFormatter;
+@property (nonatomic, strong) NSString *currentDay;
+
+@property (nonatomic, strong) NSString *capacity;
 @end
 
 @implementation secondCNJ
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   //UIImage *bgImage = IMAGE(@"bg.png");
-    //self.view.layer.contents = (id)bgImage.CGImage;
-    // UIView *lineView=[[UIView alloc]initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,320*NOW_SIZE )];
-    //[self.view addSubview:lineView];
-    [self addProcess];
+    [self netGetCNJ];
+   
     [self addRightItem];
     [self addGraph];
     [self addbutton];
     
+}
+
+-(void)netGetCNJ{
+     [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageParams" sucessBlock:^(id content) {
+        [self hideProgressView];
+           NSLog(@"getStorageParams: %@", content);
+        if (content) {
+        
+            _dayDischarge=[NSString stringWithFormat:@"%@",content[@"eDischargeTodayText"]];
+            _totalDischarge=[NSString stringWithFormat:@"%@",content[@"eDischargeTotalText"]];
+            _status=[NSString stringWithFormat:@"%@",content[@"status"]];
+            _capacity=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+           [self addProcess];
+            }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self addProcess];
+    }];
+
 }
 
 -(void)addbutton{
@@ -90,7 +115,8 @@
 }
 
 -(void)controlCNJ{
-    ControlCNJ *CNJ=[[ControlCNJ alloc]init];
+    controlCNJTable *CNJ=[[controlCNJTable alloc]init];
+    CNJ.CnjSn=_deviceSN;
     [self.navigationController pushViewController:CNJ animated:YES];
 }
 
@@ -101,11 +127,11 @@
 
 -(void)goThree{
     EquipGraphViewController *equipGraph=[[EquipGraphViewController alloc]init];
-    equipGraph.dictInfo=@{@"equipId":@"储能机",
-                          @"daySite":@"/storageA.do?op=getDls",
-                          @"monthSite":@"/storageA.do?op=getMls",
-                          @"yearSite":@"/storageA.do?op=getYls",
-                          @"allSite":@"/storageA.do?op=getTls"};
+    equipGraph.dictInfo=@{@"equipId":_deviceSN,
+                          @"daySite":@"/newStorageAPI.do?op=getDayLineStorage",
+                          @"monthSite":@"/newStorageAPI.do?op=getMonthLineStorage",
+                          @"yearSite":@"/newStorageAPI.do?op=getYearLineStorage",
+                          @"allSite":@"/newStorageAPI.do?op=getTotalLineStorage"};
     equipGraph.dict=@{@"1":root_CHARGING_POWER, @"2":root_DISCHARGING_POWER, @"3":root_INPUT_VOLTAGE, @"4":root_INPUT_CURRENT, @"5":root_USER_SIDE_POWER, @"6":root_GRID_SIDE_POWER};
     equipGraph.dictMonth=@{@"1":root_MONTH_BATTERY_CHARGE, @"2":root_MONTHLY_CHARGED, @"3":root_MONTHLY_DISCHARGED};
     equipGraph.dictYear=@{@"1":root_YEAR_BATTERY_CHARGE, @"2":root_YEAR_CHARGED, @"3":root_YEAR_DISCHARGED};
@@ -118,35 +144,39 @@
     
     self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
     self.line2View.flag=@"1";
+     self.line2View.frameType=@"1";
     [self.view addSubview:self.line2View];
-    NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"3.0" forKey:@"08:30"];
-    [dict setObject:@"5.0" forKey:@"09:30"];
-    [dict setObject:@"12.0" forKey:@"10:30"];
-    [dict setObject:@"21.0" forKey:@"11:30"];
-    [dict setObject:@"33.0" forKey:@"12:30"];
-    [dict setObject:@"45.0" forKey:@"13:30"];
-    [dict setObject:@"65.0" forKey:@"14:30"];
-    [dict setObject:@"23.0" forKey:@"15:30"];
-    [dict setObject:@"151.0" forKey:@"16:30"];
-    [dict setObject:@"124.0" forKey:@"17:30"];
-    self.line2View.frameType=@"1";
-    [self.line2View refreshLineChartViewWithDataDict:dict];
-    
-    
-    /*   [BaseRequest requestWithMethodResponseJsonByGet:@"http://server-cn.growatt.com" paramars:@{@"id":@"S765520005",@"type":@"1", @"date":current} paramarsSite:@"/inverterA.do?op=getDps" sucessBlock:^(id content) {
-     
-     if (content) {
-     self.dayDict=[NSMutableDictionary new];
-     //[self.dayDict setObject:content forKey:@"data"];
-     self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 200*NOW_SIZE, SCREEN_Width,300*NOW_SIZE )];
-     self.line2View.flag=@"1";
-     [lineView addSubview:self.line2View];
-     [self.line2View refreshLineChartViewWithDataDict:content];
-     }
-     } failure:^(NSError *error) {
-     
-     }];*/
+    self.dayFormatter = [[NSDateFormatter alloc] init];
+    [self.dayFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
+    [self showProgressView];
+
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_deviceSN,@"type":@"2", @"date":self.currentDay} paramarsSite:@"/newStorageAPI.do?op=getDayLineStorage" sucessBlock:^(id content) {
+        NSLog(@"day: %@", content);
+        [self hideProgressView];
+        NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+        if (content) {
+            if (content[@"invPacData"]) {
+                [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            }else{
+                [dayDict0 addEntriesFromDictionary:content];
+            }
+            self.dayDict=[NSMutableDictionary new];
+            for (NSString *key in dayDict0) {
+                NSRange rang = NSMakeRange(11, 5);
+                NSString *key0=[key substringWithRange:rang];
+                NSString *value0=dayDict0[key];
+                [_dayDict setValue:value0 forKey:key0];
+            }
+            [self.line2View refreshLineChartViewWithDataDict:_dayDict];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
+ 
+
     
 }
 
@@ -155,29 +185,29 @@
     UIImage *bgImage = IMAGE(@"bg3.png");
     processView.layer.contents = (id)bgImage.CGImage;
     [self.view addSubview:processView];
-    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    leftName.text=@"50KW";
-    leftName.textAlignment=NSTextAlignmentCenter;
+    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 180*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    leftName.text=_dayDischarge;
+    leftName.textAlignment=NSTextAlignmentLeft;
     leftName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:leftName];
-    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 200*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 200*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
     leftState.text=@"日放电量";
-    leftState.textAlignment=NSTextAlignmentCenter;
+    leftState.textAlignment=NSTextAlignmentLeft;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:leftState];
     
     
-    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
-    rightName.text=@"200KW";
-    rightName.textAlignment=NSTextAlignmentCenter;
+    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    rightName.text=_totalDischarge;
+    rightName.textAlignment=NSTextAlignmentRight;
     rightName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightName];
-    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-100*NOW_SIZE, 200*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 200*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
     rightState.text=@"总放电量";
-    rightState.textAlignment=NSTextAlignmentCenter;
+    rightState.textAlignment=NSTextAlignmentRight;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightState];
@@ -189,28 +219,52 @@
     dataName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:dataName];
     
-    
+    //_status=@"1";
     VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 20*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
     CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 150*NOW_SIZE);
     waterView.center = center;
     if ([_status isEqualToString:@"0"]) {
-        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:45/ 255.0f green:226/ 255.0f blue:233/ 255.0f alpha:1];//水波颜色
+        _statusText=@"闲置";
     }else if ([_status isEqualToString:@"1"]) {
-        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
-        waterView.currentWaterColor = [UIColor colorWithRed:121/ 255.0f green:230/ 255.0f blue:239/ 255.0f alpha:1];//水波颜色
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:121/ 255.0f green:230/ 255.0f blue:129/ 255.0f alpha:1];//水波颜色
+         _statusText=@"正在充电";
     } if ([_status isEqualToString:@"2"]) {
-        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:222/ 255.0f green:211/ 255.0f blue:91/ 255.0f alpha:1];//水波颜色
+         _statusText=@"正在放电";
     } if ([_status isEqualToString:@"3"]) {
-        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:211/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
+         _statusText=@"出现故障";
     }
-    waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
-    waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
-    //   waterView.currentWaterColor1 = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:0.5];
-    waterView.percentum = 0.66f;//百分比
+    float k1=[_capacity floatValue]*0.01;
+    waterView.percentum = k1;//百分比
     [self.view addSubview:waterView];
+    
+    UILabel *Ca=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2, 80*NOW_SIZE,60*NOW_SIZE )];
+    Ca.text=_capacity;
+    Ca.textAlignment=NSTextAlignmentCenter;
+    if ([_status isEqualToString:@"3"]) {
+        Ca.textColor=[UIColor redColor];
+    }else{
+    Ca.textColor=[UIColor whiteColor];
+    }
+    Ca.font = [UIFont systemFontOfSize:30*NOW_SIZE];
+    [self.view addSubview:Ca];
+    
+    UILabel *Status=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2+40*NOW_SIZE, 80*NOW_SIZE,40*NOW_SIZE )];
+    Status.text=_statusText;
+    Status.textAlignment=NSTextAlignmentCenter;
+    if ([_status isEqualToString:@"3"]) {
+        Status.textColor=[UIColor redColor];
+    }else{
+        Status.textColor=[UIColor whiteColor];
+    }
+    Status.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [self.view addSubview:Status];
     
 }
 

@@ -141,6 +141,7 @@
 		335614A01CB3B8E90071BAC9 /* frame2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3356149F1CB3B8E90071BAC9 /* frame2@2x.png */; };
 		335614A41CB3E0210071BAC9 /* frame4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335614A31CB3E0210071BAC9 /* frame4@2x.png */; };
 		335614A61CB3E09D0071BAC9 /* add2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335614A51CB3E09D0071BAC9 /* add2@2x.png */; };
+		3356782B1CC62A5A00EE4A73 /* controlCNJTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3356782A1CC62A5A00EE4A73 /* controlCNJTable.m */; };
 		3358812E1CB66E250068EFAD /* qualityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3358812D1CB66E250068EFAD /* qualityTableViewController.m */; };
 		335881311CB66E460068EFAD /* qualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335881301CB66E460068EFAD /* qualityCell.m */; };
 		335D2F6B1CC09C3A0019718E /* GetServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335D2F6A1CC09C3A0019718E /* GetServerViewController.m */; };
@@ -548,6 +549,8 @@
 		3356149F1CB3B8E90071BAC9 /* frame2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame2@2x.png"; path = "../frame2@2x.png"; sourceTree = "<group>"; };
 		335614A31CB3E0210071BAC9 /* frame4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "frame4@2x.png"; path = "../frame4@2x.png"; sourceTree = "<group>"; };
 		335614A51CB3E09D0071BAC9 /* add2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add2@2x.png"; path = "../add2@2x.png"; sourceTree = "<group>"; };
+		335678291CC62A5A00EE4A73 /* controlCNJTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = controlCNJTable.h; sourceTree = "<group>"; };
+		3356782A1CC62A5A00EE4A73 /* controlCNJTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = controlCNJTable.m; sourceTree = "<group>"; };
 		3358812C1CB66E250068EFAD /* qualityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qualityTableViewController.h; sourceTree = "<group>"; };
 		3358812D1CB66E250068EFAD /* qualityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qualityTableViewController.m; sourceTree = "<group>"; };
 		3358812F1CB66E460068EFAD /* qualityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qualityCell.h; sourceTree = "<group>"; };
@@ -1100,6 +1103,8 @@
 		334E9BE11CACB66600C8271F /* 储能机三级 */ = {
 			isa = PBXGroup;
 			children = (
+				335678291CC62A5A00EE4A73 /* controlCNJTable.h */,
+				3356782A1CC62A5A00EE4A73 /* controlCNJTable.m */,
 				334E9BE21CACB78900C8271F /* ControlCNJ.h */,
 				334E9BE31CACB78900C8271F /* ControlCNJ.m */,
 				334E9BED1CAD036700C8271F /* parameterCNJ.h */,
@@ -2145,6 +2150,7 @@
 				334B8F501C914A6D00798A69 /* PNLineChart.m in Sources */,
 				33692BE91C92527500698375 /* threeViewController.m in Sources */,
 				337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */,
+				3356782B1CC62A5A00EE4A73 /* controlCNJTable.m in Sources */,
 				336664F31CB784EC005573FB /* EquipGraphViewController.m in Sources */,
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
 				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,

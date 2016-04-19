@@ -189,12 +189,17 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [bgImageView addSubview:self.datePickerButton];
     
     [self showProgressView];
-  [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
+  [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"dayDate:%@",content);
         if (content) {
-          
-            NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+             NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+            if (content[@"invPacData"]) {
+                [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+            }else{
+                [dayDict0 addEntriesFromDictionary:content];
+            }
             self.dayDict=[NSMutableDictionary new];
             for (NSString *key in dayDict0) {
                 NSRange rang = NSMakeRange(11, 5);
@@ -230,14 +235,20 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 
 #pragma mark - 获取、保存曲线图数据
 - (void)requestDayDatasWithDayString:(NSString *)datString {
-
+   //@"id":_dictInfo[@"equipId"]
         [self showProgressView];
         [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
              NSLog(@"day: %@", content);
             [self hideProgressView];
+             NSMutableDictionary *dayDict0=[NSMutableDictionary new];
             if (content) {
-                NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
-                self.dayDict=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                   // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                   self.dayDict=[NSMutableDictionary new];
                 for (NSString *key in dayDict0) {
                     NSRange rang = NSMakeRange(11, 5);
                     NSString *key0=[key substringWithRange:rang];

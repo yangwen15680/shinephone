@@ -10,7 +10,7 @@
 #import "ASValueTrackingSlider.h"
 
 
-@interface ControlCNJ ()
+@interface ControlCNJ ()<UIAlertViewDelegate>
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
 @property (nonatomic, strong) ASValueTrackingSlider *slider;
 @property (nonatomic, strong) UIToolbar *toolBar;
@@ -29,6 +29,13 @@
 @property (nonatomic, strong) UIButton *datePickerButton;
 @property (nonatomic, strong) UISwitch *Switch;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIAlertView *Alert1;
+@property (nonatomic, strong) UIAlertView *Alert2;
+@property (nonatomic, strong) NSString *param1;
+@property (nonatomic, strong) NSString *param2;
+@property (nonatomic, strong) NSString *param3;
+@property (nonatomic, strong) NSString *param4;
+@property (nonatomic, strong) NSString *typeName;
 @end
 
 @implementation ControlCNJ
@@ -55,50 +62,70 @@
     [self.view addSubview:_scrollView];
     
     float buttonSize=70*NOW_SIZE;
-    UILabel *buttonLable=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-100*NOW_SIZE)/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
-    buttonLable.text=@"开关机";
-    buttonLable.textAlignment=NSTextAlignmentCenter;
-    buttonLable.textColor=[UIColor whiteColor];
-    buttonLable.font = [UIFont systemFontOfSize:18*NOW_SIZE];
-    [_scrollView addSubview:buttonLable];
     
-    UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width-buttonSize)/2, 85*NOW_SIZE, buttonSize,buttonSize)];
-    [firstB setImage:[UIImage imageNamed:@"open@2x.png"] forState:UIControlStateNormal];
-    [firstB addTarget:self action:@selector(controlOpen) forControlEvents:UIControlEventTouchUpInside];
-    [_scrollView addSubview:firstB];
-    
-    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    if([_type isEqualToString:@"0"]){
+        UILabel *buttonLable=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+        buttonLable.text=@"开机";
+        buttonLable.textAlignment=NSTextAlignmentCenter;
+        buttonLable.textColor=[UIColor whiteColor];
+        buttonLable.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+        [_scrollView addSubview:buttonLable];
+        
+        UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2, 85*NOW_SIZE, buttonSize,buttonSize)];
+        firstB.tag=2001;
+        [firstB setImage:[UIImage imageNamed:@"open@2x.png"] forState:UIControlStateNormal];
+        [firstB addTarget:self action:@selector(control) forControlEvents:UIControlEventTouchUpInside];
+        [_scrollView addSubview:firstB];
+        
+        UILabel *buttonLable0=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2+SCREEN_Width/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+        buttonLable0.text=@"关机";
+        buttonLable0.textAlignment=NSTextAlignmentCenter;
+        buttonLable0.textColor=[UIColor whiteColor];
+        buttonLable0.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+        [_scrollView addSubview:buttonLable0];
+        
+        UIButton *firstB0=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2+SCREEN_Width/2, 85*NOW_SIZE, buttonSize,buttonSize)];
+        firstB0.tag=2002;
+        [firstB0 setImage:[UIImage imageNamed:@"open@2x.png"] forState:UIControlStateNormal];
+        [firstB0 addTarget:self action:@selector(controlOff) forControlEvents:UIControlEventTouchUpInside];
+        [_scrollView addSubview:firstB0];
+    }
+
+     if([_type isEqualToString:@"1"]){
+    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVLable.text=@"锂电池SOC下限设定";
     PVLable.textAlignment=NSTextAlignmentLeft;
     PVLable.textColor=[UIColor whiteColor];
     PVLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVLable];
-    _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+buttonSize+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
+    _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
     _slider.maximumValue = 0.1;
     _slider.minimumValue=0.01;
     [_scrollView addSubview:_slider];
     
-    UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVLable1.text=@"0.01";
     PVLable1.textAlignment=NSTextAlignmentLeft;
     PVLable1.textColor=[UIColor whiteColor];
     PVLable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVLable1];
-    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVLable2.text=@"0.1";
     PVLable2.textAlignment=NSTextAlignmentLeft;
     PVLable2.textColor=[UIColor whiteColor];
     PVLable2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVLable2];
+     }
     
-    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+85*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+       if([_type isEqualToString:@"2"]){
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     PVData.text=@"设置储能机时间:";
     PVData.textAlignment=NSTextAlignmentLeft;
     PVData.textColor=[UIColor whiteColor];
     PVData.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PVData];
     
-    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*NOW_SIZE+buttonSize+26*NOW_SIZE+85*NOW_SIZE, 180*NOW_SIZE, 1*NOW_SIZE)];
+    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*NOW_SIZE+26*NOW_SIZE, 180*NOW_SIZE, 1*NOW_SIZE)];
     line.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line];
     
@@ -106,7 +133,7 @@
     [self.dayFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     
-    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(120*NOW_SIZE,85*NOW_SIZE+buttonSize+5*NOW_SIZE+85*NOW_SIZE, 200*NOW_SIZE, 20*NOW_SIZE)];
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(120*NOW_SIZE,85*NOW_SIZE+5*NOW_SIZE, 200*NOW_SIZE, 20*NOW_SIZE)];
     [_datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
     [_datePickerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _datePickerButton.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -114,29 +141,34 @@
     _datePickerButton.tag=1001;
     [_datePickerButton addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_datePickerButton];
+       }
     
-    UILabel *FDT=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+85*NOW_SIZE+45*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    
+   /* UILabel *FDT=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+85*NOW_SIZE+45*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     FDT.text=@"FDT设置";
     FDT.textAlignment=NSTextAlignmentLeft;
     FDT.textColor=[UIColor blueColor];
     FDT.font = [UIFont systemFontOfSize:18*NOW_SIZE];
-    [_scrollView addSubview:FDT];
+    [_scrollView addSubview:FDT];*/
     
-    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+65*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    Enable.text=@"强制放电使能";
+       if([_type isEqualToString:@"3"]){
+    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    Enable.text=@"强制放电使能：";
     Enable.textAlignment=NSTextAlignmentLeft;
     Enable.textColor=[UIColor whiteColor];
     Enable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:Enable];
     
-    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(260*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+65*NOW_SIZE, 120*NOW_SIZE,10*NOW_SIZE )];
+    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 120*NOW_SIZE,10*NOW_SIZE )];
     [_Switch setOn:YES];
     [_Switch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     _Switch.transform= CGAffineTransformMakeScale(1.2, 1);
        [_scrollView addSubview:_Switch];
+       }
 
-    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+45*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    dataDischarge.text=@"强制放电时间段";
+    if([_type isEqualToString:@"4"]){
+    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    dataDischarge.text=@"强制放电时间段：";
     dataDischarge.textAlignment=NSTextAlignmentLeft;
     dataDischarge.textColor=[UIColor whiteColor];
     dataDischarge.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -146,7 +178,7 @@
     [self.time1Formatter setDateFormat:@"HH:mm"];
     self.currentTime1 = [_time1Formatter stringFromDate:[NSDate date]];
     
-    _time1=[[UIButton alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+65*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    _time1=[[UIButton alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     [_time1 setTitle:self.currentTime1 forState:UIControlStateNormal];
     [_time1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _time1.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -155,7 +187,7 @@
     [_time1 addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_time1];
     
-    _time2=[[UIButton alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+65*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    _time2=[[UIButton alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     [_time2 setTitle:self.currentTime1 forState:UIControlStateNormal];
     [_time2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _time2.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -164,64 +196,67 @@
     [_time2 addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_time2];
     
-    UILabel *TO=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+65*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *TO=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
     TO.text=@"至";
     TO.textAlignment=NSTextAlignmentLeft;
     TO.textColor=[UIColor whiteColor];
     TO.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:TO];
     
-    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE, 115*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+50*NOW_SIZE, 115*NOW_SIZE,1*NOW_SIZE )];
     line1.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line1];
-    UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(185*NOW_SIZE, 85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE, 115*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(185*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+50*NOW_SIZE, 115*NOW_SIZE,1*NOW_SIZE )];
     line2.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line2];
+    }
     
-    float Size1=20*NOW_SIZE;
-    UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+Size1, 300*NOW_SIZE,20*NOW_SIZE )];
+    float Size1=40*NOW_SIZE;
+     if([_type isEqualToString:@"5"]){
+    UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 300*NOW_SIZE,20*NOW_SIZE )];
     PV.text=@"设置输入SP的组串电压";
     PV.textAlignment=NSTextAlignmentLeft;
     PV.textColor=[UIColor whiteColor];
     PV.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV];
     
-    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE+Size1, 180*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 180*NOW_SIZE,20*NOW_SIZE )];
     PV1.text=@"开路电压(300~500V)：";
     PV1.textAlignment=NSTextAlignmentLeft;
     PV1.textColor=[UIColor whiteColor];
     PV1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV1];
     
-    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(200*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+50*NOW_SIZE+Size1, 110*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 110*NOW_SIZE,1*NOW_SIZE )];
     line3.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line3];
     
-   _textField = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE+Size1, 300*NOW_SIZE,20*NOW_SIZE )];
+   _textField = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 300*NOW_SIZE,20*NOW_SIZE )];
     _textField.textColor = [UIColor whiteColor];
     _textField.tintColor = [UIColor whiteColor];
     _textField.font = [UIFont systemFontOfSize:16*NOW_SIZE];
      [_scrollView addSubview:_textField];
     
-    UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE*2+Size1, 120*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 120*NOW_SIZE,20*NOW_SIZE )];
     PV2.text=@"MPP电压:";
     PV2.textAlignment=NSTextAlignmentLeft;
     PV2.textColor=[UIColor whiteColor];
     PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV2];
     
-    _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(100*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE*2+Size1, 300*NOW_SIZE,20*NOW_SIZE )];
+    _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(100*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 300*NOW_SIZE,20*NOW_SIZE )];
     _textField1.textColor = [UIColor whiteColor];
     _textField1.tintColor = [UIColor whiteColor];
     _textField1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:_textField1];
     
-    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(100*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE*2+20*NOW_SIZE+Size1, 200*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(100*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1*2, 200*NOW_SIZE,1*NOW_SIZE )];
     line4.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line4];
-    
+     }
+         
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,85*NOW_SIZE+buttonSize+10*NOW_SIZE+85*NOW_SIZE+55*NOW_SIZE+95*NOW_SIZE+30*NOW_SIZE*2+40*NOW_SIZE+Size1, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,210*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
@@ -232,8 +267,75 @@
 }
 
 -(void)finishSet1{
-
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"serialNum":_CnjSN,@"type":_typeName,@"param1":_param1,@"param2":_param2,@"param3":_param3,@"param4":_param4} paramarsSite:@"/newTcpsetAPI.do?op=storageSet" sucessBlock:^(id content) {
+        //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"inverterSet: %@", content1);
+        [self hideProgressView];
+        
+        if (content1) {
+            if ([content1[@"success"] integerValue] == 0) {
+                if ([content1[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:@"参数设置失败,系统错误" cancelButtonTitle:root_Yes];
+                    
+                }else if ([content1[@"msg"] integerValue] ==502) {
+                    [self showAlertViewWithTitle:nil message:@"逆变器所属服务器错误" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==503) {
+                    [self showAlertViewWithTitle:nil message:@"逆变器不在线" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==504) {
+                    [self showAlertViewWithTitle:nil message:@"采集器序列号为空" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==505) {
+                    [self showAlertViewWithTitle:nil message:@"采集器不在线" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==506) {
+                    [self showAlertViewWithTitle:nil message:@"参数Id不存在" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==507) {
+                    [self showAlertViewWithTitle:nil message:@"参数为空" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==508) {
+                    [self showAlertViewWithTitle:nil message:@"参数不在范围内" cancelButtonTitle:root_Yes];
+                }else if ([content1[@"msg"] integerValue] ==509) {
+                    [self showAlertViewWithTitle:nil message:@"时间参数不正确" cancelButtonTitle:root_Yes];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [self showAlertViewWithTitle:nil message:@"参数设置成功" cancelButtonTitle:root_Yes];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    } failure:^(NSError *error) {
+        [self showToastViewWithTitle:root_Networking];
+    }];
+    
+    
 }
+
+-(void)control{
+    _Alert1 = [[UIAlertView alloc] initWithTitle:@"警告" message:@"是否确定开启逆变器" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    
+    [_Alert1 show];
+    
+}
+
+-(void)controlOff{
+    _Alert2 = [[UIAlertView alloc] initWithTitle:@"警告" message:@"是否确定关闭逆变器" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    [_Alert2 show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        
+    }else if (buttonIndex==1){
+        if (_Alert1) {
+          
+         
+        }else if (_Alert2){
+        
+            
+        }
+        
+    }
+    
+}
+
 
 #pragma mark - customSwitch delegate
 -(void)switchAction:(id)sender {

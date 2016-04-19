@@ -32,8 +32,8 @@
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
     _cellectId.placeholder = @"请输入设备别名";
-    _cellectId.textColor = [UIColor grayColor];
-    _cellectId.tintColor = [UIColor grayColor];
+    _cellectId.textColor = [UIColor whiteColor];
+    _cellectId.tintColor = [UIColor whiteColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
     [_cellectId setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
     _cellectId.font = [UIFont systemFontOfSize:11*NOW_SIZE];
@@ -55,7 +55,7 @@
         return;
     }
     _dataDic=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"alias"];
-    [_dataDic setObject:_deviceSN forKey:@"inverterId"];
+    [_dataDic setObject:_deviceSN forKey:_deviceSnKey];
     [_dataDic setObject:@"" forKey:@"image"];
    // NSMutableDictionary *data1=[NSMutableDictionary dictionaryWithObject:@"" forKey:@"image"];
     [self showProgressView];

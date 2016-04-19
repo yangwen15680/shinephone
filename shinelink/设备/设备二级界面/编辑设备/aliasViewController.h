@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 @interface aliasViewController : RootViewController
 
+@property (nonatomic, strong) NSString *deviceSnKey;
 @property (nonatomic, strong) NSString *deviceSN;
 @property (nonatomic, strong) NSString *netType;
 @end
