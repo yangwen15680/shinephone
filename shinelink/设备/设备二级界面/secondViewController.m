@@ -99,6 +99,8 @@
 -(void)goFour{
     PvLogTableViewController *four=[[PvLogTableViewController alloc]init];
     four.PvSn=_SnData;
+    four.address=@"/newInverterAPI.do?op=getInverterAlarm";
+    four.type=@"inverterId";
     [self.navigationController pushViewController:four animated:NO];
 
 }

@@ -29,15 +29,50 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
       [self initdata];
-      [self initUI];
+    [self netParameter];
+    
   
+}
+
+-(void)netParameter{
+    _dateN2=[NSMutableArray array];
+     _dateY2=[NSMutableArray array];
+   
+    [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageParams" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getStorageParams: %@", content);
+        if (content) {
+            NSString *A1=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
+            NSString *A2=[NSString stringWithFormat:@"%@",content[@"nominalPower"]];
+            NSString *A3=[NSString stringWithFormat:@"%@",content[@"vBat"]];
+            NSString *B1=[NSString stringWithFormat:@"%@",content[@"alias"]];
+            NSString *B2=[NSString stringWithFormat:@"%@",content[@"address"]];
+            NSString *B3=[NSString stringWithFormat:@"%@",content[@"address"]];
+            NSString *B4=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+             [_dateN2 addObject:_deviceSN];
+            [_dateN2 addObject:A1];
+             [_dateN2 addObject:A2];
+              [_dateN2 addObject:A3];
+           [_dateY2 addObject:B1];
+            [_dateY2 addObject:B2];
+            [_dateY2 addObject:B3];
+            [_dateY2 addObject:B4];
+             [self initUI];
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+     
+    }];
+
+
 }
 
 -(void)initdata{
 _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定功率", @"电池电压",nil];
-    _dateN2=[[NSMutableArray alloc]initWithObjects:@"S333444", @"SSDFF", @"33W", @"220V",nil];
+    
     _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"属性", @"模式", @"电池百分比(Soc)",nil];
-    _dateY2=[[NSMutableArray alloc]initWithObjects:@"S333444", @"SSDFF", @"123123", @"50%",nil];
+    
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt", @"Current", @"Watt",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2", @"PV3",nil];
     _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)", @"VPV3(V)",nil];
@@ -49,7 +84,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NavigationbarHeight, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];

@@ -11,4 +11,6 @@
 @interface PvLogTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSString *PvSn;
+@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong) NSString *type;
 @end

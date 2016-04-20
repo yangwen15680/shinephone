@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface parameterCNJ : UIViewController
-
+@interface parameterCNJ : RootViewController
+@property (nonatomic, strong) NSString *deviceSN;
 @end

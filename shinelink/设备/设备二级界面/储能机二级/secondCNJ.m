@@ -112,6 +112,9 @@
 
 -(void)gofour{
     PvLogTableViewController *four=[[PvLogTableViewController alloc]init];
+    four.PvSn=_deviceSN;
+    four.address=@"/newStorageAPI.do?op=getStorageAlarm";
+    four.type=@"storageId";
     [self.navigationController pushViewController:four animated:NO];
 }
 
@@ -123,6 +126,8 @@
 
 -(void)parameterCNJ{
     parameterCNJ *PC=[[parameterCNJ alloc]init];
+    PC.deviceSN=_deviceSN;
+    
     [self.navigationController pushViewController:PC animated:NO];
 }
 

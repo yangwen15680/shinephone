@@ -40,8 +40,8 @@
     self.contentTextArray=[NSMutableArray array];
         self.timeTextArray=[NSMutableArray array];
     
-
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"inverterId":@"SAMP524004",@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:@"/newInverterAPI.do?op=getInverterAlarm" sucessBlock:^(id content) {
+_PvSn=@"SAMP524004";
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{_type:_PvSn,@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:_address sucessBlock:^(id content) {
         [self hideProgressView];
             NSLog(@"getInverterAlarm: %@", content);
         if (content) {
