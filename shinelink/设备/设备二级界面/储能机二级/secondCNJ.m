@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=_deviceSN;
     [self netGetCNJ];
    
     [self addRightItem];
@@ -151,7 +152,7 @@
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     [self showProgressView];
 
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_deviceSN,@"type":@"2", @"date":self.currentDay} paramarsSite:@"/newStorageAPI.do?op=getDayLineStorage" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_deviceSN,@"type":@"7", @"date":self.currentDay} paramarsSite:@"/newStorageAPI.do?op=getDayLineStorage" sucessBlock:^(id content) {
         NSLog(@"day: %@", content);
         [self hideProgressView];
         NSMutableDictionary *dayDict0=[NSMutableDictionary new];
@@ -212,9 +213,9 @@
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:rightState];
     
-    UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 245*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    dataName.text=@"当日储能";
-    dataName.textAlignment=NSTextAlignmentCenter;
+    UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 245*NOW_SIZE, 180*NOW_SIZE,20*NOW_SIZE )];
+    dataName.text=@"电池百分比(%/天)";
+    dataName.textAlignment=NSTextAlignmentLeft;
     dataName.textColor=[UIColor blackColor];
     dataName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.view addSubview:dataName];

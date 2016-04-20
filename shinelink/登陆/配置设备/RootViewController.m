@@ -26,7 +26,10 @@
     self.view.layer.contents = (id)bgImage.CGImage;
     
     //导航栏
-   
+    [self.navigationController.navigationBar setTitleTextAttributes:@{
+                                                                      NSForegroundColorAttributeName :[UIColor whiteColor]
+                                                                      }];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 }
 

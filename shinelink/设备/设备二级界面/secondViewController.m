@@ -37,6 +37,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=_SnData;
+    
       //[self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
 [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
   
