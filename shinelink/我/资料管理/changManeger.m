@@ -13,7 +13,12 @@
 @property (nonatomic, strong)UITextField *textField1;
 @property (nonatomic, strong)UITextField *textField2;
 @property (nonatomic, strong)UITextField *textField3;
-
+@property (nonatomic, strong) NSString *param1;
+@property (nonatomic, strong) NSString *param2;
+@property (nonatomic, strong) NSString *param1Name;
+@property (nonatomic, strong) NSString *param2Name;
+@property (nonatomic, strong) NSString *accountName;
+@property (nonatomic, strong) NSString *address;
 @end
 
 @implementation changManeger
@@ -135,7 +140,63 @@
 
 -(void)finishSet1{
 
-
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *pass=[ud objectForKey:@"userPassword"];
+    _accountName=[NSString stringWithString:pass];
+    
+    if (_textField) {
+        if (![[_textField text]isEqualToString:[_textField1 text]]) {
+            [self showToastViewWithTitle:@"请输入相同的密码"];
+            return;
+        }else{
+        _address=@"/newUserAPI.do?op=updateUserPassword";
+        _param1Name=@"passwordOld";
+            _param1=[_textField text];
+            _param2Name=@"passwordNew";
+            _param2=[_textField1 text];
+        }
+    }
+    
+    if (_textField2 || _textField3) {
+        _address=@"/newUserAPI.do?op=updateUser";
+        _param1Name=@"PhoneNum";
+         _param2Name=@"email";
+        
+        if (_textField2) {
+            _param1=[_textField2 text];
+            _param2=@"";
+        }
+        if (_textField3) {
+            _param1=@"";
+            _param2=[_textField3 text];
+        }
+   
+    }
+    
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"AccountName":_accountName,_param1Name:_param1,_param2Name:_param2} paramarsSite:_address sucessBlock:^(id content) {
+        //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"UserSet: %@", content1);
+        [self hideProgressView];
+        
+        if (content1) {
+            if ([content1[@"success"] integerValue] == 0) {
+                if ([content1[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                    
+                }else if ([content1[@"msg"] integerValue] ==502) {
+                    [self showAlertViewWithTitle:nil message:@"用户不存在" cancelButtonTitle:root_Yes];
+                }
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                [self showAlertViewWithTitle:nil message:@"参数设置成功" cancelButtonTitle:root_Yes];
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        }
+    } failure:^(NSError *error) {
+        [self showToastViewWithTitle:root_Networking];
+    }];
+    
 }
 
 
