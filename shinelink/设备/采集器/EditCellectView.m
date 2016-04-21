@@ -22,10 +22,10 @@
         [self addSubview:cancelButton];
         
         UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55*NOW_SIZE, 150*NOW_SIZE, frame.size.width - 110*NOW_SIZE, 200*NOW_SIZE)];
-        bgImageView.backgroundColor=COLOR(82, 201, 194, 1);
+        bgImageView.image = IMAGE(@"bg_list_popver.png");
         bgImageView.userInteractionEnabled = YES;
         [self addSubview:bgImageView];
-        
+       
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [addButton setTitle:@"Add" forState:UIControlStateNormal];

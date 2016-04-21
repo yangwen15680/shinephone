@@ -146,7 +146,7 @@
     }
     
     if([_type isEqualToString:@"4"]){
-    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,  85*NOW_SIZE+30*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,  85*NOW_SIZE+30*NOW_SIZE, 150*NOW_SIZE,30*NOW_SIZE )];
     PVData.text=@"设置逆变器时间:";
     PVData.textAlignment=NSTextAlignmentLeft;
     PVData.textColor=[UIColor whiteColor];
@@ -155,9 +155,14 @@
 
     self.dayFormatter = [[NSDateFormatter alloc] init];
     [self.dayFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+ 
+        
   self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     
-    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(120*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, 200*NOW_SIZE, 20*NOW_SIZE)];
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(130*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
+        _datePickerButton.layer.borderWidth=1;
+        _datePickerButton.layer.cornerRadius=5;
+        _datePickerButton.layer.borderColor=[UIColor whiteColor].CGColor;
     [_datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
     [_datePickerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _datePickerButton.titleLabel.textAlignment = NSTextAlignmentLeft;

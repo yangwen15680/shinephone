@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface addDevice : RootViewController
-
+@property(nonatomic,strong)NSString *stationId;
 @end

@@ -13,13 +13,26 @@
 @interface addDevice ()<SHBQRViewDelegate>
 @property(nonatomic,strong)UITextField *cellectId;
 @property(nonatomic,strong)UITextField *cellectNo;
+
+@property(nonatomic,strong)NSString *param1;
+@property(nonatomic,strong)NSString *param2;
+@property(nonatomic,strong)NSString *param3;
+@property(nonatomic,strong)NSString *param1Name;
+@property(nonatomic,strong)NSString *param2Name;
+@property(nonatomic,strong)NSString *param3Name;
 @end
 
 @implementation addDevice
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImage *bgImage =  IMAGE(@"bg4.png");
-  
+  _param1=@"";
+      _param2=@"";
+      _param3=@"";
+      _param1Name=@"";
+    _param2Name=@"";
+    _param3Name=@"";
+    
     self.view.layer.contents = (id)bgImage.CGImage;
     self.title=@"配置设备";
     
@@ -47,8 +60,8 @@
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
     _cellectId.placeholder = @"请输入采集器序列号";
-    _cellectId.textColor = [UIColor grayColor];
-    _cellectId.tintColor = [UIColor grayColor];
+    _cellectId.textColor = [UIColor whiteColor];
+    _cellectId.tintColor = [UIColor whiteColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
     [_cellectId setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
     _cellectId.font = [UIFont systemFontOfSize:11*NOW_SIZE];
@@ -62,8 +75,8 @@
     
     _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
     _cellectNo.placeholder = @"请输入采集器校验码";
-    _cellectNo.textColor = [UIColor grayColor];
-    _cellectNo.tintColor = [UIColor grayColor];
+    _cellectNo.textColor = [UIColor whiteColor];
+    _cellectNo.tintColor = [UIColor whiteColor];
     [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
     [_cellectNo setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
     _cellectNo.font = [UIFont systemFontOfSize:11*NOW_SIZE];
@@ -110,7 +123,15 @@
     
     NSMutableDictionary *userCheck=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"dataLogSn"];
     [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
-    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
+    
+    _param1=_stationId;
+    _param2=_cellectNo.text;
+    _param3=_cellectId.text;
+    _param1Name=@"plantId";
+    _param2Name=@"datalogSN";
+    _param3Name=@"validCode";
+    
+    [BaseRequest requestWithMethod:HEAD_URL paramars:@{_param1Name:_param1,_param2Name:_param2,_param3Name:_param3}  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
         NSLog(@"addDatalog: %@", content);
         [self hideProgressView];
         if (content) {
@@ -164,7 +185,7 @@
         sum+=snBytes[i];
     }
     NSInteger B=sum%8;
-    NSString *B1= [NSString stringWithFormat: @"%d", B];
+    NSString *B1= [NSString stringWithFormat: @"%ld", B];
     int C=sum*sum;
     
     NSString *text = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",C]];
@@ -208,7 +229,14 @@
     [userCheck setObject:_cellectNo.text forKey:@"validCode"];
     [userCheck setObject:[[NSUserDefaults standardUserDefaults]objectForKey:@"plantID"] forKey:@"plantId"];
     
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:userCheck  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
+    _param1=_stationId;
+    _param2=_cellectNo.text;
+    _param3=_cellectId.text;
+    _param1Name=@"plantId";
+    _param2Name=@"datalogSN";
+    _param3Name=@"validCode";
+    
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{_param1Name:_param1,_param2Name:_param2,_param3Name:_param3}  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"addDatalog: %@", content);
           id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];

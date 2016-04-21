@@ -28,9 +28,10 @@
         
         //背景
         self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width, 200*NOW_SIZE)];
-        self.bgView.backgroundColor = COLOR(0, 200, 154, 1);
+        self.bgView.backgroundColor = COLOR(33, 188, 234, 1);
         [self.contentView addSubview:_bgView];
-        
+//        UIImage *bgImage = IMAGE(@"bg4.png");
+//        self.layer.contents = (id)bgImage.CGImage;
 //        //箭头
 //        UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width - 32*NOW_SIZE, (200*NOW_SIZE - 30*NOW_SIZE)/2, 30*NOW_SIZE, 30*NOW_SIZE)];
 //        arrowView.image = IMAGE(@"icon_arrow.png");
@@ -167,7 +168,7 @@
     UIView *selectedBgView = [[UIView alloc] initWithFrame:self.frame];
     selectedBgView.backgroundColor = [UIColor clearColor];
     UIView *forgroundSelectedBgView = [[UIView alloc] initWithFrame:self.bgView.frame];
-    forgroundSelectedBgView.backgroundColor = COLOR(31, 166, 148, 1);
+    forgroundSelectedBgView.backgroundColor = mainColor;
     [selectedBgView addSubview:forgroundSelectedBgView];
     
     self.selectedBackgroundView = selectedBgView;

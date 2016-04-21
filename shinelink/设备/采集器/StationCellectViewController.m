@@ -12,6 +12,7 @@
 #import "StationCellectTableViewCell.h"
 #import "MJRefresh.h"
 #import "ChangeCellectViewController.h"
+#import "addDevice.h"
 
 @interface StationCellectViewController ()<EditCellectViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)EditCellectView *editCellect;
@@ -48,8 +49,9 @@
 -(void)requestData{
     [self showProgressView];
     NSString *page=[NSString stringWithFormat:@"%d",_page];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_stationId, @"currentPage":page} paramarsSite:@"/datalogA.do?op=list" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_stationId, @"currentPage":page} paramarsSite:@"/newDatalogAPI.do?op=datalogList" sucessBlock:^(id content) {
         [self hideProgressView];
+            NSLog(@"datalogList:%@",content);
         [_arrayData addObjectsFromArray:content];
         if (_tableView) {
             [_tableView reloadData];
@@ -100,7 +102,7 @@
     }
     if (row==1) {
         [_editCellect removeFromSuperview];
-        AddCellectViewController2 *addCellect=[[AddCellectViewController2 alloc]init];
+         addDevice *addCellect=[[addDevice alloc]init];
         addCellect.stationId=_stationId;
         [self.navigationController pushViewController:addCellect animated:YES];
     }
@@ -115,7 +117,7 @@
     if (row==3) {
         [_editCellect removeFromSuperview];
         [self showProgressView];
-        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"datalogSN":_arrayData[_indexPath.row][@"datalog_sn"]} paramarsSite:@"/datalogA.do?op=del" sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"datalogSN":_arrayData[_indexPath.row][@"datalog_sn"]} paramarsSite:@"/newDatalogAPI.do?op=delDatalog" sucessBlock:^(id content) {
             [self hideProgressView];
             id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
             if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
@@ -179,7 +181,7 @@
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
         [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
     }else{
-        AddCellectViewController2 *addCellect=[[AddCellectViewController2 alloc]init];
+        addDevice *addCellect=[[addDevice alloc]init];
         addCellect.stationId=_stationId;
         [self.navigationController pushViewController:addCellect animated:YES];
     }

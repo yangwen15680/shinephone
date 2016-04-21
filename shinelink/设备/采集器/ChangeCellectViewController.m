@@ -16,6 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImage *bgImage = IMAGE(@"bg4.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
+
     [self initUI];
 }
 
@@ -23,7 +26,7 @@
 -(void)initUI{
     NSArray *labelArray=[[NSArray alloc]initWithObjects:@"datalog sn",@"aliases",@"group", nil];
     for (int i=0; i<3; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (100+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, (100+i*40)*NOW_SIZE, 100*NOW_SIZE, 40*NOW_SIZE)];
         label.text=labelArray[i];
         label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
@@ -33,7 +36,7 @@
     _textFieldMutableArray=[NSMutableArray new];
     NSArray *array=[[NSArray alloc]initWithObjects:_datalogSN,_alias,_unitId, nil];
     for (int i=0; i<3; i++) {
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(160*NOW_SIZE, (105+i*40)*NOW_SIZE, 120*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(120*NOW_SIZE, (105+i*40)*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
         textField.text=array[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
@@ -49,19 +52,28 @@
         [_textFieldMutableArray addObject:textField];
     }
     
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 350*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
-    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:delButton];
+//    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 350*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
+//    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
+//    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
+//    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
+//    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:delButton];
+//    
+//    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 350*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
+//    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
+//    [addButton setTitle:root_Yes forState:UIControlStateNormal];
+//    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
+//    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:addButton];
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 350*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [addButton setTitle:root_Yes forState:UIControlStateNormal];
-    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addButton];
+    UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    goBut.frame=CGRectMake(60*NOW_SIZE,300*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [goBut.layer setMasksToBounds:YES];
+    [goBut.layer setCornerRadius:25.0];
+    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:goBut];
 }
 
 -(void)delButtonPressed{
@@ -82,7 +94,7 @@
                          @"unitId":[_textFieldMutableArray[2] text]};
     
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:@"/datalogA.do?op=update" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:@"/newDatalogAPI.do?op=updateDatalog" sucessBlock:^(id content) {
         [self hideProgressView];
         id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
         if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {

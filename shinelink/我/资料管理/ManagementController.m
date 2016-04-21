@@ -26,8 +26,16 @@
 }
 
 -(void)initUI{
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *tel=[ud objectForKey:@"TelNumber"];
+    NSString *email=[ud objectForKey:@"email"];
+    
+    self.dataArray1=[NSMutableArray array];
+    [self.dataArray1 addObject:@""];
+    [self.dataArray1 addObject:tel];
+    [self.dataArray1 addObject:email];
     self.dataArray =[NSMutableArray arrayWithObjects:@"修改密码",@"修改手机号",@"修改邮箱",nil];
-    self.dataArray1 =[NSMutableArray arrayWithObjects:@"",@"18666666666",@"328657662@qq.com",nil];
+   // self.dataArray1 =[NSMutableArray arrayWithObjects:@"",@"18666666666",@"328657662@qq.com",nil];
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 300*NOW_SIZE)];
     _tableView.delegate=self;

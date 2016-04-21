@@ -42,6 +42,7 @@
 @property (nonatomic, strong) GetDevice *getDevice;
 @property (nonatomic, strong) UIRefreshControl *control;
 @property (nonatomic, strong) NSString *netType;
+@property (nonatomic, strong) NSString *stationIdOne;
 @end
 
 @implementation deviceViewController
@@ -218,8 +219,9 @@
     }];
     DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"采集器列表" iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
         NSLog(@"rightItem%lu",(unsigned long)index);
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"等待接口" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-        [alertView show];
+        StationCellectViewController *goLog=[[StationCellectViewController alloc]init];
+        goLog.stationId=_stationIdOne;
+        [self.navigationController pushViewController:goLog animated:NO];
     }];
     DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1] icon:@"add@2x.png"];
     
@@ -274,6 +276,7 @@
     menuView.selectedIndex = selected;
     self.navigationItem.titleView = menuView;
     NSString *plantid1=[[NSString alloc]initWithString:_stationID[selected]];
+    _stationIdOne=[NSString stringWithString:plantid1];
    // int plantid= [plantid1 intValue];
     //_plantId=[NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:plantid] forKey:@"plantId"];
     _plantId=[NSMutableDictionary dictionaryWithObject:plantid1 forKey:@"plantId"];
