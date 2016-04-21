@@ -237,6 +237,7 @@
     }
     
     float Size1=40*NOW_SIZE;
+    
      if([_type isEqualToString:@"5"]){
     UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 300*NOW_SIZE,20*NOW_SIZE )];
     PV.text=@"设置输入SP的组串电压";

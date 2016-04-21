@@ -11,6 +11,7 @@
 #import "aboutViewController.h"
 #import "userdataViewController.h"
 #import "listViewController.h"
+#import "ManagementController.h"
 
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
@@ -78,16 +79,31 @@
 
 - (void)_createHeaderView {
     
+    if (_tableView.tableHeaderView) {
+        [_tableView.tableHeaderView removeFromSuperview];
+    }
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
     UIColor *color=COLOR(17, 183, 243, 1);
  [headerView setBackgroundColor:color];
     double imageSize=150;
     
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSData *pic=[ud objectForKey:@"userPic"];
+    
    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25, imageSize, imageSize)];
-      [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
+    //  [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
     userImage.layer.masksToBounds=YES;
     userImage.layer.cornerRadius=imageSize/2.0;
     [userImage setUserInteractionEnabled:YES];
+    
+    if((pic==nil) || (pic.length==0)){
+        [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
+    }else{
+        UIImage *image = [UIImage imageWithData: pic];
+        [userImage setImage:image];
+   
+    }
     
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
     longPressGesture.minimumPressDuration = 1.0f;
@@ -141,6 +157,21 @@
     
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[@"UIImagePickerControllerEditedImage"];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.5);
+    
+     [[UserInfo defaultUserInfo] setUserPic:imageData];
+//    NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
+//    [dataImageDict setObject:imageData forKey:@"image"];
+    
+    [self _createHeaderView];
+ 
+}
+
+
 #pragma mark pageAction的实现方法
 - (void)pageAction:(UIPageControl *)control {
     NSInteger page = control.currentPage;
@@ -176,7 +207,7 @@
 
 {
     if (indexPath.row==0) {
-        userdataViewController *aboutView = [[userdataViewController alloc]init];
+         ManagementController *aboutView = [[ManagementController alloc]init];
         
         [self.navigationController pushViewController:aboutView animated:NO];
     }

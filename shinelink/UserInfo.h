@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSString *email;
 @property (nonatomic, strong) NSString *plantID;
 @property (nonatomic, strong) NSString *plantNum;
+@property (nonatomic, strong) NSData *userPic;
 @property(weak ,nonatomic)NSTimer *R_timer;
 @property (nonatomic, assign) BOOL isAutoLogin;
 

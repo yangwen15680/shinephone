@@ -77,6 +77,13 @@ static int timerNumber=0;
             _TelNumber= [ud objectForKey:@"TelNumber"];
         }
         
+        if (![ud objectForKey:@"userPic"]) {
+            [ud setObject:@"" forKey:@"userPic"];
+            _TelNumber = @"";
+        } else {
+            _TelNumber= [ud objectForKey:@"userPic"];
+        }
+        
         if (![ud objectForKey:@"email"]) {
             [ud setObject:@"" forKey:@"email"];
             _email= @"";
@@ -91,6 +98,8 @@ static int timerNumber=0;
             _server = [ud objectForKey:@"server"];
         }
         
+        
+        
         [ud synchronize];
         
     }
@@ -101,6 +110,12 @@ static int timerNumber=0;
     _isAutoLogin = isAutoLogin;
     
     [[NSUserDefaults standardUserDefaults] setBool:_isAutoLogin forKey:@"isAutoLogin"];
+}
+
+- (void)setUserPic:(NSData *)userPic{
+    _userPic= userPic;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_userPic forKey:@"userPic"];
 }
 
 - (void)setUserPassword:(NSString *)userPassword {

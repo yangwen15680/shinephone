@@ -107,6 +107,8 @@
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
+		33530F1E1CC87B5000378EB2 /* ManagementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33530F1D1CC87B5000378EB2 /* ManagementController.m */; };
+		33530F211CC8824500378EB2 /* changManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = 33530F201CC8824500378EB2 /* changManeger.m */; };
 		335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */; };
 		335317441CA2423D003F106D /* GetDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335317421CA2423D003F106D /* GetDevice.m */; };
 		335317461CA29E71003F106D /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 335317451CA29E71003F106D /* storage.png */; };
@@ -329,8 +331,8 @@
 		33238B441CBF7C4200E82B86 /* client@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client@2x.png"; path = "../我/客服系统/我的问题/client@2x.png"; sourceTree = "<group>"; };
 		33238B451CBF7C4200E82B86 /* client@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client@3x.png"; path = "../我/客服系统/我的问题/client@3x.png"; sourceTree = "<group>"; };
 		33238B481CBF816400E82B86 /* 外框@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "外框@3x.png"; path = "../我/客服系统/我的问题/外框@3x.png"; sourceTree = "<group>"; };
-		3343F3A51C7FDD5A009F69BC /* editViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editViewController.h; sourceTree = "<group>"; };
-		3343F3A61C7FDD5A009F69BC /* editViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editViewController.m; sourceTree = "<group>"; };
+		3343F3A51C7FDD5A009F69BC /* editViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = editViewController.h; path = ../editViewController.h; sourceTree = "<group>"; };
+		3343F3A61C7FDD5A009F69BC /* editViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = editViewController.m; path = ../editViewController.m; sourceTree = "<group>"; };
 		3343F3A81C803DC9009F69BC /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
 		3343F3A91C803DC9009F69BC /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		3343F3AC1C80403C009F69BC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -396,8 +398,8 @@
 		3349A7C21C75C215009172C2 /* StTransitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StTransitions.m; path = ../StTransitions.m; sourceTree = "<group>"; };
 		3349BB361C7ED28100E6E34B /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		3349BB371C7ED28100E6E34B /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
-		3349BB391C7EF66200E6E34B /* userdataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userdataViewController.h; sourceTree = "<group>"; };
-		3349BB3A1C7EF66200E6E34B /* userdataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = userdataViewController.m; sourceTree = "<group>"; };
+		3349BB391C7EF66200E6E34B /* userdataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = userdataViewController.h; path = ../userdataViewController.h; sourceTree = "<group>"; };
+		3349BB3A1C7EF66200E6E34B /* userdataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = userdataViewController.m; path = ../userdataViewController.m; sourceTree = "<group>"; };
 		3349BB3C1C7EFC6B00E6E34B /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1.jpg; path = ../1.jpg; sourceTree = "<group>"; };
 		3349BB3E1C7EFD8500E6E34B /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 2.jpg; path = ../2.jpg; sourceTree = "<group>"; };
 		3349BB3F1C7EFD8500E6E34B /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 3.jpg; path = ../3.jpg; sourceTree = "<group>"; };
@@ -494,6 +496,10 @@
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listViewController.m; path = ../listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listTableViewCell.h; path = ../listTableViewCell.h; sourceTree = "<group>"; };
 		33528FF51C83E95F00D07889 /* listTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listTableViewCell.m; path = ../listTableViewCell.m; sourceTree = "<group>"; };
+		33530F1C1CC87B5000378EB2 /* ManagementController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagementController.h; sourceTree = "<group>"; };
+		33530F1D1CC87B5000378EB2 /* ManagementController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagementController.m; sourceTree = "<group>"; };
+		33530F1F1CC8824500378EB2 /* changManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = changManeger.h; sourceTree = "<group>"; };
+		33530F201CC8824500378EB2 /* changManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = changManeger.m; sourceTree = "<group>"; };
 		3353173F1CA2423D003F106D /* GetDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GetDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
 		335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GetDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
 		335317411CA2423D003F106D /* GetDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetDevice.h; sourceTree = "<group>"; };
@@ -926,10 +932,11 @@
 		3349A7AC1C75A201009172C2 /* 资料管理 */ = {
 			isa = PBXGroup;
 			children = (
-				3349BB391C7EF66200E6E34B /* userdataViewController.h */,
-				3349BB3A1C7EF66200E6E34B /* userdataViewController.m */,
-				3343F3A51C7FDD5A009F69BC /* editViewController.h */,
-				3343F3A61C7FDD5A009F69BC /* editViewController.m */,
+				33530F1B1CC86EB200378EB2 /* 旧的 */,
+				33530F1C1CC87B5000378EB2 /* ManagementController.h */,
+				33530F1D1CC87B5000378EB2 /* ManagementController.m */,
+				33530F1F1CC8824500378EB2 /* changManeger.h */,
+				33530F201CC8824500378EB2 /* changManeger.m */,
 			);
 			path = "资料管理";
 			sourceTree = "<group>";
@@ -1166,6 +1173,17 @@
 			);
 			name = "客服系统";
 			path = "../我/客服系统";
+			sourceTree = "<group>";
+		};
+		33530F1B1CC86EB200378EB2 /* 旧的 */ = {
+			isa = PBXGroup;
+			children = (
+				3349BB391C7EF66200E6E34B /* userdataViewController.h */,
+				3349BB3A1C7EF66200E6E34B /* userdataViewController.m */,
+				3343F3A51C7FDD5A009F69BC /* editViewController.h */,
+				3343F3A61C7FDD5A009F69BC /* editViewController.m */,
+			);
+			path = "旧的";
 			sourceTree = "<group>";
 		};
 		3353173E1CA23211003F106D /* data */ = {
@@ -2201,6 +2219,7 @@
 				3383EFA51C9F8A6F0075E834 /* UIView+MJExtension.m in Sources */,
 				33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */,
 				3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */,
+				33530F1E1CC87B5000378EB2 /* ManagementController.m in Sources */,
 				3343F3C41C80403C009F69BC /* AFURLConnectionOperation.m in Sources */,
 				3355F26B1C746BF5006DDE5A /* aboutTableViewCell.m in Sources */,
 				3349BB3B1C7EF66200E6E34B /* userdataViewController.m in Sources */,
@@ -2232,6 +2251,7 @@
 				334B8F221C91250300798A69 /* SHLineGraphView.m in Sources */,
 				335456D41C8588E200275478 /* SNViewController.m in Sources */,
 				335456D11C8588D500275478 /* emailViewController.m in Sources */,
+				33530F211CC8824500378EB2 /* changManeger.m in Sources */,
 				3350891B1C73112000D7AA03 /* EditStationMenuView.m in Sources */,
 				3381ECFE1CBCCADB00DCF0D2 /* myListSecond.m in Sources */,
 			);

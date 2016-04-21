@@ -18,7 +18,8 @@
 @implementation addDevice
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *bgImage = IMAGE(@"loginbg.jpg");
+    UIImage *bgImage =  IMAGE(@"bg4.png");
+  
     self.view.layer.contents = (id)bgImage.CGImage;
     self.title=@"配置设备";
     
@@ -74,7 +75,8 @@
     goBut.frame=CGRectMake(40*NOW_SIZE,250*NOW_SIZE, 240*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
-    goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+    //goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
+      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:@"确定" forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
