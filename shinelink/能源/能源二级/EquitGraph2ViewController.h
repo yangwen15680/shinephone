@@ -18,5 +18,6 @@
 @property (nonatomic, strong) NSDictionary *dictAll;
 @property (nonatomic, strong) NSMutableArray *valueArray;
 @property (nonatomic, strong) NSMutableArray *valueName;
-
+@property (nonatomic, strong) NSString *dicType;
+@property (nonatomic, strong) NSString *plantID;
 @end

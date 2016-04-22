@@ -11,6 +11,7 @@
 #import "engrgySencondViewController.h"
 #import "homeDeviceViewController.h"
 #import "EquitGraph2ViewController.h"
+#import "EquipGraphViewController.h"
 
 @interface energyViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -112,6 +113,23 @@
         [self.navigationController pushViewController:home animated:YES];
         
     }
+    
+    if (indexPath.row==2) {
+       EquitGraph2ViewController  *home=[[EquitGraph2ViewController alloc]init];
+        [self.navigationController pushViewController:home animated:YES];
+        NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+        NSString *plantID=[ud objectForKey:@"plantID"];
+        home.plantID=plantID;
+        home.dicType=@"2";
+        home.dictInfo=@{@"equipId":plantID,
+                              @"daySite":@"/newPlantDetailAPI.do?type=1",
+                              @"monthSite":@"/newPlantDetailAPI.do?type=2",
+                              @"yearSite":@"/newPlantDetailAPI.do?type=3",
+                              @"allSite":@"/newPlantDetailAPI.do?type=4"};
+        
+    }
+    
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

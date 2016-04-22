@@ -656,12 +656,12 @@
 		3381ECE71CBC906600DCF0D2 /* Line3View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Line3View.m; sourceTree = "<group>"; };
 		3381ECEC1CBCA3ED00DCF0D2 /* energyDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = energyDemo.h; sourceTree = "<group>"; };
 		3381ECED1CBCA3ED00DCF0D2 /* energyDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = energyDemo.m; sourceTree = "<group>"; };
-		3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "峰谷电价设置切图.png"; sourceTree = "<group>"; };
-		3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智能调整优先设置.png"; sourceTree = "<group>"; };
-		3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "智能联动设置切图.png"; sourceTree = "<group>"; };
-		3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "峰谷段动作使能切图.png"; sourceTree = "<group>"; };
-		3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "控制优先级设置切图.png"; sourceTree = "<group>"; };
-		3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "光伏零功率输出使能切图.png"; sourceTree = "<group>"; };
+		3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "峰谷电价设置切图.png"; path = "../峰谷电价设置切图.png"; sourceTree = "<group>"; };
+		3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "智能调整优先设置.png"; path = "../智能调整优先设置.png"; sourceTree = "<group>"; };
+		3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "智能联动设置切图.png"; path = "../智能联动设置切图.png"; sourceTree = "<group>"; };
+		3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "峰谷段动作使能切图.png"; path = "../峰谷段动作使能切图.png"; sourceTree = "<group>"; };
+		3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "控制优先级设置切图.png"; path = "../控制优先级设置切图.png"; sourceTree = "<group>"; };
+		3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "光伏零功率输出使能切图.png"; path = "../光伏零功率输出使能切图.png"; sourceTree = "<group>"; };
 		3381ECFC1CBCCADB00DCF0D2 /* myListSecond.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myListSecond.h; path = ../myListSecond.h; sourceTree = "<group>"; };
 		3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myListSecond.m; path = ../myListSecond.m; sourceTree = "<group>"; };
 		3381ECFF1CBCD85700DCF0D2 /* myListSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myListSecondTableViewCell.h; path = ../Classes/myListSecondTableViewCell.h; sourceTree = "<group>"; };
@@ -1521,12 +1521,6 @@
 		337F9CC01C71ABD80016FE43 /* 能源 */ = {
 			isa = PBXGroup;
 			children = (
-				3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */,
-				3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */,
-				3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */,
-				3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */,
-				3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */,
-				3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */,
 				3381ECEF1CBCA59900DCF0D2 /* 能源图片 */,
 				335047211C9BF37D00BF8683 /* 家庭设备二级 */,
 				33692BF61C9294D300698375 /* 能源二级 */,
@@ -1641,6 +1635,12 @@
 		3381ECEF1CBCA59900DCF0D2 /* 能源图片 */ = {
 			isa = PBXGroup;
 			children = (
+				3381ECF01CBCA5F900DCF0D2 /* 峰谷电价设置切图.png */,
+				3381ECF21CBCA60C00DCF0D2 /* 智能调整优先设置.png */,
+				3381ECF41CBCA61200DCF0D2 /* 智能联动设置切图.png */,
+				3381ECF61CBCA62700DCF0D2 /* 峰谷段动作使能切图.png */,
+				3381ECF81CBCA63000DCF0D2 /* 控制优先级设置切图.png */,
+				3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */,
 			);
 			path = "能源图片";
 			sourceTree = "<group>";
@@ -2376,12 +2376,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -2390,12 +2392,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

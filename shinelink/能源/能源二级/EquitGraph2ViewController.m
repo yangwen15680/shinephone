@@ -26,6 +26,10 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 @property (nonatomic, strong) NSString *currentMonth;
 @property (nonatomic, strong) NSString *currentYear;
 
+@property (nonatomic, strong) NSString *value1;
+@property (nonatomic, strong) NSString *value2;
+@property (nonatomic, strong) NSString *value3;
+
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
 @property (nonatomic, strong) NSMutableDictionary *monthDict;
 @property (nonatomic, strong) NSMutableDictionary *yearDict;
@@ -51,7 +55,9 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 @property(nonatomic,strong)NSString *type;
 //@property(nonatomic,strong)UIButton *selectButton;
 @property(nonatomic,strong)UIScrollView *scrollView;
-
+@property(nonatomic,strong)UILabel *value1Lable;
+@property(nonatomic,strong)UILabel *value2Lable;
+@property(nonatomic,strong)UILabel *value3Lable;
 @end
 
 @implementation EquitGraph2ViewController
@@ -93,8 +99,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     [self.view addSubview:_scrollView];
     
-    _valueArray=[NSMutableArray arrayWithObjects:@"5W",@"10W",@"1W",nil];
-    _valueName=[NSMutableArray arrayWithObjects:@"平均值",@"最大值",@"最小值",nil];
+
+    _valueName=[NSMutableArray arrayWithObjects:@"光伏收益",@"最大值",@"平均值",nil];
     
     
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -193,7 +199,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [bgImageView addSubview:self.datePickerButton];
     
     float size1=35*NOW_SIZE;
-    for (int i=0; i<_valueArray.count; i++) {
+    for (int i=0; i<_valueName.count; i++) {
         UILabel *valueLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 330*NOW_SIZE+size1*i, 140*NOW_SIZE, 25*NOW_SIZE)];
         valueLable.text=_valueName[i];
         valueLable.textAlignment=NSTextAlignmentCenter;
@@ -201,35 +207,68 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         valueLable.font = [UIFont systemFontOfSize:15*NOW_SIZE];
         [_scrollView addSubview:valueLable];
         
-        UILabel *valueLable2=[[UILabel alloc]initWithFrame:CGRectMake(170*NOW_SIZE, 330*NOW_SIZE+size1*i, 140*NOW_SIZE, 25*NOW_SIZE)];
-        valueLable2.text=_valueArray[i];
-        valueLable2.textAlignment=NSTextAlignmentCenter;
-        valueLable2.textColor=[UIColor whiteColor];
-        valueLable2.font = [UIFont systemFontOfSize:15*NOW_SIZE];
-        [_scrollView addSubview:valueLable2];
+//        UILabel *valueLable2=[[UILabel alloc]initWithFrame:CGRectMake(170*NOW_SIZE, 330*NOW_SIZE+size1*i, 140*NOW_SIZE, 25*NOW_SIZE)];
+//        valueLable2.text=_valueArray[i];
+//        valueLable2.textAlignment=NSTextAlignmentCenter;
+//        valueLable2.textColor=[UIColor whiteColor];
+//        valueLable2.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+//        [_scrollView addSubview:valueLable2];
+    }
+    for (int i=0; i<_valueName.count+1; i++) {
+    
+        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 325*NOW_SIZE+size1*i, 300*NOW_SIZE, 1*NOW_SIZE)];
+       line.backgroundColor=[UIColor whiteColor];
+        [_scrollView addSubview:line];
+        
     }
     
+    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 325*NOW_SIZE, 1*NOW_SIZE, 105*NOW_SIZE)];
+    line4.backgroundColor=[UIColor whiteColor];
+    [_scrollView addSubview:line4];
+    
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} ;
+    }
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"dayDate:%@",content);
         if (content) {
-            self.dayDict=[NSMutableDictionary new];
+            if ([_dicType isEqualToString:@"2"]) {
+                if ([content[@"back"][@"success"] boolValue] == true) {
+                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                }
+            }else{
+                NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+            }
+            [self updataUI:_dayDict];
+            
             //[self.dayDict setObject:content forKey:@"data"];
             self.line2View = [[Line3View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
             self.line2View.frameType=@"2";
             [_scrollView addSubview:self.line2View];
-            [self.line2View refreshLineChartViewWithDataDict:content];
+            [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             self.line2View.energyTitleLabel.text = root_Today_Energy;
             self.line2View.unitLabel.text = root_Powre;
-           /* _selectButton=[[UIButton alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 50*NOW_SIZE, 210*NOW_SIZE, 30*NOW_SIZE)];
-            [_selectButton setTitle:_dict[@"1"] forState:0];
-            [_selectButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
-            _selectButton.backgroundColor = COLOR(39, 183, 99, 1);
-            _selectButton.layer.cornerRadius = 5*NOW_SIZE;
-            _selectButton.clipsToBounds = YES;*/
-            //[_line2View addSubview:_selectButton];
+
             _scrollView.contentSize=CGSizeMake(SCREEN_Width, CGRectGetMaxY(_line2View.frame)+20*NOW_SIZE);
         }
         
@@ -239,34 +278,142 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     
 }
 
+-(void)updataUI:(NSMutableDictionary*)daydic{
+    
+    NSMutableArray *valueFor2=[NSMutableArray array];
+    for (NSString *key in daydic) {
+        [valueFor2 addObject:daydic[key]];
+    }
+    NSNumber *sum = [valueFor2 valueForKeyPath:@"@avg.intValue"];
+     NSNumber *max = [valueFor2 valueForKeyPath:@"@max.floatValue"];
+    _value3=[NSString stringWithFormat:@"%@",sum];
+_value2=[NSString stringWithFormat:@"%@",max];
+        _valueArray=[NSMutableArray arrayWithObjects:_value1,_value2,_value3,nil];
+    [self updataLable];
+}
+
+-(void)updataLable{
+
+    float size1=35*NOW_SIZE;
+  //  NSMutableArray *lableAll=[NSMutableArray arrayWithObjects:_value1Lable,_value2Lable,_value3Lable,nil];
+    if (_value1Lable) {
+        [_value1Lable removeFromSuperview];
+    }
+    if (_value2Lable) {
+        [_value2Lable removeFromSuperview];
+    }
+    if (_value3Lable) {
+        [_value3Lable removeFromSuperview];
+    }
+       _value1Lable=[[UILabel alloc]initWithFrame:CGRectMake(170*NOW_SIZE, 330*NOW_SIZE+size1*0, 140*NOW_SIZE, 25*NOW_SIZE)];
+        _value1Lable.text=_valueArray[0];
+        _value1Lable.textAlignment=NSTextAlignmentCenter;
+        _value1Lable.textColor=[UIColor whiteColor];
+        _value1Lable.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+        [_scrollView addSubview:_value1Lable];
+    
+    _value2Lable=[[UILabel alloc]initWithFrame:CGRectMake(170*NOW_SIZE, 330*NOW_SIZE+size1*1, 140*NOW_SIZE, 25*NOW_SIZE)];
+    _value2Lable.text=_valueArray[1];
+    _value2Lable.textAlignment=NSTextAlignmentCenter;
+    _value2Lable.textColor=[UIColor whiteColor];
+    _value2Lable.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+    [_scrollView addSubview:_value2Lable];
+    
+    _value3Lable=[[UILabel alloc]initWithFrame:CGRectMake(170*NOW_SIZE, 330*NOW_SIZE+size1*2, 140*NOW_SIZE, 25*NOW_SIZE)];
+    _value3Lable.text=_valueArray[2];
+    _value3Lable.textAlignment=NSTextAlignmentCenter;
+    _value3Lable.textColor=[UIColor whiteColor];
+    _value3Lable.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+    [_scrollView addSubview:_value3Lable];
+   
+
+}
+
 
 #pragma mark - 获取、保存曲线图数据
 - (void)requestDayDatasWithDayString:(NSString *)datString {
     
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} ;
+    }
+    
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
         NSLog(@"day: %@", content);
         [self hideProgressView];
+        
         if (content) {
-            self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content];
-            [self.line2View refreshLineChartViewWithDataDict:content];
+            if ([_dicType isEqualToString:@"2"]) {
+                if ([content[@"back"][@"success"] boolValue] == true) {
+                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                }
+            }else{
+                NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+            }
+            
+            [self.line2View refreshLineChartViewWithDataDict:_dayDict];
+            [self updataUI:_dayDict];
         }
         
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
-    //    }
+    
 }
 
 - (void)requestMonthDatasWithMonthString:(NSString *)monthString {
     
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":monthString} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":monthString} ;
+    }
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type,@"date":monthString} paramarsSite:_dictInfo[@"monthSite"] sucessBlock:^(id content) {
-        NSLog(@"tttt3: %@", content);
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"monthSite"] sucessBlock:^(id content) {
+        NSLog(@"month: %@", content);
         [self hideProgressView];
         if (content) {
-            self.monthDict = [NSMutableDictionary dictionaryWithDictionary:content];
-            [self.line2View refreshBarChartViewWithDataDict:content chartType:2];
+            if ([_dicType isEqualToString:@"2"]) {
+                if ([content[@"back"][@"success"] boolValue] == true) {
+                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                }
+            }else{
+                NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+            }
+            [self.line2View refreshBarChartViewWithDataDict:self.dayDict chartType:2];
+            [self updataUI:_dayDict];
         }
         
     } failure:^(NSError *error) {
@@ -276,40 +423,88 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 }
 
 - (void)requestYearDatasWithYearString:(NSString *)yearString {
-    //    if (_yearDict.count) {
-    //        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:3];
-    //    } else {
+    
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":yearString} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":yearString} ;
+    }
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type, @"date":yearString} paramarsSite:_dictInfo[@"yearSite"] sucessBlock:^(id content) {
-        NSLog(@"tttttt4: %@", content);
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"yearSite"] sucessBlock:^(id content) {
+        NSLog(@"year: %@", content);
         [self hideProgressView];
         if (content) {
-            self.yearDict = [NSMutableDictionary dictionaryWithDictionary:content];
-            [self.line2View refreshBarChartViewWithDataDict:content chartType:3];
+            if ([_dicType isEqualToString:@"2"]) {
+                if ([content[@"back"][@"success"] boolValue] == true) {
+                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                }
+            }else{
+                NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+            }
+            [self.line2View refreshBarChartViewWithDataDict:_dayDict chartType:3];
+            [self updataUI:_dayDict];
         }
         
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
-    //    }
 }
 
 - (void)requestTotalDatas {
-    //    if (_totalDict.count) {
-    //        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:4];
-    //    } else {
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"]} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type,} ;
+    }
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type} paramarsSite:_dictInfo[@"allSite"] sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"allSite"] sucessBlock:^(id content) {
         [self hideProgressView];
+        NSLog(@"totalData: %@", content);
         if (content) {
-            self.yearDict = [NSMutableDictionary dictionaryWithDictionary:content];
-            [self.line2View refreshBarChartViewWithDataDict:content chartType:4];
+            if ([_dicType isEqualToString:@"2"]) {
+                if ([content[@"back"][@"success"] boolValue] == true) {
+                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                }
+            }else{
+                NSMutableDictionary *dayDict0=[NSMutableDictionary new];
+                if (content[@"invPacData"]) {
+                    [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
+                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
+                }else{
+                    [dayDict0 addEntriesFromDictionary:content];
+                }
+                self.dayDict=[NSMutableDictionary new];
+                for (NSString *key in dayDict0) {
+                    NSRange rang = NSMakeRange(11, 5);
+                    NSString *key0=[key substringWithRange:rang];
+                    NSString *value0=dayDict0[key];
+                    [_dayDict setValue:value0 forKey:key0];
+                }
+            }
+            [self.line2View refreshBarChartViewWithDataDict:_dayDict chartType:4];
+            [self updataUI:_dayDict];
         }
         
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
-    //    }
 }
 
 #pragma mark - 上一个时间  下一个时间  按钮事件

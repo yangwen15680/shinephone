@@ -189,10 +189,22 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [bgImageView addSubview:self.datePickerButton];
     
     [self showProgressView];
-  [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+    
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+       dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
+    }else{
+  dicGo=@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} ;
+    }
+  [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"dayDate:%@",content);
         if (content) {
+             if ([_dicType isEqualToString:@"2"]) {
+                 if ([content[@"back"][@"success"] boolValue] == true) {
+                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                 }
+             }else{
              NSMutableDictionary *dayDict0=[NSMutableDictionary new];
             if (content[@"invPacData"]) {
                 [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
@@ -207,7 +219,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
                 NSString *value0=dayDict0[key];
                 [_dayDict setValue:value0 forKey:key0];
             }
-
+             }
+            
             self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
                self.line2View.frameType=@"2";
@@ -236,12 +249,20 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 #pragma mark - 获取、保存曲线图数据
 - (void)requestDayDatasWithDayString:(NSString *)datString {
    //@"id":_dictInfo[@"equipId"]
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} ;
+    }
+    
         [self showProgressView];
-        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"daySite"] sucessBlock:^(id content) {
              NSLog(@"day: %@", content);
             [self hideProgressView];
              NSMutableDictionary *dayDict0=[NSMutableDictionary new];
             if (content) {
+                
                 if (content[@"invPacData"]) {
                     [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
                    // NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
@@ -266,8 +287,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 
 - (void)requestMonthDatasWithMonthString:(NSString *)monthString {
 
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":monthString} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":monthString} ;
+    }
         [self showProgressView];
-        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type,@"date":monthString} paramarsSite:_dictInfo[@"monthSite"] sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"monthSite"] sucessBlock:^(id content) {
             NSLog(@"month: %@", content);
             [self hideProgressView];
             if (content) {
@@ -282,11 +309,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 }
 
 - (void)requestYearDatasWithYearString:(NSString *)yearString {
-//    if (_yearDict.count) {
-//        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:3];
-//    } else {
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":yearString} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":yearString} ;
+    }
         [self showProgressView];
-        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type, @"date":yearString} paramarsSite:_dictInfo[@"yearSite"] sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"yearSite"] sucessBlock:^(id content) {
             NSLog(@"year: %@", content);
             [self hideProgressView];
             if (content) {
@@ -301,11 +331,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 }
 
 - (void)requestTotalDatas {
-//    if (_totalDict.count) {
-//        [self.line2View refreshBarChartViewWithDataDict:_monthDict chartType:4];
-//    } else {
+    NSDictionary *dicGo=[NSDictionary new];
+    if ([_dicType isEqualToString:@"2"]) {
+        dicGo=@{@"plantId":_dictInfo[@"equipId"]} ;
+    }else{
+        dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type,} ;
+    }
         [self showProgressView];
-        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_dictInfo[@"equipId"], @"type":_type} paramarsSite:_dictInfo[@"allSite"] sucessBlock:^(id content) {
+        [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:dicGo paramarsSite:_dictInfo[@"allSite"] sucessBlock:^(id content) {
             [self hideProgressView];
                NSLog(@"totalData: %@", content);
             if (content) {
