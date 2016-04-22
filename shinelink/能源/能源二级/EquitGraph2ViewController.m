@@ -227,7 +227,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [_scrollView addSubview:line4];
     
     NSDictionary *dicGo=[NSDictionary new];
-    if ([_dicType isEqualToString:@"2"]) {
+    if ([_dicType isEqualToString:@"2"]||[_dicType isEqualToString:@"3"]) {
         dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
     }else{
         dicGo=@{@"id":_dictInfo[@"equipId"],@"type":@"1", @"date":self.currentDay} ;
@@ -239,10 +239,25 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         if (content) {
             if ([_dicType isEqualToString:@"2"]) {
                 if ([content[@"back"][@"success"] boolValue] == true) {
-                    self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    if (content[@"back"][@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    
                     _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
                 }
-            }else{
+            }else if ([_dicType isEqualToString:@"3"]){
+                if ([content[@"success"] boolValue] == true) {
+                    if (content[@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    _value1=content[@"plantData"][@"energyDischarge"];
+                }
+            }
+            else{
                 NSMutableDictionary *dayDict0=[NSMutableDictionary new];
                 if (content[@"invPacData"]) {
                     [dayDict0 addEntriesFromDictionary:[content objectForKey:@"invPacData"]];
@@ -285,8 +300,9 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         [valueFor2 addObject:daydic[key]];
     }
     NSNumber *sum = [valueFor2 valueForKeyPath:@"@avg.intValue"];
+    float k=[sum floatValue];
      NSNumber *max = [valueFor2 valueForKeyPath:@"@max.floatValue"];
-    _value3=[NSString stringWithFormat:@"%@",sum];
+    _value3=[NSString stringWithFormat:@"%.2f",k];
 _value2=[NSString stringWithFormat:@"%@",max];
         _valueArray=[NSMutableArray arrayWithObjects:_value1,_value2,_value3,nil];
     [self updataLable];
@@ -334,7 +350,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
 - (void)requestDayDatasWithDayString:(NSString *)datString {
     
     NSDictionary *dicGo=[NSDictionary new];
-    if ([_dicType isEqualToString:@"2"]) {
+    if ([_dicType isEqualToString:@"2"]||[_dicType isEqualToString:@"3"]) {
         dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":self.currentDay} ;
     }else{
         dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":self.currentDay} ;
@@ -351,6 +367,17 @@ _value2=[NSString stringWithFormat:@"%@",max];
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
                     _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
                 }
+            }else if ([_dicType isEqualToString:@"3"]){
+                if ([content[@"success"] boolValue] == true) {
+                    if (content[@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    _value1=content[@"plantData"][@"energyDischarge"];
+                }
+
+                
             }else{
                 NSMutableDictionary *dayDict0=[NSMutableDictionary new];
                 if (content[@"invPacData"]) {
@@ -381,7 +408,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
 - (void)requestMonthDatasWithMonthString:(NSString *)monthString {
     
     NSDictionary *dicGo=[NSDictionary new];
-    if ([_dicType isEqualToString:@"2"]) {
+    if ([_dicType isEqualToString:@"2"]||[_dicType isEqualToString:@"3"]) {
         dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":monthString} ;
     }else{
         dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":monthString} ;
@@ -396,6 +423,16 @@ _value2=[NSString stringWithFormat:@"%@",max];
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
                     _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
                 }
+            }else if ([_dicType isEqualToString:@"3"]){
+                if ([content[@"success"] boolValue] == true) {
+                    if (content[@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    _value1=content[@"plantData"][@"energyDischarge"];
+                }
+
             }else{
                 NSMutableDictionary *dayDict0=[NSMutableDictionary new];
                 if (content[@"invPacData"]) {
@@ -425,7 +462,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
 - (void)requestYearDatasWithYearString:(NSString *)yearString {
     
     NSDictionary *dicGo=[NSDictionary new];
-    if ([_dicType isEqualToString:@"2"]) {
+    if ([_dicType isEqualToString:@"2"]||[_dicType isEqualToString:@"3"]) {
         dicGo=@{@"plantId":_dictInfo[@"equipId"],@"date":yearString} ;
     }else{
         dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type, @"date":yearString} ;
@@ -440,6 +477,16 @@ _value2=[NSString stringWithFormat:@"%@",max];
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
                     _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
                 }
+            }else if ([_dicType isEqualToString:@"3"]){
+                if ([content[@"success"] boolValue] == true) {
+                    if (content[@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    _value1=content[@"plantData"][@"energyDischarge"];
+                }
+
             }else{
                 NSMutableDictionary *dayDict0=[NSMutableDictionary new];
                 if (content[@"invPacData"]) {
@@ -467,7 +514,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
 
 - (void)requestTotalDatas {
     NSDictionary *dicGo=[NSDictionary new];
-    if ([_dicType isEqualToString:@"2"]) {
+    if ([_dicType isEqualToString:@"2"]||[_dicType isEqualToString:@"3"]) {
         dicGo=@{@"plantId":_dictInfo[@"equipId"]} ;
     }else{
         dicGo=@{@"id":_dictInfo[@"equipId"],@"type":_type,} ;
@@ -482,6 +529,16 @@ _value2=[NSString stringWithFormat:@"%@",max];
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
                     _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
                 }
+            }else if ([_dicType isEqualToString:@"3"]){
+                if ([content[@"success"] boolValue] == true) {
+                    if (content[@"data"]) {
+                        self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"data"]];
+                    }else{
+                        self.dayDict = [NSMutableDictionary new];
+                    }
+                    _value1=content[@"plantData"][@"energyDischarge"];
+                }
+
             }else{
                 NSMutableDictionary *dayDict0=[NSMutableDictionary new];
                 if (content[@"invPacData"]) {

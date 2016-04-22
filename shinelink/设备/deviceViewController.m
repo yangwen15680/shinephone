@@ -43,6 +43,17 @@
 @property (nonatomic, strong) UIRefreshControl *control;
 @property (nonatomic, strong) NSString *netType;
 @property (nonatomic, strong) NSString *stationIdOne;
+@property (nonatomic, strong) NSString *headPicName;
+@property (nonatomic, strong) NSString *headAdress;
+@property (nonatomic, strong) NSString *headWether;
+@property (nonatomic, strong) NSString *headDate;
+@property (nonatomic, strong) NSString *headWeek;
+@property (nonatomic, strong) NSString *headUse;
+@property (nonatomic, strong) NSString *headGet;
+@property (nonatomic, strong) NSString *headT;
+@property (nonatomic, strong) NSString *headT1;
+@property (nonatomic, strong) NSString *headT2;
+@property (nonatomic, strong)UIView *headerView;
 @end
 
 @implementation deviceViewController
@@ -107,9 +118,11 @@
     //创建tableView的方法
     [self _createTableView];
     //创建tableView的头视图
-    [self _createHeaderView];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
+  //  [self _createHeaderView];
+    [self netWeather];
 }
+
+
 
 #pragma mark - CoreData
 -(void)initDatacore{
@@ -488,8 +501,6 @@
     // 3.加载数据
     [self refreshStateChange:_control];
     
-    
-    
     [self.view addSubview:_tableView];
     _indenty = @"indenty";
     //注册单元格类型
@@ -505,34 +516,121 @@
     
 }
 
+-(void)netWeather{
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
+    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"overcast@2x.png"]];
+                        _headerView.backgroundColor=bgColor;
+    _tableView.tableHeaderView = _headerView;
+    
+//    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"":@""} paramarsSite:@"/newTheWeatherAPI.do?op= getTheWeather" sucessBlock:^(id content) {
+//        NSLog(@"Weather: %@", content);
+//        [self hideProgressView];
+//        
+//        if (content) {
+//            
+//            [self _createHeaderView];
+//        }
+//        
+//    } failure:^(NSError *error) {
+//        [self hideProgressView];
+//    }];
+     [self _createHeaderView];
+}
 
 - (void)_createHeaderView {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
-    _tableView.tableHeaderView = headerView;
+   
+    float headHeight=_headerView.bounds.size.height;
+    _headPicName=@"bgweather@3x.png";
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headHeight)];
+    imageView.image = [UIImage imageNamed:_headPicName];
+    [_headerView addSubview:imageView];
     
-    _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
+    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-Kwidth*1/4)/2,headHeight*1/4,Kwidth*1/4,headHeight*1/3)];
+    imageView1.image = [UIImage imageNamed:@"fog2@3x.png"];
+       [_headerView addSubview:imageView1];
     
-    NSArray *imgArray = @[@"bgweather@3x.png",
-                          @"bgweather@3x.png",
-                          @"bgweather@3x.png"];
-    for (int i=0; i<imgArray.count; i++) {
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
-        imageView.image = [UIImage imageNamed:imgArray[i]];
-        [_scrollerView addSubview:imageView];
-    }
-    _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headerView.bounds.size.height);
-    _scrollerView.pagingEnabled = YES;
-    _scrollerView.showsHorizontalScrollIndicator = NO;
-    _scrollerView.delegate = self;
-    [headerView addSubview:_scrollerView];
+    _headAdress=@"深圳";
+    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, 10*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
+    Lable1.text=_headAdress;
+    Lable1.textAlignment=NSTextAlignmentCenter;
+    Lable1.textColor=[UIColor whiteColor];
+    Lable1.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+    [_headerView addSubview:Lable1];
     
-    //创建分页视图
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
-    _pageControl.numberOfPages = imgArray.count;
-    _pageControl.currentPage = 0;
-    [_pageControl addTarget:self action:@selector(pageAction:) forControlEvents:UIControlEventValueChanged];
-    [headerView addSubview:_pageControl];
+    _headWether=@"阴";
+    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, 30*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
+    Lable2.text=_headWether;
+    Lable2.textAlignment=NSTextAlignmentCenter;
+    Lable2.textColor=[UIColor whiteColor];
+    Lable2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    [_headerView addSubview:Lable2];
+
+   _headT =@"12º";
+    UILabel *Lable3=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, headHeight*1/4+15*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
+    Lable3.text=_headT;
+    Lable3.textAlignment=NSTextAlignmentCenter;
+    Lable3.textColor=[UIColor whiteColor];
+    Lable3.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+    [_headerView addSubview:Lable3];
+    
+    
+    _headDate =@"2016-03-31";
+    UILabel *Lable4=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth/2-120*NOW_SIZE, headHeight*1/4+headHeight*1/3+10*NOW_SIZE, 130*NOW_SIZE,20*NOW_SIZE )];
+    Lable4.text=_headDate;
+    Lable4.textAlignment=NSTextAlignmentRight;
+    Lable4.textColor=[UIColor whiteColor];
+    Lable4.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    [_headerView addSubview:Lable4];
+    
+    _headWeek =@"星期三";
+    UILabel *Lable5=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-0*NOW_SIZE)/2+20*NOW_SIZE, headHeight*1/4+headHeight*1/3+10*NOW_SIZE, 110*NOW_SIZE,20*NOW_SIZE )];
+    Lable5.text=_headWeek;
+    Lable5.textAlignment=NSTextAlignmentLeft;
+    Lable5.textColor=[UIColor whiteColor];
+    Lable5.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    [_headerView addSubview:Lable5];
+    
+    _headT1=@"8º";_headT2=@"18º";
+    NSString *T3=[NSString stringWithFormat:@"%@~%@",_headT1,_headT2];
+    UILabel *Lable6=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-120*NOW_SIZE)/2, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
+    Lable6.text=T3;
+    Lable6.textAlignment=NSTextAlignmentCenter;
+    Lable6.textColor=[UIColor whiteColor];
+    Lable6.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    [_headerView addSubview:Lable6];
+    
+ _headUse=@"30KW";
+    UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
+    Lable7.text=_headUse;
+    Lable7.textAlignment=NSTextAlignmentLeft;
+    Lable7.textColor=[UIColor whiteColor];
+    Lable7.font = [UIFont systemFontOfSize:20*NOW_SIZE];
+    [_headerView addSubview:Lable7];
+    
+ 
+    UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, headHeight*1/4+headHeight*1/3+55*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
+    Lable9.text=@"今日用电量";
+    Lable9.textAlignment=NSTextAlignmentLeft;
+    Lable9.textColor=[UIColor whiteColor];
+    Lable9.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [_headerView addSubview:Lable9];
+    
+    _headGet=@"30KW";
+    UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth-150*NOW_SIZE, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
+    Lable8.text=_headUse;
+    Lable8.textAlignment=NSTextAlignmentRight;
+    Lable8.textColor=[UIColor whiteColor];
+    Lable8.font = [UIFont systemFontOfSize:20*NOW_SIZE];
+    [_headerView addSubview:Lable8];
+    
+    UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth-140*NOW_SIZE, headHeight*1/4+headHeight*1/3+55*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
+    Lable10.text=@"今日发电量";
+    Lable10.textAlignment=NSTextAlignmentRight;
+    Lable10.textColor=[UIColor whiteColor];
+    Lable10.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [_headerView addSubview:Lable10];
+    
 }
 
 #pragma mark - EditCellectViewDelegate
@@ -884,30 +982,6 @@
     }
     
 
-
-#pragma mark pageAction的实现方法
-- (void)pageAction:(UIPageControl *)control {
-    NSInteger page = control.currentPage;
-    [_scrollerView setContentOffset:CGPointMake(Kwidth*page,0) animated:YES];
-}
-
-
-#pragma mark _scrollerView的协议方法
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    CGFloat x = scrollView.contentOffset.x / Kwidth;
-    _pageControl.currentPage = x;
-}
-
-#pragma mark 定时器方法
-- (void)circulate:(NSTimer *)timer {
-    pageName++;
-    [_scrollerView setContentOffset:CGPointMake(Kwidth*pageName, 0) animated:YES];
-    _pageControl.currentPage = pageName;
-    if (pageName == 2) {
-        pageName = -1;
-    }
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
