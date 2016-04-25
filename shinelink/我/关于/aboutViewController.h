@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface aboutViewController : UIViewController
+@interface aboutViewController : RootViewController
 
 @end

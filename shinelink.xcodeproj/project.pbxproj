@@ -189,6 +189,7 @@
 		3370424F1CC4B4810069D3AA /* bgweather@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3370424E1CC4B4810069D3AA /* bgweather@3x.png */; };
 		337042521CC4E4340069D3AA /* kongZhiNi0.m in Sources */ = {isa = PBXBuildFile; fileRef = 337042511CC4E4340069D3AA /* kongZhiNi0.m */; };
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
+		337C30541CCDAF3C002B99B7 /* protocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 337C30531CCDAF3C002B99B7 /* protocol.m */; };
 		337F9C851C71A6710016FE43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C841C71A6710016FE43 /* main.m */; };
 		337F9C881C71A6710016FE43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F9C871C71A6710016FE43 /* AppDelegate.m */; };
 		337F9C931C71A6710016FE43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 337F9C921C71A6710016FE43 /* Assets.xcassets */; };
@@ -584,12 +585,12 @@
 		336664E01CB75213005573FB /* moreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreTableViewController.m; sourceTree = "<group>"; };
 		336664E21CB7524C005573FB /* moreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moreCell.h; sourceTree = "<group>"; };
 		336664E31CB7524C005573FB /* moreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreCell.m; sourceTree = "<group>"; };
-		336664E51CB77CC2005573FB /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@2x.png"; sourceTree = "<group>"; };
-		336664E61CB77CC2005573FB /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@3x.png"; sourceTree = "<group>"; };
-		336664E91CB77CD3005573FB /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update@2x.png"; sourceTree = "<group>"; };
-		336664EA1CB77CD3005573FB /* update@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "update@3x.png"; sourceTree = "<group>"; };
-		336664EB1CB77CD3005573FB /* user-agreement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-agreement@2x.png"; sourceTree = "<group>"; };
-		336664EC1CB77CD3005573FB /* user-agreement@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-agreement@3x.png"; sourceTree = "<group>"; };
+		336664E51CB77CC2005573FB /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "service@2x.png"; path = "../service@2x.png"; sourceTree = "<group>"; };
+		336664E61CB77CC2005573FB /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "service@3x.png"; path = "../service@3x.png"; sourceTree = "<group>"; };
+		336664E91CB77CD3005573FB /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "update@2x.png"; path = "../update@2x.png"; sourceTree = "<group>"; };
+		336664EA1CB77CD3005573FB /* update@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "update@3x.png"; path = "../update@3x.png"; sourceTree = "<group>"; };
+		336664EB1CB77CD3005573FB /* user-agreement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user-agreement@2x.png"; path = "../user-agreement@2x.png"; sourceTree = "<group>"; };
+		336664EC1CB77CD3005573FB /* user-agreement@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user-agreement@3x.png"; path = "../user-agreement@3x.png"; sourceTree = "<group>"; };
 		336664F11CB784EC005573FB /* EquipGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EquipGraphViewController.h; path = ../EquipGraphViewController.h; sourceTree = "<group>"; };
 		336664F21CB784EC005573FB /* EquipGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EquipGraphViewController.m; path = ../EquipGraphViewController.m; sourceTree = "<group>"; };
 		336664F41CB784F6005573FB /* EditGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditGraphView.h; path = ../EditGraphView.h; sourceTree = "<group>"; };
@@ -638,6 +639,8 @@
 		337042511CC4E4340069D3AA /* kongZhiNi0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kongZhiNi0.m; sourceTree = "<group>"; };
 		33744DE21CAE597A0065DC01 /* pvLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvLogTableViewCell.h; sourceTree = "<group>"; };
 		33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pvLogTableViewCell.m; sourceTree = "<group>"; };
+		337C30521CCDAF3C002B99B7 /* protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
+		337C30531CCDAF3C002B99B7 /* protocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = protocol.m; sourceTree = "<group>"; };
 		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		337F9C861C71A6710016FE43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1296,18 +1299,15 @@
 		3355F2651C746983006DDE5A /* 关于 */ = {
 			isa = PBXGroup;
 			children = (
-				336664E91CB77CD3005573FB /* update@2x.png */,
-				336664EA1CB77CD3005573FB /* update@3x.png */,
-				336664EB1CB77CD3005573FB /* user-agreement@2x.png */,
-				336664EC1CB77CD3005573FB /* user-agreement@3x.png */,
-				336664E51CB77CC2005573FB /* service@2x.png */,
-				336664E61CB77CC2005573FB /* service@3x.png */,
+				337C30511CCDAEDA002B99B7 /* pic */,
 				3355F2661C7469AB006DDE5A /* aboutViewController.h */,
 				3355F2671C7469AB006DDE5A /* aboutViewController.m */,
 				3355F2691C746BF5006DDE5A /* aboutTableViewCell.h */,
 				3355F26A1C746BF5006DDE5A /* aboutTableViewCell.m */,
 				3355F26C1C747307006DDE5A /* aboutOneTableViewCell.h */,
 				3355F26D1C747307006DDE5A /* aboutOneTableViewCell.m */,
+				337C30521CCDAF3C002B99B7 /* protocol.h */,
+				337C30531CCDAF3C002B99B7 /* protocol.m */,
 			);
 			path = "关于";
 			sourceTree = "<group>";
@@ -1451,6 +1451,19 @@
 				3381ECE71CBC906600DCF0D2 /* Line3View.m */,
 			);
 			path = "能源二级";
+			sourceTree = "<group>";
+		};
+		337C30511CCDAEDA002B99B7 /* pic */ = {
+			isa = PBXGroup;
+			children = (
+				336664E91CB77CD3005573FB /* update@2x.png */,
+				336664EA1CB77CD3005573FB /* update@3x.png */,
+				336664EB1CB77CD3005573FB /* user-agreement@2x.png */,
+				336664EC1CB77CD3005573FB /* user-agreement@3x.png */,
+				336664E51CB77CC2005573FB /* service@2x.png */,
+				336664E61CB77CC2005573FB /* service@3x.png */,
+			);
+			path = pic;
 			sourceTree = "<group>";
 		};
 		337F9C771C71A6710016FE43 = {
@@ -2256,6 +2269,7 @@
 				3355F26B1C746BF5006DDE5A /* aboutTableViewCell.m in Sources */,
 				3349BB3B1C7EF66200E6E34B /* userdataViewController.m in Sources */,
 				335088D91C73011300D7AA03 /* addDevice.m in Sources */,
+				337C30541CCDAF3C002B99B7 /* protocol.m in Sources */,
 				3356149C1CB3AFE30071BAC9 /* addServerViewController.m in Sources */,
 				3383EFA01C9F8A6F0075E834 /* MJRefreshHeader.m in Sources */,
 				335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */,

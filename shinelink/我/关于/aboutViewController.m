@@ -10,14 +10,18 @@
 #import "aboutTableViewCell.h"
 #import "aboutViewController.h"
 #import "aboutOneTableViewCell.h"
+#import "protocol.h"
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
 
-@interface aboutViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface aboutViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
-
+@property (nonatomic, strong) NSString *serviceNum;
+@property (nonatomic, strong) NSString *currentVersion;
+@property (nonatomic, strong) NSString *appVersion;
+@property (nonatomic, strong) NSString *appUrl;
 @end
 
 @implementation aboutViewController
@@ -41,8 +45,7 @@
     
     
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+    // Do any additional setup after loading the view
     
     //创建tableView的方法
     [self _createTableView];
@@ -50,7 +53,24 @@
     //创建tableView的头视图
     [self _createHeaderView];
     
+    [self netAbout];
     
+}
+
+-(void)netAbout{
+
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newUserAPI.do?op=getServicePhoneNum" sucessBlock:^(id content) {
+        NSLog(@"getServicePhoneNum: %@", content);
+        [self hideProgressView];
+        if (content) {
+            _serviceNum=content[@"servicePhoneNum"];
+            
+            [_tableView reloadData];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
     
 }
 
@@ -143,11 +163,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cell11=@"cell1";
-        static NSString *cell22=@"cell2";
+       // static NSString *cell22=@"cell2";
      static NSString *cell33=@"cell3";
      static NSString *cell44=@"cell4";
     aboutTableViewCell *cell1=[tableView dequeueReusableCellWithIdentifier:cell11];
-    aboutOneTableViewCell *cell2=[tableView dequeueReusableCellWithIdentifier:cell22];
+    //aboutOneTableViewCell *cell2=[tableView dequeueReusableCellWithIdentifier:cell22];
     aboutTableViewCell *cell4=[tableView dequeueReusableCellWithIdentifier:cell44];
     aboutOneTableViewCell *cell3=[tableView dequeueReusableCellWithIdentifier:cell33];
     if(indexPath.row==0)
@@ -166,7 +186,7 @@
         }
         [cell3.imageLog setImage:[UIImage imageNamed:@"user-agreement.png"]];
         cell3.tableName.text = @"客服电话";
-        cell3.tableDetail.text=@"186666666";
+        cell3.tableDetail.text=_serviceNum;
         
           return cell3;
     } else if(indexPath.row==2)
@@ -188,9 +208,75 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
- 
+    if(indexPath.row==0)
+    {
+        protocol *go0=[[protocol alloc]init];
+        [self.navigationController pushViewController:go0 animated:NO];
+    }
     
+    if(indexPath.row==2)
+    {
+        [self checkUpdate];
+    }
 }
+
+
+
+
+-(void)checkUpdate{
+    NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
+    _currentVersion = [appInfo objectForKey:@"CFBundleVersion"];
+
+    [BaseRequest requestWithMethodResponseJsonByGet:@"http://itunes.apple.com" paramars:@{@"admin":@"admin"} paramarsSite:@"/lookup?id=669936054" sucessBlock:^(id content) {
+        NSLog(@"getServicePhoneNum: %@", content);
+        [self hideProgressView];
+        if (content) {
+            NSArray *resultArray = [content objectForKey:@"results"];
+            NSDictionary *resultDict = [resultArray objectAtIndex:0];
+            //                DLog(@"version is %@",[resultDict objectForKey:@"version"]);
+             _appVersion = [resultDict objectForKey:@"version"];
+            
+            //_appVersion=content[@"results"][@"version"];
+            
+            if ([_appVersion doubleValue] > [_currentVersion doubleValue]) {
+                NSString *msg = [NSString stringWithFormat:@"最新版本为%@,是否更新？",_appVersion];
+                _appUrl = content[@"results"][@"trackViewUrl"];
+            
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"暂不" otherButtonTitles:@"立即更新", nil];
+                alertView.tag = 1000;
+                [alertView show];
+                          }else{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您使用的是最新版本！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                alertView.tag = 1001;
+                [alertView show];
+           
+            }
+            
+        }else{
+         UIAlertView *alertView1 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求苹果服务器失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        UIAlertView *alertView2 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求苹果服务器失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+    }];
+
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex) {
+        if (alertView.tag == 1000) {
+            if(_appUrl)
+            {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:_appUrl]];
+            }
+        }
+    }
+
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
