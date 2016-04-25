@@ -37,6 +37,15 @@
 -(void)netParameter{
     _dateN2=[NSMutableArray array];
      _dateY2=[NSMutableArray array];
+    _pv12=[NSMutableArray array];
+    _pv22=[NSMutableArray array];
+    _pv32=[NSMutableArray array];
+    // _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)", @"VPV3(V)",nil];
+    //_pv12=[[NSMutableArray alloc]initWithObjects:@"123", @"312", @"312",nil];
+    //  _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)", @"IPV3(A)",nil];
+   // _pv22=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
+    // _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)", @"WPV3(W)",nil];
+    //_pv32=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
    
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageParams" sucessBlock:^(id content) {
@@ -45,15 +54,41 @@
         if (content) {
             NSString *A1=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
             NSString *A2=[NSString stringWithFormat:@"%@",content[@"nominalPower"]];
-            NSString *A3=[NSString stringWithFormat:@"%@",content[@"vBat"]];
+            NSString *A3=[NSString stringWithFormat:@"%@",content[@"vBatText"]];
             NSString *B1=[NSString stringWithFormat:@"%@",content[@"alias"]];
             NSString *B2=[NSString stringWithFormat:@"%@",content[@"address"]];
             NSString *B3=[NSString stringWithFormat:@"%@",content[@"address"]];
             NSString *B4=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+            
+               NSString *C1=[NSString stringWithFormat:@"%@",content[@"vpvText"]];
+               NSString *C2=[NSString stringWithFormat:@"%@",content[@"vBatText"]];
+               //NSString *C3=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+            
+               NSString *D1=[NSString stringWithFormat:@"%@",content[@"ipvText"]];
+               //NSString *D2=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+               NSString *D3=[NSString stringWithFormat:@"%@",content[@"iacToGridText"]];
+            
+               NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppvText"]];
+               //NSString *E2=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+               NSString *E3=[NSString stringWithFormat:@"%@",content[@"pacToGridText"]];
+            
+            [_pv12 addObject:C1];
+             [_pv12 addObject:C2];
+             [_pv12 addObject:@""];
+            
+                [_pv22 addObject:D1];
+                 [_pv22 addObject:@""];
+                 [_pv22 addObject:D3];
+            
+             [_pv32 addObject:E1];
+             [_pv32 addObject:@""];
+             [_pv32 addObject:E3];
+            
              [_dateN2 addObject:_deviceSN];
             [_dateN2 addObject:A1];
              [_dateN2 addObject:A2];
               [_dateN2 addObject:A3];
+            
            [_dateY2 addObject:B1];
             [_dateY2 addObject:B2];
             [_dateY2 addObject:B3];
@@ -71,16 +106,11 @@
 -(void)initdata{
 _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定功率", @"电池电压",nil];
     
-    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"属性", @"模式", @"电池百分比(Soc)",nil];
+    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"固件版本", @"模式", @"电池百分比(Soc)",nil];
     
-    _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt", @"Current", @"Watt",nil];
-    _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2", @"PV3",nil];
-    _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)", @"VPV3(V)",nil];
-    _pv12=[[NSMutableArray alloc]initWithObjects:@"123", @"312", @"312",nil];
-    _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)", @"IPV3(A)",nil];
-    _pv22=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
-    _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)", @"WPV3(W)",nil];
-    _pv32=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
+    _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt(V)", @"Current(I)", @"Watt(W)",nil];
+    _pv=[[NSMutableArray alloc]initWithObjects:@"PV", @"Bat", @"Guid",nil];
+  
 }
 
 -(void)initUI{
@@ -150,46 +180,46 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
         pv.font = [UIFont systemFontOfSize:16*NOW_SIZE];
         [_scrollView addSubview:pv];
        
-       UILabel *pv1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
-       pv1.text=_pv11[K];
-       pv1.textAlignment=NSTextAlignmentCenter;
-       pv1.textColor=[UIColor grayColor];
-       pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-       [_scrollView addSubview:pv1];
+//       UILabel *pv1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+//       pv1.text=_pv11[K];
+//       pv1.textAlignment=NSTextAlignmentCenter;
+//       pv1.textColor=[UIColor grayColor];
+//       pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//       [_scrollView addSubview:pv1];
        
-       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 350*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
        pv11.text=_pv12[K];
        pv11.textAlignment=NSTextAlignmentCenter;
        pv11.textColor=[UIColor grayColor];
-       pv11.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+       pv11.font = [UIFont systemFontOfSize:14*NOW_SIZE];
        [_scrollView addSubview:pv11];
        
-       UILabel *pv2=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
-       pv2.text=_pv21[K];
-       pv2.textAlignment=NSTextAlignmentCenter;
-       pv2.textColor=[UIColor grayColor];
-       pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-       [_scrollView addSubview:pv2];
+//       UILabel *pv2=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+//       pv2.text=_pv21[K];
+//       pv2.textAlignment=NSTextAlignmentCenter;
+//       pv2.textColor=[UIColor grayColor];
+//       pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//       [_scrollView addSubview:pv2];
        
-       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 350*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
        pv21.text=_pv22[K];
        pv21.textAlignment=NSTextAlignmentCenter;
        pv21.textColor=[UIColor grayColor];
-       pv21.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+       pv21.font = [UIFont systemFontOfSize:14*NOW_SIZE];
        [_scrollView addSubview:pv21];
        
-       UILabel *pv3=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
-       pv3.text=_pv31[K];
-       pv3.textAlignment=NSTextAlignmentCenter;
-       pv3.textColor=[UIColor grayColor];
-       pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-       [_scrollView addSubview:pv3];
+//       UILabel *pv3=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+//       pv3.text=_pv31[K];
+//       pv3.textAlignment=NSTextAlignmentCenter;
+//       pv3.textColor=[UIColor grayColor];
+//       pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//       [_scrollView addSubview:pv3];
        
-       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 350*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
+       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
        pv31.text=_pv32[K];
        pv31.textAlignment=NSTextAlignmentCenter;
        pv31.textColor=[UIColor grayColor];
-       pv31.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+       pv31.font = [UIFont systemFontOfSize:14*NOW_SIZE];
        [_scrollView addSubview:pv31];
        
        UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*NOW_SIZE+size3*K, 300*NOW_SIZE,1*NOW_SIZE )];

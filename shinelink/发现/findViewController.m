@@ -16,7 +16,7 @@
 #import "moreTableViewController.h"
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
-
+@property(nonatomic,strong)NSMutableArray *imageArray;
 @end
 
 @implementation findViewController
@@ -48,20 +48,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    
+    [self netFind];
     //创建tableView的方法
     [self _createTableView];
     
-    //创建tableView的头视图
-    [self _createHeaderView];
+
     
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 
 }
 
+-(void)netFind{
+    
+    [self showProgressView];
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getAdvertisingImages=: %@", content);
+        _imageArray=[NSMutableArray arrayWithObject:content];
+      
+        
+        [self _createHeaderView];
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+        
+    }];
+
+}
+
+
 - (void)_createTableView {
     
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,Kwidth,SCREEN_Height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -74,11 +93,22 @@
 
 - (void)_createHeaderView {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,NavigationbarHeight,Kwidth,200*NOW_SIZE)];
     _tableView.tableHeaderView = headerView;
     
-    _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
+  _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,NavigationbarHeight,Kwidth,headerView.bounds.size.height)];
     
+    if (_imageArray) {
+        for (int i=0; i<_imageArray.count; i++) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
+            imageView.image = _imageArray[i];
+            [_scrollerView addSubview:imageView];
+            
+             _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,headerView.bounds.size.height);
+            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
+            _pageControl.numberOfPages = _imageArray.count;
+        }
+    }else{
     NSArray *imgArray = @[@"1.jpg",
                           @"2.jpg",
                           @"3.jpg"];
@@ -86,16 +116,21 @@
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
         imageView.image = [UIImage imageNamed:imgArray[i]];
         [_scrollerView addSubview:imageView];
+        
+        _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headerView.bounds.size.height);
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
+        _pageControl.numberOfPages = imgArray.count;
+         }
     }
-    _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headerView.bounds.size.height);
+    
+   
     _scrollerView.pagingEnabled = YES;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.delegate = self;
     [headerView addSubview:_scrollerView];
     
     //创建分页视图
-    _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
-    _pageControl.numberOfPages = imgArray.count;
+
     _pageControl.currentPage = 0;
     [_pageControl addTarget:self action:@selector(pageAction:) forControlEvents:UIControlEventValueChanged];
     [headerView addSubview:_pageControl];

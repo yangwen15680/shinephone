@@ -30,6 +30,7 @@
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
 @property (nonatomic, strong) NSString *currentDay;
 @property (nonatomic, strong) NSString *nominalPower;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
 @end
 
@@ -50,6 +51,12 @@
 }
 
 -(void)addbutton{
+    
+//    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+//    _scrollView.scrollEnabled=YES;
+//    _scrollView.contentSize = CGSizeMake(SCREEN_Width,750*NOW_SIZE);
+//    [self.view addSubview:_scrollView];
+    
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
      [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
@@ -138,7 +145,7 @@
       [self showProgressView];
 [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_SnData,@"type":@"1", @"date":self.currentDay} paramarsSite:@"/newInverterAPI.do?op=getInverterData" sucessBlock:^(id content) {
         [self hideProgressView];
-   
+     NSLog(@"getInverterData: %@", content);
         if (content) {
             
             NSMutableDictionary *dayDict0=[NSMutableDictionary dictionaryWithDictionary:[content objectForKey:@"invPacData"]];
@@ -153,7 +160,7 @@
             
             
             _nominalPower=[content objectForKey:@"nominalPower"];
-           NSLog(@"getInverterData: %@", content);
+         
             self.line2View.frameType=@"1";
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             [self addProcess];

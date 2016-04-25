@@ -226,7 +226,7 @@
 -(void)checkUpdate{
     NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
     _currentVersion = [appInfo objectForKey:@"CFBundleVersion"];
-
+ [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:@"http://itunes.apple.com" paramars:@{@"admin":@"admin"} paramarsSite:@"/lookup?id=669936054" sucessBlock:^(id content) {
         NSLog(@"getServicePhoneNum: %@", content);
         [self hideProgressView];
@@ -240,7 +240,8 @@
             
             if ([_appVersion doubleValue] > [_currentVersion doubleValue]) {
                 NSString *msg = [NSString stringWithFormat:@"最新版本为%@,是否更新？",_appVersion];
-                _appUrl = content[@"results"][@"trackViewUrl"];
+               _appUrl = [resultDict objectForKey:@"trackViewUrl"];
+               // _appUrl = content[@"results"][@"trackViewUrl"];
             
                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"暂不" otherButtonTitles:@"立即更新", nil];
                 alertView.tag = 1000;

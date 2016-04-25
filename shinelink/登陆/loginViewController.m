@@ -126,7 +126,7 @@
     
  
    
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 30*NOW_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 40*NOW_SIZE)];
     self.forgetLable.text=@"忘记密码";
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -135,6 +135,19 @@
     UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
     [self.forgetLable addGestureRecognizer:forget];
     [_scrollView addSubview:self.forgetLable];
+    
+    
+   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 220*NOW_SIZE, 40*NOW_SIZE)];
+    self.registLable.text=@"注册";
+    self.registLable.textColor=[UIColor whiteColor];
+    self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    self.registLable.textAlignment = NSTextAlignmentRight;
+    self.registLable.userInteractionEnabled=YES;
+    UITapGestureRecognizer * forget1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
+    [self.registLable addGestureRecognizer:forget1];
+    [_scrollView addSubview:self.registLable];
+    
+    
     
     LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 320*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
