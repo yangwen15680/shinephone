@@ -9,14 +9,14 @@
 #import "AddressPickView.h"
 #import "UIViewExt.h"
 #define navigationViewHeight 44.0f
-#define pickViewViewHeight 200.0f
+#define pickViewViewHeight 300.0f
 #define buttonWidth 60.0f
 
 
 @interface AddressPickView ()
 
 @property(nonatomic,strong)NSDictionary *pickerDic;
-@property(nonatomic,strong)NSArray *provinceArray;
+
 @property(nonatomic,strong)NSArray *selectedArray;
 @property(nonatomic,strong)NSArray *cityArray;
 @property(nonatomic,strong)NSArray *townArray;
@@ -43,31 +43,27 @@
     self = [super init];
     if (self) {
         self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+        
+        
         [self _addTapGestureRecognizerToSelf];
-        [self _getPickerData];
         [self _createView];
     }
     return self;
   
 }
 #pragma mark - get data
-- (void)_getPickerData
-{
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Address" ofType:@"plist"];
-    self.pickerDic = [[NSDictionary alloc] initWithContentsOfFile:path];
-    self.provinceArray = [self.pickerDic allKeys];
-    self.selectedArray = [self.pickerDic objectForKey:[[self.pickerDic allKeys] objectAtIndex:0]];
-    
-    if (self.selectedArray.count > 0) {
-        self.cityArray = [[self.selectedArray objectAtIndex:0] allKeys];
-    }
-    
-    if (self.cityArray.count > 0) {
-        self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:0]];
-    }
-    
+
+
+
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self animated:YES];
+    [MBProgressHUD showHUDAddedTo:self animated:YES];
 }
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self animated:YES];
+}
+
 -(void)_addTapGestureRecognizerToSelf
 {
     self.userInteractionEnabled = YES;
@@ -112,10 +108,10 @@
     if (button.tag == 1) {
         
         NSString *province = [self.provinceArray objectAtIndex:[_pickView selectedRowInComponent:0]];
-        NSString *city = [self.cityArray objectAtIndex:[_pickView selectedRowInComponent:1]];
-        NSString *town = [self.townArray objectAtIndex:[_pickView selectedRowInComponent:2]];
+      //  NSString *city = [self.cityArray objectAtIndex:[_pickView selectedRowInComponent:1]];
+       // NSString *town = [self.townArray objectAtIndex:[_pickView selectedRowInComponent:2]];
         
-        _block(province,city,town);
+        _block(province);
     }
     
     [self hiddenBottomView];
@@ -148,17 +144,13 @@
 
 #pragma mark - UIPicker Delegate
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 3;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (component == 0) {
+    
         return _provinceArray.count;
-    } else if (component == 1) {
-        return _cityArray.count;
-    } else {
-        return _townArray.count;
-    }
+    
 }
 
 
@@ -168,48 +160,17 @@
     lable.font=[UIFont systemFontOfSize:20.0f];
     if (component == 0) {
         lable.text=[self.provinceArray objectAtIndex:row];
-    } else if (component == 1) {
-        lable.text=[self.cityArray objectAtIndex:row];
-    } else {
-        lable.text=[self.townArray objectAtIndex:row];
     }
     return lable;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    CGFloat pickViewWidth = kScreenWidth/3;
+    CGFloat pickViewWidth = kScreenWidth;
 
     return pickViewWidth;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    if (component == 0) {
-        self.selectedArray = [self.pickerDic objectForKey:[self.provinceArray objectAtIndex:row]];
-        if (self.selectedArray.count > 0) {
-            self.cityArray = [[self.selectedArray objectAtIndex:0] allKeys];
-        } else {
-            self.cityArray = nil;
-        }
-        if (self.cityArray.count > 0) {
-            self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:0]];
-        } else {
-            self.townArray = nil;
-        }
-    }
-    [pickerView selectedRowInComponent:1];
-    [pickerView reloadComponent:1];
-    [pickerView selectedRowInComponent:2];
-    
-    if (component == 1) {
-        if (self.selectedArray.count > 0 && self.cityArray.count > 0) {
-            self.townArray = [[self.selectedArray objectAtIndex:0] objectForKey:[self.cityArray objectAtIndex:row]];
-        } else {
-            self.townArray = nil;
-        }
-        [pickerView selectRow:1 inComponent:2 animated:YES];
-    }
-    
-    [pickerView reloadComponent:2];
     
   
  

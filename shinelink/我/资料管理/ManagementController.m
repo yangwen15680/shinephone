@@ -60,6 +60,7 @@
 -(void)registerUser{
     [[UserInfo defaultUserInfo] setUserPassword:nil];
     [[UserInfo defaultUserInfo] setUserName:nil];
+      [[UserInfo defaultUserInfo] setServer:nil];
     loginViewController *login =[[loginViewController alloc]init];
     
     self.hidesBottomBarWhenPushed=YES;

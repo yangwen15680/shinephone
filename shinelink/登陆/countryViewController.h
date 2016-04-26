@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface countryViewController : UIViewController
+@interface countryViewController : RootViewController
 
 @end

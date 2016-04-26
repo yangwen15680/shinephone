@@ -31,7 +31,13 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
-#define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
+
+//#define HEAD_URL  @"http://192.168.3.32:8080/ShineServer_2016"
+#define HEAD_URL  [UserInfo defaultUserInfo].server
+#define HEAD_URL_Demo  @"http://192.168.3.32:8080/ShineServer_2016"
+
+
+
 //#define HEAD_URL  @"http://192.168.3.32:8081/ShineServer"
 //#define HEAD_URL  @"http://server-cn.growatt.com"
 //#define HEAD_URL  @"http://192.168.3.98:8081/ShineServer_2016"

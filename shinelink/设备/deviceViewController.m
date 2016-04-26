@@ -111,6 +111,9 @@
     _managerNowArray=[NSMutableArray array];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initDemoData) name:@"reroadDemo" object:nil];
   
+//    if([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]){
+       //self.automaticallyAdjustsScrollViewInsets = YES;
+
     
     [self initData];
        [self addTitleMenu];
@@ -118,8 +121,8 @@
     //创建tableView的方法
     [self _createTableView];
     //创建tableView的头视图
-  //  [self _createHeaderView];
-    [self netWeather];
+   [self _createHeaderView];
+  
 }
 
 
@@ -356,19 +359,19 @@
         [_control endRefreshing];
           NSLog(@"getAllDeviceList:%@",content);
        // id jsonObj=[NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-         self.dataArr = [NSMutableArray arrayWithArray:content];
+         self.dataArr = [NSMutableArray arrayWithArray:content[@"deviceList"]];
         for (int i=0; i<_dataArr.count; i++) {
-            [_typeArr addObject:content[i][@"deviceType"]];
-            [SNArray addObject:content[i][@"deviceSn"]];
-            if ([content[i][@"deviceAilas"]isEqualToString:@""]) {
-                [nameArray addObject:content[i][@"deviceType"]];
+            [_typeArr addObject:content[@"deviceList"][i][@"deviceType"]];
+            [SNArray addObject:content[@"deviceList"][i][@"deviceSn"]];
+            if ([content[@"deviceList"][i][@"deviceAilas"]isEqualToString:@""]) {
+                [nameArray addObject:content[@"deviceList"][i][@"deviceType"]];
             }else{
-                [nameArray addObject:content[i][@"deviceAilas"]];}
+                [nameArray addObject:content[@"deviceList"][i][@"deviceAilas"]];}
            
-            NSString *TO=[NSString stringWithFormat:@"%@",content[i][@"energy"]];
+            NSString *TO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
             [totalPowerArray addObject:TO];
             
-        NSString *ST=[NSString stringWithFormat:@"%@",content[i][@"deviceStatus"]];
+        NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
             NSString *SD;
             if([ST isEqualToString:@"-1"])
             {SD=@"未连接";
@@ -377,17 +380,17 @@
             [statueArray addObject:SD];
            
             
-            if ([content[i][@"deviceType"]isEqualToString:@"inverter"]) {
+            if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:@"inverter.png"];
-                NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"power"]];
+                NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"power"]];
                 [powerArray addObject:PO];
-                NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"eToday"]];
+                NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"eToday"]];
                 [dayArray addObject:DY];
-            }else if ([content[i][@"deviceType"]isEqualToString:@"storage"]){
+            }else if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"storage"]){
              [imageArray addObject:@"storage.png"];
-                NSString *PO=[NSString stringWithFormat:@"%@",content[i][@"pCharge"]];
+                NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"pCharge"]];
                 [powerArray addObject:PO];
-                NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"capacity"]];
+                NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"capacity"]];
                 [dayArray addObject:DY];
             }else{
             [imageArray addObject:@"Plug.png"];
@@ -469,6 +472,8 @@
             }
         }
          [self initDatacore];
+        self.edgesForExtendedLayout=UIRectEdgeNone;
+        //_tableView.frame =CGRectMake(0, NavigationbarHeight, SCREEN_Width, SCREEN_Height);
          [self.tableView reloadData];
             
           //  [self showToastViewWithTitle:@"添加设备成功"];
@@ -516,29 +521,14 @@
     
 }
 
--(void)netWeather{
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
-    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"overcast@2x.png"]];
-                        _headerView.backgroundColor=bgColor;
-    _tableView.tableHeaderView = _headerView;
-    
-//    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"":@""} paramarsSite:@"/newTheWeatherAPI.do?op= getTheWeather" sucessBlock:^(id content) {
-//        NSLog(@"Weather: %@", content);
-//        [self hideProgressView];
-//        
-//        if (content) {
-//            
-//            [self _createHeaderView];
-//        }
-//        
-//    } failure:^(NSError *error) {
-//        [self hideProgressView];
-//    }];
-     [self _createHeaderView];
-}
+
 
 - (void)_createHeaderView {
     
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
+    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"overcast@2x.png"]];
+    _headerView.backgroundColor=bgColor;
+    _tableView.tableHeaderView = _headerView;
    
     float headHeight=_headerView.bounds.size.height;
     _headPicName=@"bgweather@3x.png";

@@ -123,6 +123,7 @@
 		3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */; };
 		3353B1B31CA126EB00577595 /* DemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B11CA126EB00577595 /* DemoDevice.m */; };
 		3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B51CA1272C00577595 /* CoreDataManager.m */; };
+		335431BA1CCF549000CEAFFC /* SNLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 335431B91CCF549000CEAFFC /* SNLocationManager.m */; };
 		335456B61C852E6200275478 /* AddCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B51C852E6200275478 /* AddCellectViewController.m */; };
 		335456B91C852EB000275478 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456B81C852EB000275478 /* RootViewController.m */; };
 		335456BC1C852ED900275478 /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335456BB1C852ED900275478 /* TempViewController.m */; };
@@ -526,6 +527,8 @@
 		3353B1B11CA126EB00577595 /* DemoDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoDevice.m; path = ../DemoDevice.m; sourceTree = "<group>"; };
 		3353B1B41CA1272C00577595 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		3353B1B51CA1272C00577595 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		335431B81CCF549000CEAFFC /* SNLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNLocationManager.h; path = "../注册/SNLocationManager.h"; sourceTree = "<group>"; };
+		335431B91CCF549000CEAFFC /* SNLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNLocationManager.m; path = "../注册/SNLocationManager.m"; sourceTree = "<group>"; };
 		335456B41C852E6200275478 /* AddCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController.h; sourceTree = "<group>"; };
 		335456B51C852E6200275478 /* AddCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellectViewController.m; sourceTree = "<group>"; };
 		335456B71C852EB000275478 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = "登陆/配置设备/RootViewController.h"; sourceTree = "<group>"; };
@@ -1436,6 +1439,8 @@
 				33FEFCD11C7D8A9500324374 /* AddressPickView.m */,
 				33FEFCD41C7D8E8300324374 /* UIViewExt.h */,
 				33FEFCD51C7D8E8300324374 /* UIViewExt.m */,
+				335431B81CCF549000CEAFFC /* SNLocationManager.h */,
+				335431B91CCF549000CEAFFC /* SNLocationManager.m */,
 			);
 			path = "登陆第三方";
 			sourceTree = "<group>";
@@ -2199,6 +2204,7 @@
 				3381ED011CBCD85700DCF0D2 /* myListSecondTableViewCell.m in Sources */,
 				3343F3C61C80403C009F69BC /* AFURLResponseSerialization.m in Sources */,
 				335456BF1C852EEB00275478 /* SHBQRView.m in Sources */,
+				335431BA1CCF549000CEAFFC /* SNLocationManager.m in Sources */,
 				3343F3BF1C80403C009F69BC /* AFHTTPRequestOperation.m in Sources */,
 				334B8F601C914B4E00798A69 /* UICountingLabel.m in Sources */,
 				3367CB4C1C86806600EF460C /* MASLayoutConstraint.m in Sources */,

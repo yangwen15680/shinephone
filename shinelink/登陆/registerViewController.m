@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+  //  [self netServer];
+    
     [self initUI];
     //获取本地语言
     NSArray *languages = [NSLocale preferredLanguages];
@@ -46,6 +48,27 @@
    
 }
 
+- (void)netServer
+{
+   
+    //[self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"country":[_dataDic objectForKey:@"regCountry"]} paramarsSite:@"/newLoginAPI.do?op=getServerUrl" sucessBlock:^(id content) {
+        
+        NSLog(@"getServerUrl: %@", content);
+        if (content) {
+            if ([content[@"success"]intValue]==1) {
+            NSString *server=content[@"msg"];
+            [[UserInfo defaultUserInfo] setServer:server];
+            }
+        }
+        
+    } failure:^(NSError *error) {
+     
+        
+    }];
+    
+}
+
 -(void)initUI{
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
@@ -57,11 +80,11 @@
        _backScroll.contentSize = CGSizeMake(SCREEN_Width,750*NOW_SIZE);
     [self.view addSubview:_backScroll];
     
-    NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",nil];
-    NSArray *labelArray=[NSArray arrayWithObjects:@"用户名", @"密码", @"重复密码",@"电子邮箱", @"联系电话", nil];
-    NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, @"Enter your pwd again", root_Enter_email, root_Enter_phone_number, nil];
+    NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",@"iconfont-shouji.png",nil];
+    NSArray *labelArray=[NSArray arrayWithObjects:@"用户名", @"密码", @"重复密码",@"电子邮箱", @"联系电话", @"代理商编号",nil];
+    NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, @"Enter your pwd again", root_Enter_email, root_Enter_phone_number,@"代理商编号", nil];
    
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<labelArray.count; i++) {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,17*NOW_SIZE+i*60*NOW_SIZE+moveHeight,17*NOW_SIZE, 17*NOW_SIZE)];
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
@@ -104,7 +127,7 @@
     
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,310*NOW_SIZE+moveHeight, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,380*NOW_SIZE+moveHeight, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
@@ -190,6 +213,7 @@
      [_dataDic setObject:[_textFieldMutableArray[1] text] forKey:@"regPassword"];
      [_dataDic setObject:[_textFieldMutableArray[3] text] forKey:@"regEmail"];
      [_dataDic setObject:[_textFieldMutableArray[4] text] forKey:@"regPhoneNumber"];
+      [_dataDic setObject:[_textFieldMutableArray[5] text] forKey:@"agentCode"];
     
     AddCellectViewController *reg=[[AddCellectViewController alloc]initWithDataDict:_dataDic];
     //[self presentViewController:reg animated:YES completion:nil];

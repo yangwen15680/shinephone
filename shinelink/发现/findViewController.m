@@ -60,6 +60,11 @@
 
 -(void)netFind{
     
+    
+    
+    
+    
+    
     [self showProgressView];
     [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
         [self hideProgressView];
@@ -93,10 +98,10 @@
 
 - (void)_createHeaderView {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,NavigationbarHeight,Kwidth,200*NOW_SIZE)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
     _tableView.tableHeaderView = headerView;
     
-  _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,NavigationbarHeight,Kwidth,headerView.bounds.size.height)];
+  _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
     
     if (_imageArray) {
         for (int i=0; i<_imageArray.count; i++) {

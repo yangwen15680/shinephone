@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void(^AdressBlock) (NSString *province,NSString *city,NSString *town);
+typedef void(^AdressBlock) (NSString *province);
 
 @interface AddressPickView : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
 
 @property(nonatomic,copy)AdressBlock block;
+
+@property(nonatomic,strong)NSMutableArray *provinceArray;
 
 
 + (instancetype)shareInstance;
