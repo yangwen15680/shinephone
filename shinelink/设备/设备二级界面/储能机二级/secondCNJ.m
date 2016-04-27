@@ -17,9 +17,11 @@
 #import "EquipGraphViewController.h"
 #import "controlCNJTable.h"
 
+#define SizeH 45*NOW_SIZE
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 @interface secondCNJ ()
 @property (nonatomic, strong) NSMutableDictionary *dayDict;
+@property (nonatomic, strong) NSMutableDictionary *paramsDict;
 @property (nonatomic, strong) Line2View *line2View;
 @property (nonatomic, strong) NSString *status;
 @property (nonatomic, strong) NSString *statusText;
@@ -27,7 +29,9 @@
 @property (nonatomic, strong) NSString *totalDischarge;
 @property (nonatomic, strong) NSDateFormatter *dayFormatter;
 @property (nonatomic, strong) NSString *currentDay;
-
+@property (nonatomic, strong) NSString *power;
+@property (nonatomic, strong) NSString *normalPower2;
+@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSString *capacity;
 @end
 
@@ -36,8 +40,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=_deviceSN;
-    [self netGetCNJ];
+    
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView.scrollEnabled=YES;
+    _scrollView.contentSize = CGSizeMake(SCREEN_Width,700*NOW_SIZE);
+    [self.view addSubview:_scrollView];
+    
    
+    
+    [self netGetCNJ];
     [self addRightItem];
     [self addGraph];
     [self addbutton];
@@ -51,10 +62,22 @@
            NSLog(@"getStorageParams: %@", content);
         if (content) {
         
-            _dayDischarge=[NSString stringWithFormat:@"%@",content[@"eDischargeTodayText"]];
-            _totalDischarge=[NSString stringWithFormat:@"%@",content[@"eDischargeTotalText"]];
-            _status=[NSString stringWithFormat:@"%@",content[@"status"]];
-            _capacity=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+            _paramsDict=[NSMutableDictionary dictionaryWithDictionary:content[@"storageBean"]];
+            _dayDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTodayText"]];
+            _totalDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTotalText"]];
+            _status=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"status"]];
+            _capacity=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"capacityText"]];
+               _normalPower2 =[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"normalPower"]];
+            
+            if ([_status isEqualToString:@"1"]) {
+                
+                _power=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"pChargeText"]];
+            }else if([_status isEqualToString:@"2"]){
+            _power=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"pDischargeText"]];
+            }else{
+                _power=@"";
+            }
+            
            [self addProcess];
             }
     } failure:^(NSError *error) {
@@ -63,51 +86,52 @@
     }];
 
 }
-
+//_scrollView.
 -(void)addbutton{
-    UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+    float SizeH2=5*NOW_SIZE;
+    UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,50*NOW_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
     [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:firstB];
-    UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:firstB];
+    UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
     firstL.text=@"控制";
     firstL.textAlignment=NSTextAlignmentCenter;
     firstL.textColor=[UIColor blackColor];
     firstL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [self.view addSubview:firstL];
+    [self.scrollView addSubview:firstL];
     
-    UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+    UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,50*NOW_SIZE )];
     [secondB setImage:[UIImage imageNamed:@"参数.png"] forState:UIControlStateNormal];
      [secondB addTarget:self action:@selector(parameterCNJ) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:secondB];
-    UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:secondB];
+    UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
     secondL.text=@"参数";
     secondL.textAlignment=NSTextAlignmentCenter;
     secondL.textColor=[UIColor blackColor];
     secondL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [self.view addSubview:secondL];
+    [self.scrollView addSubview:secondL];
     
-    UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+    UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,50*NOW_SIZE )];
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
       [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:threeB];
-    UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:threeB];
+    UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
     threeL.text=@"数据";
     threeL.textAlignment=NSTextAlignmentCenter;
     threeL.textColor=[UIColor blackColor];
     threeL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [self.view addSubview:threeL];
+    [self.scrollView addSubview:threeL];
     
-    UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE, 50*NOW_SIZE,50*NOW_SIZE )];
+    UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,50*NOW_SIZE )];
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
   [fourB addTarget:self action:@selector(gofour) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:fourB];
-    UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE, 50*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:fourB];
+    UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
     fourL.text=@"日志";
     fourL.textAlignment=NSTextAlignmentCenter;
     fourL.textColor=[UIColor blackColor];
     fourL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [self.view addSubview:fourL];
+    [self.scrollView addSubview:fourL];
 }
 
 -(void)gofour{
@@ -126,8 +150,9 @@
 
 -(void)parameterCNJ{
     parameterCNJ *PC=[[parameterCNJ alloc]init];
+    PC.params2Dict=_paramsDict;
     PC.deviceSN=_deviceSN;
-    
+    PC.normalPower=_normalPower2;
     [self.navigationController pushViewController:PC animated:NO];
 }
 
@@ -148,10 +173,10 @@
 -(void)addGraph{
   
     
-    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*NOW_SIZE, SCREEN_Width,280*NOW_SIZE )];
+    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*NOW_SIZE-SizeH, SCREEN_Width,280*NOW_SIZE )];
     self.line2View.flag=@"1";
      self.line2View.frameType=@"1";
-    [self.view addSubview:self.line2View];
+    [self.scrollView addSubview:self.line2View];
     self.dayFormatter = [[NSDateFormatter alloc] init];
     [self.dayFormatter setDateFormat:@"yyyy-MM-dd"];
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
@@ -187,47 +212,47 @@
 }
 
 -(void)addProcess{
-    UIView *processView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240*NOW_SIZE)];
+    UIView *processView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 240*NOW_SIZE-SizeH)];
     UIImage *bgImage = IMAGE(@"bg3.png");
     processView.layer.contents = (id)bgImage.CGImage;
-    [self.view addSubview:processView];
-    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 180*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:processView];
+    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 180*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
     leftName.text=_dayDischarge;
     leftName.textAlignment=NSTextAlignmentLeft;
     leftName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:leftName];
-    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 200*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:leftName];
+    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 200*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
     leftState.text=@"日放电量";
     leftState.textAlignment=NSTextAlignmentLeft;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:leftState];
+    [self.scrollView addSubview:leftState];
     
     
-    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
     rightName.text=_totalDischarge;
     rightName.textAlignment=NSTextAlignmentRight;
     rightName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:rightName];
-    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 200*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    [self.scrollView addSubview:rightName];
+    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 200*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
     rightState.text=@"总放电量";
     rightState.textAlignment=NSTextAlignmentRight;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:rightState];
+    [self.scrollView addSubview:rightState];
     
-    UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 245*NOW_SIZE, 180*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 245*NOW_SIZE-SizeH, 180*NOW_SIZE,20*NOW_SIZE )];
     dataName.text=@"电池百分比(%/天)";
     dataName.textAlignment=NSTextAlignmentLeft;
     dataName.textColor=[UIColor blackColor];
     dataName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
-    [self.view addSubview:dataName];
+    [self.scrollView addSubview:dataName];
     
     //_status=@"1";
-    VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 20*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
-    CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 150*NOW_SIZE);
+    VWWWaterView *waterView = [[VWWWaterView alloc]initWithFrame:CGRectMake(0, 0*NOW_SIZE, 160*NOW_SIZE, 160*NOW_SIZE)];
+    CGPoint center = CGPointMake(CGRectGetMidX( [UIScreen mainScreen].bounds), 100*NOW_SIZE);
     waterView.center = center;
     if ([_status isEqualToString:@"0"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
@@ -237,20 +262,25 @@
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:121/ 255.0f green:230/ 255.0f blue:129/ 255.0f alpha:1];//水波颜色
          _statusText=@"正在充电";
-    } if ([_status isEqualToString:@"2"]) {
+    }else if ([_status isEqualToString:@"2"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:222/ 255.0f green:211/ 255.0f blue:91/ 255.0f alpha:1];//水波颜色
          _statusText=@"正在放电";
-    } if ([_status isEqualToString:@"3"]) {
+    }else if ([_status isEqualToString:@"3"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
          _statusText=@"出现故障";
+    }else {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//水波颜色
+        _statusText=@"网络问题";
     }
     float k1=[_capacity floatValue]*0.01;
     waterView.percentum = k1;//百分比
-    [self.view addSubview:waterView];
+    [self.scrollView addSubview:waterView];
     
-    UILabel *Ca=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2, 80*NOW_SIZE,60*NOW_SIZE )];
+    float SizeH3=10*NOW_SIZE;
+    UILabel *Ca=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2-SizeH-SizeH3, 80*NOW_SIZE,60*NOW_SIZE )];
     Ca.text=_capacity;
     Ca.textAlignment=NSTextAlignmentCenter;
     if ([_status isEqualToString:@"3"]) {
@@ -259,9 +289,9 @@
     Ca.textColor=[UIColor whiteColor];
     }
     Ca.font = [UIFont systemFontOfSize:30*NOW_SIZE];
-    [self.view addSubview:Ca];
+    [self.scrollView addSubview:Ca];
     
-    UILabel *Status=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2+40*NOW_SIZE, 80*NOW_SIZE,40*NOW_SIZE )];
+    UILabel *Status=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2-SizeH-SizeH3+55*NOW_SIZE, 80*NOW_SIZE,40*NOW_SIZE )];
     Status.text=_statusText;
     Status.textAlignment=NSTextAlignmentCenter;
     if ([_status isEqualToString:@"3"]) {
@@ -270,7 +300,14 @@
         Status.textColor=[UIColor whiteColor];
     }
     Status.font = [UIFont systemFontOfSize:16*NOW_SIZE];
-    [self.view addSubview:Status];
+    [self.scrollView addSubview:Status];
+    
+    UILabel *power1=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*NOW_SIZE)/2-SizeH-SizeH3+35*NOW_SIZE, 80*NOW_SIZE,40*NOW_SIZE )];
+    power1.text=_power;
+    power1.textAlignment=NSTextAlignmentCenter;
+        power1.textColor=[UIColor whiteColor];
+    power1.font = [UIFont systemFontOfSize:13*NOW_SIZE];
+    [self.scrollView addSubview:power1];
     
 }
 

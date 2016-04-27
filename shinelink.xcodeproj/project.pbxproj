@@ -180,6 +180,12 @@
 		3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB431C86806600EF460C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB451C86806600EF460C /* View+MASAdditions.m */; };
 		3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB481C86806600EF460C /* ViewController+MASAdditions.m */; };
+		3367EB951CD0B07600D2EF67 /* stationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB941CD0B07600D2EF67 /* stationTableView.m */; };
+		3367EB981CD0B22500D2EF67 /* StationSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB971CD0B22500D2EF67 /* StationSafeViewController.m */; };
+		3367EB9B1CD0B29000D2EF67 /* StationLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB9A1CD0B29000D2EF67 /* StationLocationViewController.m */; };
+		3367EB9E1CD0B2A700D2EF67 /* StationEarningsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB9D1CD0B2A700D2EF67 /* StationEarningsViewController.m */; };
+		3367EBA11CD0B2D200D2EF67 /* StationAppearanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EBA01CD0B2D200D2EF67 /* StationAppearanceViewController.m */; };
+		3367EBA41CD0C11800D2EF67 /* productViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EBA31CD0C11800D2EF67 /* productViewController.m */; };
 		33692BE91C92527500698375 /* threeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BE81C92527500698375 /* threeViewController.m */; };
 		33692BF11C926B4500698375 /* rili.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF01C926B4500698375 /* rili.png */; };
 		33692BF31C926B4B00698375 /* shang.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF21C926B4B00698375 /* shang.png */; };
@@ -628,6 +634,18 @@
 		3367CB461C86806600EF460C /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		3367CB471C86806600EF460C /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		3367CB481C86806600EF460C /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		3367EB931CD0B07600D2EF67 /* stationTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stationTableView.h; sourceTree = "<group>"; };
+		3367EB941CD0B07600D2EF67 /* stationTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stationTableView.m; sourceTree = "<group>"; };
+		3367EB961CD0B22500D2EF67 /* StationSafeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationSafeViewController.h; sourceTree = "<group>"; };
+		3367EB971CD0B22500D2EF67 /* StationSafeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationSafeViewController.m; sourceTree = "<group>"; };
+		3367EB991CD0B29000D2EF67 /* StationLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationLocationViewController.h; sourceTree = "<group>"; };
+		3367EB9A1CD0B29000D2EF67 /* StationLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationLocationViewController.m; sourceTree = "<group>"; };
+		3367EB9C1CD0B2A700D2EF67 /* StationEarningsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationEarningsViewController.h; sourceTree = "<group>"; };
+		3367EB9D1CD0B2A700D2EF67 /* StationEarningsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationEarningsViewController.m; sourceTree = "<group>"; };
+		3367EB9F1CD0B2D200D2EF67 /* StationAppearanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationAppearanceViewController.h; sourceTree = "<group>"; };
+		3367EBA01CD0B2D200D2EF67 /* StationAppearanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationAppearanceViewController.m; sourceTree = "<group>"; };
+		3367EBA21CD0C11800D2EF67 /* productViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = productViewController.h; sourceTree = "<group>"; };
+		3367EBA31CD0C11800D2EF67 /* productViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = productViewController.m; sourceTree = "<group>"; };
 		33692BE71C92527500698375 /* threeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = threeViewController.h; path = ../../../../threeViewController.h; sourceTree = "<group>"; };
 		33692BE81C92527500698375 /* threeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = threeViewController.m; path = ../../../../threeViewController.m; sourceTree = "<group>"; };
 		33692BF01C926B4500698375 /* rili.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rili.png; path = "../设备二级界面/rili.png"; sourceTree = "<group>"; };
@@ -688,7 +706,7 @@
 		3381ED031CBCDB1500DCF0D2 /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@3x.png"; sourceTree = "<group>"; };
 		3381ED071CBCE94200DCF0D2 /* AnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerViewController.h; sourceTree = "<group>"; };
 		3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerViewController.m; sourceTree = "<group>"; };
-		3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多产品2.png"; sourceTree = "<group>"; };
+		3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "更多产品2.png"; path = "../发现/更多产品/更多产品2.png"; sourceTree = "<group>"; };
 		3383EF821C9F8A6F0075E834 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		3383EF831C9F8A6F0075E834 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		3383EF841C9F8A6F0075E834 /* MJRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -1364,7 +1382,8 @@
 				336664E01CB75213005573FB /* moreTableViewController.m */,
 				336664E21CB7524C005573FB /* moreCell.h */,
 				336664E31CB7524C005573FB /* moreCell.m */,
-				3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */,
+				3367EBA21CD0C11800D2EF67 /* productViewController.h */,
+				3367EBA31CD0C11800D2EF67 /* productViewController.m */,
 			);
 			path = "更多产品";
 			sourceTree = "<group>";
@@ -1443,6 +1462,23 @@
 				335431B91CCF549000CEAFFC /* SNLocationManager.m */,
 			);
 			path = "登陆第三方";
+			sourceTree = "<group>";
+		};
+		3367EB921CD0ADE300D2EF67 /* 电站设置 */ = {
+			isa = PBXGroup;
+			children = (
+				3367EB931CD0B07600D2EF67 /* stationTableView.h */,
+				3367EB941CD0B07600D2EF67 /* stationTableView.m */,
+				3367EB961CD0B22500D2EF67 /* StationSafeViewController.h */,
+				3367EB971CD0B22500D2EF67 /* StationSafeViewController.m */,
+				3367EB991CD0B29000D2EF67 /* StationLocationViewController.h */,
+				3367EB9A1CD0B29000D2EF67 /* StationLocationViewController.m */,
+				3367EB9C1CD0B2A700D2EF67 /* StationEarningsViewController.h */,
+				3367EB9D1CD0B2A700D2EF67 /* StationEarningsViewController.m */,
+				3367EB9F1CD0B2D200D2EF67 /* StationAppearanceViewController.h */,
+				3367EBA01CD0B2D200D2EF67 /* StationAppearanceViewController.m */,
+			);
+			path = "电站设置";
 			sourceTree = "<group>";
 		};
 		33692BF61C9294D300698375 /* 能源二级 */ = {
@@ -1599,6 +1635,7 @@
 		337F9CC41C71ABD80016FE43 /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				3367EB921CD0ADE300D2EF67 /* 电站设置 */,
 				3349A7AC1C75A201009172C2 /* 资料管理 */,
 				3355F2651C746983006DDE5A /* 关于 */,
 				337F9CCC1C71AC2E0016FE43 /* meViewController.h */,
@@ -1612,6 +1649,7 @@
 		337F9D6E1C71B1020016FE43 /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
+				3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */,
 				33238B401CBF7C3B00E82B86 /* server3@2x.png */,
 				33238B411CBF7C3B00E82B86 /* server3@3x.png */,
 				33238B441CBF7C4200E82B86 /* client@2x.png */,
@@ -2207,12 +2245,14 @@
 				335431BA1CCF549000CEAFFC /* SNLocationManager.m in Sources */,
 				3343F3BF1C80403C009F69BC /* AFHTTPRequestOperation.m in Sources */,
 				334B8F601C914B4E00798A69 /* UICountingLabel.m in Sources */,
+				3367EB9B1CD0B29000D2EF67 /* StationLocationViewController.m in Sources */,
 				3367CB4C1C86806600EF460C /* MASLayoutConstraint.m in Sources */,
 				33EFB6031C979B5F003F336F /* EditCellectView.m in Sources */,
 				3343F3ED1C805BD2009F69BC /* README.mdown in Sources */,
 				3349A7C31C75C215009172C2 /* StTransitions.m in Sources */,
 				3358812E1CB66E250068EFAD /* qualityTableViewController.m in Sources */,
 				3343F3C51C80403C009F69BC /* AFURLRequestSerialization.m in Sources */,
+				3367EBA11CD0B2D200D2EF67 /* StationAppearanceViewController.m in Sources */,
 				335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */,
 				3343F3E01C80405D009F69BC /* UIRefreshControl+AFNetworking.m in Sources */,
 				33EFB6721C98F9B1003F336F /* ZFTranslucencePath.m in Sources */,
@@ -2223,6 +2263,7 @@
 				336664F31CB784EC005573FB /* EquipGraphViewController.m in Sources */,
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
 				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,
+				3367EB981CD0B22500D2EF67 /* StationSafeViewController.m in Sources */,
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,
 				3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */,
@@ -2274,6 +2315,7 @@
 				3343F3C41C80403C009F69BC /* AFURLConnectionOperation.m in Sources */,
 				3355F26B1C746BF5006DDE5A /* aboutTableViewCell.m in Sources */,
 				3349BB3B1C7EF66200E6E34B /* userdataViewController.m in Sources */,
+				3367EBA41CD0C11800D2EF67 /* productViewController.m in Sources */,
 				335088D91C73011300D7AA03 /* addDevice.m in Sources */,
 				337C30541CCDAF3C002B99B7 /* protocol.m in Sources */,
 				3356149C1CB3AFE30071BAC9 /* addServerViewController.m in Sources */,
@@ -2293,6 +2335,7 @@
 				3381ECE51CBC900900DCF0D2 /* EquitGraph2ViewController.m in Sources */,
 				3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */,
 				334B8F4B1C914A6D00798A69 /* PNBarChart.m in Sources */,
+				3367EB951CD0B07600D2EF67 /* stationTableView.m in Sources */,
 				33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */,
 				33EFB6781C98FA7F003F336F /* newLine.m in Sources */,
 				3343F3C31C80403C009F69BC /* AFSecurityPolicy.m in Sources */,
@@ -2300,6 +2343,7 @@
 				3367CB4F1C86806700EF460C /* NSArray+MASAdditions.m in Sources */,
 				3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */,
 				334B8F581C914A6D00798A69 /* README.md in Sources */,
+				3367EB9E1CD0B2A700D2EF67 /* StationEarningsViewController.m in Sources */,
 				334B8F221C91250300798A69 /* SHLineGraphView.m in Sources */,
 				335456D41C8588E200275478 /* SNViewController.m in Sources */,
 				335456D11C8588D500275478 /* emailViewController.m in Sources */,

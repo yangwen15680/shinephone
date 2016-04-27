@@ -12,6 +12,7 @@
 #import "userdataViewController.h"
 #import "listViewController.h"
 #import "ManagementController.h"
+#import "stationTableView.h"
 
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 
@@ -208,6 +209,12 @@
 {
     if (indexPath.row==0) {
          ManagementController *aboutView = [[ManagementController alloc]init];
+        
+        [self.navigationController pushViewController:aboutView animated:NO];
+    }
+    
+    if (indexPath.row==1) {
+        stationTableView *aboutView = [[stationTableView alloc]init];
         
         [self.navigationController pushViewController:aboutView animated:NO];
     }

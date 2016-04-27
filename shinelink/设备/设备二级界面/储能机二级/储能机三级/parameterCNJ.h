@@ -10,4 +10,6 @@
 
 @interface parameterCNJ : RootViewController
 @property (nonatomic, strong) NSString *deviceSN;
+@property (nonatomic, strong) NSString *normalPower;
+@property (nonatomic, strong) NSMutableDictionary *params2Dict;
 @end

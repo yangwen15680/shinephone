@@ -22,6 +22,8 @@
 @property (nonatomic, strong)  NSMutableArray *pv22;
 @property (nonatomic, strong)  NSMutableArray *pv31;
 @property (nonatomic, strong)  NSMutableArray *pv32;
+
+@property (nonatomic, strong)  NSString *Version;
 @end
 
 @implementation parameterCNJ
@@ -40,59 +42,52 @@
     _pv12=[NSMutableArray array];
     _pv22=[NSMutableArray array];
     _pv32=[NSMutableArray array];
-    // _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)", @"VPV3(V)",nil];
-    //_pv12=[[NSMutableArray alloc]initWithObjects:@"123", @"312", @"312",nil];
-    //  _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)", @"IPV3(A)",nil];
-   // _pv22=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
-    // _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)", @"WPV3(W)",nil];
-    //_pv32=[[NSMutableArray alloc]initWithObjects:@"123", @"321", @"312",nil];
-   
+
+    NSString *A1=[NSString stringWithFormat:@"%@",_params2Dict[@"dataLogSn"]];
+
+    NSString *B1=[NSString stringWithFormat:@"%@",_params2Dict[@"alias"]];
+_Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
+    
+    [_dateN2 addObject:_deviceSN];
+    [_dateN2 addObject:A1];
+
+    
+    [_dateY2 addObject:B1];
+    [_dateY2 addObject:_normalPower];
+
+    
     [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageParams" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageInfo" sucessBlock:^(id content) {
         [self hideProgressView];
-        NSLog(@"getStorageParams: %@", content);
+        NSLog(@"getStorageInfo: %@", content);
         if (content) {
-            NSString *A1=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
-            NSString *A2=[NSString stringWithFormat:@"%@",content[@"nominalPower"]];
-            NSString *A3=[NSString stringWithFormat:@"%@",content[@"vBatText"]];
-            NSString *B1=[NSString stringWithFormat:@"%@",content[@"alias"]];
-            NSString *B2=[NSString stringWithFormat:@"%@",content[@"address"]];
-            NSString *B3=[NSString stringWithFormat:@"%@",content[@"address"]];
-            NSString *B4=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+          
             
-               NSString *C1=[NSString stringWithFormat:@"%@",content[@"vpvText"]];
-               NSString *C2=[NSString stringWithFormat:@"%@",content[@"vBatText"]];
-               //NSString *C3=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
+               NSString *C1=[NSString stringWithFormat:@"%@",content[@"vpv"]];
+               NSString *C2=[NSString stringWithFormat:@"%@",content[@"vbat"]];
+               NSString *C3=[NSString stringWithFormat:@"%@",content[@"vGuid"]];
             
-               NSString *D1=[NSString stringWithFormat:@"%@",content[@"ipvText"]];
-               //NSString *D2=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
-               NSString *D3=[NSString stringWithFormat:@"%@",content[@"iacToGridText"]];
+               NSString *D1=[NSString stringWithFormat:@"%@",content[@"ipv"]];
+               NSString *D2=[NSString stringWithFormat:@"%@",content[@"ibat"]];
+               NSString *D3=[NSString stringWithFormat:@"%@",content[@"iGuid"]];
             
-               NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppvText"]];
-               //NSString *E2=[NSString stringWithFormat:@"%@",content[@"capacityText"]];
-               NSString *E3=[NSString stringWithFormat:@"%@",content[@"pacToGridText"]];
+               NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppv"]];
+               NSString *E2=[NSString stringWithFormat:@"%@",content[@"pbat"]];
+               NSString *E3=[NSString stringWithFormat:@"%@",content[@"pGuid"]];
             
             [_pv12 addObject:C1];
              [_pv12 addObject:C2];
-             [_pv12 addObject:@""];
+             [_pv12 addObject:C3];
             
                 [_pv22 addObject:D1];
-                 [_pv22 addObject:@""];
+                 [_pv22 addObject:D2];
                  [_pv22 addObject:D3];
             
              [_pv32 addObject:E1];
-             [_pv32 addObject:@""];
+             [_pv32 addObject:E2];
              [_pv32 addObject:E3];
             
-             [_dateN2 addObject:_deviceSN];
-            [_dateN2 addObject:A1];
-             [_dateN2 addObject:A2];
-              [_dateN2 addObject:A3];
-            
-           [_dateY2 addObject:B1];
-            [_dateY2 addObject:B2];
-            [_dateY2 addObject:B3];
-            [_dateY2 addObject:B4];
+           
              [self initUI];
         }
     } failure:^(NSError *error) {
@@ -104,9 +99,9 @@
 }
 
 -(void)initdata{
-_dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定功率", @"电池电压",nil];
+_dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口",nil];
     
-    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"固件版本", @"模式", @"电池百分比(Soc)",nil];
+    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"额定功率", nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt(V)", @"Current(I)", @"Watt(W)",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV", @"Bat", @"Guid",nil];
@@ -114,22 +109,22 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NavigationbarHeight, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height-100*NOW_SIZE)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
-    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 280*NOW_SIZE)];
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 140*NOW_SIZE)];
     UIImage *bgImage = IMAGE(@"bg4.png");
     headView.layer.contents = (id)bgImage.CGImage;
      [_scrollView addSubview:headView];
     
-    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*NOW_SIZE, 1*NOW_SIZE, 270*NOW_SIZE)];
+    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*NOW_SIZE, 1*NOW_SIZE, 140*NOW_SIZE)];
     line1.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line1];
     
     float SIZE1=70*NOW_SIZE;
-    for(int i=0;i<4;i++){
+    for(int i=0;i<_dateN1.count;i++){
     UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 15*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
     PVLable.text=_dateN1[i];
     PVLable.textAlignment=NSTextAlignmentCenter;
@@ -163,7 +158,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
     
     float Size2=60*NOW_SIZE,Size3=(SCREEN_Width-60*NOW_SIZE)/3;
     for (int j=0; j<_dateName.count; j++) {
-    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*NOW_SIZE, Size3,20*NOW_SIZE )];
+    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*NOW_SIZE-140*NOW_SIZE, Size3,20*NOW_SIZE )];
     Name1.text=_dateName[j];
     Name1.textAlignment=NSTextAlignmentCenter;
     Name1.textColor=[UIColor blueColor];
@@ -173,9 +168,9 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
     
     float size3=50*NOW_SIZE;
    for (int K=0; K<_pv.count; K++) {
-        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*NOW_SIZE+size3*K, 60*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*NOW_SIZE+size3*K-140*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
         pv.text=_pv[K];
-        pv.textAlignment=NSTextAlignmentCenter;
+        pv.textAlignment=NSTextAlignmentLeft;
         pv.textColor=[UIColor blackColor];
         pv.font = [UIFont systemFontOfSize:16*NOW_SIZE];
         [_scrollView addSubview:pv];
@@ -187,7 +182,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
 //       pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv1];
        
-       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
+       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
        pv11.text=_pv12[K];
        pv11.textAlignment=NSTextAlignmentCenter;
        pv11.textColor=[UIColor grayColor];
@@ -201,7 +196,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
 //       pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv2];
        
-       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
+       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
        pv21.text=_pv22[K];
        pv21.textAlignment=NSTextAlignmentCenter;
        pv21.textColor=[UIColor grayColor];
@@ -215,18 +210,32 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定
 //       pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv3];
        
-       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*NOW_SIZE+size3*K, Size3,20*NOW_SIZE )];
+       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
        pv31.text=_pv32[K];
        pv31.textAlignment=NSTextAlignmentCenter;
        pv31.textColor=[UIColor grayColor];
        pv31.font = [UIFont systemFontOfSize:14*NOW_SIZE];
        [_scrollView addSubview:pv31];
        
-       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*NOW_SIZE+size3*K, 300*NOW_SIZE,1*NOW_SIZE )];
+       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*NOW_SIZE+size3*K-140*NOW_SIZE, 300*NOW_SIZE,1*NOW_SIZE )];
        line2.backgroundColor=COLOR(212, 212, 212, 1);
        [_scrollView addSubview:line2];
        
     }
+    
+    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    FW.text=@"固件版本";
+    FW.textAlignment=NSTextAlignmentCenter;
+    FW.textColor=[UIColor blackColor];
+    FW.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [self.view addSubview:FW];
+    
+    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    FW1.text=_Version;
+    FW1.textAlignment=NSTextAlignmentCenter;
+    FW1.textColor=[UIColor grayColor];
+    FW1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    [self.view addSubview:FW1];
     
 }
 

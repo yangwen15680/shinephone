@@ -471,8 +471,10 @@
                  [dayArray2 removeObjectAtIndex:j];
             }
         }
+        
          [self initDatacore];
         self.edgesForExtendedLayout=UIRectEdgeNone;
+         self.navigationController.navigationBar.translucent = NO;
         //_tableView.frame =CGRectMake(0, NavigationbarHeight, SCREEN_Width, SCREEN_Height);
          [self.tableView reloadData];
             

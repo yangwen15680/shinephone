@@ -30,6 +30,7 @@
                                                                       NSForegroundColorAttributeName :[UIColor whiteColor]
                                                                       }];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
 }
 

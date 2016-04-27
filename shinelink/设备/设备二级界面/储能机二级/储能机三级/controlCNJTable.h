@@ -10,4 +10,5 @@
 
 @interface controlCNJTable : UITableViewController
 @property (nonatomic, strong) NSString *CnjSn;
+
 @end
