@@ -29,12 +29,14 @@
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *tel=[ud objectForKey:@"TelNumber"];
     NSString *email=[ud objectForKey:@"email"];
+      NSString *agent=[ud objectForKey:@"agentCode"];
     
     self.dataArray1=[NSMutableArray array];
     [self.dataArray1 addObject:@""];
     [self.dataArray1 addObject:tel];
     [self.dataArray1 addObject:email];
-    self.dataArray =[NSMutableArray arrayWithObjects:@"修改密码",@"修改手机号",@"修改邮箱",nil];
+     [self.dataArray1 addObject:agent];
+    self.dataArray =[NSMutableArray arrayWithObjects:@"修改密码",@"修改手机号",@"修改邮箱",@"修改代理商编号",nil];
    // self.dataArray1 =[NSMutableArray arrayWithObjects:@"",@"18666666666",@"328657662@qq.com",nil];
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 300*NOW_SIZE)];
@@ -43,7 +45,7 @@
     [self.view addSubview:_tableView];
     
     UIButton *registerUser =  [UIButton buttonWithType:UIButtonTypeCustom];
-    registerUser.frame=CGRectMake((SCREEN_Width-150*NOW_SIZE)/2,300*NOW_SIZE, 150*NOW_SIZE, 40*NOW_SIZE);
+    registerUser.frame=CGRectMake((SCREEN_Width-150*NOW_SIZE)/2,320*NOW_SIZE, 150*NOW_SIZE, 40*NOW_SIZE);
     [registerUser.layer setMasksToBounds:YES];
     [registerUser.layer setCornerRadius:20.0];
     registerUser.backgroundColor = [UIColor redColor];
@@ -119,6 +121,8 @@
         go.type=@"1";
     }else if (indexPath.row==2){
         go.type=@"2";
+    }else if (indexPath.row==3){
+        go.type=@"3";
     }
  
     [self.navigationController pushViewController:go animated:YES];

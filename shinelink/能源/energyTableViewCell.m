@@ -7,8 +7,8 @@
 //
 
 #import "energyTableViewCell.h"
-#define labelWidth  55*NOW_SIZE
-#define labelWidth1  38*NOW_SIZE
+#define labelWidth  65*NOW_SIZE
+#define labelWidth1  48*NOW_SIZE
 #define labelHeight  20*NOW_SIZE
 #define fontSize  11*NOW_SIZE
 #define labelColor  grayColor

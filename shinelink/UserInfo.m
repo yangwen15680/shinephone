@@ -41,6 +41,13 @@ static int timerNumber=0;
             _userName = [ud objectForKey:@"userName"];
         }
         
+        if (![ud objectForKey:@"agentCode"]) {
+            [ud setObject:@"" forKey:@"agentCode"];
+            _agentCode = @"";
+        } else {
+            _agentCode = [ud objectForKey:@"agentCode"];
+        }
+        
         if (![ud objectForKey:@"userPassword"]) {
             [ud setObject:@"" forKey:@"userPassword"];
             _userPassword = @"";
@@ -110,6 +117,12 @@ static int timerNumber=0;
     _isAutoLogin = isAutoLogin;
     
     [[NSUserDefaults standardUserDefaults] setBool:_isAutoLogin forKey:@"isAutoLogin"];
+}
+
+- (void)setAgentCode:(NSString *)agentCode {
+    _agentCode = agentCode;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_agentCode forKey:@"agentCode"];
 }
 
 - (void)setUserPic:(NSData *)userPic{

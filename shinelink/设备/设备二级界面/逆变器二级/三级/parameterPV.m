@@ -60,12 +60,17 @@
             [_dateY2 addObject:B1];
              [_dateY2 addObject:par];
              [_dateY2 addObject:B5];
-            //[self initUI];
+            [self netParameter2];
         }
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
     
+    
+}
+
+-(void)netParameter2{
+
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"inverterId":_PvSn} paramarsSite:@"/newInverterAPI.do?op=getInverterDetailData" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getInverterDetailData: %@", content);
@@ -78,10 +83,10 @@
             NSString *D2=[NSString stringWithFormat:@"%@",content[@"ipv2"]];
             NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppv1"]];
             NSString *E2=[NSString stringWithFormat:@"%@",content[@"ppv2"]];
-             [_pv12 addObject:C1];
+            [_pv12 addObject:C1];
             [_pv12 addObject:C2];
             [_pv22 addObject:D1];
-          
+            
             [_pv22 addObject:D2];
             [_pv32 addObject:E1];
             [_pv32 addObject:E2];
@@ -92,7 +97,8 @@
     } failure:^(NSError *error) {
         [self hideProgressView];
     }];
-    
+
+
 }
 
 - (void)showProgressView {

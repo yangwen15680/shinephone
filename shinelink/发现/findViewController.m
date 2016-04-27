@@ -56,7 +56,7 @@
     //创建tableView的方法
     [self _createTableView];
     
-
+   
     
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 
@@ -64,7 +64,7 @@
 
 -(void)netFind{
     
-      NSMutableArray *dataArray=[NSMutableArray array];
+      //NSMutableArray *dataArray=[NSMutableArray array];
     _imageArray=[NSMutableArray array];
     
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingList" sucessBlock:^(id content) {
@@ -76,6 +76,7 @@
                 [_imageArrayName addObject:content[i][@"name"]];
             }
             
+            [self netFind2];
                     }
         
     } failure:^(NSError *error) {
@@ -83,23 +84,36 @@
         
     }];
     
+   
+
+
+}
+
+
+-(void)netFind2{
+
     for (int i=0; i<_imageArrayCount.count; i++) {
         
-    [self showProgressView];
-    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"Name":dataArray[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
-        [self hideProgressView];
-        NSLog(@"getAdvertisingImages=: %@", content);
-        
-        [_imageArray addObject:content];
-        
-    } failure:^(NSError *error) {
-        [self hideProgressView];
-        [self showToastViewWithTitle:root_Networking];
-        
-    }];
+        [self showProgressView];
+        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"Name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+            [self hideProgressView];
+            NSLog(@"getAdvertisingImages=: %@", content);
+            if (content) {
+                [_imageArray addObject:content];
+                if (i==(_imageArrayCount.count-1)) {
+                    [self _createHeaderView];
+                }
+            }
+           
+        } failure:^(NSError *error) {
+            [self hideProgressView];
+             [self _createHeaderView];
+            [self showToastViewWithTitle:root_Networking];
+            
+        }];
+      
     }
-
-        [self _createHeaderView];
+    
 }
 
 

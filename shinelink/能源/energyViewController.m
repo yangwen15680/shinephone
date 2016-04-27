@@ -60,15 +60,25 @@
         
         NSLog(@"getEnergyList: %@", content);
         if (content) {
-            [monthArray replaceObjectAtIndex:0 withObject:content[@"familyEnergy"][@"monthEnergy"]];
-            [monthArray replaceObjectAtIndex:1 withObject:content[@"familyDevice"][@"mostEnergy"]];
-            [monthArray replaceObjectAtIndex:2 withObject:content[@"photovoltaicEnergy"][@"monthEnergy"]];
-            [monthArray replaceObjectAtIndex:3 withObject:content[@"storageEnergy"][@"monthEnergy"]];
+            NSString *A1=[NSString stringWithFormat:@"%@",content[@"familyEnergy"][@"monthEnergy"]];
+            NSString *A2=[NSString stringWithFormat:@"%@",content[@"familyDevice"][@"mostEnergy"]];
+             NSString *A3=[NSString stringWithFormat:@"%@",content[@"photovoltaicEnergy"][@"monthEnergy"]];
+             NSString *A4=[NSString stringWithFormat:@"%@",content[@"storageEnergy"][@"monthEnergy"]];
             
-            [dayDateArray replaceObjectAtIndex:0 withObject:content[@"familyEnergy"][@"todayEnergy"]];
-            [dayDateArray replaceObjectAtIndex:1 withObject:content[@"familyDevice"][@"mostPower"]];
-            [dayDateArray replaceObjectAtIndex:2 withObject:content[@"photovoltaicEnergy"][@"todayEnergy"]];
-            [dayDateArray replaceObjectAtIndex:3 withObject:content[@"storageEnergy"][@"todayEnergy"]];
+            NSString *B1=[NSString stringWithFormat:@"%@",content[@"familyEnergy"][@"todayEnergy"]];
+            NSString *B2=[NSString stringWithFormat:@"%@",content[@"familyDevice"][@"mostPower"]];
+            NSString *B3=[NSString stringWithFormat:@"%@",content[@"photovoltaicEnergy"][@"todayEnergy"]];
+            NSString *B4=[NSString stringWithFormat:@"%@",content[@"storageEnergy"][@"todayEnergy"]];
+            
+            [monthDateArray replaceObjectAtIndex:0 withObject:A1];
+            [monthDateArray replaceObjectAtIndex:1 withObject:A2];
+            [monthDateArray replaceObjectAtIndex:2 withObject:A3];
+            [monthDateArray replaceObjectAtIndex:3 withObject:A4];
+            
+            [dayDateArray replaceObjectAtIndex:0 withObject:B1];
+            [dayDateArray replaceObjectAtIndex:1 withObject:B2];
+            [dayDateArray replaceObjectAtIndex:2 withObject:B3];
+            [dayDateArray replaceObjectAtIndex:3 withObject:B4];
             
             [_tableView reloadData];
         }

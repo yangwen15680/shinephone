@@ -99,9 +99,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     [self.view addSubview:_scrollView];
     
-
-    _valueName=[NSMutableArray arrayWithObjects:@"光伏收益",@"最大值",@"平均值",nil];
-    
+    if ([_dicType isEqualToString:@"2"]){
+            _valueName=[NSMutableArray arrayWithObjects:@"发电量",@"最大值",@"平均值",nil];
+    }else if ([_dicType isEqualToString:@"3"]){
+    _valueName=[NSMutableArray arrayWithObjects:@"放电量",@"最大值",@"平均值",nil];
+    }
     
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
@@ -245,7 +247,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
                         self.dayDict = [NSMutableDictionary new];
                     }
                     
-                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                    _value1=content[@"back"][@"plantData"][@"currentEnergy"];
                 }
             }else if ([_dicType isEqualToString:@"3"]){
                 if ([content[@"success"] boolValue] == true) {
@@ -365,7 +367,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
             if ([_dicType isEqualToString:@"2"]) {
                 if ([content[@"back"][@"success"] boolValue] == true) {
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
-                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                    _value1=content[@"back"][@"plantData"][@"currentEnergy"];
                 }
             }else if ([_dicType isEqualToString:@"3"]){
                 if ([content[@"success"] boolValue] == true) {
@@ -421,7 +423,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
             if ([_dicType isEqualToString:@"2"]) {
                 if ([content[@"back"][@"success"] boolValue] == true) {
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
-                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                    _value1=content[@"back"][@"plantData"][@"currentEnergy"];
                 }
             }else if ([_dicType isEqualToString:@"3"]){
                 if ([content[@"success"] boolValue] == true) {
@@ -475,7 +477,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
             if ([_dicType isEqualToString:@"2"]) {
                 if ([content[@"back"][@"success"] boolValue] == true) {
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
-                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                    _value1=content[@"back"][@"plantData"][@"currentEnergy"];
                 }
             }else if ([_dicType isEqualToString:@"3"]){
                 if ([content[@"success"] boolValue] == true) {
@@ -527,7 +529,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
             if ([_dicType isEqualToString:@"2"]) {
                 if ([content[@"back"][@"success"] boolValue] == true) {
                     self.dayDict = [NSMutableDictionary dictionaryWithDictionary:content[@"back"][@"data"]];
-                    _value1=content[@"back"][@"plantData"][@"plantMoneyText"];
+                    _value1=content[@"back"][@"plantData"][@"currentEnergy"];
                 }
             }else if ([_dicType isEqualToString:@"3"]){
                 if ([content[@"success"] boolValue] == true) {

@@ -283,6 +283,7 @@
                 [[UserInfo defaultUserInfo] setTelNumber:_dataSource[@"user"][@"phoneNum"]];
                 [[UserInfo defaultUserInfo] setUserID:_dataSource[@"user"][@"id"]];
                 [[UserInfo defaultUserInfo] setEmail:_dataSource[@"user"][@"email"]];
+                   [[UserInfo defaultUserInfo] setAgentCode:_dataSource[@"user"][@"agentCode"]];
                 
                 NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
                 NSLog(@"ID=%@",ID);
