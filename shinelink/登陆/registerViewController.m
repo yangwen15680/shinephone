@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-  //  [self netServer];
+ [self netServer];
     
     [self initUI];
     //获取本地语言

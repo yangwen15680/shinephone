@@ -17,6 +17,8 @@
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *imageArrayName;
+@property(nonatomic,strong)NSMutableArray *imageArrayCount;
 @end
 
 @implementation findViewController
@@ -48,6 +50,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    _imageArrayName=[NSMutableArray array];
+      _imageArrayCount=[NSMutableArray array];
     [self netFind];
     //创建tableView的方法
     [self _createTableView];
@@ -60,26 +64,42 @@
 
 -(void)netFind{
     
+      NSMutableArray *dataArray=[NSMutableArray array];
+    _imageArray=[NSMutableArray array];
     
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingList" sucessBlock:^(id content) {
+        
+        NSLog(@"getAdvertisingList: %@", content);
+        [ _imageArrayCount addObjectsFromArray:content];
+        if (_imageArrayCount.count>0) {
+            for (int i=0; i<_imageArrayCount.count; i++) {
+                [_imageArrayName addObject:content[i][@"name"]];
+            }
+            
+                    }
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
     
-    
-    
-    
+    for (int i=0; i<_imageArrayCount.count; i++) {
+        
     [self showProgressView];
-    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"Name":dataArray[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getAdvertisingImages=: %@", content);
-        _imageArray=[NSMutableArray arrayWithObject:content];
-      
         
-        [self _createHeaderView];
+        [_imageArray addObject:content];
         
     } failure:^(NSError *error) {
         [self hideProgressView];
         [self showToastViewWithTitle:root_Networking];
         
     }];
+    }
 
+        [self _createHeaderView];
 }
 
 

@@ -210,6 +210,7 @@
 }
 
 -(void)pickadress{
+    if(_provinceArray.count>0){
     AddressPickView *addressPickView = [AddressPickView shareInstance];
     addressPickView.provinceArray=_provinceArray;
     [self.view addSubview:addressPickView];
@@ -218,9 +219,12 @@
        // [self.dataDic setObject:town forKey:@"regCity"];
         _label.text = [NSString stringWithFormat:@"%@",province] ;
         _country=province;
-        
     };
-
+    }else{
+        [self showToastViewWithTitle:@"请再次进入页面获取国家列表"];
+        return;
+    
+    }
 }
 
 - (void)didReceiveMemoryWarning {

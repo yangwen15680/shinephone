@@ -82,6 +82,9 @@
     }
 }
 
+
+
+
 //添加布局
 - (void)addSubViews {
 
@@ -284,7 +287,9 @@
                 NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
                 NSLog(@"ID=%@",ID);
                 
-                [self didPresentControllerButtonTouch];
+                //获取服务器
+              //  [self netServerInit];
+             [self didPresentControllerButtonTouch];
                 
             }
         }
@@ -302,6 +307,30 @@
         [hud hide:YES afterDelay:1.5];
     }];
 
+}
+
+-(void)netServerInit{
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"userName":_userTextField.text} paramarsSite:@"/newLoginAPI.do?op=getUserServerUrl" sucessBlock:^(id content) {
+        
+        NSLog(@"getUserServerUrl: %@", content);
+        if (content) {
+            if ([content[@"success"]intValue]==1) {
+                NSString *server=content[@"msg"];
+                [[UserInfo defaultUserInfo] setServer:server];
+                     [self didPresentControllerButtonTouch];
+            }
+        }else{
+        
+                 [self didPresentControllerButtonTouch];
+        }
+        
+    } failure:^(NSError *error) {
+        
+             [self didPresentControllerButtonTouch];
+    }];
+    
+    
 }
 
 //弹出输入用户提示框方法

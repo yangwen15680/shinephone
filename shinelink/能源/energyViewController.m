@@ -41,12 +41,46 @@
     
     nameArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量",@"家庭用电设备",@"光伏电量",@"储能电量", nil];
     monthArray=[[NSMutableArray alloc]initWithObjects:@"月:",@"最省电:",@"月:",@"月:",nil];
-    monthDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",nil];
-    dayDateArray=[[NSMutableArray alloc]initWithObjects:@"10KW/m",@"10KW/m",@"10KW/m",@"10KW/m",nil];
+    //monthDateArray=[NSMutableArray array];
+    //dayDateArray=[NSMutableArray array];
+    monthDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
+    dayDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
     dayArray=[[NSMutableArray alloc]initWithObjects:@"日:",@"最耗电:",@"日:",@"日:", nil];
     imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"光伏收益.png",@"光伏电量.png", nil];
     // Do any additional setup after loading the view.
     [self _createTableView];
+    [self netEnergy];
+}
+
+-(void)netEnergy{
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *plantID=[ud objectForKey:@"plantID"];
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"plantId":plantID} paramarsSite:@"/newEnergyAPI.do?op=getEnergyList" sucessBlock:^(id content) {
+        
+        NSLog(@"getEnergyList: %@", content);
+        if (content) {
+            [monthArray replaceObjectAtIndex:0 withObject:content[@"familyEnergy"][@"monthEnergy"]];
+            [monthArray replaceObjectAtIndex:1 withObject:content[@"familyDevice"][@"mostEnergy"]];
+            [monthArray replaceObjectAtIndex:2 withObject:content[@"photovoltaicEnergy"][@"monthEnergy"]];
+            [monthArray replaceObjectAtIndex:3 withObject:content[@"storageEnergy"][@"monthEnergy"]];
+            
+            [dayDateArray replaceObjectAtIndex:0 withObject:content[@"familyEnergy"][@"todayEnergy"]];
+            [dayDateArray replaceObjectAtIndex:1 withObject:content[@"familyDevice"][@"mostPower"]];
+            [dayDateArray replaceObjectAtIndex:2 withObject:content[@"photovoltaicEnergy"][@"todayEnergy"]];
+            [dayDateArray replaceObjectAtIndex:3 withObject:content[@"storageEnergy"][@"todayEnergy"]];
+            
+            [_tableView reloadData];
+        }
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+    
+
+    
+
 }
 
 - (void)_createTableView {
