@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"电站图片";
+    UIImage *bgImage = IMAGE(@"bg4.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
     _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 100*NOW_SIZE, 240*NOW_SIZE, 240*NOW_SIZE)];
     _imageView.contentMode=UIViewContentModeScaleAspectFill;
     _imageView.clipsToBounds=YES;
@@ -32,7 +34,7 @@
 
 -(void)requestData{
     [self showProgressView];
-    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"id":_stationId} paramarsSite:@"/plantA.do?op=getImg" sucessBlock:^(id content) {
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"id":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=getImg" sucessBlock:^(id content) {
         [self hideProgressView];
         _imageView.image=content;
     } failure:^(NSError *error) {
@@ -86,9 +88,9 @@
     NSData *imageData = UIImageJPEGRepresentation(_imageView.image, 0.5);
     
     NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
-    [dataImageDict setObject:imageData forKey:@"plantImg"];
-    NSString *plantId = _stationId;
-        [BaseRequest uplodImageWithMethod:HEAD_URL paramars:@{@"id":[NSNumber numberWithInteger:[plantId integerValue]]} paramarsSite:@"/plantA.do?op=updateImg" dataImageDict:dataImageDict sucessBlock:^(id content) {
+    [dataImageDict setObject:imageData forKey:@"plantMap"];
+    //NSString *plantId = _stationId;
+        [BaseRequest uplodImageWithMethod:HEAD_URL paramars:@{@"id":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=updateImg" dataImageDict:dataImageDict sucessBlock:^(id content) {
             NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
             if ([res isEqualToString:@"true"]) {
                 [self showToastViewWithTitle:NSLocalizedString(@"Successfully modified", @"Successfully modified")];

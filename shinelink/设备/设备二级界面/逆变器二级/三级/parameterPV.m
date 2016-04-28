@@ -79,17 +79,39 @@
             
             NSString *C1=[NSString stringWithFormat:@"%@",content[@"vpv1"]];
             NSString *C2=[NSString stringWithFormat:@"%@",content[@"vpv2"]];
+            NSString *C3=[NSString stringWithFormat:@"%@",content[@"vacr"]];
+            NSString *C4=[NSString stringWithFormat:@"%@",content[@"vacs"]];
+            NSString *C5=[NSString stringWithFormat:@"%@",content[@"vact"]];
+            
             NSString *D1=[NSString stringWithFormat:@"%@",content[@"ipv1"]];
             NSString *D2=[NSString stringWithFormat:@"%@",content[@"ipv2"]];
+            NSString *D3=[NSString stringWithFormat:@"%@",content[@"iacr"]];
+            NSString *D4=[NSString stringWithFormat:@"%@",content[@"iacs"]];
+            NSString *D5=[NSString stringWithFormat:@"%@",content[@"iact"]];
+            
             NSString *E1=[NSString stringWithFormat:@"%@",content[@"ppv1"]];
             NSString *E2=[NSString stringWithFormat:@"%@",content[@"ppv2"]];
+             NSString *E3=[NSString stringWithFormat:@"%@",content[@"pacr"]];
+             NSString *E4=[NSString stringWithFormat:@"%@",content[@"pacs"]];
+             NSString *E5=[NSString stringWithFormat:@"%@",content[@"pact"]];
+            
             [_pv12 addObject:C1];
             [_pv12 addObject:C2];
-            [_pv22 addObject:D1];
+              [_pv12 addObject:C3];
+              [_pv12 addObject:C4];
+              [_pv12 addObject:C5];
             
+            [_pv22 addObject:D1];
             [_pv22 addObject:D2];
+            [_pv22 addObject:D3];
+            [_pv22 addObject:D4];
+            [_pv22 addObject:D5];
+            
             [_pv32 addObject:E1];
             [_pv32 addObject:E2];
+            [_pv32 addObject:E3];
+            [_pv32 addObject:E4];
+            [_pv32 addObject:E5];
             
             
             [self initUI];
@@ -116,17 +138,17 @@
     _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"属性", @"模式",nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt", @"Current", @"Watt",nil];
-    _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2",nil];
-    _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)",nil];
+    _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2",@"AC1",@"AC2",@"AC3",nil];
+   // _pv11=[[NSMutableArray alloc]initWithObjects:@"VPV1(V)", @"VPV2(V)",nil];
 
-    _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)",nil];
+  //  _pv21=[[NSMutableArray alloc]initWithObjects:@"IPV1(A)", @"IPV2(A)",nil];
 
-    _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)",nil];
+ //   _pv31=[[NSMutableArray alloc]initWithObjects:@"WPV1(W)", @"WPV2(W)",nil];
   
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 45*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
@@ -183,58 +205,58 @@
         [_scrollView addSubview:Name1];
     }
     
-    float size3=50*NOW_SIZE;
+    float size3=40*NOW_SIZE;
     for (int K=0; K<_pv.count; K++) {
-        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*NOW_SIZE+size3*K-70*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 330*NOW_SIZE+size3*K-70*NOW_SIZE, 60*NOW_SIZE,15*NOW_SIZE )];
         pv.text=_pv[K];
-        pv.textAlignment=NSTextAlignmentCenter;
+        pv.textAlignment=NSTextAlignmentLeft;
         pv.textColor=[UIColor blackColor];
         pv.font = [UIFont systemFontOfSize:16*NOW_SIZE];
         [_scrollView addSubview:pv];
         
-        UILabel *pv1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
-        pv1.text=_pv11[K];
-        pv1.textAlignment=NSTextAlignmentCenter;
-        pv1.textColor=[UIColor grayColor];
-        pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-        [_scrollView addSubview:pv1];
+//        UILabel *pv1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+//        pv1.text=_pv11[K];
+//        pv1.textAlignment=NSTextAlignmentCenter;
+//        pv1.textColor=[UIColor grayColor];
+//        pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//        [_scrollView addSubview:pv1];
         
-        UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 350*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+        UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
         pv11.text=_pv12[K];
         pv11.textAlignment=NSTextAlignmentCenter;
         pv11.textColor=[UIColor grayColor];
         pv11.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         [_scrollView addSubview:pv11];
         
-        UILabel *pv2=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
-        pv2.text=_pv21[K];
-        pv2.textAlignment=NSTextAlignmentCenter;
-        pv2.textColor=[UIColor grayColor];
-        pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-        [_scrollView addSubview:pv2];
+//        UILabel *pv2=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+//        pv2.text=_pv21[K];
+//        pv2.textAlignment=NSTextAlignmentCenter;
+//        pv2.textColor=[UIColor grayColor];
+//        pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//        [_scrollView addSubview:pv2];
         
-        UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 350*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+        UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
         pv21.text=_pv22[K];
         pv21.textAlignment=NSTextAlignmentCenter;
         pv21.textColor=[UIColor grayColor];
         pv21.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         [_scrollView addSubview:pv21];
         
-        UILabel *pv3=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
-        pv3.text=_pv31[K];
-        pv3.textAlignment=NSTextAlignmentCenter;
-        pv3.textColor=[UIColor grayColor];
-        pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-        [_scrollView addSubview:pv3];
+//        UILabel *pv3=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+//        pv3.text=_pv31[K];
+//        pv3.textAlignment=NSTextAlignmentCenter;
+//        pv3.textColor=[UIColor grayColor];
+//        pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+//        [_scrollView addSubview:pv3];
         
-        UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 350*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
+        UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3,330*NOW_SIZE+size3*K-70*NOW_SIZE, Size3,15*NOW_SIZE )];
         pv31.text=_pv32[K];
         pv31.textAlignment=NSTextAlignmentCenter;
         pv31.textColor=[UIColor grayColor];
         pv31.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         [_scrollView addSubview:pv31];
         
-        UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*NOW_SIZE+size3*K-70*NOW_SIZE, 300*NOW_SIZE,1*NOW_SIZE )];
+        UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 355*NOW_SIZE+size3*K-70*NOW_SIZE, 300*NOW_SIZE,1*NOW_SIZE )];
         line2.backgroundColor=COLOR(212, 212, 212, 1);
         [_scrollView addSubview:line2];
         

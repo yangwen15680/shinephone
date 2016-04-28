@@ -7,19 +7,20 @@
 //
 
 #import "StationLocationViewController.h"
-
-
+#import "SNLocationManager.h"
+#import "RootPickerView.h"
 
 @interface StationLocationViewController ()
 @property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
 @property(nonatomic,strong)NSMutableArray *timeZone;
+@property(nonatomic,strong)NSMutableArray *country;
 @property(nonatomic,strong)NSString *lat;
 @property(nonatomic,strong)NSString *lng;
 @property (nonatomic, strong) UIView *readView;
 @property (nonatomic, strong) UIView *writeView;
 @property (nonatomic, strong) UIView *buttonView;
 @property (nonatomic, strong) UIButton *goBut;
-
+@property(nonatomic,strong)RootPickerView *pickerView;
 @end
 
 @implementation StationLocationViewController
@@ -45,7 +46,7 @@
         [sender setTitle:root_Cancel];
         [_readView removeFromSuperview];
         _readView=nil;
-        [self writeUI];
+        [self getPickerData];
     }else{
         [sender setTitle:NSLocalizedString(@"Edit", @"Edit")];
         [self readUI];
@@ -104,10 +105,47 @@
     
 }
 
+- (void)getPickerData
+{
+    _country=[NSMutableArray array];
+    [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newCountryCityAPI.do?op=getCountryCity" sucessBlock:^(id content) {
+        
+        NSLog(@"getCountryCity: %@", content);
+        if (content) {
+            NSArray *dataDic=[NSArray arrayWithArray:content];
+            if (dataDic.count>0) {
+                for (int i=0; i<dataDic.count; i++) {
+                    NSString *DY=[NSString stringWithFormat:@"%@",content[i][@"country"]];
+                    [ _country addObject:DY];
+                }
+                [self hideProgressView];
+            }
+            
+            [_country sortUsingComparator:^NSComparisonResult(__strong id obj1,__strong id obj2){
+                NSString *str1=(NSString *)obj1;
+                NSString *str2=(NSString *)obj2;
+                return [str1 compare:str2];
+            }];
+            [self writeUI];
+        }else{
+            [self hideProgressView];
+             [self writeUI];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+         [self writeUI];
+    }];
+    
+}
+
+
 
 -(void)writeUI{
-    
     _timeZone=[NSMutableArray arrayWithObjects:@"+1",@"+2",@"+3",@"+4",@"+5",@"+6",@"+7",@"+8",@"+9",@"+10",@"+11",@"+12",@"-1",@"-2",@"-3",@"-4",@"-5",@"-6",@"-7",@"-8",@"-9",@"-10",@"-11",@"-12", nil];
+    _pickerView=[[RootPickerView alloc]initWithTwoArray:_country arrayTwo:_timeZone];
+    [self.view addSubview:_pickerView];
     _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
@@ -136,27 +174,35 @@
         }else{
             textField.tag=i;
         }
-        //textField.delegate=_pickerView;
+        textField.delegate=_pickerView;
         [_writeView addSubview:textField];
         [_textFieldMutableArray addObject:textField];
     }
     
-    UIButton *latButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 130*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
-    [latButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:UIControlStateNormal];
-    [latButton setTitle:@"" forState:UIControlStateNormal];
-    latButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
-    [latButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
-    latButton.tag=1;
-    [latButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_writeView addSubview:latButton];
+//    UIButton *latButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 130*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
+//    [latButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:UIControlStateNormal];
+//    [latButton setTitle:@"" forState:UIControlStateNormal];
+//    latButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+//    [latButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
+//    latButton.tag=1;
+//    [latButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+//    [_writeView addSubview:latButton];
+    UIButton *lngButton0=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 48*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
+    [lngButton0 setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [lngButton0 setTitle:@"点击获取" forState:UIControlStateNormal];
+    lngButton0.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+    [lngButton0 setTitleColor:COLOR(82, 201, 194, 1) forState:0];
+    lngButton0.tag=2001;
+    [lngButton0 addTarget:self action:@selector(fetchLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [_writeView addSubview:lngButton0];
     
-    UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 170*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
+    UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 150*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
     [lngButton setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [lngButton setTitle:@"点击获取" forState:UIControlStateNormal];
     lngButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
     [lngButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
-    lngButton.tag=2;
-    [lngButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    lngButton.tag=2002;
+    [lngButton addTarget:self action:@selector(fetchLocation:) forControlEvents:UIControlEventTouchUpInside];
     [_writeView addSubview:lngButton];
     
 
@@ -186,7 +232,42 @@
     }
 }
 
+-(void)fetchLocation:(UIButton *)sender{
+    
+    
+    [[SNLocationManager shareLocationManager] startUpdatingLocationWithSuccess:^(CLLocation *location, CLPlacemark *placemark) {
+        
+       
+            UIView *view=[self.view viewWithTag:1];
+            UITextField *textField=(UITextField *)view;
+            textField.text=placemark.locality;
+    
+        
+        
+        NSString *longitude=[NSString stringWithFormat:@"%.2f", location.coordinate.longitude];
+        NSString *latitude=[NSString stringWithFormat:@"%.2f", location.coordinate.latitude];
+        
+            UIView *view2=[self.view viewWithTag:3];
+            UITextField *textField2=(UITextField *)view2;
+            textField2.text=latitude;
+        
+            UIView *view1=[self.view viewWithTag:4];
+            UITextField *textField1=(UITextField *)view1;
+            textField1.text=longitude;
+        
 
+        
+       
+        //_city=placemark.locality;
+        
+        //NSString *lableText=[NSString stringWithFormat:@"%@(%@,%@)",_city,_longitude,_latitude];
+        //_label2.text =lableText;
+        
+    } andFailure:^(CLRegion *region, NSError *error) {
+        
+    }];
+    
+}
 
 -(void)delButtonPressed{
     [self.navigationController popViewControllerAnimated:YES];
@@ -206,30 +287,31 @@
             return;
         }
     }
-    NSRange range=[_dict[@"normalPower"] rangeOfString:@" "];
-    NSRange newRange={0,range.location};
-    NSString *string=[_dict[@"normalPower"] substringWithRange:newRange];
-    NSDictionary *dict=@{@"plantID":_stationId,
-                         @"plantName":_dict[@"plantName"],
-                         @"plantDate":_dict[@"createData"],
-                         @"plantFirm":_dict[@"designCompany"],
-                         @"plantPower":string,
-                         @"plantCountry":[_textFieldMutableArray[0] text],
-                         @"plantCity":[_textFieldMutableArray[1] text],
-                         @"plantTimezone":[_textFieldMutableArray[2] text],
-                         @"plantLat":[_textFieldMutableArray[3] text],
-                         @"plantLng":[_textFieldMutableArray[4] text],
-                         @"plantIncome":_dict[@"formulaMoney"],
-                         @"plantMoney":_dict[@"formulaMoneyUnit"],
-                         @"plantCoal":_dict[@"formulaCoal"],
-                         @"plantCo2":_dict[@"formulaCo2"],
-                         @"plantSo2":_dict[@"formulaSo2"],};
+    
+    NSMutableDictionary *dicArray=[NSMutableDictionary new];
+    [dicArray setObject:[UserInfo defaultUserInfo].plantID forKey:@"plantID"];
+    [dicArray setObject:_dict[@"plantName"] forKey:@"plantName"];
+    [dicArray setObject:_dict[@"createDateText"] forKey:@"plantDate"];
+    [dicArray setObject:_dict[@"designCompany"] forKey:@"plantFirm"];
+    [dicArray setObject:_dict[@"nominalPower"] forKey:@"plantPower"];
+    [dicArray setObject:[_textFieldMutableArray[0] text] forKey:@"plantCountry"];
+    [dicArray setObject:[_textFieldMutableArray[1] text] forKey:@"plantCity"];
+    [dicArray setObject:[_textFieldMutableArray[2] text] forKey:@"plantTimezone"];
+    [dicArray setObject:[_textFieldMutableArray[3] text] forKey:@"plantLat"];
+    [dicArray setObject:[_textFieldMutableArray[4] text] forKey:@"plantLng"];
+    [dicArray setObject:_dict[@"formulaMoney"] forKey:@"plantIncome"];
+    [dicArray setObject:_dict[@"formulaMoneyUnitId"] forKey:@"plantMoney"];
+    [dicArray setObject:_dict[@"formulaCoal"] forKey:@"plantCoal"];
+    [dicArray setObject:_dict[@"formulaCo2"] forKey:@"plantCo2"];
+    [dicArray setObject:_dict[@"formulaSo2"] forKey:@"plantSo2"];
+    
+
     [self showProgressView];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dict paramarsSite:@"/plantA.do?op=update" dataImageDict:nil sucessBlock:^(id content) {
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dicArray paramarsSite:@"/newPlantAPI.do?op=updatePlant" dataImageDict:nil sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"testtest: %@", content);
         id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([jsonObj integerValue]==1) {
+        if ([jsonObj[@"success"] integerValue]==1) {
             [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Successfully modified", @"Successfully modified") cancelButtonTitle:root_Yes];
             [self.navigationController popViewControllerAnimated:YES];
         }else{

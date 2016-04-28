@@ -112,6 +112,7 @@
 		335130331CCA0CDC00A2A799 /* fog2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130321CCA0CDC00A2A799 /* fog2@3x.png */; };
 		335130351CCA1C9D00A2A799 /* overcast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130341CCA1C9D00A2A799 /* overcast@2x.png */; };
 		335239031CD1B74E00287EA9 /* imageBig.m in Sources */ = {isa = PBXBuildFile; fileRef = 335239021CD1B74E00287EA9 /* imageBig.m */; };
+		335239061CD2067E00287EA9 /* RootPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 335239051CD2067E00287EA9 /* RootPickerView.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
 		33530F1E1CC87B5000378EB2 /* ManagementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33530F1D1CC87B5000378EB2 /* ManagementController.m */; };
@@ -515,6 +516,8 @@
 		335130341CCA1C9D00A2A799 /* overcast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@2x.png"; sourceTree = "<group>"; };
 		335239011CD1B74E00287EA9 /* imageBig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageBig.h; sourceTree = "<group>"; };
 		335239021CD1B74E00287EA9 /* imageBig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageBig.m; sourceTree = "<group>"; };
+		335239041CD2067E00287EA9 /* RootPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootPickerView.h; sourceTree = "<group>"; };
+		335239051CD2067E00287EA9 /* RootPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootPickerView.m; sourceTree = "<group>"; };
 		33528FEE1C83E41D00D07889 /* listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listViewController.h; path = ../listViewController.h; sourceTree = "<group>"; };
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listViewController.m; path = ../listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listTableViewCell.h; path = ../listTableViewCell.h; sourceTree = "<group>"; };
@@ -1482,6 +1485,8 @@
 				3367EB9D1CD0B2A700D2EF67 /* StationEarningsViewController.m */,
 				3367EB9F1CD0B2D200D2EF67 /* StationAppearanceViewController.h */,
 				3367EBA01CD0B2D200D2EF67 /* StationAppearanceViewController.m */,
+				335239041CD2067E00287EA9 /* RootPickerView.h */,
+				335239051CD2067E00287EA9 /* RootPickerView.m */,
 			);
 			path = "电站设置";
 			sourceTree = "<group>";
@@ -2212,6 +2217,7 @@
 				335614941CB3A0AA0071BAC9 /* commonTableViewController.m in Sources */,
 				3383EFA21C9F8A6F0075E834 /* MJRefreshLegendHeader.m in Sources */,
 				334B8F561C914A6D00798A69 /* PNScatterChartData.m in Sources */,
+				335239061CD2067E00287EA9 /* RootPickerView.m in Sources */,
 				334B8F4E1C914A6D00798A69 /* PNColor.m in Sources */,
 				3381ECEE1CBCA3ED00DCF0D2 /* energyDemo.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,

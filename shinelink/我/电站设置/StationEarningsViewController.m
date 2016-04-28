@@ -7,7 +7,7 @@
 //
 
 #import "StationEarningsViewController.h"
-
+#import "RootPickerView.h"
 
 @interface StationEarningsViewController ()
 @property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
@@ -15,7 +15,8 @@
 @property (nonatomic, strong) UIView *readView;
 @property (nonatomic, strong) UIView *writeView;
 @property (nonatomic, strong) UIView *buttonView;
-
+@property (nonatomic, strong) UIButton *goBut;
+@property(nonatomic,strong)RootPickerView *pickerView;
 @end
 
 @implementation StationEarningsViewController
@@ -23,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"资金收益";
+    UIImage *bgImage = IMAGE(@"bg4.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
+    
     [self requestData];
 }
 
@@ -52,10 +56,11 @@
 
 //请求数据
 -(void)requestData{
-    [BaseRequest requestWithMethodByGet:HEAD_URL paramars:@{@"plantId":_stationId} paramarsSite:@"/PlantAPI.do" sucessBlock:^(id content) {
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"plantId":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=getPlant" sucessBlock:^(id content) {
+        NSLog(@"getPlant:%@",content);
         _dict=[NSDictionary new];
-        _dict=content[@"data"];
-        NSLog(@"_dict: %@", _dict);
+        _dict=content;
         [self initUI];
         [self readUI];
     } failure:^(NSError *error) {
@@ -69,7 +74,7 @@
     
     NSArray *array=[[NSArray alloc]initWithObjects:@"资金收益",@"节约标准煤",@"CO2减排",@"SO2减排", nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (100+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
         label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
@@ -79,10 +84,14 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
     [self.view addSubview:_readView];
-    NSString *string=[NSString stringWithFormat:@"%@ %@",_dict[@"formulaMoney"],_dict[@"formulaMoneyUnit"]];
-    NSArray *array=[[NSArray alloc]initWithObjects:string,_dict[@"formulaCoal"],_dict[@"formulaCo2"],_dict[@"formulaSo2"], nil];
+    NSString *string=[NSString stringWithFormat:@"%@ %@",_dict[@"formulaMoney"],_dict[@"formulaMoneyUnitId"]];
+    NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
+  NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
+      NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+    
+    NSArray *array=[[NSArray alloc]initWithObjects:string,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
@@ -94,13 +103,15 @@
 
 
 -(void)writeUI{
-    _money=[[NSMutableArray alloc]initWithArray:@[@"RMB",@"USD",@"EUR",@"AUD",@"JPY",@"GBP"]];
+    _pickerView=[[RootPickerView alloc]initWithArray:@[@"RMB",@"USD",@"EUR",@"AUD",@"JPY",@"GBP"]];
+    [self.view addSubview:_pickerView];
  
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
     UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 5*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
-    textField.text=_dict[@"formulaMoneyUnit"];
+       NSString *formulaMoneyUnitId=[NSString stringWithFormat:@"%@",_dict[@"formulaMoneyUnitId"]];
+    textField.text=formulaMoneyUnitId;
     textField.layer.borderWidth=0.5;
     textField.layer.cornerRadius=5;
     textField.layer.borderColor=[UIColor whiteColor].CGColor;
@@ -110,10 +121,15 @@
     textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
     textField.textColor=[UIColor whiteColor];
     textField.tag=1000;
-   
+   textField.delegate=_pickerView;
+    
     [_writeView addSubview:textField];
     [_textFieldMutableArray addObject:textField];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"formulaMoney"],_dict[@"formulaCoal"],_dict[@"formulaCo2"],_dict[@"formulaSo2"], nil];
+    NSString *formulaMoney=[NSString stringWithFormat:@"%@",_dict[@"formulaMoney"]];
+    NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
+    NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
+    NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+    NSArray *array=[[NSArray alloc]initWithObjects:formulaMoney,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
         textField.text=array[i];
@@ -126,28 +142,23 @@
         textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
         textField.textColor=[UIColor whiteColor];
         textField.tag=i;
-     
+     textField.delegate=_pickerView;
         [_writeView addSubview:textField];
         
         [_textFieldMutableArray addObject:textField];
     }
     
     
-    _buttonView=[[UIView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 350*NOW_SIZE, 160*NOW_SIZE, 21*NOW_SIZE)];
-    [self.view addSubview:_buttonView];
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
-    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:delButton];
+
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [addButton setTitle:root_Yes forState:UIControlStateNormal];
-    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:addButton];
+    _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,240*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [_goBut.layer setMasksToBounds:YES];
+    [_goBut.layer setCornerRadius:25.0];
+    [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_goBut];
 }
 
 
@@ -168,34 +179,31 @@
 //            return;
 //        }
 //    }
+    NSMutableDictionary *dicArray=[NSMutableDictionary new];
+    [dicArray setObject:[UserInfo defaultUserInfo].plantID forKey:@"plantID"];
+    [dicArray setObject:_dict[@"plantName"] forKey:@"plantName"];
+    [dicArray setObject:_dict[@"createDateText"] forKey:@"plantDate"];
+    [dicArray setObject:_dict[@"designCompany"] forKey:@"plantFirm"];
+    [dicArray setObject:_dict[@"nominalPower"] forKey:@"plantPower"];
+    [dicArray setObject:_dict[@"country"] forKey:@"plantCountry"];
+    [dicArray setObject:_dict[@"city"] forKey:@"plantCity"];
+    [dicArray setObject:_dict[@"timezone"] forKey:@"plantTimezone"];
+    [dicArray setObject:_dict[@"plant_lat"] forKey:@"plantLat"];
+    [dicArray setObject:_dict[@"plant_lng"] forKey:@"plantLng"];
     
-    NSRange range=[_dict[@"normalPower"] rangeOfString:@" "];
-    NSRange newRange={0,range.location};
-    NSString *string=[_dict[@"normalPower"] substringWithRange:newRange];
-    NSRange timerange=[_dict[@"timeZone"] rangeOfString:@"T"];
-    NSRange timeNewRange={timerange.location+1,[_dict[@"timeZone"] length]-timerange.location-1};
-    NSString *timeString=[_dict[@"timeZone"] substringWithRange:timeNewRange];
-    NSDictionary *dict=@{@"plantID":_stationId,
-                         @"plantName":_dict[@"plantName"],
-                         @"plantDate":_dict[@"createData"],
-                         @"plantFirm":_dict[@"designCompany"],
-                         @"plantPower":string,
-                         @"plantCountry":_dict[@"country"],
-                         @"plantCity":_dict[@"city"],
-                         @"plantTimezone":timeString,
-                         @"plantLat":_dict[@"plant_lat"],
-                         @"plantLng":_dict[@"plant_lng"],
-                         @"plantIncome":[_textFieldMutableArray[1] text],
-                         @"plantMoney":[_textFieldMutableArray[0] text],
-                         @"plantCoal":[_textFieldMutableArray[2] text],
-                         @"plantCo2":[_textFieldMutableArray[3] text],
-                         @"plantSo2":[_textFieldMutableArray[4] text]};
+    [dicArray setObject:[_textFieldMutableArray[1] text] forKey:@"plantIncome"];
+    [dicArray setObject:[_textFieldMutableArray[0] text] forKey:@"plantMoney"];
+    [dicArray setObject:[_textFieldMutableArray[2] text] forKey:@"plantCoal"];
+    [dicArray setObject:[_textFieldMutableArray[3] text] forKey:@"plantCo2"];
+    [dicArray setObject:[_textFieldMutableArray[4] text] forKey:@"plantSo2"];
+    
+
     [self showProgressView];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dict paramarsSite:@"/plantA.do?op=update" dataImageDict:nil sucessBlock:^(id content) {
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dicArray paramarsSite:@"/newPlantAPI.do?op=updatePlant" dataImageDict:nil sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"testtest: %@", content);
         id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([jsonObj integerValue]==1) {
+        if ([jsonObj[@"success"]  integerValue]==1) {
             [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Successfully modified", @"Successfully modified") cancelButtonTitle:root_Yes];
             [self.navigationController popViewControllerAnimated:YES];
         }else{
