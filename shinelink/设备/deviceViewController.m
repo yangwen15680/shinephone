@@ -286,12 +286,13 @@
        selected = 0;
     }
   
-    if (selected>_stationID.count) {
+    if (selected>=_stationID.count) {
         selected= 0;
     }
     menuView.selectedIndex = selected;
     self.navigationItem.titleView = menuView;
     NSString *plantid1=[[NSString alloc]initWithString:_stationID[selected]];
+    [ [UserInfo defaultUserInfo]setPlantID:plantid1];
     _stationIdOne=[NSString stringWithString:plantid1];
    // int plantid= [plantid1 intValue];
     //_plantId=[NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:plantid] forKey:@"plantId"];

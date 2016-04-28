@@ -8,6 +8,7 @@
 
 #import "moreTableViewController.h"
 #import "moreCell.h"
+#import "productViewController.h"
 
 @interface moreTableViewController ()
 
@@ -58,6 +59,12 @@
     
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+    productViewController *page4 = [[productViewController alloc] init];
+    [self.navigationController pushViewController:page4 animated:NO];
+}
 
 /*
 // Override to support conditional editing of the table view.

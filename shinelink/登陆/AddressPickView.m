@@ -16,7 +16,7 @@
 @interface AddressPickView ()
 
 @property(nonatomic,strong)NSDictionary *pickerDic;
-
+  
 @property(nonatomic,strong)NSArray *selectedArray;
 @property(nonatomic,strong)NSArray *cityArray;
 @property(nonatomic,strong)NSArray *townArray;

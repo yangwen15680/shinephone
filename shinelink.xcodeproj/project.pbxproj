@@ -111,6 +111,7 @@
 		335130311CCA0A0D00A2A799 /* rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130301CCA0A0D00A2A799 /* rain@3x.png */; };
 		335130331CCA0CDC00A2A799 /* fog2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130321CCA0CDC00A2A799 /* fog2@3x.png */; };
 		335130351CCA1C9D00A2A799 /* overcast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130341CCA1C9D00A2A799 /* overcast@2x.png */; };
+		335239031CD1B74E00287EA9 /* imageBig.m in Sources */ = {isa = PBXBuildFile; fileRef = 335239021CD1B74E00287EA9 /* imageBig.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
 		33528FF61C83E95F00D07889 /* listTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FF51C83E95F00D07889 /* listTableViewCell.m */; };
 		33530F1E1CC87B5000378EB2 /* ManagementController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33530F1D1CC87B5000378EB2 /* ManagementController.m */; };
@@ -512,6 +513,8 @@
 		335130301CCA0A0D00A2A799 /* rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain@3x.png"; sourceTree = "<group>"; };
 		335130321CCA0CDC00A2A799 /* fog2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fog2@3x.png"; sourceTree = "<group>"; };
 		335130341CCA1C9D00A2A799 /* overcast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@2x.png"; sourceTree = "<group>"; };
+		335239011CD1B74E00287EA9 /* imageBig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageBig.h; sourceTree = "<group>"; };
+		335239021CD1B74E00287EA9 /* imageBig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageBig.m; sourceTree = "<group>"; };
 		33528FEE1C83E41D00D07889 /* listViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listViewController.h; path = ../listViewController.h; sourceTree = "<group>"; };
 		33528FEF1C83E41D00D07889 /* listViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = listViewController.m; path = ../listViewController.m; sourceTree = "<group>"; };
 		33528FF41C83E95F00D07889 /* listTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = listTableViewCell.h; path = ../listTableViewCell.h; sourceTree = "<group>"; };
@@ -1384,6 +1387,8 @@
 				336664E31CB7524C005573FB /* moreCell.m */,
 				3367EBA21CD0C11800D2EF67 /* productViewController.h */,
 				3367EBA31CD0C11800D2EF67 /* productViewController.m */,
+				335239011CD1B74E00287EA9 /* imageBig.h */,
+				335239021CD1B74E00287EA9 /* imageBig.m */,
 			);
 			path = "更多产品";
 			sourceTree = "<group>";
@@ -2197,6 +2202,7 @@
 				3381ECE81CBC906600DCF0D2 /* Line3View.m in Sources */,
 				3343F3DA1C80405D009F69BC /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
+				335239031CD1B74E00287EA9 /* imageBig.m in Sources */,
 				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
 				3383EF9D1C9F8A6F0075E834 /* MJRefreshFooter.m in Sources */,
 				3343F3AA1C803DC9009F69BC /* BaseRequest.m in Sources */,

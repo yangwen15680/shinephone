@@ -53,11 +53,11 @@
 //请求数据
 -(void)requestData{
 
-    [BaseRequest requestWithMethodByGet:HEAD_URL paramars:@{@"plantId":_stationId} paramarsSite:@"/PlantAPI.do" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"plantId":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=getPlant" sucessBlock:^(id content) {
+        NSLog(@"getPlant:%@",content);
         _dict=[NSDictionary new];
-        _dict=content[@"data"];
-        NSLog(@"_dict: %@", _dict);
-        [self initUI];
+        _dict=content;
+              [self initUI];
         [self readUI];
     } failure:^(NSError *error) {
         
@@ -85,7 +85,7 @@
     [self.view addSubview:_readView];
     NSString *normalPower=[_dict[@"normalPower"] substringWithRange:NSMakeRange(0, [_dict[@"normalPower"] length]-1) ];
     
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createData"],_dict[@"designCompany"],normalPower, nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createDateText"],_dict[@"designCompany"],normalPower, nil];
     for (int i=0; i<4; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, (i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
@@ -194,7 +194,7 @@
                          @"plantCo2":_dict[@"formulaCo2"],
                          @"plantSo2":_dict[@"formulaSo2"],};
     [self showProgressView];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dict paramarsSite:@"/plantA.do?op=update" dataImageDict:nil sucessBlock:^(id content) {
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dict paramarsSite:@"/newPlantAPI.do?op=updatePlant" dataImageDict:nil sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"testtest: %@", content);
         id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];

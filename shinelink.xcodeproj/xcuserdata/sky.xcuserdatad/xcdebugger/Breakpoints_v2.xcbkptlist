@@ -41,22 +41,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "shinelink/&#x8bbe;&#x5907;/deviceViewController.m"
-            timestampString = "483419943.278355"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
-            landmarkName = "-addTitleMenu"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "shinelink/&#x8bbe;&#x5907;/&#x8bbe;&#x5907;&#x4e8c;&#x7ea7;&#x754c;&#x9762;/&#x9006;&#x53d8;&#x5668;&#x4e8c;&#x7ea7;/&#x4e09;&#x7ea7;/parameterPV.m"
             timestampString = "483434625.198922"
             startingColumnNumber = "9223372036854775807"
@@ -90,7 +74,7 @@
                   moduleName = "shinelink"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E8%AE%BE%E5%A4%87/%E8%AE%BE%E5%A4%87%E4%BA%8C%E7%BA%A7%E7%95%8C%E9%9D%A2/%E9%80%86%E5%8F%98%E5%99%A8%E4%BA%8C%E7%BA%A7/%E4%B8%89%E7%BA%A7/parameterPV.m"
-                  timestampString = "483452766.79236"
+                  timestampString = "483508835.698168"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -105,7 +89,7 @@
                   moduleName = "shinelink"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E8%AE%BE%E5%A4%87/%E8%AE%BE%E5%A4%87%E4%BA%8C%E7%BA%A7%E7%95%8C%E9%9D%A2/%E9%80%86%E5%8F%98%E5%99%A8%E4%BA%8C%E7%BA%A7/%E4%B8%89%E7%BA%A7/parameterPV.m"
-                  timestampString = "483452766.792494"
+                  timestampString = "483508835.698502"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -128,6 +112,54 @@
             startingLineNumber = "76"
             endingLineNumber = "76"
             landmarkName = "-netParameter2"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/&#x6211;/&#x7535;&#x7ad9;&#x8bbe;&#x7f6e;/StationSafeViewController.m"
+            timestampString = "483499933.922291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-requestData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/&#x6211;/&#x7535;&#x7ad9;&#x8bbe;&#x7f6e;/StationSafeViewController.m"
+            timestampString = "483508830.603657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-readUI"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/&#x6211;/&#x7535;&#x7ad9;&#x8bbe;&#x7f6e;/StationSafeViewController.m"
+            timestampString = "483508858.112457"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "-readUI"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
