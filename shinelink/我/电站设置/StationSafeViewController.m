@@ -17,12 +17,16 @@
 @property (nonatomic, strong) UIView *buttonView;
 @property(nonatomic)BOOL flag;
 @property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) UIButton *goBut;
 @end
 
 @implementation StationSafeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImage *bgImage = IMAGE(@"bg4.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
+    
     self.navigationItem.title=@"安装信息";
     [self requestData];
 }
@@ -45,8 +49,8 @@
         [self readUI];
         [_writeView removeFromSuperview];
         _writeView=nil;
-        [_buttonView removeFromSuperview];
-        _buttonView=nil;
+        [_goBut removeFromSuperview];
+        _goBut=nil;
     }
 }
 
@@ -71,7 +75,7 @@
 
     NSArray *array=[[NSArray alloc]initWithObjects:root_plant_name, root_instal_date, root_company, root_power, nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (100+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
         label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
@@ -81,9 +85,10 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
     [self.view addSubview:_readView];
-    NSString *normalPower=[_dict[@"normalPower"] substringWithRange:NSMakeRange(0, [_dict[@"normalPower"] length]-1) ];
+   // NSString *normalPower=[_dict[@"normalPower"] substringWithRange:NSMakeRange(0, [_dict[@"normalPower"] length]-1) ];
+    NSString *normalPower=[NSString stringWithFormat:@"%@",_dict[@"nominalPower"]];
     
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createDateText"],_dict[@"designCompany"],normalPower, nil];
     for (int i=0; i<4; i++) {
@@ -102,12 +107,7 @@
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     [self.datePicker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
     
-//    _finishView=[[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30)];
-//    _finishView.backgroundColor=COLOR(82, 201, 194, 1);
-//    UILabel *finish=[[UILabel alloc]initWithFrame:CGRectMake(280*NOW_SIZE, 5*NOW_SIZE, 40*NOW_SIZE, 20*NOW_SIZE)];
-//    finish.text=root_Finish;
-//    finish.textColor=[UIColor whiteColor];
-//    [_finishView addSubview:finish];
+
     
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE)];
     _toolBar.barTintColor = COLOR(39, 177, 159, 1);
@@ -116,16 +116,23 @@
     UIBarButtonItem *spaceBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     _toolBar.items = @[spaceBarItem,doneBarItem];
     
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
-    NSRange range=[_dict[@"normalPower"] rangeOfString:@" "];
-    NSRange newRange={0,range.location};
-    NSString *string=[_dict[@"normalPower"] substringWithRange:newRange];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createData"],_dict[@"designCompany"],string,nil];
+//    NSRange range=[_dict[@"normalPower"] rangeOfString:@" "];
+//    NSRange newRange={0,range.location};
+//    NSString *string=[_dict[@"normalPower"] substringWithRange:newRange];
+      NSString *normalPower=[NSString stringWithFormat:@"%@",_dict[@"nominalPower"]];
+    NSMutableArray *arrayText=[NSMutableArray array];
+    [arrayText addObject:_dict[@"plantName"]];
+    [arrayText addObject:_dict[@"createDateText"]];
+    [arrayText addObject:_dict[@"designCompany"]];
+    [arrayText addObject:normalPower];
+    //NSArray *array2=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createData"],_dict[@"designCompany"],normalPower,nil];
+    
     for (int i=0; i<4; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, (5+i*40)*NOW_SIZE, 120*NOW_SIZE, 30*NOW_SIZE)];
-        textField.text=array[i];
+        textField.text=arrayText[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
         textField.layer.borderColor=[UIColor whiteColor].CGColor;
@@ -143,21 +150,20 @@
         [_textFieldMutableArray addObject:textField];
     }
     
-    _buttonView=[[UIView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 350*NOW_SIZE, 160*NOW_SIZE, 21*NOW_SIZE)];
-    [self.view addSubview:_buttonView];
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
-    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:delButton];
+//    _buttonView=[[UIView alloc]initWithFrame:CGRectMake(60*NOW_SIZE, 280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE)];
+//    [self.view addSubview:_buttonView];
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [addButton setTitle:root_Yes forState:UIControlStateNormal];
-    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:addButton];
+
+    
+    _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,240*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [_goBut.layer setMasksToBounds:YES];
+    [_goBut.layer setCornerRadius:25.0];
+    [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_goBut];
+    
 }
 
 
@@ -175,30 +181,32 @@
             return;
         }
     }
-    NSRange range=[_dict[@"timeZone"] rangeOfString:@"T"];
-    NSRange newRange={range.location+1,[_dict[@"timeZone"] length]-range.location-1};
-    NSString *timeString=[_dict[@"timeZone"] substringWithRange:newRange];
-    NSDictionary *dict=@{@"plantID":_stationId,
-                         @"plantName":[_textFieldMutableArray[0] text],
-                         @"plantDate":[_textFieldMutableArray[1] text],
-                         @"plantFirm":[_textFieldMutableArray[2] text],
-                         @"plantPower":[_textFieldMutableArray[3] text],
-                         @"plantCountry":_dict[@"country"],
-                         @"plantCity":_dict[@"city"],
-                         @"plantTimezone":timeString,
-                         @"plantLat":_dict[@"plant_lat"],
-                         @"plantLng":_dict[@"plant_lng"],
-                         @"plantIncome":_dict[@"formulaMoney"],
-                         @"plantMoney":_dict[@"formulaMoneyUnit"],
-                         @"plantCoal":_dict[@"formulaCoal"],
-                         @"plantCo2":_dict[@"formulaCo2"],
-                         @"plantSo2":_dict[@"formulaSo2"],};
+//    NSRange range=[_dict[@"timeZone"] rangeOfString:@"T"];
+//    NSRange newRange={range.location+1,[_dict[@"timeZone"] length]-range.location-1};
+//    NSString *timeString=[_dict[@"timeZone"] substringWithRange:newRange];
+    NSMutableDictionary *dicArray=[NSMutableDictionary new];
+    [dicArray setObject:[UserInfo defaultUserInfo].plantID forKey:@"plantID"];
+     [dicArray setObject:[_textFieldMutableArray[0] text] forKey:@"plantName"];
+     [dicArray setObject:[_textFieldMutableArray[1] text] forKey:@"plantDate"];
+     [dicArray setObject:[_textFieldMutableArray[2] text] forKey:@"plantFirm"];
+     [dicArray setObject:[_textFieldMutableArray[3] text] forKey:@"plantPower"];
+     [dicArray setObject:_dict[@"country"] forKey:@"plantCountry"];
+      [dicArray setObject:_dict[@"city"] forKey:@"plantCity"];
+     [dicArray setObject:_dict[@"timezone"] forKey:@"plantTimezone"];
+     [dicArray setObject:_dict[@"plant_lat"] forKey:@"plantLat"];
+     [dicArray setObject:_dict[@"plant_lng"] forKey:@"plantLng"];
+       [dicArray setObject:_dict[@"formulaMoney"] forKey:@"plantIncome"];
+       [dicArray setObject:_dict[@"formulaMoneyUnitId"] forKey:@"plantMoney"];
+       [dicArray setObject:_dict[@"formulaCoal"] forKey:@"plantCoal"];
+       [dicArray setObject:_dict[@"formulaCo2"] forKey:@"plantCo2"];
+     [dicArray setObject:_dict[@"formulaSo2"] forKey:@"plantSo2"];
+    
     [self showProgressView];
-    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dict paramarsSite:@"/newPlantAPI.do?op=updatePlant" dataImageDict:nil sucessBlock:^(id content) {
+    [BaseRequest uplodImageWithMethod:HEAD_URL paramars:dicArray paramarsSite:@"/newPlantAPI.do?op=updatePlant" dataImageDict:nil sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"testtest: %@", content);
         id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-        if ([jsonObj integerValue]==1) {
+        if ([jsonObj[@"success"] integerValue]==1) {
             [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Successfully modified", @"Successfully modified") cancelButtonTitle:root_Yes];
             [self.navigationController popViewControllerAnimated:YES];
         }else{

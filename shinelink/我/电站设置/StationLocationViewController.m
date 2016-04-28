@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIView *readView;
 @property (nonatomic, strong) UIView *writeView;
 @property (nonatomic, strong) UIView *buttonView;
+@property (nonatomic, strong) UIButton *goBut;
 
 @end
 
@@ -25,7 +26,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    UIImage *bgImage = IMAGE(@"bg4.png");
+    self.view.layer.contents = (id)bgImage.CGImage;
+    
     self.navigationItem.title=@"地理信息";
     [self requestData];
 }
@@ -49,17 +52,18 @@
         [_writeView removeFromSuperview];
         _writeView=nil;
         [_buttonView removeFromSuperview];
-        _buttonView=nil;
+        _goBut=nil;
     }
     
 }
 
 //请求数据
 -(void)requestData{
-    [BaseRequest requestWithMethodByGet:HEAD_URL paramars:@{@"plantId":_stationId} paramarsSite:@"/PlantAPI.do" sucessBlock:^(id content) {
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"plantId":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=getPlant" sucessBlock:^(id content) {
+        NSLog(@"getPlant:%@",content);
         _dict=[NSDictionary new];
-        _dict=content[@"data"];
-        NSLog(@"_dict: %@", _dict);
+        _dict=content;
         [self initUI];
         [self readUI];
     } failure:^(NSError *error) {
@@ -71,10 +75,10 @@
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Edit", @"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     self.navigationItem.rightBarButtonItem=rightItem;
 
-    NSArray *array=[[NSArray alloc]initWithObjects:@"国家",@"城市"@"时区",@"经度",@"纬度", nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:@"国家",@"城市",@"时区",@"经度",@"纬度", nil];
     
     for (int i=0; i<5; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (100+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
         label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
@@ -84,9 +88,12 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
     [self.view addSubview:_readView];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],_dict[@"timeZone"],_dict[@"plant_lat"],_dict[@"plant_lng"],nil];
+    NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
+    NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
+      NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
+    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lat,plant_lng,nil];
     for (int i=0; i<5; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
@@ -94,19 +101,23 @@
         label.textColor=[UIColor whiteColor];
         [_readView addSubview:label];
     }
+    
 }
 
 
 -(void)writeUI{
     
     _timeZone=[NSMutableArray arrayWithObjects:@"+1",@"+2",@"+3",@"+4",@"+5",@"+6",@"+7",@"+8",@"+9",@"+10",@"+11",@"+12",@"-1",@"-2",@"-3",@"-4",@"-5",@"-6",@"-7",@"-8",@"-9",@"-10",@"-11",@"-12", nil];
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 100*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
-    NSRange timerange=[_dict[@"timeZone"] rangeOfString:@"T"];
-    NSRange timeNewRange={timerange.location+1,[_dict[@"timeZone"] length]-timerange.location-1};
-    NSString *timeString=[_dict[@"timeZone"] substringWithRange:timeNewRange];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timeString,_dict[@"plant_lat"],_dict[@"plant_lng"], nil];
+//    NSRange timerange=[_dict[@"timeZone"] rangeOfString:@"T"];
+//    NSRange timeNewRange={timerange.location+1,[_dict[@"timeZone"] length]-timerange.location-1};
+//    NSString *timeString=[_dict[@"timeZone"] substringWithRange:timeNewRange];
+    NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
+    NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
+    NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
+    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lat,plant_lng, nil];
     for (int i=0; i<5; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
         textField.text=array[i];
@@ -140,30 +151,24 @@
     [_writeView addSubview:latButton];
     
     UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 170*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
-    [lngButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:UIControlStateNormal];
-    [lngButton setTitle:@"" forState:UIControlStateNormal];
+    [lngButton setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [lngButton setTitle:@"点击获取" forState:UIControlStateNormal];
     lngButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
     [lngButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
     lngButton.tag=2;
     [lngButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [_writeView addSubview:lngButton];
     
+
     
-    _buttonView=[[UIView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 350*NOW_SIZE, 160*NOW_SIZE, 21*NOW_SIZE)];
-    [self.view addSubview:_buttonView];
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
-    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:delButton];
-    
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 0*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [addButton setTitle:root_Yes forState:UIControlStateNormal];
-    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [_buttonView addSubview:addButton];
+    _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,300*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [_goBut.layer setMasksToBounds:YES];
+    [_goBut.layer setCornerRadius:25.0];
+    [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_goBut];
 }
 
 
