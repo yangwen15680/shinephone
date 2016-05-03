@@ -28,7 +28,7 @@
         
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [addButton setTitle:@"修改别名" forState:UIControlStateNormal];
+        [addButton setTitle:root_xiugai_bieming forState:UIControlStateNormal];
         [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [addButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         addButton.tag = 1051;
@@ -37,7 +37,7 @@
         
         UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         deleteButton.frame = CGRectMake(0, 1 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [deleteButton setTitle:@"修改头像" forState:UIControlStateNormal];
+        [deleteButton setTitle:root_xiugai_touxiang forState:UIControlStateNormal];
         [deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [deleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         deleteButton.tag = 1052;
@@ -46,7 +46,7 @@
         
         UIButton *uploadStationImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
         uploadStationImageButton.frame = CGRectMake(0, 2 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/4);
-        [uploadStationImageButton setTitle:@"删除设备" forState:UIControlStateNormal];
+        [uploadStationImageButton setTitle:root_xiugai_shebei forState:UIControlStateNormal];
         [uploadStationImageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [uploadStationImageButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         uploadStationImageButton.tag = 1053;

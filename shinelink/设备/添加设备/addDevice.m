@@ -46,7 +46,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationItem.title = @"配置设备";
+    self.navigationItem.title = root_tianjia_shebei;
 }
 
 
@@ -59,7 +59,7 @@
     [self.view addSubview:userBgImageView];
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectId.placeholder = @"请输入采集器序列号";
+    _cellectId.placeholder = root_caiJiQi;
     _cellectId.textColor = [UIColor whiteColor];
     _cellectId.tintColor = [UIColor whiteColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -74,7 +74,7 @@
     [self.view addSubview:pwdBgImageView];
     
     _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectNo.placeholder = @"请输入采集器校验码";
+    _cellectNo.placeholder = root_jiaoYanMa_zhengQue;
     _cellectNo.textColor = [UIColor whiteColor];
     _cellectNo.tintColor = [UIColor whiteColor];
     [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -90,13 +90,13 @@
     [goBut.layer setCornerRadius:25.0];
     //goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
       [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"确定" forState:UIControlStateNormal];
+    [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
     
     UIButton *QR=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE,400*NOW_SIZE , 240*NOW_SIZE, 60*NOW_SIZE)];
     [QR setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [QR setTitle:@"扫描条形码" forState:UIControlStateNormal];
+    [QR setTitle:root_erWeiMa forState:UIControlStateNormal];
     [QR setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
     [QR addTarget:self action:@selector(ScanQR) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:QR];
@@ -137,25 +137,25 @@
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
                 if ([content[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"添加失败，系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_tianjia_chucuo cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==502) {
-                    [self showAlertViewWithTitle:nil message:@"权限不够" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_meiyou_quanxian cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==503) {
-                    [self showAlertViewWithTitle:nil message:@"采集器序列号或电站ID错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_cuowu cancelButtonTitle:root_Yes];
                 } else if ([content[@"msg"] integerValue] ==504) {
-                    [self showAlertViewWithTitle:nil message:@"总体采集器数量超出限制" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_zongti_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
                 } else if ([content[@"msg"] integerValue] ==505) {
-                    [self showAlertViewWithTitle:nil message:@"单个电站采集器数量超出限制" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_danGe_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
                 } else if ([content[@"msg"] integerValue] ==506) {
-                    [self showAlertViewWithTitle:nil message:@"采集器序列号已经存在" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_yijing_cunzai cancelButtonTitle:root_Yes];
                 } else if ([content[@"msg"] integerValue] ==507) {
-                    [self showAlertViewWithTitle:nil message:@"序列号与校验码不匹配" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_jiaoyanMa_bupipei cancelButtonTitle:root_Yes];
                 }
             }else{
                 if ([content[@"msg"] integerValue] ==200){
-                    [self showAlertViewWithTitle:nil message:@"设备添加成功" cancelButtonTitle:root_Yes];}
+                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];}
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"changeName" object:nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
@@ -217,11 +217,11 @@
 
 -(void)addButtonPressed{
     if ([_cellectId.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器序列号" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_caiJiQi_zhengque cancelButtonTitle:root_OK];
         return;
     }
     if ([_cellectNo.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器校验码" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_jiaoYanMa_zhengQue cancelButtonTitle:root_OK];
         return;
     }
     [self showProgressView];
@@ -243,25 +243,25 @@
         if (content) {
             if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
                 if ([[jsonObj objectForKey:@"msg"]integerValue]==501) {
-                    [self showAlertViewWithTitle:nil message:@"添加失败，系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_tianjia_chucuo cancelButtonTitle:root_Yes];
                 }
                 else if ([[jsonObj objectForKey:@"msg"]integerValue]==502) {
-                    [self showAlertViewWithTitle:nil message:@"权限不够" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_meiyou_quanxian cancelButtonTitle:root_Yes];
                 }
                 else if ([[jsonObj objectForKey:@"msg"]integerValue]==503) {
-                    [self showAlertViewWithTitle:nil message:@"采集器序列号或电站ID错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_cuowu cancelButtonTitle:root_Yes];
                 } else if ([[jsonObj objectForKey:@"msg"]integerValue]==504) {
-                    [self showAlertViewWithTitle:nil message:@"总体采集器数量超出限制" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_zongti_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
                 } else if ([[jsonObj objectForKey:@"msg"]integerValue]==505) {
-                    [self showAlertViewWithTitle:nil message:@"单个电站采集器数量超出限制" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_danGe_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
                 } else if ([[jsonObj objectForKey:@"msg"]integerValue]==506) {
-                    [self showAlertViewWithTitle:nil message:@"采集器序列号已经存在" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_yijing_cunzai cancelButtonTitle:root_Yes];
                 } else if ([[jsonObj objectForKey:@"msg"]integerValue]==507) {
-                    [self showAlertViewWithTitle:nil message:@"序列号与校验码不匹配" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xuliehao_jiaoyanMa_bupipei cancelButtonTitle:root_Yes];
                 }
             }else{
                 if ([[jsonObj objectForKey:@"msg"]integerValue]==200){
-                    [self showAlertViewWithTitle:nil message:@"设备添加成功" cancelButtonTitle:root_Yes];}
+                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];}
                 
             }
         }

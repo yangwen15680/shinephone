@@ -89,7 +89,7 @@
         self.stationName = [NSMutableArray arrayWithArray:stationName];
         }else{
             self.stationID =[NSMutableArray arrayWithObjects:@"1", nil];
-             self. stationName =[NSMutableArray arrayWithObjects:@"示范电站", nil];
+             self. stationName =[NSMutableArray arrayWithObjects:root_shiFan_dianZhan, nil];
         }
     }
     return self;
@@ -214,11 +214,11 @@
     totalPowerArray=[NSMutableArray array];
     SNArray=[NSMutableArray array];
     imageStatueArray=[NSMutableArray array];
-    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"Plug.png", @"PowerRegulator.png",@"TemperatureController.png",@"充电桩.png",nil];
-    nameArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"Plug", @"Regulator",@"controller", @"charge",  nil];
-    statueArray2=[[NSMutableArray alloc]initWithObjects:@"未连接", @"未连接", @"未连接", @"未连接",@"未连接",@"未连接",nil];
-    powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW",@"5000KW", @"5000KW", @"5000KW",  nil];
-    dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h", @"500K/h",@"500K/h",@"500K/h",nil];
+    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"PowerRegulator.png",@"充电桩.png",nil];
+    nameArray2=[[NSMutableArray alloc]initWithObjects:root_niBianQi, root_chuNengJi, root_chongDianZhuang, root_gongLvTiaoJieQi,  nil];
+    statueArray2=[[NSMutableArray alloc]initWithObjects:root_wei_LianJie, root_wei_LianJie, root_wei_LianJie,root_wei_LianJie,nil];
+    powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", @"5000KW",  nil];
+    dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h",@"500K/h",nil];
 }
 
 #pragma mark - navigationItem
@@ -229,11 +229,11 @@
 
 - (void)addRightItem
 {
-    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"添加设备" iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
+    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:root_tianJia_sheBei iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
         NSLog(@"rightItem%lu",(unsigned long)index);
         [self selectRightAction];
     }];
-    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"采集器列表" iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
+    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:root_caiJiQi_leiBiao iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
         NSLog(@"rightItem%lu",(unsigned long)index);
         StationCellectViewController *goLog=[[StationCellectViewController alloc]init];
         goLog.stationId=_stationIdOne;
@@ -347,7 +347,7 @@
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:_plantId paramarsSite:@"/newPlantAPI.do?op=getAllDeviceList" sucessBlock:^(id content) {
         [self hideProgressView];
-        
+         NSLog(@"getAllDeviceList:%@",content);
         _typeArr=[NSMutableArray array];
         nameArray=[NSMutableArray array];
         statueArray=[NSMutableArray array];
@@ -358,7 +358,7 @@
         imageStatueArray=[NSMutableArray array];
         
         [_control endRefreshing];
-          NSLog(@"getAllDeviceList:%@",content);
+        
        // id jsonObj=[NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
          self.dataArr = [NSMutableArray arrayWithArray:content[@"deviceList"]];
         for (int i=0; i<_dataArr.count; i++) {
@@ -373,14 +373,13 @@
             [totalPowerArray addObject:TO];
             
         NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
-            NSString *SD;
-            if([ST isEqualToString:@"-1"])
-            {SD=@"未连接";
-                [imageStatueArray addObject:@"disconnect@2x.png"];}
-            else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
-            [statueArray addObject:SD];
+             [statueArray addObject:ST];
+//            NSString *SD;
+//            if([ST isEqualToString:@"-1"])
+//            {SD=@"未连接";
+             [imageStatueArray addObject:@"disconnect@2x.png"];
+//            else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
            
-            
             if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:@"inverter.png"];
                 NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"power"]];
@@ -696,11 +695,11 @@
             if (content1) {
                 if ([content1[@"success"] integerValue] == 0) {
                     if ([content1[@"msg"] integerValue] ==501) {
-                        [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                        [self showAlertViewWithTitle:nil message:root_xiTong_CuoWu cancelButtonTitle:root_Yes];
                          //[self.tableView reloadData];
                     }
                 }else{
-                    [self showAlertViewWithTitle:nil message:@"删除成功" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_shanChu_chengGong cancelButtonTitle:root_Yes];
                     [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:get];
                     NSError *error = nil;
                     BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
@@ -724,7 +723,7 @@
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
-    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //处理点击拍照
         self.cameraImagePicker = [[UIImagePickerController alloc] init];
         self.cameraImagePicker.allowsEditing = YES;
@@ -733,7 +732,7 @@
         [self presentViewController:_cameraImagePicker animated:YES completion:nil];
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    [alertController addAction: [UIAlertAction actionWithTitle: root_xiangkuang_xuanQu style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //处理点击从相册选取
         self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
         self.photoLibraryImagePicker.allowsEditing = YES;
@@ -743,7 +742,7 @@
         
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
     
     [self presentViewController: alertController animated: YES completion: nil];
 }
@@ -765,11 +764,11 @@
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xitong_cuoWu cancelButtonTitle:root_Yes];
                 }
             }else{
                 
-                [self showAlertViewWithTitle:nil message:@"修改成功" cancelButtonTitle:root_Yes];
+                [self showAlertViewWithTitle:nil message:root_xiuGai_chengGong cancelButtonTitle:root_Yes];
             
                 GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
                 [getDevice setValue:imageData forKey:@"nowImage"];
@@ -797,10 +796,10 @@
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return @"已配置设备";
+        return root_yi_peiZhi;
     }
     else{
-        return  @"未配置设备";
+        return  root_wei_peiZhi;
     }
 }
 
@@ -865,16 +864,58 @@
             [cell.coverImageView  setImage:[UIImage imageWithData:getDevice.demoImage]];}
       
         if ([getDevice.type isEqualToString:@"inverter"]) {
-            cell.electric.text = @"日电量:";
+            cell.electric.text = root_ri_dianLiang;
+            if ([getDevice.statueData isEqualToString:@"0"]){
+                cell.stateValue.text =root_dengDai ;
+                cell.stateValue.textColor=COLOR(17, 183, 243, 1);
+            }else if ([getDevice.statueData isEqualToString:@"1"]){
+                cell.stateValue.text =root_zhengChang ;
+                  cell.stateValue.textColor=COLOR(121, 230, 129, 1);
+            }else if ([getDevice.statueData isEqualToString:@"2"]){
+                cell.stateValue.text =root_cuoWu ;
+                  cell.stateValue.textColor=COLOR(255, 86, 82, 1);
+            }else if ([getDevice.statueData isEqualToString:@"3"]){
+                cell.stateValue.text =root_duanKai ;
+                  cell.stateValue.textColor=COLOR(163, 163, 163, 1);
+            }else if ([getDevice.statueData isEqualToString:@"-1"]){
+                cell.stateValue.text =root_duanKai ;
+                cell.stateValue.textColor=COLOR(163, 163, 163, 1);
+            }
+            
+                
         }else if (([getDevice.type isEqualToString:@"storage"])){
-         cell.electric.text = @"电池百分比:";
+            
+         cell.electric.text = root_dianChi_baifenBi;
+            if ([getDevice.statueData isEqualToString:@"0"]){
+                cell.stateValue.text =root_xianZhi;
+                  cell.stateValue.textColor=COLOR(45, 26, 233, 1);
+            }else if ([getDevice.statueData isEqualToString:@"1"]){
+                cell.stateValue.text =root_chongDian;
+                  cell.stateValue.textColor=COLOR(121, 230, 129, 1);
+            }else if ([getDevice.statueData isEqualToString:@"2"]){
+                cell.stateValue.text =root_fangDian ;
+                  cell.stateValue.textColor=COLOR(28, 111, 235, 1);
+            }else if ([getDevice.statueData isEqualToString:@"3"]){
+                cell.stateValue.text =root_cuoWu ;
+                  cell.stateValue.textColor=COLOR(255, 86, 82, 1);
+            }else if ([getDevice.statueData isEqualToString:@"4"]){
+                cell.stateValue.text =root_dengDai ;
+                  cell.stateValue.textColor=COLOR(17, 183, 243, 1);
+            }else if ([getDevice.statueData isEqualToString:@"-1"]){
+                cell.stateValue.text =root_duanKai ;
+                cell.stateValue.textColor=COLOR(163, 163, 163, 1);
+            }
+            
+            
+            
+            
         }
             cell.titleLabel.text = getDevice.name;
         cell.titleLabel.textColor = [UIColor orangeColor];
-       cell.stateValue.text = getDevice.statueData;
+       
      cell.powerValue.text = getDevice.power;
      cell.electricValue.text =getDevice.dayPower;
-       [cell.stateView setImage:[UIImage imageWithData:getDevice.statueImage] ];
+       //[cell.stateView setImage:[UIImage imageWithData:getDevice.statueImage] ];
         return cell;
     }
     else{
@@ -889,8 +930,9 @@
         cell.titleLabel.textColor = [UIColor grayColor];
         cell.powerValue.text = demoDevice.power;
         cell.electricValue.text =demoDevice.dayPower;
-        cell.stateView.image =IMAGE(@"disconnect@2x.png");
+        //cell.stateView.image =IMAGE(@"disconnect@2x.png");
         cell.stateValue.text=demoDevice.statueData;
+          cell.stateValue.textColor=COLOR(163, 163, 163, 1);
         return cell;
         
         }
@@ -935,7 +977,7 @@
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.section==0){
     //添加一个编辑按钮
-    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleNormal) title:@"编辑 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+    UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleNormal) title:root_bianJi handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了编辑");
         _indexPath=indexPath;
         _editCellect = [[EditStationMenuView alloc] initWithFrame:self.view.bounds];
@@ -948,7 +990,7 @@
     deleteAction.backgroundColor = [UIColor redColor];
     
     //添加一个置顶按钮
-    UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:@"置顶 "handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+    UITableViewRowAction *topRowAction =[UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleDestructive) title:root_zhiDing handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
         NSLog(@"点击了置顶");
         //1.更新数据
         if(indexPath.section==0){

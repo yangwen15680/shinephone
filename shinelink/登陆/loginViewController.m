@@ -141,12 +141,12 @@
         self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
      self.forgetLable.userInteractionEnabled=YES;
-    UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
-    [self.forgetLable addGestureRecognizer:forget];
+    UITapGestureRecognizer * forget2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
+    [self.forgetLable addGestureRecognizer:forget2];
     [_scrollView addSubview:self.forgetLable];
     
     
-   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 220*NOW_SIZE, 40*NOW_SIZE)];
+   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(200*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 40*NOW_SIZE)];
     self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];

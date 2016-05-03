@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.title=root_peiZhi_sheBei;
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
@@ -25,7 +26,7 @@
     [self.view addSubview:userBgImageView];
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectId.placeholder = @"请输入用户名";
+    _cellectId.placeholder = root_Alet_user_messge;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -38,7 +39,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
        [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"确定" forState:UIControlStateNormal];
+    [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
 }
@@ -50,7 +51,7 @@
 
 -(void)addButtonPressed{
     if ([_cellectId.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的用户名" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_zhengQueDe_yonghuMing cancelButtonTitle:root_OK];
         return;
     }
       NSDictionary *userCheck=[NSDictionary dictionaryWithObject:_cellectId.text forKey:@"accountName"];
@@ -61,12 +62,12 @@
             if (content) {
                 if ([content[@"success"] integerValue] == 0) {
                     if ([content[@"msg"] integerValue] ==501) {
-                        [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                        [self showAlertViewWithTitle:nil message:root_youJian_shiBai cancelButtonTitle:root_Yes];
                     }
                     else if ([content[@"msg"] integerValue] ==502) {
-                        [self showAlertViewWithTitle:nil message:@"不能找到用户名" cancelButtonTitle:root_Yes];
+                        [self showAlertViewWithTitle:nil message:root_zhaoBuDao_yongHu cancelButtonTitle:root_Yes];
                     }else if ([content[@"msg"] integerValue] ==503) {
-                        [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
+                        [self showAlertViewWithTitle:nil message:root_server_error cancelButtonTitle:root_Yes];
                     }
                 }else{
                     NSString *email=content[@"msg"];

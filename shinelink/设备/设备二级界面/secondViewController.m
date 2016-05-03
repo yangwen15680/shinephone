@@ -64,7 +64,7 @@
      [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:firstB];
     UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    firstL.text=@"控制";
+    firstL.text=root_kongzhi;
     firstL.textAlignment=NSTextAlignmentCenter;
     firstL.textColor=[UIColor blackColor];
     firstL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -75,7 +75,7 @@
      [secondB addTarget:self action:@selector(parameterPV) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    secondL.text=@"参数";
+    secondL.text=root_canshu;
     secondL.textAlignment=NSTextAlignmentCenter;
     secondL.textColor=[UIColor blackColor];
     secondL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -86,7 +86,7 @@
      [threeB addTarget:self action:@selector(goPVThree) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    threeL.text=@"数据";
+    threeL.text=root_shuju;
     threeL.textAlignment=NSTextAlignmentCenter;
     threeL.textColor=[UIColor blackColor];
     threeL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -98,7 +98,7 @@
    
     [self.scrollView addSubview:fourB];
     UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    fourL.text=@"日志";
+    fourL.text=root_rizhi;
     fourL.textAlignment=NSTextAlignmentCenter;
     fourL.textColor=[UIColor blackColor];
     fourL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -192,7 +192,7 @@
     dayData.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:dayData];
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 200*NOW_SIZE-SizeH, 80*NOW_SIZE,20*NOW_SIZE )];
-    leftState.text=@"日电量";
+    leftState.text=root_NBQ_ri_dianliang;
     leftState.textAlignment=NSTextAlignmentCenter;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -205,7 +205,7 @@
     powerData.font = [UIFont systemFontOfSize:25*NOW_SIZE];
     [self.scrollView addSubview:powerData];
     UILabel *centState=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2,150*NOW_SIZE-SizeH, 80*NOW_SIZE,20*NOW_SIZE )];
-    centState.text=@"当前功率";
+    centState.text=root_dangqian_gonglv;
     centState.textAlignment=NSTextAlignmentCenter;
     centState.textColor=[UIColor blackColor];
     centState.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -218,14 +218,14 @@
     totalData.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:totalData];
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-80*NOW_SIZE, 200*NOW_SIZE-SizeH, 80*NOW_SIZE,20*NOW_SIZE )];
-    rightState.text=@"总电量";
+    rightState.text=root_NBQ_zong_dianliang;
     rightState.textAlignment=NSTextAlignmentCenter;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:rightState];
     
     UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*NOW_SIZE-SizeH, 100*NOW_SIZE,20*NOW_SIZE )];
-    dayDate.text=@"日发电量";
+    dayDate.text=root_NBQ_ri_fadianliang;
     dayDate.textAlignment=NSTextAlignmentLeft;
     dayDate.textColor=[UIColor blackColor];
     dayDate.font = [UIFont systemFontOfSize:14*NOW_SIZE];

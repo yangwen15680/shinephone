@@ -21,7 +21,7 @@
     //  UIImage *bgImage = IMAGE(@"bg4.png");
     //  self.view.layer.contents = (id)bgImage.CGImage;
     
-    self.dataArray =[NSMutableArray arrayWithObjects:@"设置储能机开关机",@"锂电池SOC下限设定",@"设置储能机时间",@"强制放电使能",@"强制放电时间段",@"设置输入SP的组串电压",nil];
+    self.dataArray =[NSMutableArray arrayWithObjects:root_CNJ_kaiguan,root_CNJ_SOC,root_CNJ_shijian,root_CNJ_fangdian_kaiguan,root_CNJ_fangdian_shijian,root_CNJ_SP,nil];
     
 }
 

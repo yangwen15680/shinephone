@@ -49,7 +49,7 @@
    
     
     [self netGetCNJ];
-    [self addRightItem];
+   // [self addRightItem];
     [self addGraph];
     [self addbutton];
     
@@ -65,7 +65,7 @@
             _paramsDict=[NSMutableDictionary dictionaryWithDictionary:content[@"storageBean"]];
             _dayDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTodayText"]];
             _totalDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTotalText"]];
-            _status=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"status"]];
+            _status=[NSString stringWithFormat:@"%@",content[@"storageBean"][@"status"]];
             _capacity=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"capacityText"]];
                _normalPower2 =[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"normalPower"]];
             
@@ -94,7 +94,7 @@
     [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:firstB];
     UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    firstL.text=@"控制";
+    firstL.text=root_kongzhi;
     firstL.textAlignment=NSTextAlignmentCenter;
     firstL.textColor=[UIColor blackColor];
     firstL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -105,7 +105,7 @@
      [secondB addTarget:self action:@selector(parameterCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    secondL.text=@"参数";
+    secondL.text=root_canshu;
     secondL.textAlignment=NSTextAlignmentCenter;
     secondL.textColor=[UIColor blackColor];
     secondL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -116,7 +116,7 @@
       [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    threeL.text=@"数据";
+    threeL.text=root_shuju;
     threeL.textAlignment=NSTextAlignmentCenter;
     threeL.textColor=[UIColor blackColor];
     threeL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -127,7 +127,7 @@
   [fourB addTarget:self action:@selector(gofour) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:fourB];
     UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*NOW_SIZE-SizeH-SizeH2, 50*NOW_SIZE,20*NOW_SIZE )];
-    fourL.text=@"日志";
+    fourL.text=root_rizhi;
     fourL.textAlignment=NSTextAlignmentCenter;
     fourL.textColor=[UIColor blackColor];
     fourL.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -223,7 +223,7 @@
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:leftName];
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 200*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
-    leftState.text=@"日放电量";
+    leftState.text=root_ri_fangdianliang;
     leftState.textAlignment=NSTextAlignmentLeft;
     leftState.textColor=[UIColor blackColor];
     leftState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -237,14 +237,14 @@
     leftName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:rightName];
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 200*NOW_SIZE-SizeH, 60*NOW_SIZE,20*NOW_SIZE )];
-    rightState.text=@"总放电量";
+    rightState.text=root_zong_fangdianliang;
     rightState.textAlignment=NSTextAlignmentRight;
     rightState.textColor=[UIColor blackColor];
     rightState.font = [UIFont systemFontOfSize:14*NOW_SIZE];
     [self.scrollView addSubview:rightState];
     
     UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 245*NOW_SIZE-SizeH, 180*NOW_SIZE,20*NOW_SIZE )];
-    dataName.text=@"电池百分比(%/天)";
+    dataName.text=root_dianchi;
     dataName.textAlignment=NSTextAlignmentLeft;
     dataName.textColor=[UIColor blackColor];
     dataName.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -257,23 +257,27 @@
     if ([_status isEqualToString:@"0"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:45/ 255.0f green:226/ 255.0f blue:233/ 255.0f alpha:1];//水波颜色
-        _statusText=@"闲置";
+        _statusText=root_xianZhi;
     }else if ([_status isEqualToString:@"1"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:121/ 255.0f green:230/ 255.0f blue:129/ 255.0f alpha:1];//水波颜色
-         _statusText=@"正在充电";
+         _statusText=root_chongDian;
     }else if ([_status isEqualToString:@"2"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:222/ 255.0f green:211/ 255.0f blue:91/ 255.0f alpha:1];//水波颜色
-         _statusText=@"正在放电";
+         _statusText=root_fangDian;
     }else if ([_status isEqualToString:@"3"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:105/ 255.0f green:214/ 255.0f blue:249/ 255.0f alpha:1];//水波颜色
-         _statusText=@"出现故障";
-    }else {
+         _statusText=root_cuoWu;
+    }else if ([_status isEqualToString:@"4"]) {
+        waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
+        waterView.currentWaterColor = [UIColor colorWithRed:45/ 255.0f green:226/ 255.0f blue:233/ 255.0f alpha:1];//水波颜色
+        _statusText=root_dengDai;
+    }else if ([_status isEqualToString:@"-1"]) {
         waterView.backgroundColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//页面背景颜色改背景
         waterView.currentWaterColor = [UIColor colorWithRed:28/ 255.0f green:111/ 255.0f blue:235/ 255.0f alpha:1];//水波颜色
-        _statusText=@"网络问题";
+        _statusText=root_duanKai;
     }
     float k1=[_capacity floatValue]*0.01;
     waterView.percentum = k1;//百分比

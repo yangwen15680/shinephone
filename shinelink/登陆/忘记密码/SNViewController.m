@@ -20,7 +20,7 @@
     [super viewDidLoad];
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
-    self.title=@"配置设备";
+     self.title=root_peiZhi_sheBei;
     
     [self initUI];
 }
@@ -32,7 +32,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationItem.title = @"配置设备";
+    //self.navigationItem.title = @"配置设备";
 }
 
 
@@ -45,7 +45,7 @@
     [self.view addSubview:userBgImageView];
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectId.placeholder = @"请输入采集器序列号";
+    _cellectId.placeholder = root_caiJiQi;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -60,7 +60,7 @@
     [self.view addSubview:pwdBgImageView];
     
     _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectNo.placeholder = @"请输入采集器校验码";
+    _cellectNo.placeholder = root_jiaoYanMa;
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
     [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -75,13 +75,13 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
       [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"确定" forState:UIControlStateNormal];
+    [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
     
     UIButton *QR=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE,400*NOW_SIZE , 240*NOW_SIZE, 60*NOW_SIZE)];
     [QR setBackgroundImage:IMAGE(@"按钮2.png") forState:0];
-    [QR setTitle:@"扫描条形码" forState:UIControlStateNormal];
+    [QR setTitle:root_erWeiMa forState:UIControlStateNormal];
     [QR setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [QR addTarget:self action:@selector(ScanQR) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:QR];
@@ -114,13 +114,13 @@
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
                 if ([content[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"校验码错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_jiaoYanMa_cuoWu cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==502) {
-                    [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_youJian_shiBai cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==503) {
-                    [self showAlertViewWithTitle:nil message:@"找不到用户" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_zhaoBuDao_yongHu cancelButtonTitle:root_Yes];
                 }
             }else{
                 NSString *email=content[@"msg"];
@@ -185,11 +185,11 @@
 
 -(void)addButtonPressed{
     if ([_cellectId.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器序列号" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_caiJiQi cancelButtonTitle:root_OK];
         return;
     }
     if ([_cellectNo.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器校验码" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_jiaoYanMa_zhengQue cancelButtonTitle:root_OK];
         return;
     }
     [self showProgressView];
@@ -202,15 +202,15 @@
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
                 if ([content[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"校验码错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_jiaoYanMa_cuoWu cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==502) {
-                    [self showAlertViewWithTitle:nil message:@"发送邮件失败" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_youJian_shiBai cancelButtonTitle:root_Yes];
                 }
                 else if ([content[@"msg"] integerValue] ==503) {
-                    [self showAlertViewWithTitle:nil message:@"找不到用户" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_zhaoBuDao_yongHu cancelButtonTitle:root_Yes];
                 }else if ([content[@"msg"] integerValue] ==504) {
-                    [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_fuWuQi_cuoWu cancelButtonTitle:root_Yes];
                 }
                 
             }

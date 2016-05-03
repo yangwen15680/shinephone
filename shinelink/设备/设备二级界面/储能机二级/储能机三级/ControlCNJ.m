@@ -72,7 +72,7 @@
     
     if([_type isEqualToString:@"0"]){
         UILabel *buttonLable=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
-        buttonLable.text=@"开机";
+        buttonLable.text=root_CNJ_kaiji;
         buttonLable.textAlignment=NSTextAlignmentCenter;
         buttonLable.textColor=[UIColor whiteColor];
         buttonLable.font = [UIFont systemFontOfSize:18*NOW_SIZE];
@@ -85,7 +85,7 @@
         [_scrollView addSubview:firstB];
         
         UILabel *buttonLable0=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2+SCREEN_Width/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
-        buttonLable0.text=@"关机";
+        buttonLable0.text=root_CNJ_guanji;
         buttonLable0.textAlignment=NSTextAlignmentCenter;
         buttonLable0.textColor=[UIColor whiteColor];
         buttonLable0.font = [UIFont systemFontOfSize:18*NOW_SIZE];
@@ -100,7 +100,7 @@
 
      if([_type isEqualToString:@"1"]){
     UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 60*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    PVLable.text=@"锂电池SOC下限设定";
+    PVLable.text=root_CNJ_SOC_xia;
     PVLable.textAlignment=NSTextAlignmentLeft;
     PVLable.textColor=[UIColor whiteColor];
     PVLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -126,7 +126,7 @@
     
        if([_type isEqualToString:@"2"]){
     UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    PVData.text=@"设置储能机时间:";
+    PVData.text=root_CNJ_shijian_she;
     PVData.textAlignment=NSTextAlignmentLeft;
     PVData.textColor=[UIColor whiteColor];
     PVData.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -164,21 +164,21 @@
     
        if([_type isEqualToString:@"3"]){
     UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    Enable.text=@"强制放电使能：";
+    Enable.text=root_CNJ_fangjian_shineng;
     Enable.textAlignment=NSTextAlignmentLeft;
     Enable.textColor=[UIColor whiteColor];
     Enable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:Enable];
            
            UILabel *EnableOff=[[UILabel alloc]initWithFrame:CGRectMake(183*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 20*NOW_SIZE,20*NOW_SIZE )];
-           EnableOff.text=@"关";
+           EnableOff.text=root_guan;
            EnableOff.textAlignment=NSTextAlignmentLeft;
            EnableOff.textColor=[UIColor whiteColor];
            EnableOff.font = [UIFont systemFontOfSize:16*NOW_SIZE];
            [_scrollView addSubview:EnableOff];
            
            UILabel *EnableOn=[[UILabel alloc]initWithFrame:CGRectMake(280*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 20*NOW_SIZE,20*NOW_SIZE )];
-           EnableOn.text=@"开";
+           EnableOn.text=root_kai;
            EnableOn.textAlignment=NSTextAlignmentLeft;
            EnableOn.textColor=[UIColor whiteColor];
            EnableOn.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -197,7 +197,7 @@
 
     if([_type isEqualToString:@"4"]){
     UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    dataDischarge.text=@"强制放电时间段：";
+    dataDischarge.text=root_CNJ_fangdian_shijianduan;
     dataDischarge.textAlignment=NSTextAlignmentLeft;
     dataDischarge.textColor=[UIColor whiteColor];
     dataDischarge.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -232,7 +232,7 @@
     [_scrollView addSubview:_time2];
     
     UILabel *TO=[[UILabel alloc]initWithFrame:CGRectMake(140*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 40*NOW_SIZE,30*NOW_SIZE )];
-    TO.text=@"至";
+    TO.text=root_zhi;
     TO.textAlignment=NSTextAlignmentCenter;
     TO.textColor=[UIColor whiteColor];
     TO.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -250,14 +250,14 @@
     
      if([_type isEqualToString:@"5"]){
     UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 300*NOW_SIZE,20*NOW_SIZE )];
-    PV.text=@"设置输入SP的组串电压";
+    PV.text=root_CNJ_SP;
     PV.textAlignment=NSTextAlignmentLeft;
     PV.textColor=[UIColor whiteColor];
     PV.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_scrollView addSubview:PV];
     
     UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 180*NOW_SIZE,20*NOW_SIZE )];
-    PV1.text=@"开路电压(300~500V)：";
+    PV1.text=root_CNJ_kailu_dianya;
     PV1.textAlignment=NSTextAlignmentLeft;
     PV1.textColor=[UIColor whiteColor];
     PV1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -279,7 +279,7 @@
 //         [_textField addObserver:_textField forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
     
     UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 180*NOW_SIZE,20*NOW_SIZE )];
-    PV2.text=@"MPP电压";
+    PV2.text=root_CNJ_MPP;
     PV2.textAlignment=NSTextAlignmentLeft;
     PV2.textColor=[UIColor whiteColor];
     PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -319,7 +319,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut setTitle:root_finish forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishSet1) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:goBut];
 
@@ -374,28 +374,28 @@
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"参数设置失败,系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xitong_cuoWu cancelButtonTitle:root_Yes];
                     
                 }else if ([content1[@"msg"] integerValue] ==502) {
-                    [self showAlertViewWithTitle:nil message:@"储能机所属服务器错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_fuwuqi_cuowu cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==503) {
-                    [self showAlertViewWithTitle:nil message:@"储能机序列号为空" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_xuliehao_kong cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==504) {
-                    [self showAlertViewWithTitle:nil message:@"储能机不在线" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_buzaixian cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==505) {
-                    [self showAlertViewWithTitle:nil message:@"采集器不在线" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_caijiqi_buzai cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==506) {
-                    [self showAlertViewWithTitle:nil message:@"参数类型不存在" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_leixing_buzai cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==507) {
-                    [self showAlertViewWithTitle:nil message:@"参数为空" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_canshu_kong cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==508) {
-                    [self showAlertViewWithTitle:nil message:@"参数不在范围内" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_canshu_buzai_fanwei cancelButtonTitle:root_Yes];
                 }else if ([content1[@"msg"] integerValue] ==509) {
-                    [self showAlertViewWithTitle:nil message:@"时间参数不正确" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_CNJ_shijian_budui cancelButtonTitle:root_Yes];
                 }
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
-                [self showAlertViewWithTitle:nil message:@"参数设置成功" cancelButtonTitle:root_Yes];
+                [self showAlertViewWithTitle:nil message:root_CNJ_canshu_chenggong cancelButtonTitle:root_Yes];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }
@@ -407,14 +407,14 @@
 }
 
 -(void)control{
-    _Alert1 = [[UIAlertView alloc] initWithTitle:@"警告" message:@"是否确定开启逆变器" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    _Alert1 = [[UIAlertView alloc] initWithTitle:root_ALET message:root_CNJ_shifou_kaiqi_CNJ delegate:self cancelButtonTitle:root_cancel  otherButtonTitles:root_OK, nil];
     
     [_Alert1 show];
     
 }
 
 -(void)controlOff{
-    _Alert2 = [[UIAlertView alloc] initWithTitle:@"警告" message:@"是否确定关闭逆变器" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    _Alert2 = [[UIAlertView alloc] initWithTitle:root_ALET message:root_CNJ_shifou_guanbi_CNJ delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
     [_Alert2 show];
 }
 
@@ -483,7 +483,7 @@
         [self.view addSubview:self.toolBar];
         
         UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:root_finish style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
         doneButton.tintColor = [UIColor whiteColor];
         self.toolBar.items = @[spaceButton, doneButton];
     }
@@ -528,7 +528,7 @@
 }
 
 -(void)controlOpen{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"警告" message:@"是否确定关闭逆变器" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:root_ALET message:root_CNJ_shifou_guanbi_CNJ delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
     [alertView show];
 }
 

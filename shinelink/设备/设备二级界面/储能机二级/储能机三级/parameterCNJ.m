@@ -99,9 +99,9 @@ _Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
 }
 
 -(void)initdata{
-_dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口",nil];
+_dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
     
-    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"额定功率", nil];
+    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_CNJ_eDing_gonglv, nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt(V)", @"Current(I)", @"Watt(W)",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV", @"Bat", @"Guid",nil];
@@ -224,7 +224,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口",nil];
     }
     
     UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
-    FW.text=@"固件版本";
+    FW.text=root_gujian_banben;
     FW.textAlignment=NSTextAlignmentCenter;
     FW.textColor=[UIColor blackColor];
     FW.font = [UIFont systemFontOfSize:16*NOW_SIZE];

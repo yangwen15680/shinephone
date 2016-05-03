@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.title=root_register;
     [self _getPickerData];
       self.dataDic = [NSMutableDictionary dictionary];
     

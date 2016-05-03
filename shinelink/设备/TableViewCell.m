@@ -50,7 +50,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     [self.contentView addSubview:arrowView];
     
     self.detail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-60*NOW_SIZE, 12*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
-    self.detail.text = @"详情";
+    self.detail.text = root_xianQing;
     self.detail.font=[UIFont systemFontOfSize:16];
     self.detail.textAlignment = NSTextAlignmentLeft;
     self.detail.textColor = [UIColor labelColor];
@@ -64,19 +64,19 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.state.textColor = [UIColor labelColor];
     [self.contentView addSubview:_state];*/
     
-   _stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
-    _stateView.layer.masksToBounds=YES;
-    _stateView.layer.cornerRadius=labelWidth1/2/2.0;
-    [self.contentView addSubview:_stateView];
+//   _stateView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1, 18*NOW_SIZE, labelWidth1/2, labelWidth1/2)];
+//    _stateView.layer.masksToBounds=YES;
+//    _stateView.layer.cornerRadius=labelWidth1/2/2.0;
+//    [self.contentView addSubview:_stateView];
     
-    self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+80*NOW_SIZE+labelWidth1+labelWidth1/2, 18*NOW_SIZE, labelWidth1, labelHeight)];
-    self.stateValue.font=[UIFont systemFontOfSize:fontSize];
+    self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+70*NOW_SIZE+labelWidth1+labelWidth1/2, 0*NOW_SIZE, 50*NOW_SIZE, 50*NOW_SIZE)];
+    self.stateValue.font=[UIFont systemFontOfSize:14*NOW_SIZE];
     self.stateValue.textAlignment = NSTextAlignmentLeft;
-    self.stateValue.textColor = [UIColor labelColor];
+    //self.stateValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_stateValue];
     
     self.power = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10*NOW_SIZE, 40*NOW_SIZE, labelWidth1, labelHeight)];
-    self.power.text = @"功率：";
+    self.power.text = root_gongLv;
     self.power.font=[UIFont systemFontOfSize:fontSize];
     self.power.textAlignment = NSTextAlignmentLeft;
     self.power.textColor = [UIColor labelColor];

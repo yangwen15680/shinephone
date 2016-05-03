@@ -31,7 +31,7 @@
     [self.view addSubview:userBgImageView];
     
     _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
-    _cellectId.placeholder = @"请输入设备别名";
+    _cellectId.placeholder = root_bieMing;
     _cellectId.textColor = [UIColor whiteColor];
     _cellectId.tintColor = [UIColor whiteColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -44,14 +44,14 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"确定" forState:UIControlStateNormal];
+    [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
 }
 
 -(void)addButtonPressed{
     if ([_cellectId.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的用户名" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_bieMing cancelButtonTitle:root_OK];
         return;
     }
     _dataDic=[NSMutableDictionary dictionaryWithObject:_cellectId.text forKey:@"alias"];
@@ -66,11 +66,11 @@
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xiTong_CuoWu cancelButtonTitle:root_Yes];
                 }
             }else{
                 
-               [self showAlertViewWithTitle:nil message:@"修改成功" cancelButtonTitle:root_Yes];
+               [self showAlertViewWithTitle:nil message:root_xiuGai_chengGong cancelButtonTitle:root_Yes];
                   [[NSNotificationCenter defaultCenter] postNotificationName:@"changeName" object:nil];
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }

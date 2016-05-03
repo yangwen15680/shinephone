@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title=root_register;
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
    // self.title=@"配置设备";
@@ -138,18 +139,18 @@
                             }
                             else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
                                 
-                                [self showAlertViewWithTitle:nil message:@"register error" cancelButtonTitle:root_Yes];
+                                [self showAlertViewWithTitle:nil message:root_zhuCe_cuoWu cancelButtonTitle:root_Yes];
                             }
                             else{
                                 //注册成功
                                 [self succeedRegister];
-                                [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                                [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong cancelButtonTitle:root_Yes];
                             }
                         }
                         else {
                             //注册成功
                             [self succeedRegister];
-                            [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                            [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
                         }
                     }
                     
@@ -160,7 +161,7 @@
                 
                 
             }else{
-                [self showAlertViewWithTitle:nil message:@"用户名已被使用" cancelButtonTitle:root_Yes];
+                [self showAlertViewWithTitle:nil message:root_yongHu_yi_shiYong cancelButtonTitle:root_Yes];
             }
         }
         
@@ -215,11 +216,11 @@
 
 -(void)addButtonPressed{
     if ([_cellectId.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器序列号" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_caiJiQi cancelButtonTitle:root_OK ];
         return;
     }
     if ([_cellectNo.text isEqual:@""]) {
-        [self showAlertViewWithTitle:nil message:@"请输入正确的采集器校验码" cancelButtonTitle:@"确定"];
+        [self showAlertViewWithTitle:nil message:root_jiaoYanMa_zhengQue cancelButtonTitle:root_OK];
         return;
     }
      [_dataDic setObject:_cellectId.text forKey:@"regDataLoggerNo"];
@@ -240,25 +241,25 @@
                      if ([content[@"back"][@"success"] integerValue] == 0) {
                          //注册失败
                          if ([content[@"back"][@"msg"] isEqual:@"error_userCountLimit"]) {
-                             [self showAlertViewWithTitle:nil message:@"超出版本限制注册用户数量" cancelButtonTitle:root_Yes];
+                             [self showAlertViewWithTitle:nil message:root_chaoChu_shuLiang cancelButtonTitle:root_Yes];
                          }else if ([content[@"back"][@"msg"] isEqual:@"server error."]){
                              
-                                 [self showAlertViewWithTitle:nil message:@"服务器错误" cancelButtonTitle:root_Yes];
+                                 [self showAlertViewWithTitle:nil message:root_fuWuQi_cuoWu cancelButtonTitle:root_Yes];
                          }
                          else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
                              
-                                 [self showAlertViewWithTitle:nil message:@"register error" cancelButtonTitle:root_Yes];
+                                 [self showAlertViewWithTitle:nil message:root_zhuCe_cuoWu cancelButtonTitle:root_Yes];
                          }
                          else{
                              //注册成功
                              [self succeedRegister];
-                              [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                              [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
                              }
                           }
                 else {
                          //注册成功
                          [self succeedRegister];
-                         [self showAlertViewWithTitle:nil message:@"注册成功"  cancelButtonTitle:root_Yes];
+                         [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
                      }
                  }
                  
@@ -269,7 +270,7 @@
              
              
          }else{
-             [self showAlertViewWithTitle:nil message:@"用户名已被使用" cancelButtonTitle:root_Yes];
+             [self showAlertViewWithTitle:nil message:root_yongHu_yi_shiYong cancelButtonTitle:root_Yes];
          }
 }
      
