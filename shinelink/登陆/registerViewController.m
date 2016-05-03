@@ -81,8 +81,8 @@
     [self.view addSubview:_backScroll];
     
     NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",@"iconfont-shouji.png",nil];
-    NSArray *labelArray=[NSArray arrayWithObjects:@"用户名", @"密码", @"重复密码",@"电子邮箱", @"联系电话", @"代理商编号",nil];
-    NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, @"Enter your pwd again", root_Enter_email, root_Enter_phone_number,@"代理商编号", nil];
+    NSArray *labelArray=[NSArray arrayWithObjects:root_yongHuMing, root_Mima, root_chongFu_miMa,root_dianzZiYouJian, root_DianHua, root_daiLiShangBianHao,nil];
+    NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, root_chongFu_shuRu_miMa, root_Enter_email, root_Enter_phone_number,root_shuRu_daiLiShangBianHao, nil];
    
     for (int i=0; i<labelArray.count; i++) {
         UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,17*NOW_SIZE+i*60*NOW_SIZE+moveHeight,17*NOW_SIZE, 17*NOW_SIZE)];
@@ -132,7 +132,7 @@
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
 
-    [goBut setTitle:@"下一步" forState:UIControlStateNormal];
+    [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
     [_backScroll addSubview:goBut];
@@ -161,24 +161,25 @@
 
 
 //判断是否是正确的email
--(BOOL)isValidateEmail:(NSString *)email {
-    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:email];
-}
+//-(BOOL)isValidateEmail:(NSString *)email {
+//    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+//    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+//    return [emailTest evaluateWithObject:email];
+//}
 
 
 
 //判断手机号码
-- (BOOL)isValidateTel:(NSString *)tel {
-    NSString *regex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0-9]))\\d{8}$";
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-    return [pred evaluateWithObject:tel];
-}
+//- (BOOL)isValidateTel:(NSString *)tel {
+//    NSString *regex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0-9]))\\d{8}$";
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+//    return [pred evaluateWithObject:tel];
+//}
+
 
 -(void)PresentGo{
-    NSArray *array=[[NSArray alloc]initWithObjects:@"请输入用户名",@"请输入密码",@"请输入密码",@"请输入邮箱",@"请输入电话",nil];
-    for (int i=0; i<5; i++) {
+    NSArray *array=[[NSArray alloc]initWithObjects:root_Enter_your_username,root_Enter_your_pwd,root_chongFu_shuRu_miMa,root_Enter_email,root_Enter_phone_number,root_shuRu_daiLiShangBianHao,nil];
+    for (int i=0; i<array.count; i++) {
         if ([[_textFieldMutableArray[i] text] isEqual:@""]) {
             [self showToastViewWithTitle:array[i]];
             return;
@@ -186,28 +187,33 @@
     }
     
     if (![[_textFieldMutableArray[1] text] isEqual:[_textFieldMutableArray[2] text] ]) {
-        [self showToastViewWithTitle:@"请输入相同的密码"];
+        [self showToastViewWithTitle:root_xiangTong_miMa];
         return;
     }
     
     if ([[_textFieldMutableArray[0] text] length]<3) {
-        [self showToastViewWithTitle:@"用户名必须大于3位"];
+        [self showToastViewWithTitle:root_daYu_san];
         return;
     }
     
     if ([[_textFieldMutableArray[1] text] length]<6) {
-        [self showToastViewWithTitle:@"密码必须大于6位"];
+        [self showToastViewWithTitle:root_daYu_liu];
         return;
     }
     
-    if (![self isValidateEmail:[_textFieldMutableArray[3] text]]) {
-        [self showToastViewWithTitle:@"请输入正确邮箱格式"];
-        return;
-    }
-    if (![self isValidateTel:[_textFieldMutableArray[4] text]]) {
-        [self showToastViewWithTitle:@"请输入正确电话"];
-        return;
-    }
+//    if (![self isValidateEmail:[_textFieldMutableArray[3] text]]) {
+//        [self showToastViewWithTitle:@"请输入正确邮箱格式"];
+//        return;
+//    }
+//    if (![self isValidateTel:[_textFieldMutableArray[4] text]]) {
+//        [self showToastViewWithTitle:@"请输入正确电话"];
+//        return;
+//    }
+    
+//    if (!([[_textFieldMutableArray[4] text] length]==11)) {
+//        [self showToastViewWithTitle:@"请输入正确电话"];
+//        return;
+//    }
     
      [_dataDic setObject:[_textFieldMutableArray[0] text] forKey:@"regUserName"];
      [_dataDic setObject:[_textFieldMutableArray[1] text] forKey:@"regPassword"];

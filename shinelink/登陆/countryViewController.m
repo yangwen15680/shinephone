@@ -45,7 +45,7 @@
 //    imageView.image=[UIImage imageNamed:@"语言.png"];
 //    [self.view addSubview:imageView];
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,198*NOW_SIZE-50*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
-    label.text=@"国家";
+    label.text=root_country;
     label.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor=[UIColor whiteColor];
@@ -59,7 +59,7 @@
     _label.layer.borderWidth=1;
     _label.layer.cornerRadius=5;
     _label.layer.borderColor=[UIColor whiteColor].CGColor;
-    _label.text =@"点击选择国家";
+    _label.text =root_country_alet;
     _label.textColor = [UIColor whiteColor];
     //textField.tintColor = [UIColor whiteColor];
     _label.textAlignment = NSTextAlignmentCenter;
@@ -70,7 +70,7 @@
     [_label addGestureRecognizer:tap];
     
     UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,198*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
-    label2.text=@"位置";
+    label2.text=root_weiZhi;
     label2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
      label2.textAlignment = NSTextAlignmentCenter;
     label2.textColor=[UIColor whiteColor];
@@ -84,7 +84,7 @@
     _label2.layer.borderWidth=1;
     _label2.layer.cornerRadius=5;
     _label2.layer.borderColor=[UIColor whiteColor].CGColor;
-    _label2.text =@"点击获取城市和经纬度";
+    _label2.text =root_weiZhi_tiShi;
     _label2.textColor = [UIColor whiteColor];
     //textField.tintColor = [UIColor whiteColor];
     _label2.textAlignment = NSTextAlignmentCenter;
@@ -102,7 +102,7 @@
     [goBut.layer setCornerRadius:20.0];
        [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
   
-    [goBut setTitle:@"下一步" forState:UIControlStateNormal];
+    [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
 }
@@ -194,7 +194,7 @@
     
     NSString *city=[self.dataDic objectForKey:@"regCountry"];
     if (city.length==0) {
-        [self showToastViewWithTitle:@"请选择国家和城市"];
+        [self showToastViewWithTitle:root_country_kong];
         return;
     }
     
@@ -221,7 +221,7 @@
         _country=province;
     };
     }else{
-        [self showToastViewWithTitle:@"请再次进入页面获取国家列表"];
+        [self showToastViewWithTitle:root_country_huoQu];
         return;
     
     }

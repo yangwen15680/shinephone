@@ -92,11 +92,12 @@
     //NSString *plantId = _stationId;
         [BaseRequest uplodImageWithMethod:HEAD_URL paramars:@{@"id":[UserInfo defaultUserInfo].plantID} paramarsSite:@"/newPlantAPI.do?op=updateImg" dataImageDict:dataImageDict sucessBlock:^(id content) {
             NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-            if ([res isEqualToString:@"true"]) {
-                [self showToastViewWithTitle:NSLocalizedString(@"Successfully modified", @"Successfully modified")];
-                [self.navigationController popViewControllerAnimated:YES];
+            if ([res rangeOfString:@"true"].location == NSNotFound) {
+                [self showToastViewWithTitle:NSLocalizedString(@"Successfully fails", @"Successfully fails")];
+               
             } else {
-                [self showToastViewWithTitle:NSLocalizedString(@"Modification fails", @"Modification fails")];
+                [self showToastViewWithTitle:NSLocalizedString(@"Modification modified", @"Modification modified")];
+                 [self.navigationController popViewControllerAnimated:YES];
             }
         } failure:^(NSError *error) {
             [self showToastViewWithTitle:root_Networking];

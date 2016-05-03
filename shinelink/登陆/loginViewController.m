@@ -136,7 +136,7 @@
  
    
     self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 40*NOW_SIZE)];
-    self.forgetLable.text=@"忘记密码";
+    self.forgetLable.text=root_forget_pwd;
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
@@ -147,7 +147,7 @@
     
     
    _registLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 220*NOW_SIZE, 40*NOW_SIZE)];
-    self.registLable.text=@"注册";
+    self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     self.registLable.textAlignment = NSTextAlignmentRight;
@@ -161,7 +161,7 @@
     LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 320*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
     [_scrollView addSubview:loginBtn];
-    [loginBtn setTitle:@"登录" forState:UIControlStateNormal];
+    [loginBtn setTitle:root_log_in forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     
 }
@@ -336,8 +336,8 @@
 
 //弹出输入用户提示框方法
 - (void)userAlertAction {
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请输入用户名" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *btnAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:root_Alet_user message:root_Alet_user_messge preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *btnAction = [UIAlertAction actionWithTitle:root_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     [alertCtrl addAction:btnAction];
@@ -345,8 +345,8 @@
 }
 //弹出输入密码提示框方法
 - (void)passWordAlertAction {
-    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请输入密码" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *btnAction = [UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:root_Alet_user message:root_Alet_user_pwd preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *btnAction = [UIAlertAction actionWithTitle:root_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     [alertCtrl addAction:btnAction];
@@ -374,25 +374,25 @@
         }
 
         findViewController *findVc=[[findViewController alloc]init];
-        findVc.title=@"服务";
+        findVc.title=root_service;
         
-         LZPageViewController *energyVc = [[LZPageViewController alloc] initWithTitles:@[@"能源分析",@"智能能源",] controllersClass:@[[energyViewController class],[energyDemo class]]];
+         LZPageViewController *energyVc = [[LZPageViewController alloc] initWithTitles:@[root_energy,root_energy_Smart,] controllersClass:@[[energyViewController class],[energyDemo class]]];
        // energyViewController *energyVc=[[energyViewController alloc]init];
           // energyVc.title=@"能源分析";
         energyVc.type=@"1";
         
         deviceViewController *deviceVc=[[deviceViewController alloc]initWithDataDict:stationID stationName:stationName];
         meViewController *meVc=[[meViewController alloc]init];
-         meVc.title=@"我";
+         meVc.title=root_ME;
         
         UINavigationController *Vc3=[[UINavigationController alloc]initWithRootViewController:findVc];
         UINavigationController *Vc2=[[UINavigationController alloc]initWithRootViewController:energyVc];
         UINavigationController *Vc1=[[UINavigationController alloc]initWithRootViewController:deviceVc];
         UINavigationController *Vc4=[[UINavigationController alloc]initWithRootViewController:meVc];
-        Vc1.title=@"Device";
-        Vc2.title=@"Energy";
-        Vc3.title=@"Service";
-        Vc4.title=@"Me";
+        Vc1.title=root_device;
+        Vc2.title=root_energy;
+        Vc3.title=root_service;
+        Vc4.title=root_ME;
         Vc1.tabBarItem.image=[UIImage imageNamed:@"equipment@2x.png"];
         Vc1.tabBarItem.selectedImage=[UIImage imageNamed:@"equipment@2x.png"];
         Vc2.tabBarItem.image=[UIImage imageNamed:@"energy@2x.png"];
