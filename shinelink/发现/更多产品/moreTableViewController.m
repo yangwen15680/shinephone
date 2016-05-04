@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *outline;
 @property (nonatomic, strong) NSMutableArray *paramsName;
 @property (nonatomic, strong) NSMutableArray *imageName;
+@property (nonatomic, strong) NSMutableArray *imageHead;
 @end
 
 @implementation moreTableViewController
@@ -28,25 +29,66 @@
 
 
 -(void)initData{
-   
+    _name=[NSMutableArray array];
+        _feature=[NSMutableArray array];
+        _outline=[NSMutableArray array];
+        _paramsName=[NSMutableArray array];
+        _imageName=[NSMutableArray array];
+    _imageHead=[NSMutableArray array];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newMoreProductAPI.do?op=getMoreProductList" sucessBlock:^(id content) {
         
         NSLog(@"getMoreProductList: %@", content);
+        [self showProgressView];
         if (content) {
             NSArray *allArray=[NSArray arrayWithArray:content];
             for (int i=0; i<allArray.count; i++) {
-                
+                [_name addObject:allArray[i][@"productName"]];
+                 [_feature addObject:allArray[i][@"feature"]];
+                 [_outline addObject:allArray[i][@"outline"]];
+                 [_paramsName addObject:allArray[i][@"technologyParams"]];
+                 [_imageName addObject:allArray[i][@"productName"]];
+                [self hideProgressView];
+                NSString *productImage=[NSString stringWithString:allArray[i][@"productName"]];
+               
+                if (productImage.length>0) {
+                     [self showProgressView];
+                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage} paramarsSite:@"/newMoreProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+                        
+                        [self hideProgressView];
+                        NSLog(@"getProductImage=: %@", content2);
+                        if (content2) {
+                            
+                            [_imageHead addObject:content2];
+                            if (i==(allArray.count-1)) {
+                                     [self.tableView reloadData];
+                            }
+                         
+                                                   }
+                        
+                    } failure:^(NSError *error) {
+                        [self hideProgressView];
+                    }];
+                }
             }
             
             
                    }
         
     } failure:^(NSError *error) {
-        
-        
+          [self hideProgressView];
     }];
 
     
+}
+
+
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,7 +103,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return _name.count;
 }
 
 
@@ -71,8 +113,12 @@
         cell = [[moreCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    // Configure the cell...
-    
+    [cell.typeImageView setImage:_imageHead[indexPath.row]];
+       cell.name.text=_name[indexPath.row];
+  NSString *connentText=[NSString stringWithFormat:@"%@",_outline[indexPath.row]];
+  // NSString *connentText=@"专为小型商业系统设计\n内置变压器\n隔离电网\n并提供通用的400V输出\n可直接低压并网";
+     cell.connent.text=connentText;
+  
     return cell;
 }
 
@@ -86,6 +132,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
   
     productViewController *page4 = [[productViewController alloc] init];
+    page4.name2=_name[indexPath.row];
+       page4.feature2=_feature[indexPath.row];
+       page4.outline2=_outline[indexPath.row];
+       page4.imageHead2=_imageHead[indexPath.row];
+    page4.paramImage=_paramsName[indexPath.row];
+    page4.imageArray=[NSMutableArray arrayWithObject:_imageHead[indexPath.row]];
     [self.navigationController pushViewController:page4 animated:NO];
 }
 

@@ -13,7 +13,7 @@
   #define  headH2 120*NOW_SIZE
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 @interface productViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
-@property(nonatomic,strong)NSMutableArray *imageArray;
+
 @property(nonatomic,strong)NSMutableArray *imageArrayName;
 @property(nonatomic,strong)NSMutableArray *imageArrayCount;
 @property (nonatomic, strong) UILabel *title1;
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIButton *dayButton;
 @property (nonatomic, strong) UIButton *monthButton;
 @property (nonatomic, strong) UIImageView *imageView;
-
+@property(nonatomic,strong)NSMutableArray *paramsArray;
 @end
 
 @implementation productViewController
@@ -46,22 +46,40 @@
 }
 
 -(void)initUI{
-
+  [self netProduct];
     [self uiOne];
      [self createHeaderView];
     [self uiTwo];
     [self uiThree];
+  
 }
 
+-(void)netProduct{
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_paramImage} paramarsSite:@"/newMoreProductAPI.do?op=getProductParamImage" sucessBlock:^(id content2) {
+        
+        [self hideProgressView];
+        NSLog(@"getProductParamImage=: %@", content2);
+        if (content2) {
+            _paramsArray=[NSMutableArray arrayWithObject:content2];
+            }
+            
+        
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+    }];
+}
+
+
 -(void)uiOne{
-    [self getText];
+   
     _scrollView2=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView2.scrollEnabled=YES;
     _scrollView2.contentSize = CGSizeMake(SCREEN_Width,1000*NOW_SIZE);
     [self.view addSubview:_scrollView2];
     
     _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*NOW_SIZE+headH, 300*NOW_SIZE,25*NOW_SIZE )];
-    _title1.text=@"<<ShineServer Terms of Use>>";
+    _title1.text=_name2;
     _title1.textAlignment=NSTextAlignmentCenter;
     _title1.textColor=COLOR(0, 0, 0, 1);
     _title1.font = [UIFont systemFontOfSize:18*NOW_SIZE];
@@ -72,7 +90,7 @@
     [_scrollView2 addSubview:line3];
     
     _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*NOW_SIZE+headH, 300*NOW_SIZE,headH2)];
-    _detail.text=_detailText;
+    _detail.text=_feature2;
     _detail.textAlignment=NSTextAlignmentLeft;
     _detail.textColor=COLOR(60, 60, 60, 1);
     _detail.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -127,7 +145,7 @@
 -(void)uiThree{
 
     _detail2=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*NOW_SIZE+headH+headH2+25*NOW_SIZE, 300*NOW_SIZE,400*NOW_SIZE)];
-    _detail2.text=_detailText;
+    _detail2.text=_outline2;
     _detail2.textAlignment=NSTextAlignmentLeft;
     _detail2.textColor=COLOR(60, 60, 60, 1);
     _detail2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -138,7 +156,7 @@
 -(void)uiFour{
     
     _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE,60*NOW_SIZE+headH+headH2+25*NOW_SIZE, 300*NOW_SIZE,400*NOW_SIZE)];
-    _imageView.image = [UIImage imageNamed:@"2.jpg"];
+    _imageView.image = _paramsArray[0];
         [_imageView setUserInteractionEnabled:YES];
     [_scrollView2 addSubview:_imageView];
     UITapGestureRecognizer *tap  = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(magnifyImage)];
@@ -152,9 +170,7 @@
     [imageBig showImage:self.imageView];//调用方法
 }
 
--(void)getText{
-    _detailText=@"    Welcome to register and use the service of Shenzhen Growatt New Energy Co., Ltd (which in the following referred as Growatt, ShineServer, Our company, Our website, We.), before use Our website please read the ShineServer Terms of Use (which in following referred as Terms of Use or Agreement).\n    Users must notice that if users want to visit or use our website (including in ways of using mobile phone apps to log in and use our website) and accept the service provided by us, please carefully read all the clauses in this Terms of Use document especially clauses related to your rights or disclaimers. If you have any queries on this Terms of Use please contact service@ginverter.com.\n   Please read and decided to agree all the content of this Terms of Use or not, if you disagree to follow the Terms of Use you should not use ShineServer service or you should quit to continue using this service provided by Growatt. \n    Once you selected the option I have read and accept ShineServer Terms of Use, the action will be regarded as acceptance to the Terms of Use including accepting any changes or supplementary to the Terms of Use done by Growatt, and simultaneously it will be regarded as finish the agreement between users and Growatt. \n    After acceptance to the Terms of Use,     \n -	Users should not use the reason of not read the full content of the Terms of Use to make any opposition.";
-}
+
 
 - (void)createHeaderView{
     
