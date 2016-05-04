@@ -43,18 +43,19 @@
       
         if (content) {
             //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-            id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            NSArray *jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
                NSLog(@"getQualityInformation==%@", jsonObj);
-            NSArray *allArray=[NSArray arrayWithObject:jsonObj];
+            NSArray *allArray=[NSArray arrayWithArray:jsonObj];
             for (int i=0; i<allArray.count; i++) {
                 [_typeArray addObject:allArray[i][@"deviceType"]];
                 [_maturityTimeArray addObject:allArray[i][@"maturityTime"]];
                 [_outTimeArray addObject:allArray[i][@"outTime"]];
                 [_SNArray addObject:allArray[i][@"deviceSN"]];
-                [_HasArray addObject:allArray[i][@"isHas"]];
+                NSString *HAS=[NSString stringWithFormat:@"%@",allArray[i][@"isHas"]];
+                [_HasArray addObject:HAS];
             }
           //  self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
-       
+            [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
         [self hideProgressView];

@@ -11,7 +11,11 @@
 #import "productViewController.h"
 
 @interface moreTableViewController ()
-
+@property (nonatomic, strong) NSMutableArray *name;
+@property (nonatomic, strong) NSMutableArray *feature;
+@property (nonatomic, strong) NSMutableArray *outline;
+@property (nonatomic, strong) NSMutableArray *paramsName;
+@property (nonatomic, strong) NSMutableArray *imageName;
 @end
 
 @implementation moreTableViewController
@@ -19,11 +23,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    [self initData];
+}
+
+
+-(void)initData{
+   
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newMoreProductAPI.do?op=getMoreProductList" sucessBlock:^(id content) {
+        
+        NSLog(@"getMoreProductList: %@", content);
+        if (content) {
+            NSArray *allArray=[NSArray arrayWithArray:content];
+            for (int i=0; i<allArray.count; i++) {
+                
+            }
+            
+            
+                   }
+        
+    } failure:^(NSError *error) {
+        
+        
+    }];
+
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
