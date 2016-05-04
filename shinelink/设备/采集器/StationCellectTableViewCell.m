@@ -39,7 +39,7 @@
         
         //别名
         UILabel *othername = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 12*NOW_SIZE, 120*NOW_SIZE, 20*NOW_SIZE)];
-        othername.text = @"aliases";
+        othername.text =root_bieming;
         othername.textColor = [UIColor whiteColor];
         othername.font=[UIFont systemFontOfSize:12*NOW_SIZE];
         [self.contentView addSubview:othername];
@@ -61,7 +61,7 @@
         
         //采集器序列号
         UILabel *todayEnergyTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 40*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
-        todayEnergyTitleLable.text = @"datalog sn";
+        todayEnergyTitleLable.text = root_xuleihao;
         todayEnergyTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         todayEnergyTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:todayEnergyTitleLable];
@@ -78,7 +78,7 @@
         
         //组别
         UILabel *totalEnergyTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 80*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
-        totalEnergyTitleLable.text = @"group";
+        totalEnergyTitleLable.text = root_zubie;
         totalEnergyTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         totalEnergyTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:totalEnergyTitleLable];
@@ -95,7 +95,7 @@
         
         //设备类型
         UILabel *currentPowerTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 120*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
-        currentPowerTitleLable.text = @"device type";
+        currentPowerTitleLable.text = root_shebei_leixing;
         currentPowerTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         currentPowerTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:currentPowerTitleLable];

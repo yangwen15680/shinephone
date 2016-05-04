@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-   self.dataArray =[NSMutableArray arrayWithObjects:@"能源调度优先级设置",@"智能联动设置",@"峰谷电价设置",@"峰谷段动作使能",@"控制优先级设置",@"光伏零功率输出使能",nil];
+   self.dataArray =[NSMutableArray arrayWithObjects:root_energy_tiaodu_youxian,root_energy_liandong_shezhi,root_energy_dianjia_shezhi,root_energy_dongzuo_shineng,root_energy_kongzhi_youxian,root_energy_lingonglv_shineng,nil];
      self.ImageArray =[NSMutableArray arrayWithObjects:@"智能调整优先设置.png",@"智能联动设置切图.png",@"峰谷电价设置切图.png",@"峰谷段动作使能切图.png",@"控制优先级设置切图.png",@"光伏零功率输出使能切图.png",nil];
 }
 
@@ -62,6 +62,13 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 10*NOW_SIZE;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:root_energy_wenxin_tishi message:root_energy_houxun_kaifang delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
+    [alert show];
+
+
 }
 
 /*

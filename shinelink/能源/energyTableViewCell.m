@@ -39,7 +39,7 @@
         [self.contentView addSubview:arrowView];
         
         self.detail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-30-30, 12, 40*NOW_SIZE, 30*NOW_SIZE)];
-        self.detail.text = @"详情";
+        self.detail.text = root_xianQing;
         self.detail.font=[UIFont systemFontOfSize:16];
         self.detail.textAlignment = NSTextAlignmentLeft;
         self.detail.textColor = [UIColor labelColor];
@@ -49,7 +49,7 @@
         self.state = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5, 50*NOW_SIZE-10, labelWidth1, labelHeight)];
         
         self.state.font=[UIFont systemFontOfSize:fontSize];
-        self.state.textAlignment = NSTextAlignmentRight;
+        self.state.textAlignment = NSTextAlignmentCenter;
         self.state.textColor = [UIColor labelColor];
         [self.contentView addSubview:_state];
         
@@ -66,7 +66,7 @@
         self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth+10*NOW_SIZE, 50*NOW_SIZE-10, labelWidth1+5, labelHeight)];
         
         self.electric.font=[UIFont systemFontOfSize:fontSize];
-        self.electric.textAlignment = NSTextAlignmentRight;
+        self.electric.textAlignment = NSTextAlignmentCenter;
         self.electric.textColor = [UIColor labelColor];
         [self.contentView addSubview:_electric];
         

@@ -21,7 +21,7 @@
   //  UIImage *bgImage = IMAGE(@"bg4.png");
   //  self.view.layer.contents = (id)bgImage.CGImage;
     
-     self.dataArray =[NSMutableArray arrayWithObjects:@"设置逆变器开关机",@"设置有功功率",@"设置无功功率",@"设置PF值",@"设置逆变器时间",nil];
+     self.dataArray =[NSMutableArray arrayWithObjects:root_NBQ_kaiguan,root_NBQ_youxiao_gonglv,root_NBQ_wuxiao_gonglv,root_NBQ_PF,root_NBQ_shijian,nil];
    
 }
 

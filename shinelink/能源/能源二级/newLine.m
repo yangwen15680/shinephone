@@ -139,7 +139,7 @@
         [_lineChart removeFromSuperview];
     }
     _pieChart = [[ZFPieChart alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATIONBAR_HEIGHT)];
-    _pieChart.title = @"家庭用电占比";
+    _pieChart.title = root_energy_jiating_yongdian_zhanbi;
     
       _pieChart.nameArray = [NSMutableArray array];
     _pieChart.nameArray=(NSMutableArray*)dataDict.allKeys;

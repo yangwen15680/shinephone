@@ -24,7 +24,7 @@
 
 
 -(void)initUI{
-    NSArray *labelArray=[[NSArray alloc]initWithObjects:@"datalog sn",@"aliases",@"group", nil];
+    NSArray *labelArray=[[NSArray alloc]initWithObjects:root_xuleihao,root_bieming,root_zubie, nil];
     for (int i=0; i<3; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, (100+i*40)*NOW_SIZE, 100*NOW_SIZE, 40*NOW_SIZE)];
         label.text=labelArray[i];
@@ -71,7 +71,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut setTitle:root_finish forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
 }

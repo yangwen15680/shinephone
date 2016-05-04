@@ -21,12 +21,12 @@
     [self.view addSubview:self.line2View];
     
     NSMutableDictionary *dict=[NSMutableDictionary new];
-    [dict setObject:@"11" forKey:@"电视机"];
-    [dict setObject:@"21" forKey:@"电冰箱"];
-    [dict setObject:@"25" forKey:@"洗衣机"];
-    [dict setObject:@"15" forKey:@"空调"];
-    [dict setObject:@"22" forKey:@"热水器"];
-    [dict setObject:@"81" forKey:@"微波炉"];
+    [dict setObject:@"11" forKey:root_energy_dianbinxiang];
+    [dict setObject:@"21" forKey:root_energy_weibolu];
+    [dict setObject:@"25" forKey:root_energy_xiyiji];
+    [dict setObject:@"15" forKey:root_energy_kongtiao];
+    [dict setObject:@"22" forKey:root_energy_reshuiqi];
+    [dict setObject:@"81" forKey:root_energy_weibolu];
     
     [self.line2View showPieChartWithDataDict:dict];
     

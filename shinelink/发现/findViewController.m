@@ -43,9 +43,9 @@
                                                                       NSForegroundColorAttributeName :[UIColor whiteColor]
                                                                       }];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self setTitle:@"服务"];
+    [self setTitle:root_service];
       [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
-    arrayName=@[@"客户服务",@"质保查询",@"增值业务",@"更多产品"];
+    arrayName=@[root_ME_kefu,root_ME_zhibao,root_ME_zengzhi,root_ME_gengduo];
     arrayImage=@[@"客户服务.png",@"质保查询.png",@"增值服务.png",@"更多.png"];
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -232,7 +232,7 @@
 {
     if (indexPath.row==0) {
     
-        LZPageViewController *pageVc = [[LZPageViewController alloc] initWithTitles:@[@"我的问题",@"常见问题",] controllersClass:@[[listViewController class],[commonTableViewController class]]];
+        LZPageViewController *pageVc = [[LZPageViewController alloc] initWithTitles:@[root_ME_wenti,root_ME_changjian_wenti,] controllersClass:@[[listViewController class],[commonTableViewController class]]];
         [self.navigationController pushViewController:pageVc animated:NO];
     }else if (indexPath.row==1){
         qualityTableViewController *page2 = [[qualityTableViewController alloc] init];

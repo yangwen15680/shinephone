@@ -770,7 +770,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             
             UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             
-            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
+            UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:root_finish style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
             doneButton.tintColor = [UIColor whiteColor];
             self.toolBar.items = @[spaceButton, doneButton];
         }

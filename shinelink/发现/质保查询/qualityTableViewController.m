@@ -11,6 +11,12 @@
 
 @interface qualityTableViewController ()
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
+@property (nonatomic, strong) NSMutableArray *typeArray;
+@property (nonatomic, strong) NSMutableArray *maturityTimeArray;
+@property (nonatomic, strong) NSMutableArray *outTimeArray;
+@property (nonatomic, strong) NSMutableArray *SNArray;
+@property (nonatomic, strong) NSMutableArray *HasArray;
+
 @end
 
 @implementation qualityTableViewController
@@ -18,21 +24,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     [self initData];
 }
 
 -(void)initData{
+    _typeArray=[NSMutableArray array];
+    _maturityTimeArray=[NSMutableArray array];
+    _outTimeArray=[NSMutableArray array];
+    _SNArray=[NSMutableArray array];
+        _HasArray=[NSMutableArray array];
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *plantId=[ud objectForKey:@"plantID"];
     
     [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantId":plantId,@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:@"/newQualityAPI.do?op=getQualityInformation" sucessBlock:^(id content) {
         [self hideProgressView];
-        
+      
         if (content) {
             //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
             id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
+               NSLog(@"getQualityInformation==%@", jsonObj);
+            NSArray *allArray=[NSArray arrayWithObject:jsonObj];
+            for (int i=0; i<allArray.count; i++) {
+                [_typeArray addObject:allArray[i][@"deviceType"]];
+                [_maturityTimeArray addObject:allArray[i][@"maturityTime"]];
+                [_outTimeArray addObject:allArray[i][@"outTime"]];
+                [_SNArray addObject:allArray[i][@"deviceSN"]];
+                [_HasArray addObject:allArray[i][@"isHas"]];
+            }
+          //  self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
        
         }
     } failure:^(NSError *error) {
@@ -59,13 +80,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 3;
+    return _SNArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,6 +100,17 @@
     if (!cell) {
         cell = [[qualityCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    
+    cell.name.text=_typeArray[indexPath.row];
+    if ([_HasArray[indexPath.row] isEqualToString:@"1"]) {
+          cell.alia.text=@"有";
+    }else{
+     cell.alia.text=@"没有";
+    }
+    cell.SN.text=_SNArray[indexPath.row];
+     cell.beginTime.text=_outTimeArray[indexPath.row];
+     cell.overTime.text=_maturityTimeArray[indexPath.row];
+
     
     // Configure the cell...
     

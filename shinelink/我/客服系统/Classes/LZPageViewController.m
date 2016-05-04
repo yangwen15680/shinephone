@@ -103,7 +103,7 @@ static NSString *mainCell = @"mainCellmainCell";
     self.contentViews = contentViews;
     
     UIView *line = [[UIView alloc] init];
-    line.backgroundColor =[UIColor redColor];
+    line.backgroundColor =mainColor;
     self.lineWidth = self.view.frame.size.width / self.itemsArray.count;
     line.frame = CGRectMake(0, self.pageBarHeight - 3, self.lineWidth, 3);
     [self.contentViews addSubview:line];

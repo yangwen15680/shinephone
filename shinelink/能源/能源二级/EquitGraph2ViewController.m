@@ -100,9 +100,9 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.view addSubview:_scrollView];
     
     if ([_dicType isEqualToString:@"2"]){
-            _valueName=[NSMutableArray arrayWithObjects:@"发电量",@"最大值",@"平均值",nil];
+            _valueName=[NSMutableArray arrayWithObjects:root_energy_fadianliang,root_energy_zuidazhi,root_energy_pingjunzhi,nil];
     }else if ([_dicType isEqualToString:@"3"]){
-    _valueName=[NSMutableArray arrayWithObjects:@"放电量",@"最大值",@"平均值",nil];
+    _valueName=[NSMutableArray arrayWithObjects:root_energy_fangdianliang,root_energy_zuidazhi,root_energy_pingjunzhi,nil];
     }
     
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];

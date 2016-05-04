@@ -37,15 +37,15 @@
                                                                       NSForegroundColorAttributeName :[UIColor whiteColor]
                                                                       }];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self setTitle:@"能源分析"];
+    [self setTitle:root_energy];
     
-    nameArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量",@"家庭用电设备",@"光伏电量",@"储能电量", nil];
-    monthArray=[[NSMutableArray alloc]initWithObjects:@"月:",@"最省电:",@"月:",@"月:",nil];
+    nameArray=[[NSMutableArray alloc]initWithObjects:root_energy_jiating_yongdian,root_energy_jiating_shebei,root_energy_guangfu_dianliang,root_energy_chuneng_dianliang, nil];
+    monthArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_yue,root_energy_chuneng_zuishengdian,root_energy_chuneng_yue,root_energy_chuneng_yue,nil];
     //monthDateArray=[NSMutableArray array];
     //dayDateArray=[NSMutableArray array];
     monthDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
     dayDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
-    dayArray=[[NSMutableArray alloc]initWithObjects:@"日:",@"最耗电:",@"日:",@"日:", nil];
+    dayArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_ri,root_energy_chuneng_zuihaodian,root_energy_chuneng_ri,root_energy_chuneng_ri, nil];
     imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"光伏收益.png",@"光伏电量.png", nil];
     // Do any additional setup after loading the view.
     [self _createTableView];

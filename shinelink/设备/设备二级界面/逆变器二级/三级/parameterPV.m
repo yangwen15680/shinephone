@@ -133,9 +133,9 @@
 }
 
 -(void)initdata{
-    _dateN1=[[NSMutableArray alloc]initWithObjects:@"序列号", @"端口", @"额定功率",nil];
+    _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou, root_CNJ_eDing_gonglv,nil];
   
-    _dateY1=[[NSMutableArray alloc]initWithObjects:@"别名", @"属性", @"模式",nil];
+    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_shuxing, root_moshi,nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt", @"Current", @"Watt",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2",@"AC1",@"AC2",@"AC3",nil];

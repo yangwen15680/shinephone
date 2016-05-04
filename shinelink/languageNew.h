@@ -139,7 +139,11 @@
 #define root_NBQ_shijian     NSLocalizedString(@"设置逆变器时间:", nil)
 #define root_NBQ_shifou_kaiqi      NSLocalizedString(@"是否确定开启逆变器", nil)
 #define root_NBQ_shifou_guanbi     NSLocalizedString(@"是否确定关闭逆变器", nil)
-
+#define root_NBQ_kaiguan     NSLocalizedString(@"设置逆变器开关机", nil)
+#define root_NBQ_xunliehao     NSLocalizedString(@"序列号:", nil)
+#define root_NBQ_leixing     NSLocalizedString(@"类型:", nil)
+#define root_NBQ_shijianhao     NSLocalizedString(@"事件号:", nil)
+#define root_NBQ_biaoshi     NSLocalizedString(@"标识:", nil)
 
 
 //储能机二级
@@ -182,9 +186,14 @@
 #define root_bieming      NSLocalizedString(@"别名", nil)
 #define root_CNJ_eDing_gonglv      NSLocalizedString(@"额定功率", nil)
 #define root_gujian_banben      NSLocalizedString(@"固件版本", nil)
-
+#define root_shuxing      NSLocalizedString(@"属性", nil)
+#define root_moshi     NSLocalizedString(@"模式", nil)
 
 //数据采集器/编辑采集器
+#define root_zubie     NSLocalizedString(@"组别", nil)
+#define root_shebei_leixing    NSLocalizedString(@"设备类型", nil)
+#define root_data_update_interval       NSLocalizedString(@"数据更新时间", nil)
+
 #define root_tianjia_shebei      NSLocalizedString(@"添加设备", nil)
 #define root_tianjia_chucuo      NSLocalizedString(@"添加出错", nil)
 #define root_meiyou_quanxian      NSLocalizedString(@"没有权限", nil)
@@ -195,12 +204,17 @@
 #define root_xuliehao_jiaoyanMa_bupipei      NSLocalizedString(@"序列号与校验码不匹配", nil)
 #define root_shebei_tianjia_chenggong      NSLocalizedString(@"设备添加成功", nil)
 
+#define root_CJQ_tianjia      NSLocalizedString(@"添加采集器", nil)
+#define root_CJQ_bianji      NSLocalizedString(@"编辑采集器", nil)
+#define root_CJQ_shanchu     NSLocalizedString(@"删除采集器", nil)
+#define root_CJQ_peizhi      NSLocalizedString(@"配置采集器", nil)
+
 #define root_Add       NSLocalizedString(@"Add", @"Add")
 #define root_aliases       NSLocalizedString(@"aliases", @"aliases")
 #define root_datalog_sn       NSLocalizedString(@"datalog sn", @"datalog sn")
 #define root_group       NSLocalizedString(@"group", @"group")
 #define root_device_type       NSLocalizedString(@"device type", @"device type")
-#define root_data_update_interval       NSLocalizedString(@"data update interval", @"data update interval")
+
 #define root_Add       NSLocalizedString(@"Add", @"Add")
 #define root_Modified       NSLocalizedString(vvvv, @"Modified")
 #define root_Delete       NSLocalizedString(@"Delete", @"Delete")
@@ -300,12 +314,45 @@
 
 #define  root_energy        NSLocalizedString(@"能源分析", nil)
 #define  root_energy_Smart       NSLocalizedString(@"智能能源", nil)
+#define  root_energy_jiating_yongdian       NSLocalizedString(@"家庭用电量", nil)
+#define  root_energy_jiating_shebei       NSLocalizedString(@"家庭用电设备", nil)
+#define  root_energy_guangfu_dianliang      NSLocalizedString(@"光伏电量", nil)
+#define  root_energy_chuneng_dianliang       NSLocalizedString(@"储能电量", nil)
+#define  root_energy_chuneng_yue       NSLocalizedString(@"月:", nil)
+#define  root_energy_chuneng_zuishengdian       NSLocalizedString(@"最省电:", nil)
+#define  root_energy_chuneng_zuihaodian       NSLocalizedString(@"最耗电:", nil)
+#define  root_energy_chuneng_ri       NSLocalizedString(@"日:", nil)
+
+#define  root_energy_tiaodu_youxian      NSLocalizedString(@"能源调度优先级设置", nil)
+#define  root_energy_liandong_shezhi       NSLocalizedString(@"智能联动设置", nil)
+#define  root_energy_dianjia_shezhi       NSLocalizedString(@"峰谷电价设置", nil)
+#define  root_energy_dongzuo_shineng       NSLocalizedString(@"峰谷段动作使能", nil)
+#define  root_energy_kongzhi_youxian       NSLocalizedString(@"控制优先级设置", nil)
+#define  root_energy_lingonglv_shineng       NSLocalizedString(@"光伏零功率输出使能", nil)
+#define  root_energy_wenxin_tishi       NSLocalizedString(@"温馨提示", nil)
+#define  root_energy_houxun_kaifang       NSLocalizedString(@"智能能源功能后续开放", nil)
+
+#define  root_energy_jiating_yongdian_zhanbi       NSLocalizedString(@"家庭用电占比(Demo)", nil)
+#define  root_energy_dianbinxiang       NSLocalizedString(@"电冰箱", nil)
+#define  root_energy_weibolu       NSLocalizedString(@"微波炉", nil)
+#define  root_energy_kongtiao       NSLocalizedString(@"空调", nil)
+#define  root_energy_dianshiji       NSLocalizedString(@"电视机", nil)
+#define  root_energy_xiyiji       NSLocalizedString(@"洗衣机", nil)
+#define  root_energy_reshuiqi       NSLocalizedString(@"热水器", nil)
+#define  root_energy_fadianliang       NSLocalizedString(@"发电量", nil)
+#define  root_energy_fangdianliang       NSLocalizedString(@"放电量", nil)
+#define  root_energy_zuidazhi       NSLocalizedString(@"最大值", nil)
+#define  root_energy_pingjunzhi       NSLocalizedString(@"平均值", nil)
 
 #pragma mark - 服务
 #define  root_service        NSLocalizedString(@"服务", nil)
-#define  root_OK        NSLocalizedString(@"确定", nil)
-#define  root_OK        NSLocalizedString(@"确定", nil)
-#define  root_OK        NSLocalizedString(@"确定", nil)
+#define  root_ME_wenti       NSLocalizedString(@"我的问题", nil)
+#define  root_ME_changjian_wenti        NSLocalizedString(@"常见问题", nil)
+#define  root_ME_kefu        NSLocalizedString(@"客户服务", nil)
+#define  root_ME_zhibao        NSLocalizedString(@"质保查询", nil)
+#define  root_ME_zengzhi      NSLocalizedString(@"增值业务", nil)
+#define  root_ME_gengduo       NSLocalizedString(@"更多产品", nil)
+
 
 
 #pragma mark - 我

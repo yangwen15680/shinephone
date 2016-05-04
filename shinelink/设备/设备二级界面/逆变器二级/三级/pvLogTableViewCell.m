@@ -34,7 +34,7 @@
         
         float wSize=60*NOW_SIZE,Size1=15*NOW_SIZE,Size2=40*NOW_SIZE;
        _SN=[[UILabel alloc]initWithFrame:CGRectMake(Size1, 15*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
-        _SN.text=@"序列号:";
+        _SN.text=root_NBQ_xunliehao;
         _SN.textAlignment=NSTextAlignmentLeft;
         _SN.textColor=[UIColor blackColor];
         _SN.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -47,7 +47,7 @@
         [_scrollView addSubview:_SNText];
         
         _type=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 15*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
-        _type.text=@"类型:";
+        _type.text=root_NBQ_leixing;
         _type.textAlignment=NSTextAlignmentLeft;
         _type.textColor=[UIColor blackColor];
         _type.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -60,7 +60,7 @@
         [_scrollView addSubview:_typtText];
         
         _event=[[UILabel alloc]initWithFrame:CGRectMake(Size1, Size2, 60*NOW_SIZE,20*NOW_SIZE )];
-        _event.text=@"事件号:";
+        _event.text=root_NBQ_shijianhao;
         _event.textAlignment=NSTextAlignmentLeft;
         _event.textColor=[UIColor blackColor];
         _event.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -73,7 +73,7 @@
         [_scrollView addSubview:_eventText];
         
         _Log=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, Size2, 60*NOW_SIZE,20*NOW_SIZE )];
-        _Log.text=@"标识:";
+        _Log.text=root_NBQ_biaoshi;
         _Log.textAlignment=NSTextAlignmentLeft;
         _Log.textColor=[UIColor blackColor];
         _Log.font = [UIFont systemFontOfSize:14*NOW_SIZE];
