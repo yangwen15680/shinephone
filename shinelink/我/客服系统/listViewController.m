@@ -62,7 +62,7 @@
                 
             }
             
-        self.navigationItem.title = @"问题列表";
+        self.navigationItem.title = root_ME_wenti_liebiao;
         _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*NOW_SIZE)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -93,13 +93,13 @@
      [cell.contentView setBackgroundColor: [UIColor whiteColor] ];
     
     if ([_statusArray[indexPath.row] isEqualToString:@"1"]) {
-         cell.statusLabel.text= @"未处理";
+         cell.statusLabel.text= root_ME_wei_chuli;
         cell.titleView.backgroundColor=COLOR(244, 147, 147, 1);
     }else if ([_statusArray[indexPath.row] isEqualToString:@"2"]){
-        cell.statusLabel.text= @"正在处理";
+        cell.statusLabel.text=root_ME_zhengzai_chuli;
         cell.titleView.backgroundColor=COLOR(144, 211, 112, 1);
     }else if([_statusArray[indexPath.row] isEqualToString:@"3"]){
-        cell.statusLabel.text= @"已处理";
+        cell.statusLabel.text= root_ME_yi_chuli;
         cell.titleView.backgroundColor=COLOR(201, 201, 201, 1);
     }
     
@@ -127,12 +127,12 @@
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
-    [alertController addAction: [UIAlertAction actionWithTitle: @"删除列表" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: root_ME_shanchu_liebiao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     
         
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
     
     
     [self presentViewController: alertController animated: YES completion: nil];

@@ -120,7 +120,7 @@
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
-    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //处理点击拍照
         self.cameraImagePicker = [[UIImagePickerController alloc] init];
         self.cameraImagePicker.allowsEditing = YES;
@@ -129,7 +129,7 @@
         [self presentViewController:_cameraImagePicker animated:YES completion:nil];
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    [alertController addAction: [UIAlertAction actionWithTitle: root_xiangkuang_xuanQu style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //处理点击从相册选取
         self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
         self.photoLibraryImagePicker.allowsEditing = YES;
@@ -138,7 +138,7 @@
         [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
     
     [self presentViewController: alertController animated: YES completion: nil];
     
@@ -176,7 +176,7 @@
             cell1=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell11];
         }
         [cell1.imageLog setImage:[UIImage imageNamed:@"update.png"]];
-        cell1.tableName.text = @"用户协议";
+        cell1.tableName.text = root_WO_xieyi;
         
         return cell1;
     }   else if(indexPath.row==1)
@@ -185,7 +185,7 @@
             cell3=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell33];
         }
         [cell3.imageLog setImage:[UIImage imageNamed:@"user-agreement.png"]];
-        cell3.tableName.text = @"客服电话";
+        cell3.tableName.text = root_WO_kefu_dianhua;
         cell3.tableDetail.text=_serviceNum;
         
           return cell3;
@@ -195,7 +195,7 @@
             cell4=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell44];
         }
         [cell4.imageLog setImage:[UIImage imageNamed:@"service.png"]];
-        cell4.tableName.text = @"检查更新";
+        cell4.tableName.text = root_WO_jiancha_gengxin;
         
         return cell4;
     }
@@ -239,27 +239,30 @@
             //_appVersion=content[@"results"][@"version"];
             
             if ([_appVersion doubleValue] > [_currentVersion doubleValue]) {
-                NSString *msg = [NSString stringWithFormat:@"最新版本为%@,是否更新？",_appVersion];
+                NSString *oneK=root_WO_zuixin_banben; NSString *twoK=root_WO_shifou_gengxin;
+                NSString *msg = [NSString stringWithFormat:@"%@%@,%@?",oneK,_appVersion,twoK];
                _appUrl = [resultDict objectForKey:@"trackViewUrl"];
                // _appUrl = content[@"results"][@"trackViewUrl"];
             
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:msg delegate:self cancelButtonTitle:@"暂不" otherButtonTitles:@"立即更新", nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:root_Alet_user message:msg delegate:self cancelButtonTitle:root_WO_zanbu otherButtonTitles:root_WO_liji_gengxin, nil];
                 alertView.tag = 1000;
                 [alertView show];
                           }else{
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您使用的是最新版本！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_WO_shi_zuixin_banben delegate:self cancelButtonTitle:nil otherButtonTitles:root_OK, nil];
                 alertView.tag = 1001;
                 [alertView show];
            
             }
             
         }else{
-         UIAlertView *alertView1 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求苹果服务器失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+         UIAlertView *alertView1 = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_WO_pingguo_fuwuqi_shibai delegate:self cancelButtonTitle:nil otherButtonTitles:root_OK, nil];
+             [alertView1 show];
         }
         
     } failure:^(NSError *error) {
         [self hideProgressView];
-        UIAlertView *alertView2 = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请求苹果服务器失败！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+        UIAlertView *alertView2 = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_WO_pingguo_fuwuqi_shibai delegate:self cancelButtonTitle:nil otherButtonTitles:root_OK, nil];
+         [alertView2 show];
     }];
 
 }

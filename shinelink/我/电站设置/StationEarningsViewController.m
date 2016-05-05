@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"资金收益";
+    self.navigationItem.title=root_WO_zijin;
     UIImage *bgImage = IMAGE(@"bg4.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
@@ -72,7 +72,7 @@
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Edit", @"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     self.navigationItem.rightBarButtonItem=rightItem;
     
-    NSArray *array=[[NSArray alloc]initWithObjects:@"资金收益",@"节约标准煤",@"CO2减排",@"SO2减排", nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:root_WO_zijin,root_WO_jieneng,root_WO_C02,root_WO_SO2, nil];
     for (int i=0; i<4; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
@@ -156,7 +156,7 @@
     [_goBut.layer setMasksToBounds:YES];
     [_goBut.layer setCornerRadius:25.0];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut setTitle:root_finish forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_goBut];
 }

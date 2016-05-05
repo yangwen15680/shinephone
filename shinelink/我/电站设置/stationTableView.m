@@ -24,7 +24,7 @@
     //  UIImage *bgImage = IMAGE(@"bg4.png");
     //  self.view.layer.contents = (id)bgImage.CGImage;
     
-    self.dataArray =[NSMutableArray arrayWithObjects:@"安装信息",@"地理信息",@"资金收益",@"电站图片",nil];
+    self.dataArray =[NSMutableArray arrayWithObjects:root_WO_anzhuang,root_WO_dili,root_WO_zijin,root_WO_tupian,nil];
     
 }
 

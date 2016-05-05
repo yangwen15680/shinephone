@@ -30,7 +30,7 @@
     UIImage *bgImage = IMAGE(@"bg4.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
-    self.navigationItem.title=@"地理信息";
+    self.navigationItem.title=root_WO_dili;
     [self requestData];
 }
 
@@ -76,7 +76,7 @@
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Edit", @"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     self.navigationItem.rightBarButtonItem=rightItem;
 
-    NSArray *array=[[NSArray alloc]initWithObjects:@"国家",@"城市",@"时区",@"经度",@"纬度", nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:root_country,root_WO_chengshi,root_WO_shiqu,root_WO_jingdu,root_WO_weidu, nil];
     
     for (int i=0; i<5; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
@@ -94,7 +94,7 @@
     NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
     NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
       NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lat,plant_lng,nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat,nil];
     for (int i=0; i<5; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
         label.text=array[i];
@@ -155,7 +155,7 @@
     NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
     NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
     NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
-    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lat,plant_lng, nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat, nil];
     for (int i=0; i<5; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
         textField.text=array[i];
@@ -189,7 +189,7 @@
 //    [_writeView addSubview:latButton];
     UIButton *lngButton0=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 48*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
     [lngButton0 setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [lngButton0 setTitle:@"点击获取" forState:UIControlStateNormal];
+    [lngButton0 setTitle:root_WO_dianji_huoqu forState:UIControlStateNormal];
     lngButton0.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
     [lngButton0 setTitleColor:COLOR(82, 201, 194, 1) forState:0];
     lngButton0.tag=2001;
@@ -198,7 +198,7 @@
     
     UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 150*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
     [lngButton setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [lngButton setTitle:@"点击获取" forState:UIControlStateNormal];
+    [lngButton setTitle:root_WO_dianji_huoqu forState:UIControlStateNormal];
     lngButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
     [lngButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
     lngButton.tag=2002;
@@ -212,7 +212,7 @@
     [_goBut.layer setMasksToBounds:YES];
     [_goBut.layer setCornerRadius:25.0];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut setTitle:root_finish forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_goBut];
 }

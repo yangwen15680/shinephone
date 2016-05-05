@@ -41,7 +41,7 @@
         
         
         _picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 10*NOW_SIZE,100*NOW_SIZE, 15*NOW_SIZE)];
-        _picLabel.text=@"查看图片";
+        _picLabel.text=root_ME_chakan_tupian;
         _picLabel.textColor=[UIColor blueColor];
         _picLabel.textAlignment = NSTextAlignmentCenter;
         _picLabel.font = [UIFont systemFontOfSize:16*NOW_SIZE];

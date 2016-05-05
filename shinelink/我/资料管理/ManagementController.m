@@ -36,7 +36,7 @@
     [self.dataArray1 addObject:tel];
     [self.dataArray1 addObject:email];
      [self.dataArray1 addObject:agent];
-    self.dataArray =[NSMutableArray arrayWithObjects:@"修改密码",@"修改手机号",@"修改邮箱",@"修改代理商编号",nil];
+    self.dataArray =[NSMutableArray arrayWithObjects:root_WO_xiugai_mima,root_WO_xiugai_shoujihao,root_WO_xiugai_youxiang,root_WO_xiugai_dailishang,nil];
    // self.dataArray1 =[NSMutableArray arrayWithObjects:@"",@"18666666666",@"328657662@qq.com",nil];
     
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 300*NOW_SIZE)];
@@ -49,7 +49,7 @@
     [registerUser.layer setMasksToBounds:YES];
     [registerUser.layer setCornerRadius:20.0];
     registerUser.backgroundColor = [UIColor redColor];
-    [registerUser setTitle:@"注销账号" forState:UIControlStateNormal];
+    [registerUser setTitle:root_WO_zhuxiao_zhanhao forState:UIControlStateNormal];
     //[goBut setTintColor:[UIColor colorWithRed:130/ 255.0f green:200 / 255.0f blue:250 / 255.0f alpha:1]];
     [registerUser setTitleColor: [UIColor whiteColor]forState:UIControlStateNormal];
     [registerUser addTarget:self action:@selector(registerUser) forControlEvents:UIControlEventTouchUpInside];

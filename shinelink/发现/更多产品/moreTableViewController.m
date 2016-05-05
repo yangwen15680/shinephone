@@ -23,18 +23,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _name=[NSMutableArray array];
+    _feature=[NSMutableArray array];
+    _outline=[NSMutableArray array];
+    _paramsName=[NSMutableArray array];
+    _imageName=[NSMutableArray array];
+    _imageHead=[NSMutableArray array];
     [self initData];
 }
 
 
 -(void)initData{
-    _name=[NSMutableArray array];
-        _feature=[NSMutableArray array];
-        _outline=[NSMutableArray array];
-        _paramsName=[NSMutableArray array];
-        _imageName=[NSMutableArray array];
-    _imageHead=[NSMutableArray array];
+  
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newMoreProductAPI.do?op=getMoreProductList" sucessBlock:^(id content) {
         
         NSLog(@"getMoreProductList: %@", content);

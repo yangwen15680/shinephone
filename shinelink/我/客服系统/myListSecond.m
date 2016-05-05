@@ -93,7 +93,7 @@
     self.timeArray =[NSMutableArray array];
     self.nameID =[NSMutableArray array];
       self.imageName =[NSMutableArray array];
-    self.labelArray=[NSMutableArray arrayWithObjects:@"标题:",@"类型:", @"回复记录",nil];
+    self.labelArray=[NSMutableArray arrayWithObjects:root_ME_biaoti,root_NBQ_leixing, root_ME_huifu_jilu,nil];
     // self.questionAll =[NSMutableArray array];
     
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"questionId":_qusetionId,@"userId":userID} paramarsSite:@"/questionAPI.do?op=getQuestionInfo" sucessBlock:^(id content) {
@@ -186,7 +186,7 @@
     
     
     UILabel *answerLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 0, 270*NOW_SIZE,30*NOW_SIZE )];
-    answerLable.text=@"回 复";
+    answerLable.text=root_ME_huifu;
     answerLable.textAlignment=NSTextAlignmentCenter;
     answerLable.textColor=[UIColor blueColor];
     answerLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -260,7 +260,7 @@
 {
   if ([_imageName[indexPath.row] containsString:@".png"] || [_imageName[indexPath.row] containsString:@".jpg"])
   {
-      NSMutableArray *test=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
+     // NSMutableArray *test=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
       
       GetServerViewController *get=[[GetServerViewController alloc]init];
       

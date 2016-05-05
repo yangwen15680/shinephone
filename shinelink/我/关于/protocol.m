@@ -32,7 +32,7 @@
     [self.view addSubview:_scrollView];
     
     _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*NOW_SIZE, 300*NOW_SIZE,35*NOW_SIZE )];
-    _title1.text=@"<<ShineServer Terms of Use>>";
+    _title1.text=@"<<ShinePhone Terms of Use>>";
     _title1.textAlignment=NSTextAlignmentCenter;
     _title1.textColor=COLOR(0, 0, 0, 1);
     _title1.font = [UIFont systemFontOfSize:18*NOW_SIZE];

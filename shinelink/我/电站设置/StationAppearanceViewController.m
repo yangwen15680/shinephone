@@ -14,16 +14,17 @@
 @property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
+@property (nonatomic, strong) UIButton *goBut;
 @end
 
 @implementation StationAppearanceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"电站图片";
+    self.navigationItem.title=root_WO_tupian;
     UIImage *bgImage = IMAGE(@"bg4.png");
     self.view.layer.contents = (id)bgImage.CGImage;
-    _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 100*NOW_SIZE, 240*NOW_SIZE, 240*NOW_SIZE)];
+    _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 20*NOW_SIZE, 240*NOW_SIZE, 240*NOW_SIZE)];
     _imageView.contentMode=UIViewContentModeScaleAspectFill;
     _imageView.clipsToBounds=YES;
     [self.view addSubview:_imageView];
@@ -50,19 +51,28 @@
     [button addTarget:self action:@selector(selectImageButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 400*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
-    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:delButton];
+//    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 400*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
+//    [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
+//    [delButton setTitle:root_Cancel forState:UIControlStateNormal];
+//    [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
+//    [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:delButton];
+//    
+//    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 400*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
+//    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
+//    [addButton setTitle:root_Yes forState:UIControlStateNormal];
+//    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
+//    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:addButton];
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 400*NOW_SIZE, 60*NOW_SIZE, 21*NOW_SIZE)];
-    [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
-    [addButton setTitle:root_Yes forState:UIControlStateNormal];
-    [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
-    [addButton addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:addButton];
+    _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    [_goBut.layer setMasksToBounds:YES];
+    [_goBut.layer setCornerRadius:25.0];
+    [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [_goBut setTitle:root_finish forState:UIControlStateNormal];
+    [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_goBut];
 
 }
 

@@ -46,9 +46,9 @@
                                                                       NSForegroundColorAttributeName :[UIColor whiteColor]
                                                                       }];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self setTitle:@"我"];
+    [self setTitle:root_ME];
       [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
-    arrayName=@[@"资料管理",@"系统设置",@"关于"];
+    arrayName=@[root_WO_zhiliao_guanli,root_WO_xitong_shezhi,root_WO_guanyu];
     arrayImage=@[@"资料管理.png",@"系统设置.png",@"关于.png"];
     
     [super viewDidLoad];
@@ -122,7 +122,7 @@
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
-    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
          //处理点击拍照
         self.cameraImagePicker = [[UIImagePickerController alloc] init];
         self.cameraImagePicker.allowsEditing = YES;
@@ -131,7 +131,7 @@
         [self presentViewController:_cameraImagePicker animated:YES completion:nil];
 
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    [alertController addAction: [UIAlertAction actionWithTitle: root_xiangkuang_xuanQu style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //处理点击从相册选取
         self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
         self.photoLibraryImagePicker.allowsEditing = YES;
@@ -140,7 +140,7 @@
         [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
     
     [self presentViewController: alertController animated: YES completion: nil];
     

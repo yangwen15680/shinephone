@@ -30,7 +30,7 @@ int picTime;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title=@"提交问题";
+    self.title=root_ME_tijiao_wenti;
     picTime=0;
     
     _picArray=[NSMutableArray array];
@@ -47,7 +47,7 @@ int picTime;
     
  
         UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 17*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-        PV1Lable.text=@"内容：";
+        PV1Lable.text=root_ME_neirong;
         PV1Lable.textAlignment=NSTextAlignmentRight;
         PV1Lable.textColor=[UIColor blackColor];
         PV1Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -68,7 +68,7 @@ int picTime;
     [_scrollView addSubview:_contentView];
     
     UILabel *PV1Lable1=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 29*NOW_SIZE+200*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
-    PV1Lable1.text=@"附件：";
+    PV1Lable1.text=root_ME_fujian;
     PV1Lable1.textAlignment=NSTextAlignmentRight;
     PV1Lable1.textColor=[UIColor blackColor];
     PV1Lable1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -80,7 +80,7 @@ int picTime;
     [_scrollView addSubview:image1];
     
     UILabel *registLable1= [[UILabel alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 27*NOW_SIZE+200*NOW_SIZE, 220*NOW_SIZE,30*NOW_SIZE )];
-    registLable1.text=@"请选择要上传图片";
+    registLable1.text=root_ME_shangchuan_tupian;
     registLable1.textColor=[UIColor grayColor];
     registLable1.textAlignment = NSTextAlignmentLeft;
     registLable1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
@@ -94,7 +94,7 @@ int picTime;
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut setTitle:root_finish forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishDone) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:goBut];
     
@@ -125,7 +125,7 @@ int picTime;
     }
     
     if ([[_contentView text] isEqual:@""]) {
-        [self showToastViewWithTitle:@"请输入内容"];
+        [self showToastViewWithTitle:root_ME_shuru_leirong];
         return;
     }
     
@@ -143,11 +143,11 @@ int picTime;
             if ([content1[@"success"] integerValue] == 1) {
                 
                 [self goback];
-                [self showAlertViewWithTitle:nil message:@"添加成功" cancelButtonTitle:root_Yes];
+                [self showAlertViewWithTitle:nil message:root_ME_tianjia_chenggong cancelButtonTitle:root_Yes];
                
             }
         }else{
-            [self showAlertViewWithTitle:nil message:@"添加错误" cancelButtonTitle:root_Yes];
+            [self showAlertViewWithTitle:nil message:root_ME_tianjia_shibai cancelButtonTitle:root_Yes];
         }
     }
                               failure:^(NSError *error) {
@@ -167,7 +167,7 @@ int picTime;
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
-    [alertController addAction: [UIAlertAction actionWithTitle: @"拍照" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //处理点击拍照
         self.cameraImagePicker = [[UIImagePickerController alloc] init];
         self.cameraImagePicker.allowsEditing = YES;
@@ -176,7 +176,7 @@ int picTime;
         [self presentViewController:_cameraImagePicker animated:YES completion:nil];
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"从相册选取" style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+    [alertController addAction: [UIAlertAction actionWithTitle: root_xiangkuang_xuanQu style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         //处理点击从相册选取
         self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
         self.photoLibraryImagePicker.allowsEditing = YES;
@@ -186,7 +186,7 @@ int picTime;
         
         
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: @"取消" style: UIAlertActionStyleCancel handler:nil]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
     
     [self presentViewController: alertController animated: YES completion: nil];
     
@@ -208,7 +208,7 @@ int picTime;
         [_scrollView addSubview:image2];
         
         UIButton *del= [[UIButton alloc] initWithFrame:CGRectMake(75*NOW_SIZE+size2*picTime, 70*NOW_SIZE+200*NOW_SIZE+50*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
-        [del setTitle:@"删除" forState:UIControlStateNormal];
+        [del setTitle:root_del forState:UIControlStateNormal];
         del.backgroundColor=[UIColor clearColor];
         [del setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         // del.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -227,7 +227,7 @@ int picTime;
         [_scrollView addSubview:image2];
         
         UIButton *del2= [[UIButton alloc] initWithFrame:CGRectMake(70*NOW_SIZE+size2*(picTime-4), 25*NOW_SIZE+50*NOW_SIZE*4+175*NOW_SIZE+55*NOW_SIZE, 50*NOW_SIZE,10*NOW_SIZE )];
-        [del2 setTitle:@"删除" forState:UIControlStateNormal];
+        [del2 setTitle:root_del forState:UIControlStateNormal];
         del2.backgroundColor=[UIColor clearColor];
         [del2 setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         // del.font = [UIFont systemFontOfSize:12*NOW_SIZE];

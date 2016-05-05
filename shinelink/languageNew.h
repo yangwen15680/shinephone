@@ -20,6 +20,8 @@
 #define  root_cancel        NSLocalizedString(@"取消", nil)
 #define  root_ALET        NSLocalizedString(@"警告", nil)
 #define  root_OK        NSLocalizedString(@"确定", nil)
+#define  root_del        NSLocalizedString(@"删除", nil)
+
 
 //登陆
 #define root_Enter_your_username       NSLocalizedString(@"Enter your username", @"Enter your username")
@@ -353,11 +355,75 @@
 #define  root_ME_zengzhi      NSLocalizedString(@"增值业务", nil)
 #define  root_ME_gengduo       NSLocalizedString(@"更多产品", nil)
 
+#define  root_ME_tijiao_wenti       NSLocalizedString(@"提交问题", nil)
+#define  root_ME_biaoti       NSLocalizedString(@"标题:", nil)
+#define  root_ME_wenti_leixing      NSLocalizedString(@"问题类型:", nil)
+#define  root_ME_neirong      NSLocalizedString(@"内容:", nil)
+#define  root_ME_biaoti_shuru      NSLocalizedString(@"请输入标题", nil)
+#define  root_ME_wenti_leixing_xuanzhe      NSLocalizedString(@"请选择问题类型", nil)
+#define  root_ME_xuliehao_shuru      NSLocalizedString(@"请输入序列号", nil)
+#define  root_ME_fujian      NSLocalizedString(@"附件:", nil)
+#define  root_ME_shangchuan_tupian      NSLocalizedString(@"请选择要上传图片", nil)
+#define  root_ME_shuru_leirong      NSLocalizedString(@"请输入内容", nil)
+#define  root_ME_tianjia_chenggong     NSLocalizedString(@"添加成功", nil)
+#define  root_ME_tianjia_shibai      NSLocalizedString(@"添加错误", nil)
+
+#define  root_ME_nibianqi_guzhan      NSLocalizedString(@"逆变器故障", nil)
+#define  root_ME_chunengji_guzhan      NSLocalizedString(@"储能机故障", nil)
+#define  root_ME_ruanjian_jianyi      NSLocalizedString(@"软件建议", nil)
+#define  root_ME_ruanjian_guzhan      NSLocalizedString(@"软件故障", nil)
+#define  root_ME_qita_shebei_guzhan      NSLocalizedString(@"其他设备故障", nil)
+#define  root_ME_qita_wenti      NSLocalizedString(@"其他问题", nil)
+
+#define  root_ME_wenti_liebiao      NSLocalizedString(@"问题列表", nil)
+#define  root_ME_wei_chuli     NSLocalizedString(@"未处理", nil)
+#define  root_ME_zhengzai_chuli      NSLocalizedString(@"正在处理", nil)
+#define  root_ME_yi_chuli     NSLocalizedString(@"已处理", nil)
+#define  root_ME_shanchu_liebiao    NSLocalizedString(@"删除列表", nil)
+#define  root_ME_huifu_jilu    NSLocalizedString(@"回复记录", nil)
+#define  root_ME_huifu   NSLocalizedString(@"回 复", nil)
+#define  root_ME_chakan_tupian    NSLocalizedString(@"查看图片", nil)
 
 
 #pragma mark - 我
 
 #define   root_ME        NSLocalizedString(@"我", nil)
+#define   root_WO_zhiliao_guanli        NSLocalizedString(@"资料管理", nil)
+#define   root_WO_xitong_shezhi       NSLocalizedString(@"电站设置", nil)
+#define   root_WO_guanyu        NSLocalizedString(@"关于", nil)
+#define   root_WO_xieyi        NSLocalizedString(@"用户协议", nil)
+#define   root_WO_kefu_dianhua        NSLocalizedString(@"客服电话", nil)
+#define   root_WO_jiancha_gengxin       NSLocalizedString(@"检查更新", nil)
+#define   root_WO_zuixin_banben      NSLocalizedString(@"最新版本为", nil)
+#define   root_WO_shifou_gengxin       NSLocalizedString(@"是否更新", nil)
+#define   root_WO_shi_zuixin_banben       NSLocalizedString(@"您使用的是最新版本", nil)
+#define   root_WO_zanbu       NSLocalizedString(@"暂不", nil)
+#define   root_WO_liji_gengxin       NSLocalizedString(@"立即更新", nil)
+#define   root_WO_pingguo_fuwuqi_shibai      NSLocalizedString(@"请求苹果服务器失败", nil)
+#define   root_WO_xiugai_mima      NSLocalizedString(@"修改密码", nil)
+#define   root_WO_xiugai_shoujihao      NSLocalizedString(@"修改手机号", nil)
+#define   root_WO_xiugai_youxiang      NSLocalizedString(@"修改邮箱", nil)
+#define   root_WO_xiugai_dailishang     NSLocalizedString(@"修改代理商编号", nil)
+#define   root_WO_zhuxiao_zhanhao     NSLocalizedString(@"注销账号", nil)
+#define   root_WO_shuru_shoujihao     NSLocalizedString(@"输入手机号", nil)
+#define   root_WO_shuru_youxiang     NSLocalizedString(@"输入邮箱地址", nil)
+#define   root_WO_shuru_dailishang    NSLocalizedString(@"输入代理商编号", nil)
+#define   root_WO_yonghu_bucunzai     NSLocalizedString(@"用户不存在", nil)
+#define   root_WO_anzhuang     NSLocalizedString(@"安装信息", nil)
+#define   root_WO_dili     NSLocalizedString(@"地理信息", nil)
+#define   root_WO_zijin     NSLocalizedString(@"资金收益", nil)
+#define   root_WO_tupian    NSLocalizedString(@"电站图片", nil)
+#define   root_WO_buneng_weikong    NSLocalizedString(@"不能为空", nil)
+#define   root_WO_chengshi    NSLocalizedString(@"城市", nil)
+#define   root_WO_shiqu    NSLocalizedString(@"时区", nil)
+#define   root_WO_jingdu    NSLocalizedString(@"经度", nil)
+#define   root_WO_weidu    NSLocalizedString(@"纬度", nil)
+
+#define   root_WO_dianji_huoqu    NSLocalizedString(@"点击获取", nil)
+#define   root_WO_jieneng    NSLocalizedString(@"节约标准煤", nil)
+#define   root_WO_C02    NSLocalizedString(@"CO2减排", nil)
+#define   root_WO_SO2   NSLocalizedString(@"SO2减排", nil)
+
 
 
 

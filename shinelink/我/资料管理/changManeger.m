@@ -46,7 +46,7 @@
     
       if([_type isEqualToString:@"0"]){
     UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 140*NOW_SIZE,30*NOW_SIZE )];
-    PV1.text=@"输入密码";
+    PV1.text=root_Alet_user_pwd;
     PV1.textAlignment=NSTextAlignmentLeft;
     PV1.textColor=[UIColor whiteColor];
     PV1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -68,7 +68,7 @@
     [self.view addSubview:_textField];
           
           UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
-          PV2.text=@"再次输入密码";
+          PV2.text=root_chongFu_miMa;
           PV2.textAlignment=NSTextAlignmentLeft;
           PV2.textColor=[UIColor whiteColor];
           PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -117,7 +117,7 @@
     
     if([_type isEqualToString:@"2"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
-        PV2.text=@"输入邮箱地址";
+        PV2.text=root_WO_shuru_youxiang;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -141,7 +141,7 @@
     
     if([_type isEqualToString:@"3"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
-        PV2.text=@"输入代理商编号";
+        PV2.text=root_WO_shuru_dailishang;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
@@ -168,7 +168,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishSet1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
     
@@ -190,7 +190,7 @@
     
     if (_textField) {
         if (![[_textField text]isEqualToString:[_textField1 text]]) {
-            [self showToastViewWithTitle:@"请输入相同的密码"];
+            [self showToastViewWithTitle:root_xiangTong_miMa];
             return;
         }else{
         _address=@"/newUserAPI.do?op=updateUserPassword";
@@ -232,14 +232,14 @@
         if (content1) {
             if ([content1[@"success"] integerValue] == 0) {
                 if ([content1[@"msg"] integerValue] ==501) {
-                    [self showAlertViewWithTitle:nil message:@"系统错误" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_xitong_cuoWu cancelButtonTitle:root_Yes];
                     
                 }else if ([content1[@"msg"] integerValue] ==502) {
-                    [self showAlertViewWithTitle:nil message:@"用户不存在" cancelButtonTitle:root_Yes];
+                    [self showAlertViewWithTitle:nil message:root_WO_yonghu_bucunzai cancelButtonTitle:root_Yes];
                 }
                 [self.navigationController popViewControllerAnimated:YES];
             }else{
-                [self showAlertViewWithTitle:nil message:@"参数设置成功" cancelButtonTitle:root_Yes];
+                [self showAlertViewWithTitle:nil message:root_CNJ_canshu_chenggong cancelButtonTitle:root_Yes];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         }

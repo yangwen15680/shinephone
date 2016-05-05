@@ -27,7 +27,7 @@
     UIImage *bgImage = IMAGE(@"bg4.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
-    self.navigationItem.title=@"安装信息";
+    self.navigationItem.title=root_WO_anzhuang;
     [self requestData];
 }
 
@@ -112,7 +112,7 @@
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE)];
     _toolBar.barTintColor = COLOR(39, 177, 159, 1);
     _toolBar.tintColor = [UIColor whiteColor];
-    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(doneBarItemDidClicked)];
+    UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithTitle:root_OK style:UIBarButtonItemStyleDone target:self action:@selector(doneBarItemDidClicked)];
     UIBarButtonItem *spaceBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     _toolBar.items = @[spaceBarItem,doneBarItem];
     
@@ -160,7 +160,7 @@
     [_goBut.layer setMasksToBounds:YES];
     [_goBut.layer setCornerRadius:25.0];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [_goBut setTitle:@"完成" forState:UIControlStateNormal];
+    [_goBut setTitle:root_OK forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_goBut];
     
@@ -174,10 +174,11 @@
 
 
 -(void)addButtonPressed{
-    NSArray *array=[[NSArray alloc]initWithObjects:@"电站名称",@"安装时间",@"设计厂商",@"设计功率", nil];
+    NSArray *array=[[NSArray alloc]initWithObjects:root_plant_name,root_instal_date,root_company,root_power, nil];
+    NSString *KK=root_WO_buneng_weikong;
     for (int i=0; i<4; i++) {
         if ([[_textFieldMutableArray[i] text] isEqual:@""]) {
-            [self showToastViewWithTitle:[NSString stringWithFormat:@"%@不能为空!",array[i]]];
+            [self showToastViewWithTitle:[NSString stringWithFormat:@"%@%@!",array[i],KK]];
             return;
         }
     }
