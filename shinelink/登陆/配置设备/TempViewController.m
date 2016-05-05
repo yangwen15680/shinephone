@@ -31,8 +31,9 @@
 
 - (void)qrView:(SHBQRView *)view ScanResult:(NSString *)result {
     [view stopScan];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"扫描结果：%@", result] preferredStyle:UIAlertControllerStyleAlert];
-    [alert addAction:[UIAlertAction actionWithTitle:@"Sure" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    NSString *KK=root_saomiao_jieguo;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"%@:%@", KK,result] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:root_OK style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         [view startScan];
     }]];
     [self presentViewController:alert animated:true completion:nil];

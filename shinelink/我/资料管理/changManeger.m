@@ -93,7 +93,7 @@
 
     if([_type isEqualToString:@"1"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
-        PV2.text=@"输入手机号";
+        PV2.text=root_DianHua;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];

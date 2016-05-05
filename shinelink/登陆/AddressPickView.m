@@ -82,7 +82,7 @@
     //这里添加空手势不然点击navigationView也会隐藏,
     UITapGestureRecognizer *tapNavigationView = [[UITapGestureRecognizer alloc]initWithTarget:self action:nil];
     [_navigationView addGestureRecognizer:tapNavigationView];
-    NSArray *buttonTitleArray = @[@"取消",@"确定"];
+    NSArray *buttonTitleArray = @[root_cancel,root_OK];
     for (int i = 0; i <buttonTitleArray.count ; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
         button.frame = CGRectMake(i*(kScreenWidth-buttonWidth), 0, buttonWidth, navigationViewHeight);

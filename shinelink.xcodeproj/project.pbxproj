@@ -1408,11 +1408,11 @@
 				336664F11CB784EC005573FB /* EquipGraphViewController.h */,
 				336664F21CB784EC005573FB /* EquipGraphViewController.m */,
 				334B8F241C91281600798A69 /* Line4View.h */,
+				334B8F251C91281600798A69 /* Line4View.m */,
 				336664F41CB784F6005573FB /* EditGraphView.h */,
 				336664F51CB784F6005573FB /* EditGraphView.m */,
 				336664F71CB78517005573FB /* Line2View.h */,
 				336664F81CB78517005573FB /* Line2View.m */,
-				334B8F251C91281600798A69 /* Line4View.m */,
 			);
 			path = "数据区";
 			sourceTree = "<group>";

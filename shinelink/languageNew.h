@@ -21,6 +21,8 @@
 #define  root_ALET        NSLocalizedString(@"警告", nil)
 #define  root_OK        NSLocalizedString(@"确定", nil)
 #define  root_del        NSLocalizedString(@"删除", nil)
+#define  root_saomiao_jieguo       NSLocalizedString(@"扫描结果", nil)
+
 
 
 //登陆
@@ -383,6 +385,15 @@
 #define  root_ME_huifu_jilu    NSLocalizedString(@"回复记录", nil)
 #define  root_ME_huifu   NSLocalizedString(@"回 复", nil)
 #define  root_ME_chakan_tupian    NSLocalizedString(@"查看图片", nil)
+#define  root_ME_gaisu    NSLocalizedString(@"概述", nil)
+#define  root_ME_canshu    NSLocalizedString(@"参数", nil)
+#define  root_ME_you  NSLocalizedString(@"有", nil)
+#define  root_ME_meiyou    NSLocalizedString(@"没有", nil)
+#define  root_ME_youwu_zhibao    NSLocalizedString(@"有无质保:", nil)
+#define  root_ME_chuchang_shijian    NSLocalizedString(@"出厂时间:", nil)
+#define  root_ME_daoqi_shijian    NSLocalizedString(@"到期时间:", nil)
+
+
 
 
 #pragma mark - 我

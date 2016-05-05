@@ -104,9 +104,9 @@
     
     cell.name.text=_typeArray[indexPath.row];
     if ([_HasArray[indexPath.row] isEqualToString:@"1"]) {
-          cell.alia.text=@"有";
+          cell.alia.text=root_ME_you;
     }else{
-     cell.alia.text=@"没有";
+     cell.alia.text=root_ME_meiyou;
     }
     cell.SN.text=_SNArray[indexPath.row];
      cell.beginTime.text=_outTimeArray[indexPath.row];

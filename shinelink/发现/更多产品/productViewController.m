@@ -110,7 +110,7 @@
    // [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
   //  [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
     self.dayButton.tag = 1000;
-    [self.dayButton setTitle:@"概述" forState:UIControlStateNormal];
+    [self.dayButton setTitle:root_ME_gaisu forState:UIControlStateNormal];
     self.dayButton.selected = YES;
     [self.dayButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView2 addSubview:self.dayButton];
@@ -122,7 +122,7 @@
    // [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
     //[self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
     self.monthButton.tag = 1001;
-    [self.monthButton setTitle:@"参数" forState:UIControlStateNormal];
+    [self.monthButton setTitle:root_ME_canshu forState:UIControlStateNormal];
     [self.monthButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView2 addSubview:self.monthButton];
 }
