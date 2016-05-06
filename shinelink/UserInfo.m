@@ -41,6 +41,14 @@ static int timerNumber=0;
             _userName = [ud objectForKey:@"userName"];
         }
         
+        if (![ud objectForKey:@"coreDataEnable"]) {
+            [ud setObject:@"" forKey:@"coreDataEnable"];
+            _coreDataEnable = @"";
+        } else {
+            _coreDataEnable = [ud objectForKey:@"coreDataEnable"];
+        }
+        
+        
         if (![ud objectForKey:@"agentCode"]) {
             [ud setObject:@"" forKey:@"agentCode"];
             _agentCode = @"";
@@ -118,6 +126,13 @@ static int timerNumber=0;
     
     [[NSUserDefaults standardUserDefaults] setBool:_isAutoLogin forKey:@"isAutoLogin"];
 }
+
+- (void)setCoreDataEnable:(NSString *)coreDataEnable{
+    _coreDataEnable = coreDataEnable;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_coreDataEnable forKey:@"coreDataEnable"];
+}
+
 
 - (void)setAgentCode:(NSString *)agentCode {
     _agentCode = agentCode;

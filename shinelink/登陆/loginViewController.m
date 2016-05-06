@@ -61,7 +61,7 @@
     NSLog(@"reUsername=%@",reUsername);
     NSLog(@"rePassword=%@",rePassword);
     if (reUsername==nil || reUsername==NULL||[reUsername isEqual:@""]) {
-        [ [NSNotificationCenter defaultCenter]postNotificationName:@"reroadDemo" object:nil];
+      //  [ [NSNotificationCenter defaultCenter]postNotificationName:@"reroadDemo" object:nil];
         
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
         NSString *server=[ud objectForKey:@"server"];
@@ -69,6 +69,8 @@
         if (server==nil || server==NULL||[server isEqual:@""]) {
         [[UserInfo defaultUserInfo] setServer:HEAD_URL_Demo];
         }
+        
+         [[UserInfo defaultUserInfo] setCoreDataEnable:@"1"];
         
         [self addSubViews];
         

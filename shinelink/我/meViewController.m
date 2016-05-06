@@ -84,10 +84,10 @@
         [_tableView.tableHeaderView removeFromSuperview];
     }
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
     UIColor *color=COLOR(17, 183, 243, 1);
  [headerView setBackgroundColor:color];
-    double imageSize=150;
+    double imageSize=150*NOW_SIZE;
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSData *pic=[ud objectForKey:@"userPic"];

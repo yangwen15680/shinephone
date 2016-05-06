@@ -71,6 +71,7 @@
      NSMutableArray *statueArray2;
      NSMutableArray *powerArray2;
      NSMutableArray *dayArray2;
+    NSMutableArray *typeArray2;
     UIPageControl *_pageControl;
     UIScrollView *_scrollerView;
     NSString *_indenty;
@@ -109,7 +110,7 @@
     _manager=[CoreDataManager sharedCoreDataManager];
     _managerArray=[NSMutableArray array];
     _managerNowArray=[NSMutableArray array];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(initDemoData) name:@"reroadDemo" object:nil];
+   // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:@"reroadDemo" object:nil];
   
 //    if([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]){
        //self.automaticallyAdjustsScrollViewInsets = YES;
@@ -130,10 +131,16 @@
 #pragma mark - CoreData
 -(void)initDatacore{
    
-      BOOL firstRun = !_manager.hasStore;
-    if (firstRun){
-        [self initDemoData];}
-    else{[self request];}
+    NSString *coreEnable=[UserInfo defaultUserInfo].coreDataEnable;
+     // BOOL firstRun = !_manager.hasStore;
+    
+    if ([coreEnable isEqualToString:@"1"]){
+        [self initDemoData];
+        [[UserInfo defaultUserInfo] setCoreDataEnable:@"0"];
+    }
+    else{
+        [self request];
+    }
 }
 
 -(void)initDemoData{
@@ -219,6 +226,7 @@
     statueArray2=[[NSMutableArray alloc]initWithObjects:root_wei_LianJie, root_wei_LianJie, root_wei_LianJie,root_wei_LianJie,nil];
     powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", @"5000KW",  nil];
     dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h",@"500K/h",nil];
+    typeArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"charge",@"powerRegulator",nil];
 }
 
 #pragma mark - navigationItem
@@ -461,14 +469,15 @@
         [self.managerNowArray addObjectsFromArray:fetchResult1];
         
         for (int i=0; i<_typeArr.count; i++) {
-            for (int j=0; j<nameArray2.count; j++)
-            if([_typeArr[i] isEqualToString:nameArray2[j]])
+            for (int j=0; j<typeArray2.count; j++)
+            if([_typeArr[i] isEqualToString:typeArray2[j]])
             {
                 [imageArray2 removeObjectAtIndex:j];
                 [nameArray2 removeObjectAtIndex:j];
                 [statueArray2 removeObjectAtIndex:j];
                 [powerArray2 removeObjectAtIndex:j];
                  [dayArray2 removeObjectAtIndex:j];
+                 [typeArray2 removeObjectAtIndex:j];
             }
         }
         
@@ -492,8 +501,8 @@
 
 #pragma mark 创建tableView的方法
 - (void)_createTableView {
-    
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    //float a=self.tabBarController.tabBar.frame.size.height;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-NavigationbarHeight) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -528,19 +537,19 @@
 - (void)_createHeaderView {
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
-    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"overcast@2x.png"]];
+    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"head.png"]];
     _headerView.backgroundColor=bgColor;
     _tableView.tableHeaderView = _headerView;
    
     float headHeight=_headerView.bounds.size.height;
-    _headPicName=@"bgweather@3x.png";
+    _headPicName=@"head.png";
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headHeight)];
     imageView.image = [UIImage imageNamed:_headPicName];
     [_headerView addSubview:imageView];
     
-    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-Kwidth*1/4)/2,headHeight*1/4,Kwidth*1/4,headHeight*1/3)];
-    imageView1.image = [UIImage imageNamed:@"fog2@3x.png"];
-       [_headerView addSubview:imageView1];
+//    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-Kwidth*1/4)/2,headHeight*1/4,Kwidth*1/4,headHeight*1/3)];
+//    imageView1.image = [UIImage imageNamed:@"fog2@3x.png"];
+//       [_headerView addSubview:imageView1];
     
     _headAdress=@"深圳";
     UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, 10*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
