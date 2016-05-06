@@ -114,7 +114,11 @@
   
 //    if([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]){
        //self.automaticallyAdjustsScrollViewInsets = YES;
-
+    NSString *coreEnable=[UserInfo defaultUserInfo].coreDataEnable;
+    if ([coreEnable isEqualToString:@"1"]){
+        [self initCoredata];
+    }
+    
     
     [self initData];
        [self addTitleMenu];
@@ -209,6 +213,8 @@
     }
     [self.managerArray removeAllObjects];
     [self.managerArray addObjectsFromArray:fetchResult];
+    [self.tableView reloadData];
+
 }
 
 -(void)initData{
@@ -321,6 +327,30 @@
         }
 }
 
+-(void)initCoredata{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+    [request setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
+    NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptions];
+    NSError *error = nil;
+    NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+    for (NSManagedObject *obj in fetchResult)
+    {
+        [_manager.managedObjContext deleteObject:obj];
+    }
+    BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }else
+    {
+        NSLog(@"Save successFull");
+    }
+
+}
+
+
 -(void)refreshData{
    
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -343,10 +373,7 @@
         NSLog(@"Save successFull");
     }
     
-  
-    
     [self netRequest];
-
 
 }
 
@@ -436,7 +463,12 @@
                 NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                 _getDevice.demoImage=imagedata;
                 _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
-   
+                
+                NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+                [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss:SSS"];
+                NSString *dateKK = [formatter stringFromDate:[NSDate date]];
+                _getDevice.topNum = [[NSString alloc] initWithFormat:@"%@", dateKK];
+                
             }else{
                 
                 if (![SN containsObject:SNArray[i]]) {
@@ -452,8 +484,35 @@
                     NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
                     _getDevice.demoImage=imagedata;
                     _getDevice.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
-
+                    
+                    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+                    [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss:SSS"];
+                    NSString *dateKK = [formatter stringFromDate:[NSDate date]];
+                    _getDevice.topNum = [[NSString alloc] initWithFormat:@"%@", dateKK];
+                }else{
+                
+                    NSPredicate *predicate = [NSPredicate
+                                              predicateWithFormat:@"deviceSN like[cd] %@",SNArray[i]];
+                    NSFetchRequest * request = [[NSFetchRequest alloc] init];
+                    [request setEntity:[NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext]];
+                    [request setPredicate:predicate];//这里相当于sqlite中的查询条件，具体格式参考苹果文档
+                    NSError *error = nil;
+                    NSArray *result = [_manager.managedObjContext executeFetchRequest:request error:&error];
+                    GetDevice *getDevice2=result[0];
+                    getDevice2.name=nameArray[i];
+                    getDevice2.type=_typeArr[i];
+                    getDevice2.power=powerArray[i];
+                    getDevice2.dayPower=dayArray[i];
+                    getDevice2.statueData=statueArray[i];
+                    getDevice2.deviceSN=SNArray[i];
+                    getDevice2.totalPower=totalPowerArray[i];
+                    UIImage *image=IMAGE(imageArray[i]);
+                    NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
+                    getDevice2.demoImage=imagedata;
+                    getDevice2.statueImage=UIImageJPEGRepresentation(IMAGE(imageStatueArray[i]), 0.5);
+                    
                 }
+                
         }
     }
         BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
@@ -464,7 +523,16 @@
             NSLog(@"Save successFull");
         }
 
-           NSArray *fetchResult1 = [_manager.managedObjContext executeFetchRequest:request error:&error];
+        NSFetchRequest *request2 = [[NSFetchRequest alloc] init];
+        NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+        [request2 setEntity:entity2];
+        NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"topNum" ascending:NO];
+        NSArray *sortDescriptions2 = [[NSArray alloc] initWithObjects:sortDescriptor2, nil];
+        [request2 setSortDescriptors:sortDescriptions2];
+        
+
+        
+           NSArray *fetchResult1 = [_manager.managedObjContext executeFetchRequest:request2 error:&error];
         [self.managerNowArray removeAllObjects];
         [self.managerNowArray addObjectsFromArray:fetchResult1];
         
@@ -485,7 +553,7 @@
         self.edgesForExtendedLayout=UIRectEdgeNone;
          self.navigationController.navigationBar.translucent = NO;
         //_tableView.frame =CGRectMake(0, NavigationbarHeight, SCREEN_Width, SCREEN_Height);
-         [self.tableView reloadData];
+       //  [self.tableView reloadData];
             
           //  [self showToastViewWithTitle:@"添加设备成功"];
         
@@ -515,7 +583,7 @@
     [_control beginRefreshing];
     
     // 3.加载数据
-    [self refreshStateChange:_control];
+    //[self refreshStateChange:_control];
     
     [self.view addSubview:_tableView];
     _indenty = @"indenty";
@@ -523,12 +591,13 @@
     [_tableView registerClass:[TableViewCell class] forCellReuseIdentifier:_indenty];
 }
 
+
 -(void)refreshStateChange:(UIRefreshControl *)control{
 
     //NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
    // _plantId=[ud objectForKey:@"plantID"];
     
-    [self refreshData];
+    [self netRequest];
     
 }
 
@@ -537,12 +606,12 @@
 - (void)_createHeaderView {
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
-    UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"head.png"]];
-    _headerView.backgroundColor=bgColor;
+   // UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"head.png"]];
+    //_headerView.backgroundColor=bgColor;
     _tableView.tableHeaderView = _headerView;
    
     float headHeight=_headerView.bounds.size.height;
-    _headPicName=@"head.png";
+    _headPicName=@"4444.jpg";
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headHeight)];
     imageView.image = [UIImage imageNamed:_headPicName];
     [_headerView addSubview:imageView];
@@ -1003,11 +1072,37 @@
         NSLog(@"点击了置顶");
         //1.更新数据
         if(indexPath.section==0){
-        [imageArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [nameArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [statueArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-        [powerArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];
-            [dayArray exchangeObjectAtIndex:indexPath.row withObjectAtIndex:0];}
+            
+         GetDevice *getDevice=[_managerNowArray objectAtIndex:indexPath.row];
+    
+            NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
+            [formatter setDateFormat:@"YYYY-MM-dd hh:mm:ss:SSS"];
+            NSString *dateKK = [formatter stringFromDate:[NSDate date]];
+            getDevice.topNum = [[NSString alloc] initWithFormat:@"%@", dateKK];
+   NSError *error = nil;
+            BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+            if (!isSaveSuccess) {
+                NSLog(@"Error: %@,%@",error,[error userInfo]);
+            }else
+            {
+                NSLog(@"Save successFull");
+            }
+            
+            NSFetchRequest *request2 = [[NSFetchRequest alloc] init];
+            NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+            [request2 setEntity:entity2];
+            NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"topNum" ascending:NO];
+            NSArray *sortDescriptions2 = [[NSArray alloc] initWithObjects:sortDescriptor2, nil];
+            [request2 setSortDescriptors:sortDescriptions2];
+            
+            
+            
+            NSArray *fetchResult1 = [_manager.managedObjContext executeFetchRequest:request2 error:&error];
+            [self.managerNowArray removeAllObjects];
+            [self.managerNowArray addObjectsFromArray:fetchResult1];
+  
+            [self.tableView reloadData];
+        }
    
         //2.更新UI
         NSIndexPath *firstIndexPath =[NSIndexPath indexPathForRow:0 inSection:indexPath.section];

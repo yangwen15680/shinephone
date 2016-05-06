@@ -122,7 +122,6 @@
 		335317441CA2423D003F106D /* GetDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335317421CA2423D003F106D /* GetDevice.m */; };
 		335317461CA29E71003F106D /* storage.png in Resources */ = {isa = PBXBuildFile; fileRef = 335317451CA29E71003F106D /* storage.png */; };
 		3353B19F1CA116FF00577595 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3353B19E1CA116FF00577595 /* CoreData.framework */; };
-		3353B1AD1CA125E300577595 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */; };
 		3353B1B21CA126EB00577595 /* DemoDevice+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */; };
 		3353B1B31CA126EB00577595 /* DemoDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B11CA126EB00577595 /* DemoDevice.m */; };
 		3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3353B1B51CA1272C00577595 /* CoreDataManager.m */; };
@@ -246,7 +245,10 @@
 		3383F13A1C9FFD3E0075E834 /* 家庭用电设备.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F1391C9FFD3E0075E834 /* 家庭用电设备.png */; };
 		3383F13C1C9FFD540075E834 /* 光伏电量.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F13B1C9FFD540075E834 /* 光伏电量.png */; };
 		3383F13E1C9FFDA10075E834 /* 光伏收益.png in Resources */ = {isa = PBXBuildFile; fileRef = 3383F13D1C9FFDA10075E834 /* 光伏收益.png */; };
-		33ECDCEA1CDC410C00E20AF8 /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = 33ECDCE91CDC410C00E20AF8 /* head.png */; };
+		33ECDCEC1CDC6B3200E20AF8 /* head3.png in Resources */ = {isa = PBXBuildFile; fileRef = 33ECDCEB1CDC6B3200E20AF8 /* head3.png */; };
+		33ECDCEE1CDC6C7B00E20AF8 /* head4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33ECDCED1CDC6C7B00E20AF8 /* head4.png */; };
+		33ECDCF01CDC6E5800E20AF8 /* 4444.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33ECDCEF1CDC6E5800E20AF8 /* 4444.jpg */; };
+		33ECDCF31CDC9D3400E20AF8 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33ECDCF11CDC9D3400E20AF8 /* deviceCore.xcdatamodeld */; };
 		33EFB6011C979B5F003F336F /* StationCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5F81C979B5F003F336F /* StationCellectViewController.m */; };
 		33EFB6021C979B5F003F336F /* StationCellectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FA1C979B5F003F336F /* StationCellectTableViewCell.m */; };
 		33EFB6031C979B5F003F336F /* EditCellectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FC1C979B5F003F336F /* EditCellectView.m */; };
@@ -538,7 +540,6 @@
 		335317421CA2423D003F106D /* GetDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetDevice.m; sourceTree = "<group>"; };
 		335317451CA29E71003F106D /* storage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage.png; sourceTree = "<group>"; };
 		3353B19E1CA116FF00577595 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
 		3353B1AE1CA126EB00577595 /* DemoDevice+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DemoDevice+CoreDataProperties.h"; path = "../DemoDevice+CoreDataProperties.h"; sourceTree = "<group>"; };
 		3353B1AF1CA126EB00577595 /* DemoDevice+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DemoDevice+CoreDataProperties.m"; path = "../DemoDevice+CoreDataProperties.m"; sourceTree = "<group>"; };
 		3353B1B01CA126EB00577595 /* DemoDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoDevice.h; path = ../DemoDevice.h; sourceTree = "<group>"; };
@@ -752,7 +753,10 @@
 		3383F1391C9FFD3E0075E834 /* 家庭用电设备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "家庭用电设备.png"; sourceTree = "<group>"; };
 		3383F13B1C9FFD540075E834 /* 光伏电量.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "光伏电量.png"; sourceTree = "<group>"; };
 		3383F13D1C9FFDA10075E834 /* 光伏收益.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "光伏收益.png"; sourceTree = "<group>"; };
-		33ECDCE91CDC410C00E20AF8 /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
+		33ECDCEB1CDC6B3200E20AF8 /* head3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head3.png; sourceTree = "<group>"; };
+		33ECDCED1CDC6C7B00E20AF8 /* head4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head4.png; sourceTree = "<group>"; };
+		33ECDCEF1CDC6E5800E20AF8 /* 4444.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4444.jpg; sourceTree = "<group>"; };
+		33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
 		33EFB5F71C979B5F003F336F /* StationCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCellectViewController.h; sourceTree = "<group>"; };
 		33EFB5F81C979B5F003F336F /* StationCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCellectViewController.m; sourceTree = "<group>"; };
 		33EFB5F91C979B5F003F336F /* StationCellectTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCellectTableViewCell.h; sourceTree = "<group>"; };
@@ -1309,7 +1313,9 @@
 		335456D51C85A03D00275478 /* 图片 */ = {
 			isa = PBXGroup;
 			children = (
-				33ECDCE91CDC410C00E20AF8 /* head.png */,
+				33ECDCEF1CDC6E5800E20AF8 /* 4444.jpg */,
+				33ECDCED1CDC6C7B00E20AF8 /* head4.png */,
+				33ECDCEB1CDC6B3200E20AF8 /* head3.png */,
 				33EFB6321C97DAB5003F336F /* 控制.jpg */,
 				33EFB6831C99732F003F336F /* 参数.png */,
 				33EFB6871C9973AB003F336F /* 日志.png */,
@@ -1803,7 +1809,7 @@
 				3353173E1CA23211003F106D /* data */,
 				3353B1B41CA1272C00577595 /* CoreDataManager.h */,
 				3353B1B51CA1272C00577595 /* CoreDataManager.m */,
-				3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */,
+				33ECDCF11CDC9D3400E20AF8 /* deviceCore.xcdatamodeld */,
 			);
 			path = datacore;
 			sourceTree = "<group>";
@@ -2045,6 +2051,7 @@
 				334AED601CA3763D007E39F3 /* 资料管理.png in Resources */,
 				335089211C73178100D7AA03 /* btn_cha.png in Resources */,
 				335089251C7323C200D7AA03 /* frag4.png in Resources */,
+				33ECDCF01CDC6E5800E20AF8 /* 4444.jpg in Resources */,
 				334771001C9A3E57003A6F13 /* mine@2x.png in Resources */,
 				33FEFD651C7DB38400324374 /* icon@2x.png in Resources */,
 				33692BF11C926B4500698375 /* rili.png in Resources */,
@@ -2086,6 +2093,7 @@
 				33FEFD5F1C7DB38400324374 /* icon---Password.png in Resources */,
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
 				335130331CCA0CDC00A2A799 /* fog2@3x.png in Resources */,
+				33ECDCEC1CDC6B3200E20AF8 /* head3.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33238B461CBF7C4200E82B86 /* client@2x.png in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
@@ -2106,6 +2114,7 @@
 				33238B491CBF816400E82B86 /* 外框@3x.png in Resources */,
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
+				33ECDCEE1CDC6C7B00E20AF8 /* head4.png in Resources */,
 				336664F01CB77CD3005573FB /* user-agreement@3x.png in Resources */,
 				335130311CCA0A0D00A2A799 /* rain@3x.png in Resources */,
 				336664ED1CB77CD3005573FB /* update@2x.png in Resources */,
@@ -2120,7 +2129,6 @@
 				3349A7B81C75BCDB009172C2 /* 账号3.png in Resources */,
 				3383F13E1C9FFDA10075E834 /* 光伏收益.png in Resources */,
 				33FEFD5D1C7DB38400324374 /* icon---Name@2x.png in Resources */,
-				33ECDCEA1CDC410C00E20AF8 /* head.png in Resources */,
 				335456C11C852FF600275478 /* 圆角矩形空心.png in Resources */,
 				33EFB67E1C996FB6003F336F /* 储能机.png in Resources */,
 				33FEFD681C7DB38400324374 /* iconfont-address@3x.png in Resources */,
@@ -2346,10 +2354,10 @@
 				3356149C1CB3AFE30071BAC9 /* addServerViewController.m in Sources */,
 				3383EFA01C9F8A6F0075E834 /* MJRefreshHeader.m in Sources */,
 				335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */,
+				33ECDCF31CDC9D3400E20AF8 /* deviceCore.xcdatamodeld in Sources */,
 				3367CB4D1C86806600EF460C /* MASViewAttribute.m in Sources */,
 				3383EFA41C9F8A6F0075E834 /* UIScrollView+MJRefresh.m in Sources */,
 				3383EF9B1C9F8A6F0075E834 /* MJRefreshComponent.m in Sources */,
-				3353B1AD1CA125E300577595 /* deviceCore.xcdatamodeld in Sources */,
 				33FEFCD61C7D8E8300324374 /* UIViewExt.m in Sources */,
 				334AED701CA381D0007E39F3 /* ASValuePopUpView.m in Sources */,
 				3383EF9C1C9F8A6F0075E834 /* MJRefreshConst.m in Sources */,
@@ -2627,12 +2635,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3353B1AB1CA125E300577595 /* deviceCore.xcdatamodeld */ = {
+		33ECDCF11CDC9D3400E20AF8 /* deviceCore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */,
+				33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */,
 			);
-			currentVersion = 3353B1AC1CA125E300577595 /* deviceCore.xcdatamodel */;
+			currentVersion = 33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */;
 			path = deviceCore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

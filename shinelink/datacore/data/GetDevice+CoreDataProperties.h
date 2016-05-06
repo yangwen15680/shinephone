@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *statueData;
 @property (nullable, nonatomic, retain) NSString *type;
 @property (nullable, nonatomic, retain) NSString *totalPower;
+@property (nullable, nonatomic, retain) NSString *topNum;
 
 @end
 

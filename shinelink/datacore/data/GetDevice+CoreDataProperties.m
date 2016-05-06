@@ -24,5 +24,6 @@
 @dynamic statueData;
 @dynamic type;
 @dynamic totalPower;
+@dynamic topNum;
 
 @end
