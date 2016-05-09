@@ -28,19 +28,19 @@
     if (self) {
         
         _scrollView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width,65*NOW_SIZE)];
-        UIImage *bgImage = IMAGE(@"bg4.png");
-       _scrollView.layer.contents = (id)bgImage.CGImage;
+        //UIImage *bgImage = IMAGE(@"bg4.png");
+        
+       _scrollView.backgroundColor = COLOR(17, 183, 243, 1);
            [self addSubview:_scrollView];
         
         float wSize=60*NOW_SIZE,Size1=15*NOW_SIZE,Size2=40*NOW_SIZE;
        _SN=[[UILabel alloc]initWithFrame:CGRectMake(Size1, 15*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
         _SN.text=root_NBQ_xunliehao;
         _SN.textAlignment=NSTextAlignmentLeft;
-        _SN.textColor=[UIColor blackColor];
+        _SN.textColor=[UIColor whiteColor];
         _SN.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_SN];
         _SNText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize, 15*NOW_SIZE, 85*NOW_SIZE,20*NOW_SIZE )];
-       // _SNText.text=@"序列号";
         _SNText.textAlignment=NSTextAlignmentLeft;
         _SNText.textColor=[UIColor whiteColor];
         _SNText.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -49,7 +49,7 @@
         _type=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 15*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
         _type.text=root_NBQ_leixing;
         _type.textAlignment=NSTextAlignmentLeft;
-        _type.textColor=[UIColor blackColor];
+        _type.textColor=[UIColor whiteColor];
         _type.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_type];
         _typtText=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE+wSize, 15*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
@@ -62,7 +62,7 @@
         _event=[[UILabel alloc]initWithFrame:CGRectMake(Size1, Size2, 60*NOW_SIZE,20*NOW_SIZE )];
         _event.text=root_NBQ_shijianhao;
         _event.textAlignment=NSTextAlignmentLeft;
-        _event.textColor=[UIColor blackColor];
+        _event.textColor=[UIColor whiteColor];
         _event.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_event];
         _eventText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize*1, Size2, 85*NOW_SIZE,20*NOW_SIZE )];
@@ -75,7 +75,7 @@
         _Log=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, Size2, 60*NOW_SIZE,20*NOW_SIZE )];
         _Log.text=root_NBQ_biaoshi;
         _Log.textAlignment=NSTextAlignmentLeft;
-        _Log.textColor=[UIColor blackColor];
+        _Log.textColor=[UIColor whiteColor];
         _Log.font = [UIFont systemFontOfSize:14*NOW_SIZE];
         [_scrollView addSubview:_Log];
         _LogText=[[UILabel alloc]initWithFrame:CGRectMake(220*NOW_SIZE, Size2, 100*NOW_SIZE,20*NOW_SIZE )];

@@ -22,6 +22,7 @@
 #define NOW_SIZE [UIScreen mainScreen].bounds.size.width/320
 #define NavigationbarHeight  self.navigationController.navigationBar.frame.size.height
 
+#define MainColor COLOR(17, 183, 243, 1)
 #define SCREEN_Width [UIScreen mainScreen].bounds.size.width
 #define colorGary COLOR(212, 212, 212, 1)
 #define SCREEN_Height [UIScreen mainScreen].bounds.size.height

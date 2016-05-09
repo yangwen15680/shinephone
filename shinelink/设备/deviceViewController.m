@@ -44,15 +44,15 @@
 @property (nonatomic, strong) NSString *netType;
 @property (nonatomic, strong) NSString *stationIdOne;
 @property (nonatomic, strong) NSString *headPicName;
-@property (nonatomic, strong) NSString *headAdress;
-@property (nonatomic, strong) NSString *headWether;
-@property (nonatomic, strong) NSString *headDate;
-@property (nonatomic, strong) NSString *headWeek;
-@property (nonatomic, strong) NSString *headUse;
-@property (nonatomic, strong) NSString *headGet;
-@property (nonatomic, strong) NSString *headT;
-@property (nonatomic, strong) NSString *headT1;
-@property (nonatomic, strong) NSString *headT2;
+@property (nonatomic, strong) NSString *head11;
+@property (nonatomic, strong) NSString *head12;
+@property (nonatomic, strong) NSString *head13;
+@property (nonatomic, strong) NSString *head21;
+@property (nonatomic, strong) NSString *head22;
+@property (nonatomic, strong) NSString *head23;
+@property (nonatomic, strong) NSString *head31;
+@property (nonatomic, strong) NSString *head32;
+@property (nonatomic, strong) NSString *head33;
 @property (nonatomic, strong)UIView *headerView;
 @end
 
@@ -126,7 +126,7 @@
     //创建tableView的方法
     [self _createTableView];
     //创建tableView的头视图
-   [self _createHeaderView];
+  
   
 }
 
@@ -433,6 +433,49 @@
             
         }
         
+        if ([_typeArr containsObject:@"storage"]) {
+            _head13=@"Ppv";
+            _head23=@"Puser";
+             _head33=@"Pgrid";
+            NSString *head111=[NSString stringWithFormat:@"%@",content[@"storageTodayPpv"]];
+            NSArray *headA=[head111 componentsSeparatedByString:@"/"];
+            _head11=[headA objectAtIndex:0];
+            _head12=[headA objectAtIndex:1];
+            
+            NSString *head222=[NSString stringWithFormat:@"%@",content[@"storagePuser"]];
+            NSArray *headB=[head222 componentsSeparatedByString:@"/"];
+            _head21=[headB objectAtIndex:0];
+            _head22=[headB objectAtIndex:1];
+            
+            NSString *head333=[NSString stringWithFormat:@"%@",content[@"storagePgrid"]];
+            NSArray *headC=[head333 componentsSeparatedByString:@"/"];
+            _head31=[headC objectAtIndex:0];
+            _head32=[headC objectAtIndex:1];
+            
+        }else{
+            _head13=@"Revenue";
+            _head23=@"E-today PV";
+            _head33=@"Ppv";
+        
+            NSString *head111=[NSString stringWithFormat:@"%@",content[@"plantMoneyText"]];
+            NSArray *headA=[head111 componentsSeparatedByString:@"/"];
+            _head11=[headA objectAtIndex:0];
+            _head12=[headA objectAtIndex:1];
+            
+            NSString *head222=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
+            NSArray *headB=[head222 componentsSeparatedByString:@"/"];
+            _head21=[headB objectAtIndex:0];
+             _head22=[headB objectAtIndex:1];
+            
+            NSString *head333=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
+            NSArray *headC=[head333 componentsSeparatedByString:@"/"];
+            _head31=[headC objectAtIndex:0];
+                _head32=[headC objectAtIndex:1];
+        }
+        
+        //创建Head
+         [self _createHeaderView];
+        
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
         [request setEntity:entity];
@@ -601,105 +644,84 @@
     
 }
 
-
-
 - (void)_createHeaderView {
     
     _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
-   // UIColor *bgColor = [UIColor colorWithPatternImage: [UIImage imageNamed:@"head.png"]];
-    //_headerView.backgroundColor=bgColor;
     _tableView.tableHeaderView = _headerView;
    
     float headHeight=_headerView.bounds.size.height;
-    _headPicName=@"4444.jpg";
+    _headPicName=@"head.png";
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headHeight)];
     imageView.image = [UIImage imageNamed:_headPicName];
     [_headerView addSubview:imageView];
-    
-//    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-Kwidth*1/4)/2,headHeight*1/4,Kwidth*1/4,headHeight*1/3)];
-//    imageView1.image = [UIImage imageNamed:@"fog2@3x.png"];
-//       [_headerView addSubview:imageView1];
-    
-    _headAdress=@"深圳";
-    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, 10*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
-    Lable1.text=_headAdress;
+
+   
+    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 40*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable1.text=_head11;
+    //Lable1.numberOfLines=0;
     Lable1.textAlignment=NSTextAlignmentCenter;
     Lable1.textColor=[UIColor whiteColor];
-    Lable1.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+    Lable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable1];
     
-    _headWether=@"阴";
-    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, 30*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
-    Lable2.text=_headWether;
+   
+    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 58*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable2.text=_head12;
     Lable2.textAlignment=NSTextAlignmentCenter;
     Lable2.textColor=[UIColor whiteColor];
     Lable2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [_headerView addSubview:Lable2];
+    
+    
+    UILabel *Lable12=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-80*NOW_SIZE)/2, 78*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    Lable12.text=_head13;
+    Lable12.textAlignment=NSTextAlignmentCenter;
+    Lable12.textColor=[UIColor whiteColor];
+    Lable12.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [_headerView addSubview:Lable12];
 
-   _headT =@"12º";
-    UILabel *Lable3=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-160*NOW_SIZE)/2, headHeight*1/4+15*NOW_SIZE, 160*NOW_SIZE,20*NOW_SIZE )];
-    Lable3.text=_headT;
-    Lable3.textAlignment=NSTextAlignmentCenter;
-    Lable3.textColor=[UIColor whiteColor];
-    Lable3.font = [UIFont systemFontOfSize:18*NOW_SIZE];
-    [_headerView addSubview:Lable3];
-    
-    
-    _headDate =@"2016-03-31";
-    UILabel *Lable4=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth/2-120*NOW_SIZE, headHeight*1/4+headHeight*1/3+10*NOW_SIZE, 130*NOW_SIZE,20*NOW_SIZE )];
-    Lable4.text=_headDate;
-    Lable4.textAlignment=NSTextAlignmentRight;
-    Lable4.textColor=[UIColor whiteColor];
-    Lable4.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [_headerView addSubview:Lable4];
-    
-    _headWeek =@"星期三";
-    UILabel *Lable5=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-0*NOW_SIZE)/2+20*NOW_SIZE, headHeight*1/4+headHeight*1/3+10*NOW_SIZE, 110*NOW_SIZE,20*NOW_SIZE )];
-    Lable5.text=_headWeek;
-    Lable5.textAlignment=NSTextAlignmentLeft;
-    Lable5.textColor=[UIColor whiteColor];
-    Lable5.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [_headerView addSubview:Lable5];
-    
-    _headT1=@"8º";_headT2=@"18º";
-    NSString *T3=[NSString stringWithFormat:@"%@~%@",_headT1,_headT2];
-    UILabel *Lable6=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-120*NOW_SIZE)/2, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
-    Lable6.text=T3;
-    Lable6.textAlignment=NSTextAlignmentCenter;
-    Lable6.textColor=[UIColor whiteColor];
-    Lable6.font = [UIFont systemFontOfSize:12*NOW_SIZE];
-    [_headerView addSubview:Lable6];
-    
- _headUse=@"30KW";
-    UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
-    Lable7.text=_headUse;
-    Lable7.textAlignment=NSTextAlignmentLeft;
+    UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable7.text=_head21;
+    Lable7.textAlignment=NSTextAlignmentCenter;
     Lable7.textColor=[UIColor whiteColor];
-    Lable7.font = [UIFont systemFontOfSize:20*NOW_SIZE];
+    Lable7.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable7];
     
- 
-    UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, headHeight*1/4+headHeight*1/3+55*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
-    Lable9.text=@"今日用电量";
-    Lable9.textAlignment=NSTextAlignmentLeft;
+    UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 138*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable9.text=_head22;
+    Lable9.textAlignment=NSTextAlignmentCenter;
     Lable9.textColor=[UIColor whiteColor];
-    Lable9.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    Lable9.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [_headerView addSubview:Lable9];
     
-    _headGet=@"30KW";
-    UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth-150*NOW_SIZE, headHeight*1/4+headHeight*1/3+30*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
-    Lable8.text=_headUse;
-    Lable8.textAlignment=NSTextAlignmentRight;
+    UILabel *Lable79=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 160*NOW_SIZE, 90*NOW_SIZE,20*NOW_SIZE )];
+    Lable79.text=_head23;
+    Lable79.textAlignment=NSTextAlignmentCenter;
+    Lable79.textColor=[UIColor whiteColor];
+    Lable79.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [_headerView addSubview:Lable79];
+    
+    //_headGet=@"3000";
+    UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 120*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable8.text=_head31;
+    Lable8.textAlignment=NSTextAlignmentCenter;
     Lable8.textColor=[UIColor whiteColor];
-    Lable8.font = [UIFont systemFontOfSize:20*NOW_SIZE];
+    Lable8.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable8];
     
-    UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(Kwidth-140*NOW_SIZE, headHeight*1/4+headHeight*1/3+55*NOW_SIZE, 120*NOW_SIZE,20*NOW_SIZE )];
-    Lable10.text=@"今日发电量";
-    Lable10.textAlignment=NSTextAlignmentRight;
+    UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 138*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    Lable10.text=_head32;
+    Lable10.textAlignment=NSTextAlignmentCenter;
     Lable10.textColor=[UIColor whiteColor];
-    Lable10.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    Lable10.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [_headerView addSubview:Lable10];
+    
+    UILabel *Lable108=[[UILabel alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 160*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    Lable108.text=_head33;
+    Lable108.textAlignment=NSTextAlignmentCenter;
+    Lable108.textColor=[UIColor whiteColor];
+    Lable108.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    [_headerView addSubview:Lable108];
     
 }
 

@@ -28,6 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self netLog];
 
 }
@@ -106,7 +108,7 @@ _PvSn=@"SAMP524004";
     
     
     CGRect fcRect = [self.contentTextArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    return 85*Height+fcRect.size.height;
+    return 115*Height+fcRect.size.height;
     
 }
 
@@ -126,7 +128,7 @@ _PvSn=@"SAMP524004";
     
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
     cell.contentLabel.frame =CGRectMake(10*Width, 65*Width, 300*Width, fcRect.size.height);
-    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-200*NOW_SIZE, 65*NOW_SIZE+fcRect.size.height,200*NOW_SIZE, 20*NOW_SIZE );
+    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-200*NOW_SIZE, 95*NOW_SIZE+fcRect.size.height,200*NOW_SIZE, 20*NOW_SIZE );
 
     
     return cell;

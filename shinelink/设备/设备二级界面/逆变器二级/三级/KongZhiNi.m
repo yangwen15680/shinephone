@@ -174,8 +174,8 @@
     if(![_type isEqualToString:@"0"]){
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
     goBut.frame=CGRectMake(60*NOW_SIZE,200*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+  //  [goBut.layer setMasksToBounds:YES];
+   // [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_finish forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishSet) forControlEvents:UIControlEventTouchUpInside];

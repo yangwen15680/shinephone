@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "shinelink/&#x8bbe;&#x5907;/deviceViewController.m"
-            timestampString = "484222145.768366"
+            timestampString = "484454666.226692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "478"
-            endingLineNumber = "478"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
             landmarkName = "-netRequest"
             landmarkType = "5">
          </BreakpointContent>
