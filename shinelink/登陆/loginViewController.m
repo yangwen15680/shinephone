@@ -133,6 +133,7 @@
     self.pwdTextField.tintColor = [UIColor whiteColor];
     [self.pwdTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
     [self.pwdTextField setValue:[UIFont systemFontOfSize:13*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.pwdTextField.font = [UIFont systemFontOfSize:15*NOW_SIZE];
     [pwdBgImageView addSubview:_pwdTextField];
     
  
@@ -163,6 +164,7 @@
     LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 320*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
     [_scrollView addSubview:loginBtn];
+    loginBtn.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
     [loginBtn setTitle:root_log_in forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -339,6 +341,7 @@
 //弹出输入用户提示框方法
 - (void)userAlertAction {
     UIAlertController *alertCtrl = [UIAlertController alertControllerWithTitle:root_Alet_user message:root_Alet_user_messge preferredStyle:UIAlertControllerStyleAlert];
+  
     UIAlertAction *btnAction = [UIAlertAction actionWithTitle:root_OK style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];

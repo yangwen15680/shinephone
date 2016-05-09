@@ -45,13 +45,13 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
     [self.contentView addSubview:_titleLabel];
     
-    UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width-30, 19*NOW_SIZE, 20*NOW_SIZE, 15*NOW_SIZE)];
+    UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(SCREEN_Width-45, 25*NOW_SIZE, 20*NOW_SIZE, 15*NOW_SIZE)];
     arrowView.image = IMAGE(@"frag4.png");
     [self.contentView addSubview:arrowView];
     
-    self.detail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-60*NOW_SIZE, 12*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    self.detail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-60*NOW_SIZE, 0*NOW_SIZE, 30*NOW_SIZE,50*NOW_SIZE)];
     self.detail.text = root_xianQing;
-    self.detail.font=[UIFont systemFontOfSize:16];
+    self.detail.font=[UIFont systemFontOfSize:14*NOW_SIZE];
     self.detail.textAlignment = NSTextAlignmentLeft;
     self.detail.textColor = [UIColor labelColor];
     [self.contentView addSubview:_detail];
@@ -72,7 +72,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+70*NOW_SIZE+labelWidth1+labelWidth1/2, 0*NOW_SIZE, 50*NOW_SIZE, 50*NOW_SIZE)];
     self.stateValue.font=[UIFont systemFontOfSize:14*NOW_SIZE];
     self.stateValue.textAlignment = NSTextAlignmentLeft;
-    //self.stateValue.textColor = [UIColor labelColor];
+   self.stateValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_stateValue];
     
     self.power = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width/5+10*NOW_SIZE, 40*NOW_SIZE, labelWidth1, labelHeight)];

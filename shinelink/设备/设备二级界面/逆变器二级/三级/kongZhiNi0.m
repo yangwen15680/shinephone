@@ -27,15 +27,10 @@
      self.dataArray =[NSMutableArray arrayWithObjects:root_NBQ_kaiguan,root_NBQ_youxiao_gonglv,root_NBQ_wuxiao_gonglv,root_NBQ_PF,root_NBQ_shijian,nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        
         [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-        
     }
-    
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-        
     }
    
 }
@@ -54,7 +49,6 @@
         [cell setLayoutMargins:UIEdgeInsetsZero];
         
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -82,11 +76,12 @@
     }
     cell.backgroundColor=MainColor;
     cell.textLabel.text=_dataArray[indexPath.row];
+       cell.tintColor = [UIColor whiteColor];
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     //cell.accessoryView.backgroundColor=[UIColor whiteColor];
-    cell.tintColor = [UIColor lightGrayColor];
-    //cell.tintColor = [UIColor whiteColor];
+ 
+  
     return cell;
 }
 

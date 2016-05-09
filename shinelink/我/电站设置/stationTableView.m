@@ -21,11 +21,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //  UIImage *bgImage = IMAGE(@"bg4.png");
-    //  self.view.layer.contents = (id)bgImage.CGImage;
-    
+    self.view.backgroundColor=COLOR(17, 183, 243, 1);
+       self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+       self.tableView.separatorColor=[UIColor whiteColor];
     self.dataArray =[NSMutableArray arrayWithObjects:root_WO_anzhuang,root_WO_dili,root_WO_zijin,root_WO_tupian,nil];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+ 
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,11 +65,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // static NSString *cellDentifier=@"cellDentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" ];
+    
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+       cell.backgroundColor=MainColor;
     cell.textLabel.text=_dataArray[indexPath.row];
-    cell.textLabel.textColor=[UIColor blackColor];
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.tintColor = [UIColor lightGrayColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

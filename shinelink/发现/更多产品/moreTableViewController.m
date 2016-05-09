@@ -29,6 +29,7 @@
     _paramsName=[NSMutableArray array];
     _imageName=[NSMutableArray array];
     _imageHead=[NSMutableArray array];
+          self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self initData];
 }
 
@@ -55,23 +56,21 @@
                     [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage} paramarsSite:@"/newMoreProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
                         
                         [self hideProgressView];
+                          NSLog(@"i===: %d", i);
                         NSLog(@"getProductImage=: %@", content2);
                         if (content2) {
                             
                             [_imageHead addObject:content2];
-                            if (i==(allArray.count-1)) {
+                            if (_imageHead.count==allArray.count) {
                                      [self.tableView reloadData];
                             }
-                         
-                                                   }
+                                  }
                         
                     } failure:^(NSError *error) {
                         [self hideProgressView];
                     }];
                 }
             }
-            
-            
                    }
         
     } failure:^(NSError *error) {

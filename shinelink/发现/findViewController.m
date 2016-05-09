@@ -100,7 +100,7 @@
             NSLog(@"getAdvertisingImages=: %@", content);
             if (content) {
                 [_imageArray addObject:content];
-                if (i==(_imageArrayCount.count-1)) {
+                if (_imageArray.count==_imageArrayCount.count) {
                     [self _createHeaderView];
                 }
             }

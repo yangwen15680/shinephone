@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
- 
+     self.view.backgroundColor=MainColor;
     [self initUI];
  
 }
@@ -39,9 +39,18 @@
     self.dataArray =[NSMutableArray arrayWithObjects:root_WO_xiugai_mima,root_WO_xiugai_shoujihao,root_WO_xiugai_youxiang,root_WO_xiugai_dailishang,nil];
    // self.dataArray1 =[NSMutableArray arrayWithObjects:@"",@"18666666666",@"328657662@qq.com",nil];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 300*NOW_SIZE)];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 240*NOW_SIZE)];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    self.tableView.backgroundColor=MainColor;
+       self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+      self.tableView.separatorColor=[UIColor whiteColor];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
     [self.view addSubview:_tableView];
     
     UIButton *registerUser =  [UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,8 +64,22 @@
     [registerUser addTarget:self action:@selector(registerUser) forControlEvents:UIControlEventTouchUpInside];
     //  goBut.highlighted=[UIColor grayColor];
     [self.view addSubview:registerUser];
+}
 
-
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
 }
 
 -(void)registerUser{
@@ -94,10 +117,11 @@
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cellDentifier"];
     }
+     cell.backgroundColor=MainColor;
     cell.textLabel.text=_dataArray[indexPath.row];
-    cell.textLabel.textColor=[UIColor blackColor];
+    cell.textLabel.textColor=[UIColor whiteColor];
     cell.detailTextLabel.text=_dataArray1[indexPath.row];
-    cell.detailTextLabel.textColor=[UIColor grayColor];
+    cell.detailTextLabel.textColor=[UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

@@ -66,6 +66,7 @@
         _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*NOW_SIZE)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+                  self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.view addSubview:_tableView];
         }
     } failure:^(NSError *error) {

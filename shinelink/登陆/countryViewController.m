@@ -45,7 +45,7 @@
 //    imageView.clipsToBounds=YES;
 //    imageView.image=[UIImage imageNamed:@"语言.png"];
 //    [self.view addSubview:imageView];
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,198*NOW_SIZE-50*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,80*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
     label.text=root_country;
     label.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     label.textAlignment = NSTextAlignmentCenter;
@@ -56,7 +56,7 @@
 //    line.backgroundColor=[UIColor whiteColor];
 //    [self.view addSubview:line];
     
-    _label=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE,199*NOW_SIZE-50*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
+    _label=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE,80*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
     _label.layer.borderWidth=1;
     _label.layer.cornerRadius=5;
     _label.layer.borderColor=[UIColor whiteColor].CGColor;
@@ -70,7 +70,7 @@
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickadress)];
     [_label addGestureRecognizer:tap];
     
-    UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,198*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
+    UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,130*NOW_SIZE, 80*NOW_SIZE, 30*NOW_SIZE)];
     label2.text=root_weiZhi;
     label2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
      label2.textAlignment = NSTextAlignmentCenter;
@@ -81,7 +81,7 @@
 //    line2.backgroundColor=[UIColor whiteColor];
 //    [self.view addSubview:line2];
     
-  _label2=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE,199*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
+  _label2=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE,130*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
     _label2.layer.borderWidth=1;
     _label2.layer.cornerRadius=5;
     _label2.layer.borderColor=[UIColor whiteColor].CGColor;
@@ -98,11 +98,11 @@
    
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,200*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:20.0];
        [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-  
+  goBut.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
     [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

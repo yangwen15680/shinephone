@@ -132,7 +132,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-
+      goBut.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
     [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
