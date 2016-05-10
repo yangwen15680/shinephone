@@ -5,7 +5,7 @@
 //  Created by sky on 16/2/23.
 //  Copyright © 2016年 sky. All rights reserved.
 //
-#define moveHeight 100*NOW_SIZE
+#define moveHeight 35*HEIGHT_SIZE
 #import "registerViewController.h"
 #import "loginViewController.h"
 #import "countryViewController.h"
@@ -86,23 +86,23 @@
     NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, root_chongFu_shuRu_miMa, root_Enter_email, root_Enter_phone_number,root_shuRu_daiLiShangBianHao, nil];
    
     for (int i=0; i<labelArray.count; i++) {
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,17*NOW_SIZE+i*60*NOW_SIZE+moveHeight,17*NOW_SIZE, 17*NOW_SIZE)];
+        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,16*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight,17*NOW_SIZE, 17*HEIGHT_SIZE)];
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
         imageView.image=[UIImage imageNamed:imageArray[i]];
         [_backScroll addSubview:imageView];
         
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(50*NOW_SIZE,10*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 100*NOW_SIZE, 30*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(50*NOW_SIZE,10*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         label.text=labelArray[i];
         label.font = [UIFont systemFontOfSize:12*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
         [_backScroll addSubview:label];
         
-        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,40*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 260*NOW_SIZE, 0.5)];
+        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,40*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 260*NOW_SIZE, 0.5*HEIGHT_SIZE)];
         line.backgroundColor=[UIColor whiteColor];
         [_backScroll addSubview:line];
         
-        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(155*NOW_SIZE,10*NOW_SIZE+i*60*NOW_SIZE+moveHeight, 135*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(155*NOW_SIZE,10*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 135*NOW_SIZE, 30*HEIGHT_SIZE)];
         textField.placeholder =textFieldArray[i];
         textField.textColor = [UIColor whiteColor];
         textField.tintColor = [UIColor whiteColor];
@@ -128,7 +128,7 @@
     
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,380*NOW_SIZE+moveHeight, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,360*HEIGHT_SIZE+moveHeight, 200*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];

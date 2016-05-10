@@ -100,17 +100,17 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     //logo
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 60*NOW_SIZE, SCREEN_Width - 40*NOW_SIZE, 60*NOW_SIZE)];
+    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 60*HEIGHT_SIZE, SCREEN_Width - 40*NOW_SIZE, 70*HEIGHT_SIZE)];
     logo.image = IMAGE(@"logo.png");
     [_scrollView addSubview:logo];
     
     //用户名
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 60*NOW_SIZE+60*NOW_SIZE+30*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 145*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
     userBgImageView.image = IMAGE(@"账号3.png");
     [_scrollView addSubview:userBgImageView];
     
-    self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     self.userTextField.placeholder = root_Enter_your_username;
     self.userTextField.textColor = [UIColor whiteColor];
     self.userTextField.tintColor = [UIColor whiteColor];
@@ -120,12 +120,12 @@
     [userBgImageView addSubview:_userTextField];
     
     //密码
-    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 60*NOW_SIZE+60*NOW_SIZE+30*NOW_SIZE+45*NOW_SIZE+20*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE,210*HEIGHT_SIZE , SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     pwdBgImageView.image = IMAGE(@"密码3.png");
     pwdBgImageView.userInteractionEnabled = YES;
     [_scrollView addSubview:pwdBgImageView];
     
-    self.pwdTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    self.pwdTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     self.pwdTextField.placeholder = root_Enter_your_pwd;
     self.pwdTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.pwdTextField.secureTextEntry = YES;
@@ -138,7 +138,7 @@
     
  
    
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 40*NOW_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.forgetLable.text=root_forget_pwd;
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -149,7 +149,7 @@
     [_scrollView addSubview:self.forgetLable];
     
     
-   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(200*NOW_SIZE, 420*NOW_SIZE-150*NOW_SIZE, 70*NOW_SIZE, 40*NOW_SIZE)];
+   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(200*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
@@ -161,7 +161,7 @@
     
     
     
-    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 320*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 310*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
     [_scrollView addSubview:loginBtn];
     loginBtn.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];

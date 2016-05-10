@@ -25,20 +25,21 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg.png"]]];
     
     UIButton *byEmail =  [UIButton buttonWithType:UIButtonTypeCustom];
-    byEmail.frame=CGRectMake(60*NOW_SIZE,100*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    byEmail.frame=CGRectMake(60*NOW_SIZE,100*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
     [byEmail.layer setMasksToBounds:YES];
     [byEmail.layer setCornerRadius:25.0];
         [byEmail setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-   
+    byEmail.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
     [byEmail setTitle:root_tongGuo_yonghuMing forState:UIControlStateNormal];
     [byEmail addTarget:self action:@selector(bymail) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:byEmail];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,180*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,180*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+        goBut.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
     [goBut setTitle:root_tongGuo_xuLieHao forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(bySN) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

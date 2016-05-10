@@ -315,25 +315,25 @@
     
 }
 
-- (void)addRightItem
-{
-    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"高级设置" iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
-        NSLog(@"rightItem%lu",(unsigned long)index);}];
-    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"基本信息" iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
-        NSLog(@"rightItem%lu",(unsigned long)index);}];
-    DTKDropdownItem *item2 = [DTKDropdownItem itemWithTitle:@"日志" iconName:@"DTK_update" callBack:^(NSUInteger index, id info) {
-        NSLog(@"rightItem%lu",(unsigned long)index);}];
-    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1,item2] icon:@"DTK_bi"];
-    
-    menuView.dropWidth = 150.f;
-    menuView.titleFont = [UIFont systemFontOfSize:18.f];
-    menuView.textColor = ColorWithRGB(102.f, 102.f, 102.f);
-    menuView.textFont = [UIFont systemFontOfSize:13.f];
-    menuView.cellSeparatorColor = ColorWithRGB(229.f, 229.f, 229.f);
-    menuView.textFont = [UIFont systemFontOfSize:14.f];
-    menuView.animationDuration = 0.2f;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:menuView];
-}
+//- (void)addRightItem
+//{
+//    DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:@"高级设置" iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
+//        NSLog(@"rightItem%lu",(unsigned long)index);}];
+//    DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:@"基本信息" iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
+//        NSLog(@"rightItem%lu",(unsigned long)index);}];
+//    DTKDropdownItem *item2 = [DTKDropdownItem itemWithTitle:@"日志" iconName:@"DTK_update" callBack:^(NSUInteger index, id info) {
+//        NSLog(@"rightItem%lu",(unsigned long)index);}];
+//    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewWithType:dropDownTypeRightItem frame:CGRectMake(0, 0, 44.f, 44.f) dropdownItems:@[item0,item1,item2] icon:@"DTK_bi"];
+//    
+//    menuView.dropWidth = 150.f;
+//    menuView.titleFont = [UIFont systemFontOfSize:18.f];
+//    menuView.textColor = ColorWithRGB(102.f, 102.f, 102.f);
+//    menuView.textFont = [UIFont systemFontOfSize:13.f];
+//    menuView.cellSeparatorColor = ColorWithRGB(229.f, 229.f, 229.f);
+//    menuView.textFont = [UIFont systemFontOfSize:14.f];
+//    menuView.animationDuration = 0.2f;
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:menuView];
+//}
 
 
 

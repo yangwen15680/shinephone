@@ -20,12 +20,12 @@
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 90*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 90*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
     userBgImageView.image = IMAGE(@"圆角矩形空心.png");
     [self.view addSubview:userBgImageView];
     
-    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     _cellectId.placeholder = root_Alet_user_messge;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
@@ -35,10 +35,11 @@
     [userBgImageView addSubview:_cellectId];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(40*NOW_SIZE,160*NOW_SIZE, 240*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(40*NOW_SIZE,160*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
        [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+     goBut.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

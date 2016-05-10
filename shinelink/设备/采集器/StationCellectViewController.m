@@ -161,15 +161,15 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 25*NOW_SIZE;
+    return 25*HEIGHT_SIZE;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 1*NOW_SIZE;
+    return 1*HEIGHT_SIZE;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 220*NOW_SIZE;
+    return 220*HEIGHT_SIZE;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

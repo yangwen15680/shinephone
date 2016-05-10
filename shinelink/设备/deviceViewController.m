@@ -646,7 +646,7 @@
 
 - (void)_createHeaderView {
     
-    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
     _tableView.tableHeaderView = _headerView;
    
     float headHeight=_headerView.bounds.size.height;
@@ -656,7 +656,7 @@
     [_headerView addSubview:imageView];
 
    
-    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 40*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 40*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable1.text=_head11;
     //Lable1.numberOfLines=0;
     Lable1.textAlignment=NSTextAlignmentCenter;
@@ -665,7 +665,7 @@
     [_headerView addSubview:Lable1];
     
    
-    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 58*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 58*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable2.text=_head12;
     Lable2.textAlignment=NSTextAlignmentCenter;
     Lable2.textColor=[UIColor whiteColor];
@@ -673,28 +673,28 @@
     [_headerView addSubview:Lable2];
     
     
-    UILabel *Lable12=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-80*NOW_SIZE)/2, 78*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable12=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-80*NOW_SIZE)/2, 78*HEIGHT_SIZE, 80*NOW_SIZE,25*HEIGHT_SIZE )];
     Lable12.text=_head13;
     Lable12.textAlignment=NSTextAlignmentCenter;
     Lable12.textColor=[UIColor whiteColor];
     Lable12.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable12];
 
-    UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable7.text=_head21;
     Lable7.textAlignment=NSTextAlignmentCenter;
     Lable7.textColor=[UIColor whiteColor];
     Lable7.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable7];
     
-    UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 138*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable9.text=_head22;
     Lable9.textAlignment=NSTextAlignmentCenter;
     Lable9.textColor=[UIColor whiteColor];
     Lable9.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [_headerView addSubview:Lable9];
     
-    UILabel *Lable79=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 160*NOW_SIZE, 90*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable79=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 160*HEIGHT_SIZE, 90*NOW_SIZE,25*HEIGHT_SIZE )];
     Lable79.text=_head23;
     Lable79.textAlignment=NSTextAlignmentCenter;
     Lable79.textColor=[UIColor whiteColor];
@@ -702,21 +702,21 @@
     [_headerView addSubview:Lable79];
     
     //_headGet=@"3000";
-    UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 120*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable8.text=_head31;
     Lable8.textAlignment=NSTextAlignmentCenter;
     Lable8.textColor=[UIColor whiteColor];
     Lable8.font = [UIFont systemFontOfSize:16*NOW_SIZE];
     [_headerView addSubview:Lable8];
     
-    UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 138*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable10.text=_head32;
     Lable10.textAlignment=NSTextAlignmentCenter;
     Lable10.textColor=[UIColor whiteColor];
     Lable10.font = [UIFont systemFontOfSize:12*NOW_SIZE];
     [_headerView addSubview:Lable10];
     
-    UILabel *Lable108=[[UILabel alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 160*NOW_SIZE, 80*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable108=[[UILabel alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 160*HEIGHT_SIZE, 80*NOW_SIZE,25*HEIGHT_SIZE )];
     Lable108.text=_head33;
     Lable108.textAlignment=NSTextAlignmentCenter;
     Lable108.textColor=[UIColor whiteColor];
@@ -1026,6 +1026,7 @@
         }
         DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
         [cell.coverImageView  setImage:[UIImage imageWithData:demoDevice.image]];
+         cell.electric.text = root_ri_dianLiang;
         cell.titleLabel.text = demoDevice.name;
         cell.titleLabel.textColor = [UIColor grayColor];
         cell.powerValue.text = demoDevice.power;
@@ -1139,7 +1140,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-        return 65*NOW_SIZE;
+        return 65*HEIGHT_SIZE;
     }
     
 

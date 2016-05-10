@@ -39,12 +39,12 @@
 
 -(void)initUI{
     //数据采集器序列号
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 90*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 50*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
     userBgImageView.image = IMAGE(@"圆角矩形空心.png");
     [self.view addSubview:userBgImageView];
     
-    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     _cellectId.placeholder = root_caiJiQi;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
@@ -54,12 +54,12 @@
     [userBgImageView addSubview:_cellectId];
     
     //数据采集器效验码
-    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 150*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 110*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     pwdBgImageView.image = IMAGE(@"圆角矩形空心.png");
     pwdBgImageView.userInteractionEnabled = YES;
     [self.view addSubview:pwdBgImageView];
     
-    _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     _cellectNo.placeholder = root_jiaoYanMa;
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
@@ -71,16 +71,18 @@
     
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(40*NOW_SIZE,250*NOW_SIZE, 240*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(40*NOW_SIZE,210*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
       [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+     goBut.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
     
-    UIButton *QR=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE,400*NOW_SIZE , 240*NOW_SIZE, 60*NOW_SIZE)];
+    UIButton *QR=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE,300*HEIGHT_SIZE , 240*NOW_SIZE, 60*HEIGHT_SIZE)];
     [QR setBackgroundImage:IMAGE(@"按钮2.png") forState:0];
+     QR.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
     [QR setTitle:root_erWeiMa forState:UIControlStateNormal];
     [QR setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [QR addTarget:self action:@selector(ScanQR) forControlEvents:UIControlEventTouchUpInside];
