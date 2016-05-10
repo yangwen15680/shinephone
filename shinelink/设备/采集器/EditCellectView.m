@@ -14,14 +14,14 @@
     if (self = [super initWithFrame:frame]) {
         
         UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(frame.size.width - 64, 44, 44*NOW_SIZE, 44*NOW_SIZE);
-        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE);
+        cancelButton.frame = CGRectMake(frame.size.width - 64, 44*HEIGHT_SIZE, 44*NOW_SIZE, 44*HEIGHT_SIZE);
+        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
         [cancelButton setImage:IMAGE(@"btn_cha.png") forState:UIControlStateNormal];
         cancelButton.tag = 1050;
         [cancelButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelButton];
         
-        UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55*NOW_SIZE, 150*NOW_SIZE, frame.size.width - 110*NOW_SIZE, 200*NOW_SIZE)];
+        UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(55*NOW_SIZE, 150*HEIGHT_SIZE, frame.size.width - 110*NOW_SIZE, 200*HEIGHT_SIZE)];
         bgImageView.image = IMAGE(@"bg_list_popver.png");
         bgImageView.userInteractionEnabled = YES;
         [self addSubview:bgImageView];

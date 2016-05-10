@@ -47,7 +47,7 @@
 //    [self.view addSubview:imageView];
     UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,50*HEIGHT_SIZE, 80*NOW_SIZE, 30*HEIGHT_SIZE)];
     label.text=root_country;
-    label.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    label.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor=[UIColor whiteColor];
     [self.view addSubview:label];
@@ -64,7 +64,7 @@
     _label.textColor = [UIColor whiteColor];
     //textField.tintColor = [UIColor whiteColor];
     _label.textAlignment = NSTextAlignmentCenter;
-    _label.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    _label.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [self.view addSubview:_label];
     _label.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickadress)];
@@ -72,7 +72,7 @@
     
     UILabel *label2=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE,100*HEIGHT_SIZE, 80*NOW_SIZE, 30*HEIGHT_SIZE)];
     label2.text=root_weiZhi;
-    label2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    label2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
      label2.textAlignment = NSTextAlignmentCenter;
     label2.textColor=[UIColor whiteColor];
     [self.view addSubview:label2];
@@ -89,7 +89,7 @@
     _label2.textColor = [UIColor whiteColor];
     //textField.tintColor = [UIColor whiteColor];
     _label2.textAlignment = NSTextAlignmentCenter;
-    _label2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    _label2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [self.view addSubview:_label2];
     _label2.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fetchLocation)];
@@ -102,7 +102,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:20.0];
        [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-  goBut.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+  goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

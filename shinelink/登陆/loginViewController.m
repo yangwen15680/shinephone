@@ -115,8 +115,8 @@
     self.userTextField.textColor = [UIColor whiteColor];
     self.userTextField.tintColor = [UIColor whiteColor];
     [self.userTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.userTextField setValue:[UIFont systemFontOfSize:13*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    self.userTextField.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+    [self.userTextField setValue:[UIFont systemFontOfSize:13*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.userTextField.font = [UIFont systemFontOfSize:15*HEIGHT_SIZE];
     [userBgImageView addSubview:_userTextField];
     
     //密码
@@ -132,8 +132,8 @@
     self.pwdTextField.textColor = [UIColor whiteColor];
     self.pwdTextField.tintColor = [UIColor whiteColor];
     [self.pwdTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [self.pwdTextField setValue:[UIFont systemFontOfSize:13*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    self.pwdTextField.font = [UIFont systemFontOfSize:15*NOW_SIZE];
+    [self.pwdTextField setValue:[UIFont systemFontOfSize:13*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.pwdTextField.font = [UIFont systemFontOfSize:15*HEIGHT_SIZE];
     [pwdBgImageView addSubview:_pwdTextField];
     
  
@@ -141,7 +141,7 @@
     self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.forgetLable.text=root_forget_pwd;
      self.forgetLable.textColor=[UIColor whiteColor];
-        self.forgetLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        self.forgetLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
      self.forgetLable.userInteractionEnabled=YES;
     UITapGestureRecognizer * forget2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
@@ -152,7 +152,7 @@
    _registLable= [[UILabel alloc] initWithFrame:CGRectMake(200*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
-    self.registLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    self.registLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.registLable.textAlignment = NSTextAlignmentRight;
     self.registLable.userInteractionEnabled=YES;
     UITapGestureRecognizer * forget1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
@@ -164,7 +164,7 @@
     LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 310*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
     [_scrollView addSubview:loginBtn];
-    loginBtn.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+    loginBtn.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [loginBtn setTitle:root_log_in forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(PresentCtrl:) forControlEvents:UIControlEventTouchUpInside];
     

@@ -12,7 +12,7 @@
 #define labelWidth  38*NOW_SIZE
 #define labelWidth1  38*NOW_SIZE
 #define labelHeight  20*HEIGHT_SIZE
-#define fontSize  11*NOW_SIZE
+#define fontSize  11*HEIGHT_SIZE
 #define labelColor  grayColor
 
 
@@ -40,7 +40,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(_coverImageView.bounds.size.width+10*NOW_SIZE, 0, 110*NOW_SIZE, 50*HEIGHT_SIZE)];
-    self.titleLabel.font=[UIFont systemFontOfSize:16*NOW_SIZE];
+    self.titleLabel.font=[UIFont systemFontOfSize:16*HEIGHT_SIZE];
     self.titleLabel.textAlignment = NSTextAlignmentLeft;
     
     [self.contentView addSubview:_titleLabel];
@@ -70,7 +70,7 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
 //    [self.contentView addSubview:_stateView];
     
     self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake(_coverImageView.bounds.size.width+140*NOW_SIZE, 0*NOW_SIZE, 50*NOW_SIZE, 50*HEIGHT_SIZE)];
-    self.stateValue.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+    self.stateValue.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.stateValue.textAlignment = NSTextAlignmentLeft;
    self.stateValue.textColor = [UIColor labelColor];
     [self.contentView addSubview:_stateValue];

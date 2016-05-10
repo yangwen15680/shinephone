@@ -10,7 +10,7 @@
 
 #define DefaultTrackLineWidth               16.0f           // 默认轨迹宽度
 #define DefaultProgressLineWidth            14.0f           // 默认进度宽度
-#define radiusSize  70*NOW_SIZE
+#define radiusSize  70*HEIGHT_SIZE
 @interface CircleView ()
 
 // 轨迹layer
@@ -54,7 +54,7 @@
 
 - (void)drawDefaultUI {
     
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 120*NOW_SIZE);
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 100*HEIGHT_SIZE);
     // 半径： 取 self.frame的宽高最小值进行计算
     CGFloat radius =radiusSize;
     _circlePath = [UIBezierPath bezierPathWithArcCenter:center radius:radius startAngle:_startAngle endAngle:_endAngle clockwise:_colockwise];
@@ -94,7 +94,7 @@
 }
 
 - (void)updateCirclePath {
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 120*NOW_SIZE);
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), 100*HEIGHT_SIZE);
     // 半径： 取 self.frame的宽高最小值进行计算
     CGFloat radius =radiusSize;
     //    startAngle,endAngle 是以M_PI为单位，不是以度数，，，

@@ -94,7 +94,7 @@
         
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(50*NOW_SIZE,10*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         label.text=labelArray[i];
-        label.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        label.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [_backScroll addSubview:label];
         
@@ -107,8 +107,8 @@
         textField.textColor = [UIColor whiteColor];
         textField.tintColor = [UIColor whiteColor];
         [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [textField setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-        textField.font = [UIFont systemFontOfSize:11*NOW_SIZE];
+        [textField setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+        textField.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
         textField.tag = i;
         textField.delegate = self;
         [_backScroll addSubview:textField];
@@ -132,7 +132,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-      goBut.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+      goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut setTitle:root_next_go forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];

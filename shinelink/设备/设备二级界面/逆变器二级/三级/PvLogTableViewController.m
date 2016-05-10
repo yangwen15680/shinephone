@@ -30,9 +30,35 @@
     [super viewDidLoad];
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+   
+    self.tableView.separatorColor=[UIColor grayColor];
     [self netLog];
 
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+
 }
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
+}
+
 
 -(void)netLog{
       self.SNTextArray=[NSMutableArray array];
@@ -108,7 +134,7 @@ _PvSn=@"SAMP524004";
     
     
     CGRect fcRect = [self.contentTextArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    return 115*Height+fcRect.size.height;
+    return 125*HEIGHT_SIZE+fcRect.size.height;
     
 }
 
@@ -126,9 +152,9 @@ _PvSn=@"SAMP524004";
     cell.content=self.contentTextArray[indexPath.row];
    
     
-    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
+    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
     cell.contentLabel.frame =CGRectMake(10*Width, 65*Width, 300*Width, fcRect.size.height);
-    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-200*NOW_SIZE, 95*NOW_SIZE+fcRect.size.height,200*NOW_SIZE, 20*NOW_SIZE );
+    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-210*NOW_SIZE, 105*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
 
     
     return cell;

@@ -61,8 +61,8 @@
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
     [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectId setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectId.font = [UIFont systemFontOfSize:11*NOW_SIZE];
+    [_cellectId setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectId.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
     [userBgImageView addSubview:_cellectId];
     
     //数据采集器效验码
@@ -76,8 +76,8 @@
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
     [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectNo setValue:[UIFont systemFontOfSize:11*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectNo.font = [UIFont systemFontOfSize:11*NOW_SIZE];
+    [_cellectNo setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectNo.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
     [pwdBgImageView addSubview:_cellectNo];
     
  
@@ -88,6 +88,7 @@
     [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
+     goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
     
@@ -95,6 +96,7 @@
     UIButton *QR=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE,300*HEIGHT_SIZE , 240*NOW_SIZE, 60*HEIGHT_SIZE)];
     [QR setBackgroundImage:IMAGE(@"按钮2.png") forState:0];
     [QR setTitle:root_erWeiMa forState:UIControlStateNormal];
+    QR.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [QR setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [QR addTarget:self action:@selector(ScanQR) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:QR];

@@ -217,7 +217,7 @@
 -(void)controlPhoto{
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
                                                                               message: nil
-                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //处理点击拍照
@@ -309,7 +309,7 @@
 
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
                                                                               message: nil
-                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_nibianqi_guzhan style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
        _typeName=root_ME_nibianqi_guzhan;

@@ -94,74 +94,78 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.view addSubview:_scrollView];
 
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
+    self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*HEIGHT_SIZE);
     [self.dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.dayButton.tag = 1000;
+     _dayButton.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [self.dayButton setTitle:root_DAY forState:UIControlStateNormal];
     self.dayButton.selected = YES;
     [self.dayButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.dayButton];
     
     self.monthButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.monthButton.frame = CGRectMake(1 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
+    self.monthButton.frame = CGRectMake(1 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*HEIGHT_SIZE);
     [self.monthButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.monthButton.tag = 1001;
+     _monthButton.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [self.monthButton setTitle:root_MONTH forState:UIControlStateNormal];
     [self.monthButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.monthButton];
     
     self.yearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.yearButton.frame = CGRectMake(2 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
+    self.yearButton.frame = CGRectMake(2 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*HEIGHT_SIZE);
     [self.yearButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.yearButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.yearButton.tag = 1002;
+    _yearButton.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [self.yearButton setTitle:root_YEAR forState:UIControlStateNormal];
     [self.yearButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.yearButton];
     
     self.totalButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.totalButton.frame = CGRectMake(3 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*NOW_SIZE);
+    self.totalButton.frame = CGRectMake(3 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*HEIGHT_SIZE);
     [self.totalButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.totalButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.totalButton.tag = 1003;
+    _totalButton.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [self.totalButton setTitle:root_TOTAL forState:UIControlStateNormal];
     [self.totalButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.totalButton];
     
     
     //
-    self.timeDisplayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 40*NOW_SIZE, SCREEN_Width, 30*NOW_SIZE)];
+    self.timeDisplayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0 + 40*HEIGHT_SIZE, SCREEN_Width, 30*HEIGHT_SIZE)];
     self.timeDisplayView.backgroundColor = COLOR(87, 208, 250, 1);
     [_scrollView addSubview:self.timeDisplayView];
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_Width - 120*NOW_SIZE)/2, 4*NOW_SIZE, 120*NOW_SIZE, 30*NOW_SIZE - 8*NOW_SIZE)];
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_Width - 120*NOW_SIZE)/2, 4*HEIGHT_SIZE, 120*NOW_SIZE, 30*HEIGHT_SIZE - 8*HEIGHT_SIZE)];
    // bgImageView.backgroundColor=COLOR(123, 239, 227, 1);
    bgImageView.image = IMAGE(@"rili.png");
     bgImageView.userInteractionEnabled = YES;
     [self.timeDisplayView addSubview:bgImageView];
     
     self.lastButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.lastButton.frame = CGRectMake(0, 0, 22*NOW_SIZE, 22*NOW_SIZE);
+    self.lastButton.frame = CGRectMake(0, 0, 22*NOW_SIZE, 22*HEIGHT_SIZE);
     [self.lastButton setImage:IMAGE(@"shang.png") forState:UIControlStateNormal];
-    self.lastButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE);
+    self.lastButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
     self.lastButton.tag = 1004;
     [self.lastButton addTarget:self action:@selector(lastDate:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.lastButton];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.nextButton.frame = CGRectMake(CGRectGetWidth(bgImageView.frame) - 22*NOW_SIZE, 0, 22*NOW_SIZE, 22*NOW_SIZE);
+    self.nextButton.frame = CGRectMake(CGRectGetWidth(bgImageView.frame) - 22*NOW_SIZE, 0, 22*NOW_SIZE, 22*HEIGHT_SIZE);
     [self.nextButton setImage:IMAGE(@"xia.png") forState:UIControlStateNormal];
-    self.nextButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE);
+    self.nextButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
     self.nextButton.tag = 1005;
     [self.nextButton addTarget:self action:@selector(nextDate:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.nextButton];
@@ -177,14 +181,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.onlyMonthFormatter setDateFormat:@"MM"];
     
     self.datePickerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.datePickerButton.frame = CGRectMake(22*NOW_SIZE, 0, CGRectGetWidth(bgImageView.frame) - 44*NOW_SIZE, 22*NOW_SIZE);
+    self.datePickerButton.frame = CGRectMake(22*NOW_SIZE, 0, CGRectGetWidth(bgImageView.frame) - 44*NOW_SIZE, 22*HEIGHT_SIZE);
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     self.currentMonth = [_monthFormatter stringFromDate:[NSDate date]];
     self.currentYear = [_yearFormatter stringFromDate:[NSDate date]];
     [self.datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
     [self.datePickerButton setTitleColor:COLOR(7, 64, 52, 1) forState:UIControlStateNormal];
     self.datePickerButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
+    self.datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:10*HEIGHT_SIZE];
     [self.datePickerButton addTarget:self action:@selector(pickDate) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.datePickerButton];
     
@@ -229,14 +233,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             
             self.line2View.energyTitleLabel.text = root_Today_Energy;
             self.line2View.unitLabel.text = root_Powre;
-            _selectButton=[[UIButton alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 50*NOW_SIZE, 210*NOW_SIZE, 30*NOW_SIZE)];
+            _selectButton=[[UIButton alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 50*HEIGHT_SIZE, 210*NOW_SIZE, 30*HEIGHT_SIZE)];
             [_selectButton setTitle:_dict[@"1"] forState:0];
             [_selectButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
             _selectButton.backgroundColor = COLOR(39, 183, 99, 1);
-            _selectButton.layer.cornerRadius = 5*NOW_SIZE;
+            _selectButton.layer.cornerRadius = 5*HEIGHT_SIZE;
             _selectButton.clipsToBounds = YES;
             [_line2View addSubview:_selectButton];
-            _scrollView.contentSize=CGSizeMake(SCREEN_Width, CGRectGetMaxY(_line2View.frame)+20*NOW_SIZE);
+            _scrollView.contentSize=CGSizeMake(SCREEN_Width, CGRectGetMaxY(_line2View.frame)+20*HEIGHT_SIZE);
         }
         
     } failure:^(NSError *error) {
@@ -508,14 +512,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         
         if (self.monthPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.monthPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.monthPicker.frame = CGRectMake(0, -216*HEIGHT_SIZE - 64*HEIGHT_SIZE- 70*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.monthPicker removeFromSuperview];
             }];
         }
         if (self.yearPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.yearPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.yearPicker.frame = CGRectMake(0, -216*HEIGHT_SIZE - 64*HEIGHT_SIZE - 70*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.yearPicker removeFromSuperview];
             }];
@@ -545,14 +549,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         
         if (self.dayPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.dayPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.dayPicker.frame = CGRectMake(0, -216*HEIGHT_SIZE - 64*HEIGHT_SIZE - 70*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.dayPicker removeFromSuperview];
             }];
         }
         if (self.yearPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.yearPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.yearPicker.frame = CGRectMake(0, -216*HEIGHT_SIZE - 64*HEIGHT_SIZE - 70*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.yearPicker removeFromSuperview];
             }];
@@ -583,14 +587,14 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         
         if (self.dayPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.dayPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.dayPicker.frame = CGRectMake(0, -216*HEIGHT_SIZE - 64*HEIGHT_SIZE - 70*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.dayPicker removeFromSuperview];
             }];
         }
         if (self.monthPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.monthPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
+                self.monthPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.monthPicker removeFromSuperview];
             }];
@@ -621,8 +625,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         
         if (self.dayPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.dayPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.dayPicker.frame = CGRectMake(0,( -216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.dayPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -630,8 +634,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         }
         if (self.monthPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.monthPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.monthPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.monthPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -639,8 +643,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         }
         if (self.yearPicker) {
             [UIView animateWithDuration:0.3f animations:^{
-                self.yearPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.yearPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.yearPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -665,13 +669,13 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             self.dayPicker.backgroundColor = [UIColor whiteColor];
             self.dayPicker.datePickerMode = UIDatePickerModeDate;
             self.dayPicker.date = currentDayDate;
-            self.dayPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+            self.dayPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             [self.view addSubview:self.dayPicker];
         } else {
             [UIView animateWithDuration:0.3f animations:^{
                 self.dayPicker.date = currentDayDate;
                 self.dayPicker.alpha = 1;
-                self.dayPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+                self.dayPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
                 [self.view addSubview:self.dayPicker];
             }];
         }
@@ -688,7 +692,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             self.monthPicker.backgroundColor = [UIColor whiteColor];
             self.monthPicker.delegate = self;
             self.monthPicker.dataSource = self;
-            self.monthPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+            self.monthPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             [self.view addSubview:self.monthPicker];
             
             for (int i = 0; i<self.yearsArr.count; i++) {
@@ -718,7 +722,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
                     }
                 }
                 self.monthPicker.alpha = 1;
-                self.monthPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+                self.monthPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
                 [self.view addSubview:self.monthPicker];
             }];
         }
@@ -731,7 +735,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             self.yearPicker.backgroundColor = [UIColor whiteColor];
             self.yearPicker.delegate = self;
             self.yearPicker.dataSource = self;
-            self.yearPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+            self.yearPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
             [self.view addSubview:self.yearPicker];
             
             for (int i = 0; i<self.yearsArr.count; i++) {
@@ -749,7 +753,7 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
                     }
                 }
                 self.yearPicker.alpha = 1;
-                self.yearPicker.frame = CGRectMake(0, 70*NOW_SIZE + 64, SCREEN_Width, 216);
+                self.yearPicker.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
                 [self.view addSubview:self.yearPicker];
             }];
         }
@@ -759,18 +763,19 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         if (self.toolBar) {
             [UIView animateWithDuration:0.3f animations:^{
                 self.toolBar.alpha = 1;
-                self.toolBar.frame = CGRectMake(0, 70*NOW_SIZE + 64 + 216, SCREEN_Width, 44);
+                self.toolBar.frame = CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE + 216*HEIGHT_SIZE, SCREEN_Width, 30*HEIGHT_SIZE);
                 [self.view addSubview:_toolBar];
             }];
         } else {
-            self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 70*NOW_SIZE + 64 + 216, SCREEN_Width, 44)];
+            self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 70*HEIGHT_SIZE + 0*HEIGHT_SIZE + 216*HEIGHT_SIZE, SCREEN_Width, 30*HEIGHT_SIZE)];
             self.toolBar.barStyle = UIBarStyleDefault;
-            self.toolBar.barTintColor = COLOR(101, 203, 197, 1);
+            self.toolBar.barTintColor = MainColor;
             [self.view addSubview:self.toolBar];
             
             UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
             
             UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:root_finish style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
+            [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14*HEIGHT_SIZE],NSFontAttributeName, nil] forState:UIControlStateNormal];
             doneButton.tintColor = [UIColor whiteColor];
             self.toolBar.items = @[spaceButton, doneButton];
         }
@@ -793,8 +798,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             [UIView animateWithDuration:0.3f animations:^{
                 self.dayPicker.alpha = 0;
                 self.toolBar.alpha = 0;
-                self.dayPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.dayPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0,( -216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.dayPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -816,8 +821,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             [UIView animateWithDuration:0.3f animations:^{
                 self.dayPicker.alpha = 0;
                 self.toolBar.alpha = 0;
-                self.monthPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.monthPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE- 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.monthPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -837,8 +842,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             [UIView animateWithDuration:0.3f animations:^{
                 self.dayPicker.alpha = 0;
                 self.toolBar.alpha = 0;
-                self.yearPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-                self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+                self.yearPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+                self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             } completion:^(BOOL finished) {
                 [self.yearPicker removeFromSuperview];
                 [self.toolBar removeFromSuperview];
@@ -853,8 +858,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         [UIView animateWithDuration:0.3f animations:^{
             self.dayPicker.alpha = 0;
             self.toolBar.alpha = 0;
-            self.dayPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-            self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+            self.dayPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+            self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
         } completion:^(BOOL finished) {
             [self.dayPicker removeFromSuperview];
             [self.toolBar removeFromSuperview];
@@ -867,8 +872,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         [UIView animateWithDuration:0.3f animations:^{
             self.monthPicker.alpha = 0;
             self.toolBar.alpha = 0;
-            self.monthPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-            self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+            self.monthPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+            self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
         } completion:^(BOOL finished) {
             [self.monthPicker removeFromSuperview];
             [self.toolBar removeFromSuperview];
@@ -881,8 +886,8 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
         [UIView animateWithDuration:0.3f animations:^{
             self.yearPicker.alpha = 0;
             self.toolBar.alpha = 0;
-            self.yearPicker.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE, SCREEN_Width, 216);
-            self.toolBar.frame = CGRectMake(0, -216 - 64 - 70*NOW_SIZE - 44, SCREEN_Width, 44);
+            self.yearPicker.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+            self.toolBar.frame = CGRectMake(0, (-216 - 64 - 70)*HEIGHT_SIZE - 44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
         } completion:^(BOOL finished) {
             [self.yearPicker removeFromSuperview];
             [self.toolBar removeFromSuperview];
@@ -913,11 +918,11 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     if (pickerView == _monthPicker) {
         if (component == 0) {
-            return [NSString stringWithFormat:@"%@年", _yearsArr[row]];
+            return [NSString stringWithFormat:@"%@", _yearsArr[row]];
         }
-        return [NSString stringWithFormat:@"%@月", _monthArr[row]];
+        return [NSString stringWithFormat:@"%@", _monthArr[row]];
     }
-    return [NSString stringWithFormat:@"%@年", _yearsArr[row]];
+    return [NSString stringWithFormat:@"%@", _yearsArr[row]];
 }
 
 

@@ -106,12 +106,6 @@
 		335089231C73179400D7AA03 /* bg_list_popver.png in Resources */ = {isa = PBXBuildFile; fileRef = 335089221C73179400D7AA03 /* bg_list_popver.png */; };
 		335089251C7323C200D7AA03 /* frag4.png in Resources */ = {isa = PBXBuildFile; fileRef = 335089241C7323C200D7AA03 /* frag4.png */; };
 		335089281C73267A00D7AA03 /* findTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335089271C73267A00D7AA03 /* findTableViewCell.m */; };
-		3351302B1CCA005000A2A799 /* cloud@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3351302A1CCA005000A2A799 /* cloud@3x.png */; };
-		3351302D1CCA068300A2A799 /* cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3351302C1CCA068300A2A799 /* cloud@2x.png */; };
-		3351302F1CCA086A00A2A799 /* overcast@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3351302E1CCA086A00A2A799 /* overcast@3x.png */; };
-		335130311CCA0A0D00A2A799 /* rain@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130301CCA0A0D00A2A799 /* rain@3x.png */; };
-		335130331CCA0CDC00A2A799 /* fog2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130321CCA0CDC00A2A799 /* fog2@3x.png */; };
-		335130351CCA1C9D00A2A799 /* overcast@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 335130341CCA1C9D00A2A799 /* overcast@2x.png */; };
 		335239031CD1B74E00287EA9 /* imageBig.m in Sources */ = {isa = PBXBuildFile; fileRef = 335239021CD1B74E00287EA9 /* imageBig.m */; };
 		335239061CD2067E00287EA9 /* RootPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 335239051CD2067E00287EA9 /* RootPickerView.m */; };
 		33528FF01C83E41D00D07889 /* listViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33528FEF1C83E41D00D07889 /* listViewController.m */; };
@@ -195,7 +189,6 @@
 		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
 		336A108F1CBDDBA500E30E83 /* triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108D1CBDDBA500E30E83 /* triangular@3x.png */; };
 		336A10901CBDDBA500E30E83 /* 2triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */; };
-		3370424F1CC4B4810069D3AA /* bgweather@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3370424E1CC4B4810069D3AA /* bgweather@3x.png */; };
 		337042521CC4E4340069D3AA /* kongZhiNi0.m in Sources */ = {isa = PBXBuildFile; fileRef = 337042511CC4E4340069D3AA /* kongZhiNi0.m */; };
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
 		337C10E91CE02A160053361F /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = 337C10E81CE02A160053361F /* head.png */; };
@@ -250,7 +243,6 @@
 		33EFB6011C979B5F003F336F /* StationCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5F81C979B5F003F336F /* StationCellectViewController.m */; };
 		33EFB6021C979B5F003F336F /* StationCellectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FA1C979B5F003F336F /* StationCellectTableViewCell.m */; };
 		33EFB6031C979B5F003F336F /* EditCellectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FC1C979B5F003F336F /* EditCellectView.m */; };
-		33EFB6041C979B5F003F336F /* AddCellectViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FE1C979B5F003F336F /* AddCellectViewController2.m */; };
 		33EFB6051C979B5F003F336F /* ChangeCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6001C979B5F003F336F /* ChangeCellectViewController.m */; };
 		33EFB6331C97DAB5003F336F /* 控制.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33EFB6321C97DAB5003F336F /* 控制.jpg */; };
 		33EFB63A1C97E0C8003F336F /* secondCNJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB6391C97E0C8003F336F /* secondCNJ.m */; };
@@ -498,8 +490,8 @@
 		334E9BF41CAD2B8900C8271F /* PvLogTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PvLogTableViewController.m; sourceTree = "<group>"; };
 		334ED6FF1C9028BB0095FFBC /* secondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = secondViewController.h; path = ../secondViewController.h; sourceTree = "<group>"; };
 		334ED7001C9028BB0095FFBC /* secondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = secondViewController.m; path = ../secondViewController.m; sourceTree = "<group>"; };
-		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
-		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
+		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleView.h; path = ../CircleView.h; sourceTree = "<group>"; };
+		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleView.m; path = ../CircleView.m; sourceTree = "<group>"; };
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
 		3350471E1C9BA6F600BF8683 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		3350471F1C9BA6F600BF8683 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
@@ -514,12 +506,6 @@
 		335089241C7323C200D7AA03 /* frag4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = frag4.png; path = "../设备/frag4.png"; sourceTree = "<group>"; };
 		335089261C73267A00D7AA03 /* findTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = findTableViewCell.h; sourceTree = "<group>"; };
 		335089271C73267A00D7AA03 /* findTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = findTableViewCell.m; sourceTree = "<group>"; };
-		3351302A1CCA005000A2A799 /* cloud@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@3x.png"; sourceTree = "<group>"; };
-		3351302C1CCA068300A2A799 /* cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud@2x.png"; sourceTree = "<group>"; };
-		3351302E1CCA086A00A2A799 /* overcast@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@3x.png"; sourceTree = "<group>"; };
-		335130301CCA0A0D00A2A799 /* rain@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain@3x.png"; sourceTree = "<group>"; };
-		335130321CCA0CDC00A2A799 /* fog2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fog2@3x.png"; sourceTree = "<group>"; };
-		335130341CCA1C9D00A2A799 /* overcast@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "overcast@2x.png"; sourceTree = "<group>"; };
 		335239011CD1B74E00287EA9 /* imageBig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imageBig.h; sourceTree = "<group>"; };
 		335239021CD1B74E00287EA9 /* imageBig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imageBig.m; sourceTree = "<group>"; };
 		335239041CD2067E00287EA9 /* RootPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootPickerView.h; sourceTree = "<group>"; };
@@ -666,7 +652,6 @@
 		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = engrgySencondViewController.m; path = ../engrgySencondViewController.m; sourceTree = "<group>"; };
 		336A108D1CBDDBA500E30E83 /* triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "triangular@3x.png"; path = "Masonry/triangular@3x.png"; sourceTree = "<group>"; };
 		336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "2triangular@3x.png"; path = "Masonry/2triangular@3x.png"; sourceTree = "<group>"; };
-		3370424E1CC4B4810069D3AA /* bgweather@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bgweather@3x.png"; path = "../bgweather@3x.png"; sourceTree = "<group>"; };
 		337042501CC4E4340069D3AA /* kongZhiNi0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kongZhiNi0.h; sourceTree = "<group>"; };
 		337042511CC4E4340069D3AA /* kongZhiNi0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kongZhiNi0.m; sourceTree = "<group>"; };
 		33744DE21CAE597A0065DC01 /* pvLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvLogTableViewCell.h; sourceTree = "<group>"; };
@@ -759,8 +744,6 @@
 		33EFB5FA1C979B5F003F336F /* StationCellectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCellectTableViewCell.m; sourceTree = "<group>"; };
 		33EFB5FB1C979B5F003F336F /* EditCellectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCellectView.h; sourceTree = "<group>"; };
 		33EFB5FC1C979B5F003F336F /* EditCellectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCellectView.m; sourceTree = "<group>"; };
-		33EFB5FD1C979B5F003F336F /* AddCellectViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCellectViewController2.h; sourceTree = "<group>"; };
-		33EFB5FE1C979B5F003F336F /* AddCellectViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCellectViewController2.m; sourceTree = "<group>"; };
 		33EFB5FF1C979B5F003F336F /* ChangeCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCellectViewController.h; sourceTree = "<group>"; };
 		33EFB6001C979B5F003F336F /* ChangeCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCellectViewController.m; sourceTree = "<group>"; };
 		33EFB6321C97DAB5003F336F /* 控制.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "控制.jpg"; path = "../设备二级界面/控制.jpg"; sourceTree = "<group>"; };
@@ -1174,8 +1157,6 @@
 			children = (
 				33EFB6371C97E04D003F336F /* 逆变器二级 */,
 				33EFB6361C97DF62003F336F /* 储能机二级 */,
-				334ED7021C902AE60095FFBC /* CircleView.h */,
-				334ED7031C902AE60095FFBC /* CircleView.m */,
 			);
 			path = "设备二级界面";
 			sourceTree = "<group>";
@@ -1208,20 +1189,6 @@
 				3343F3AB1C80403C009F69BC /* AFNetworking */,
 			);
 			path = "第三方库";
-			sourceTree = "<group>";
-		};
-		335130291CC9FFE100A2A799 /* 天气图片 */ = {
-			isa = PBXGroup;
-			children = (
-				3370424E1CC4B4810069D3AA /* bgweather@3x.png */,
-				3351302A1CCA005000A2A799 /* cloud@3x.png */,
-				3351302C1CCA068300A2A799 /* cloud@2x.png */,
-				3351302E1CCA086A00A2A799 /* overcast@3x.png */,
-				335130321CCA0CDC00A2A799 /* fog2@3x.png */,
-				335130301CCA0A0D00A2A799 /* rain@3x.png */,
-				335130341CCA1C9D00A2A799 /* overcast@2x.png */,
-			);
-			path = "天气图片";
 			sourceTree = "<group>";
 		};
 		33528FED1C83E34500D07889 /* 客服系统 */ = {
@@ -1326,7 +1293,6 @@
 				33EFB67D1C996FB6003F336F /* 储能机.png */,
 				33EFB67F1C997001003F336F /* inverter.png */,
 				33EFB6811C997050003F336F /* 充电桩.png */,
-				335130291CC9FFE100A2A799 /* 天气图片 */,
 			);
 			path = "图片";
 			sourceTree = "<group>";
@@ -1817,8 +1783,6 @@
 				33EFB5FA1C979B5F003F336F /* StationCellectTableViewCell.m */,
 				33EFB5FB1C979B5F003F336F /* EditCellectView.h */,
 				33EFB5FC1C979B5F003F336F /* EditCellectView.m */,
-				33EFB5FD1C979B5F003F336F /* AddCellectViewController2.h */,
-				33EFB5FE1C979B5F003F336F /* AddCellectViewController2.m */,
 				33EFB5FF1C979B5F003F336F /* ChangeCellectViewController.h */,
 				33EFB6001C979B5F003F336F /* ChangeCellectViewController.m */,
 			);
@@ -1843,6 +1807,8 @@
 				334AED671CA37F77007E39F3 /* 三级 */,
 				334ED6FF1C9028BB0095FFBC /* secondViewController.h */,
 				334ED7001C9028BB0095FFBC /* secondViewController.m */,
+				334ED7021C902AE60095FFBC /* CircleView.h */,
+				334ED7031C902AE60095FFBC /* CircleView.m */,
 			);
 			path = "逆变器二级";
 			sourceTree = "<group>";
@@ -2048,7 +2014,6 @@
 				334771001C9A3E57003A6F13 /* mine@2x.png in Resources */,
 				33FEFD651C7DB38400324374 /* icon@2x.png in Resources */,
 				33692BF11C926B4500698375 /* rili.png in Resources */,
-				3351302D1CCA068300A2A799 /* cloud@2x.png in Resources */,
 				33EFB63F1C97E875003F336F /* 设备切图.png in Resources */,
 				334AED751CA386B8007E39F3 /* bg4.png in Resources */,
 				33238B471CBF7C4200E82B86 /* client@3x.png in Resources */,
@@ -2068,7 +2033,6 @@
 				336664EF1CB77CD3005573FB /* user-agreement@2x.png in Resources */,
 				33692BF31C926B4B00698375 /* shang.png in Resources */,
 				3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */,
-				3351302B1CCA005000A2A799 /* cloud@3x.png in Resources */,
 				33FEFD7B1C7DB38400324374 /* shebei@2x.png in Resources */,
 				33FEFD641C7DB38400324374 /* icon---Username@3x.png in Resources */,
 				3383F1361C9FF7440075E834 /* disconnect@2x.png in Resources */,
@@ -2085,7 +2049,6 @@
 				33FEFD6B1C7DB38400324374 /* iconfont-faxian@2x.png in Resources */,
 				33FEFD5F1C7DB38400324374 /* icon---Password.png in Resources */,
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
-				335130331CCA0CDC00A2A799 /* fog2@3x.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33238B461CBF7C4200E82B86 /* client@2x.png in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
@@ -2107,7 +2070,6 @@
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
 				336664F01CB77CD3005573FB /* user-agreement@3x.png in Resources */,
-				335130311CCA0A0D00A2A799 /* rain@3x.png in Resources */,
 				336664ED1CB77CD3005573FB /* update@2x.png in Resources */,
 				33EFB6821C997050003F336F /* 充电桩.png in Resources */,
 				33FEFD5A1C7DB38400324374 /* icon---Email@2x.png in Resources */,
@@ -2159,14 +2121,11 @@
 				334AED5E1CA37596007E39F3 /* 更多.png in Resources */,
 				33FEFD701C7DB38400324374 /* iconfont-klmlianxifangshi@3x.png in Resources */,
 				33FEFD611C7DB38400324374 /* icon---Password@3x.png in Resources */,
-				335130351CCA1C9D00A2A799 /* overcast@2x.png in Resources */,
 				3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */,
 				3383F1381C9FFD370075E834 /* 家庭用电量.png in Resources */,
 				33FEFD6D1C7DB38400324374 /* iconfont-gongsijianjie@2x.png in Resources */,
 				33FEFD7C1C7DB38400324374 /* shebei@3x.png in Resources */,
 				33FEFD571C7DB38400324374 /* icon---Email---Full@2x.png in Resources */,
-				3351302F1CCA086A00A2A799 /* overcast@3x.png in Resources */,
-				3370424F1CC4B4810069D3AA /* bgweather@3x.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
 				3381ECF71CBCA62700DCF0D2 /* 峰谷段动作使能切图.png in Resources */,
@@ -2263,7 +2222,6 @@
 				334B8F231C91250300798A69 /* SHPlot.m in Sources */,
 				33EFB63D1C97E1E3003F336F /* VWWWaterView.m in Sources */,
 				3367CB4E1C86806700EF460C /* MASViewConstraint.m in Sources */,
-				33EFB6041C979B5F003F336F /* AddCellectViewController2.m in Sources */,
 				3381ED011CBCD85700DCF0D2 /* myListSecondTableViewCell.m in Sources */,
 				3343F3C61C80403C009F69BC /* AFURLResponseSerialization.m in Sources */,
 				335456BF1C852EEB00275478 /* SHBQRView.m in Sources */,

@@ -102,14 +102,14 @@
         if(content){
             _allDic=[NSMutableDictionary dictionaryWithDictionary:content];
             _titleString=content[@"title"];
-            _questionAll=[NSMutableArray arrayWithArray:content[@"questionAnswerBeans"]];
+            _questionAll=[NSMutableArray arrayWithArray:content[@"serviceQuestionReplyBean"]];
             
             for(int i=0;i<_questionAll.count;i++){
                 NSString *nameU=[NSString stringWithFormat:@"%@",_questionAll[i][@"userName"]];
                 NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
                 NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
                 NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
-                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"imageName"]];
+                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];

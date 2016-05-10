@@ -22,17 +22,18 @@
   //  UIImage *bgImage = IMAGE(@"bg4.png");
   //  self.view.layer.contents = (id)bgImage.CGImage;
        self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.tableView.separatorColor=[UIColor whiteColor];
     
      self.dataArray =[NSMutableArray arrayWithObjects:root_NBQ_kaiguan,root_NBQ_youxiao_gonglv,root_NBQ_wuxiao_gonglv,root_NBQ_PF,root_NBQ_shijian,nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
     }
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
     }
-   
+    //self.tableView.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -76,6 +77,7 @@
     }
     cell.backgroundColor=MainColor;
     cell.textLabel.text=_dataArray[indexPath.row];
+    cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
        cell.tintColor = [UIColor whiteColor];
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
@@ -90,7 +92,7 @@
 {
     
   
-    return 50*NOW_SIZE;
+    return 50*HEIGHT_SIZE;
     
 }
 

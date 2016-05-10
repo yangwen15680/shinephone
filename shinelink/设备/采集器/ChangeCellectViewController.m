@@ -26,7 +26,7 @@
 -(void)initUI{
     NSArray *labelArray=[[NSArray alloc]initWithObjects:root_xuleihao,root_bieming,root_zubie, nil];
     for (int i=0; i<3; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, (100+i*40)*NOW_SIZE, 100*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, (50+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=labelArray[i];
         label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
         label.textColor=[UIColor whiteColor];
@@ -36,7 +36,7 @@
     _textFieldMutableArray=[NSMutableArray new];
     NSArray *array=[[NSArray alloc]initWithObjects:_datalogSN,_alias,_unitId, nil];
     for (int i=0; i<3; i++) {
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(120*NOW_SIZE, (105+i*40)*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(120*NOW_SIZE, (55+i*40)*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
         textField.text=array[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
@@ -67,7 +67,7 @@
 //    [self.view addSubview:addButton];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,300*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,250*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];

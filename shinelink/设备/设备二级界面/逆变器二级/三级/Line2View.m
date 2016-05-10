@@ -78,11 +78,11 @@
 
 - (UILabel *)noDataLabel {
     if (!_noDataLabel) {
-        self.noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100*NOW_SIZE, 30*NOW_SIZE)];
+        self.noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         self.noDataLabel.center = self.center;
         self.noDataLabel.textAlignment = NSTextAlignmentCenter;
         self.noDataLabel.textColor = [UIColor whiteColor];
-        self.noDataLabel.font = [UIFont boldSystemFontOfSize:17*NOW_SIZE];
+        self.noDataLabel.font = [UIFont boldSystemFontOfSize:17*HEIGHT_SIZE];
         self.noDataLabel.text = NSLocalizedString(@"No data", @"No data");
     }
     return _noDataLabel;
@@ -155,8 +155,8 @@
 //            
 //        }
         
-        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
-        self.unitLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
+        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
+        self.unitLabel.font = [UIFont boldSystemFontOfSize:10*HEIGHT_SIZE];
         self.unitLabel.textColor = [UIColor whiteColor];
         [self addSubview:self.unitLabel];
         
@@ -190,24 +190,24 @@
         
         
         if ([_frameType isEqualToString:@"1"]) {
-             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 0*NOW_SIZE, 300*NOW_SIZE, 220*NOW_SIZE)];
+             self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 0*HEIGHT_SIZE, 300*NOW_SIZE, 220*HEIGHT_SIZE)];
             NSDictionary *_themeAttributes = @{
                                                kXAxisLabelColorKey : [UIColor blackColor],
-                                               kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                               kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
                                                kYAxisLabelColorKey : [UIColor blackColor],
-                                               kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                               kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
                                                //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
                                                kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                                                kDotSizeKey : @0
                                                };
             self.lineChartView.themeAttributes = _themeAttributes;
         }else {
-        self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(5, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];
+        self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*HEIGHT_SIZE, 315*NOW_SIZE, 250*HEIGHT_SIZE)];
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
-                                           kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                           kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
                                            kYAxisLabelColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0],
-                                           kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                           kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
 //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
                                            kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
                                            kDotSizeKey : @0
@@ -348,7 +348,7 @@
 #pragma mark - bar chart
 - (PNBarChart *)barChartView {
     if (!_barChartView) {
-        self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];
+        self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*HEIGHT_SIZE, 315*NOW_SIZE, 250*HEIGHT_SIZE)];
         self.barChartView.backgroundColor = [UIColor clearColor];
         self.barChartView.barBackgroundColor = [UIColor clearColor];
         [self.barChartView setStrokeColor:[UIColor whiteColor]];

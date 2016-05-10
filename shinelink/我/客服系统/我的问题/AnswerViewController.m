@@ -118,9 +118,15 @@ int picTime;
 
 -(void)finishDone{
     NSMutableDictionary *dataImageDict = [NSMutableDictionary dictionary];
+//    for (int i=0; i<_picArray.count; i++) {
+//        NSData *imageData = UIImageJPEGRepresentation(_picArray[i], 0.5);
+//        NSString *imageName=@"imageName";
+//        [dataImageDict setObject:imageData forKey:imageName];
+//    }
+    
     for (int i=0; i<_picArray.count; i++) {
         NSData *imageData = UIImageJPEGRepresentation(_picArray[i], 0.5);
-        NSString *imageName=@"imageName";
+        NSString *imageName=[NSString stringWithFormat:@"image%d",i+1];
         [dataImageDict setObject:imageData forKey:imageName];
     }
     

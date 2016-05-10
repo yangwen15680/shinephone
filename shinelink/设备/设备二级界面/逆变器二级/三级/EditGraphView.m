@@ -13,22 +13,22 @@
 - (instancetype)initWithFrame:(CGRect)frame dictionary:(NSDictionary *)dictionary{
     if (self = [super initWithFrame:frame]) {
         UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        cancelButton.frame = CGRectMake(frame.size.width - 64, 44, 44*NOW_SIZE, 44*NOW_SIZE);
-        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE, 7*NOW_SIZE);
+        cancelButton.frame = CGRectMake(frame.size.width - 64*NOW_SIZE, 44*HEIGHT_SIZE, 44*NOW_SIZE, 44*HEIGHT_SIZE);
+        cancelButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
         [cancelButton setImage:IMAGE(@"btn_cha.png") forState:UIControlStateNormal];
         cancelButton.tag = 1050;
         [cancelButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:cancelButton];
         
-        UIScrollView *bgImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 150*NOW_SIZE, 220*NOW_SIZE, 200*NOW_SIZE)];
+        UIScrollView *bgImageView = [[UIScrollView alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 150*HEIGHT_SIZE, 220*NOW_SIZE, 200*HEIGHT_SIZE)];
         bgImageView.backgroundColor=COLOR(82, 201, 194, 1);
         [self addSubview:bgImageView];
-        bgImageView.contentSize=CGSizeMake(220*NOW_SIZE, 50*dictionary.count*NOW_SIZE);
+        bgImageView.contentSize=CGSizeMake(220*NOW_SIZE, 50*dictionary.count*HEIGHT_SIZE);
         
         for (int i=0; i<dictionary.count; i++) {
             NSString *string=[NSString stringWithFormat:@"%d",i+1];
             UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            addButton.frame = CGRectMake(0, i*50*NOW_SIZE, CGRectGetWidth(bgImageView.frame), 50*NOW_SIZE);
+            addButton.frame = CGRectMake(0, i*50*HEIGHT_SIZE, CGRectGetWidth(bgImageView.frame), 50*HEIGHT_SIZE);
             
             NSString *str=@"str";
             
@@ -37,6 +37,7 @@
             }else{
                 [addButton setTitle:dictionary[string][1] forState:UIControlStateNormal];
             }
+            addButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
             [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [addButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
             addButton.tag = 1051+i;

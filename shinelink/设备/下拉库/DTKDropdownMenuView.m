@@ -622,7 +622,7 @@ UITableViewDataSource
 - (CGFloat)cellHeight
 {
     if (!_cellHeight) {
-        return 40.f;
+        return 40*HEIGHT_SIZE;
     }
     return _cellHeight;
 }
@@ -668,8 +668,8 @@ UITableViewDataSource
 //默认设置80
 - (CGFloat)dropWidth
 {
-    if (_dropWidth < 80.f) {
-        return 80.f;
+    if (_dropWidth < 80*NOW_SIZE) {
+        return 80*NOW_SIZE;
     }
     return _dropWidth;
 }

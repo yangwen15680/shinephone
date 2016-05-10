@@ -78,11 +78,11 @@
 
 - (UILabel *)noDataLabel {
     if (!_noDataLabel) {
-        self.noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100*NOW_SIZE, 30*NOW_SIZE)];
+        self.noDataLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         self.noDataLabel.center = self.center;
         self.noDataLabel.textAlignment = NSTextAlignmentCenter;
         self.noDataLabel.textColor = [UIColor whiteColor];
-        self.noDataLabel.font = [UIFont boldSystemFontOfSize:17*NOW_SIZE];
+        self.noDataLabel.font = [UIFont boldSystemFontOfSize:17*HEIGHT_SIZE];
         self.noDataLabel.text = NSLocalizedString(@"No data", @"No data");
     }
     return _noDataLabel;
@@ -116,9 +116,9 @@
         self.backgroundColor = [UIColor clearColor];
         if([_flag isEqualToString:@"2"])
         {
-        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 0*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         }else{
-         self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+         self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         }
         self.unitLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
         self.unitLabel.textColor = [UIColor whiteColor];
@@ -157,14 +157,14 @@
         
         if([_flag isEqualToString:@"2"])
         {
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*HEIGHT_SIZE, 315*NOW_SIZE, 300*HEIGHT_SIZE)];
         }else{
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 165*NOW_SIZE, 315*NOW_SIZE, 230*NOW_SIZE)];}
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 165*HEIGHT_SIZE, 315*NOW_SIZE, 230*HEIGHT_SIZE)];}
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor blackColor],
-                                           kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                           kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
                                            kYAxisLabelColorKey : [UIColor blackColor],
-                                           kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10],
+                                           kYAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],
                                           
 //                                           kYAxisLabelSideMarginsKey : @(j*NOW_SIZE),
                                            kPlotBackgroundLineColorKey : [UIColor colorWithRed:0.48 green:0.48 blue:0.49 alpha:0.4],
@@ -293,9 +293,9 @@
     if (!_barChartView) {
         if([_flag isEqualToString:@"2"])
         {
-           self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135*NOW_SIZE, 315*NOW_SIZE, 300*NOW_SIZE)];
+           self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(0, 135*HEIGHT_SIZE, 315*NOW_SIZE, 300*HEIGHT_SIZE)];
         }else{
-            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*NOW_SIZE, 315*NOW_SIZE, 250*NOW_SIZE)];}
+            self.barChartView = [[PNBarChart alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 135*HEIGHT_SIZE, 315*NOW_SIZE, 250*HEIGHT_SIZE)];}
         self.barChartView.backgroundColor = [UIColor clearColor];
         self.barChartView.barBackgroundColor = [UIColor clearColor];
         [self.barChartView setStrokeColor:[UIColor whiteColor]];

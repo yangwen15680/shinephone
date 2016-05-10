@@ -29,7 +29,7 @@
     [byEmail.layer setMasksToBounds:YES];
     [byEmail.layer setCornerRadius:25.0];
         [byEmail setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    byEmail.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
+    byEmail.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [byEmail setTitle:root_tongGuo_yonghuMing forState:UIControlStateNormal];
     [byEmail addTarget:self action:@selector(bymail) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:byEmail];
@@ -39,7 +39,7 @@
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-        goBut.titleLabel.font=[UIFont systemFontOfSize: 12*NOW_SIZE];
+        goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut setTitle:root_tongGuo_xuLieHao forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(bySN) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];

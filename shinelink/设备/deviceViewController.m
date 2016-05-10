@@ -20,11 +20,11 @@
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
-@interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate,UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic,strong)EditStationMenuView  *editCellect;
-@property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
+@property (nonatomic, strong) UIAlertController *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
 
@@ -661,7 +661,7 @@
     //Lable1.numberOfLines=0;
     Lable1.textAlignment=NSTextAlignmentCenter;
     Lable1.textColor=[UIColor whiteColor];
-    Lable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable1];
     
    
@@ -669,7 +669,7 @@
     Lable2.text=_head12;
     Lable2.textAlignment=NSTextAlignmentCenter;
     Lable2.textColor=[UIColor whiteColor];
-    Lable2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    Lable2.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_headerView addSubview:Lable2];
     
     
@@ -677,28 +677,28 @@
     Lable12.text=_head13;
     Lable12.textAlignment=NSTextAlignmentCenter;
     Lable12.textColor=[UIColor whiteColor];
-    Lable12.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable12.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable12];
 
     UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable7.text=_head21;
     Lable7.textAlignment=NSTextAlignmentCenter;
     Lable7.textColor=[UIColor whiteColor];
-    Lable7.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable7.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable7];
     
     UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable9.text=_head22;
     Lable9.textAlignment=NSTextAlignmentCenter;
     Lable9.textColor=[UIColor whiteColor];
-    Lable9.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    Lable9.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_headerView addSubview:Lable9];
     
     UILabel *Lable79=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 160*HEIGHT_SIZE, 90*NOW_SIZE,25*HEIGHT_SIZE )];
     Lable79.text=_head23;
     Lable79.textAlignment=NSTextAlignmentCenter;
     Lable79.textColor=[UIColor whiteColor];
-    Lable79.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable79.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable79];
     
     //_headGet=@"3000";
@@ -706,21 +706,21 @@
     Lable8.text=_head31;
     Lable8.textAlignment=NSTextAlignmentCenter;
     Lable8.textColor=[UIColor whiteColor];
-    Lable8.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable8.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable8];
     
     UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable10.text=_head32;
     Lable10.textAlignment=NSTextAlignmentCenter;
     Lable10.textColor=[UIColor whiteColor];
-    Lable10.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    Lable10.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_headerView addSubview:Lable10];
     
     UILabel *Lable108=[[UILabel alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 160*HEIGHT_SIZE, 80*NOW_SIZE,25*HEIGHT_SIZE )];
     Lable108.text=_head33;
     Lable108.textAlignment=NSTextAlignmentCenter;
     Lable108.textColor=[UIColor whiteColor];
-    Lable108.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Lable108.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_headerView addSubview:Lable108];
     
 }
@@ -821,7 +821,10 @@
 -(void)addPicture{
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
                                                                               message: nil
-                                                                       preferredStyle:UIAlertControllerStyleActionSheet];
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    
+  
+    
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //处理点击拍照

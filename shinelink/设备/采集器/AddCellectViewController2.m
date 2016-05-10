@@ -34,12 +34,12 @@
 
 -(void)initUI{
     //数据采集器序列号
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 90*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 50*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
     userBgImageView.image = IMAGE(@"圆角矩形空心.png");
     [self.view addSubview:userBgImageView];
     
-    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     _cellectId.placeholder = root_Enter_DatalogSN;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
@@ -49,12 +49,12 @@
     [userBgImageView addSubview:_cellectId];
     
     //数据采集器效验码
-    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 150*NOW_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*NOW_SIZE)];
+    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 110*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     pwdBgImageView.image = IMAGE(@"圆角矩形空心.png");
     pwdBgImageView.userInteractionEnabled = YES;
     [self.view addSubview:pwdBgImageView];
     
-    _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*NOW_SIZE)];
+    _cellectNo = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
     _cellectNo.placeholder = root_Datalog_Valicode;
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
@@ -63,14 +63,14 @@
     _cellectNo.font = [UIFont systemFontOfSize:11*NOW_SIZE];
     [pwdBgImageView addSubview:_cellectNo];
     
-    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 250*NOW_SIZE, 100*NOW_SIZE, 35*NOW_SIZE)];
+    UIButton *delButton=[[UIButton alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 210*HEIGHT_SIZE, 100*NOW_SIZE, 35*HEIGHT_SIZE)];
     [delButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
     [delButton setTitle:root_Cancel forState:UIControlStateNormal];
     [delButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
     [delButton addTarget:self action:@selector(delButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:delButton];
     
-    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 250*NOW_SIZE, 100*NOW_SIZE, 35*NOW_SIZE)];
+    UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 210*HEIGHT_SIZE, 100*NOW_SIZE, 35*HEIGHT_SIZE)];
     [addButton setBackgroundImage:IMAGE(@"圆角矩形.png") forState:0];
     [addButton setTitle:root_Yes forState:UIControlStateNormal];
     [addButton setTitleColor:COLOR(73, 135, 43, 1) forState:UIControlStateNormal];
