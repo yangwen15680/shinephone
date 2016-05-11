@@ -17,12 +17,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //  UIImage *bgImage = IMAGE(@"bg4.png");
-    //  self.view.layer.contents = (id)bgImage.CGImage;
+     self.view.backgroundColor=COLOR(17, 183, 243, 1);
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.separatorColor=[UIColor whiteColor];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsMake(0,0,0,0)];
+    }
     
     self.dataArray =[NSMutableArray arrayWithObjects:root_CNJ_kaiguan,root_CNJ_SOC,root_CNJ_shijian,root_CNJ_fangdian_kaiguan,root_CNJ_fangdian_shijian,root_CNJ_SP,nil];
     
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,8 +70,11 @@
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+      cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
     cell.textLabel.text=_dataArray[indexPath.row];
-    cell.textLabel.textColor=[UIColor blackColor];
+     cell.backgroundColor=MainColor;
+    cell.tintColor = [UIColor whiteColor];
+    cell.textLabel.textColor=[UIColor whiteColor];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

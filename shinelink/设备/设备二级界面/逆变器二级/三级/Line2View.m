@@ -115,45 +115,6 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
         
-//        for (int i=0; i<2; i++) {
-//            UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(frame.size.width - 100*NOW_SIZE, (i+1)*15*NOW_SIZE + i * 35*NOW_SIZE, 85*NOW_SIZE, 35*NOW_SIZE)];
-//            bgView.backgroundColor = COLOR(39, 183, 99, 1);
-//            [self addSubview:bgView];
-//            
-//            UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7*NOW_SIZE, 7*NOW_SIZE, 21*NOW_SIZE, 21*NOW_SIZE)];
-//            [bgView addSubview:iconImageView];
-//            
-//            if (i == 0) {
-//                iconImageView.image = IMAGE(@"shouyi.png");
-//                self.moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(30*NOW_SIZE, 0, CGRectGetWidth(bgView.frame) - 30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2)];
-//                self.moneyLabel.adjustsFontSizeToFitWidth = YES;
-//                self.moneyLabel.textColor = [UIColor whiteColor];
-//                [bgView addSubview:self.moneyLabel];
-//                
-//                self.moneyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2, CGRectGetWidth(bgView.frame) - 30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2)];
-//                self.moneyTitleLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
-//                self.moneyTitleLabel.textAlignment = NSTextAlignmentCenter;
-//                self.moneyTitleLabel.textColor = [UIColor whiteColor];
-//                [bgView addSubview:self.moneyTitleLabel];
-//                
-//            } else if (i == 1) {
-//                iconImageView.image = IMAGE(@"fadian.png");
-//                
-//                self.energyLabel = [[UILabel alloc] initWithFrame:CGRectMake(30*NOW_SIZE, 0, CGRectGetWidth(bgView.frame) - 30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2)];
-//                self.energyLabel.textAlignment = NSTextAlignmentCenter;
-//                self.energyLabel.adjustsFontSizeToFitWidth = YES;
-//                self.energyLabel.textColor = [UIColor whiteColor];
-//                [bgView addSubview:self.energyLabel];
-//                
-//                
-//                self.energyTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2, CGRectGetWidth(bgView.frame) - 30*NOW_SIZE, CGRectGetHeight(bgView.frame)/2)];
-//                self.energyTitleLabel.font = [UIFont boldSystemFontOfSize:10*NOW_SIZE];
-//                self.energyTitleLabel.textAlignment = NSTextAlignmentCenter;
-//                self.energyTitleLabel.textColor = [UIColor whiteColor];
-//                [bgView addSubview:self.energyTitleLabel];
-//            }
-//            
-//        }
         
         self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 120*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         self.unitLabel.font = [UIFont boldSystemFontOfSize:10*HEIGHT_SIZE];
@@ -321,7 +282,7 @@
             [self.lineChartView addPlot:self.lineChartPlot];
             [self.lineChartView setupTheView];
         } else {
-            self.lineChartView.yAxisRange = @9000;
+            self.lineChartView.yAxisRange = @100;
             self.lineChartView.yAxisSuffix = @"";
             
             NSMutableArray *tempValuesArray = [NSMutableArray array];

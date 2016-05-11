@@ -149,6 +149,7 @@
     }
    _pieChart.valueArray = [NSMutableArray arrayWithArray:value];
     _pieChart.colorArray = [NSMutableArray arrayWithObjects:ZFColor(71, 204, 255, 1), ZFColor(253, 203, 76, 1), ZFColor(214, 205, 153, 1), ZFColor(78, 250, 188, 1), ZFColor(16, 140, 39, 1), ZFColor(45, 92, 34, 1), nil];
+    _pieChart.percentOnChartFontSize=12*HEIGHT_SIZE;
     _pieChart.percentType = kPercentTypeInteger;
     [self addSubview:_pieChart];
     [_pieChart strokePath];

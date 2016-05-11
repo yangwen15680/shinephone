@@ -114,65 +114,66 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
-    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 140*NOW_SIZE)];
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    headView.layer.contents = (id)bgImage.CGImage;
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 140*HEIGHT_SIZE)];
+    //UIImage *bgImage = IMAGE(@"bg4.png");
+    headView.backgroundColor=MainColor;
+    //headView.layer.contents = (id)bgImage.CGImage;
      [_scrollView addSubview:headView];
     
-    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*NOW_SIZE, 1*NOW_SIZE, 140*NOW_SIZE)];
+    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*HEIGHT_SIZE, 1*NOW_SIZE, 140*HEIGHT_SIZE)];
     line1.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line1];
     
-    float SIZE1=70*NOW_SIZE;
+    float SIZE1=70*HEIGHT_SIZE;
     for(int i=0;i<_dateN1.count;i++){
-    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 15*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 15*HEIGHT_SIZE+SIZE1*i, 160*NOW_SIZE,20*HEIGHT_SIZE )];
     PVLable.text=_dateN1[i];
     PVLable.textAlignment=NSTextAlignmentCenter;
     PVLable.textColor=[UIColor whiteColor];
-    PVLable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    PVLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView addSubview:PVLable];
-    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 40*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 40*HEIGHT_SIZE+SIZE1*i, 160*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable1.text=_dateN2[i];
     Lable1.textAlignment=NSTextAlignmentCenter;
     Lable1.textColor=[UIColor whiteColor];
-    Lable1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    Lable1.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView addSubview:Lable1];
     
-    UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 15*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 15*HEIGHT_SIZE+SIZE1*i, 160*NOW_SIZE,20*HEIGHT_SIZE )];
     PV2Lable.text=_dateY1[i];
     PV2Lable.textAlignment=NSTextAlignmentCenter;
     PV2Lable.textColor=[UIColor whiteColor];
-    PV2Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    PV2Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView addSubview:PV2Lable];
-    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 40*NOW_SIZE+SIZE1*i, 160*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Lable2=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 40*HEIGHT_SIZE+SIZE1*i, 160*NOW_SIZE,20*HEIGHT_SIZE )];
     Lable2.text=_dateY2[i];
     Lable2.textAlignment=NSTextAlignmentCenter;
     Lable2.textColor=[UIColor whiteColor];
-    Lable2.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    Lable2.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView addSubview:Lable2];
         
-        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,70*NOW_SIZE+SIZE1*i, 300*NOW_SIZE, 1*NOW_SIZE)];
+        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,70*HEIGHT_SIZE+SIZE1*i, 300*NOW_SIZE, 1*HEIGHT_SIZE)];
         line.backgroundColor=[UIColor whiteColor];
         [_scrollView addSubview:line];
     }
     
     float Size2=60*NOW_SIZE,Size3=(SCREEN_Width-60*NOW_SIZE)/3;
     for (int j=0; j<_dateName.count; j++) {
-    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*NOW_SIZE-140*NOW_SIZE, Size3,20*NOW_SIZE )];
+    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*HEIGHT_SIZE-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
     Name1.text=_dateName[j];
     Name1.textAlignment=NSTextAlignmentCenter;
     Name1.textColor=[UIColor blueColor];
-    Name1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    Name1.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView addSubview:Name1];
     }
     
-    float size3=50*NOW_SIZE;
+    float size3=50*HEIGHT_SIZE;
    for (int K=0; K<_pv.count; K++) {
-        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*NOW_SIZE+size3*K-140*NOW_SIZE, 60*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
         pv.text=_pv[K];
         pv.textAlignment=NSTextAlignmentLeft;
         pv.textColor=[UIColor blackColor];
-        pv.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        pv.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [_scrollView addSubview:pv];
        
 //       UILabel *pv1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
@@ -182,11 +183,11 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv1];
        
-       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
+       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
        pv11.text=_pv12[K];
        pv11.textAlignment=NSTextAlignmentCenter;
        pv11.textColor=[UIColor grayColor];
-       pv11.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+       pv11.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
        [_scrollView addSubview:pv11];
        
 //       UILabel *pv2=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
@@ -196,11 +197,11 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv2];
        
-       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
+       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
        pv21.text=_pv22[K];
        pv21.textAlignment=NSTextAlignmentCenter;
        pv21.textColor=[UIColor grayColor];
-       pv21.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+       pv21.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
        [_scrollView addSubview:pv21];
        
 //       UILabel *pv3=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 330*NOW_SIZE+size3*K, Size3,15*NOW_SIZE )];
@@ -210,31 +211,31 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv3];
        
-       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*NOW_SIZE+size3*K-140*NOW_SIZE, Size3,20*NOW_SIZE )];
+       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
        pv31.text=_pv32[K];
        pv31.textAlignment=NSTextAlignmentCenter;
        pv31.textColor=[UIColor grayColor];
-       pv31.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+       pv31.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
        [_scrollView addSubview:pv31];
        
-       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*NOW_SIZE+size3*K-140*NOW_SIZE, 300*NOW_SIZE,1*NOW_SIZE )];
+       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, 300*NOW_SIZE,1*HEIGHT_SIZE )];
        line2.backgroundColor=COLOR(212, 212, 212, 1);
        [_scrollView addSubview:line2];
        
     }
     
-    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     FW.text=root_gujian_banben;
     FW.textAlignment=NSTextAlignmentCenter;
     FW.textColor=[UIColor blackColor];
-    FW.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    FW.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.view addSubview:FW];
     
-    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-60*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     FW1.text=_Version;
     FW1.textAlignment=NSTextAlignmentCenter;
     FW1.textColor=[UIColor grayColor];
-    FW1.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+    FW1.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.view addSubview:FW1];
     
 }

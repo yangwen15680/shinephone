@@ -28,7 +28,7 @@
     for (int i=0; i<3; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, (50+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=labelArray[i];
-        label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [self.view addSubview:label];
     }
@@ -43,8 +43,8 @@
         textField.layer.borderColor=[UIColor whiteColor].CGColor;
         textField.tintColor = [UIColor whiteColor];
         [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [textField setValue:[UIFont systemFontOfSize:14*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-        textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        [textField setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+        textField.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         textField.textColor=[UIColor whiteColor];
         textField.tag=i;
         textField.delegate=self;
@@ -72,6 +72,7 @@
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_finish forState:UIControlStateNormal];
+     goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
 }

@@ -46,6 +46,7 @@
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+     cell.textLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     cell.textLabel.text=_dataArray[indexPath.section];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     cell.imageView.image = [UIImage imageNamed:_ImageArray[indexPath.section]];
@@ -56,13 +57,13 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 50*NOW_SIZE;
+    return 50*HEIGHT_SIZE;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 10*NOW_SIZE;
+    return 10*HEIGHT_SIZE;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

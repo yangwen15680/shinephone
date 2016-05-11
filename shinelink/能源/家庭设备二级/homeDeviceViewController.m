@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width,280*NOW_SIZE )];
+    self.line2View = [[newLine alloc] initWithFrame:CGRectMake(0, 0, SCREEN_Width,280*HEIGHT_SIZE )];
     [self.view addSubview:self.line2View];
     
     NSMutableDictionary *dict=[NSMutableDictionary new];

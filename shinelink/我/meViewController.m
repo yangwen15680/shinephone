@@ -84,15 +84,15 @@
         [_tableView.tableHeaderView removeFromSuperview];
     }
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
     UIColor *color=COLOR(17, 183, 243, 1);
  [headerView setBackgroundColor:color];
-    double imageSize=150*NOW_SIZE;
+    double imageSize=150*HEIGHT_SIZE;
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSData *pic=[ud objectForKey:@"userPic"];
     
-   UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25, imageSize, imageSize)];
+   UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25*HEIGHT_SIZE, imageSize, imageSize)];
     //  [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
     userImage.layer.masksToBounds=YES;
     userImage.layer.cornerRadius=imageSize/2.0;
@@ -154,7 +154,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65*NOW_SIZE;
+    return 65*HEIGHT_SIZE;
     
 }
 

@@ -30,8 +30,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataDic=[NSMutableDictionary new];
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+     self.view.backgroundColor=COLOR(17, 183, 243, 1);
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
     [self initUI];
     
 }
@@ -261,6 +262,8 @@
         UIBarButtonItem *spaceButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:root_finish style:UIBarButtonItemStyleDone target:self action:@selector(completeSelectDate:)];
+           [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14*HEIGHT_SIZE],NSFontAttributeName, nil] forState:UIControlStateNormal];
+        
         doneButton.tintColor = [UIColor whiteColor];
         self.toolBar.items = @[spaceButton, doneButton];
    }

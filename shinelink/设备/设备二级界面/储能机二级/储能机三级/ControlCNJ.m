@@ -50,8 +50,9 @@
     _param3=@"";
     _param4=@"";
     _typeName=@"";
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+        self.view.backgroundColor=COLOR(17, 183, 243, 1);
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
    
     [self initUI];
 }
@@ -68,30 +69,30 @@
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
-    float buttonSize=70*NOW_SIZE;
+    float buttonSize=80*HEIGHT_SIZE;
     
     if([_type isEqualToString:@"0"]){
-        UILabel *buttonLable=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *buttonLable=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2, 60*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
         buttonLable.text=root_CNJ_kaiji;
         buttonLable.textAlignment=NSTextAlignmentCenter;
         buttonLable.textColor=[UIColor whiteColor];
-        buttonLable.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+        buttonLable.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
         [_scrollView addSubview:buttonLable];
         
-        UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2, 85*NOW_SIZE, buttonSize,buttonSize)];
+        UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2, 85*HEIGHT_SIZE, buttonSize,buttonSize)];
         firstB.tag=2001;
         [firstB setImage:[UIImage imageNamed:@"open@2x.png"] forState:UIControlStateNormal];
         [firstB addTarget:self action:@selector(control) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:firstB];
         
-        UILabel *buttonLable0=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2+SCREEN_Width/2, 60*NOW_SIZE, 100*NOW_SIZE,20*NOW_SIZE )];
+        UILabel *buttonLable0=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width/2-100*NOW_SIZE)/2+SCREEN_Width/2, 60*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
         buttonLable0.text=root_CNJ_guanji;
         buttonLable0.textAlignment=NSTextAlignmentCenter;
         buttonLable0.textColor=[UIColor whiteColor];
-        buttonLable0.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+        buttonLable0.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
         [_scrollView addSubview:buttonLable0];
         
-        UIButton *firstB0=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2+SCREEN_Width/2, 85*NOW_SIZE, buttonSize,buttonSize)];
+        UIButton *firstB0=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width/2-buttonSize)/2+SCREEN_Width/2, 85*HEIGHT_SIZE, buttonSize,buttonSize)];
         firstB0.tag=2002;
         [firstB0 setImage:[UIImage imageNamed:@"open@2x.png"] forState:UIControlStateNormal];
         [firstB0 addTarget:self action:@selector(controlOff) forControlEvents:UIControlEventTouchUpInside];
@@ -99,37 +100,37 @@
     }
 
      if([_type isEqualToString:@"1"]){
-    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 60*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 60*HEIGHT_SIZE+5*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     PVLable.text=root_CNJ_SOC_xia;
     PVLable.textAlignment=NSTextAlignmentLeft;
     PVLable.textColor=[UIColor whiteColor];
-    PVLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PVLable.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVLable];
-    _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+30*NOW_SIZE, SCREEN_Width-40*NOW_SIZE, 40*NOW_SIZE)];
+    _slider=[[ASValueTrackingSlider alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*HEIGHT_SIZE+30*HEIGHT_SIZE, SCREEN_Width-40*NOW_SIZE, 40*HEIGHT_SIZE)];
     _slider.maximumValue = 10;
     _slider.minimumValue=0;
     [_scrollView addSubview:_slider];
     
-    UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable1=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE+55*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     PVLable1.text=@"0";
     PVLable1.textAlignment=NSTextAlignmentLeft;
     PVLable1.textColor=[UIColor whiteColor];
-    PVLable1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PVLable1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVLable1];
-    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+55*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVLable2=[[UILabel alloc]initWithFrame:CGRectMake(SCREEN_Width-22*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE+55*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     PVLable2.text=@"10";
     PVLable2.textAlignment=NSTextAlignmentLeft;
     PVLable2.textColor=[UIColor whiteColor];
-    PVLable2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PVLable2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVLable2];
      }
     
        if([_type isEqualToString:@"2"]){
-    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+5*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE+5*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     PVData.text=root_CNJ_shijian_she;
     PVData.textAlignment=NSTextAlignmentLeft;
     PVData.textColor=[UIColor whiteColor];
-    PVData.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PVData.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVData];
     
 //    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*NOW_SIZE+26*NOW_SIZE, 180*NOW_SIZE, 1*NOW_SIZE)];
@@ -141,14 +142,14 @@
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     
            
-    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*NOW_SIZE, 180*NOW_SIZE, 30*NOW_SIZE)];
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
            _datePickerButton.layer.borderWidth=0.5;
            _datePickerButton.layer.cornerRadius=5;
            _datePickerButton.layer.borderColor=[UIColor whiteColor].CGColor;
     [_datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
     [_datePickerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _datePickerButton.titleLabel.textAlignment = NSTextAlignmentLeft;
-    _datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16*NOW_SIZE];
+    _datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16*HEIGHT_SIZE];
     _datePickerButton.tag=1001;
     [_datePickerButton addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_datePickerButton];
@@ -163,31 +164,31 @@
     [_scrollView addSubview:FDT];*/
     
        if([_type isEqualToString:@"3"]){
-    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     Enable.text=root_CNJ_fangjian_shineng;
     Enable.textAlignment=NSTextAlignmentLeft;
     Enable.textColor=[UIColor whiteColor];
-    Enable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    Enable.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:Enable];
            
-           UILabel *EnableOff=[[UILabel alloc]initWithFrame:CGRectMake(183*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 20*NOW_SIZE,20*NOW_SIZE )];
+           UILabel *EnableOff=[[UILabel alloc]initWithFrame:CGRectMake(183*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE )];
            EnableOff.text=root_guan;
            EnableOff.textAlignment=NSTextAlignmentLeft;
            EnableOff.textColor=[UIColor whiteColor];
-           EnableOff.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+           EnableOff.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
            [_scrollView addSubview:EnableOff];
            
-           UILabel *EnableOn=[[UILabel alloc]initWithFrame:CGRectMake(280*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 20*NOW_SIZE,20*NOW_SIZE )];
+           UILabel *EnableOn=[[UILabel alloc]initWithFrame:CGRectMake(280*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE )];
            EnableOn.text=root_kai;
            EnableOn.textAlignment=NSTextAlignmentLeft;
            EnableOn.textColor=[UIColor whiteColor];
-           EnableOn.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+           EnableOn.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
            [_scrollView addSubview:EnableOn];
            
            _typeName=@"storage_cmd_forced_discharge_enable";
            _param1=@"0";
     
-    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE, 120*NOW_SIZE,10*NOW_SIZE )];
+    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 120*NOW_SIZE,10*HEIGHT_SIZE )];
     [_Switch setOn:YES];
     [_Switch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     _Switch.transform= CGAffineTransformMakeScale(1.2, 1);
@@ -196,46 +197,46 @@
        }
 
     if([_type isEqualToString:@"4"]){
-    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*HEIGHT_SIZE+10*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     dataDischarge.text=root_CNJ_fangdian_shijianduan;
     dataDischarge.textAlignment=NSTextAlignmentLeft;
     dataDischarge.textColor=[UIColor whiteColor];
-    dataDischarge.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    dataDischarge.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:dataDischarge];
     
     self.time1Formatter = [[NSDateFormatter alloc] init];
     [self.time1Formatter setDateFormat:@"HH:mm"];
     self.currentTime1 = [_time1Formatter stringFromDate:[NSDate date]];
     
-    _time1=[[UIButton alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
+    _time1=[[UIButton alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE+25*HEIGHT_SIZE, 120*NOW_SIZE,30*HEIGHT_SIZE )];
         _time1.layer.borderWidth=1;
         _time1.layer.cornerRadius=5;
         _time1.layer.borderColor=[UIColor whiteColor].CGColor;
     [_time1 setTitle:self.currentTime1 forState:UIControlStateNormal];
     [_time1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _time1.titleLabel.textAlignment = NSTextAlignmentCenter;
-    _time1.titleLabel.font = [UIFont boldSystemFontOfSize:16*NOW_SIZE];
+    _time1.titleLabel.font = [UIFont boldSystemFontOfSize:16*HEIGHT_SIZE];
     _time1.tag=1002;
     [_time1 addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_time1];
     
-    _time2=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 120*NOW_SIZE,30*NOW_SIZE )];
+    _time2=[[UIButton alloc]initWithFrame:CGRectMake(180*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE+25*HEIGHT_SIZE, 120*NOW_SIZE,30*HEIGHT_SIZE )];
         _time2.layer.borderWidth=1;
         _time2.layer.cornerRadius=5;
         _time2.layer.borderColor=[UIColor whiteColor].CGColor;
     [_time2 setTitle:self.currentTime1 forState:UIControlStateNormal];
     [_time2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _time2.titleLabel.textAlignment = NSTextAlignmentLeft;
-    _time2.titleLabel.font = [UIFont boldSystemFontOfSize:16*NOW_SIZE];
+    _time2.titleLabel.font = [UIFont boldSystemFontOfSize:16*HEIGHT_SIZE];
     _time2.tag=1003;
     [_time2 addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:_time2];
     
-    UILabel *TO=[[UILabel alloc]initWithFrame:CGRectMake(140*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+25*NOW_SIZE, 40*NOW_SIZE,30*NOW_SIZE )];
+    UILabel *TO=[[UILabel alloc]initWithFrame:CGRectMake(140*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE+25*HEIGHT_SIZE, 40*NOW_SIZE,30*HEIGHT_SIZE )];
     TO.text=root_zhi;
     TO.textAlignment=NSTextAlignmentCenter;
     TO.textColor=[UIColor whiteColor];
-    TO.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    TO.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:TO];
     
 //    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 85*NOW_SIZE+10*NOW_SIZE+50*NOW_SIZE, 115*NOW_SIZE,1*NOW_SIZE )];
@@ -246,67 +247,67 @@
 //    [_scrollView addSubview:line2];
     }
     
-    float Size1=40*NOW_SIZE;
+    float Size1=40*HEIGHT_SIZE;
     
      if([_type isEqualToString:@"5"]){
-    UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 300*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE, 300*NOW_SIZE,20*HEIGHT_SIZE )];
     PV.text=root_CNJ_SP;
     PV.textAlignment=NSTextAlignmentLeft;
     PV.textColor=[UIColor whiteColor];
-    PV.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PV.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PV];
     
-    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 180*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 180*NOW_SIZE,20*HEIGHT_SIZE )];
     PV1.text=root_CNJ_kailu_dianya;
     PV1.textAlignment=NSTextAlignmentLeft;
     PV1.textColor=[UIColor whiteColor];
-    PV1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PV1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PV1];
     
 //    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 110*NOW_SIZE,1*NOW_SIZE )];
 //    line3.backgroundColor=[UIColor whiteColor];
 //    [_scrollView addSubview:line3];
     
-   _textField = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 100*NOW_SIZE,30*NOW_SIZE )];
+   _textField = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 100*NOW_SIZE,30*HEIGHT_SIZE )];
          _textField.layer.borderWidth=1;
          _textField.layer.cornerRadius=5;
          _textField.layer.borderColor=[UIColor whiteColor].CGColor;
     _textField.textColor = [UIColor whiteColor];
     _textField.tintColor = [UIColor whiteColor];
-    _textField.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    _textField.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
          _textField.delegate=self;
      [_scrollView addSubview:_textField];
 //         [_textField addObserver:_textField forKeyPath:@"text" options:NSKeyValueObservingOptionNew context:nil];
     
-    UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 180*NOW_SIZE,20*NOW_SIZE )];
+    UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1*2, 180*NOW_SIZE,20*HEIGHT_SIZE )];
     PV2.text=root_CNJ_MPP;
     PV2.textAlignment=NSTextAlignmentLeft;
     PV2.textColor=[UIColor whiteColor];
-    PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PV2];
          
-         _PV3=[[UILabel alloc]initWithFrame:CGRectMake(80*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 50*NOW_SIZE,20*NOW_SIZE )];
+         _PV3=[[UILabel alloc]initWithFrame:CGRectMake(80*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1*2, 50*NOW_SIZE,20*HEIGHT_SIZE )];
         // PV3.text=@"MPP电压(";
         
          _PV3.textAlignment=NSTextAlignmentLeft;
          _PV3.textColor=[UIColor whiteColor];
-         _PV3.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+         _PV3.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
          [_scrollView addSubview:_PV3];
          
-         _PV4=[[UILabel alloc]initWithFrame:CGRectMake(130*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 50*NOW_SIZE,20*NOW_SIZE )];
+         _PV4=[[UILabel alloc]initWithFrame:CGRectMake(130*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1*2, 50*NOW_SIZE,20*HEIGHT_SIZE )];
                  _PV4.textAlignment=NSTextAlignmentLeft;
          _PV4.textColor=[UIColor whiteColor];
-         _PV4.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+         _PV4.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
          [_scrollView addSubview:_PV4];
          
     
-    _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1*2, 100*NOW_SIZE,30*NOW_SIZE )];
+    _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(200*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1*2, 100*NOW_SIZE,30*HEIGHT_SIZE )];
          _textField1.layer.borderWidth=1;
          _textField1.layer.cornerRadius=5;
          _textField1.layer.borderColor=[UIColor whiteColor].CGColor;
     _textField1.textColor = [UIColor whiteColor];
     _textField1.tintColor = [UIColor whiteColor];
-    _textField1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    _textField1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:_textField1];
     
 //    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(200*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1*2, 110*NOW_SIZE,1*NOW_SIZE )];
@@ -315,11 +316,12 @@
      }
          
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,210*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,210*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
     [goBut.layer setMasksToBounds:YES];
     [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_finish forState:UIControlStateNormal];
+     goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut addTarget:self action:@selector(finishSet1) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:goBut];
 
@@ -448,20 +450,20 @@
 
 #pragma mark - pickDate
 -(void)pickDate1:(id)sender{
-    float buttonSize=70*NOW_SIZE;
+    float buttonSize=70*HEIGHT_SIZE;
     UIButton *switchButton = (UIButton*)sender;
     if (switchButton.tag==1001) {
-        _date=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width, 216*NOW_SIZE)];
+        _date=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*HEIGHT_SIZE+buttonSize+5*HEIGHT_SIZE+55*HEIGHT_SIZE+85*HEIGHT_SIZE*2, SCREEN_Width, 216*HEIGHT_SIZE)];
         _date.backgroundColor=[UIColor whiteColor];
         _date.datePickerMode=UIDatePickerModeDateAndTime;
         [self.view addSubview:_date];
     }else if(switchButton.tag==1002){
-        _date1=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width, 216*NOW_SIZE)];
+        _date1=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*HEIGHT_SIZE+buttonSize+5*HEIGHT_SIZE+55*HEIGHT_SIZE+85*HEIGHT_SIZE*2, SCREEN_Width, 216*HEIGHT_SIZE)];
         _date1.backgroundColor=[UIColor whiteColor];
         _date1.datePickerMode=UIDatePickerModeTime;
         [self.view addSubview:_date1];
     }else if(switchButton.tag==1003){
-        _date2=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2, SCREEN_Width, 216*NOW_SIZE)];
+        _date2=[[UIDatePicker alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 85*HEIGHT_SIZE+buttonSize+5*HEIGHT_SIZE+55*HEIGHT_SIZE+85*HEIGHT_SIZE*2, SCREEN_Width, 216*HEIGHT_SIZE)];
         _date2.backgroundColor=[UIColor whiteColor];
         _date2.datePickerMode=UIDatePickerModeTime;
         [self.view addSubview:_date2];
@@ -473,11 +475,11 @@
     if (self.toolBar) {
         [UIView animateWithDuration:0.3f animations:^{
             self.toolBar.alpha = 1;
-            self.toolBar.frame = CGRectMake(0, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2-44*NOW_SIZE, SCREEN_Width, 44*NOW_SIZE);
+            self.toolBar.frame = CGRectMake(0, 85*HEIGHT_SIZE+buttonSize+5*HEIGHT_SIZE+55*HEIGHT_SIZE+85*HEIGHT_SIZE*2-44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE);
             [self.view addSubview:_toolBar];
         }];
     } else {
-        self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 85*NOW_SIZE+buttonSize+5*NOW_SIZE+55*NOW_SIZE+85*NOW_SIZE*2-44*NOW_SIZE, SCREEN_Width, 44*NOW_SIZE)];
+        self.toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 85*HEIGHT_SIZE+buttonSize+5*HEIGHT_SIZE+55*HEIGHT_SIZE+85*HEIGHT_SIZE*2-44*HEIGHT_SIZE, SCREEN_Width, 44*HEIGHT_SIZE)];
         self.toolBar.barStyle = UIBarStyleDefault;
         self.toolBar.barTintColor = COLOR(17, 183, 243, 1);
         [self.view addSubview:self.toolBar];

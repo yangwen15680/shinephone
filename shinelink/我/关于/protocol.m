@@ -31,22 +31,22 @@
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,1000*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
-    _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*NOW_SIZE, 300*NOW_SIZE,35*NOW_SIZE )];
+    _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*HEIGHT_SIZE, 300*NOW_SIZE,35*HEIGHT_SIZE )];
     _title1.text=@"<<ShinePhone Terms of Use>>";
     _title1.textAlignment=NSTextAlignmentCenter;
     _title1.textColor=COLOR(0, 0, 0, 1);
-    _title1.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+    _title1.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
     [_scrollView addSubview:_title1];
     
-    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,15*NOW_SIZE+30*NOW_SIZE, 300*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,15*HEIGHT_SIZE+30*HEIGHT_SIZE, 300*NOW_SIZE,1*HEIGHT_SIZE )];
     line3.backgroundColor=[UIColor grayColor];
     [_scrollView addSubview:line3];
     
-    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*NOW_SIZE, 300*NOW_SIZE,900*NOW_SIZE )];
+    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*HEIGHT_SIZE, 300*NOW_SIZE,900*HEIGHT_SIZE )];
     _detail.text=_detailText;
     _detail.textAlignment=NSTextAlignmentJustified;
     _detail.textColor=COLOR(60, 60, 60, 1);
-    _detail.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    _detail.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_scrollView addSubview:_detail];
     
 }

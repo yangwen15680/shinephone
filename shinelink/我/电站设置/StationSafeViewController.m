@@ -85,16 +85,16 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];
     [self.view addSubview:_readView];
    // NSString *normalPower=[_dict[@"normalPower"] substringWithRange:NSMakeRange(0, [_dict[@"normalPower"] length]-1) ];
     NSString *normalPower=[NSString stringWithFormat:@"%@",_dict[@"nominalPower"]];
     
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createDateText"],_dict[@"designCompany"],normalPower, nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, (i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, (i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [_readView addSubview:label];
     }
@@ -109,14 +109,14 @@
     
 
     
-    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE)];
+    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE)];
     _toolBar.barTintColor = COLOR(39, 177, 159, 1);
     _toolBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithTitle:root_OK style:UIBarButtonItemStyleDone target:self action:@selector(doneBarItemDidClicked)];
     UIBarButtonItem *spaceBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     _toolBar.items = @[spaceBarItem,doneBarItem];
     
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
 //    NSRange range=[_dict[@"normalPower"] rangeOfString:@" "];
@@ -131,15 +131,15 @@
     //NSArray *array2=[[NSArray alloc]initWithObjects:_dict[@"plantName"],_dict[@"createData"],_dict[@"designCompany"],normalPower,nil];
     
     for (int i=0; i<4; i++) {
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, (5+i*40)*NOW_SIZE, 120*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0, (5+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 30*HEIGHT_SIZE)];
         textField.text=arrayText[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
         textField.layer.borderColor=[UIColor whiteColor].CGColor;
         textField.tintColor = [UIColor whiteColor];
         [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [textField setValue:[UIFont systemFontOfSize:14*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-        textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        [textField setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+        textField.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         textField.textColor=[UIColor whiteColor];
         textField.tag=i;
         textField.delegate=self;
@@ -156,11 +156,12 @@
 
     
     _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    _goBut.frame=CGRectMake(60*NOW_SIZE,240*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [_goBut.layer setMasksToBounds:YES];
-    [_goBut.layer setCornerRadius:25.0];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,240*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+    //[_goBut.layer setMasksToBounds:YES];
+  //  [_goBut.layer setCornerRadius:25.0];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [_goBut setTitle:root_OK forState:UIControlStateNormal];
+     _goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_goBut];
     
@@ -223,8 +224,8 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if (self.datePicker) {
         [UIView animateWithDuration:0.3f animations:^{
-            self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*NOW_SIZE);
-            self.finishView.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE);
+            self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*HEIGHT_SIZE);
+            self.finishView.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE);
         } completion:^(BOOL finished) {
             [self.datePicker removeFromSuperview];
             [self.finishView removeFromSuperview];
@@ -257,15 +258,15 @@
         return YES;
     }
     if (self.datePicker.superview == nil) {
-        self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*NOW_SIZE);
+        self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*HEIGHT_SIZE);
         [self.view addSubview:self.datePicker];
-        self.toolBar.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE);
+        self.toolBar.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE);
         [self.view addSubview:self.toolBar];
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.3f];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-        self.datePicker.frame = CGRectMake(0, SCREEN_Height - 216*NOW_SIZE, SCREEN_Width, 216*NOW_SIZE);
-        self.toolBar.frame = CGRectMake(0, SCREEN_Height - 246*NOW_SIZE, SCREEN_Width, 30*NOW_SIZE);
+        self.datePicker.frame = CGRectMake(0, SCREEN_Height - 216*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+        self.toolBar.frame = CGRectMake(0, SCREEN_Height - 246*HEIGHT_SIZE, SCREEN_Width, 30*HEIGHT_SIZE);
         [UIView commitAnimations];
         if (_flag) {
             [self resignMethod];
@@ -296,8 +297,8 @@
     
     if (self.datePicker) {
         [UIView animateWithDuration:0.3f animations:^{
-            self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*NOW_SIZE);
-            self.toolBar.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*NOW_SIZE);
+            self.datePicker.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*HEIGHT_SIZE);
+            self.toolBar.frame = CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE);
         } completion:^(BOOL finished) {
             [self.datePicker removeFromSuperview];
             [self.toolBar removeFromSuperview];

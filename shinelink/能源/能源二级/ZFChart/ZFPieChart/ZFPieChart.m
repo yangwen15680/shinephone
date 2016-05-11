@@ -69,7 +69,7 @@
  */
 - (void)commonInit{
     _maxRadius = self.frame.size.width > self.frame.size.height ? self.frame.size.height : self.frame.size.width;
-    _radius = _maxRadius * 0.25;
+    _radius =self.frame.size.height * 0.14;
     _lineWidth = _radius;
     _totalDuration = 0.75f;
     _startAngle = ZFRadian(-90);
@@ -132,25 +132,25 @@
         //名称
         UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(color.frame) + 10, 0, width, 20)];
         name.text = _nameArray[i];
-        name.font = [UIFont boldSystemFontOfSize:16.f];
+        name.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:name];
         
         //数值
         UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(name.frame) + gap, 0, width, 20)];
         value.text = _valueArray[i];
-        value.font = [UIFont boldSystemFontOfSize:16.f];
+        value.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:value];
         
         //百分比
         UILabel * percent = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(value.frame) + gap, 0, width, 20)];
         percent.text = [self getPercent:i];
-        percent.font = [UIFont boldSystemFontOfSize:16.f];
+        percent.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:percent];
     }
     
     //重设self.frame的值
     UILabel * lastLabel = (UILabel *)[self viewWithTag:PieChartDetailBackgroundTag + self.valueArray.count - 1];
-    self.contentSize = CGSizeMake(self.frame.size.width, CGRectGetMaxY(lastLabel.frame) + 20);
+    self.contentSize = CGSizeMake(self.frame.size.width, CGRectGetMaxY(lastLabel.frame) + 20*HEIGHT_SIZE);
 }
 
 #pragma mark - Arc(圆弧)

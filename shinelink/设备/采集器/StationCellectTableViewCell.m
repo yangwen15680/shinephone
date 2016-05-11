@@ -41,18 +41,18 @@
         UILabel *othername = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 12*HEIGHT_SIZE, 120*NOW_SIZE, 20*HEIGHT_SIZE)];
         othername.text =root_bieming;
         othername.textColor = [UIColor whiteColor];
-        othername.font=[UIFont systemFontOfSize:12*NOW_SIZE];
+        othername.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
         [self.contentView addSubview:othername];
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 14*HEIGHT_SIZE, 140*NOW_SIZE, 20*HEIGHT_SIZE)];
         self.titleLabel.text = @"aliases";
         self.titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        _titleLabel.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [self.contentView addSubview:_titleLabel];
 
         self.statusLabel=[[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame)+2*NOW_SIZE, 12*HEIGHT_SIZE, 20*NOW_SIZE, 20*HEIGHT_SIZE)];
         self.statusLabel.textColor = [UIColor yellowColor];
-        self.statusLabel.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        self.statusLabel.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [self.contentView addSubview:self.statusLabel];
         
         UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 40*HEIGHT_SIZE, 240*NOW_SIZE, 0.5*HEIGHT_SIZE)];
@@ -62,13 +62,13 @@
         //采集器序列号
         UILabel *todayEnergyTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 40*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         todayEnergyTitleLable.text = root_xuleihao;
-        todayEnergyTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        todayEnergyTitleLable.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         todayEnergyTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:todayEnergyTitleLable];
         
         self.todayEnergyLabel = [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 40*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         self.todayEnergyLabel.text = @"datalog sn";
-        self.todayEnergyLabel.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        self.todayEnergyLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         self.todayEnergyLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_todayEnergyLabel];
         
@@ -79,13 +79,13 @@
         //组别
         UILabel *totalEnergyTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 80*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         totalEnergyTitleLable.text = root_zubie;
-        totalEnergyTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        totalEnergyTitleLable.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         totalEnergyTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:totalEnergyTitleLable];
         
         self.totalEnergyLabel = [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 80*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         self.totalEnergyLabel.text = @"group";
-        self.totalEnergyLabel.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        self.totalEnergyLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         self.totalEnergyLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_totalEnergyLabel];
         
@@ -96,13 +96,13 @@
         //设备类型
         UILabel *currentPowerTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 120*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         currentPowerTitleLable.text = root_shebei_leixing;
-        currentPowerTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        currentPowerTitleLable.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         currentPowerTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:currentPowerTitleLable];
         
         self.currentPowerLabel = [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 120*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         self.currentPowerLabel.text = @"device type";
-        self.currentPowerLabel.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        self.currentPowerLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         self.currentPowerLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_currentPowerLabel];
         
@@ -113,13 +113,13 @@
         //更新间隔
         UILabel *moneyTitleLable = [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 160*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         moneyTitleLable.text = root_data_update_interval;
-        moneyTitleLable.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+        moneyTitleLable.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         moneyTitleLable.textColor = [UIColor whiteColor];
         [self.contentView addSubview:moneyTitleLable];
         
         self.moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 160*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         self.moneyLabel.text = root_data_update_interval;
-        self.moneyLabel.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        self.moneyLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         self.moneyLabel.textColor = [UIColor whiteColor];
         [self.contentView addSubview:_moneyLabel];
         

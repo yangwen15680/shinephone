@@ -189,8 +189,9 @@
     [self.view addSubview:_scrollView];
     
     UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 210*HEIGHT_SIZE)];
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    headView.layer.contents = (id)bgImage.CGImage;
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    headView.layer.contents = (id)bgImage.CGImage;
+    headView.backgroundColor=MainColor;
     [_scrollView addSubview:headView];
     
     UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*HEIGHT_SIZE, 1*NOW_SIZE, 200*HEIGHT_SIZE)];

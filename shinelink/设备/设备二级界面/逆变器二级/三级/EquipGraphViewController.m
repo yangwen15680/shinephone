@@ -155,17 +155,17 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     [self.timeDisplayView addSubview:bgImageView];
     
     self.lastButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.lastButton.frame = CGRectMake(0, 0, 22*NOW_SIZE, 22*HEIGHT_SIZE);
+    self.lastButton.frame = CGRectMake(0, 0, 22*HEIGHT_SIZE, 22*HEIGHT_SIZE);
     [self.lastButton setImage:IMAGE(@"shang.png") forState:UIControlStateNormal];
-    self.lastButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
+    //self.lastButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
     self.lastButton.tag = 1004;
     [self.lastButton addTarget:self action:@selector(lastDate:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.lastButton];
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.nextButton.frame = CGRectMake(CGRectGetWidth(bgImageView.frame) - 22*NOW_SIZE, 0, 22*NOW_SIZE, 22*HEIGHT_SIZE);
+    self.nextButton.frame = CGRectMake(CGRectGetWidth(bgImageView.frame) - 22*NOW_SIZE, 0, 22*HEIGHT_SIZE, 22*HEIGHT_SIZE);
     [self.nextButton setImage:IMAGE(@"xia.png") forState:UIControlStateNormal];
-    self.nextButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
+    //self.nextButton.imageEdgeInsets = UIEdgeInsetsMake(7*NOW_SIZE, 7*HEIGHT_SIZE, 7*NOW_SIZE, 7*HEIGHT_SIZE);
     self.nextButton.tag = 1005;
     [self.nextButton addTarget:self action:@selector(nextDate:) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:self.nextButton];

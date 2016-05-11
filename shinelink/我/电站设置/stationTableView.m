@@ -73,6 +73,8 @@
     cell.textLabel.text=_dataArray[indexPath.row];
     cell.textLabel.textColor=[UIColor whiteColor];
     cell.tintColor = [UIColor lightGrayColor];
+    cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
+
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -83,7 +85,7 @@
 {
     
     
-    return 50*NOW_SIZE;
+    return 50*HEIGHT_SIZE;
     
 }
 

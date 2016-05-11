@@ -29,7 +29,7 @@
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [addButton setTitle:root_CJQ_tianjia forState:UIControlStateNormal];
-        addButton.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+        addButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
 
         [addButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [addButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
@@ -40,7 +40,7 @@
         UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
         deleteButton.frame = CGRectMake(0, 1 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [deleteButton setTitle:root_CJQ_bianji forState:UIControlStateNormal];
-         deleteButton.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+         deleteButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
         [deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [deleteButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         deleteButton.tag = 1052;
@@ -50,7 +50,7 @@
         UIButton *uploadStationImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
         uploadStationImageButton.frame = CGRectMake(0, 2 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [uploadStationImageButton setTitle:root_CJQ_shanchu forState:UIControlStateNormal];
-          uploadStationImageButton.titleLabel.font=[UIFont systemFontOfSize: 14*NOW_SIZE];
+          uploadStationImageButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
         [uploadStationImageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [uploadStationImageButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
         uploadStationImageButton.tag = 1053;
