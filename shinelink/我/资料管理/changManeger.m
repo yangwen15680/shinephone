@@ -42,131 +42,132 @@
     //将触摸事件添加到当前view
     [self.view addGestureRecognizer:tapGestureRecognizer];
 
-    float Size1=40*NOW_SIZE;
+    float Size1=40*HEIGHT_SIZE;
     
       if([_type isEqualToString:@"0"]){
-    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 140*NOW_SIZE,30*NOW_SIZE )];
+    UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE, 140*NOW_SIZE,30*HEIGHT_SIZE )];
     PV1.text=root_Alet_user_pwd;
     PV1.textAlignment=NSTextAlignmentLeft;
     PV1.textColor=[UIColor whiteColor];
-    PV1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    PV1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [self.view addSubview:PV1];
     
 //    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE, 150*NOW_SIZE,1*NOW_SIZE )];
 //    line3.backgroundColor=[UIColor whiteColor];
 //    [self.view addSubview:line3];
     
-    _textField = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE, 150*NOW_SIZE,30*NOW_SIZE )];
+    _textField = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE, 150*NOW_SIZE,30*HEIGHT_SIZE )];
           _textField.layer.borderWidth=1;
            _textField.textAlignment=NSTextAlignmentLeft;
           _textField.layer.cornerRadius=5;
           _textField.layer.borderColor=[UIColor whiteColor].CGColor;
     _textField.textColor = [UIColor whiteColor];
     _textField.tintColor = [UIColor whiteColor];
-    _textField.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    _textField.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     //_textField.delegate=self;
     [self.view addSubview:_textField];
           
-          UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
+          UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
           PV2.text=root_chongFu_miMa;
           PV2.textAlignment=NSTextAlignmentLeft;
           PV2.textColor=[UIColor whiteColor];
-          PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+          PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
           [self.view addSubview:PV2];
 //          
 //          UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 150*NOW_SIZE,1*NOW_SIZE )];
 //          line4.backgroundColor=[UIColor whiteColor];
 //          [self.view addSubview:line4];
           
-          _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 150*NOW_SIZE,30*NOW_SIZE )];
+          _textField1 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 150*NOW_SIZE,30*HEIGHT_SIZE )];
           _textField1.layer.borderWidth=1;
           _textField1.layer.cornerRadius=5;
           _textField1.layer.borderColor=[UIColor whiteColor].CGColor;
           _textField1.textAlignment=NSTextAlignmentLeft;
           _textField1.textColor = [UIColor whiteColor];
           _textField1.tintColor = [UIColor whiteColor];
-          _textField1.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+          _textField1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
           //_textField.delegate=self;
           [self.view addSubview:_textField1];
           
       }
 
     if([_type isEqualToString:@"1"]){
-        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
+        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_DianHua;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
-        PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];
         
 //        UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 150*NOW_SIZE,1*NOW_SIZE )];
 //        line4.backgroundColor=[UIColor whiteColor];
 //        [self.view addSubview:line4];
         
-        _textField2 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1,150*NOW_SIZE,30*NOW_SIZE )];
+        _textField2 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1,150*NOW_SIZE,30*HEIGHT_SIZE )];
         _textField2.layer.borderWidth=1;
         _textField2.layer.cornerRadius=5;
         _textField2.textAlignment=NSTextAlignmentLeft;
         _textField2.layer.borderColor=[UIColor whiteColor].CGColor;
         _textField2.textColor = [UIColor whiteColor];
         _textField2.tintColor = [UIColor whiteColor];
-        _textField2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        _textField2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         //_textField.delegate=self;
         [self.view addSubview:_textField2];
     }
     
     if([_type isEqualToString:@"2"]){
-        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
+        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_youxiang;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
-        PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];
         
 //        UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 150*NOW_SIZE,1*NOW_SIZE )];
 //        line4.backgroundColor=[UIColor whiteColor];
 //        [self.view addSubview:line4];
         
-        _textField3 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 150*NOW_SIZE,30*NOW_SIZE )];
+        _textField3 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 150*NOW_SIZE,30*HEIGHT_SIZE )];
         _textField3.layer.borderWidth=1;
         _textField3.layer.cornerRadius=5;
         _textField3.textAlignment=NSTextAlignmentLeft;
         _textField3.layer.borderColor=[UIColor whiteColor].CGColor;
         _textField3.textColor = [UIColor whiteColor];
         _textField3.tintColor = [UIColor whiteColor];
-        _textField3.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        _textField3.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         //_textField.delegate=self;
         [self.view addSubview:_textField3];
     }
     
     if([_type isEqualToString:@"3"]){
-        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 140*NOW_SIZE,30*NOW_SIZE )];
+        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_dailishang;
         PV2.textAlignment=NSTextAlignmentLeft;
         PV2.textColor=[UIColor whiteColor];
-        PV2.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];
         
 //        UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+30*NOW_SIZE+Size1, 150*NOW_SIZE,1*NOW_SIZE )];
 //        line4.backgroundColor=[UIColor whiteColor];
 //        [self.view addSubview:line4];
         
-        _textField4 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*NOW_SIZE+10*NOW_SIZE+Size1, 150*NOW_SIZE,30*NOW_SIZE )];
+        _textField4 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 150*NOW_SIZE,30*HEIGHT_SIZE )];
         _textField4.layer.borderWidth=1;
         _textField4.layer.cornerRadius=5;
          _textField4.textAlignment=NSTextAlignmentLeft;
         _textField4.layer.borderColor=[UIColor whiteColor].CGColor;
         _textField4.textColor = [UIColor whiteColor];
         _textField4.tintColor = [UIColor whiteColor];
-        _textField4.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        _textField4.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         //_textField.delegate=self;
         [self.view addSubview:_textField4];
     }
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,210*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+    goBut.frame=CGRectMake(60*NOW_SIZE,210*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+//    [goBut.layer setMasksToBounds:YES];
+//    [goBut.layer setCornerRadius:25.0];
+    goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
     [goBut addTarget:self action:@selector(finishSet1) forControlEvents:UIControlEventTouchUpInside];

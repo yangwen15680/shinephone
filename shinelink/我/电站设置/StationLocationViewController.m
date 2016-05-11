@@ -79,9 +79,9 @@
     NSArray *array=[[NSArray alloc]initWithObjects:root_country,root_WO_chengshi,root_WO_shiqu,root_WO_jingdu,root_WO_weidu, nil];
     
     for (int i=0; i<5; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [self.view addSubview:label];
     }
@@ -89,16 +89,16 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 210*HEIGHT_SIZE)];
     [self.view addSubview:_readView];
     NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
     NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
       NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat,nil];
     for (int i=0; i<5; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [_readView addSubview:label];
     }
@@ -146,7 +146,7 @@
     _timeZone=[NSMutableArray arrayWithObjects:@"+1",@"+2",@"+3",@"+4",@"+5",@"+6",@"+7",@"+8",@"+9",@"+10",@"+11",@"+12",@"-1",@"-2",@"-3",@"-4",@"-5",@"-6",@"-7",@"-8",@"-9",@"-10",@"-11",@"-12", nil];
     _pickerView=[[RootPickerView alloc]initWithTwoArray:_country arrayTwo:_timeZone];
     [self.view addSubview:_pickerView];
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 210*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 210*HEIGHT_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
 //    NSRange timerange=[_dict[@"timeZone"] rangeOfString:@"T"];
@@ -157,15 +157,15 @@
     NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat, nil];
     for (int i=0; i<5; i++) {
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         textField.text=array[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
         textField.layer.borderColor=[UIColor whiteColor].CGColor;
         textField.tintColor = [UIColor whiteColor];
         [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [textField setValue:[UIFont systemFontOfSize:14*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-        textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        [textField setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+        textField.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         textField.textColor=[UIColor whiteColor];
         if (i==0) {
             textField.tag=1000;
@@ -187,19 +187,19 @@
 //    latButton.tag=1;
 //    [latButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
 //    [_writeView addSubview:latButton];
-    UIButton *lngButton0=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 48*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
+    UIButton *lngButton0=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 48*HEIGHT_SIZE, 50*NOW_SIZE, 20*HEIGHT_SIZE)];
     [lngButton0 setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [lngButton0 setTitle:root_WO_dianji_huoqu forState:UIControlStateNormal];
-    lngButton0.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+    lngButton0.titleLabel.font=[UIFont systemFontOfSize:11*HEIGHT_SIZE];
     [lngButton0 setTitleColor:COLOR(82, 201, 194, 1) forState:0];
     lngButton0.tag=2001;
     [lngButton0 addTarget:self action:@selector(fetchLocation:) forControlEvents:UIControlEventTouchUpInside];
     [_writeView addSubview:lngButton0];
     
-    UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 150*NOW_SIZE, 50*NOW_SIZE, 20*NOW_SIZE)];
+    UIButton *lngButton=[[UIButton alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 150*HEIGHT_SIZE, 50*NOW_SIZE, 20*HEIGHT_SIZE)];
     [lngButton setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [lngButton setTitle:root_WO_dianji_huoqu forState:UIControlStateNormal];
-    lngButton.titleLabel.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+    lngButton.titleLabel.font=[UIFont systemFontOfSize:11*HEIGHT_SIZE];
     [lngButton setTitleColor:COLOR(82, 201, 194, 1) forState:0];
     lngButton.tag=2002;
     [lngButton addTarget:self action:@selector(fetchLocation:) forControlEvents:UIControlEventTouchUpInside];
@@ -208,10 +208,11 @@
 
     
     _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    _goBut.frame=CGRectMake(60*NOW_SIZE,300*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [_goBut.layer setMasksToBounds:YES];
-    [_goBut.layer setCornerRadius:25.0];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,300*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+//    [_goBut.layer setMasksToBounds:YES];
+//    [_goBut.layer setCornerRadius:25.0];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    _goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [_goBut setTitle:root_finish forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_goBut];

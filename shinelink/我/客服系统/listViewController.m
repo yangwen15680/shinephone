@@ -63,7 +63,7 @@
             }
             
         self.navigationItem.title = root_ME_wenti_liebiao;
-        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*NOW_SIZE)];
+        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
                   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -109,8 +109,8 @@
        cell.contentLabel.text= self.contentArray[indexPath.row];
     cell.timeLabel.text=self.timeArray[indexPath.row];
     cell.content=self.contentArray[indexPath.row];
-    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-     cell.contentLabel.frame =CGRectMake(10*Width, 45*Width, 300*Width, fcRect.size.height);
+    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14*HEIGHT_SIZE]} context:nil];
+     cell.contentLabel.frame =CGRectMake(10*NOW_SIZE, 45*HEIGHT_SIZE, 300*NOW_SIZE, fcRect.size.height);
    cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-240*NOW_SIZE, 80*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);

@@ -74,9 +74,9 @@
     
     NSArray *array=[[NSArray alloc]initWithObjects:root_WO_zijin,root_WO_jieneng,root_WO_C02,root_WO_SO2, nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [self.view addSubview:label];
     }
@@ -84,7 +84,7 @@
 
 
 -(void)readUI{
-    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];
     [self.view addSubview:_readView];
     NSString *string=[NSString stringWithFormat:@"%@ %@",_dict[@"formulaMoney"],_dict[@"formulaMoneyUnitId"]];
     NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
@@ -93,9 +93,9 @@
     
     NSArray *array=[[NSArray alloc]initWithObjects:string,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [_readView addSubview:label];
     }
@@ -106,10 +106,10 @@
     _pickerView=[[RootPickerView alloc]initWithArray:@[@"RMB",@"USD",@"EUR",@"AUD",@"JPY",@"GBP"]];
     [self.view addSubview:_pickerView];
  
-    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*NOW_SIZE, 140*NOW_SIZE, 170*NOW_SIZE)];
+    _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];
     [self.view addSubview:_writeView];
     _textFieldMutableArray=[NSMutableArray new];
-    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 5*NOW_SIZE, 40*NOW_SIZE, 30*NOW_SIZE)];
+    UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 5*HEIGHT_SIZE, 40*NOW_SIZE, 30*HEIGHT_SIZE)];
        NSString *formulaMoneyUnitId=[NSString stringWithFormat:@"%@",_dict[@"formulaMoneyUnitId"]];
     textField.text=formulaMoneyUnitId;
     textField.layer.borderWidth=0.5;
@@ -117,8 +117,8 @@
     textField.layer.borderColor=[UIColor whiteColor].CGColor;
     textField.tintColor = [UIColor whiteColor];
     [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [textField setValue:[UIFont systemFontOfSize:14*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+    [textField setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    textField.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
     textField.textColor=[UIColor whiteColor];
     textField.tag=1000;
    textField.delegate=_pickerView;
@@ -131,15 +131,15 @@
     NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
     NSArray *array=[[NSArray alloc]initWithObjects:formulaMoney,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
-        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*NOW_SIZE, 100*NOW_SIZE, 30*NOW_SIZE)];
+        UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         textField.text=array[i];
         textField.layer.borderWidth=0.5;
         textField.layer.cornerRadius=5;
         textField.layer.borderColor=[UIColor whiteColor].CGColor;
         textField.tintColor = [UIColor whiteColor];
         [textField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
-        [textField setValue:[UIFont systemFontOfSize:14*NOW_SIZE] forKeyPath:@"_placeholderLabel.font"];
-        textField.font=[UIFont systemFontOfSize:14*NOW_SIZE];
+        [textField setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+        textField.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         textField.textColor=[UIColor whiteColor];
         textField.tag=i;
      textField.delegate=_pickerView;
@@ -152,9 +152,10 @@
 
     
     _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    _goBut.frame=CGRectMake(60*NOW_SIZE,240*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [_goBut.layer setMasksToBounds:YES];
-    [_goBut.layer setCornerRadius:25.0];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,240*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+//    [_goBut.layer setMasksToBounds:YES];
+//    [_goBut.layer setCornerRadius:25.0];
+    _goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [_goBut setTitle:root_finish forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];

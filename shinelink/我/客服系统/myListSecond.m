@@ -126,29 +126,29 @@
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 45*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
     [self.view addSubview:_scrollView];
-    float Size1=40*NOW_SIZE;
+    float Size1=40*HEIGHT_SIZE;
     
     for(int i=0;i<_labelArray.count;i++)
     {
-        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*NOW_SIZE+Size1*i, 80*NOW_SIZE,28*NOW_SIZE )];
+        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 80*NOW_SIZE,28*HEIGHT_SIZE )];
         PV1Lable.text=_labelArray[i];
         PV1Lable.textAlignment=NSTextAlignmentCenter;
         PV1Lable.textColor=[UIColor blackColor];
-        PV1Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        PV1Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [_scrollView addSubview:PV1Lable];
     }
     
     for(int i=0;i<2;i++)
     {
-        UIView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 42*NOW_SIZE+Size1*i, 310*NOW_SIZE,2*NOW_SIZE )];
+        UIView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 42*HEIGHT_SIZE+Size1*i, 310*NOW_SIZE,1*HEIGHT_SIZE )];
         image1.backgroundColor=mainColor;
                 [_scrollView addSubview:image1];
         
-        UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 16*NOW_SIZE+Size1*i, 210*NOW_SIZE,28*NOW_SIZE )];
+        UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(85*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 210*NOW_SIZE,28*HEIGHT_SIZE )];
         if (i==0) {
                PV2Lable.text=_titleString;
         }else{
@@ -157,11 +157,11 @@
         
         PV2Lable.textAlignment=NSTextAlignmentLeft;
         PV2Lable.textColor=[UIColor blackColor];
-        PV2Lable.font = [UIFont systemFontOfSize:14*NOW_SIZE];
+        PV2Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [_scrollView addSubview:PV2Lable];
     }
     
-    UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE+Size1*3, 310*NOW_SIZE,300*NOW_SIZE )];
+    UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE+Size1*3, 310*NOW_SIZE,300*HEIGHT_SIZE )];
     image2.userInteractionEnabled = YES;
     image2.image = IMAGE(@"外框@3x.png");
     [_scrollView addSubview:image2];
@@ -171,12 +171,12 @@
     _scrollView2.contentSize = CGSizeMake(300*NOW_SIZE,600*NOW_SIZE);
     [self.view addSubview:_scrollView2];*/
     
-    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 6*NOW_SIZE+Size1*3, 300*NOW_SIZE,290*NOW_SIZE )];
+    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 6*HEIGHT_SIZE+Size1*3, 300*NOW_SIZE,290*HEIGHT_SIZE )];
     _tableView.delegate = self;
     _tableView.dataSource = self;
        [_scrollView addSubview:_tableView];
     
-    UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 315*NOW_SIZE+Size1*3, 310*NOW_SIZE,30*NOW_SIZE )];
+    UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 315*HEIGHT_SIZE+Size1*3, 310*NOW_SIZE,30*HEIGHT_SIZE )];
     image3.userInteractionEnabled = YES;
     image3.image = IMAGE(@"frame2@2x.png");
     UITapGestureRecognizer * forget=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(Answer)];
@@ -185,11 +185,11 @@
     [_scrollView addSubview:image3];
     
     
-    UILabel *answerLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 0, 270*NOW_SIZE,30*NOW_SIZE )];
+    UILabel *answerLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 0, 270*NOW_SIZE,30*HEIGHT_SIZE )];
     answerLable.text=root_ME_huifu;
     answerLable.textAlignment=NSTextAlignmentCenter;
     answerLable.textColor=[UIColor blueColor];
-    answerLable.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+    answerLable.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [image3 addSubview:answerLable];
     
 }
@@ -226,10 +226,10 @@
     cell.contentLabel.text= self.contentArray[indexPath.row];
    
     cell.content=self.contentArray[indexPath.row];
-    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    cell.contentLabel.frame =CGRectMake(5*NOW_SIZE, 55*NOW_SIZE, 280*Width, fcRect.size.height);
+    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14 *HEIGHT_SIZE]} context:nil];
+    cell.contentLabel.frame =CGRectMake(5*NOW_SIZE, 55*HEIGHT_SIZE, 280*Width, fcRect.size.height);
     
-    cell.titleView.frame=CGRectMake(0, 70*NOW_SIZE+fcRect.size.height,SCREEN_WIDTH, 2*NOW_SIZE);
+    cell.titleView.frame=CGRectMake(0, 70*HEIGHT_SIZE+fcRect.size.height,SCREEN_WIDTH, 2*HEIGHT_SIZE);
   //  cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-100*NOW_SIZE, 45*NOW_SIZE+fcRect.size.height,100*NOW_SIZE, 20*NOW_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
     
@@ -250,8 +250,8 @@
 {
     
     
-    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    return 70*Height+fcRect.size.height;
+    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*Height) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14*HEIGHT_SIZE]} context:nil];
+    return 70*HEIGHT_SIZE+fcRect.size.height;
     
 }
 

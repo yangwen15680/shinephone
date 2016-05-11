@@ -22,7 +22,7 @@
 -(instancetype)initWithArray:(NSArray *)array{
     self=[super init];
     _flag=YES;
-    self.frame=CGRectMake(0, SCREEN_Height+30, SCREEN_Width, 216);
+    self.frame=CGRectMake(0, SCREEN_Height+30*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
     self.backgroundColor=[UIColor whiteColor];
     _array=array;
     self.dataSource=self;
@@ -34,7 +34,7 @@
 -(instancetype)initWithTwoArray:(NSArray *)arrayOne arrayTwo:(NSArray *)arrayTwo{
     self=[super init];
     _flag=YES;
-    self.frame=CGRectMake(0, SCREEN_Height+30, SCREEN_Width, 216);
+    self.frame=CGRectMake(0, SCREEN_Height+30, SCREEN_Width, 216*HEIGHT_SIZE);
     self.backgroundColor=[UIColor whiteColor];
     _array=arrayOne;
     _arrayTwo=arrayTwo;
@@ -50,9 +50,10 @@
     }
     [self.superview bringSubviewToFront:self];
     if (!_toolBar) {
-        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30)];
+        _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE)];
         _toolBar.barStyle = UIBarStyleDefault;
-        _toolBar.barTintColor = COLOR(39, 177, 159, 1);
+        _toolBar.barTintColor = MainColor;
+        
         [self.superview addSubview:_toolBar];
         
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleDone target:self action:@selector(cancelSelect)];
@@ -62,12 +63,13 @@
         
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:self action:@selector(completeSelect)];
         doneButton.tintColor = [UIColor whiteColor];
+        [doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14*HEIGHT_SIZE],NSFontAttributeName, nil] forState:UIControlStateNormal];
         self.toolBar.items = @[cancelButton, spaceButton, doneButton];
     }
     
     [UIView animateWithDuration:0.3 animations:^{
-        self.frame=CGRectMake(0, SCREEN_Height-216-50, SCREEN_Width, 216);
-        _toolBar.frame=CGRectMake(0, SCREEN_Height-246-50, SCREEN_Width, 30);
+        self.frame=CGRectMake(0, SCREEN_Height-216*HEIGHT_SIZE-50*HEIGHT_SIZE, SCREEN_Width, 216*HEIGHT_SIZE);
+        _toolBar.frame=CGRectMake(0, SCREEN_Height-246*HEIGHT_SIZE-50*HEIGHT_SIZE, SCREEN_Width, 30*HEIGHT_SIZE);
     }];
 }
 
@@ -115,8 +117,8 @@
 
 -(void)viewDisappear{
     [UIView animateWithDuration:0.3 animations:^{
-        self.frame=CGRectMake(0, SCREEN_Height, SCREEN_Width, 216);
-        _toolBar.frame=CGRectMake(0, SCREEN_Height, SCREEN_Width, 30);
+        self.frame=CGRectMake(0, SCREEN_Height, SCREEN_Width, 216*HEIGHT_SIZE);
+        _toolBar.frame=CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE);
     }];
 }
 

@@ -75,9 +75,9 @@
 
     NSArray *array=[[NSArray alloc]initWithObjects:root_plant_name, root_instal_date, root_company, root_power, nil];
     for (int i=0; i<4; i++) {
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*NOW_SIZE, 120*NOW_SIZE, 40*NOW_SIZE)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(40*NOW_SIZE, (10+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
         label.text=array[i];
-        label.font=[UIFont systemFontOfSize:11*NOW_SIZE];
+        label.font=[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
         [self.view addSubview:label];
     }
@@ -110,10 +110,11 @@
 
     
     _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, SCREEN_Height, SCREEN_Width, 30*HEIGHT_SIZE)];
-    _toolBar.barTintColor = COLOR(39, 177, 159, 1);
+    _toolBar.barTintColor = MainColor;
     _toolBar.tintColor = [UIColor whiteColor];
     UIBarButtonItem *doneBarItem = [[UIBarButtonItem alloc] initWithTitle:root_OK style:UIBarButtonItemStyleDone target:self action:@selector(doneBarItemDidClicked)];
     UIBarButtonItem *spaceBarItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+     [doneBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:14*HEIGHT_SIZE],NSFontAttributeName, nil] forState:UIControlStateNormal];
     _toolBar.items = @[spaceBarItem,doneBarItem];
     
     _writeView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];

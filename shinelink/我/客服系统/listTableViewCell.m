@@ -26,18 +26,18 @@
     self =[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        _titleView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 40*NOW_SIZE) ];
+        _titleView=[[UIView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, 40*HEIGHT_SIZE) ];
       //  titleView.backgroundColor=mainColor;
         [self addSubview:_titleView];
         
-        _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*NOW_SIZE,200*NOW_SIZE, 30*NOW_SIZE) ];
-        _titleLabel.font =[UIFont systemFontOfSize:18];
+        _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 5*HEIGHT_SIZE,200*NOW_SIZE, 30*HEIGHT_SIZE) ];
+        _titleLabel.font =[UIFont systemFontOfSize:16*HEIGHT_SIZE];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment =NSTextAlignmentLeft;
         [_titleView addSubview:_titleLabel];
         
-        _statusLabel =[[UILabel alloc]initWithFrame:CGRectMake(205*NOW_SIZE, 5*NOW_SIZE,SCREEN_WIDTH-215*NOW_SIZE, 30*NOW_SIZE) ];
-        _statusLabel.font =[UIFont systemFontOfSize:18];
+        _statusLabel =[[UILabel alloc]initWithFrame:CGRectMake(205*NOW_SIZE, 5*HEIGHT_SIZE,SCREEN_WIDTH-215*NOW_SIZE, 30*HEIGHT_SIZE) ];
+        _statusLabel.font =[UIFont systemFontOfSize:16*HEIGHT_SIZE];
         _statusLabel.textColor = [UIColor whiteColor];
         _statusLabel.textAlignment =NSTextAlignmentRight;
         [_titleView addSubview:_statusLabel];
@@ -45,7 +45,7 @@
     
         
         _contentLabel =[[UILabel alloc]init];
-        _contentLabel.font =[UIFont systemFontOfSize:18];
+        _contentLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         _contentLabel.textColor = [UIColor grayColor];
         _contentLabel.textAlignment =NSTextAlignmentLeft;
         _contentLabel.numberOfLines=0;
@@ -54,7 +54,7 @@
         [self addSubview:_contentLabel];
         
        _timeLabel=[[UILabel alloc]init];
-       _timeLabel.font =[UIFont systemFontOfSize:16];
+       _timeLabel.font =[UIFont systemFontOfSize:12*HEIGHT_SIZE];
         _timeLabel.textColor = [UIColor grayColor];
         _timeLabel.textAlignment =NSTextAlignmentRight;
         [self.contentView addSubview:_timeLabel];

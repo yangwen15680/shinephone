@@ -132,7 +132,7 @@
 
 - (void)_createHeaderView {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*NOW_SIZE)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
     _tableView.tableHeaderView = headerView;
     
   _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
@@ -144,7 +144,7 @@
             [_scrollerView addSubview:imageView];
             
              _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,headerView.bounds.size.height);
-            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
+            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
             _pageControl.numberOfPages = _imageArray.count;
         }
     }else{
@@ -157,7 +157,7 @@
         [_scrollerView addSubview:imageView];
         
         _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headerView.bounds.size.height);
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20,Kwidth,20)];
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
         _pageControl.numberOfPages = imgArray.count;
          }
     }
@@ -182,7 +182,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65*NOW_SIZE;
+    return 65*HEIGHT_SIZE;
     
 }
 

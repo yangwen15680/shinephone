@@ -22,9 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=root_WO_tupian;
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
-    _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 20*NOW_SIZE, 240*NOW_SIZE, 240*NOW_SIZE)];
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
+    self.view.backgroundColor=MainColor;
+    _imageView=[[UIImageView alloc]initWithFrame:CGRectMake(40*NOW_SIZE, 20*HEIGHT_SIZE, 240*NOW_SIZE, 240*HEIGHT_SIZE)];
     _imageView.contentMode=UIViewContentModeScaleAspectFill;
     _imageView.clipsToBounds=YES;
     [self.view addSubview:_imageView];
@@ -66,9 +67,10 @@
 //    [self.view addSubview:addButton];
     
     _goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    _goBut.frame=CGRectMake(60*NOW_SIZE,280*NOW_SIZE, 200*NOW_SIZE, 40*NOW_SIZE);
-    [_goBut.layer setMasksToBounds:YES];
-    [_goBut.layer setCornerRadius:25.0];
+    _goBut.frame=CGRectMake(60*NOW_SIZE,280*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+//    [_goBut.layer setMasksToBounds:YES];
+//    [_goBut.layer setCornerRadius:25.0];
+      _goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [_goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [_goBut setTitle:root_finish forState:UIControlStateNormal];
     [_goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];

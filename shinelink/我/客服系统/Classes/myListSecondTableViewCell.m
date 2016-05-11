@@ -35,30 +35,30 @@
         _titleView.backgroundColor=mainColor;
         [self addSubview:_titleView];
         
-        _image=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 10*NOW_SIZE, 40*NOW_SIZE,40*NOW_SIZE )];
+        _image=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 10*HEIGHT_SIZE, 40*NOW_SIZE,40*HEIGHT_SIZE )];
         
         [self.contentView addSubview:_image];
         
         
-        _picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 10*NOW_SIZE,100*NOW_SIZE, 15*NOW_SIZE)];
+        _picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 10*HEIGHT_SIZE,100*NOW_SIZE, 15*HEIGHT_SIZE)];
         _picLabel.text=root_ME_chakan_tupian;
         _picLabel.textColor=[UIColor blueColor];
         _picLabel.textAlignment = NSTextAlignmentCenter;
-        _picLabel.font = [UIFont systemFontOfSize:16*NOW_SIZE];
+        _picLabel.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
       //  _picLabel.userInteractionEnabled=YES;
        // UITapGestureRecognizer * labelTap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GetPhoto)];
        // [_picLabel addGestureRecognizer:labelTap1];
         [self.contentView addSubview:_picLabel];
         
         
-        _nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 10*NOW_SIZE,150*NOW_SIZE, 15*NOW_SIZE) ];
-        _nameLabel.font =[UIFont systemFontOfSize:14];
+        _nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 10*HEIGHT_SIZE,150*NOW_SIZE, 15*HEIGHT_SIZE) ];
+        _nameLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         _nameLabel.textColor = [UIColor blackColor];
         _nameLabel.textAlignment =NSTextAlignmentLeft;
         [self.contentView addSubview:_nameLabel];
         
-        _timeLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 32*NOW_SIZE,150*NOW_SIZE, 15*NOW_SIZE) ];
-        _timeLabel.font =[UIFont systemFontOfSize:14];
+        _timeLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 32*HEIGHT_SIZE,150*NOW_SIZE, 15*HEIGHT_SIZE) ];
+        _timeLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         _timeLabel.textColor = [UIColor blackColor];
         _timeLabel.textAlignment =NSTextAlignmentLeft;
         [self.contentView addSubview:_timeLabel];
@@ -66,7 +66,7 @@
         
         
         _contentLabel =[[UILabel alloc]init];
-        _contentLabel.font =[UIFont systemFontOfSize:12];
+        _contentLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
         _contentLabel.textColor = [UIColor grayColor];
         _contentLabel.textAlignment =NSTextAlignmentLeft;
         _contentLabel.numberOfLines=0;
