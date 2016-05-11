@@ -28,14 +28,18 @@
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
     
-    for(int i=0;i<_picArray.count;i++){
+    for(int i=0;i<_picArray.count-1;i++){
     [self showProgressView];
     [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"userId":userID,@"imageName":_picArray[i]} paramarsSite:@"/questionAPI.do?op=getQuestionImg" sucessBlock:^(id content) {
         [self hideProgressView];
          NSLog(@"getQuestionImg=: %@", content);
         
         [_imageArray addObject:content];
-            [self initUI];
+        
+        if (_imageArray.count==(_picArray.count-1)) {
+              [self initUI];
+        }
+        
         
     } failure:^(NSError *error) {
         [self hideProgressView];
@@ -50,13 +54,13 @@
 
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 50*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 0*NOW_SIZE, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,900*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
     for (int i=0; i<_imageArray.count; i++) {
-        UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(50*NOW_SIZE, 10*NOW_SIZE+i*240*NOW_SIZE, 220*NOW_SIZE,220*NOW_SIZE )];
+        UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(50*NOW_SIZE, 10*HEIGHT_SIZE+i*240*HEIGHT_SIZE, 220*NOW_SIZE,220*HEIGHT_SIZE )];
       
         image2.image = _imageArray[i];
         [_scrollView addSubview:image2];

@@ -18,11 +18,13 @@
 @interface listViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *titleArray;
+@property(nonatomic,strong)NSMutableArray *questionTypeArray;
 @property(nonatomic,strong)NSMutableArray *statusArray;
 @property(nonatomic,strong)NSMutableArray *contentArray;
 @property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *allArray;
 @property(nonatomic,strong)NSMutableArray *questionID;
+@property(nonatomic,strong)NSMutableArray *questionPicArray;
 @property(nonatomic,strong)NSString *delQuestionID;
 
 @end
@@ -40,6 +42,8 @@
         self.contentArray =[NSMutableArray array];
         self.timeArray =[NSMutableArray array];
     self.questionID=[NSMutableArray array];
+    self.questionTypeArray=[NSMutableArray array];
+    self.questionPicArray=[NSMutableArray array];
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"userId":userID} paramarsSite:@"/questionAPI.do?op=questionList" sucessBlock:^(id content) {
@@ -54,12 +58,17 @@
                 NSString *contentS1=[NSString stringWithFormat:@"%@",content[i][@"content"]];
                 NSString *time=[NSString stringWithFormat:@"%@",content[i][@"lastTime"]];
                  NSString *question=[NSString stringWithFormat:@"%@",content[i][@"id"]];
+                NSString *questiontype=[NSString stringWithFormat:@"%@",content[i][@"questionType"]];
+                 NSString *questionPIC=[NSString stringWithFormat:@"%@",content[i][@"attachment"]];
+                NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
+                
+                 [_questionPicArray addObject:PIC];
                 [_titleArray addObject:title];
               [_statusArray addObject:status];
                   [_contentArray addObject:contentS1];
                   [_timeArray addObject:time];
                  [_questionID addObject:question];
-                
+                 [_questionTypeArray addObject:questiontype];
             }
             
         self.navigationItem.title = root_ME_wenti_liebiao;
@@ -144,6 +153,8 @@
 {
     myListSecond *second=[[myListSecond alloc]init];
     second.qusetionId=_questionID[indexPath.row];
+    second.qusetionType=_questionTypeArray[indexPath.row];
+    second.questionPicArray=[NSMutableArray arrayWithArray:_questionPicArray[indexPath.row]];
     [self.navigationController pushViewController:second animated:NO];
     
     

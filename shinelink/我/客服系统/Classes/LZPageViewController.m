@@ -70,7 +70,7 @@ static NSString *mainCell = @"mainCellmainCell";
     }else{
         self.title = @"客户服务";
         
-        UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 0, 15*NOW_SIZE, 15*NOW_SIZE)];
+        UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 0, 15*HEIGHT_SIZE, 15*HEIGHT_SIZE)];
         [addButton setBackgroundImage:[UIImage imageNamed:@"add@2x.png"] forState:UIControlStateNormal];
         [addButton addTarget:self action:@selector(doAdd) forControlEvents:UIControlEventTouchUpInside];
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:addButton];

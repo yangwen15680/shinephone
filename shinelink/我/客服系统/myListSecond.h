@@ -11,5 +11,7 @@
 @interface myListSecond : RootViewController
 
 @property(nonatomic,strong)NSString *qusetionId;
+@property(nonatomic,strong)NSString *qusetionType;
+@property(nonatomic,strong)NSMutableArray *questionPicArray;
 
 @end

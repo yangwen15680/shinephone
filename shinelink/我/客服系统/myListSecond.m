@@ -109,12 +109,16 @@
                 NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
                 NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
                 NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
-                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
+                //NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
+                NSString *questionPIC=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
+                NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
+                
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];
                 [_contentArray addObject:contentA];
-                  [_imageName addObject:imageNameA];
+                  [_imageName addObject:PIC];
+                
             }
             [self initUI];
             
@@ -142,6 +146,19 @@
         [_scrollView addSubview:PV1Lable];
     }
     
+    if (_questionPicArray.count>1) {
+        UILabel *_picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 96*HEIGHT_SIZE,100*NOW_SIZE, 28*HEIGHT_SIZE)];
+        _picLabel.text=root_ME_chakan_tupian;
+        _picLabel.textColor=[UIColor blueColor];
+        _picLabel.textAlignment = NSTextAlignmentCenter;
+        _picLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+        _picLabel.userInteractionEnabled=YES;
+        UITapGestureRecognizer * labelTap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GetPhoto)];
+        [_picLabel addGestureRecognizer:labelTap1];
+        [_scrollView addSubview:_picLabel];
+    }
+   
+  
     for(int i=0;i<2;i++)
     {
         UIView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 42*HEIGHT_SIZE+Size1*i, 310*NOW_SIZE,1*HEIGHT_SIZE )];
@@ -152,7 +169,7 @@
         if (i==0) {
                PV2Lable.text=_titleString;
         }else{
-          PV2Lable.text=_typeString;
+          PV2Lable.text=_qusetionType;
         }
         
         PV2Lable.textAlignment=NSTextAlignmentLeft;
@@ -174,6 +191,7 @@
     _tableView =[[UITableView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 6*HEIGHT_SIZE+Size1*3, 300*NOW_SIZE,290*HEIGHT_SIZE )];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
        [_scrollView addSubview:_tableView];
     
     UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 315*HEIGHT_SIZE+Size1*3, 310*NOW_SIZE,30*HEIGHT_SIZE )];
@@ -193,6 +211,9 @@
     [image3 addSubview:answerLable];
     
 }
+
+
+
 
 -(void)Answer{
     AnswerViewController *AN=[[AnswerViewController alloc]init];
@@ -215,9 +236,11 @@
     }else{
     cell.image.image = IMAGE(@"client@3x.png");
     }
-    if ([_imageName[indexPath.row] containsString:@".png"] || [_imageName[indexPath.row] containsString:@".jpg"]) {
+      NSMutableArray *PICarray=[NSMutableArray arrayWithArray:_imageName[indexPath.row]];
+    
+    if (PICarray.count>1) {
         cell.picLabel.hidden=NO;
-        [cell.picArray addObject:_imageName[indexPath.row]];
+        [cell.picArray addObject:PICarray];
     }else{
         cell.picLabel.hidden=YES;
     }
@@ -255,17 +278,25 @@
     
 }
 
+-(void)GetPhoto{
+    GetServerViewController *get=[[GetServerViewController alloc]init];
+    
+    get.picArray=[NSMutableArray arrayWithArray:_questionPicArray];
+    
+    [self.navigationController pushViewController:get animated:NO];
+
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-  if ([_imageName[indexPath.row] containsString:@".png"] || [_imageName[indexPath.row] containsString:@".jpg"])
+    NSMutableArray *PICarray=[NSMutableArray arrayWithArray:_imageName[indexPath.row]];
+  if (PICarray.count>1)
   {
      // NSMutableArray *test=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
       
       GetServerViewController *get=[[GetServerViewController alloc]init];
       
-      get.picArray=[NSMutableArray arrayWithObject:_imageName[indexPath.row]];
-      get.picString=_imageName[indexPath.row];
+      get.picArray=[NSMutableArray arrayWithArray:PICarray];
       
       [self.navigationController pushViewController:get animated:NO];
   }

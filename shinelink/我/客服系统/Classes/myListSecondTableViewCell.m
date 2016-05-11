@@ -44,7 +44,7 @@
         _picLabel.text=root_ME_chakan_tupian;
         _picLabel.textColor=[UIColor blueColor];
         _picLabel.textAlignment = NSTextAlignmentCenter;
-        _picLabel.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+        _picLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
       //  _picLabel.userInteractionEnabled=YES;
        // UITapGestureRecognizer * labelTap1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GetPhoto)];
        // [_picLabel addGestureRecognizer:labelTap1];
