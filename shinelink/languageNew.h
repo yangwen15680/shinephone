@@ -71,6 +71,8 @@
 #define  root_chaoChu_shuLiang       NSLocalizedString(@"超出版本限制注册用户数量", nil)
 #define  root_fuWuQi_cuoWu      NSLocalizedString(@"服务器错误", nil)
 #define  root_zhuCe_cuoWu       NSLocalizedString(@"注册错误", nil)
+#define  root_caijiqi_cuowu       NSLocalizedString(@"采集器序列号或校验码错误", nil)
+#define  root_dailishang_cuowu       NSLocalizedString(@"代理商编码错误", nil)
 #define  root_zhuCe_chengGong      NSLocalizedString(@"注册成功", nil)
 #define  root_yongHu_yi_shiYong       NSLocalizedString(@"用户名已被使用", nil)
 

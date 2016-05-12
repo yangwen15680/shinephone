@@ -24,9 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=root_WO_zijin;
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
-    
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
+     self.view.backgroundColor=MainColor;
     [self requestData];
 }
 

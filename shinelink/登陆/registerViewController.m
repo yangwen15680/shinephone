@@ -180,7 +180,7 @@
 
 -(void)PresentGo{
     NSArray *array=[[NSArray alloc]initWithObjects:root_Enter_your_username,root_Enter_your_pwd,root_chongFu_shuRu_miMa,root_Enter_email,root_Enter_phone_number,root_shuRu_daiLiShangBianHao,nil];
-    for (int i=0; i<array.count; i++) {
+    for (int i=0; i<array.count-1; i++) {
         if ([[_textFieldMutableArray[i] text] isEqual:@""]) {
             [self showToastViewWithTitle:array[i]];
             return;

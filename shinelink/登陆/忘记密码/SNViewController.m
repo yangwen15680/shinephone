@@ -48,9 +48,9 @@
     _cellectId.placeholder = root_caiJiQi;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
-    [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectId setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectId.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
+    [_cellectId setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_cellectId setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectId.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [userBgImageView addSubview:_cellectId];
     
     //数据采集器效验码
@@ -63,9 +63,9 @@
     _cellectNo.placeholder = root_jiaoYanMa;
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
-    [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectNo setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectNo.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
+    [_cellectNo setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_cellectNo setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectNo.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [pwdBgImageView addSubview:_cellectNo];
     
     

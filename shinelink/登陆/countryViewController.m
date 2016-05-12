@@ -52,6 +52,7 @@
     label.textColor=[UIColor whiteColor];
     [self.view addSubview:label];
     
+    
 //    UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,240*NOW_SIZE-50*NOW_SIZE, 260*NOW_SIZE, 0.5)];
 //    line.backgroundColor=[UIColor whiteColor];
 //    [self.view addSubview:line];
@@ -61,10 +62,10 @@
     _label.layer.cornerRadius=5;
     _label.layer.borderColor=[UIColor whiteColor].CGColor;
     _label.text =root_country_alet;
-    _label.textColor = [UIColor whiteColor];
+    _label.textColor = [UIColor lightTextColor];
     //textField.tintColor = [UIColor whiteColor];
     _label.textAlignment = NSTextAlignmentCenter;
-    _label.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    _label.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.view addSubview:_label];
     _label.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(pickadress)];
@@ -86,10 +87,10 @@
     _label2.layer.cornerRadius=5;
     _label2.layer.borderColor=[UIColor whiteColor].CGColor;
     _label2.text =root_weiZhi_tiShi;
-    _label2.textColor = [UIColor whiteColor];
+    _label2.textColor = [UIColor lightTextColor];
     //textField.tintColor = [UIColor whiteColor];
     _label2.textAlignment = NSTextAlignmentCenter;
-    _label2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    _label2.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.view addSubview:_label2];
     _label2.userInteractionEnabled=YES;
     UITapGestureRecognizer *tap2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fetchLocation)];

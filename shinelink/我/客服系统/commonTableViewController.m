@@ -7,17 +7,20 @@
 //
 
 #import "commonTableViewController.h"
+#import "Common2ViewController.h"
 
 @interface commonTableViewController ()
-@property(nonatomic,strong)NSMutableArray *dataArray;
+@property(nonatomic,strong)NSMutableArray *idArray;
+@property(nonatomic,strong)NSMutableArray *titleArray;
 @end
 
 @implementation commonTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self netCommon];
           self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-      self.dataArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
+    //  self.dataArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         
@@ -33,10 +36,42 @@
 
 -(void)netCommon{
 
-
+    _idArray=[NSMutableArray array];
+    _titleArray=[NSMutableArray array];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/questionAPI.do?op=getUsualQuestionList" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"getUsualQuestionList=: %@", content);
+    
+        if(content){
+                NSMutableArray *allDic=[NSMutableArray arrayWithArray:content];
+            for (int i=0; i<allDic.count; i++) {
+                [_idArray addObject:allDic[i][@"id"]];
+                [_titleArray addObject:allDic[i][@"title"]];
+            }
+            
+            [self.tableView reloadData];
+       }
+   
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+       
+    }];
 
 }
 
+- (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelTitle{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:cancelTitle otherButtonTitles:nil];
+    [alertView show];
+}
+
+- (void)showProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+}
+
+- (void)hideProgressView {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+}
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -69,7 +104,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _dataArray.count;
+    return _idArray.count;
 }
 
 
@@ -79,9 +114,9 @@
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.textLabel.text=_dataArray[indexPath.row];
+    cell.textLabel.text=_titleArray[indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-     cell.textLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
+     cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
     return cell;
 }
 
@@ -90,6 +125,24 @@
     return 50*HEIGHT_SIZE;
     
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Common2ViewController *go=[[Common2ViewController alloc]init];
+    go.titleString=_titleArray[indexPath.row];
+    go.idString=_idArray[indexPath.row];
+    
+ [self.navigationController pushViewController:go animated:NO];
+    
+    
+}
+
+
+
+
+
+
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -29,9 +29,9 @@
     _cellectId.placeholder = root_Alet_user_messge;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
-    [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectId setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectId.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
+    [_cellectId setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_cellectId setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectId.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [userBgImageView addSubview:_cellectId];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];

@@ -452,7 +452,7 @@
             _head31=[headC objectAtIndex:0];
             _head32=[headC objectAtIndex:1];
             
-        }else{
+        }else if ([_typeArr containsObject:@"inverter"]){
             _head13=@"Revenue";
             _head23=@"E-today PV";
             _head33=@"Ppv";

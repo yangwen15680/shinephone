@@ -30,10 +30,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=root_register;
-    UIImage *bgImage = IMAGE(@"bg.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+//    UIImage *bgImage = IMAGE(@"bg.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
    // self.title=@"配置设备";
-    
+    self.view.backgroundColor=MainColor;
     [self initUI];
 }
 
@@ -60,9 +60,9 @@
     _cellectId.placeholder = root_caiJiQi;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
-    [_cellectId setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectId setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectId.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
+    [_cellectId setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_cellectId setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectId.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [userBgImageView addSubview:_cellectId];
     
     //数据采集器效验码
@@ -75,9 +75,9 @@
     _cellectNo.placeholder = root_jiaoYanMa;
     _cellectNo.textColor = [UIColor grayColor];
     _cellectNo.tintColor = [UIColor grayColor];
-    [_cellectNo setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
-    [_cellectNo setValue:[UIFont systemFontOfSize:11*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
-    _cellectNo.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
+    [_cellectNo setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [_cellectNo setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    _cellectNo.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [pwdBgImageView addSubview:_cellectNo];
     
  
@@ -231,32 +231,34 @@
     NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
  
     [self showProgressView];
- [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+ [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?op=checkUserExist" sucessBlock:^(id content) {
      NSLog(@"checkUserExist: %@", content);
      [self hideProgressView];
      if (content) {
          if ([content[@"success"] integerValue] == 0) {
-             [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?action=creatAccount" sucessBlock:^(id content) {
+             [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?op=creatAccount" sucessBlock:^(id content) {
                  NSLog(@"creatAccount: %@", content);
                  [self hideProgressView];
                  if (content) {
-                     if ([content[@"back"][@"success"] integerValue] == 0) {
+                     if ([content[@"success"] integerValue] == 0) {
                          //注册失败
-                         if ([content[@"back"][@"msg"] isEqual:@"error_userCountLimit"]) {
+                         if ([content[@"msg"] isEqual:@"501"]) {
                              [self showAlertViewWithTitle:nil message:root_chaoChu_shuLiang cancelButtonTitle:root_Yes];
-                         }else if ([content[@"back"][@"msg"] isEqual:@"server error."]){
+                         }else if ([content[@"msg"] isEqual:@"server error."]){
                              
                                  [self showAlertViewWithTitle:nil message:root_fuWuQi_cuoWu cancelButtonTitle:root_Yes];
                          }
-                         else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
+                         else if ([content[@"msg"] isEqual:@"602"]){
                              
                                  [self showAlertViewWithTitle:nil message:root_zhuCe_cuoWu cancelButtonTitle:root_Yes];
+                         }else if ([content[@"msg"] isEqual:@"506"]){
+                             
+                             [self showAlertViewWithTitle:nil message:root_caijiqi_cuowu cancelButtonTitle:root_Yes];
+                         }else if ([content[@"msg"] isEqual:@"error_agentCodeNotExist"]){
+                             
+                             [self showAlertViewWithTitle:nil message:root_dailishang_cuowu cancelButtonTitle:root_Yes];
                          }
-                         else{
-                             //注册成功
-                             [self succeedRegister];
-                              [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
-                             }
+                         
                           }
                 else {
                          //注册成功

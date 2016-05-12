@@ -25,15 +25,15 @@
 @implementation addDevice
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *bgImage =  IMAGE(@"bg4.png");
+//    UIImage *bgImage =  IMAGE(@"bg4.png");
   _param1=@"";
       _param2=@"";
       _param3=@"";
       _param1Name=@"";
     _param2Name=@"";
     _param3Name=@"";
-    
-    self.view.layer.contents = (id)bgImage.CGImage;
+    self.view.backgroundColor=MainColor;
+//    self.view.layer.contents = (id)bgImage.CGImage;
   //  self.title=@"配置设备";
     
     [self initUI];
