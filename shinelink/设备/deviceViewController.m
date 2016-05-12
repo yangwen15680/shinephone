@@ -898,12 +898,21 @@
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section==0) {
+    
+        if (section==0) {
         return root_yi_peiZhi;
     }
     else{
         return  root_wei_peiZhi;
     }
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+
+{
+    
+    return 30*HEIGHT_SIZE;
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

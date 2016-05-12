@@ -31,6 +31,13 @@
     }
 }
 
+-(void)netCommon{
+
+
+
+}
+
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -74,11 +81,15 @@
     }
     cell.textLabel.text=_dataArray[indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    
+     cell.textLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     return cell;
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 50*HEIGHT_SIZE;
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

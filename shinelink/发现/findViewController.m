@@ -38,7 +38,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+  
+
+    
+   
     [self.navigationController.navigationBar setTitleTextAttributes:@{
                                                                       NSForegroundColorAttributeName :[UIColor whiteColor]
                                                                       }];
@@ -119,7 +122,9 @@
 
 - (void)_createTableView {
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,Kwidth,SCREEN_Height) style:UITableViewStylePlain];
+//        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-NavigationbarHeight);
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,Kwidth,self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-10*HEIGHT_SIZE) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

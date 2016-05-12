@@ -39,15 +39,29 @@
     _cellectId.font = [UIFont systemFontOfSize:11*HEIGHT_SIZE];
     [userBgImageView addSubview:_cellectId];
     
+//    UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+//    goBut.frame=CGRectMake(40*NOW_SIZE,140*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
+////    [goBut.layer setMasksToBounds:YES];
+////    [goBut.layer setCornerRadius:25.0];
+//    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+//    [goBut setTitle:root_OK forState:UIControlStateNormal];
+//    goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
+//    [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:goBut];
+    
+    
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(40*NOW_SIZE,140*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
-    [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+    goBut.frame=CGRectMake(40*NOW_SIZE,210*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
+    //    [goBut.layer setMasksToBounds:YES];
+    //    [goBut.layer setCornerRadius:25.0];
+    //goBut.backgroundColor = [UIColor colorWithRed:130/255.0f green:200/255.0f blue:250/255.0f alpha:1];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
     goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
+    
     [goBut addTarget:self action:@selector(addButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:goBut];
+    
 }
 
 -(void)addButtonPressed{

@@ -9,8 +9,8 @@
 #import "productViewController.h"
 #import "imageBig.h"
 
-  #define  headH 200*NOW_SIZE
-  #define  headH2 120*NOW_SIZE
+  #define  headH 200*HEIGHT_SIZE
+  #define  headH2 120*HEIGHT_SIZE
 #define Kwidth [UIScreen mainScreen].bounds.size.width
 @interface productViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 
@@ -78,25 +78,26 @@
     _scrollView2.contentSize = CGSizeMake(SCREEN_Width,1000*NOW_SIZE);
     [self.view addSubview:_scrollView2];
     
-    _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*NOW_SIZE+headH, 300*NOW_SIZE,25*NOW_SIZE )];
+    _title1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*HEIGHT_SIZE+headH, 300*NOW_SIZE,25*HEIGHT_SIZE )];
     _title1.text=_name2;
     _title1.textAlignment=NSTextAlignmentCenter;
     _title1.textColor=COLOR(0, 0, 0, 1);
-    _title1.font = [UIFont systemFontOfSize:18*NOW_SIZE];
+    _title1.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
     [_scrollView2 addSubview:_title1];
     
-    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*NOW_SIZE+30*NOW_SIZE+headH, 300*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line3=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,10*HEIGHT_SIZE+30*HEIGHT_SIZE+headH, 300*NOW_SIZE,1*HEIGHT_SIZE )];
     line3.backgroundColor=[UIColor grayColor];
     [_scrollView2 addSubview:line3];
     
-    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*NOW_SIZE+headH, 300*NOW_SIZE,headH2)];
+    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*HEIGHT_SIZE+headH, 300*NOW_SIZE,headH2)];
     _detail.text=_feature2;
+     _detail.editable=NO;
     _detail.textAlignment=NSTextAlignmentLeft;
     _detail.textColor=COLOR(60, 60, 60, 1);
-    _detail.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    _detail.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_scrollView2 addSubview:_detail];
     
-    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,55*NOW_SIZE+headH+headH2, 300*NOW_SIZE,1*NOW_SIZE )];
+    UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,55*HEIGHT_SIZE+headH+headH2, 300*NOW_SIZE,1*HEIGHT_SIZE )];
     line4.backgroundColor=[UIColor grayColor];
     [_scrollView2 addSubview:line4];
     
@@ -104,23 +105,23 @@
 
 -(void)uiTwo{
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 60*NOW_SIZE+headH+headH2, SCREEN_Width/2, 20*NOW_SIZE);
+    self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 60*HEIGHT_SIZE+headH+headH2, SCREEN_Width/2, 20*HEIGHT_SIZE);
     [self.dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-   // [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-  //  [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.dayButton.tag = 1000;
     [self.dayButton setTitle:root_ME_gaisu forState:UIControlStateNormal];
-    self.dayButton.selected = YES;
+//    self.dayButton.selected = YES;
     [self.dayButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView2 addSubview:self.dayButton];
     
     self.monthButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.monthButton.frame = CGRectMake(1 * SCREEN_Width/2, 60*NOW_SIZE+headH+headH2, SCREEN_Width/2, 20*NOW_SIZE);
+    self.monthButton.frame = CGRectMake(1 * SCREEN_Width/2, 60*HEIGHT_SIZE+headH+headH2, SCREEN_Width/2, 20*HEIGHT_SIZE);
     [self.monthButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateNormal];
-   // [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateHighlighted];
-    //[self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*NOW_SIZE)] forState:UIControlStateSelected];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.monthButton.tag = 1001;
     [self.monthButton setTitle:root_ME_canshu forState:UIControlStateNormal];
     [self.monthButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -144,18 +145,19 @@
 
 -(void)uiThree{
 
-    _detail2=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*NOW_SIZE+headH+headH2+25*NOW_SIZE, 300*NOW_SIZE,400*NOW_SIZE)];
+    _detail2=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*HEIGHT_SIZE+headH+headH2+25*HEIGHT_SIZE, 300*NOW_SIZE,400*HEIGHT_SIZE)];
     _detail2.text=_outline2;
+      _detail2.editable=NO;
     _detail2.textAlignment=NSTextAlignmentLeft;
     _detail2.textColor=COLOR(60, 60, 60, 1);
-    _detail2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
+    _detail2.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_scrollView2 addSubview:_detail2];
     
 }
 
 -(void)uiFour{
     
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE,60*NOW_SIZE+headH+headH2+25*NOW_SIZE, 300*NOW_SIZE,400*NOW_SIZE)];
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE,60*HEIGHT_SIZE+headH+headH2+25*HEIGHT_SIZE, 300*NOW_SIZE,400*HEIGHT_SIZE)];
     _imageView.image = _paramsArray[0];
         [_imageView setUserInteractionEnabled:YES];
     [_scrollView2 addSubview:_imageView];
