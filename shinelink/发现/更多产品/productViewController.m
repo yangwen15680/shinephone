@@ -55,7 +55,7 @@
 }
 
 -(void)netProduct{
-    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_paramImage} paramarsSite:@"/newMoreProductAPI.do?op=getProductParamImage" sucessBlock:^(id content2) {
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_paramImage} paramarsSite:@"/newProductAPI.do?op=getProductParamImage" sucessBlock:^(id content2) {
         
         [self hideProgressView];
         NSLog(@"getProductParamImage=: %@", content2);
