@@ -222,7 +222,7 @@
 #define root_device_type       NSLocalizedString(@"device type", @"device type")
 
 #define root_Add       NSLocalizedString(@"Add", @"Add")
-#define root_Modified       NSLocalizedString(vvvv, @"Modified")
+#define root_Modified       NSLocalizedString("Modified", @"Modified")
 #define root_Delete       NSLocalizedString(@"Delete", @"Delete")
 #define root_Aliases_can_not_be_empty       NSLocalizedString(@"Aliases can not be empty", @"Aliases can not be empty")
 #define root_Successfully_modified       NSLocalizedString(@"Successfully modified", @"Successfully modified")

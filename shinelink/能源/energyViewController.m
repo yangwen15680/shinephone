@@ -46,7 +46,7 @@
     monthDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
     dayDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
     dayArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_ri,root_energy_chuneng_zuihaodian,root_energy_chuneng_ri,root_energy_chuneng_ri, nil];
-    imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"光伏收益.png",@"光伏电量.png", nil];
+    imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"solar4.png",@"storage4.png", nil];
     // Do any additional setup after loading the view.
     [self _createTableView];
     [self netEnergy];
@@ -132,7 +132,7 @@
         
         [cell.coverImageView  setImage:[UIImage imageNamed:imageArray[indexPath.row]]];
         cell.titleLabel.text = nameArray[indexPath.row];
-        cell.titleLabel.textColor = [UIColor orangeColor];
+        cell.titleLabel.textColor = [UIColor blackColor];
         cell.stateValue.text = monthDateArray[indexPath.row];
         cell.electricValue.text =dayDateArray[indexPath.row];
             cell.state.text=monthArray[indexPath.row];

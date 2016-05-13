@@ -227,7 +227,7 @@
     totalPowerArray=[NSMutableArray array];
     SNArray=[NSMutableArray array];
     imageStatueArray=[NSMutableArray array];
-    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter.png", @"储能机.png", @"PowerRegulator.png",@"充电桩.png",nil];
+    imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter2.png", @"储能机.png", @"PowerRegulator.png",@"充电桩.png",nil];
     nameArray2=[[NSMutableArray alloc]initWithObjects:root_niBianQi, root_chuNengJi, root_chongDianZhuang, root_gongLvTiaoJieQi,  nil];
     statueArray2=[[NSMutableArray alloc]initWithObjects:root_wei_LianJie, root_wei_LianJie, root_wei_LianJie,root_wei_LianJie,nil];
     powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", @"5000KW",  nil];
@@ -416,7 +416,7 @@
 //            else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
            
             if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"inverter"]) {
-                 [imageArray addObject:@"inverter.png"];
+                 [imageArray addObject:@"inverter2.png"];
                 NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"power"]];
                 [powerArray addObject:PO];
                 NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"eToday"]];
@@ -1023,7 +1023,7 @@
             
         }
             cell.titleLabel.text = getDevice.name;
-        cell.titleLabel.textColor = [UIColor orangeColor];
+        cell.titleLabel.textColor = MainColor;
        
      cell.powerValue.text = getDevice.power;
      cell.electricValue.text =getDevice.dayPower;

@@ -111,7 +111,7 @@
     [_scrollView addSubview:userBgImageView];
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
-    self.userTextField.placeholder = root_Enter_your_username;
+    self.userTextField.placeholder = root_Alet_user_messge;
     self.userTextField.textColor = [UIColor whiteColor];
     self.userTextField.tintColor = [UIColor whiteColor];
     [self.userTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
@@ -126,7 +126,7 @@
     [_scrollView addSubview:pwdBgImageView];
     
     self.pwdTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(pwdBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
-    self.pwdTextField.placeholder = root_Enter_your_pwd;
+    self.pwdTextField.placeholder = root_Alet_user_pwd;
     self.pwdTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.pwdTextField.secureTextEntry = YES;
     self.pwdTextField.textColor = [UIColor whiteColor];

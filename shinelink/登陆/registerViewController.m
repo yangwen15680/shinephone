@@ -81,7 +81,7 @@
        _backScroll.contentSize = CGSizeMake(SCREEN_Width,750*NOW_SIZE);
     [self.view addSubview:_backScroll];
     
-    NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",@"iconfont-shouji.png",nil];
+    NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",@"bianhao.png",nil];
     NSArray *labelArray=[NSArray arrayWithObjects:root_yongHuMing, root_Mima, root_chongFu_miMa,root_dianzZiYouJian, root_DianHua, root_daiLiShangBianHao,nil];
     NSArray *textFieldArray=[NSArray arrayWithObjects:root_Enter_your_username,root_Enter_your_pwd, root_chongFu_shuRu_miMa, root_Enter_email, root_Enter_phone_number,root_shuRu_daiLiShangBianHao, nil];
    
@@ -162,11 +162,11 @@
 
 
 //判断是否是正确的email
-//-(BOOL)isValidateEmail:(NSString *)email {
-//    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
-//    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-//    return [emailTest evaluateWithObject:email];
-//}
+-(BOOL)isValidateEmail:(NSString *)email {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:email];
+}
 
 
 
@@ -202,10 +202,10 @@
         return;
     }
     
-//    if (![self isValidateEmail:[_textFieldMutableArray[3] text]]) {
-//        [self showToastViewWithTitle:@"请输入正确邮箱格式"];
-//        return;
-//    }
+    if (![self isValidateEmail:[_textFieldMutableArray[3] text]]) {
+        [self showToastViewWithTitle:@"请输入正确邮箱格式"];
+        return;
+    }
 //    if (![self isValidateTel:[_textFieldMutableArray[4] text]]) {
 //        [self showToastViewWithTitle:@"请输入正确电话"];
 //        return;

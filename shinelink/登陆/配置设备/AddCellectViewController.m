@@ -122,32 +122,34 @@
     [_dataDic setObject:_cellectNo.text forKey:@"regValidateCode"];
     
     NSDictionary *userCheck=[NSDictionary dictionaryWithObject:[_dataDic objectForKey:@"regUserName"] forKey:@"regUserName"];
-    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?action=checkUserExist" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethod:HEAD_URL paramars:userCheck paramarsSite:@"/newRegisterAPI.do?op=checkUserExist" sucessBlock:^(id content) {
         NSLog(@"checkUserExist: %@", content);
         [self hideProgressView];
         if (content) {
             if ([content[@"success"] integerValue] == 0) {
-                [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?action=creatAccount" sucessBlock:^(id content) {
+                [BaseRequest requestWithMethod:HEAD_URL paramars:_dataDic paramarsSite:@"/newRegisterAPI.do?op=creatAccount" sucessBlock:^(id content) {
                     NSLog(@"creatAccount: %@", content);
                     [self hideProgressView];
                     if (content) {
-                        if ([content[@"back"][@"success"] integerValue] == 0) {
+                        if ([content[@"success"] integerValue] == 0) {
                             //注册失败
-                            if ([content[@"back"][@"msg"] isEqual:@"error_userCountLimit"]) {
+                            if ([content[@"msg"] isEqual:@"501"]) {
                                 [self showAlertViewWithTitle:nil message:root_chaoChu_shuLiang cancelButtonTitle:root_Yes];
-                            }else if ([content[@"back"][@"msg"] isEqual:@"server error."]){
+                            }else if ([content[@"msg"] isEqual:@"server error."]){
                                 
                                 [self showAlertViewWithTitle:nil message:root_fuWuQi_cuoWu cancelButtonTitle:root_Yes];
                             }
-                            else if ([content[@"back"][@"msg"] isEqual:@"register error."]){
+                            else if ([content[@"msg"] isEqual:@"602"]){
                                 
                                 [self showAlertViewWithTitle:nil message:root_zhuCe_cuoWu cancelButtonTitle:root_Yes];
+                            }else if ([content[@"msg"] isEqual:@"506"]){
+                                
+                                [self showAlertViewWithTitle:nil message:root_caijiqi_cuowu cancelButtonTitle:root_Yes];
+                            }else if ([content[@"msg"] isEqual:@"error_agentCodeNotExist"]){
+                                
+                                [self showAlertViewWithTitle:nil message:root_dailishang_cuowu cancelButtonTitle:root_Yes];
                             }
-                            else{
-                                //注册成功
-                                [self succeedRegister];
-                                [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong cancelButtonTitle:root_Yes];
-                            }
+
                         }
                         else {
                             //注册成功
