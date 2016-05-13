@@ -75,6 +75,8 @@
         _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+             self.tableView.separatorStyle=NO;
+            self.tableView.backgroundColor=COLOR(240, 242, 239, 1);
                   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         [self.view addSubview:_tableView];
         }
@@ -120,9 +122,12 @@
     cell.content=self.contentArray[indexPath.row];
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14*HEIGHT_SIZE]} context:nil];
      cell.contentLabel.frame =CGRectMake(10*NOW_SIZE, 45*HEIGHT_SIZE, 300*NOW_SIZE, fcRect.size.height);
-   cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-240*NOW_SIZE, 80*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
+   cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-210*NOW_SIZE, 80*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);
+  
+    cell.view1.frame=CGRectMake(0, 80*HEIGHT_SIZE+fcRect.size.height+20*HEIGHT_SIZE,SCREEN_Width, 10*HEIGHT_SIZE );
+ 
     
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed)];
     longPressGesture.minimumPressDuration = 1.0f;
@@ -164,8 +169,8 @@
 {
 
     
-    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
-    return 100*HEIGHT_SIZE+fcRect.size.height;
+    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14 *HEIGHT_SIZE]} context:nil];
+    return 110*HEIGHT_SIZE+fcRect.size.height;
     
 }
 

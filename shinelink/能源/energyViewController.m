@@ -152,12 +152,14 @@
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
         NSString *plantID=[ud objectForKey:@"plantID"];
         _home.plantID=plantID;
+        _home.titleString=root_energy_jiating_yongdian;
         _home.dicType=@"2";
         _home.dictInfo=@{@"equipId":plantID,
                         @"daySite":@"/newPlantDetailAPI.do?type=1",
                         @"monthSite":@"/newPlantDetailAPI.do?type=2",
                         @"yearSite":@"/newPlantDetailAPI.do?type=3",
-                        @"allSite":@"/newPlantDetailAPI.do?type=4"};       
+                        @"allSite":@"/newPlantDetailAPI.do?type=4"};
+        _home.hidesBottomBarWhenPushed=YES;
    [self.navigationController pushViewController:_home animated:YES];
         
     }
@@ -165,13 +167,15 @@
     
     if (indexPath.row==1) {
         homeDeviceViewController *home=[[homeDeviceViewController alloc]init];
+        home.titleString=root_energy_jiating_shebei;
+           home.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:home animated:YES];
         
     }
     
     if (indexPath.row==2) {
        _PvHome=[[EquitGraph2ViewController alloc]init];
-  
+   _PvHome.titleString=root_energy_guangfu_dianliang;
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
         NSString *plantID=[ud objectForKey:@"plantID"];
         _PvHome.plantID=plantID;
@@ -181,13 +185,14 @@
                               @"monthSite":@"/newPlantDetailAPI.do?type=2",
                               @"yearSite":@"/newPlantDetailAPI.do?type=3",
                               @"allSite":@"/newPlantDetailAPI.do?type=4"};
+          _PvHome.hidesBottomBarWhenPushed=YES;
               [self.navigationController pushViewController:_PvHome animated:YES];
         
     }
     
     if (indexPath.row==3) {
         _PvHome=[[EquitGraph2ViewController alloc]init];
-        
+          _PvHome.titleString=root_energy_chuneng_dianliang;
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
         NSString *plantID=[ud objectForKey:@"plantID"];
         _PvHome.plantID=plantID;
@@ -197,6 +202,7 @@
                            @"monthSite":@"/newPlantDetailAPI.do?op=getStroageAllEnergy&type=2",
                            @"yearSite":@"/newPlantDetailAPI.do?op=getStroageAllEnergy&type=3",
                            @"allSite":@"/newPlantDetailAPI.do?op=getStroageAllEnergy&type=4"};
+         _PvHome.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:_PvHome animated:YES];
         
     }

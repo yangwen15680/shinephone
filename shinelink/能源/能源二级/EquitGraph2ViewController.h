@@ -20,4 +20,5 @@
 @property (nonatomic, strong) NSMutableArray *valueName;
 @property (nonatomic, strong) NSString *dicType;
 @property (nonatomic, strong) NSString *plantID;
+@property (nonatomic, strong) NSString *titleString;
 @end

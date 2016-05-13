@@ -152,7 +152,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65*HEIGHT_SIZE;
+    return 55*HEIGHT_SIZE;
     
 }
 
@@ -175,7 +175,7 @@
         if (!cell1) {
             cell1=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell11];
         }
-        [cell1.imageLog setImage:[UIImage imageNamed:@"update.png"]];
+        [cell1.imageLog setImage:[UIImage imageNamed:@"user-agreement.png"]];
         cell1.tableName.text = root_WO_xieyi;
         
         return cell1;
@@ -184,7 +184,7 @@
         if (!cell3) {
             cell3=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell33];
         }
-        [cell3.imageLog setImage:[UIImage imageNamed:@"user-agreement.png"]];
+        [cell3.imageLog setImage:[UIImage imageNamed:@"service.png"]];
         cell3.tableName.text = root_WO_kefu_dianhua;
         cell3.tableDetail.text=_serviceNum;
         
@@ -194,7 +194,7 @@
         if (!cell4) {
             cell4=[[aboutTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell44];
         }
-        [cell4.imageLog setImage:[UIImage imageNamed:@"service.png"]];
+        [cell4.imageLog setImage:[UIImage imageNamed:@"update.png"]];
         cell4.tableName.text = root_WO_jiancha_gengxin;
         
         return cell4;

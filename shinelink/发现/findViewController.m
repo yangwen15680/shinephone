@@ -187,7 +187,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65*HEIGHT_SIZE;
+    return 55*HEIGHT_SIZE;
     
 }
 
@@ -238,12 +238,15 @@
     if (indexPath.row==0) {
     
         LZPageViewController *pageVc = [[LZPageViewController alloc] initWithTitles:@[root_ME_wenti,root_ME_changjian_wenti,] controllersClass:@[[listViewController class],[commonTableViewController class]]];
+        pageVc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:pageVc animated:NO];
     }else if (indexPath.row==1){
         qualityTableViewController *page2 = [[qualityTableViewController alloc] init];
+          page2.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:page2 animated:NO];
     }else if (indexPath.row==3){
         moreTableViewController *page4 = [[moreTableViewController alloc] init];
+        page4.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:page4 animated:NO];
     }
 }

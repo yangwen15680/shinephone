@@ -33,7 +33,7 @@
         
         _titleView= [[UIView alloc]init];
         _titleView.backgroundColor=mainColor;
-        [self addSubview:_titleView];
+        //[self addSubview:_titleView];
         
         _image=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 10*HEIGHT_SIZE, 40*NOW_SIZE,40*HEIGHT_SIZE )];
         
@@ -42,7 +42,7 @@
         
         _picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 10*HEIGHT_SIZE,100*NOW_SIZE, 15*HEIGHT_SIZE)];
         _picLabel.text=root_ME_chakan_tupian;
-        _picLabel.textColor=[UIColor blueColor];
+        _picLabel.textColor=MainColor;
         _picLabel.textAlignment = NSTextAlignmentCenter;
         _picLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
       //  _picLabel.userInteractionEnabled=YES;

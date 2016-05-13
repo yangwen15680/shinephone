@@ -63,17 +63,19 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 @implementation EquitGraph2ViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    // self.title = _dictInfo[@"equipId"];
-    //self.navigationItem.title.
+    
+      self.title = _titleString;
     _type=@"1";
-    UIImage *bgImage = IMAGE(@"bg5.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+    
+
     [self initData];
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor=MainColor;
+
     [self initUI];
 }
 

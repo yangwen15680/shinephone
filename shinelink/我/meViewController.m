@@ -154,7 +154,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 65*HEIGHT_SIZE;
+    return 55*HEIGHT_SIZE;
     
 }
 
@@ -209,19 +209,19 @@
 {
     if (indexPath.row==0) {
          ManagementController *aboutView = [[ManagementController alloc]init];
-        
+          aboutView.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:aboutView animated:NO];
     }
     
     if (indexPath.row==1) {
         stationTableView *aboutView = [[stationTableView alloc]init];
-        
+          aboutView.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:aboutView animated:NO];
     }
    
     if (indexPath.row==2) {
         aboutViewController *aboutView = [[aboutViewController alloc]init];
-        
+          aboutView.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:aboutView animated:YES];
     }
    

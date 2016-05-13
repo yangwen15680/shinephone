@@ -149,7 +149,7 @@
     if (_questionPicArray.count>1) {
         UILabel *_picLabel= [[UILabel alloc] initWithFrame:CGRectMake(220*NOW_SIZE, 96*HEIGHT_SIZE,100*NOW_SIZE, 28*HEIGHT_SIZE)];
         _picLabel.text=root_ME_chakan_tupian;
-        _picLabel.textColor=[UIColor blueColor];
+        _picLabel.textColor=MainColor;
         _picLabel.textAlignment = NSTextAlignmentCenter;
         _picLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         _picLabel.userInteractionEnabled=YES;
@@ -203,10 +203,10 @@
     [_scrollView addSubview:image3];
     
     
-    UILabel *answerLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 0, 270*NOW_SIZE,30*HEIGHT_SIZE )];
+    UILabel *answerLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 0, 290*NOW_SIZE,30*HEIGHT_SIZE )];
     answerLable.text=root_ME_huifu;
     answerLable.textAlignment=NSTextAlignmentCenter;
-    answerLable.textColor=[UIColor blueColor];
+    answerLable.textColor=MainColor;
     answerLable.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [image3 addSubview:answerLable];
     

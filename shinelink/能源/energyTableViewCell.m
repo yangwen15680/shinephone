@@ -64,14 +64,14 @@
         
       
         
-        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth+10*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth1+5, labelHeight)];
+        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth, 40*HEIGHT_SIZE, labelWidth1+5, labelHeight)];
         
         self.electric.font=[UIFont systemFontOfSize:fontSize];
         self.electric.textAlignment = NSTextAlignmentRight;
         self.electric.textColor = [UIColor labelColor];
         [self.contentView addSubview:_electric];
         
-        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5-12*NOW_SIZE+2*labelWidth+labelWidth+10*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth+5, labelHeight)];
+        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5-12*NOW_SIZE+2*labelWidth+labelWidth, 40*HEIGHT_SIZE, labelWidth+5, labelHeight)];
         
         self.electricValue.font=[UIFont systemFontOfSize:fontSize];
         self.electricValue.textAlignment = NSTextAlignmentLeft;

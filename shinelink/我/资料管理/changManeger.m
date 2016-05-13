@@ -28,8 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIImage *bgImage = IMAGE(@"bg4.png");
-    self.view.layer.contents = (id)bgImage.CGImage;
+//    UIImage *bgImage = IMAGE(@"bg4.png");
+//    self.view.layer.contents = (id)bgImage.CGImage;
+    self.view.backgroundColor=MainColor;
     
     [self initUI];
     
@@ -47,7 +48,7 @@
       if([_type isEqualToString:@"0"]){
     UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE, 140*NOW_SIZE,30*HEIGHT_SIZE )];
     PV1.text=root_Alet_user_pwd;
-    PV1.textAlignment=NSTextAlignmentLeft;
+    PV1.textAlignment=NSTextAlignmentCenter;
     PV1.textColor=[UIColor whiteColor];
     PV1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [self.view addSubview:PV1];
@@ -69,7 +70,7 @@
           
           UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
           PV2.text=root_chongFu_miMa;
-          PV2.textAlignment=NSTextAlignmentLeft;
+          PV2.textAlignment=NSTextAlignmentCenter;
           PV2.textColor=[UIColor whiteColor];
           PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
           [self.view addSubview:PV2];
@@ -94,7 +95,7 @@
     if([_type isEqualToString:@"1"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_DianHua;
-        PV2.textAlignment=NSTextAlignmentLeft;
+        PV2.textAlignment=NSTextAlignmentCenter;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];
@@ -118,7 +119,7 @@
     if([_type isEqualToString:@"2"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_youxiang;
-        PV2.textAlignment=NSTextAlignmentLeft;
+        PV2.textAlignment=NSTextAlignmentCenter;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];
@@ -142,7 +143,7 @@
     if([_type isEqualToString:@"3"]){
         UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_dailishang;
-        PV2.textAlignment=NSTextAlignmentLeft;
+        PV2.textAlignment=NSTextAlignmentCenter;
         PV2.textColor=[UIColor whiteColor];
         PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
         [self.view addSubview:PV2];

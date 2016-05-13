@@ -9,7 +9,7 @@
 #import "qualityTableViewController.h"
 #import "qualityCell.h"
 
-@interface qualityTableViewController ()
+@interface qualityTableViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
 @property (nonatomic, strong) NSMutableArray *typeArray;
 @property (nonatomic, strong) NSMutableArray *maturityTimeArray;
@@ -23,8 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+    self.tableView.separatorStyle=NO;
+    //　self.view.tableView.separatorStyle = NO;
     [self initData];
 }
 
@@ -82,6 +82,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+
+
+-(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 10*HEIGHT_SIZE)];
+    
+    [headerView setBackgroundColor:[UIColor redColor]];
+    
+    return headerView;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

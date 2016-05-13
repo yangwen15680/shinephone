@@ -455,6 +455,27 @@
 #define root_power       NSLocalizedString(@"power", @"power")
 #define root_Next       NSLocalizedString(@"Next", @"Next")
 
+
+"Plant Detail" = "电站详情";
+"DAY" = "日";
+"MONTH" = "月";
+"YEAR" = "年";
+"TOTAL" = "累計";
+"Daily Returns" = "日收益";
+"Daily Electricity" = "日发电量";
+"Earnings" = "月收益";
+"Month energy" = "月发电量";
+"Earnings" = "年收益";
+"Year energy" = "年发电量";
+"Earnings" = "总收益";
+"Total energy" = "总发电量";
+"Powre" = "功率(W)";
+"Plant Overview" = "电站概述";
+"Device List" = "设备管理";
+"Event List" = "事件日志";
+"Map" = "地图";
+"Voltage"="电压(V)";
+"Electron flow"="电流(A)";
 //电站详情
 #define root_Plant_Detail       NSLocalizedString(@"Plant Detail", @"Plant Detail")
 #define root_DAY       NSLocalizedString(@"DAY", @"DAY")
@@ -476,7 +497,16 @@
 #define root_Map       NSLocalizedString(@"Map", @"Map")
 #define root_Voltage      NSLocalizedString(@"Voltage", @"Voltage")
 #define root_Electron_flow      NSLocalizedString(@"Electron flow", @"Electron flow")
-
+"PV POWER" = "PV功率";
+"PV1 VOLTAGE" = "PV1电压";
+"PV1 ELEC-CURRENT" = "PV1电流";
+"PV2 VOLTAGE" = "PV2电压";
+"PV2 ELEC-CURRENT" = "PV2电流";
+"R-PHASE POWER" = "R相功率";
+"S-PHASE POWER" = "S相功率";
+"T-PHASE POWER" = "T相功率";
+"POWER" = "功率";
+"Energy" = "发电量";
 //详情（逆变器）
 #define root_PV_POWER       NSLocalizedString(@"PV POWER", @"PV POWER")
 #define root_PV1_VOLTAGE       NSLocalizedString(@"PV1 VOLTAGE", @"PV1 VOLTAGE")
@@ -488,7 +518,12 @@
 #define root_T_PHASE_POWER       NSLocalizedString(@"T-PHASE POWER", @"T-PHASE POWER")
 #define root_POWER       NSLocalizedString(@"POWER", @"POWER")
 #define root_Energy       NSLocalizedString(@"Energy", @"Energy")
-
+"CHARGING POWER" = "充电功率";
+"DISCHARGING POWER" = "放电功率";
+"INPUT VOLTAGE" = "输入电压";
+"INPUT CURRENT" = "输入电流";
+"USER-SIDE POWER" = "用户侧功率";
+"GRID-SIDE POWER" = "电网侧功率";
 //详情（储能机）
 #define root_CHARGING_POWER       NSLocalizedString(@"CHARGING POWER", @"CHARGING POWER")
 #define root_DISCHARGING_POWER       NSLocalizedString(@"DISCHARGING POWER", @"DISCHARGING POWER")
