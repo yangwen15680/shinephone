@@ -93,7 +93,7 @@
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
     [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:firstB];
-    UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,20*HEIGHT_SIZE )];
+    UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     firstL.text=root_kongzhi;
     firstL.textAlignment=NSTextAlignmentCenter;
     firstL.textColor=[UIColor blackColor];
@@ -104,7 +104,7 @@
     [secondB setImage:[UIImage imageNamed:@"参数.png"] forState:UIControlStateNormal];
      [secondB addTarget:self action:@selector(parameterCNJ) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:secondB];
-    UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,20*HEIGHT_SIZE )];
+    UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE+74*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     secondL.text=root_canshu;
     secondL.textAlignment=NSTextAlignmentCenter;
     secondL.textColor=[UIColor blackColor];
@@ -115,7 +115,7 @@
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
       [threeB addTarget:self action:@selector(goThree) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:threeB];
-    UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 540*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,20*HEIGHT_SIZE )];
+    UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE+74*NOW_SIZE*2, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     threeL.text=root_shuju;
     threeL.textAlignment=NSTextAlignmentCenter;
     threeL.textColor=[UIColor blackColor];
@@ -126,7 +126,7 @@
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
   [fourB addTarget:self action:@selector(gofour) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:fourB];
-    UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 540*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,20*HEIGHT_SIZE )];
+    UILabel *fourL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE+74*NOW_SIZE*3, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     fourL.text=root_rizhi;
     fourL.textAlignment=NSTextAlignmentCenter;
     fourL.textColor=[UIColor blackColor];
@@ -216,31 +216,31 @@
     UIImage *bgImage = IMAGE(@"bg3.png");
     processView.layer.contents = (id)bgImage.CGImage;
     [self.scrollView addSubview:processView];
-    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 180*HEIGHT_SIZE-SizeH, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *leftName=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 190*HEIGHT_SIZE-SizeH, 90*NOW_SIZE,20*HEIGHT_SIZE )];
     leftName.text=_dayDischarge;
     leftName.textAlignment=NSTextAlignmentLeft;
     leftName.textColor=[UIColor greenColor];
     leftName.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.scrollView addSubview:leftName];
-    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 200*HEIGHT_SIZE-SizeH, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 210*HEIGHT_SIZE-SizeH, 100*NOW_SIZE,20*HEIGHT_SIZE )];
     leftState.text=root_ri_fangdianliang;
     leftState.textAlignment=NSTextAlignmentLeft;
     leftState.textColor=[UIColor blackColor];
-    leftState.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    leftState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:leftState];
     
     
-    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 180*HEIGHT_SIZE-SizeH, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *rightName=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-104*NOW_SIZE, 190*HEIGHT_SIZE-SizeH, 90*NOW_SIZE,20*HEIGHT_SIZE )];
     rightName.text=_totalDischarge;
     rightName.textAlignment=NSTextAlignmentRight;
     rightName.textColor=[UIColor greenColor];
     rightName.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.scrollView addSubview:rightName];
-    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-74*NOW_SIZE, 200*HEIGHT_SIZE-SizeH, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-114*NOW_SIZE, 210*HEIGHT_SIZE-SizeH, 100*NOW_SIZE,20*HEIGHT_SIZE )];
     rightState.text=root_zong_fangdianliang;
     rightState.textAlignment=NSTextAlignmentRight;
     rightState.textColor=[UIColor blackColor];
-    rightState.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    rightState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:rightState];
     
     UILabel *dataName=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 245*HEIGHT_SIZE-SizeH, 180*NOW_SIZE,20*HEIGHT_SIZE )];
@@ -284,7 +284,7 @@
     [self.scrollView addSubview:waterView];
     
     float SizeH3=10*HEIGHT_SIZE;
-    UILabel *Ca=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3, 80*NOW_SIZE,60*HEIGHT_SIZE )];
+    UILabel *Ca=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-100*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3, 100*NOW_SIZE,60*HEIGHT_SIZE )];
     Ca.text=_capacity;
     Ca.textAlignment=NSTextAlignmentCenter;
     if ([_status isEqualToString:@"3"]) {
@@ -295,7 +295,7 @@
     Ca.font = [UIFont systemFontOfSize:30*HEIGHT_SIZE];
     [self.scrollView addSubview:Ca];
     
-    UILabel *Status=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3+55*HEIGHT_SIZE, 80*NOW_SIZE,40*HEIGHT_SIZE )];
+    UILabel *Status=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-100*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3+55*HEIGHT_SIZE, 100*NOW_SIZE,40*HEIGHT_SIZE )];
     Status.text=_statusText;
     Status.textAlignment=NSTextAlignmentCenter;
     if ([_status isEqualToString:@"3"]) {
@@ -303,14 +303,14 @@
     }else{
         Status.textColor=[UIColor whiteColor];
     }
-    Status.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    Status.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.scrollView addSubview:Status];
     
-    UILabel *power1=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-80*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3+35*HEIGHT_SIZE, 80*NOW_SIZE,40*HEIGHT_SIZE )];
+    UILabel *power1=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-100*NOW_SIZE)/2, (240*HEIGHT_SIZE)/2-SizeH-SizeH3+35*HEIGHT_SIZE, 100*NOW_SIZE,40*HEIGHT_SIZE )];
     power1.text=_power;
     power1.textAlignment=NSTextAlignmentCenter;
         power1.textColor=[UIColor whiteColor];
-    power1.font = [UIFont systemFontOfSize:13*HEIGHT_SIZE];
+    power1.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:power1];
     
 }

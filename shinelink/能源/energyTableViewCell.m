@@ -8,7 +8,7 @@
 
 #import "energyTableViewCell.h"
 #define labelWidth  65*NOW_SIZE
-#define labelWidth1  48*NOW_SIZE
+#define labelWidth1  55*NOW_SIZE
 #define labelHeight  20*HEIGHT_SIZE
 #define fontSize  11*HEIGHT_SIZE
 #define labelColor  grayColor
@@ -28,7 +28,7 @@
         
         [self.contentView addSubview:_coverImageView];
         
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(55*HEIGHT_SIZE+10*NOW_SIZE, 0, 120*NOW_SIZE, 50*HEIGHT_SIZE)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(55*HEIGHT_SIZE+10*NOW_SIZE, 0, 250*NOW_SIZE, 50*HEIGHT_SIZE)];
         
         self.titleLabel.font=[UIFont systemFontOfSize:16*HEIGHT_SIZE];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
@@ -47,14 +47,14 @@
 //        [self.contentView addSubview:_detail];
         
         
-        self.state = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5, 40*HEIGHT_SIZE, labelWidth1, labelHeight)];
+        self.state = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5, 40*HEIGHT_SIZE, labelWidth1+10*NOW_SIZE, labelHeight)];
         
         self.state.font=[UIFont systemFontOfSize:fontSize];
         self.state.textAlignment = NSTextAlignmentRight;
         self.state.textColor = [UIColor labelColor];
         [self.contentView addSubview:_state];
         
-        self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+labelWidth-12*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth, labelHeight)];
+        self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+labelWidth, 40*HEIGHT_SIZE, labelWidth, labelHeight)];
         self.stateValue.font=[UIFont systemFontOfSize:fontSize];
         self.stateValue.textAlignment = NSTextAlignmentLeft;
         self.stateValue.textColor = [UIColor labelColor];
@@ -64,14 +64,14 @@
         
       
         
-        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth, 40*HEIGHT_SIZE, labelWidth1+5, labelHeight)];
+        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth-5*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth1+15*NOW_SIZE, labelHeight)];
         
         self.electric.font=[UIFont systemFontOfSize:fontSize];
         self.electric.textAlignment = NSTextAlignmentRight;
         self.electric.textColor = [UIColor labelColor];
         [self.contentView addSubview:_electric];
         
-        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5-12*NOW_SIZE+2*labelWidth+labelWidth, 40*HEIGHT_SIZE, labelWidth+5, labelHeight)];
+        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth+labelWidth, 40*HEIGHT_SIZE, labelWidth, labelHeight)];
         
         self.electricValue.font=[UIFont systemFontOfSize:fontSize];
         self.electricValue.textAlignment = NSTextAlignmentLeft;

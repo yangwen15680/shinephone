@@ -147,9 +147,9 @@
     }
     
     if([_type isEqualToString:@"4"]){
-    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,  85*HEIGHT_SIZE+30*HEIGHT_SIZE, 150*NOW_SIZE,30*HEIGHT_SIZE )];
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-250*NOW_SIZE)/2,  65*HEIGHT_SIZE, 250*NOW_SIZE,30*HEIGHT_SIZE )];
     PVData.text=root_NBQ_shijian;
-    PVData.textAlignment=NSTextAlignmentLeft;
+    PVData.textAlignment=NSTextAlignmentCenter;
     PVData.textColor=[UIColor whiteColor];
     PVData.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVData];
@@ -160,7 +160,7 @@
         
   self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     
-    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(130*NOW_SIZE, 85*HEIGHT_SIZE+30*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width-180*NOW_SIZE)/2, 85*HEIGHT_SIZE+30*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
         _datePickerButton.layer.borderWidth=1;
         _datePickerButton.layer.cornerRadius=5;
         _datePickerButton.layer.borderColor=[UIColor whiteColor].CGColor;

@@ -20,7 +20,7 @@
     [super viewDidLoad];
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
-     self.title=root_peiZhi_sheBei;
+     self.title=root_zhaohui_mima;
     
     [self initUI];
 }

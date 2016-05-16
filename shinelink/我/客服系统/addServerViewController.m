@@ -70,7 +70,7 @@
             self.userTextField.placeholder = root_ME_biaoti_shuru;
             self.userTextField.textColor = [UIColor blackColor];
             self.userTextField.tintColor = [UIColor blackColor];
-            [self.userTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+            [self.userTextField setValue:COLOR(163, 163, 163, 1) forKeyPath:@"_placeholderLabel.textColor"];
             [self.userTextField setValue:[UIFont systemFontOfSize:12*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
             self.userTextField.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
             [_scrollView addSubview:_userTextField];
@@ -79,14 +79,14 @@
             self.SNTextField.placeholder = root_ME_xuliehao_shuru;
             self.SNTextField.textColor = [UIColor blackColor];
             self.SNTextField.tintColor = [UIColor blackColor];
-            [self.SNTextField setValue:[UIColor grayColor] forKeyPath:@"_placeholderLabel.textColor"];
+            [self.SNTextField setValue:COLOR(163, 163, 163, 1) forKeyPath:@"_placeholderLabel.textColor"];
             [self.SNTextField setValue:[UIFont systemFontOfSize:12*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
             self.SNTextField.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
             [_scrollView addSubview:_SNTextField];
     
     self.registLable= [[UILabel alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 15*HEIGHT_SIZE+Size1*1, 220*NOW_SIZE,30*HEIGHT_SIZE )];
     self.registLable.text=root_ME_wenti_leixing_xuanzhe;
-    self.registLable.textColor=[UIColor grayColor];
+    self.registLable.textColor=COLOR(163, 163, 163, 1);
     self.registLable.textAlignment = NSTextAlignmentLeft;
     self.registLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.registLable.userInteractionEnabled=YES;
@@ -122,7 +122,7 @@
     
     UILabel *registLable1= [[UILabel alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 17*HEIGHT_SIZE+Size1*3+120*HEIGHT_SIZE, 220*NOW_SIZE,30*HEIGHT_SIZE )];
     registLable1.text=root_ME_shangchuan_tupian;
-    registLable1.textColor=[UIColor grayColor];
+    registLable1.textColor=COLOR(163, 163, 163, 1);
     registLable1.textAlignment = NSTextAlignmentLeft;
     registLable1.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     registLable1.userInteractionEnabled=YES;

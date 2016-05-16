@@ -59,13 +59,13 @@
         _typtText.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         [_scrollView addSubview:_typtText];
         
-        _event=[[UILabel alloc]initWithFrame:CGRectMake(Size1, Size2, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+        _event=[[UILabel alloc]initWithFrame:CGRectMake(Size1, Size2, 70*NOW_SIZE,20*HEIGHT_SIZE )];
         _event.text=root_NBQ_shijianhao;
         _event.textAlignment=NSTextAlignmentLeft;
         _event.textColor=[UIColor whiteColor];
         _event.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [_scrollView addSubview:_event];
-        _eventText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+wSize*1, Size2, 85*NOW_SIZE,20*HEIGHT_SIZE )];
+        _eventText=[[UILabel alloc]initWithFrame:CGRectMake(Size1+70*NOW_SIZE, Size2, 85*NOW_SIZE,20*HEIGHT_SIZE )];
        // _eventText.text=@"序列号";
         _eventText.textAlignment=NSTextAlignmentLeft;
         _eventText.textColor=[UIColor whiteColor];

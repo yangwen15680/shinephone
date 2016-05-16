@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.title=root_peiZhi_sheBei;
+     self.title=root_zhaohui_mima;
     UIImage *bgImage = IMAGE(@"bg.png");
     self.view.layer.contents = (id)bgImage.CGImage;
     
@@ -25,10 +25,11 @@
     userBgImageView.image = IMAGE(@"圆角矩形空心.png");
     [self.view addSubview:userBgImageView];
     
-    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(60*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
+    _cellectId = [[UITextField alloc] initWithFrame:CGRectMake(0*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame), 45*HEIGHT_SIZE)];
     _cellectId.placeholder = root_Alet_user_messge;
     _cellectId.textColor = [UIColor grayColor];
     _cellectId.tintColor = [UIColor grayColor];
+    _cellectId.textAlignment = NSTextAlignmentCenter;
     [_cellectId setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
     [_cellectId setValue:[UIFont systemFontOfSize:14*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
     _cellectId.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];

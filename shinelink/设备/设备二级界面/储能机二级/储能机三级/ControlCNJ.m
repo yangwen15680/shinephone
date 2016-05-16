@@ -100,7 +100,7 @@
     }
 
      if([_type isEqualToString:@"1"]){
-    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 60*HEIGHT_SIZE+5*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *PVLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 60*HEIGHT_SIZE+5*HEIGHT_SIZE, 300*NOW_SIZE,20*HEIGHT_SIZE )];
     PVLable.text=root_CNJ_SOC_xia;
     PVLable.textAlignment=NSTextAlignmentLeft;
     PVLable.textColor=[UIColor whiteColor];
@@ -126,9 +126,9 @@
      }
     
        if([_type isEqualToString:@"2"]){
-    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE+5*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-250*NOW_SIZE)/2, 75*HEIGHT_SIZE, 250*NOW_SIZE,20*HEIGHT_SIZE )];
     PVData.text=root_CNJ_shijian_she;
-    PVData.textAlignment=NSTextAlignmentLeft;
+    PVData.textAlignment=NSTextAlignmentCenter;
     PVData.textColor=[UIColor whiteColor];
     PVData.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:PVData];
@@ -142,13 +142,13 @@
     self.currentDay = [_dayFormatter stringFromDate:[NSDate date]];
     
            
-    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake(130*NOW_SIZE,85*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
+    _datePickerButton=[[UIButton alloc]initWithFrame:CGRectMake((SCREEN_Width-180*NOW_SIZE)/2,115*HEIGHT_SIZE, 180*NOW_SIZE, 30*HEIGHT_SIZE)];
            _datePickerButton.layer.borderWidth=0.5;
            _datePickerButton.layer.cornerRadius=5;
            _datePickerButton.layer.borderColor=[UIColor whiteColor].CGColor;
     [_datePickerButton setTitle:self.currentDay forState:UIControlStateNormal];
     [_datePickerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _datePickerButton.titleLabel.textAlignment = NSTextAlignmentLeft;
+    _datePickerButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     _datePickerButton.titleLabel.font = [UIFont boldSystemFontOfSize:16*HEIGHT_SIZE];
     _datePickerButton.tag=1001;
     [_datePickerButton addTarget:self action:@selector(pickDate1:) forControlEvents:UIControlEventTouchUpInside];
@@ -164,23 +164,23 @@
     [_scrollView addSubview:FDT];*/
     
        if([_type isEqualToString:@"3"]){
-    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *Enable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE, 250*NOW_SIZE,20*HEIGHT_SIZE )];
     Enable.text=root_CNJ_fangjian_shineng;
     Enable.textAlignment=NSTextAlignmentLeft;
     Enable.textColor=[UIColor whiteColor];
     Enable.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [_scrollView addSubview:Enable];
            
-           UILabel *EnableOff=[[UILabel alloc]initWithFrame:CGRectMake(183*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE )];
+           UILabel *EnableOff=[[UILabel alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 85*HEIGHT_SIZE+40*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
            EnableOff.text=root_guan;
            EnableOff.textAlignment=NSTextAlignmentLeft;
            EnableOff.textColor=[UIColor whiteColor];
            EnableOff.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
            [_scrollView addSubview:EnableOff];
            
-           UILabel *EnableOn=[[UILabel alloc]initWithFrame:CGRectMake(280*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE )];
+           UILabel *EnableOn=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-140*NOW_SIZE), 85*HEIGHT_SIZE+40*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
            EnableOn.text=root_kai;
-           EnableOn.textAlignment=NSTextAlignmentLeft;
+           EnableOn.textAlignment=NSTextAlignmentRight;
            EnableOn.textColor=[UIColor whiteColor];
            EnableOn.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
            [_scrollView addSubview:EnableOn];
@@ -188,7 +188,7 @@
            _typeName=@"storage_cmd_forced_discharge_enable";
            _param1=@"0";
     
-    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(220*NOW_SIZE, 85*HEIGHT_SIZE+10*HEIGHT_SIZE, 120*NOW_SIZE,10*HEIGHT_SIZE )];
+    _Switch=[[UISwitch alloc]initWithFrame:CGRectMake(140*NOW_SIZE, 85*HEIGHT_SIZE+40*HEIGHT_SIZE, 120*NOW_SIZE,10*HEIGHT_SIZE )];
     [_Switch setOn:YES];
     [_Switch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     _Switch.transform= CGAffineTransformMakeScale(1.2, 1);
@@ -197,7 +197,7 @@
        }
 
     if([_type isEqualToString:@"4"]){
-    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*HEIGHT_SIZE+10*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *dataDischarge=[[UILabel alloc]initWithFrame:CGRectMake(25*NOW_SIZE, 75*HEIGHT_SIZE+10*HEIGHT_SIZE, 250*NOW_SIZE,20*HEIGHT_SIZE )];
     dataDischarge.text=root_CNJ_fangdian_shijianduan;
     dataDischarge.textAlignment=NSTextAlignmentLeft;
     dataDischarge.textColor=[UIColor whiteColor];

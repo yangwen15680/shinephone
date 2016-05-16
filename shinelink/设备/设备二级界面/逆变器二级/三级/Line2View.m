@@ -217,7 +217,7 @@
                                                kPlotStrokeWidthKey : @2,
                                                kPlotStrokeColorKey :  COLOR(74, 194, 240, 1),
                                                kPlotPointFillColorKey : COLOR(78, 225, 252, 0.6),
-                                               kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10]
+                                               kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE]
                                                };
             self.lineChartPlot.plotThemeAttributes = _plotThemeAttributes;
           }else{
@@ -226,7 +226,7 @@
                                                      kPlotStrokeWidthKey : @2,
                                                      kPlotStrokeColorKey : [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1],
                                                      kPlotPointFillColorKey : [UIColor colorWithRed:0.18 green:0.36 blue:0.41 alpha:1],
-                                                     kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10]
+                                                     kPlotPointValueFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE]
                                                      };
               self.lineChartPlot.plotThemeAttributes = _plotThemeAttributes;
             

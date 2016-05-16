@@ -60,6 +60,7 @@
 "注册成功"="Register successfully";
 "用户名已被使用"="Username is already in use";
 
+"找回密码"="Retrieve Password";
 "通过用户名"="Available username";
 "通过序列号"="Available SN ";
 "请输入正确的用户名"="Please input correct username";
@@ -92,7 +93,7 @@
 "已配置设备"="Configured device";
 "未配置设备"="Device need to configure";
 "日电量:"="Daily electricity:";
-"电池百分比:"="Battery percentage";
+"电池百分比:"="Battery percentage:";
 "编辑"="Edit";
 "置顶 "="Stickied ";
 
@@ -132,7 +133,7 @@
 "设置逆变器开关机"="Set inverter on/off";
 "序列号:"="SN:";
 "类型:"="Type:";
-"事件号:"="Even number:";
+"事件号:"="Even No.:";
 "标识:"="Tag:";
 
 "日放电量"="Daily discharging";
@@ -286,64 +287,64 @@
 "Upload Picture" = "Upload Picture";
 "Setting Station Map" = "Setting Station Map";
 "Installation Information" = "Installation Information";
-"plant name" = "plant name";
-"instal date" = "instal date";
-"company" = "company";
-"power" = "power";
+"plant name" = "Plant name";
+"instal date" = "Instal date";
+"company" = "Company";
+"power" = "Power";
 "Next" = "Next";
 
 
 
 
-"能源分析"="energy analysis";
-"智能能源"="smart energy";
-"家庭用电量"="home energy usage";
-"家庭用电设备"="home laod equipments";
-"光伏电量"="solar energy";
-"储能电量"="stored energy";
-"月:"="month:";
-"最省电:"="most energy saved:";
-"最耗电:"="most energy consumed:";
-"日:"="day:";
+"能源分析"="Energy analysis";
+"智能能源"="Smart energy";
+"家庭用电量"="Home energy usage";
+"家庭用电设备"="Home laod equipments";
+"光伏电量"="Solar energy";
+"储能电量"="Stored energy";
+"月:"="Month:";
+"最省电:"="Saving:";
+"最耗电:"="Consumed:";
+"日:"="Day:";
 
-"能源调度优先级设置"="energy scheduling priority setting";
-"智能联动设置"="smart interactive setting";
-"峰谷电价设置"="peak hollow electricity price setting";
-"峰谷段动作使能"="peak hollow action enable";
-"控制优先级设置"="control priority setting";
-"光伏零功率输出使能"="solar 0 output enable";
-"温馨提示"="notice";
-"智能能源功能后续开放"="smart energy function coming soon";
+"能源调度优先级设置"="Energy scheduling priority";
+"智能联动设置"="Smart interactive setting";
+"峰谷电价设置"="TOU settings";
+"峰谷段动作使能"="Peak hollow action enable";
+"控制优先级设置"="Control priority setting";
+"光伏零功率输出使能"="Solar 0 output enable";
+"温馨提示"="Notice";
+"智能能源功能后续开放"="Smart energy function coming soon";
 
-"家庭用电占比(Demo)"="home energy usage proportion(Demo)";
-"电冰箱"="fridge";
-"微波炉"="microwave oven";
-"空调"="air-con";
+"家庭用电占比(Demo)"="Home energy usage proportion(Demo)";
+"电冰箱"="Fridge";
+"微波炉"="Microwave oven";
+"空调"="Air-con";
 "电视机"="TV";
-"洗衣机"="washing machine";
-"热水器"="water heater";
-"发电量"="energy yield";
-"放电量"="energy discharged";
-"最大值"="max value";
-"平均值"="average value";
+"洗衣机"="Washing machine";
+"热水器"="Water heater";
+"发电量"="Energy yield";
+"放电量"="Energy discharged";
+"最大值"="Max value";
+"平均值"="Average value";
 
-"服务"="service";
-"我的问题"="my question";
+"服务"="Service";
+"我的问题"="My question";
 "常见问题"="FAQ";
-"客户服务"="customer service";
-"质保查询"="check warranty";
-"增值业务"="value added service";
-"更多产品"="product promotion";
+"客户服务"="Customer service";
+"质保查询"="Check warranty";
+"增值业务"="Value added service";
+"更多产品"="Product promotion";
 
 "提交问题"="Submit questions";
 "标题:"="Title:";
-"问题类型:"="Question type:";
+"问题类型:"="Type:";
 "内容:"="Content:";
 "请输入标题"="Please input the title";
 "请选择问题类型"="Please select question type";
 "请输入序列号"="Please input sn";
 "附件:"="Attachment:";
-"请选择要上传图片"="Please choose the picture to upload";
+"请选择要上传图片"="Choose the picture to upload";
 "请输入内容"="Please input the content";
 "添加成功"="Added successfully";
 "添加错误"="Added failed";

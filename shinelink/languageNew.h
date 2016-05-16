@@ -76,6 +76,7 @@
 #define  root_zhuCe_chengGong      NSLocalizedString(@"注册成功", nil)
 #define  root_yongHu_yi_shiYong       NSLocalizedString(@"用户名已被使用", nil)
 
+#define  root_zhaohui_mima      NSLocalizedString(@"找回密码", nil)
 #define  root_tongGuo_yonghuMing       NSLocalizedString(@"通过用户名", nil)
 #define  root_tongGuo_xuLieHao       NSLocalizedString(@"通过序列号", nil)
 #define  root_zhengQueDe_yonghuMing       NSLocalizedString(@"请输入正确的用户名", nil)
