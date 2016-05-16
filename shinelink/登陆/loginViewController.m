@@ -138,7 +138,7 @@
     
  
    
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 260*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.forgetLable.text=root_forget_pwd;
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
@@ -149,7 +149,7 @@
     [_scrollView addSubview:self.forgetLable];
     
     
-   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(200*NOW_SIZE, 260*HEIGHT_SIZE, 70*NOW_SIZE, 40*HEIGHT_SIZE)];
+   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 260*HEIGHT_SIZE, 115*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
