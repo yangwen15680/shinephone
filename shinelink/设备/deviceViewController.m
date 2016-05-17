@@ -17,6 +17,7 @@
 #import "aliasViewController.h"
 #import "DemoDevice.h"
 #import "GetDevice.h"
+#import "DemoDeviceViewController.h"
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
@@ -27,7 +28,7 @@
 @property (nonatomic, strong) UIAlertController *uploadImageActionSheet;
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
-
+@property (nonatomic, strong) NSMutableArray *DemoPicName;
 @property (nonatomic, strong) NSMutableArray *stationID;
 @property (nonatomic, strong) NSMutableArray *stationName;
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -172,10 +173,12 @@
     {
        _demoDevice=[NSEntityDescription insertNewObjectForEntityForName:@"DemoDevice" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
         
+        _demoDevice.type=typeArray2[i];
         _demoDevice.name=nameArray2[i];
         _demoDevice.power=powerArray2[i];
         _demoDevice.dayPower=dayArray2[i];
         _demoDevice.statueData=statueArray2[i];
+        
         UIImage *image=IMAGE(imageArray2[i]);
         NSData *imagedata=UIImageJPEGRepresentation(image, 0.5);
         _demoDevice.image=imagedata;
@@ -218,6 +221,7 @@
 }
 
 -(void)initData{
+    _DemoPicName=[[NSMutableArray alloc]initWithObjects:@"storageD.png", @"powerD.png", @"inverterD.png",@"chargeD.png",nil];
     _typeArr=[NSMutableArray array];
     nameArray=[NSMutableArray array];
     statueArray=[NSMutableArray array];
@@ -589,6 +593,7 @@
                 [powerArray2 removeObjectAtIndex:j];
                  [dayArray2 removeObjectAtIndex:j];
                  [typeArray2 removeObjectAtIndex:j];
+                
             }
         }
         
@@ -939,15 +944,29 @@
         [self.navigationController pushViewController:sd animated:NO];}}
     else{
          DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
-       if([demoDevice.name isEqualToString:@"inverter"]){
-            secondViewController *sd=[[secondViewController alloc ]init];
+       if([demoDevice.type isEqualToString:@"inverter"]){
+           
+            DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
+           sd.picName=_DemoPicName[2];
             [self.navigationController pushViewController:sd animated:NO];}
-        else if([demoDevice.name  isEqualToString:@"storage"]){
-            secondCNJ *sd=[[secondCNJ alloc ]init];
+        else if([demoDevice.type  isEqualToString:@"storage"]){
+            DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
+            sd.picName=_DemoPicName[0];
+            [self.navigationController pushViewController:sd animated:NO];}
+        else if([demoDevice.type  isEqualToString:@"charge"]){
+            DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
+            sd.hidesBottomBarWhenPushed=YES;
+            sd.picName=_DemoPicName[3];
+            [self.navigationController pushViewController:sd animated:NO];}
+        else if([demoDevice.type  isEqualToString:@"powerRegulator"]){
+            DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
+            sd.hidesBottomBarWhenPushed=YES;
+            sd.picName=_DemoPicName[1];
             [self.navigationController pushViewController:sd animated:NO];}
     
+        
     }
     
 }

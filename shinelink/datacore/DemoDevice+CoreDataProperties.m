@@ -18,4 +18,5 @@
 @dynamic dayPower;
 @dynamic image;
 @dynamic statueData;
+@dynamic type;
 @end

@@ -6,6 +6,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statueData" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="GetDevice" representedClassName="GetDevice" syncable="YES">
         <attribute name="ailasName" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,7 +23,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="DemoDevice" positionX="-36" positionY="9" width="128" height="120"/>
+        <element name="DemoDevice" positionX="-36" positionY="9" width="128" height="135"/>
         <element name="GetDevice" positionX="-36" positionY="36" width="128" height="225"/>
     </elements>
 </model>
