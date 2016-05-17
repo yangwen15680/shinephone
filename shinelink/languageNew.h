@@ -395,7 +395,7 @@
 #define  root_ME_youwu_zhibao    NSLocalizedString(@"有无质保:", nil)
 #define  root_ME_chuchang_shijian    NSLocalizedString(@"出厂时间:", nil)
 #define  root_ME_daoqi_shijian    NSLocalizedString(@"到期时间:", nil)
-
+#define root_zhibao_xunliehao     NSLocalizedString(@"序列号码:", nil)
 
 
 
@@ -432,6 +432,8 @@
 #define   root_WO_shiqu    NSLocalizedString(@"时区", nil)
 #define   root_WO_jingdu    NSLocalizedString(@"经度", nil)
 #define   root_WO_weidu    NSLocalizedString(@"纬度", nil)
+#define   root_WO_banbenhao    NSLocalizedString(@"当前版本:", nil)
+
 
 #define   root_WO_dianji_huoqu    NSLocalizedString(@"点击获取", nil)
 #define   root_WO_jieneng    NSLocalizedString(@"节约标准煤", nil)

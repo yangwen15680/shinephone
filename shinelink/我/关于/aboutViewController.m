@@ -90,23 +90,33 @@
 - (void)_createHeaderView {
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
-    UIColor *color=MainColor;
+    UIColor *color=COLOR(218, 237, 244, 1);
     
     //UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_list_popver"]];
     [headerView setBackgroundColor:color];
     
     
-    double imageSize=150*HEIGHT_SIZE;
+    double imageSize=80*HEIGHT_SIZE;
     
-    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 25*HEIGHT_SIZE, imageSize, imageSize)];
-    [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
+    UIImageView *userImage= [[UIImageView alloc] initWithFrame:CGRectMake((Kwidth-imageSize)/2, 60*HEIGHT_SIZE, imageSize, imageSize)];
+    [userImage setImage:[UIImage imageNamed:@"logo3.png"]];
     userImage.layer.masksToBounds=YES;
-    userImage.layer.cornerRadius=imageSize/2.0;
-    [userImage setUserInteractionEnabled:YES];
+    userImage.layer.cornerRadius=imageSize/4.0;
+//    [userImage setUserInteractionEnabled:YES];
     
-    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
-    longPressGesture.minimumPressDuration = 1.0f;
-    [userImage addGestureRecognizer:longPressGesture];
+    UILabel *version = [[UILabel alloc] initWithFrame:CGRectMake((Kwidth-140*NOW_SIZE)/2, 150*HEIGHT_SIZE, 140*NOW_SIZE,20*HEIGHT_SIZE)];
+    version.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
+    version.textAlignment = NSTextAlignmentCenter;
+    NSString *version1=root_WO_banbenhao;
+    NSString *version2=@"1.6";
+    NSString *version3=[NSString stringWithFormat:@"%@%@",version1,version2];
+    version.text=version3;
+    version.textColor = [UIColor blackColor];
+    [headerView addSubview:version];
+    
+//    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
+//    longPressGesture.minimumPressDuration = 1.0f;
+//    [userImage addGestureRecognizer:longPressGesture];
     
     
     _tableView.tableHeaderView = headerView;

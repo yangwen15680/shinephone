@@ -139,8 +139,14 @@
     for(int i=0;i<_labelArray.count;i++)
     {
         UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 80*NOW_SIZE,28*HEIGHT_SIZE )];
+         PV1Lable.textAlignment=NSTextAlignmentCenter;
+        if (i==2) {
+            PV1Lable.frame=CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 160*NOW_SIZE,28*HEIGHT_SIZE );
+            PV1Lable.textAlignment=NSTextAlignmentLeft;
+        }
+        
         PV1Lable.text=_labelArray[i];
-        PV1Lable.textAlignment=NSTextAlignmentCenter;
+       
         PV1Lable.textColor=[UIColor blackColor];
         PV1Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [_scrollView addSubview:PV1Lable];

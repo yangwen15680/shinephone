@@ -16,8 +16,8 @@
 "注册"="Register";
 "登陆"="Sign in";
 "温馨提示 "="Note ";
-"请输入用户名 "="Enter your username";
-"请输入密码 "="Enter your username";
+"请输入用户名 "="Enter username";
+"请输入密码 "="Enter password";
 
 
 "国家"="Country";
@@ -368,16 +368,17 @@
 "参数"="Parameters";
 "有"="Yes";
 "没有"="Non";
-"有无质保:"="Valid Warranty or not:";
-"出厂时间:"="Date of production:";
+"有无质保:"="Have warranty:";
+"出厂时间:"="Starting time:";
 "到期时间:"="Expiration time:";
+"序列号码:"="serial number:";
 
 "我"="Me";
 "资料管理"="Document management ";
 "电站设置"="Configuration Of PV Plant";
 "关于"="About";
 "用户协议"="User agreement";
-"客服电话"="Customer Service Tel";
+"客服电话"="Consumer hotline";
 "检查更新"="Check for update";
 "最新版本为"="Latest version";
 "是否更新"="Update or not";
@@ -405,11 +406,11 @@
 "时区"="Time zone";
 "经度"="Longitude";
 "纬度"="Latitude";
-"点击获取"="Tap to get";
+"点击获取"="Click for";
 "节约标准煤"="Saving coal";
-"CO2减排"="CO2 emission reduction";
-"SO2减排"="SO2 emission reduction";
-
+"CO2减排"="CO2 emissions";
+"SO2减排"="SO2 emissions";
+"当前版本:"="current version:";
 
 
 

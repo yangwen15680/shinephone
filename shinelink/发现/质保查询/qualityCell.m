@@ -17,7 +17,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor = [UIColor clearColor];
-        _nameArray=[NSMutableArray arrayWithObjects:root_ME_youwu_zhibao, root_NBQ_xunliehao,root_ME_chuchang_shijian,root_ME_daoqi_shijian,nil];
+        _nameArray=[NSMutableArray arrayWithObjects:root_ME_youwu_zhibao, root_zhibao_xunliehao,root_ME_chuchang_shijian,root_ME_daoqi_shijian,nil];
         //NSMutableArray *textArray=[NSMutableArray arrayWithObjects:@"12344413", @"124312321",@"123123132",@"1231233",nil];
         
         float imageSize=50*HEIGHT_SIZE,size1=26*HEIGHT_SIZE,size2=5*NOW_SIZE;//kongXi=5*NOW_SIZE;

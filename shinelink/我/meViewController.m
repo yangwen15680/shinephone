@@ -85,8 +85,12 @@
     }
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
-    UIColor *color=COLOR(17, 183, 243, 1);
+    
+    UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"mebg.png"]];
  [headerView setBackgroundColor:color];
+    
+    
+    
     double imageSize=150*HEIGHT_SIZE;
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];

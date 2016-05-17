@@ -48,7 +48,7 @@
       if([_type isEqualToString:@"0"]){
     UILabel *PV1=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE, 140*NOW_SIZE,30*HEIGHT_SIZE )];
     PV1.text=root_Alet_user_pwd;
-    PV1.textAlignment=NSTextAlignmentCenter;
+    PV1.textAlignment=NSTextAlignmentRight;
     PV1.textColor=[UIColor whiteColor];
     PV1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
     [self.view addSubview:PV1];
@@ -70,7 +70,7 @@
           
           UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
           PV2.text=root_chongFu_miMa;
-          PV2.textAlignment=NSTextAlignmentCenter;
+          PV2.textAlignment=NSTextAlignmentRight;
           PV2.textColor=[UIColor whiteColor];
           PV2.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
           [self.view addSubview:PV2];
@@ -117,7 +117,7 @@
     }
     
     if([_type isEqualToString:@"2"]){
-        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
+        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,25*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 300*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_youxiang;
         PV2.textAlignment=NSTextAlignmentCenter;
         PV2.textColor=[UIColor whiteColor];
@@ -128,10 +128,10 @@
 //        line4.backgroundColor=[UIColor whiteColor];
 //        [self.view addSubview:line4];
         
-        _textField3 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 150*NOW_SIZE,30*HEIGHT_SIZE )];
+        _textField3 = [[UITextField alloc] initWithFrame:CGRectMake(70*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 180*NOW_SIZE,30*HEIGHT_SIZE )];
         _textField3.layer.borderWidth=1;
         _textField3.layer.cornerRadius=5;
-        _textField3.textAlignment=NSTextAlignmentLeft;
+        _textField3.textAlignment=NSTextAlignmentCenter;
         _textField3.layer.borderColor=[UIColor whiteColor].CGColor;
         _textField3.textColor = [UIColor whiteColor];
         _textField3.tintColor = [UIColor whiteColor];
@@ -141,7 +141,7 @@
     }
     
     if([_type isEqualToString:@"3"]){
-        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 140*NOW_SIZE,30*HEIGHT_SIZE )];
+        UILabel *PV2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,25*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 300*NOW_SIZE,30*HEIGHT_SIZE )];
         PV2.text=root_WO_shuru_dailishang;
         PV2.textAlignment=NSTextAlignmentCenter;
         PV2.textColor=[UIColor whiteColor];
@@ -152,7 +152,7 @@
 //        line4.backgroundColor=[UIColor whiteColor];
 //        [self.view addSubview:line4];
         
-        _textField4 = [[UITextField alloc] initWithFrame:CGRectMake(160*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 150*NOW_SIZE,30*HEIGHT_SIZE )];
+        _textField4 = [[UITextField alloc] initWithFrame:CGRectMake(70*NOW_SIZE,75*HEIGHT_SIZE+10*HEIGHT_SIZE+Size1, 180*NOW_SIZE,30*HEIGHT_SIZE )];
         _textField4.layer.borderWidth=1;
         _textField4.layer.cornerRadius=5;
          _textField4.textAlignment=NSTextAlignmentLeft;

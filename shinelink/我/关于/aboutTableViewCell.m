@@ -27,7 +27,7 @@
         
         [self.contentView addSubview:_imageLog];
         
-        self.tableName = [[UILabel alloc] initWithFrame:CGRectMake(45*HEIGHT_SIZE+10*HEIGHT_SIZE, 5*NOW_SIZE, 120*NOW_SIZE,45*HEIGHT_SIZE)];
+        self.tableName = [[UILabel alloc] initWithFrame:CGRectMake(45*HEIGHT_SIZE+10*HEIGHT_SIZE, 5*NOW_SIZE, 220*NOW_SIZE,45*HEIGHT_SIZE)];
         
         self.tableName.font=[UIFont systemFontOfSize:16*HEIGHT_SIZE];
         self.tableName.textAlignment = NSTextAlignmentLeft;

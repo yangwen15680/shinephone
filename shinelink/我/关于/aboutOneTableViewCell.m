@@ -28,14 +28,14 @@
         
         [self.contentView addSubview:_imageLog];
         
-        self.tableName = [[UILabel alloc] initWithFrame:CGRectMake(45*HEIGHT_SIZE+10*HEIGHT_SIZE, 5*HEIGHT_SIZE, 120*NOW_SIZE, 45*HEIGHT_SIZE)];
+        self.tableName = [[UILabel alloc] initWithFrame:CGRectMake(45*HEIGHT_SIZE+10*HEIGHT_SIZE, 5*HEIGHT_SIZE, 140*NOW_SIZE, 45*HEIGHT_SIZE)];
         self.tableName.font=[UIFont systemFontOfSize:16*HEIGHT_SIZE];
         self.tableName.textAlignment = NSTextAlignmentLeft;
         self.tableName.textColor = [UIColor blackColor];
         [self.contentView addSubview:_tableName];
         
-        self.tableDetail = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_Width-200*NOW_SIZE, 5*NOW_SIZE, 180*NOW_SIZE, 45*HEIGHT_SIZE)];
-        self.tableDetail.font=[UIFont systemFontOfSize:16*HEIGHT_SIZE];
+        self.tableDetail = [[UILabel alloc] initWithFrame:CGRectMake(195*NOW_SIZE, 5*NOW_SIZE, 115*NOW_SIZE, 45*HEIGHT_SIZE)];
+        self.tableDetail.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
         self.tableDetail.textAlignment = NSTextAlignmentRight;
         self.tableDetail.textColor = [UIColor blackColor];
         [self.contentView addSubview:_tableDetail];
