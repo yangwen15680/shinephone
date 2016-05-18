@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UIImagePickerController *cameraImagePicker;
 @property (nonatomic, strong) UIImagePickerController *photoLibraryImagePicker;
 @property (nonatomic, strong) NSMutableArray *DemoPicName;
+@property (nonatomic, strong) NSMutableArray *DemoPicName2;
 @property (nonatomic, strong) NSMutableArray *stationID;
 @property (nonatomic, strong) NSMutableArray *stationName;
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -221,6 +222,7 @@
 }
 
 -(void)initData{
+    _DemoPicName2=[[NSMutableArray alloc]initWithObjects:@"storageD.png", @"powerD.png", @"inverterE.png",@"chargeD.png",nil];
     _DemoPicName=[[NSMutableArray alloc]initWithObjects:@"storageD.png", @"powerD.png", @"inverterD.png",@"chargeD.png",nil];
     _typeArr=[NSMutableArray array];
     nameArray=[NSMutableArray array];
@@ -442,17 +444,17 @@
             _head23=@"Puser";
              _head33=@"Pgrid";
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"storageTodayPpv"]];
-            NSArray *headA=[head111 componentsSeparatedByString:@"/"];
+            NSArray *headA=[head111 componentsSeparatedByString:@"_"];
             _head11=[headA objectAtIndex:0];
             _head12=[headA objectAtIndex:1];
             
             NSString *head222=[NSString stringWithFormat:@"%@",content[@"storagePuser"]];
-            NSArray *headB=[head222 componentsSeparatedByString:@"/"];
+            NSArray *headB=[head222 componentsSeparatedByString:@"_"];
             _head21=[headB objectAtIndex:0];
             _head22=[headB objectAtIndex:1];
             
             NSString *head333=[NSString stringWithFormat:@"%@",content[@"storagePgrid"]];
-            NSArray *headC=[head333 componentsSeparatedByString:@"/"];
+            NSArray *headC=[head333 componentsSeparatedByString:@"_"];
             _head31=[headC objectAtIndex:0];
             _head32=[headC objectAtIndex:1];
             
@@ -462,17 +464,17 @@
             _head33=@"Ppv";
         
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"plantMoneyText"]];
-            NSArray *headA=[head111 componentsSeparatedByString:@"/"];
+            NSArray *headA=[head111 componentsSeparatedByString:@"_"];
             _head11=[headA objectAtIndex:0];
             _head12=[headA objectAtIndex:1];
             
             NSString *head222=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
-            NSArray *headB=[head222 componentsSeparatedByString:@"/"];
+            NSArray *headB=[head222 componentsSeparatedByString:@"_"];
             _head21=[headB objectAtIndex:0];
              _head22=[headB objectAtIndex:1];
             
             NSString *head333=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
-            NSArray *headC=[head333 componentsSeparatedByString:@"/"];
+            NSArray *headC=[head333 componentsSeparatedByString:@"_"];
             _head31=[headC objectAtIndex:0];
                 _head32=[headC objectAtIndex:1];
         }
@@ -949,21 +951,26 @@
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
            sd.picName=_DemoPicName[2];
+           sd.picName2=_DemoPicName2[2];
+           sd.title=@"inverter(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
         else if([demoDevice.type  isEqualToString:@"storage"]){
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[0];
+               sd.title=@"storage(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
         else if([demoDevice.type  isEqualToString:@"charge"]){
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[3];
+              sd.title=@"charge(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
         else if([demoDevice.type  isEqualToString:@"powerRegulator"]){
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[1];
+            sd.title=@"powerRegulator(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
     
         

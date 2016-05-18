@@ -1,25 +1,26 @@
 //
-//  commonTableViewController.m
+//  extensionListTableViewController.m
 //  shinelink
 //
-//  Created by sky on 16/4/5.
+//  Created by sky on 16/5/18.
 //  Copyright © 2016年 sky. All rights reserved.
 //
 
-#import "commonTableViewController.h"
-#import "Common2ViewController.h"
+#import "extensionListTableViewController.h"
+#import "ExtensionTwoViewController.h"
 
-@interface commonTableViewController ()
+@interface extensionListTableViewController ()
 @property(nonatomic,strong)NSMutableArray *idArray;
 @property(nonatomic,strong)NSMutableArray *titleArray;
 @end
 
-@implementation commonTableViewController
+@implementation extensionListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
     [self netCommon];
-          self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     //  self.dataArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -32,32 +33,32 @@
         [self.tableView setLayoutMargins:UIEdgeInsetsZero];
         
     }
-    
+   
 }
 
 -(void)netCommon{
-
+    
     _idArray=[NSMutableArray array];
     _titleArray=[NSMutableArray array];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/questionAPI.do?op=getUsualQuestionList" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newExtensionAPI.do?op=getExtensionList" sucessBlock:^(id content) {
         [self hideProgressView];
-        NSLog(@"getUsualQuestionList=: %@", content);
-    
+        NSLog(@"getExtensionList=: %@", content);
+        
         if(content){
-                NSMutableArray *allDic=[NSMutableArray arrayWithArray:content];
+            NSMutableArray *allDic=[NSMutableArray arrayWithArray:content];
             for (int i=0; i<allDic.count; i++) {
                 [_idArray addObject:allDic[i][@"id"]];
                 [_titleArray addObject:allDic[i][@"title"]];
             }
             
             [self.tableView reloadData];
-       }
-   
+        }
+        
     } failure:^(NSError *error) {
         [self hideProgressView];
-       
+        
     }];
-
+    
 }
 
 - (void)showAlertViewWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelTitle{
@@ -74,30 +75,6 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-        
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-        
-    }
-    
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
@@ -110,14 +87,14 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   // static NSString *cellDentifier=@"cellDentifier";
+    // static NSString *cellDentifier=@"cellDentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" ];
     if (cell==nil) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     cell.textLabel.text=_titleArray[indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-     cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
+    cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
     return cell;
 }
 
@@ -129,20 +106,30 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Common2ViewController *go=[[Common2ViewController alloc]init];
-    go.titleString=_titleArray[indexPath.row];
+    ExtensionTwoViewController *go=[[ExtensionTwoViewController alloc]init];
+    go.name2=_titleArray[indexPath.row];
     go.idString=_idArray[indexPath.row];
     
- [self.navigationController pushViewController:go animated:NO];
-    
-    
+    [self.navigationController pushViewController:go animated:NO];
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 
 
-
-
-
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    return cell;
+}
+*/
 
 /*
 // Override to support conditional editing of the table view.

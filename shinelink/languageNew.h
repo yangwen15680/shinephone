@@ -187,6 +187,8 @@
 #define root_CNJ_canshu_chenggong     NSLocalizedString(@"参数设置成功", nil)
 #define root_CNJ_shifou_kaiqi_CNJ     NSLocalizedString(@"是否确定开启储能机", nil)
 #define root_CNJ_shifou_guanbi_CNJ      NSLocalizedString(@"是否确定关闭储能机", nil)
+#define root_Demo_tishi      NSLocalizedString(@"示范设备暂时不开放此功能,请安装真实产品使用此功能.", nil)
+
 
 #define root_xuleihao      NSLocalizedString(@"序列号", nil)
 #define root_duankou     NSLocalizedString(@"端口", nil)

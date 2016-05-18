@@ -14,6 +14,7 @@
 #import "LZPageViewController.h"
 #import "qualityTableViewController.h"
 #import "moreTableViewController.h"
+#import "extensionListTableViewController.h"
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong)NSMutableArray *imageArray;
@@ -243,6 +244,10 @@
     }else if (indexPath.row==1){
         qualityTableViewController *page2 = [[qualityTableViewController alloc] init];
           page2.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:page2 animated:NO];
+    }else if (indexPath.row==2){
+        extensionListTableViewController *page2 = [[extensionListTableViewController alloc] init];
+        page2.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:page2 animated:NO];
     }else if (indexPath.row==3){
         moreTableViewController *page4 = [[moreTableViewController alloc] init];

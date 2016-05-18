@@ -154,6 +154,10 @@
 		3363DD1E1C7C48F100D740FB /* registerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3363DD1D1C7C48F100D740FB /* registerViewController.m */; };
 		3363DD221C7C598B00D740FB /* countryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3363DD211C7C598B00D740FB /* countryViewController.m */; };
 		3363DD241C7C610A00D740FB /* 语言.png in Resources */ = {isa = PBXBuildFile; fileRef = 3363DD231C7C610A00D740FB /* 语言.png */; };
+		33652A221CEC023C004EBAE5 /* inverterD.png in Resources */ = {isa = PBXBuildFile; fileRef = 33652A211CEC023C004EBAE5 /* inverterD.png */; };
+		33652A241CEC0621004EBAE5 /* inverterE.png in Resources */ = {isa = PBXBuildFile; fileRef = 33652A231CEC0621004EBAE5 /* inverterE.png */; };
+		33652A281CEC0AC8004EBAE5 /* extensionListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33652A271CEC0AC8004EBAE5 /* extensionListTableViewController.m */; };
+		33652A2B1CEC1190004EBAE5 /* ExtensionTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33652A2A1CEC1190004EBAE5 /* ExtensionTwoViewController.m */; };
 		336664E11CB75213005573FB /* moreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336664E01CB75213005573FB /* moreTableViewController.m */; };
 		336664E41CB7524C005573FB /* moreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336664E31CB7524C005573FB /* moreCell.m */; };
 		336664E71CB77CC2005573FB /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336664E51CB77CC2005573FB /* service@2x.png */; };
@@ -249,7 +253,6 @@
 		338990B51CEB1F9D00A708F8 /* DemoDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */; };
 		338990B71CEB23E100A708F8 /* powerD.png in Resources */ = {isa = PBXBuildFile; fileRef = 338990B61CEB23E100A708F8 /* powerD.png */; };
 		338990B91CEB240F00A708F8 /* storageD.png in Resources */ = {isa = PBXBuildFile; fileRef = 338990B81CEB240F00A708F8 /* storageD.png */; };
-		338990BB1CEB242100A708F8 /* inverterD.png in Resources */ = {isa = PBXBuildFile; fileRef = 338990BA1CEB242100A708F8 /* inverterD.png */; };
 		338990BD1CEB242B00A708F8 /* chargeD.png in Resources */ = {isa = PBXBuildFile; fileRef = 338990BC1CEB242B00A708F8 /* chargeD.png */; };
 		33ECDCF31CDC9D3400E20AF8 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33ECDCF11CDC9D3400E20AF8 /* deviceCore.xcdatamodeld */; };
 		33EFB6011C979B5F003F336F /* StationCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5F81C979B5F003F336F /* StationCellectViewController.m */; };
@@ -601,6 +604,12 @@
 		3363DD201C7C598B00D740FB /* countryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = countryViewController.h; path = ../countryViewController.h; sourceTree = "<group>"; };
 		3363DD211C7C598B00D740FB /* countryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = countryViewController.m; path = ../countryViewController.m; sourceTree = "<group>"; };
 		3363DD231C7C610A00D740FB /* 语言.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "语言.png"; path = "../语言.png"; sourceTree = "<group>"; };
+		33652A211CEC023C004EBAE5 /* inverterD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverterD.png; sourceTree = "<group>"; };
+		33652A231CEC0621004EBAE5 /* inverterE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverterE.png; sourceTree = "<group>"; };
+		33652A261CEC0AC8004EBAE5 /* extensionListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extensionListTableViewController.h; sourceTree = "<group>"; };
+		33652A271CEC0AC8004EBAE5 /* extensionListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = extensionListTableViewController.m; sourceTree = "<group>"; };
+		33652A291CEC1190004EBAE5 /* ExtensionTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionTwoViewController.h; sourceTree = "<group>"; };
+		33652A2A1CEC1190004EBAE5 /* ExtensionTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtensionTwoViewController.m; sourceTree = "<group>"; };
 		336664DF1CB75213005573FB /* moreTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moreTableViewController.h; sourceTree = "<group>"; };
 		336664E01CB75213005573FB /* moreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreTableViewController.m; sourceTree = "<group>"; };
 		336664E21CB7524C005573FB /* moreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moreCell.h; sourceTree = "<group>"; };
@@ -761,7 +770,6 @@
 		338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDeviceViewController.m; sourceTree = "<group>"; };
 		338990B61CEB23E100A708F8 /* powerD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = powerD.png; path = ../powerD.png; sourceTree = "<group>"; };
 		338990B81CEB240F00A708F8 /* storageD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = storageD.png; path = ../storageD.png; sourceTree = "<group>"; };
-		338990BA1CEB242100A708F8 /* inverterD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = inverterD.png; path = ../inverterD.png; sourceTree = "<group>"; };
 		338990BC1CEB242B00A708F8 /* chargeD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chargeD.png; path = ../chargeD.png; sourceTree = "<group>"; };
 		33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
 		33EFB5F71C979B5F003F336F /* StationCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCellectViewController.h; sourceTree = "<group>"; };
@@ -1382,6 +1390,17 @@
 			path = "登陆动画";
 			sourceTree = "<group>";
 		};
+		33652A251CEC0A00004EBAE5 /* 推广服务 */ = {
+			isa = PBXGroup;
+			children = (
+				33652A261CEC0AC8004EBAE5 /* extensionListTableViewController.h */,
+				33652A271CEC0AC8004EBAE5 /* extensionListTableViewController.m */,
+				33652A291CEC1190004EBAE5 /* ExtensionTwoViewController.h */,
+				33652A2A1CEC1190004EBAE5 /* ExtensionTwoViewController.m */,
+			);
+			path = "推广服务";
+			sourceTree = "<group>";
+		};
 		336664DE1CB751F4005573FB /* 更多产品 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1599,6 +1618,7 @@
 		337F9CBF1C71ABD80016FE43 /* 服务 */ = {
 			isa = PBXGroup;
 			children = (
+				33652A251CEC0A00004EBAE5 /* 推广服务 */,
 				336664DE1CB751F4005573FB /* 更多产品 */,
 				3358812B1CB66D5C0068EFAD /* 质保查询 */,
 				33528FED1C83E34500D07889 /* 客服系统 */,
@@ -1771,9 +1791,10 @@
 		338990BE1CEB247E00A708F8 /* pic1 */ = {
 			isa = PBXGroup;
 			children = (
+				33652A231CEC0621004EBAE5 /* inverterE.png */,
+				33652A211CEC023C004EBAE5 /* inverterD.png */,
 				338990B81CEB240F00A708F8 /* storageD.png */,
 				338990B61CEB23E100A708F8 /* powerD.png */,
-				338990BA1CEB242100A708F8 /* inverterD.png */,
 				338990BC1CEB242B00A708F8 /* chargeD.png */,
 				338990B01CEAB73400A708F8 /* logo3.png */,
 				338990AE1CEAB61300A708F8 /* mebg.png */,
@@ -2180,8 +2201,10 @@
 				335614A41CB3E0210071BAC9 /* frame4@2x.png in Resources */,
 				334770FA1C9A3D91003A6F13 /* server@2x.png in Resources */,
 				33793D141CE583AD000D0F9E /* storage4.png in Resources */,
+				33652A241CEC0621004EBAE5 /* inverterE.png in Resources */,
 				3349BB411C7EFD8500E6E34B /* 3.jpg in Resources */,
 				33FEFD771C7DB38400324374 /* iconfont-shouji@3x.png in Resources */,
+				33652A221CEC023C004EBAE5 /* inverterD.png in Resources */,
 				33FEFD6A1C7DB38400324374 /* iconfont-faxian_press@3x.png in Resources */,
 				33FEFD721C7DB38400324374 /* iconfont-nengyuanlei_press@3x.png in Resources */,
 				33FEFD661C7DB38400324374 /* icon@3x.png in Resources */,
@@ -2200,7 +2223,6 @@
 				33FEFD701C7DB38400324374 /* iconfont-klmlianxifangshi@3x.png in Resources */,
 				33FEFD611C7DB38400324374 /* icon---Password@3x.png in Resources */,
 				3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */,
-				338990BB1CEB242100A708F8 /* inverterD.png in Resources */,
 				3383F1381C9FFD370075E834 /* 家庭用电量.png in Resources */,
 				33FEFD6D1C7DB38400324374 /* iconfont-gongsijianjie@2x.png in Resources */,
 				33FEFD7C1C7DB38400324374 /* shebei@3x.png in Resources */,
@@ -2259,6 +2281,7 @@
 				334E9BF51CAD2B8900C8271F /* PvLogTableViewController.m in Sources */,
 				3381ECE81CBC906600DCF0D2 /* Line3View.m in Sources */,
 				3343F3DA1C80405D009F69BC /* AFNetworkActivityIndicatorManager.m in Sources */,
+				33652A2B1CEC1190004EBAE5 /* ExtensionTwoViewController.m in Sources */,
 				3349BB381C7ED28100E6E34B /* UserInfo.m in Sources */,
 				335239031CD1B74E00287EA9 /* imageBig.m in Sources */,
 				33EFB6671C98F9B1003F336F /* UIView+Zirkfied.m in Sources */,
@@ -2385,6 +2408,7 @@
 				337C30541CCDAF3C002B99B7 /* protocol.m in Sources */,
 				3356149C1CB3AFE30071BAC9 /* addServerViewController.m in Sources */,
 				3383EFA01C9F8A6F0075E834 /* MJRefreshHeader.m in Sources */,
+				33652A281CEC0AC8004EBAE5 /* extensionListTableViewController.m in Sources */,
 				335317431CA2423D003F106D /* GetDevice+CoreDataProperties.m in Sources */,
 				33ECDCF31CDC9D3400E20AF8 /* deviceCore.xcdatamodeld in Sources */,
 				3367CB4D1C86806600EF460C /* MASViewAttribute.m in Sources */,

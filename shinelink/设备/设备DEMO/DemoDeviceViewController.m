@@ -38,7 +38,7 @@
     float SizeH2=10*HEIGHT_SIZE;
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
-    [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
+    [firstB addTarget:self action:@selector(clickDemo) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:firstB];
     UILabel *firstL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     firstL.text=root_kongzhi;
@@ -49,7 +49,7 @@
     
     UIButton *secondB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [secondB setImage:[UIImage imageNamed:@"参数.png"] forState:UIControlStateNormal];
-    [secondB addTarget:self action:@selector(parameterPV) forControlEvents:UIControlEventTouchUpInside];
+    [secondB addTarget:self action:@selector(clickDemo) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:secondB];
     UILabel *secondL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE+74*NOW_SIZE, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     secondL.text=root_canshu;
@@ -60,7 +60,7 @@
     
     UIButton *threeB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*2, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [threeB setImage:[UIImage imageNamed:@"数据.png"] forState:UIControlStateNormal];
-    [threeB addTarget:self action:@selector(goPVThree) forControlEvents:UIControlEventTouchUpInside];
+    [threeB addTarget:self action:@selector(clickDemo) forControlEvents:UIControlEventTouchUpInside];
     [self.scrollView addSubview:threeB];
     UILabel *threeL=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE+74*NOW_SIZE*2, 540*HEIGHT_SIZE-SizeH-SizeH2, 70*HEIGHT_SIZE,20*HEIGHT_SIZE )];
     threeL.text=root_shuju;
@@ -70,7 +70,7 @@
     [self.scrollView addSubview:threeL];
     
     UIButton *fourB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE+74*NOW_SIZE*3, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
-    [fourB addTarget:self action:@selector(goFour) forControlEvents:UIControlEventTouchUpInside];
+    [fourB addTarget:self action:@selector(clickDemo) forControlEvents:UIControlEventTouchUpInside];
     [fourB setImage:[UIImage imageNamed:@"日志.png"] forState:UIControlStateNormal];
     
     [self.scrollView addSubview:fourB];
@@ -114,6 +114,12 @@
     processView.layer.contents = (id)bgImage.CGImage;
     [self.scrollView addSubview:processView];
     
+    float imageSize=150*HEIGHT_SIZE;
+   UIImageView *coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake((SCREEN_Width-imageSize)/2, (200*HEIGHT_SIZE-imageSize)/2, imageSize, imageSize)];
+    [coverImageView setImage:[UIImage imageNamed:_picName2]];
+    [processView addSubview:coverImageView];
+
+    
 }
 
 
@@ -122,7 +128,13 @@
  
 }
 
+-(void)clickDemo{
 
+    UIAlertView  *alert= [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_Demo_tishi delegate:self cancelButtonTitle:root_Yes  otherButtonTitles:nil, nil];
+    
+    [alert show];
+
+}
 
 
 
