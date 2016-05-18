@@ -32,14 +32,15 @@
         _image.image = IMAGE(@"更多产品2.png");
         [self.contentView addSubview:_image];
         
-        self.connent = [[UITextView alloc] initWithFrame:CGRectMake(size2+imageSize+kongXi, size1+20*HEIGHT_SIZE, 200*NOW_SIZE, 60*HEIGHT_SIZE)];
+        self.connent = [[UILabel alloc] initWithFrame:CGRectMake(size2+imageSize+kongXi, size1+20*HEIGHT_SIZE, 200*NOW_SIZE, 60*HEIGHT_SIZE)];
         self.connent.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
        
         //self.connent.numberOfLines=0;
         self.connent.textAlignment = NSTextAlignmentLeft;
         self.connent.textColor = [UIColor grayColor];
-        //self.connent.userInteractionEnabled=NO;
-        self.connent.editable=NO;
+       // self.connent.userInteractionEnabled=YES;
+        //self.connent.editable=NO;
+        self.connent.numberOfLines=0;
         [self.contentView addSubview:_connent];
         
 

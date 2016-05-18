@@ -88,7 +88,7 @@
 }
 //_scrollView.
 -(void)addbutton{
-    float SizeH2=5*HEIGHT_SIZE;
+    float SizeH2=10*HEIGHT_SIZE;
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
     [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];

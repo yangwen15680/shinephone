@@ -442,7 +442,13 @@
 #define   root_WO_C02    NSLocalizedString(@"CO2减排", nil)
 #define   root_WO_SO2   NSLocalizedString(@"SO2减排", nil)
 
+#define   root_FU_gaisu    NSLocalizedString(@"概述", nil)
+#define   root_FU_fuwu_jieshao    NSLocalizedString(@"服务介绍", nil)
+#define   root_FU_tigongshang    NSLocalizedString(@"提供商:", nil)
+#define   root_FU_shiyong_quyu    NSLocalizedString(@"使用区域:", nil)
+#define   root_FU_jiage    NSLocalizedString(@"价格:", nil)
+#define   root_FU_lianxi_fangshi    NSLocalizedString(@"联系方式:", nil)
 
-
+#define   root_shifou_shanchu_shebei    NSLocalizedString(@"是否确定删除设备", nil)
 
 #endif /* languageNew_h */

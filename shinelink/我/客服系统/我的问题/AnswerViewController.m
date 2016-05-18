@@ -51,7 +51,13 @@ int picTime;
     [self.view addSubview:_scrollView];
  //   float Size1=50*NOW_SIZE;
     
- 
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+
+    
         UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 17*HEIGHT_SIZE, 80*NOW_SIZE,20*HEIGHT_SIZE )];
         PV1Lable.text=root_ME_neirong;
         PV1Lable.textAlignment=NSTextAlignmentRight;
@@ -61,10 +67,10 @@ int picTime;
     
     UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 17*HEIGHT_SIZE, 220*NOW_SIZE,205*HEIGHT_SIZE )];
     image2.userInteractionEnabled = YES;
-    image2.image = IMAGE(@"外框@3x.png");
+    image2.image = IMAGE(@"content4.jpg");
     [_scrollView addSubview:image2];
     
-    self.contentView = [[UITextView alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 17*HEIGHT_SIZE, 205*NOW_SIZE,200*HEIGHT_SIZE )];
+    self.contentView = [[UITextView alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 19*HEIGHT_SIZE, 205*NOW_SIZE,200*HEIGHT_SIZE )];
     // self.contentView.placeholder = @"请输入内容";
     self.contentView.textColor = [UIColor blackColor];
     self.contentView.tintColor = [UIColor blackColor];
@@ -82,7 +88,7 @@ int picTime;
     
     UIImageView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 27*HEIGHT_SIZE+200*HEIGHT_SIZE, 220*NOW_SIZE,30*HEIGHT_SIZE )];
     image1.userInteractionEnabled = YES;
-    image1.image = IMAGE(@"frame4@2x.png");
+    image1.image = IMAGE(@"frame2@2x.png");
     [_scrollView addSubview:image1];
     
     UILabel *registLable1= [[UILabel alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 27*HEIGHT_SIZE+200*HEIGHT_SIZE, 220*NOW_SIZE,30*HEIGHT_SIZE )];
@@ -163,6 +169,7 @@ int picTime;
             }
         }else{
             [self showAlertViewWithTitle:nil message:root_ME_tianjia_shibai cancelButtonTitle:root_Yes];
+              [self popoverPresentationController];
         }
     }
                               failure:^(NSError *error) {
@@ -302,6 +309,10 @@ int picTime;
     }
 }
 
+-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+    [_contentView resignFirstResponder];
+ 
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

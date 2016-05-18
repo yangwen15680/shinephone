@@ -165,7 +165,8 @@
             
             
             _nominalPower=[content objectForKey:@"nominalPower"];
-         
+          _powerData=[content objectForKey:@"power"];
+            
            // self.line2View.frameType=@"1";
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             [self addProcess];

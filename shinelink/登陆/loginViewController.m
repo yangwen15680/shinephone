@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIImage *bgImage = IMAGE(@"bg.png");
+    UIImage *bgImage = IMAGE(@"bg3.jpg");
     self.view.layer.contents = (id)bgImage.CGImage;
    
    // [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:17/255.0f green:183/255.0f blue:243/255.0f alpha:0]];
@@ -89,7 +89,8 @@
 
 //添加布局
 - (void)addSubViews {
-
+    float sizeH=20*HEIGHT_SIZE;
+    
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     [self.view addSubview:_scrollView];
     
@@ -100,14 +101,14 @@
     [self.view addGestureRecognizer:tapGestureRecognizer];
     
     //logo
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(20*NOW_SIZE, 60*HEIGHT_SIZE, SCREEN_Width - 40*NOW_SIZE, 70*HEIGHT_SIZE)];
+    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 60*HEIGHT_SIZE, SCREEN_Width - 100*NOW_SIZE, 55*HEIGHT_SIZE)];
     logo.image = IMAGE(@"logo.png");
     [_scrollView addSubview:logo];
     
     //用户名
-    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 145*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
+    UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 145*HEIGHT_SIZE+sizeH, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
-    userBgImageView.image = IMAGE(@"账号3.png");
+    userBgImageView.image = IMAGE(@"name3.jpg");
     [_scrollView addSubview:userBgImageView];
     
     self.userTextField = [[UITextField alloc] initWithFrame:CGRectMake(50*NOW_SIZE, 0, CGRectGetWidth(userBgImageView.frame) - 50*NOW_SIZE, 45*HEIGHT_SIZE)];
@@ -120,8 +121,8 @@
     [userBgImageView addSubview:_userTextField];
     
     //密码
-    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE,210*HEIGHT_SIZE , SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
-    pwdBgImageView.image = IMAGE(@"密码3.png");
+    UIImageView *pwdBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE,210*HEIGHT_SIZE+sizeH , SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
+    pwdBgImageView.image = IMAGE(@"pass3.jpg");
     pwdBgImageView.userInteractionEnabled = YES;
     [_scrollView addSubview:pwdBgImageView];
     
@@ -138,7 +139,7 @@
     
  
    
-    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 260*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
+    self.forgetLable= [[UILabel alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 260*HEIGHT_SIZE+sizeH, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.forgetLable.text=root_forget_pwd;
      self.forgetLable.textColor=[UIColor whiteColor];
         self.forgetLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
@@ -149,7 +150,7 @@
     [_scrollView addSubview:self.forgetLable];
     
     
-   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 260*HEIGHT_SIZE, 115*NOW_SIZE, 40*HEIGHT_SIZE)];
+   _registLable= [[UILabel alloc] initWithFrame:CGRectMake(160*NOW_SIZE, 260*HEIGHT_SIZE+sizeH, 115*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.registLable.text=root_register;
     self.registLable.textColor=[UIColor whiteColor];
     self.registLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
@@ -161,7 +162,7 @@
     
     
     
-    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 310*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
+    LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 310*HEIGHT_SIZE+sizeH, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     loginBtn.backgroundColor = [UIColor colorWithRed:149/255.0f green:226/255.0f blue:98/255.0f alpha:1];
     [_scrollView addSubview:loginBtn];
     loginBtn.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
@@ -260,8 +261,9 @@
 
 -(void)netRequest{
 
+    [self showProgressView];
     [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":_userTextField.text, @"password":[self MD5:_pwdTextField.text]} paramarsSite:@"/newLoginAPI.do" sucessBlock:^(id content) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+     [self hideProgressView];
       NSLog(@"loginIn:%@",content);
         if (content) {
             if ([content[@"success"] integerValue] == 0) {

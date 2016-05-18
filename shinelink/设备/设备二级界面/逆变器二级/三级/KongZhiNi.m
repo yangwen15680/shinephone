@@ -187,11 +187,11 @@
 
 -(void)finishSet{
     if(_slider){
-    NSString *S1=[NSString stringWithFormat:@"%.2f",_slider.value];
+    NSString *S1=[NSString stringWithFormat:@"%.0f",_slider.value];
         _commandValue=[NSString stringWithString:S1];
         _paramId=@"pv_active_p_rate";
     }else if (_slider1){
-    NSString *S2=[NSString stringWithFormat:@"%.2f",_slider1.value];
+    NSString *S2=[NSString stringWithFormat:@"%.0f",_slider1.value];
          _commandValue=[NSString stringWithString:S2];
          _paramId=@"pv_reactive_p_rate";
     }else if (_slider2){

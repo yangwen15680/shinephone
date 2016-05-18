@@ -91,7 +91,7 @@
 "系统错误"="System error";
 "修改成功"="Deleted successfully";
 "已配置设备"="Configured device";
-"未配置设备"="Device need to configure";
+"未配置设备"="Demo device";
 "日电量:"="Daily electricity:";
 "电池百分比:"="Battery percentage:";
 "编辑"="Edit";
@@ -175,7 +175,7 @@
 "序列号"="SN";
 "端口"="Port";
 "别名"="Alias";
-"额定功率"="Rated power";
+"额定功率"="Rated power(W)";
 "固件版本"="Firmware version";
 "属性"="Attribute";
 "模式"="Mode";
@@ -333,7 +333,7 @@
 "常见问题"="FAQ";
 "客户服务"="Customer service";
 "质保查询"="Check warranty";
-"增值业务"="Value added service";
+"增值业务"="Extension services";
 "更多产品"="Product promotion";
 
 "提交问题"="Submit questions";
@@ -413,5 +413,14 @@
 "当前版本:"="current version:";
 
 "示范设备暂时不开放此功能,请安装真实产品使用此功能."="Demonstration equipment is temporarily not open this feature, install a real product to use this feature.";
+"概述"="Outline";
+"服务介绍"="Service introduction";
+"提供商:"="Provider:";
+"使用区域:"="Used area:";
+"价格:"="Price:";
+"联系方式:"="Contact:";
+
+"是否确定删除设备"="Are you sure you remove the device?";
+
 
 

@@ -31,16 +31,26 @@
 
 @implementation listViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [self netquestion];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+}
+
+-(void)netquestion{
+
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
     
     self.titleArray =[NSMutableArray array];
     self.statusArray =[NSMutableArray array];
-        self.contentArray =[NSMutableArray array];
-        self.timeArray =[NSMutableArray array];
+    self.contentArray =[NSMutableArray array];
+    self.timeArray =[NSMutableArray array];
     self.questionID=[NSMutableArray array];
     self.questionTypeArray=[NSMutableArray array];
     self.questionPicArray=[NSMutableArray array];
@@ -48,45 +58,45 @@
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"userId":userID} paramarsSite:@"/questionAPI.do?op=questionList" sucessBlock:^(id content) {
         [self hideProgressView];
-      NSLog(@"questionList=: %@", content);
+        NSLog(@"questionList=: %@", content);
         if(content){
-             _allArray=[NSMutableArray arrayWithArray:content];
+            _allArray=[NSMutableArray arrayWithArray:content];
             for(int i=0;i<_allArray.count;i++){
-           
+                
                 NSString *title=[NSString stringWithFormat:@"%@",content[i][@"title"]];
                 NSString *status=[NSString stringWithFormat:@"%@",content[i][@"status"]];
                 NSString *contentS1=[NSString stringWithFormat:@"%@",content[i][@"content"]];
                 NSString *time=[NSString stringWithFormat:@"%@",content[i][@"lastTime"]];
-                 NSString *question=[NSString stringWithFormat:@"%@",content[i][@"id"]];
+                NSString *question=[NSString stringWithFormat:@"%@",content[i][@"id"]];
                 NSString *questiontype=[NSString stringWithFormat:@"%@",content[i][@"questionType"]];
-                 NSString *questionPIC=[NSString stringWithFormat:@"%@",content[i][@"attachment"]];
+                NSString *questionPIC=[NSString stringWithFormat:@"%@",content[i][@"attachment"]];
                 NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
                 
-                 [_questionPicArray addObject:PIC];
+                [_questionPicArray addObject:PIC];
                 [_titleArray addObject:title];
-              [_statusArray addObject:status];
-                  [_contentArray addObject:contentS1];
-                  [_timeArray addObject:time];
-                 [_questionID addObject:question];
-                 [_questionTypeArray addObject:questiontype];
+                [_statusArray addObject:status];
+                [_contentArray addObject:contentS1];
+                [_timeArray addObject:time];
+                [_questionID addObject:question];
+                [_questionTypeArray addObject:questiontype];
             }
             
-        self.navigationItem.title = root_ME_wenti_liebiao;
-        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-             self.tableView.separatorStyle=NO;
+            self.navigationItem.title = root_ME_wenti_liebiao;
+            _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40*HEIGHT_SIZE)];
+            _tableView.delegate = self;
+            _tableView.dataSource = self;
+            self.tableView.separatorStyle=NO;
             self.tableView.backgroundColor=COLOR(240, 242, 239, 1);
-                  self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        [self.view addSubview:_tableView];
+            self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+            [self.view addSubview:_tableView];
         }
     } failure:^(NSError *error) {
         [self hideProgressView];
         [self showToastViewWithTitle:root_Networking];
     }];
+
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -132,7 +142,7 @@
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed)];
     longPressGesture.minimumPressDuration = 1.0f;
     [cell addGestureRecognizer:longPressGesture];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

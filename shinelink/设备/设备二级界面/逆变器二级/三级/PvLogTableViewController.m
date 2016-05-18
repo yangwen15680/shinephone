@@ -68,7 +68,7 @@
     self.contentTextArray=[NSMutableArray array];
         self.timeTextArray=[NSMutableArray array];
     
-_PvSn=@"SAMP524004";
+//_PvSn=@"SAMP524004";
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{_type:_PvSn,@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:_address sucessBlock:^(id content) {
         [self hideProgressView];
             NSLog(@"getInverterAlarm: %@", content);

@@ -21,7 +21,7 @@
 
 #define ColorWithRGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1]
 
-@interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface deviceViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,EditStationMenuViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate,UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property(nonatomic,strong)EditStationMenuView  *editCellect;
@@ -56,6 +56,7 @@
 @property (nonatomic, strong) NSString *head32;
 @property (nonatomic, strong) NSString *head33;
 @property (nonatomic, strong)UIView *headerView;
+@property (nonatomic, strong) UIAlertView *Alert1;
 @end
 
 @implementation deviceViewController
@@ -222,7 +223,7 @@
 }
 
 -(void)initData{
-    _DemoPicName2=[[NSMutableArray alloc]initWithObjects:@"storageD.png", @"powerD.png", @"inverterE.png",@"chargeD.png",nil];
+    _DemoPicName2=[[NSMutableArray alloc]initWithObjects:@"storageE.png", @"powerE.png", @"inverterE.png",@"chargeE.png",nil];
     _DemoPicName=[[NSMutableArray alloc]initWithObjects:@"storageD.png", @"powerD.png", @"inverterD.png",@"chargeD.png",nil];
     _typeArr=[NSMutableArray array];
     nameArray=[NSMutableArray array];
@@ -464,7 +465,7 @@
             _head33=@"Ppv";
         
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"plantMoneyText"]];
-            NSArray *headA=[head111 componentsSeparatedByString:@"_"];
+            NSArray *headA=[head111 componentsSeparatedByString:@"/"];
             _head11=[headA objectAtIndex:0];
             _head12=[headA objectAtIndex:1];
             
@@ -778,52 +779,75 @@
     }
     if (row==3) {
         [_editCellect removeFromSuperview];
-        [self showProgressView];
-        NSMutableDictionary *dict=[NSMutableDictionary dictionary];
-        NSString *netType;
-        GetDevice *get=[_managerNowArray objectAtIndex:_indexPath.row];
-        if ([getDevice.type isEqualToString:@"inverter"]) {
-            [dict setObject:getDevice.deviceSN forKey:@"inverterId"];
-            netType=@"/newInverterAPI.do?op=deleteInverter";
-            
-        }else if ([getDevice.type isEqualToString:@"storage"]){
-            [dict setObject:getDevice.deviceSN forKey:@"storageId"];
-            
-            netType=@"/newStorageAPI.do?op=deleteStorage";
-        }
-
-          [dict setObject:get.deviceSN forKey:@"inverterId"];
         
-        [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:netType sucessBlock:^(id content) {
-            //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
-            NSLog(@"updateInvInfo: %@", content);
-            [self hideProgressView];
-            id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
-            if (content1) {
-                if ([content1[@"success"] integerValue] == 0) {
-                    if ([content1[@"msg"] integerValue] ==501) {
-                        [self showAlertViewWithTitle:nil message:root_xiTong_CuoWu cancelButtonTitle:root_Yes];
-                         //[self.tableView reloadData];
-                    }
-                }else{
-                    [self showAlertViewWithTitle:nil message:root_shanChu_chengGong cancelButtonTitle:root_Yes];
-                    [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:get];
-                    NSError *error = nil;
-                    BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
-                    if (!isSaveSuccess) {
-                        NSLog(@"Error: %@,%@",error,[error userInfo]);
-                    }else
-                    {
-                        NSLog(@"del successFull");
-                        [self netRequest];
-                    }
+        _Alert1 = [[UIAlertView alloc] initWithTitle:root_ALET message:root_shifou_shanchu_shebei delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
+        
+        [_Alert1 show];
+
+            }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        
+    }else if (buttonIndex==1){
+      
+        [self deleteDevice];
+    }
+    
+}
+
+-(void)deleteDevice{
+    
+GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
+    [self showProgressView];
+    NSMutableDictionary *dict=[NSMutableDictionary dictionary];
+    NSString *netType;
+    GetDevice *get=[_managerNowArray objectAtIndex:_indexPath.row];
+    if ([getDevice.type isEqualToString:@"inverter"]) {
+        [dict setObject:getDevice.deviceSN forKey:@"inverterId"];
+        netType=@"/newInverterAPI.do?op=deleteInverter";
+        
+    }else if ([getDevice.type isEqualToString:@"storage"]){
+        [dict setObject:getDevice.deviceSN forKey:@"storageId"];
+        
+        netType=@"/newStorageAPI.do?op=deleteStorage";
+    }
+    
+    [dict setObject:get.deviceSN forKey:@"inverterId"];
+    
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dict paramarsSite:netType sucessBlock:^(id content) {
+        //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
+        NSLog(@"updateInvInfo: %@", content);
+        [self hideProgressView];
+        id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+        if (content1) {
+            if ([content1[@"success"] integerValue] == 0) {
+                if ([content1[@"msg"] integerValue] ==501) {
+                    [self showAlertViewWithTitle:nil message:root_xiTong_CuoWu cancelButtonTitle:root_Yes];
+                    //[self.tableView reloadData];
+                }
+            }else{
+                [self showAlertViewWithTitle:nil message:root_shanChu_chengGong cancelButtonTitle:root_Yes];
+                [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:get];
+                NSError *error = nil;
+                BOOL isSaveSuccess = [[CoreDataManager sharedCoreDataManager].managedObjContext save:&error];
+                if (!isSaveSuccess) {
+                    NSLog(@"Error: %@,%@",error,[error userInfo]);
+                }else
+                {
+                    NSLog(@"del successFull");
+                    [self netRequest];
                 }
             }
-        } failure:^(NSError *error) {
-            [self showToastViewWithTitle:root_Networking];
-        }];
-    }
+        }
+    } failure:^(NSError *error) {
+        [self showToastViewWithTitle:root_Networking];
+    }];
+
+    
 }
+
 
 -(void)addPicture{
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
@@ -958,18 +982,21 @@
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[0];
+              sd.picName2=_DemoPicName2[0];
                sd.title=@"storage(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
         else if([demoDevice.type  isEqualToString:@"charge"]){
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[3];
+              sd.picName2=_DemoPicName2[3];
               sd.title=@"charge(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
         else if([demoDevice.type  isEqualToString:@"powerRegulator"]){
             DemoDeviceViewController *sd=[[DemoDeviceViewController alloc ]init];
             sd.hidesBottomBarWhenPushed=YES;
             sd.picName=_DemoPicName[1];
+              sd.picName2=_DemoPicName2[1];
             sd.title=@"powerRegulator(Demo)";
             [self.navigationController pushViewController:sd animated:NO];}
     
@@ -1093,7 +1120,10 @@
         }
         if(indexPath.section==1)
         {
+          
             DemoDevice *demoDevice=[_managerArray objectAtIndex:indexPath.row];
+              [_managerArray removeObjectAtIndex:indexPath.row];
+            
          [[CoreDataManager sharedCoreDataManager].managedObjContext deleteObject:demoDevice];
             NSError *error = nil;
             
@@ -1108,7 +1138,8 @@
            [self request];
         }
         //更新UI
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
         
     }else if (editingStyle == UITableViewCellEditingStyleInsert) {
         
@@ -1116,6 +1147,7 @@
 }
 
 - (NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if(indexPath.section==0){
     //添加一个编辑按钮
     UITableViewRowAction *deleteAction = [UITableViewRowAction rowActionWithStyle:(UITableViewRowActionStyleNormal) title:root_bianJi handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {

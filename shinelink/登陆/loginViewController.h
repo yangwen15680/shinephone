@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface loginViewController : UIViewController<UITextFieldDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface loginViewController : RootViewController<UITextFieldDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate, UITabBarControllerDelegate>
 
 @end

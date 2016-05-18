@@ -42,10 +42,18 @@
     [self initUI];
 }
 -(void)initUI{
+    
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
     [self.view addSubview:_scrollView];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
     float Size1=50*HEIGHT_SIZE;
     
     for(int i=0;i<_labelArray.count;i++)
@@ -96,7 +104,7 @@
     
     UIImageView *image2=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 15*HEIGHT_SIZE+Size1*3, 220*NOW_SIZE,105*HEIGHT_SIZE )];
     image2.userInteractionEnabled = YES;
-    image2.image = IMAGE(@"外框@3x.png");
+    image2.image = IMAGE(@"content3.jpg");
     [_scrollView addSubview:image2];
     
     self.contentView = [[UITextView alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 17*HEIGHT_SIZE+Size1*3, 205*NOW_SIZE,100*HEIGHT_SIZE )];
@@ -117,7 +125,7 @@
     
     UIImageView *image1=[[UIImageView alloc]initWithFrame:CGRectMake(80*NOW_SIZE, 17*HEIGHT_SIZE+Size1*3+120*HEIGHT_SIZE, 220*NOW_SIZE,30*HEIGHT_SIZE )];
     image1.userInteractionEnabled = YES;
-    image1.image = IMAGE(@"frame4@2x.png");
+    image1.image = IMAGE(@"frame2@2x.png");
     [_scrollView addSubview:image1];
     
     UILabel *registLable1= [[UILabel alloc] initWithFrame:CGRectMake(85*NOW_SIZE, 17*HEIGHT_SIZE+Size1*3+120*HEIGHT_SIZE, 220*NOW_SIZE,30*HEIGHT_SIZE )];
@@ -158,6 +166,12 @@
     
     }
 
+
+-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+    [_contentView resignFirstResponder];
+    [_userTextField resignFirstResponder];
+       [_SNTextField resignFirstResponder];
+}
 
 
 -(void)finishDone{
@@ -205,12 +219,13 @@
             if ([content1 integerValue] == 1) {
                
                     [self showAlertViewWithTitle:nil message:root_ME_tianjia_chenggong cancelButtonTitle:root_Yes];
+                [self.navigationController popViewControllerAnimated:NO];
                 }
             }else{
                 
                 [self showAlertViewWithTitle:nil message:root_ME_tianjia_shibai cancelButtonTitle:root_Yes];
                 
-                
+                 [self.navigationController popViewControllerAnimated:NO];
             }
         }
      failure:^(NSError *error) {

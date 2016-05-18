@@ -9,7 +9,7 @@
 #import "ExtensionTwoViewController.h"
 
   #define  headH2 100*HEIGHT_SIZE
-
+  #define  headH 50*HEIGHT_SIZE
 @interface ExtensionTwoViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView2;
 @property (nonatomic, strong) UILabel *title1;
@@ -20,6 +20,11 @@
 @property (nonatomic, strong) NSString *phoneNum;
 @property (nonatomic, strong) NSString *reconmend;
 @property (nonatomic, strong) NSString *supplier;
+@property (nonatomic, strong) NSString *picName;
+@property (nonatomic, strong) NSMutableArray *picArray;
+@property (nonatomic, strong) NSMutableArray *nameArray;
+@property (nonatomic, strong) NSMutableArray *contentArray;
+@property (nonatomic, strong) UIImageView*image;
 @end
 
 @implementation ExtensionTwoViewController
@@ -48,8 +53,35 @@
             _price=content[@"price"];
             _phoneNum=content[@"phoneNum"];
             _reconmend=content[@"recommend"];
+            _picName=content[@"imageName"];
             
             [self uiOne];
+            
+            if (_picName.length>0) {
+                [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_picName} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+                    
+                    [self hideProgressView];
+                    
+                    NSLog(@"getProductImage=: %@", content2);
+                    if (content2) {
+                        _picArray=[NSMutableArray arrayWithObject:content2];
+                        
+                        [self initPic];
+                                            }
+                    
+                } failure:^(NSError *error) {
+                    [self hideProgressView];
+                     [self initContent];
+                }];
+                
+                
+            }else{
+                [self initContent];
+                
+            }
+            
+            
+            
         }
         
     } failure:^(NSError *error) {
@@ -61,7 +93,12 @@
 }
 
 
+
+
+
 -(void)uiOne{
+    _nameArray=[NSMutableArray arrayWithObjects:root_FU_tigongshang, root_FU_shiyong_quyu, root_FU_jiage, root_FU_lianxi_fangshi, nil];
+    _contentArray=[NSMutableArray arrayWithObjects:_supplier, _area, _price, _phoneNum, nil];
     
     _scrollView2=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView2.scrollEnabled=YES;
@@ -81,13 +118,13 @@
     
     
     UILabel *outlineTitle=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,45*HEIGHT_SIZE, 300*NOW_SIZE,20*HEIGHT_SIZE )];
-    outlineTitle.text=@"概述";
+    outlineTitle.text=root_FU_gaisu;
     outlineTitle.textAlignment=NSTextAlignmentLeft;
     outlineTitle.textColor=COLOR(0, 0, 0, 1);
     outlineTitle.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [_scrollView2 addSubview:outlineTitle];
     
-    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,70*HEIGHT_SIZE, 300*NOW_SIZE,headH2)];
+    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,70*HEIGHT_SIZE, 300*NOW_SIZE,headH2-headH)];
     _detail.text=_outline;
     _detail.editable=NO;
     _detail.textAlignment=NSTextAlignmentLeft;
@@ -95,8 +132,68 @@
     _detail.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_scrollView2 addSubview:_detail];
     
+    for (int i=0; i<4; i++) {
+        UILabel *nameTitle=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,170*HEIGHT_SIZE-headH+20*HEIGHT_SIZE*i, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+        nameTitle.text=_nameArray[i];
+        nameTitle.textAlignment=NSTextAlignmentLeft;
+        nameTitle.textColor=COLOR(0, 0, 0, 1);
+        nameTitle.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
+        [_scrollView2 addSubview:nameTitle];
+    }
+    
+    for (int i=0; i<4; i++) {
+        UILabel *contentTitle=[[UILabel alloc]initWithFrame:CGRectMake(160*NOW_SIZE,170*HEIGHT_SIZE-headH+20*HEIGHT_SIZE*i, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+        contentTitle.text=_contentArray[i];
+        contentTitle.textAlignment=NSTextAlignmentLeft;
+        contentTitle.textColor=COLOR(60, 60, 60, 1);
+        contentTitle.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
+        [_scrollView2 addSubview:contentTitle];
+    }
+    
+}
+
+-(void)initPic{
+
+    _image=[[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 250*HEIGHT_SIZE-headH, 300*NOW_SIZE, 140*HEIGHT_SIZE)];
+    [_image setImage:_picArray[0]];
+    [_scrollView2 addSubview:_image];
+     [self initContent];
+
+}
+
+-(void)initContent{
+
+    UILabel *recommendTitle=[[UILabel alloc]init];
+    UITextView *recommend=[[UITextView alloc]init];
+    
+    if (_image) {
+        recommendTitle.frame=CGRectMake(10*NOW_SIZE, 390*HEIGHT_SIZE-headH, 300*NOW_SIZE, 20*HEIGHT_SIZE);
+        recommend.frame=CGRectMake(10*NOW_SIZE, 410*HEIGHT_SIZE-headH, 300*NOW_SIZE, 200*HEIGHT_SIZE);
+    }else{
+        recommendTitle.frame=CGRectMake(10*NOW_SIZE, 390*HEIGHT_SIZE-120*HEIGHT_SIZE-headH, 300*NOW_SIZE, 20*HEIGHT_SIZE);
+        recommend.frame=CGRectMake(10*NOW_SIZE, 410*HEIGHT_SIZE-120*HEIGHT_SIZE-headH, 300*NOW_SIZE, 200*HEIGHT_SIZE);
+        
+    }
+    
+    recommendTitle.text=root_FU_fuwu_jieshao;
+    recommendTitle.textAlignment=NSTextAlignmentLeft;
+    recommendTitle.textColor=COLOR(0, 0, 0, 1);
+    recommendTitle.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [_scrollView2 addSubview:recommendTitle];
 
     
+   
+    recommend.text=_reconmend;
+    recommend.editable=NO;
+    recommend.textAlignment=NSTextAlignmentLeft;
+    recommend.textColor=COLOR(60, 60, 60, 1);
+    recommend.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
+    [_scrollView2 addSubview:recommend];
+
+    
+    
+  
+
 }
 
 

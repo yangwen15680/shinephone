@@ -244,14 +244,17 @@
     }else if (indexPath.row==1){
         qualityTableViewController *page2 = [[qualityTableViewController alloc] init];
           page2.hidesBottomBarWhenPushed=YES;
+         page2.title=root_ME_zhibao;
         [self.navigationController pushViewController:page2 animated:NO];
     }else if (indexPath.row==2){
         extensionListTableViewController *page2 = [[extensionListTableViewController alloc] init];
         page2.hidesBottomBarWhenPushed=YES;
+        page2.title=root_ME_zengzhi;
         [self.navigationController pushViewController:page2 animated:NO];
     }else if (indexPath.row==3){
         moreTableViewController *page4 = [[moreTableViewController alloc] init];
         page4.hidesBottomBarWhenPushed=YES;
+          page4.title=root_ME_gengduo;
         [self.navigationController pushViewController:page4 animated:NO];
     }
 }
