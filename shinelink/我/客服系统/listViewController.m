@@ -26,6 +26,7 @@
 @property(nonatomic,strong)NSMutableArray *questionID;
 @property(nonatomic,strong)NSMutableArray *questionPicArray;
 @property(nonatomic,strong)NSString *delQuestionID;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 
@@ -139,22 +140,28 @@
     cell.view1.frame=CGRectMake(0, 80*HEIGHT_SIZE+fcRect.size.height+20*HEIGHT_SIZE,SCREEN_Width, 10*HEIGHT_SIZE );
  
     
-    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed)];
+    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
     longPressGesture.minimumPressDuration = 1.0f;
     [cell addGestureRecognizer:longPressGesture];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
--(void)cellDidLongPressed{
-
+-(void)cellDidLongPressed:(id)sender{
+    UILongPressGestureRecognizer *longPress = (UILongPressGestureRecognizer *)sender;
+   // UIGestureRecognizerState state = longPress.state;
+    
+    CGPoint location = [longPress locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:location];
+    _delQuestionID=_questionID[indexPath.row];
+    
     UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
                                                                               message: nil
                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_shanchu_liebiao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
     
-        
+        [self delQuestion];
         
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
@@ -162,6 +169,31 @@
     
     [self presentViewController: alertController animated: YES completion: nil];
     
+}
+
+
+-(void)delQuestion{
+
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"questionId":_delQuestionID} paramarsSite:@"/questionAPI.do?op=deleteQuestion" sucessBlock:^(id content) {
+        [self hideProgressView];
+        NSLog(@"deleteQuestion=: %@", content);
+          id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+         NSLog(@"deleteQuestion=: %@", jsonObj);
+        if([[jsonObj objectForKey:@"success"] integerValue]==1){
+           
+             [self showAlertViewWithTitle:nil message:root_shanchu_chenggong cancelButtonTitle:root_Yes];
+        }else{
+        
+             [self showAlertViewWithTitle:nil message:root_shanchu_shibai cancelButtonTitle:root_Yes];
+        }
+        
+        [self netquestion];
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        [self showToastViewWithTitle:root_Networking];
+    }];
+
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

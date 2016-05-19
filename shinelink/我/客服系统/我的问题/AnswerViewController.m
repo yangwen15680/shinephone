@@ -165,15 +165,16 @@ int picTime;
                 
                 [self goback];
                 [self showAlertViewWithTitle:nil message:root_ME_tianjia_chenggong cancelButtonTitle:root_Yes];
-               
+               [self.navigationController popViewControllerAnimated:NO];
             }
         }else{
             [self showAlertViewWithTitle:nil message:root_ME_tianjia_shibai cancelButtonTitle:root_Yes];
-              [self popoverPresentationController];
+             [self.navigationController popViewControllerAnimated:NO];
         }
     }
                               failure:^(NSError *error) {
                                   [self showToastViewWithTitle:root_Networking];
+                                  [self.navigationController popViewControllerAnimated:NO];
                               }];
     
 }

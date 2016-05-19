@@ -185,7 +185,7 @@ UITableViewDataSource
     }
     //下拉指示图
     [self.arrowImageView mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleButton.mas_right).offset(5.f);
+        make.left.equalTo(self.titleButton.mas_right).offset(5*NOW_SIZE);
         make.centerY.equalTo(self.titleButton.mas_centerY);
     }];
 }
@@ -524,8 +524,10 @@ UITableViewDataSource
 {
     if (!_arrowImageView)
     {
-        UIImage *image = [UIImage imageNamed:DTKMenuSrcName(@"triangular@3x.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"triangular@3x.png")];
+//        UIImage *image = [UIImage imageNamed:DTKMenuSrcName(@"triangular@3x.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"triangular@3x.png")];
+        UIImage *image = [UIImage imageNamed:@"triangular2.png"];
         _arrowImageView = [[UIImageView alloc] initWithImage:image];
+        _arrowImageView.frame=CGRectMake(self.bounds.size.width-10*NOW_SIZE, 2*HEIGHT_SIZE, 10*NOW_SIZE, 10*HEIGHT_SIZE);
         [self addSubview:_arrowImageView];
         _arrowImageView.userInteractionEnabled = YES;
         [self addArrowTapGesture:_arrowImageView];
@@ -536,7 +538,8 @@ UITableViewDataSource
 - (UIImageView *)tableViewTopArrow
 {
     if (!_tableViewTopArrow) {
-        UIImage *tempImage = [UIImage imageNamed:DTKMenuSrcName(@"2triangular@3x.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"2triangular@3x.png")];
+//        UIImage *tempImage = [UIImage imageNamed:DTKMenuSrcName(@"2triangular.png")]?:[UIImage imageNamed:DTKMenuFrameworkSrcName(@"2triangular@3x.png")];
+        UIImage *tempImage = [UIImage imageNamed:DTKMenuSrcName(@"2triangular.png")];
         UIImage *image=[tempImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         _tableViewTopArrow = [[UIImageView alloc] initWithImage:image];
         [_tableViewTopArrow setTintColor:self.cellColor];

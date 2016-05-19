@@ -451,4 +451,7 @@
 
 #define   root_shifou_shanchu_shebei    NSLocalizedString(@"是否确定删除设备", nil)
 
+#define root_shanchu_chenggong      NSLocalizedString(@"删除成功", nil)
+#define root_shanchu_shibai     NSLocalizedString(@"系统错误，删除失败", nil)
+
 #endif /* languageNew_h */

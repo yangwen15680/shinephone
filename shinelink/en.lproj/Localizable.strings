@@ -421,6 +421,6 @@
 "联系方式:"="Contact:";
 
 "是否确定删除设备"="Are you sure you remove the device?";
-
-
+"删除成功"="Delete successful";
+"系统错误，删除失败"="System error, delete failed";
 

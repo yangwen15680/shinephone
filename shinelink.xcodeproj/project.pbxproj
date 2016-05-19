@@ -181,6 +181,7 @@
 		3367CB501C86806700EF460C /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB431C86806600EF460C /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		3367CB511C86806700EF460C /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB451C86806600EF460C /* View+MASAdditions.m */; };
 		3367CB521C86806700EF460C /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367CB481C86806600EF460C /* ViewController+MASAdditions.m */; };
+		3367D9871CED6D5700DE7528 /* triangular2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3367D9861CED6D5700DE7528 /* triangular2.png */; };
 		3367EB951CD0B07600D2EF67 /* stationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB941CD0B07600D2EF67 /* stationTableView.m */; };
 		3367EB981CD0B22500D2EF67 /* StationSafeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB971CD0B22500D2EF67 /* StationSafeViewController.m */; };
 		3367EB9B1CD0B29000D2EF67 /* StationLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3367EB9A1CD0B29000D2EF67 /* StationLocationViewController.m */; };
@@ -192,8 +193,8 @@
 		33692BF31C926B4B00698375 /* shang.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF21C926B4B00698375 /* shang.png */; };
 		33692BF51C926B5000698375 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = 33692BF41C926B5000698375 /* xia.png */; };
 		33692BF91C92952000698375 /* engrgySencondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33692BF81C92952000698375 /* engrgySencondViewController.m */; };
-		336A108F1CBDDBA500E30E83 /* triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108D1CBDDBA500E30E83 /* triangular@3x.png */; };
-		336A10901CBDDBA500E30E83 /* 2triangular@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */; };
+		336A108F1CBDDBA500E30E83 /* triangular.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108D1CBDDBA500E30E83 /* triangular.png */; };
+		336A10901CBDDBA500E30E83 /* 2triangular.png in Resources */ = {isa = PBXBuildFile; fileRef = 336A108E1CBDDBA500E30E83 /* 2triangular.png */; };
 		337042521CC4E4340069D3AA /* kongZhiNi0.m in Sources */ = {isa = PBXBuildFile; fileRef = 337042511CC4E4340069D3AA /* kongZhiNi0.m */; };
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
 		33793D121CE582B0000D0F9E /* inverter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D111CE582B0000D0F9E /* inverter2.png */; };
@@ -662,6 +663,7 @@
 		3367CB461C86806600EF460C /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		3367CB471C86806600EF460C /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		3367CB481C86806600EF460C /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
+		3367D9861CED6D5700DE7528 /* triangular2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangular2.png; sourceTree = "<group>"; };
 		3367EB931CD0B07600D2EF67 /* stationTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stationTableView.h; sourceTree = "<group>"; };
 		3367EB941CD0B07600D2EF67 /* stationTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = stationTableView.m; sourceTree = "<group>"; };
 		3367EB961CD0B22500D2EF67 /* StationSafeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationSafeViewController.h; sourceTree = "<group>"; };
@@ -681,8 +683,8 @@
 		33692BF41C926B5000698375 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xia.png; path = "../设备二级界面/xia.png"; sourceTree = "<group>"; };
 		33692BF71C92952000698375 /* engrgySencondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = engrgySencondViewController.h; path = ../engrgySencondViewController.h; sourceTree = "<group>"; };
 		33692BF81C92952000698375 /* engrgySencondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = engrgySencondViewController.m; path = ../engrgySencondViewController.m; sourceTree = "<group>"; };
-		336A108D1CBDDBA500E30E83 /* triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "triangular@3x.png"; path = "Masonry/triangular@3x.png"; sourceTree = "<group>"; };
-		336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "2triangular@3x.png"; path = "Masonry/2triangular@3x.png"; sourceTree = "<group>"; };
+		336A108D1CBDDBA500E30E83 /* triangular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = triangular.png; path = Masonry/triangular.png; sourceTree = "<group>"; };
+		336A108E1CBDDBA500E30E83 /* 2triangular.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2triangular.png; path = Masonry/2triangular.png; sourceTree = "<group>"; };
 		337042501CC4E4340069D3AA /* kongZhiNi0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kongZhiNi0.h; sourceTree = "<group>"; };
 		337042511CC4E4340069D3AA /* kongZhiNi0.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = kongZhiNi0.m; sourceTree = "<group>"; };
 		33744DE21CAE597A0065DC01 /* pvLogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pvLogTableViewCell.h; sourceTree = "<group>"; };
@@ -1456,8 +1458,9 @@
 				3367CB2F1C86806600EF460C /* Masonry */,
 				3367CB2C1C86803600EF460C /* DTKDropdownMenuView.h */,
 				3367CB2D1C86803600EF460C /* DTKDropdownMenuView.m */,
-				336A108D1CBDDBA500E30E83 /* triangular@3x.png */,
-				336A108E1CBDDBA500E30E83 /* 2triangular@3x.png */,
+				3367D9861CED6D5700DE7528 /* triangular2.png */,
+				336A108D1CBDDBA500E30E83 /* triangular.png */,
+				336A108E1CBDDBA500E30E83 /* 2triangular.png */,
 			);
 			path = "下拉库";
 			sourceTree = "<group>";
@@ -2155,7 +2158,7 @@
 				33FEFD641C7DB38400324374 /* icon---Username@3x.png in Resources */,
 				3383F1361C9FF7440075E834 /* disconnect@2x.png in Resources */,
 				33FFBD471CEC467A003C56E1 /* storageD.png in Resources */,
-				336A108F1CBDDBA500E30E83 /* triangular@3x.png in Resources */,
+				336A108F1CBDDBA500E30E83 /* triangular.png in Resources */,
 				33FFBD4F1CEC71FA003C56E1 /* name3.jpg in Resources */,
 				334B8F491C914A6D00798A69 /* LICENSE in Resources */,
 				3383F1321C9FF4210075E834 /* TemperatureController.png in Resources */,
@@ -2189,6 +2192,7 @@
 				33238B421CBF7C3B00E82B86 /* server3@2x.png in Resources */,
 				3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */,
 				33238B491CBF816400E82B86 /* 外框@3x.png in Resources */,
+				3367D9871CED6D5700DE7528 /* triangular2.png in Resources */,
 				33FFBD491CEC468F003C56E1 /* powerD.png in Resources */,
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
@@ -2246,7 +2250,7 @@
 				334AED5A1CA37577007E39F3 /* 质保查询.png in Resources */,
 				335456C91C853C2F00275478 /* scanscanBg.png in Resources */,
 				3383F12E1C9FF4190075E834 /* Plug.png in Resources */,
-				336A10901CBDDBA500E30E83 /* 2triangular@3x.png in Resources */,
+				336A10901CBDDBA500E30E83 /* 2triangular.png in Resources */,
 				33FEFD741C7DB38400324374 /* iconfont-nengyuanlei@3x.png in Resources */,
 				33793D161CE583E4000D0F9E /* solar4.png in Resources */,
 				3383F13C1C9FFD540075E834 /* 光伏电量.png in Resources */,

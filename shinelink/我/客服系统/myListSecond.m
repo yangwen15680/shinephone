@@ -52,13 +52,21 @@
 -(void)netGetAgain{
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
+    
+    self.nameArray =[NSMutableArray array];
+    self.contentArray =[NSMutableArray array];
+    self.timeArray =[NSMutableArray array];
+    self.nameID =[NSMutableArray array];
+    self.imageName =[NSMutableArray array];
+    self.labelArray=[NSMutableArray arrayWithObjects:root_ME_biaoti,root_NBQ_leixing, root_ME_huifu_jilu,nil];
+    
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"questionId":_qusetionId,@"userId":userID} paramarsSite:@"/questionAPI.do?op=getQuestionInfo" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getQuestionInfo=: %@", content);
         if(content){
             _allDic=[NSMutableDictionary dictionaryWithDictionary:content];
             _titleString=content[@"title"];
-            _questionAll=[NSMutableArray arrayWithArray:content[@"questionAnswerBeans"]];
+            _questionAll=[NSMutableArray arrayWithArray:content[@"serviceQuestionReplyBean"]];
             
            // NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];
          //   [_questionAll sortUsingDescriptors:[NSArray arrayWithObject:sort1]];
@@ -68,14 +76,19 @@
                 NSString *nameId=[NSString stringWithFormat:@"%@",_questionAll[i][@"userId"]];
                 NSString *timeA=[NSString stringWithFormat:@"%@",_questionAll[i][@"time"]];
                 NSString *contentA=[NSString stringWithFormat:@"%@",_questionAll[i][@"message"]];
-                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"imageName"]];
+                //NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"imageName"]];
+//                                NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
+                                NSString *questionPIC=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
+                                NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
+                
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];
                 [_contentArray addObject:contentA];
-                  [_imageName addObject:imageNameA];
+                  [_imageName addObject:PIC];
             }
-            [_tableView reloadData];
+//              [self initUI];
+          [self.tableView reloadData];
             
         }
     } failure:^(NSError *error) {
@@ -88,13 +101,8 @@
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
     
-    self.nameArray =[NSMutableArray array];
-    self.contentArray =[NSMutableArray array];
-    self.timeArray =[NSMutableArray array];
-    self.nameID =[NSMutableArray array];
-      self.imageName =[NSMutableArray array];
-    self.labelArray=[NSMutableArray arrayWithObjects:root_ME_biaoti,root_NBQ_leixing, root_ME_huifu_jilu,nil];
-    // self.questionAll =[NSMutableArray array];
+  
+     self.questionAll =[NSMutableArray array];
     
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"questionId":_qusetionId,@"userId":userID} paramarsSite:@"/questionAPI.do?op=getQuestionInfo" sucessBlock:^(id content) {
         [self hideProgressView];
@@ -112,7 +120,7 @@
                 //NSString *imageNameA=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
                 NSString *questionPIC=[NSString stringWithFormat:@"%@",_questionAll[i][@"attachment"]];
                 NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
-                
+
                 [_nameArray addObject:nameU];
                 [_nameID addObject:nameId];
                 [_timeArray addObject:timeA];
