@@ -357,14 +357,17 @@
 }
 -(void)finishSet1{
     if(_slider){
-        NSString *S1=[NSString stringWithFormat:@"%.2f",_slider.value];
+        NSString *S1=[NSString stringWithFormat:@"%.0f",_slider.value];
         _param1=[NSString stringWithString:S1];
         _typeName=@"storage_lithium_battery";
     }
     
     if (_textField) {
-        _param1=[_textField text];
-        _param2=[_textField1 text];
+        _param1=[NSString stringWithFormat:@"%d",[[_textField text] intValue]];
+        
+        _param2=[NSString stringWithFormat:@"%d",[[_textField1 text] intValue]];
+        
+         _typeName=@"storage_fdt_open_voltage";
     }
  
     [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"serialNum":_CnjSN,@"type":_typeName,@"param1":_param1,@"param2":_param2,@"param3":_param3,@"param4":_param4} paramarsSite:@"/newTcpsetAPI.do?op=storageSet" sucessBlock:^(id content) {

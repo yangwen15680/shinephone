@@ -224,14 +224,14 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
        
     }
     
-    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     FW.text=root_gujian_banben;
     FW.textAlignment=NSTextAlignmentCenter;
     FW.textColor=[UIColor blackColor];
     FW.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     [self.view addSubview:FW];
     
-    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-60*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
     FW1.text=_Version;
     FW1.textAlignment=NSTextAlignmentCenter;
     FW1.textColor=[UIColor grayColor];

@@ -115,13 +115,13 @@
     
      [cell.contentView setBackgroundColor: [UIColor whiteColor] ];
     
-    if ([_statusArray[indexPath.row] isEqualToString:@"1"]) {
+    if ([_statusArray[indexPath.row] isEqualToString:@"0"]) {
          cell.statusLabel.text= root_ME_wei_chuli;
         cell.titleView.backgroundColor=COLOR(244, 147, 147, 1);
-    }else if ([_statusArray[indexPath.row] isEqualToString:@"2"]){
+    }else if ([_statusArray[indexPath.row] isEqualToString:@"1"]){
         cell.statusLabel.text=root_ME_zhengzai_chuli;
         cell.titleView.backgroundColor=COLOR(144, 211, 112, 1);
-    }else if([_statusArray[indexPath.row] isEqualToString:@"3"]){
+    }else if([_statusArray[indexPath.row] isEqualToString:@"2"]){
         cell.statusLabel.text= root_ME_yi_chuli;
         cell.titleView.backgroundColor=COLOR(201, 201, 201, 1);
     }
