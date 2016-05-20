@@ -41,6 +41,7 @@
         NSLog(@"getMoreProductList: %@", content);
         [self showProgressView];
         if (content) {
+               [self hideProgressView];
             NSArray *allArray=[NSArray arrayWithArray:content];
             for (int i=0; i<allArray.count; i++) {
                 [_name addObject:allArray[i][@"productName"]];

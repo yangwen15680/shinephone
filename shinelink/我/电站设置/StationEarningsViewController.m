@@ -86,10 +86,15 @@
 -(void)readUI{
     _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 170*HEIGHT_SIZE)];
     [self.view addSubview:_readView];
-    NSString *string=[NSString stringWithFormat:@"%@ %@",_dict[@"formulaMoney"],_dict[@"formulaMoneyUnitId"]];
-    NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
-  NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
-      NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+     NSString *string1=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaMoney"]] floatValue]];
+    NSString *string=[NSString stringWithFormat:@"%@ %@",string1,_dict[@"formulaMoneyUnitId"]];
+    
+      NSString *formulaCoal=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]] floatValue]];
+   // NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
+      NSString *formulaCo2=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]] floatValue]];
+  //NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
+    NSString *formulaSo2=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]] floatValue]];
+     // NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
     
     NSArray *array=[[NSArray alloc]initWithObjects:string,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
@@ -125,10 +130,23 @@
     
     [_writeView addSubview:textField];
     [_textFieldMutableArray addObject:textField];
-    NSString *formulaMoney=[NSString stringWithFormat:@"%@",_dict[@"formulaMoney"]];
-    NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
-    NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
-    NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+  //  NSString *formulaMoney=[NSString stringWithFormat:@"%@",_dict[@"formulaMoney"]];
+   // NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
+    //NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
+   // NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+    
+    NSString *formulaMoney=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaMoney"]] floatValue]];
+    //NSString *string=[NSString stringWithFormat:@"%@ %@",string1,_dict[@"formulaMoneyUnitId"]];
+    
+    NSString *formulaCoal=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]] floatValue]];
+    // NSString *formulaCoal=[NSString stringWithFormat:@"%@",_dict[@"formulaCoal"]];
+    NSString *formulaCo2=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]] floatValue]];
+    //NSString *formulaCo2=[NSString stringWithFormat:@"%@",_dict[@"formulaCo2"]];
+    NSString *formulaSo2=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]] floatValue]];
+    // NSString *formulaSo2=[NSString stringWithFormat:@"%@",_dict[@"formulaSo2"]];
+
+    
+    
     NSArray *array=[[NSArray alloc]initWithObjects:formulaMoney,formulaCoal,formulaCo2,formulaSo2, nil];
     for (int i=0; i<4; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];

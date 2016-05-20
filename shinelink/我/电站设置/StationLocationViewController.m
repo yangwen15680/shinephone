@@ -92,8 +92,11 @@
     _readView=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 10*HEIGHT_SIZE, 140*NOW_SIZE, 210*HEIGHT_SIZE)];
     [self.view addSubview:_readView];
     NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
-    NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
-      NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
+    NSString *plant_lat=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]] floatValue]];
+    NSString *plant_lng=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]] floatValue]];
+    
+//    NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
+//      NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat,nil];
     for (int i=0; i<5; i++) {
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (0+i*40)*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
@@ -153,8 +156,10 @@
 //    NSRange timeNewRange={timerange.location+1,[_dict[@"timeZone"] length]-timerange.location-1};
 //    NSString *timeString=[_dict[@"timeZone"] substringWithRange:timeNewRange];
     NSString *timezone=[NSString stringWithFormat:@"%@",_dict[@"timezone"]];
-    NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
-    NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
+    //NSString *plant_lat=[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]];
+      NSString *plant_lat=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"plant_lat"]] floatValue]];
+    NSString *plant_lng=[NSString stringWithFormat:@"%.2f",[[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]] floatValue]];
+   // NSString *plant_lng=[NSString stringWithFormat:@"%@",_dict[@"plant_lng"]];
     NSArray *array=[[NSArray alloc]initWithObjects:_dict[@"country"],_dict[@"city"],timezone,plant_lng,plant_lat, nil];
     for (int i=0; i<5; i++) {
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(0*NOW_SIZE, (5+i*40)*HEIGHT_SIZE, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
