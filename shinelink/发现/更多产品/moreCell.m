@@ -28,8 +28,8 @@
         self.name.textColor = [UIColor blackColor];
         [self.contentView addSubview:_name];
         
-        _image=[[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE )];
-        _image.image = IMAGE(@"更多产品2.png");
+        _image=[[UIImageView alloc]init];
+       
         [self.contentView addSubview:_image];
         
         self.connent = [[UILabel alloc] initWithFrame:CGRectMake(size2+imageSize+kongXi, size1+20*HEIGHT_SIZE, 200*NOW_SIZE, 60*HEIGHT_SIZE)];

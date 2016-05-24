@@ -98,6 +98,7 @@
 		334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7001C9028BB0095FFBC /* secondViewController.m */; };
 		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
 		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
+		334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */; };
 		335047201C9BA6F600BF8683 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350471F1C9BA6F600BF8683 /* EGOCache.m */; };
 		335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335047231C9BF39A00BF8683 /* homeDeviceViewController.m */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
@@ -517,6 +518,7 @@
 		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleView.h; path = ../CircleView.h; sourceTree = "<group>"; };
 		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleView.m; path = ../CircleView.m; sourceTree = "<group>"; };
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
+		334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijian@2x.png"; sourceTree = "<group>"; };
 		3350471E1C9BA6F600BF8683 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		3350471F1C9BA6F600BF8683 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		335047221C9BF39A00BF8683 /* homeDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeDeviceViewController.h; sourceTree = "<group>"; };
@@ -1831,6 +1833,7 @@
 				33238B481CBF816400E82B86 /* 外框@3x.png */,
 				334AED651CA3774C007E39F3 /* 密码3.png */,
 				3349A7B71C75BCDB009172C2 /* 账号3.png */,
+				334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */,
 			);
 			path = pic1;
 			sourceTree = "<group>";
@@ -2085,7 +2088,7 @@
 				TargetAttributes = {
 					337F9C7F1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4QH6QMXEQ8;
+						DevelopmentTeam = 2UVBDYK6LY;
 					};
 					337F9C9B1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
@@ -2125,6 +2128,7 @@
 			files = (
 				336664E71CB77CC2005573FB /* service@2x.png in Resources */,
 				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
+				334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */,
 				33FEFD5B1C7DB38400324374 /* icon---Email@3x.png in Resources */,
 				33EFB6331C97DAB5003F336F /* 控制.jpg in Resources */,
 				33FEFD5C1C7DB38400324374 /* icon---Name.png in Resources */,
@@ -2611,13 +2615,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink2;
+				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -2627,13 +2632,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink2;
+				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

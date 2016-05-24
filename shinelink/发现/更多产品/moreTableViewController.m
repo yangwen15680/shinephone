@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSMutableArray *paramsName;
 @property (nonatomic, strong) NSMutableArray *imageName;
 @property (nonatomic, strong) NSMutableArray *imageHead;
+@property (nonatomic, strong) NSMutableArray *identifying;
 @end
 
 @implementation moreTableViewController
@@ -29,6 +30,7 @@
     _paramsName=[NSMutableArray array];
     _imageName=[NSMutableArray array];
     _imageHead=[NSMutableArray array];
+      _identifying=[NSMutableArray array];
           self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self initData];
 }
@@ -49,6 +51,11 @@
                  [_outline addObject:allArray[i][@"outline"]];
                  [_paramsName addObject:allArray[i][@"technologyParams"]];
                  [_imageName addObject:allArray[i][@"productName"]];
+                
+                  NSString *C=[NSString stringWithFormat:@"%@",allArray[i][@"identifying"]];
+                  [_identifying addObject:C];
+                
+                
                 [self hideProgressView];
                 NSString *productImage=[NSString stringWithString:allArray[i][@"productName"]];
                
@@ -118,6 +125,14 @@
   NSString *connentText=[NSString stringWithFormat:@"%@",_outline[indexPath.row]];
   // NSString *connentText=@"专为小型商业系统设计\n内置变压器\n隔离电网\n并提供通用的400V输出\n可直接低压并网";
      cell.connent.text=connentText;
+    
+    if ([_identifying[indexPath.row]isEqualToString:@"1"]) {
+        cell.image.frame=CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE );
+       cell.image.image = IMAGE(@"更多产品2.png");
+    }else if(([_identifying[indexPath.row]isEqualToString:@"0"])){
+    cell.image.frame=CGRectMake(SCREEN_Width-45*NOW_SIZE, 10*HEIGHT_SIZE, 35*NOW_SIZE,20*HEIGHT_SIZE );
+          cell.image.image = IMAGE(@"tuijian@2x.png");
+    }
   
     return cell;
 }

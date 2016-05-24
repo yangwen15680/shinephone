@@ -24,6 +24,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
    
+      [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:NO];
+    
        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
    
@@ -33,6 +35,7 @@
 
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
     
+
     
     self.window.rootViewController=nav;
      [self.window makeKeyAndVisible];

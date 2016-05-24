@@ -16,7 +16,10 @@
 @property (nonatomic, strong) NSMutableArray *outTimeArray;
 @property (nonatomic, strong) NSMutableArray *SNArray;
 @property (nonatomic, strong) NSMutableArray *HasArray;
-
+@property (nonatomic, strong) NSMutableArray *model;
+@property (nonatomic, strong) NSMutableDictionary *PicDict;
+@property (nonatomic, strong) NSString *picName;
+@property (nonatomic, strong) NSMutableArray *picArray;
 @end
 
 @implementation qualityTableViewController
@@ -34,6 +37,9 @@
     _outTimeArray=[NSMutableArray array];
     _SNArray=[NSMutableArray array];
         _HasArray=[NSMutableArray array];
+      _model=[NSMutableArray array];
+     _picArray=[NSMutableArray array];
+    _PicDict=[NSMutableDictionary new];
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *plantId=[ud objectForKey:@"plantID"];
@@ -51,11 +57,14 @@
                 [_maturityTimeArray addObject:allArray[i][@"maturityTime"]];
                 [_outTimeArray addObject:allArray[i][@"outTime"]];
                 [_SNArray addObject:allArray[i][@"deviceSN"]];
+                  [_model addObject:allArray[i][@"model"]];
                 NSString *HAS=[NSString stringWithFormat:@"%@",allArray[i][@"isHas"]];
                 [_HasArray addObject:HAS];
             }
           //  self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
             [self.tableView reloadData];
+            [self getPic];
+            
         }
     } failure:^(NSError *error) {
         [self hideProgressView];
@@ -63,6 +72,34 @@
     }];
     
 }
+
+-(void)getPic{
+    for (int i=0; i<_model.count; i++) {
+        NSArray *keys = [_PicDict allKeys];
+        if ([keys containsObject:_model[i]]) {
+            [_picArray addObject:[_PicDict objectForKey:_model[i]]];
+        }else{
+            
+            [self showProgressView];
+            [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"model":_picName} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+                [self hideProgressView];
+                
+                
+                
+            } failure:^(NSError *error) {
+                [self hideProgressView];
+                
+            }];
+
+        }
+        
+    }
+    
+    
+    
+
+}
+
 
 - (void)showProgressView {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
