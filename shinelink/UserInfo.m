@@ -55,6 +55,14 @@ static int timerNumber=0;
         } else {
             _agentCode = [ud objectForKey:@"agentCode"];
         }
+      
+        if (![ud objectForKey:@"firstPic"]) {
+            [ud setObject:@"" forKey:@"firstPic"];
+            _firstPic = @"";
+        } else {
+            _firstPic = [ud objectForKey:@"firstPic"];
+        }
+        
         
         if (![ud objectForKey:@"userPassword"]) {
             [ud setObject:@"" forKey:@"userPassword"];
@@ -138,6 +146,12 @@ static int timerNumber=0;
     _agentCode = agentCode;
     
     [[NSUserDefaults standardUserDefaults] setObject:_agentCode forKey:@"agentCode"];
+}
+
+- (void)setFirstPic:(NSString *)firstPic{
+    _firstPic = firstPic;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_firstPic forKey:@"firstPic"];
 }
 
 - (void)setUserPic:(NSData *)userPic{

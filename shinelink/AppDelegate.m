@@ -14,6 +14,7 @@
 #import "meViewController.h"
 #import "loginViewController.h"
 #import "countryViewController.h"
+#import "LZQStratViewController_25.h"
 
 @interface AppDelegate ()
 
@@ -29,15 +30,26 @@
        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
    
+    NSUserDefaults *picName1=[NSUserDefaults standardUserDefaults];
+    NSString *picName=[picName1 objectForKey:@"firstPic"];
+    
+    if ([picName length]==0) {
+             [[UserInfo defaultUserInfo]setFirstPic:@"OK"];
+        LZQStratViewController_25 *lzqStartViewController = [[LZQStratViewController_25 alloc] init];
+      
+        self.window.rootViewController = lzqStartViewController;
+   
+    }else{
+    
     loginViewController *root=[[loginViewController alloc]init];
     
-    //countryViewController *root=[[countryViewController alloc]init];
+
 
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
-    
-
-    
+  
     self.window.rootViewController=nav;
+    }
+    
      [self.window makeKeyAndVisible];
     
     return YES;

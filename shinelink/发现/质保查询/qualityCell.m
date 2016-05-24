@@ -22,7 +22,7 @@
         
         float imageSize=50*HEIGHT_SIZE,size1=26*HEIGHT_SIZE,size2=5*NOW_SIZE;//kongXi=5*NOW_SIZE;
          _typeImageView=[[UIImageView alloc] initWithFrame:CGRectMake(size2, size1, imageSize, imageSize)];
-        [_typeImageView setImage:IMAGE(@"客户服务.png")];
+      
         [self.contentView addSubview:_typeImageView];
         
         self.name = [[UILabel alloc] initWithFrame:CGRectMake(size2+imageSize, size1, imageSize+22*NOW_SIZE, imageSize)];

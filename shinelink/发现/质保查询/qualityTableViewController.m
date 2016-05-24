@@ -19,10 +19,12 @@
 @property (nonatomic, strong) NSMutableArray *model;
 @property (nonatomic, strong) NSMutableDictionary *PicDict;
 @property (nonatomic, strong) NSString *picName;
+@property (nonatomic, strong) NSString *picEnble;
 @property (nonatomic, strong) NSMutableArray *picArray;
 @end
 
 @implementation qualityTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,7 +45,7 @@
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *plantId=[ud objectForKey:@"plantID"];
-    
+      [self showProgressView];
     [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"plantId":plantId,@"pageNum":@"1", @"pageSize":@"20"} paramarsSite:@"/newQualityAPI.do?op=getQualityInformation" sucessBlock:^(id content) {
         [self hideProgressView];
       
@@ -60,10 +62,15 @@
                   [_model addObject:allArray[i][@"model"]];
                 NSString *HAS=[NSString stringWithFormat:@"%@",allArray[i][@"isHas"]];
                 [_HasArray addObject:HAS];
-            }
-          //  self.dataDict=[NSMutableDictionary dictionaryWithDictionary:jsonObj];
-            [self.tableView reloadData];
-            [self getPic];
+               //    [_picArray addObject:@""];
+                
+
+          }
+            
+                [self.tableView reloadData];
+         [self getPic];
+        _picEnble=@"1";
+           
             
         }
     } failure:^(NSError *error) {
@@ -71,19 +78,32 @@
    
     }];
     
+    
+    
 }
 
 -(void)getPic{
+  
+   
     for (int i=0; i<_model.count; i++) {
-        NSArray *keys = [_PicDict allKeys];
-        if ([keys containsObject:_model[i]]) {
-            [_picArray addObject:[_PicDict objectForKey:_model[i]]];
-        }else{
+     
+      
             
+            //_picEnble=@"0";
+            _picName=_model[i];
             [self showProgressView];
             [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"model":_picName} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
                 [self hideProgressView];
                 
+               // [_PicDict setObject:content forKey:_picName];
+               [_picArray addObject:content];
+                
+                   //
+                
+                if (_picArray.count==_model.count) {
+                   [self.tableView reloadData];
+                    _picEnble=@"0";
+                }
                 
                 
             } failure:^(NSError *error) {
@@ -91,7 +111,7 @@
                 
             }];
 
-        }
+       [NSThread sleepForTimeInterval:0.2];
         
     }
     
@@ -159,8 +179,10 @@
     cell.SN.text=_SNArray[indexPath.row];
      cell.beginTime.text=_outTimeArray[indexPath.row];
      cell.overTime.text=_maturityTimeArray[indexPath.row];
+    if (_picArray.count>0) {
+          [cell.typeImageView setImage:_picArray[indexPath.row]];
+    }
 
-    
     // Configure the cell...
     
     return cell;

@@ -12,6 +12,7 @@
 
 
 #pragma mark - 登陆
+#define  root_liji_tiyan       NSLocalizedString(@"立即体验", nil)
 #define  root_next_go        NSLocalizedString(@"下一步", nil)
 #define  root_finish        NSLocalizedString(@"完成", nil)
 #define  root_server_error        NSLocalizedString(@"服务器错误", nil)

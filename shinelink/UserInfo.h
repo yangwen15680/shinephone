@@ -12,6 +12,7 @@
 
 + (UserInfo *)defaultUserInfo;
 
+@property (nonatomic, strong) NSString *firstPic;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic, strong) NSString *userPassword;
 @property (nonatomic, strong) NSString *userID;

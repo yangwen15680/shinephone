@@ -99,6 +99,11 @@
 		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
 		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
 		334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */; };
+		334FEF841CF45264001E6716 /* LZQStratViewController_25.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FEF831CF45264001E6716 /* LZQStratViewController_25.m */; };
+		334FEF861CF453D2001E6716 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF851CF453D2001E6716 /* 11.png */; };
+		334FEF881CF453E1001E6716 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF871CF453E1001E6716 /* 22.png */; };
+		334FEF8C1CF45423001E6716 /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF8B1CF45423001E6716 /* 33.png */; };
+		334FEF8E1CF45AEB001E6716 /* btn1.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF8D1CF45AEB001E6716 /* btn1.png */; };
 		335047201C9BA6F600BF8683 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350471F1C9BA6F600BF8683 /* EGOCache.m */; };
 		335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335047231C9BF39A00BF8683 /* homeDeviceViewController.m */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
@@ -519,6 +524,12 @@
 		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleView.m; path = ../CircleView.m; sourceTree = "<group>"; };
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
 		334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijian@2x.png"; sourceTree = "<group>"; };
+		334FEF821CF45264001E6716 /* LZQStratViewController_25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZQStratViewController_25.h; sourceTree = "<group>"; };
+		334FEF831CF45264001E6716 /* LZQStratViewController_25.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZQStratViewController_25.m; sourceTree = "<group>"; };
+		334FEF851CF453D2001E6716 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
+		334FEF871CF453E1001E6716 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		334FEF8B1CF45423001E6716 /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
+		334FEF8D1CF45AEB001E6716 /* btn1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn1.png; sourceTree = "<group>"; };
 		3350471E1C9BA6F600BF8683 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		3350471F1C9BA6F600BF8683 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		335047221C9BF39A00BF8683 /* homeDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeDeviceViewController.h; sourceTree = "<group>"; };
@@ -1030,6 +1041,7 @@
 		3349A7B31C75B893009172C2 /* 登陆 */ = {
 			isa = PBXGroup;
 			children = (
+				334FEF811CF45230001E6716 /* 首次登陆 */,
 				3367CB551C86E56B00EF460C /* 登陆第三方 */,
 				335456CB1C8582ED00275478 /* 忘记密码 */,
 				335456CA1C8582A100275478 /* 注册 */,
@@ -1213,6 +1225,19 @@
 				33EFB6361C97DF62003F336F /* 储能机二级 */,
 			);
 			path = "设备二级界面";
+			sourceTree = "<group>";
+		};
+		334FEF811CF45230001E6716 /* 首次登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				334FEF851CF453D2001E6716 /* 11.png */,
+				334FEF871CF453E1001E6716 /* 22.png */,
+				334FEF8B1CF45423001E6716 /* 33.png */,
+				334FEF8D1CF45AEB001E6716 /* btn1.png */,
+				334FEF821CF45264001E6716 /* LZQStratViewController_25.h */,
+				334FEF831CF45264001E6716 /* LZQStratViewController_25.m */,
+			);
+			path = "首次登陆";
 			sourceTree = "<group>";
 		};
 		335047211C9BF37D00BF8683 /* 家庭设备二级 */ = {
@@ -2130,6 +2155,7 @@
 				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
 				334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */,
 				33FEFD5B1C7DB38400324374 /* icon---Email@3x.png in Resources */,
+				334FEF8E1CF45AEB001E6716 /* btn1.png in Resources */,
 				33EFB6331C97DAB5003F336F /* 控制.jpg in Resources */,
 				33FEFD5C1C7DB38400324374 /* icon---Name.png in Resources */,
 				334AED601CA3763D007E39F3 /* 资料管理.png in Resources */,
@@ -2192,6 +2218,7 @@
 				33FEFD601C7DB38400324374 /* icon---Password@2x.png in Resources */,
 				33FEFD791C7DB38400324374 /* shebei_press@2x.png in Resources */,
 				334AED5C1CA37583007E39F3 /* 增值服务.png in Resources */,
+				334FEF861CF453D2001E6716 /* 11.png in Resources */,
 				33FEFD691C7DB38400324374 /* iconfont-faxian_press@2x.png in Resources */,
 				33238B421CBF7C3B00E82B86 /* server3@2x.png in Resources */,
 				3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */,
@@ -2263,11 +2290,13 @@
 				33FEFD701C7DB38400324374 /* iconfont-klmlianxifangshi@3x.png in Resources */,
 				33FEFD611C7DB38400324374 /* icon---Password@3x.png in Resources */,
 				33FFBD531CEC7A8E003C56E1 /* content3.jpg in Resources */,
+				334FEF881CF453E1001E6716 /* 22.png in Resources */,
 				3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */,
 				3383F1381C9FFD370075E834 /* 家庭用电量.png in Resources */,
 				33FEFD6D1C7DB38400324374 /* iconfont-gongsijianjie@2x.png in Resources */,
 				33FEFD7C1C7DB38400324374 /* shebei@3x.png in Resources */,
 				33FEFD571C7DB38400324374 /* icon---Email---Full@2x.png in Resources */,
+				334FEF8C1CF45423001E6716 /* 33.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
 				33793D121CE582B0000D0F9E /* inverter2.png in Resources */,
@@ -2372,6 +2401,7 @@
 				335456BF1C852EEB00275478 /* SHBQRView.m in Sources */,
 				335431BA1CCF549000CEAFFC /* SNLocationManager.m in Sources */,
 				3343F3BF1C80403C009F69BC /* AFHTTPRequestOperation.m in Sources */,
+				334FEF841CF45264001E6716 /* LZQStratViewController_25.m in Sources */,
 				334B8F601C914B4E00798A69 /* UICountingLabel.m in Sources */,
 				3367EB9B1CD0B29000D2EF67 /* StationLocationViewController.m in Sources */,
 				3367CB4C1C86806600EF460C /* MASLayoutConstraint.m in Sources */,
