@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import "Reachability.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -19,6 +20,15 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+#define kOnGotDeviceByScan              @"kOnGotDeviceByScan"
+
+
+@property(strong) Reachability *reach;
+
+
+
+-(NSString *)getWifiName;
 
 
 @end

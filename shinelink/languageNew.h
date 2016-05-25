@@ -219,6 +219,7 @@
 #define root_CJQ_shanchu     NSLocalizedString(@"删除采集器", nil)
 #define root_CJQ_peizhi      NSLocalizedString(@"配置采集器", nil)
 
+
 #define root_Add       NSLocalizedString(@"Add", @"Add")
 #define root_aliases       NSLocalizedString(@"aliases", @"aliases")
 #define root_datalog_sn       NSLocalizedString(@"datalog sn", @"datalog sn")

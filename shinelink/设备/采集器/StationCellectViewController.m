@@ -13,6 +13,8 @@
 #import "MJRefresh.h"
 #import "ChangeCellectViewController.h"
 #import "addDevice.h"
+#import "DeviceManageViewController.h"
+#import "MainViewController.h"
 
 @interface StationCellectViewController ()<EditCellectViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)EditCellectView *editCellect;
@@ -131,6 +133,31 @@
             [self showToastViewWithTitle:root_Networking];
         }];
     }
+    
+    if (row==4) {
+        [_editCellect removeFromSuperview];
+        
+        
+        
+        NSString *IdString1= _arrayData[_indexPath.row][@"datalog_sn"];
+        NSString *IdString=[IdString1 substringWithRange:NSMakeRange(0, 2)];
+        
+        NSLog(@"datalog_sn=%@",IdString);
+        NSString *demoId=[NSString stringWithFormat:@"4K"];
+        if ([IdString isEqualToString:demoId]) {
+            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            DeviceManageViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"DeviceManager"];
+            [self.navigationController pushViewController:rootView animated:YES];
+        }else
+        {
+            
+            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            MainViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            [self.navigationController pushViewController:rootView animated:YES];
+            
+        }
+    }
+    
 }
 
 

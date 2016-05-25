@@ -27,7 +27,7 @@
         [self addSubview:bgImageView];
        
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
+        addButton.frame = CGRectMake(0, 0 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [addButton setTitle:root_CJQ_tianjia forState:UIControlStateNormal];
         addButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
 
@@ -38,7 +38,7 @@
         [bgImageView addSubview:addButton];
         
         UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        deleteButton.frame = CGRectMake(0, 1 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
+        deleteButton.frame = CGRectMake(0, 1 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [deleteButton setTitle:root_CJQ_bianji forState:UIControlStateNormal];
          deleteButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
         [deleteButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -48,7 +48,7 @@
         [bgImageView addSubview:deleteButton];
         
         UIButton *uploadStationImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        uploadStationImageButton.frame = CGRectMake(0, 2 * CGRectGetHeight(bgImageView.frame)/3, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
+        uploadStationImageButton.frame = CGRectMake(0, 2 * CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
         [uploadStationImageButton setTitle:root_CJQ_shanchu forState:UIControlStateNormal];
           uploadStationImageButton.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
         [uploadStationImageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -56,6 +56,17 @@
         uploadStationImageButton.tag = 1053;
         [uploadStationImageButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
         [bgImageView addSubview:uploadStationImageButton];
+        
+        UIButton *deviceSet = [UIButton buttonWithType:UIButtonTypeCustom];
+        deviceSet.frame = CGRectMake(0, 3* CGRectGetHeight(bgImageView.frame)/4, CGRectGetWidth(bgImageView.frame), CGRectGetHeight(bgImageView.frame)/3);
+        [deviceSet setTitle:root_CJQ_peizhi forState:UIControlStateNormal];
+          deviceSet.titleLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
+        [deviceSet setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [deviceSet setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
+        deviceSet.tag = 1054;
+        [deviceSet addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [bgImageView addSubview:deviceSet];
+        
     }
     
     return self;

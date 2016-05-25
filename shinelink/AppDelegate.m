@@ -15,6 +15,9 @@
 #import "loginViewController.h"
 #import "countryViewController.h"
 #import "LZQStratViewController_25.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
+#import <CommonCrypto/CommonDigest.h>
+#import "JDStatusBarNotification.h"
 
 @interface AppDelegate ()
 
@@ -52,7 +55,49 @@
     
      [self.window makeKeyAndVisible];
     
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    //网络状态
+    self.reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reachabilityChanged:)
+                                                 name: kReachabilityChangedNotification
+                                               object: nil];
+    [_reach startNotifier];
+    
     return YES;
+}
+
+//当网络状态改变时回调
+- (void)reachabilityChanged:(NSNotification *)note {
+    Reachability* curReach = [note object];
+    NSParameterAssert([curReach isKindOfClass: [Reachability class]]);
+    NetworkStatus status = [curReach currentReachabilityStatus];
+    if (status == NotReachable) {
+        [JDStatusBarNotification showWithStatus:@"No Internet Connection!" dismissAfter:2.0 styleName:JDStatusBarStyleWarning];
+    }
+}
+
+-(NSString *)getWifiName
+{
+    NSString *wifiName = nil;
+    CFArrayRef wifiInterfaces = CNCopySupportedInterfaces();
+    if (!wifiInterfaces) {
+        return nil;
+    }
+    NSArray *interfaces = (__bridge NSArray *)wifiInterfaces;
+    for (NSString *interfaceName in interfaces) {
+        CFDictionaryRef dictRef = CNCopyCurrentNetworkInfo((__bridge CFStringRef)(interfaceName));
+        if (dictRef) {
+            NSDictionary *networkInfo = (__bridge NSDictionary *)dictRef;
+            //            NSLog(@"network info -> %@", networkInfo);
+            wifiName = [networkInfo objectForKey:(__bridge NSString *)kCNNetworkInfoKeySSID];
+            
+            CFRelease(dictRef);
+        }
+    }
+    CFRelease(wifiInterfaces);
+    return wifiName;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
