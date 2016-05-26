@@ -151,8 +151,8 @@
         }else
         {
             
-            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            MainViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+         
+            MainViewController *rootView = [[MainViewController alloc]init];
             [self.navigationController pushViewController:rootView animated:YES];
             
         }

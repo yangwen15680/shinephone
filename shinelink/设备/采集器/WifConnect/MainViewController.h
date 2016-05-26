@@ -16,17 +16,17 @@
 {
     GCDAsyncUdpSocket *_udpSocket;
 }
-@property (weak, nonatomic) IBOutlet UILabel *connectWifiLabel;
-@property (weak, nonatomic) IBOutlet UILabel *connectModemLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ssidLabel;
-@property (weak, nonatomic) IBOutlet UILabel *wskeyLabel;
-@property (weak, nonatomic) IBOutlet UITextField *ssidTextField;
-@property (weak, nonatomic) IBOutlet UITextField *wskeyTextField;
-@property (weak, nonatomic) IBOutlet UITextField *wakeyTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *wskeyShowImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *wakeyShowImageView;
-@property (weak, nonatomic) IBOutlet UILabel *moduleNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *checkCodeLabel;
+@property (strong, nonatomic)  UILabel *connectWifiLabel;
+@property (strong, nonatomic)  UILabel *connectModemLabel;
+@property (strong, nonatomic)  UILabel *ssidLabel;
+@property (strong, nonatomic)  UILabel *wskeyLabel;
+@property (strong, nonatomic)  UITextField *ssidTextField;
+@property (strong, nonatomic)  UITextField *wskeyTextField;
+@property (strong, nonatomic)  UITextField *wakeyTextField2;
+//@property (strong, nonatomic) IBOutlet UIImageView *wskeyShowImageView;
+//@property (strong, nonatomic) IBOutlet UIImageView *wakeyShowImageView;
+@property (strong, nonatomic)  UILabel *moduleNameLabel;
+@property (strong, nonatomic)  UILabel *checkCodeLabel;
 
 
 

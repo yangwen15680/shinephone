@@ -16,14 +16,23 @@
 #import <CommonCrypto/CommonDigest.h>
 #import "StationCellectViewController.h"
 
+@interface MainViewController()
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@end
+
+
 @implementation MainViewController
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
  
-    //网络状态
+    self.view.backgroundColor=MainColor;
+    self.title=@"Set ShineWifi";
     
+    //网络状态
+    [self initUI];
     
     [self connectUDP];
     
@@ -31,16 +40,208 @@
     //[self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"top"] forBarMetrics:UIBarMetricsDefault];
     _ssidTextField.delegate = self;
     _wskeyTextField.delegate = self;
-    _wakeyTextField.delegate = self;
+    _wakeyTextField2.delegate = self;
     
-    UITapGestureRecognizer *wskeyImageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wskeyImageViewClick)];
-    [_wskeyShowImageView addGestureRecognizer:wskeyImageViewTap];
-    UITapGestureRecognizer *wakeyImageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wakeyImageViewClick)];
-    [_wakeyShowImageView addGestureRecognizer:wakeyImageViewTap];
+//    UITapGestureRecognizer *wskeyImageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wskeyImageViewClick)];
+//    [_wskeyShowImageView addGestureRecognizer:wskeyImageViewTap];
+//    UITapGestureRecognizer *wakeyImageViewTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wakeyImageViewClick)];
+//    [_wakeyShowImageView addGestureRecognizer:wakeyImageViewTap];
 }
 
 
+-(void)initUI{
+    
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
+    _scrollView.scrollEnabled=YES;
+    _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
+    [self.view addSubview:_scrollView];
 
+    float sizeH1=10*HEIGHT_SIZE;
+    
+    UIImageView *pwdBgImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 15*HEIGHT_SIZE, 300*NOW_SIZE,60*HEIGHT_SIZE )];
+    pwdBgImageView1.image = IMAGE(@"111.jpg");
+    pwdBgImageView1.userInteractionEnabled = YES;
+    [_scrollView addSubview:pwdBgImageView1];
+
+    
+   _connectWifiLabel=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,50*HEIGHT_SIZE )];
+    _connectWifiLabel.text=@"Please enter the phone system needs to be set on a connection WiFi device";
+    _connectWifiLabel.textAlignment=NSTextAlignmentLeft;
+    _connectWifiLabel.textColor=[UIColor whiteColor];
+    _connectWifiLabel.numberOfLines=0;
+    _connectWifiLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+//    _connectWifiLabel.layer.borderWidth=1;
+//    _connectWifiLabel.layer.cornerRadius=5;
+//    _connectWifiLabel.layer.borderColor=[UIColor whiteColor].CGColor;
+    [pwdBgImageView1 addSubview:_connectWifiLabel];
+    
+    UIImageView *pwdBgImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE, 300*NOW_SIZE,100*HEIGHT_SIZE+sizeH1 )];
+    pwdBgImageView2.image = IMAGE(@"222.jpg");
+    pwdBgImageView2.userInteractionEnabled = YES;
+    [_scrollView addSubview:pwdBgImageView2];
+    
+    
+    _connectModemLabel=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,40*HEIGHT_SIZE )];
+    _connectModemLabel.text=@"Please enter you need to connect the router name and password";
+    _connectModemLabel.textAlignment=NSTextAlignmentLeft;
+    _connectModemLabel.textColor=[UIColor whiteColor];
+    _connectModemLabel.numberOfLines=0;
+    _connectModemLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+//    _connectModemLabel.layer.borderWidth=1;
+//    _connectModemLabel.layer.cornerRadius=5;
+//    _connectModemLabel.layer.borderColor=[UIColor whiteColor].CGColor;
+    [pwdBgImageView2 addSubview:_connectModemLabel];
+    
+    _ssidLabel=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 50*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
+    _ssidLabel.text=@"SSID:";
+    _ssidLabel.textAlignment=NSTextAlignmentRight;
+    _ssidLabel.textColor=[UIColor whiteColor];
+    _ssidLabel.numberOfLines=0;
+    _ssidLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView2 addSubview:_ssidLabel];
+    
+    self.ssidTextField = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 50*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
+    self.ssidTextField.placeholder = @"Enter name of router";
+    //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.ssidTextField.secureTextEntry = NO;
+    self.ssidTextField.textColor = [UIColor whiteColor];
+    self.ssidTextField.tintColor = [UIColor whiteColor];
+    [self.ssidTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.ssidTextField setValue:[UIFont systemFontOfSize:12*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.ssidTextField.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView2 addSubview:_ssidTextField];
+
+    UIView *view1=[[UIView alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 70*HEIGHT_SIZE, 180*NOW_SIZE,1*HEIGHT_SIZE )];
+    view1.backgroundColor=[UIColor whiteColor];
+    [pwdBgImageView2 addSubview:view1];
+    
+    _wskeyLabel=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 75*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
+    _wskeyLabel.text=@"Password:";
+    _wskeyLabel.textAlignment=NSTextAlignmentRight;
+    _wskeyLabel.textColor=[UIColor whiteColor];
+    _wskeyLabel.numberOfLines=0;
+    _wskeyLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView2 addSubview:_wskeyLabel];
+    
+    self.wskeyTextField = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 75*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
+    self.wskeyTextField.placeholder = @"Enter password of router";
+    //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.wskeyTextField.secureTextEntry = NO;
+    self.wskeyTextField.textColor = [UIColor whiteColor];
+    self.wskeyTextField.tintColor = [UIColor whiteColor];
+    [self.wskeyTextField setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.wskeyTextField setValue:[UIFont systemFontOfSize:12*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.wskeyTextField.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView2 addSubview:_wskeyTextField];
+    
+    UIView *view2=[[UIView alloc]initWithFrame:CGRectMake(105*NOW_SIZE, 95*HEIGHT_SIZE, 180*NOW_SIZE,1*HEIGHT_SIZE )];
+    view2.backgroundColor=[UIColor whiteColor];
+    [pwdBgImageView2 addSubview:view2];
+    
+    
+    UIImageView *pwdBgImageView3= [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 195*HEIGHT_SIZE+sizeH1, 300*NOW_SIZE,70*HEIGHT_SIZE )];
+    pwdBgImageView3.image = IMAGE(@"333.jpg");
+    pwdBgImageView3.userInteractionEnabled = YES;
+    [_scrollView addSubview:pwdBgImageView3];
+    
+
+    UILabel *wifi=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,25*HEIGHT_SIZE)];
+    wifi.text=@"Modify Wi-Fi Module password:";
+    wifi.textAlignment=NSTextAlignmentLeft;
+    wifi.textColor=[UIColor whiteColor];
+    wifi.numberOfLines=0;
+    wifi.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+//    wifi.layer.borderWidth=1;
+//    wifi.layer.cornerRadius=5;
+   // wifi.layer.borderColor=[UIColor whiteColor].CGColor;
+    [pwdBgImageView3 addSubview:wifi];
+
+    
+    UILabel *wifiName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 35*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
+    wifiName.text=@"New Password:";
+    wifiName.textAlignment=NSTextAlignmentRight;
+    wifiName.textColor=[UIColor whiteColor];
+    wifiName.numberOfLines=0;
+    wifiName.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView3 addSubview:wifiName];
+    
+    self.wakeyTextField2 = [[UITextField alloc] initWithFrame:CGRectMake(110*NOW_SIZE, 35*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
+    self.wakeyTextField2.placeholder = @"Enter password of wifi";
+    //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
+    self.wakeyTextField2.secureTextEntry = NO;
+    self.wakeyTextField2.textColor = [UIColor whiteColor];
+    self.wakeyTextField2.tintColor = [UIColor whiteColor];
+    [self.wakeyTextField2 setValue:[UIColor lightTextColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [self.wakeyTextField2 setValue:[UIFont systemFontOfSize:12*HEIGHT_SIZE] forKeyPath:@"_placeholderLabel.font"];
+    self.wakeyTextField2.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView3 addSubview:_wakeyTextField2];
+    
+    UIView *view3=[[UIView alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 55*HEIGHT_SIZE, 180*NOW_SIZE,1*HEIGHT_SIZE )];
+    view3.backgroundColor=[UIColor whiteColor];
+    [pwdBgImageView3 addSubview:view3];
+    
+    UIImageView *pwdBgImageView4= [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 275*HEIGHT_SIZE+sizeH1, 300*NOW_SIZE,95*HEIGHT_SIZE )];
+    pwdBgImageView4.image = IMAGE(@"444.jpg");
+    pwdBgImageView4.userInteractionEnabled = YES;
+    [_scrollView addSubview:pwdBgImageView4];
+    
+    UILabel *SN=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,25*HEIGHT_SIZE)];
+    SN.text=@"Query Collector Message:";
+    SN.textAlignment=NSTextAlignmentLeft;
+    SN.textColor=[UIColor whiteColor];
+    SN.numberOfLines=0;
+    SN.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    //    wifi.layer.borderWidth=1;
+    //    wifi.layer.cornerRadius=5;
+    // wifi.layer.borderColor=[UIColor whiteColor].CGColor;
+    [pwdBgImageView4 addSubview:SN];
+    
+    
+    UILabel *SnName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 35*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
+    SnName.text=@"Serial number:";
+    SnName.textAlignment=NSTextAlignmentRight;
+    SnName.textColor=[UIColor whiteColor];
+    SnName.numberOfLines=0;
+    SnName.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView4 addSubview:SnName];
+    
+    _moduleNameLabel=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 35*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
+    //_moduleNameLabel.text=@"Serial number:";
+    _moduleNameLabel.textAlignment=NSTextAlignmentLeft;
+    _moduleNameLabel.textColor=[UIColor whiteColor];
+    _moduleNameLabel.numberOfLines=0;
+    _moduleNameLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView4 addSubview:_moduleNameLabel];
+    
+    UILabel *codeName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 60*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
+    codeName.text=@"Check code:";
+    codeName.textAlignment=NSTextAlignmentRight;
+    codeName.textColor=[UIColor whiteColor];
+    codeName.numberOfLines=0;
+    codeName.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView4 addSubview:codeName];
+    
+    _checkCodeLabel=[[UILabel alloc]initWithFrame:CGRectMake(110*NOW_SIZE, 60*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
+    //_moduleNameLabel.text=@"Serial number:";
+    _checkCodeLabel.textAlignment=NSTextAlignmentLeft;
+    _checkCodeLabel.textColor=[UIColor whiteColor];
+    _checkCodeLabel.numberOfLines=0;
+    _checkCodeLabel.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [pwdBgImageView4 addSubview:_checkCodeLabel];
+    
+    
+    UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
+    goBut.frame=CGRectMake(60*NOW_SIZE,400*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+    //    [goBut.layer setMasksToBounds:YES];
+    //    [goBut.layer setCornerRadius:25.0];
+    [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
+    [goBut setTitle:root_finish forState:UIControlStateNormal];
+    goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
+    [goBut addTarget:self action:@selector(clickSetButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_scrollView addSubview:goBut];
+
+
+}
 
 
 
@@ -74,10 +275,10 @@
     }
 }
 
-- (IBAction)clickSetButton:(id)sender {
+- (void)clickSetButton:(id)sender {
     BOOL isEmptySSID = _ssidTextField.text.length==0;
     BOOL isEmptyWskey = _wskeyTextField.text.length==0;
-    BOOL isEmptyWakey = _wakeyTextField.text.length==0;
+    BOOL isEmptyWakey = _wakeyTextField2.text.length==0;
     if (isEmptySSID && isEmptyWskey && isEmptyWakey) {
         [ConnetService shareConnetService].type = k_connect_module;
     }else if (isEmptyWakey && !isEmptySSID){
@@ -88,7 +289,7 @@
             return;
         }
     }else if (!isEmptyWakey){
-        if (!isEmptySSID && !isEmptyWskey && _wskeyTextField.text.length > 7 && _wakeyTextField.text.length > 7) {
+        if (!isEmptySSID && !isEmptyWskey && _wskeyTextField.text.length > 7 && _wakeyTextField2.text.length > 7) {
             [ConnetService shareConnetService].type = k_reset_passwork;
         }else{
             [JDStatusBarNotification showWithStatus:NSLocalizedString(@"Prog_SetPwdFail",nil) dismissAfter:2.0 styleName:JDStatusBarStyleWarning];
@@ -101,16 +302,16 @@
 
 
 
--(void)wskeyImageViewClick{
-    _wskeyShowImageView.highlighted = !_wskeyShowImageView.highlighted;
-    _wskeyTextField.secureTextEntry = !_wskeyShowImageView.highlighted;
-}
-
--(void)wakeyImageViewClick{
-    _wakeyShowImageView.highlighted = !_wakeyShowImageView.highlighted;
-    _wakeyTextField.secureTextEntry = !_wakeyShowImageView.highlighted;                                       
- 
-}
+//-(void)wskeyImageViewClick{
+//    _wskeyShowImageView.highlighted = !_wskeyShowImageView.highlighted;
+//    _wskeyTextField.secureTextEntry = !_wskeyShowImageView.highlighted;
+//}
+//
+//-(void)wakeyImageViewClick{
+//    _wakeyShowImageView.highlighted = !_wakeyShowImageView.highlighted;
+//    _wakeyTextField2.secureTextEntry = !_wakeyShowImageView.highlighted;
+// 
+//}
 
 
 #pragma mark UITextFieldDelegate
@@ -132,7 +333,7 @@
             return NO;
         }
     }
-    if (_wakeyTextField == textField){
+    if (_wakeyTextField2 == textField){
         if ([toBeString length] > 22){
             textField.text = [toBeString substringToIndex:22];
             return NO;
@@ -172,7 +373,7 @@
     InfoSend *infoSend = [[InfoSend alloc] init];
     infoSend.wsssid = _ssidTextField.text;
     infoSend.wskey = [NSString stringWithFormat:@"WPA2PSK,AES,%@",_wskeyTextField.text];
-    infoSend.wakey = [NSString stringWithFormat:@"WPA2PSK,AES,%@",_wakeyTextField.text];
+    infoSend.wakey = [NSString stringWithFormat:@"WPA2PSK,AES,%@",_wakeyTextField2.text];
     [[ConnetService shareConnetService] reciveData:data infoSend:infoSend];
 }
 
