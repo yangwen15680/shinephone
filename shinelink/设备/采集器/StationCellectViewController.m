@@ -15,6 +15,7 @@
 #import "addDevice.h"
 #import "DeviceManageViewController.h"
 #import "MainViewController.h"
+#import "AddDeviceViewController.h"
 
 @interface StationCellectViewController ()<EditCellectViewDelegate,UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)EditCellectView *editCellect;
@@ -143,10 +144,11 @@
         NSString *IdString=[IdString1 substringWithRange:NSMakeRange(0, 2)];
         
         NSLog(@"datalog_sn=%@",IdString);
-        NSString *demoId=[NSString stringWithFormat:@"4K"];
+        NSString *demoId=[NSString stringWithFormat:@"AH"];
         if ([IdString isEqualToString:demoId]) {
-            UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            DeviceManageViewController *rootView = [mainStoryBoard instantiateViewControllerWithIdentifier:@"DeviceManager"];
+            
+             AddDeviceViewController *rootView = [[AddDeviceViewController alloc]init];
+            
             [self.navigationController pushViewController:rootView animated:YES];
         }else
         {

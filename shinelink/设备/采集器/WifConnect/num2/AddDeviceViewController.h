@@ -22,14 +22,14 @@
 
 @property(nonatomic) NSInteger cellCount0;
 
-@property (strong, nonatomic) IBOutlet UITextField *ipName;
-@property (strong, nonatomic) IBOutlet UITextField *pswd;
-@property (strong, nonatomic) IBOutlet UISwitch *pswdShow;
+@property (strong, nonatomic)  UITextField *ipName;
+@property (strong, nonatomic)  UITextField *pswd;
+//@property (strong, nonatomic) IBOutlet UISwitch *pswdShow;
 
-@property (weak, nonatomic) IBOutlet UIButton *addDeviceBtn;
+//@property (weak, nonatomic) IBOutlet UIButton *addDeviceBtn;
 
 @property (nonatomic, strong) NSMutableArray *deviceArray;//接收所有可控制设备的信息
-- (IBAction)pullBack:(id)sender;
+//- (IBAction)pullBack:(id)sender;
 
 @property (assign) Boolean autoGoinTaG;
 @end

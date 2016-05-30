@@ -118,9 +118,6 @@
 		334FF09D1CF53C7C001E6716 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF0411CF53C7C001E6716 /* MainViewController.m */; };
 		334FF09E1CF53C7C001E6716 /* ModuleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF0431CF53C7C001E6716 /* ModuleInfo.m */; };
 		334FF09F1CF53C7C001E6716 /* AddDeviceViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 334FF0471CF53C7C001E6716 /* AddDeviceViewController.mm */; };
-		334FF0A01CF53C7C001E6716 /* checkbox_false.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0481CF53C7C001E6716 /* checkbox_false.png */; };
-		334FF0A11CF53C7C001E6716 /* checkbox_true.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0491CF53C7C001E6716 /* checkbox_true.png */; };
-		334FF0A21CF53C7C001E6716 /* device_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF04A1CF53C7C001E6716 /* device_back.png */; };
 		334FF0A31CF53C7C001E6716 /* DeviceManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF04C1CF53C7C001E6716 /* DeviceManageViewController.m */; };
 		334FF0A41CF53C7C001E6716 /* ACPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF04F1CF53C7C001E6716 /* ACPButton.m */; };
 		334FF0A51CF53C7C001E6716 /* liblibelian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 334FF0551CF53C7C001E6716 /* liblibelian.a */; };
@@ -219,7 +216,6 @@
 		33652A2B1CEC1190004EBAE5 /* ExtensionTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33652A2A1CEC1190004EBAE5 /* ExtensionTwoViewController.m */; };
 		336664E11CB75213005573FB /* moreTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 336664E01CB75213005573FB /* moreTableViewController.m */; };
 		336664E41CB7524C005573FB /* moreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 336664E31CB7524C005573FB /* moreCell.m */; };
-		336664E71CB77CC2005573FB /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336664E51CB77CC2005573FB /* service@2x.png */; };
 		336664E81CB77CC2005573FB /* service@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336664E61CB77CC2005573FB /* service@3x.png */; };
 		336664ED1CB77CD3005573FB /* update@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336664E91CB77CD3005573FB /* update@2x.png */; };
 		336664EE1CB77CD3005573FB /* update@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 336664EA1CB77CD3005573FB /* update@3x.png */; };
@@ -611,9 +607,6 @@
 		334FF0441CF53C7C001E6716 /* NotificationMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationMacro.h; sourceTree = "<group>"; };
 		334FF0461CF53C7C001E6716 /* AddDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddDeviceViewController.h; sourceTree = "<group>"; };
 		334FF0471CF53C7C001E6716 /* AddDeviceViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AddDeviceViewController.mm; sourceTree = "<group>"; };
-		334FF0481CF53C7C001E6716 /* checkbox_false.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_false.png; sourceTree = "<group>"; };
-		334FF0491CF53C7C001E6716 /* checkbox_true.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_true.png; sourceTree = "<group>"; };
-		334FF04A1CF53C7C001E6716 /* device_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device_back.png; sourceTree = "<group>"; };
 		334FF04B1CF53C7C001E6716 /* DeviceManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManageViewController.h; sourceTree = "<group>"; };
 		334FF04C1CF53C7C001E6716 /* DeviceManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManageViewController.m; sourceTree = "<group>"; };
 		334FF04E1CF53C7C001E6716 /* ACPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACPButton.h; sourceTree = "<group>"; };
@@ -773,7 +766,6 @@
 		336664E01CB75213005573FB /* moreTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreTableViewController.m; sourceTree = "<group>"; };
 		336664E21CB7524C005573FB /* moreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moreCell.h; sourceTree = "<group>"; };
 		336664E31CB7524C005573FB /* moreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = moreCell.m; sourceTree = "<group>"; };
-		336664E51CB77CC2005573FB /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "service@2x.png"; path = "../service@2x.png"; sourceTree = "<group>"; };
 		336664E61CB77CC2005573FB /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "service@3x.png"; path = "../service@3x.png"; sourceTree = "<group>"; };
 		336664E91CB77CD3005573FB /* update@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "update@2x.png"; path = "../update@2x.png"; sourceTree = "<group>"; };
 		336664EA1CB77CD3005573FB /* update@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "update@3x.png"; path = "../update@3x.png"; sourceTree = "<group>"; };
@@ -1449,9 +1441,6 @@
 			children = (
 				334FF0461CF53C7C001E6716 /* AddDeviceViewController.h */,
 				334FF0471CF53C7C001E6716 /* AddDeviceViewController.mm */,
-				334FF0481CF53C7C001E6716 /* checkbox_false.png */,
-				334FF0491CF53C7C001E6716 /* checkbox_true.png */,
-				334FF04A1CF53C7C001E6716 /* device_back.png */,
 				334FF04B1CF53C7C001E6716 /* DeviceManageViewController.h */,
 				334FF04C1CF53C7C001E6716 /* DeviceManageViewController.m */,
 				334FF04D1CF53C7C001E6716 /* OtherThing */,
@@ -1987,7 +1976,6 @@
 				336664EA1CB77CD3005573FB /* update@3x.png */,
 				336664EB1CB77CD3005573FB /* user-agreement@2x.png */,
 				336664EC1CB77CD3005573FB /* user-agreement@3x.png */,
-				336664E51CB77CC2005573FB /* service@2x.png */,
 				336664E61CB77CC2005573FB /* service@3x.png */,
 			);
 			path = pic;
@@ -2563,7 +2551,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				334FF0B61CF53C7C001E6716 /* wifisettingicon.png in Resources */,
-				336664E71CB77CC2005573FB /* service@2x.png in Resources */,
 				334FF0971CF53C7C001E6716 /* background.png in Resources */,
 				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
 				334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */,
@@ -2684,7 +2671,6 @@
 				3349BB3D1C7EFC6B00E6E34B /* 1.jpg in Resources */,
 				335456C71C853B4900275478 /* btn_cha.png in Resources */,
 				336664E81CB77CC2005573FB /* service@3x.png in Resources */,
-				334FF0A11CF53C7C001E6716 /* checkbox_true.png in Resources */,
 				33FFBD551CEC813D003C56E1 /* content4.jpg in Resources */,
 				3381ECF51CBCA61200DCF0D2 /* 智能联动设置切图.png in Resources */,
 				338990B11CEAB73400A708F8 /* logo3.png in Resources */,
@@ -2732,7 +2718,6 @@
 				33FEFD6D1C7DB38400324374 /* iconfont-gongsijianjie@2x.png in Resources */,
 				33FEFD7C1C7DB38400324374 /* shebei@3x.png in Resources */,
 				33FEFD571C7DB38400324374 /* icon---Email---Full@2x.png in Resources */,
-				334FF0A01CF53C7C001E6716 /* checkbox_false.png in Resources */,
 				334FEF8C1CF45423001E6716 /* 33.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
@@ -2744,7 +2729,6 @@
 				334770FE1C9A3E35003A6F13 /* equipment@2x.png in Resources */,
 				337F9C931C71A6710016FE43 /* Assets.xcassets in Resources */,
 				33FFBD4D1CEC6D42003C56E1 /* bg3.jpg in Resources */,
-				334FF0A21CF53C7C001E6716 /* device_back.png in Resources */,
 				33FEFD6C1C7DB38400324374 /* iconfont-faxian@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3138,7 +3122,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3159,7 +3143,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelink;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

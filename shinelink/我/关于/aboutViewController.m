@@ -194,7 +194,7 @@
         if (!cell3) {
             cell3=[[aboutOneTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell33];
         }
-        [cell3.imageLog setImage:[UIImage imageNamed:@"service.png"]];
+        [cell3.imageLog setImage:[UIImage imageNamed:@"service@3x.png"]];
         cell3.tableName.text = root_WO_kefu_dianhua;
         cell3.tableDetail.text=_serviceNum;
         
