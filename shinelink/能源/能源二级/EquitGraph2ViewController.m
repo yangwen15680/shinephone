@@ -225,13 +225,13 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
     for (int i=0; i<_valueName.count+1; i++) {
     
         UIView *line=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 325*HEIGHT_SIZE+size1*i, 300*NOW_SIZE, 1*HEIGHT_SIZE)];
-       line.backgroundColor=[UIColor whiteColor];
+       line.backgroundColor=COLOR(140, 221, 249, 1);
         [_scrollView addSubview:line];
         
     }
     
     UIView *line4=[[UIView alloc]initWithFrame:CGRectMake(160*NOW_SIZE, 325*HEIGHT_SIZE, 1*NOW_SIZE, 105*HEIGHT_SIZE)];
-    line4.backgroundColor=[UIColor whiteColor];
+    line4.backgroundColor=COLOR(140, 221, 249, 1);
     [_scrollView addSubview:line4];
     
     NSDictionary *dicGo=[NSDictionary new];

@@ -1055,7 +1055,7 @@ GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
          cell.electric.text = root_dianChi_baifenBi;
             if ([getDevice.statueData isEqualToString:@"0"]){
                 cell.stateValue.text =root_xianZhi;
-                  cell.stateValue.textColor=COLOR(45, 26, 233, 1);
+                  cell.stateValue.textColor=COLOR(45, 226, 233, 1);
             }else if ([getDevice.statueData isEqualToString:@"1"]){
                 cell.stateValue.text =root_chongDian;
                   cell.stateValue.textColor=COLOR(121, 230, 129, 1);

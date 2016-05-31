@@ -110,8 +110,6 @@
 		334FF0931CF53C7C001E6716 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF0301CF53C7B001E6716 /* AsyncSocket.m */; };
 		334FF0941CF53C7C001E6716 /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF0321CF53C7B001E6716 /* AsyncUdpSocket.m */; };
 		334FF0951CF53C7C001E6716 /* Documentation.html in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0331CF53C7B001E6716 /* Documentation.html */; };
-		334FF0971CF53C7C001E6716 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0361CF53C7B001E6716 /* background.png */; };
-		334FF0981CF53C7C001E6716 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0371CF53C7B001E6716 /* Main.storyboard */; };
 		334FF0991CF53C7C001E6716 /* ConnetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF03A1CF53C7C001E6716 /* ConnetService.m */; };
 		334FF09A1CF53C7C001E6716 /* deviceRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF03C1CF53C7C001E6716 /* deviceRootViewController.m */; };
 		334FF09B1CF53C7C001E6716 /* InfoSend.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF03E1CF53C7C001E6716 /* InfoSend.m */; };
@@ -135,9 +133,6 @@
 		334FF0B11CF53C7C001E6716 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0781CF53C7C001E6716 /* ProgressHUD.bundle */; };
 		334FF0B21CF53C7C001E6716 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF07A1CF53C7C001E6716 /* ProgressHUD.m */; };
 		334FF0B31CF53C7C001E6716 /* UdpCheckUtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF07C1CF53C7C001E6716 /* UdpCheckUtl.m */; };
-		334FF0B41CF53C7C001E6716 /* wifiborder.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF07D1CF53C7C001E6716 /* wifiborder.png */; };
-		334FF0B51CF53C7C001E6716 /* wifiicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF07E1CF53C7C001E6716 /* wifiicon.png */; };
-		334FF0B61CF53C7C001E6716 /* wifisettingicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF07F1CF53C7C001E6716 /* wifisettingicon.png */; };
 		334FF0B71CF53C7C001E6716 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0811CF53C7C001E6716 /* about.png */; };
 		334FF0B81CF53C7C001E6716 /* bottombg.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0821CF53C7C001E6716 /* bottombg.png */; };
 		334FF0B91CF53C7C001E6716 /* btn_check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0831CF53C7C001E6716 /* btn_check_off.png */; };
@@ -149,7 +144,6 @@
 		334FF0BF1CF53C7C001E6716 /* text_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF0891CF53C7C001E6716 /* text_bg.png */; };
 		334FF0C01CF53C7C001E6716 /* top.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FF08A1CF53C7C001E6716 /* top.png */; };
 		334FF0C11CF53C7C001E6716 /* UINavigationController+CustomNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FF08C1CF53C7C001E6716 /* UINavigationController+CustomNavigation.m */; };
-		334FF0C21CF53C7C001E6716 /* Main.strings in Resources */ = {isa = PBXBuildFile; fileRef = 334FF08E1CF53C7C001E6716 /* Main.strings */; };
 		335047201C9BA6F600BF8683 /* EGOCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3350471F1C9BA6F600BF8683 /* EGOCache.m */; };
 		335047241C9BF39A00BF8683 /* homeDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335047231C9BF39A00BF8683 /* homeDeviceViewController.m */; };
 		335088D91C73011300D7AA03 /* addDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 335088D81C73011300D7AA03 /* addDevice.m */; };
@@ -592,8 +586,6 @@
 		334FF0311CF53C7B001E6716 /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
 		334FF0321CF53C7B001E6716 /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
 		334FF0331CF53C7B001E6716 /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Documentation.html; sourceTree = "<group>"; };
-		334FF0361CF53C7B001E6716 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
-		334FF0381CF53C7B001E6716 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		334FF0391CF53C7B001E6716 /* ConnetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnetService.h; sourceTree = "<group>"; };
 		334FF03A1CF53C7C001E6716 /* ConnetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnetService.m; sourceTree = "<group>"; };
 		334FF03B1CF53C7C001E6716 /* deviceRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deviceRootViewController.h; sourceTree = "<group>"; };
@@ -640,9 +632,6 @@
 		334FF07A1CF53C7C001E6716 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		334FF07B1CF53C7C001E6716 /* UdpCheckUtl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UdpCheckUtl.h; sourceTree = "<group>"; };
 		334FF07C1CF53C7C001E6716 /* UdpCheckUtl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UdpCheckUtl.m; sourceTree = "<group>"; };
-		334FF07D1CF53C7C001E6716 /* wifiborder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifiborder.png; sourceTree = "<group>"; };
-		334FF07E1CF53C7C001E6716 /* wifiicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifiicon.png; sourceTree = "<group>"; };
-		334FF07F1CF53C7C001E6716 /* wifisettingicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifisettingicon.png; sourceTree = "<group>"; };
 		334FF0811CF53C7C001E6716 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		334FF0821CF53C7C001E6716 /* bottombg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottombg.png; sourceTree = "<group>"; };
 		334FF0831CF53C7C001E6716 /* btn_check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_check_off.png; sourceTree = "<group>"; };
@@ -655,7 +644,6 @@
 		334FF08A1CF53C7C001E6716 /* top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top.png; sourceTree = "<group>"; };
 		334FF08B1CF53C7C001E6716 /* UINavigationController+CustomNavigation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+CustomNavigation.h"; sourceTree = "<group>"; };
 		334FF08C1CF53C7C001E6716 /* UINavigationController+CustomNavigation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+CustomNavigation.m"; sourceTree = "<group>"; };
-		334FF08F1CF53C7C001E6716 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3350471E1C9BA6F600BF8683 /* EGOCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGOCache.h; sourceTree = "<group>"; };
 		3350471F1C9BA6F600BF8683 /* EGOCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGOCache.m; sourceTree = "<group>"; };
 		335047221C9BF39A00BF8683 /* homeDeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = homeDeviceViewController.h; sourceTree = "<group>"; };
@@ -922,7 +910,6 @@
 		338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDeviceViewController.m; sourceTree = "<group>"; };
 		338CFE651CF554C1006EFD8B /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		338CFE671CF554D8006EFD8B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
-		338CFE6B1CF577FB006EFD8B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
 		33EFB5F71C979B5F003F336F /* StationCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCellectViewController.h; sourceTree = "<group>"; };
 		33EFB5F81C979B5F003F336F /* StationCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCellectViewController.m; sourceTree = "<group>"; };
@@ -1381,8 +1368,6 @@
 				3355AD931CF6A48B00AE6891 /* 图片WIFI */,
 				334FF0261CF53C7B001E6716 /* AppMacro.h */,
 				334FF0271CF53C7B001E6716 /* AsyncSocket */,
-				334FF0361CF53C7B001E6716 /* background.png */,
-				334FF0371CF53C7B001E6716 /* Main.storyboard */,
 				334FF0391CF53C7B001E6716 /* ConnetService.h */,
 				334FF03A1CF53C7C001E6716 /* ConnetService.m */,
 				334FF03B1CF53C7C001E6716 /* deviceRootViewController.h */,
@@ -1398,7 +1383,6 @@
 				334FF0801CF53C7C001E6716 /* Resources */,
 				334FF08B1CF53C7C001E6716 /* UINavigationController+CustomNavigation.h */,
 				334FF08C1CF53C7C001E6716 /* UINavigationController+CustomNavigation.m */,
-				334FF08E1CF53C7C001E6716 /* Main.strings */,
 			);
 			path = WifConnect;
 			sourceTree = "<group>";
@@ -1447,9 +1431,6 @@
 				334FF0771CF53C7C001E6716 /* ProgressHUD */,
 				334FF07B1CF53C7C001E6716 /* UdpCheckUtl.h */,
 				334FF07C1CF53C7C001E6716 /* UdpCheckUtl.m */,
-				334FF07D1CF53C7C001E6716 /* wifiborder.png */,
-				334FF07E1CF53C7C001E6716 /* wifiicon.png */,
-				334FF07F1CF53C7C001E6716 /* wifisettingicon.png */,
 			);
 			path = num2;
 			sourceTree = "<group>";
@@ -2512,7 +2493,15 @@
 				TargetAttributes = {
 					337F9C7F1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 2UVBDYK6LY;
+						DevelopmentTeam = PX2V6N98Z6;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					337F9C9B1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
@@ -2550,14 +2539,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				334FF0B61CF53C7C001E6716 /* wifisettingicon.png in Resources */,
-				334FF0971CF53C7C001E6716 /* background.png in Resources */,
 				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
 				334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */,
 				33FEFD5B1C7DB38400324374 /* icon---Email@3x.png in Resources */,
 				334FEF8E1CF45AEB001E6716 /* btn1.png in Resources */,
 				334FF0BE1CF53C7C001E6716 /* shinesmart.png in Resources */,
-				334FF0B41CF53C7C001E6716 /* wifiborder.png in Resources */,
 				33EFB6331C97DAB5003F336F /* 控制.jpg in Resources */,
 				33FEFD5C1C7DB38400324374 /* icon---Name.png in Resources */,
 				334AED601CA3763D007E39F3 /* 资料管理.png in Resources */,
@@ -2589,7 +2575,6 @@
 				336664EF1CB77CD3005573FB /* user-agreement@2x.png in Resources */,
 				33692BF31C926B4B00698375 /* shang.png in Resources */,
 				3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */,
-				334FF0981CF53C7C001E6716 /* Main.storyboard in Resources */,
 				33FEFD7B1C7DB38400324374 /* shebei@2x.png in Resources */,
 				33FEFD641C7DB38400324374 /* icon---Username@3x.png in Resources */,
 				3383F1361C9FF7440075E834 /* disconnect@2x.png in Resources */,
@@ -2667,7 +2652,6 @@
 				33FFBD3F1CEC45FC003C56E1 /* chargeE.png in Resources */,
 				3383F1311C9FF4210075E834 /* PowerRegulator.png in Resources */,
 				33FEFD5E1C7DB38400324374 /* icon---Name@3x.png in Resources */,
-				334FF0C21CF53C7C001E6716 /* Main.strings in Resources */,
 				3349BB3D1C7EFC6B00E6E34B /* 1.jpg in Resources */,
 				335456C71C853B4900275478 /* btn_cha.png in Resources */,
 				336664E81CB77CC2005573FB /* service@3x.png in Resources */,
@@ -2711,7 +2695,6 @@
 				33FEFD611C7DB38400324374 /* icon---Password@3x.png in Resources */,
 				33FFBD531CEC7A8E003C56E1 /* content3.jpg in Resources */,
 				334FEF881CF453E1001E6716 /* 22.png in Resources */,
-				334FF0B51CF53C7C001E6716 /* wifiicon.png in Resources */,
 				3349A7B21C75B7DF009172C2 /* 圆角矩形3.png in Resources */,
 				3383F1381C9FFD370075E834 /* 家庭用电量.png in Resources */,
 				334FF0BB1CF53C7C001E6716 /* logo_l.png in Resources */,
@@ -3003,23 +2986,6 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
-		334FF0371CF53C7B001E6716 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				334FF0381CF53C7B001E6716 /* Base */,
-				338CFE6B1CF577FB006EFD8B /* zh-Hans */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		334FF08E1CF53C7C001E6716 /* Main.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				334FF08F1CF53C7C001E6716 /* zh-Hans */,
-			);
-			name = Main.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -3122,7 +3088,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3143,7 +3109,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

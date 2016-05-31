@@ -88,7 +88,7 @@
 }
 //_scrollView.
 -(void)addbutton{
-    float SizeH2=10*HEIGHT_SIZE;
+    float SizeH2=15*HEIGHT_SIZE;
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
     [firstB addTarget:self action:@selector(controlCNJ) forControlEvents:UIControlEventTouchUpInside];
@@ -173,7 +173,7 @@
 -(void)addGraph{
   
     
-    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*HEIGHT_SIZE-SizeH, SCREEN_Width,280*HEIGHT_SIZE )];
+    self.line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 260*HEIGHT_SIZE-SizeH, SCREEN_Width,270*HEIGHT_SIZE )];
     self.line2View.flag=@"1";
      self.line2View.frameType=@"1";
     [self.scrollView addSubview:self.line2View];
@@ -225,7 +225,7 @@
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(14*NOW_SIZE, 210*HEIGHT_SIZE-SizeH, 100*NOW_SIZE,20*HEIGHT_SIZE )];
     leftState.text=root_ri_fangdianliang;
     leftState.textAlignment=NSTextAlignmentLeft;
-    leftState.textColor=[UIColor blackColor];
+    leftState.textColor=[UIColor greenColor];
     leftState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:leftState];
     
@@ -239,7 +239,7 @@
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-114*NOW_SIZE, 210*HEIGHT_SIZE-SizeH, 100*NOW_SIZE,20*HEIGHT_SIZE )];
     rightState.text=root_zong_fangdianliang;
     rightState.textAlignment=NSTextAlignmentRight;
-    rightState.textColor=[UIColor blackColor];
+    rightState.textColor=[UIColor greenColor];
     rightState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:rightState];
     

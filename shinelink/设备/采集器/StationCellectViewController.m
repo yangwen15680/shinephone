@@ -144,7 +144,7 @@
         NSString *IdString=[IdString1 substringWithRange:NSMakeRange(0, 2)];
         
         NSLog(@"datalog_sn=%@",IdString);
-        NSString *demoId=[NSString stringWithFormat:@"AH"];
+        NSString *demoId=[NSString stringWithFormat:@"4K"];
         if ([IdString isEqualToString:demoId]) {
             
              AddDeviceViewController *rootView = [[AddDeviceViewController alloc]init];

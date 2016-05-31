@@ -58,7 +58,7 @@
 -(void)addbutton{
     
   
-     float SizeH2=10*HEIGHT_SIZE;
+     float SizeH2=15*HEIGHT_SIZE;
     UIButton *firstB=[[UIButton alloc]initWithFrame:CGRectMake(24*NOW_SIZE, 490*HEIGHT_SIZE-SizeH-SizeH2, 50*HEIGHT_SIZE,50*HEIGHT_SIZE )];
     [firstB setImage:[UIImage imageNamed:@"控制.jpg"] forState:UIControlStateNormal];
      [firstB addTarget:self action:@selector(controlThree) forControlEvents:UIControlEventTouchUpInside];
@@ -138,7 +138,7 @@
     
 }
 -(void)addGraph{
-    _line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 265*HEIGHT_SIZE-SizeH, SCREEN_Width,280*HEIGHT_SIZE )];
+    _line2View = [[Line2View alloc] initWithFrame:CGRectMake(0, 265*HEIGHT_SIZE-SizeH-5*HEIGHT_SIZE, SCREEN_Width,270*HEIGHT_SIZE )];
     self.line2View.flag=@"1";
     self.line2View.frameType=@"1";
     [self.scrollView addSubview:self.line2View];
@@ -195,7 +195,7 @@
     UILabel *leftState=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 200*HEIGHT_SIZE-SizeH, 90*NOW_SIZE,20*HEIGHT_SIZE )];
     leftState.text=root_NBQ_ri_dianliang;
     leftState.textAlignment=NSTextAlignmentCenter;
-    leftState.textColor=[UIColor blackColor];
+    leftState.textColor=[UIColor greenColor];
     leftState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:leftState];
     
@@ -208,7 +208,7 @@
     UILabel *centState=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2,150*HEIGHT_SIZE-SizeH, 120*NOW_SIZE,20*HEIGHT_SIZE )];
     centState.text=root_dangqian_gonglv;
     centState.textAlignment=NSTextAlignmentCenter;
-    centState.textColor=[UIColor blackColor];
+    centState.textColor=[UIColor whiteColor];
     centState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:centState];
     
@@ -221,11 +221,11 @@
     UILabel *rightState=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-105*NOW_SIZE, 200*HEIGHT_SIZE-SizeH, 90*NOW_SIZE,20*HEIGHT_SIZE )];
     rightState.text=root_NBQ_zong_dianliang;
     rightState.textAlignment=NSTextAlignmentCenter;
-    rightState.textColor=[UIColor blackColor];
+    rightState.textColor=[UIColor greenColor];
     rightState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:rightState];
     
-    UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*HEIGHT_SIZE-SizeH, 100*NOW_SIZE,20*HEIGHT_SIZE )];
+    UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*HEIGHT_SIZE-SizeH-5*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
     dayDate.text=root_NBQ_ri_fadianliang;
     dayDate.textAlignment=NSTextAlignmentLeft;
     dayDate.textColor=[UIColor blackColor];

@@ -236,7 +236,7 @@
         UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*HEIGHT_SIZE-70*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
         Name1.text=_dateName[j];
         Name1.textAlignment=NSTextAlignmentCenter;
-        Name1.textColor=[UIColor blueColor];
+        Name1.textColor=COLOR(104, 113, 201, 1);
         Name1.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
         [_scrollView addSubview:Name1];
     }
