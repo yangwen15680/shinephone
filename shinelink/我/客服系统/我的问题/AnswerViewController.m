@@ -157,8 +157,10 @@ int picTime;
      [_allDict setObject:_qusetionId forKey:@"questionId"];
      [_allDict setObject:userID forKey:@"userId"];
     
+     [self showProgressView];
     [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_allDict paramarsSite:@"/questionAPI.do?op=replyMessage" dataImageDict:dataImageDict sucessBlock:^(id content) {
         NSLog(@"addCustomerQuestion==%@", content);
+         [self hideProgressView];
         id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
         if (content1) {
             if ([content1[@"success"] integerValue] == 1) {
@@ -174,6 +176,7 @@ int picTime;
     }
                               failure:^(NSError *error) {
                                   [self showToastViewWithTitle:root_Networking];
+                                   [self hideProgressView];
                                   [self.navigationController popViewControllerAnimated:NO];
                               }];
     

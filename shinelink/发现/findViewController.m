@@ -20,6 +20,7 @@
 @property(nonatomic,strong)NSMutableArray *imageArray;
 @property(nonatomic,strong)NSMutableArray *imageArrayName;
 @property(nonatomic,strong)NSMutableArray *imageArrayCount;
+@property(nonatomic,strong)UIView *headerView;
 @end
 
 @implementation findViewController
@@ -56,10 +57,14 @@
 
     _imageArrayName=[NSMutableArray array];
       _imageArrayCount=[NSMutableArray array];
-    [self netFind];
+    
+    if(!_headerView){
+       [self netFind];
+    }
+ 
     //创建tableView的方法
     [self _createTableView];
-    
+    [self _createHeaderView];
    
     
     [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
@@ -69,7 +74,7 @@
 -(void)netFind{
     
       //NSMutableArray *dataArray=[NSMutableArray array];
-    _imageArray=[NSMutableArray array];
+
     
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingList" sucessBlock:^(id content) {
         
@@ -96,6 +101,7 @@
 
 -(void)netFind2{
 
+        _imageArray=[NSMutableArray array];
     for (int i=0; i<_imageArrayCount.count; i++) {
         
         [self showProgressView];
@@ -111,7 +117,7 @@
            
         } failure:^(NSError *error) {
             [self hideProgressView];
-             [self _createHeaderView];
+             //[_tableView reloadData];
             [self showToastViewWithTitle:root_Networking];
             
         }];
@@ -124,6 +130,8 @@
 - (void)_createTableView {
     
 //        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-NavigationbarHeight);
+    
+  
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,Kwidth,self.view.frame.size.height-self.tabBarController.tabBar.frame.size.height-10*HEIGHT_SIZE) style:UITableViewStylePlain];
     _tableView.delegate = self;
@@ -138,10 +146,14 @@
 
 - (void)_createHeaderView {
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
-    _tableView.tableHeaderView = headerView;
+    if (_headerView) {
+        [self.headerView removeFromSuperview];
+    }
     
-  _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headerView.bounds.size.height)];
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
+    _tableView.tableHeaderView = _headerView;
+    
+  _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,_headerView.bounds.size.height)];
     
     if (_imageArray) {
         for (int i=0; i<_imageArray.count; i++) {
@@ -149,21 +161,19 @@
             imageView.image = _imageArray[i];
             [_scrollerView addSubview:imageView];
             
-             _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,headerView.bounds.size.height);
-            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
+             _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,_headerView.bounds.size.height);
+            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,_headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
             _pageControl.numberOfPages = _imageArray.count;
         }
     }else{
-    NSArray *imgArray = @[@"1.jpg",
-                          @"2.jpg",
-                          @"3.jpg"];
+    NSArray *imgArray = @[@"pic_service.png"];
     for (int i=0; i<imgArray.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
         imageView.image = [UIImage imageNamed:imgArray[i]];
         [_scrollerView addSubview:imageView];
         
-        _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headerView.bounds.size.height);
-        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
+        _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,_headerView.bounds.size.height);
+        _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,_headerView.bounds.size.height-20*HEIGHT_SIZE,Kwidth,20*HEIGHT_SIZE)];
         _pageControl.numberOfPages = imgArray.count;
          }
     }
@@ -172,13 +182,13 @@
     _scrollerView.pagingEnabled = YES;
     _scrollerView.showsHorizontalScrollIndicator = NO;
     _scrollerView.delegate = self;
-    [headerView addSubview:_scrollerView];
+    [_headerView addSubview:_scrollerView];
     
     //创建分页视图
 
     _pageControl.currentPage = 0;
     [_pageControl addTarget:self action:@selector(pageAction:) forControlEvents:UIControlEventValueChanged];
-    [headerView addSubview:_pageControl];
+    [_headerView addSubview:_pageControl];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

@@ -145,7 +145,7 @@
         self.forgetLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.forgetLable.textAlignment = NSTextAlignmentLeft;
      self.forgetLable.userInteractionEnabled=YES;
-    UITapGestureRecognizer * forget2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget)];
+    UITapGestureRecognizer * forget2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(forget2)];
     [self.forgetLable addGestureRecognizer:forget2];
     [_scrollView addSubview:self.forgetLable];
     
@@ -156,7 +156,7 @@
     self.registLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
     self.registLable.textAlignment = NSTextAlignmentRight;
     self.registLable.userInteractionEnabled=YES;
-    UITapGestureRecognizer * forget1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable)];
+    UITapGestureRecognizer * forget1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapLable2)];
     [self.registLable addGestureRecognizer:forget1];
     [_scrollView addSubview:self.registLable];
     
@@ -189,7 +189,7 @@
 {
     return NO;
 }
--(void)forget{
+-(void)forget2{
     forgetViewController *registerRoot=[[forgetViewController alloc]init];
     //[self presentViewController:registerRoot animated:YES completion:nil];
     
@@ -197,13 +197,13 @@
 }
 
 
--(void)tapLable{
+-(void)tapLable2{
     NSLog(@"注册");
-    self.registLable.highlighted=YES;
-    self.registLable.highlightedTextColor=[UIColor whiteColor];
+   // self.registLable.highlighted=YES;
+   // self.registLable.highlightedTextColor=[UIColor whiteColor];
     countryViewController *registerRoot=[[countryViewController alloc]init];
     
-    [self.navigationController pushViewController:registerRoot animated:YES];
+    [self.navigationController pushViewController:registerRoot animated:NO];
     
 
 }
@@ -397,7 +397,7 @@
         UINavigationController *Vc1=[[UINavigationController alloc]initWithRootViewController:deviceVc];
         UINavigationController *Vc4=[[UINavigationController alloc]initWithRootViewController:meVc];
         Vc1.title=root_device;
-        Vc2.title=root_energy;
+        Vc2.title=root_energy_title;
         Vc3.title=root_service;
         Vc4.title=root_ME;
         Vc1.tabBarItem.image=[UIImage imageNamed:@"equipment@2x.png"];

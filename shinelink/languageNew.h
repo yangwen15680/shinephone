@@ -323,6 +323,7 @@
 
 #pragma mark - 能源
 
+#define  root_energy_title        NSLocalizedString(@"能源", nil)
 #define  root_energy        NSLocalizedString(@"能源分析", nil)
 #define  root_energy_Smart       NSLocalizedString(@"智能能源", nil)
 #define  root_energy_jiating_yongdian       NSLocalizedString(@"家庭用电量", nil)
@@ -455,5 +456,17 @@
 
 #define root_shanchu_chenggong      NSLocalizedString(@"删除成功", nil)
 #define root_shanchu_shibai     NSLocalizedString(@"系统错误，删除失败", nil)
+
+#define root_Ppv     NSLocalizedString(@"Ppv", nil)
+#define root_Puser     NSLocalizedString(@"Puser", nil)
+#define root_Pgrid     NSLocalizedString(@"Pgrid", nil)
+
+#define root_Revenue     NSLocalizedString(@"Revenue", nil)
+#define root_todayPV     NSLocalizedString(@"todayPV", nil)
+#define root_PpvN     NSLocalizedString(@"PpvN", nil)
+
+
+
+
 
 #endif /* languageNew_h */

@@ -103,15 +103,16 @@
     [userImage setUserInteractionEnabled:YES];
     
     if((pic==nil) || (pic.length==0)){
-        [userImage setImage:[UIImage imageNamed:@"1.jpg"]];
+        [userImage setImage:[UIImage imageNamed:@"touxiang.png"]];
     }else{
         UIImage *image = [UIImage imageWithData: pic];
         [userImage setImage:image];
    
     }
     
-    UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
-    longPressGesture.minimumPressDuration = 1.0f;
+    
+    UITapGestureRecognizer * longPressGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
+//    longPressGesture.minimumPressDuration = 1.0f;
      [userImage addGestureRecognizer:longPressGesture];
     
     

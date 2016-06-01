@@ -212,8 +212,10 @@
     [_allDict setObject:[_contentView text] forKey:@"content"];
        [_allDict setObject:userID forKey:@"userId"];
     //NSError *error;
+    [self showProgressView];
     [BaseRequest uplodImageWithMethod:HEAD_URL paramars:_allDict paramarsSite:@"/questionAPI.do?op=addCustomerQuestion" dataImageDict:dataImageDict sucessBlock:^(id content) {
         NSLog(@"addCustomerQuestion==%@", content);
+        [self hideProgressView];
         id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
         if (content1) {
             if ([content1 integerValue] == 1) {
@@ -230,6 +232,7 @@
         }
      failure:^(NSError *error) {
         [self showToastViewWithTitle:root_Networking];
+         [self hideProgressView];
     }];
     
 }

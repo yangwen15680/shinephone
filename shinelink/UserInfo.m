@@ -115,8 +115,8 @@ static int timerNumber=0;
         }
         
         if (![ud objectForKey:@"server"]) {
-            [ud setObject:@"http://server.growatt.com" forKey:@"server"];
-            _server = @"http://server.growatt.com";
+            [ud setObject:@"" forKey:@"server"];
+            _server = @"";
         } else {
             _server = [ud objectForKey:@"server"];
         }

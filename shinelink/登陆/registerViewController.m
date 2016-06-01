@@ -58,7 +58,9 @@
         NSLog(@"getServerUrl: %@", content);
         if (content) {
             if ([content[@"success"]intValue]==1) {
-            NSString *server=content[@"msg"];
+            NSString *server1=content[@"msg"];
+                 NSString *server2=@"http://";
+                NSString *server=[NSString stringWithFormat:@"%@%@",server2,server1];
             [[UserInfo defaultUserInfo] setServer:server];
             }
         }

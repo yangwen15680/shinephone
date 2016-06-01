@@ -441,9 +441,9 @@
         }
         
         if ([_typeArr containsObject:@"storage"]) {
-            _head13=@"Ppv";
-            _head23=@"Puser";
-             _head33=@"Pgrid";
+            _head13=root_Ppv;
+            _head23=root_Puser;
+             _head33=root_Pgrid;
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"storageTodayPpv"]];
             NSArray *headA=[head111 componentsSeparatedByString:@"_"];
             _head11=[headA objectAtIndex:0];
@@ -460,21 +460,25 @@
             _head32=[headC objectAtIndex:1];
             
         }else if ([_typeArr containsObject:@"inverter"]){
-            _head13=@"Revenue";
-            _head23=@"E-today PV";
-            _head33=@"Ppv";
-        
+            _head13=root_Revenue;
+            //_head23=@"E-today PV";
+            _head33=root_todayPV;
+              _head23=root_PpvN;
+            
+            
+
+            
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"plantMoneyText"]];
             NSArray *headA=[head111 componentsSeparatedByString:@"/"];
             _head11=[headA objectAtIndex:0];
             _head12=[headA objectAtIndex:1];
             
-            NSString *head222=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
+            NSString *head222=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
             NSArray *headB=[head222 componentsSeparatedByString:@"_"];
             _head21=[headB objectAtIndex:0];
              _head22=[headB objectAtIndex:1];
             
-            NSString *head333=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
+            NSString *head333=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
             NSArray *headC=[head333 componentsSeparatedByString:@"_"];
             _head31=[headC objectAtIndex:0];
                 _head32=[headC objectAtIndex:1];

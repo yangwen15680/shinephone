@@ -66,9 +66,9 @@ static NSString *mainCell = @"mainCellmainCell";
 
 -(void)viewWillAppear:(BOOL)animated{
     if ([_type isEqualToString:@"1"]) {
-        self.title = @"能源";
+        self.title = root_energy_title;
     }else{
-        self.title = @"客户服务";
+        self.title = root_ME_kefu;
         
         UIButton *addButton=[[UIButton alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 0, 15*HEIGHT_SIZE, 15*HEIGHT_SIZE)];
         [addButton setBackgroundImage:[UIImage imageNamed:@"add@2x.png"] forState:UIControlStateNormal];
