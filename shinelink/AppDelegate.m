@@ -25,7 +25,11 @@
 
 @implementation AppDelegate
 
-
+//-(void)applicationWillEnterForeground:(UIApplication *)application{
+//
+//
+//    
+//}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -113,7 +117,10 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+   NSLog(@"\n ===> 程序进入前台 !");
+    [self netRequest];
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -205,5 +212,57 @@
         }
     }
 }
+
+
+-(void)netRequest{
+    
+    NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+    NSString *reUsername=[ud objectForKey:@"userName"];
+    NSString *rePassword=[ud objectForKey:@"userPassword"];
+
+    [BaseRequest requestWithMethod:HEAD_URL paramars:@{@"userName":reUsername, @"password":[self MD5:rePassword]} paramarsSite:@"/newLoginAPI.do" sucessBlock:^(id content) {
+        
+        NSLog(@"loginIn:%@",content);
+        if (content) {
+            if ([content[@"success"] integerValue] == 0) {
+                //登陆失败
+                if ([content[@"msg"] integerValue] == 501) {
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"User name or password is blank" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+                if ([content[@"msg"] integerValue] ==502) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"username password error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+                if ([content[@"msg"] integerValue] ==503) {
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
+                    [alertView show];
+                }
+            }
+        }
+        
+    } failure:^(NSError *error) {
+        
+        
+         }];
+    
+}
+
+- (NSString *)MD5:(NSString *)str {
+    const char *cStr = [str UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        NSString *tStr = [NSString stringWithFormat:@"%x", digest[i]];
+        if (tStr.length == 1) {
+            [result appendString:@"c"];
+        }
+        [result appendFormat:@"%@", tStr];
+    }
+    return result;
+}
+
 
 @end

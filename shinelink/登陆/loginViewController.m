@@ -31,6 +31,7 @@
 @property (nonatomic, strong) UIButton *registButton;
 @property (nonatomic, strong) UILabel *registLable;
 @property (nonatomic, strong) UILabel *forgetLable;
+@property (nonatomic, strong) UILabel *demoLable;
 @property (nonatomic, strong) NSDictionary *dataSource;
 
 @end
@@ -60,7 +61,10 @@
     
     NSLog(@"reUsername=%@",reUsername);
     NSLog(@"rePassword=%@",rePassword);
-    if (reUsername==nil || reUsername==NULL||[reUsername isEqual:@""]) {
+    
+    //NSString *isdemo=[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"];
+    
+    if (reUsername==nil || reUsername==NULL||([reUsername isEqual:@""] )) {
       //  [ [NSNotificationCenter defaultCenter]postNotificationName:@"reroadDemo" object:nil];
         
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
@@ -160,6 +164,16 @@
     [self.registLable addGestureRecognizer:forget1];
     [_scrollView addSubview:self.registLable];
     
+    _demoLable= [[UILabel alloc] initWithFrame:CGRectMake(100*NOW_SIZE, 310*HEIGHT_SIZE+sizeH+90*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
+    self.demoLable.text=root_demo_test;
+    self.demoLable.textColor=[UIColor greenColor];
+    self.demoLable.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
+    self.demoLable.textAlignment = NSTextAlignmentCenter;
+    self.demoLable.userInteractionEnabled=YES;
+    UITapGestureRecognizer * demo1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(demoTest)];
+    [self.demoLable addGestureRecognizer:demo1];
+    [_scrollView addSubview:self.demoLable];
+    
     
     
     LoginButton *loginBtn = [[LoginButton alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 310*HEIGHT_SIZE+sizeH, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
@@ -194,6 +208,20 @@
     //[self presentViewController:registerRoot animated:YES completion:nil];
     
     [self.navigationController pushViewController:registerRoot animated:YES];
+}
+
+-(void)demoTest{
+NSLog(@"体验馆");
+    
+    _userTextField=[[UITextField alloc]init];
+    _userTextField.text=Demo_Name;
+    _pwdTextField=[[UITextField alloc]init];
+    _pwdTextField.text=Demo_password;
+    
+     [[NSUserDefaults standardUserDefaults] setObject:@"isDemo" forKey:@"isDemo"];
+    
+    [self netRequest];
+    
 }
 
 
@@ -286,6 +314,14 @@
                 [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
                 [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
                 self.dataSource = [NSDictionary dictionaryWithDictionary:content];
+                
+                if ([_dataSource[@"user"][@"rightlevel"] integerValue]==2) {
+                    [[NSUserDefaults standardUserDefaults] setObject:@"isDemo" forKey:@"isDemo"];
+                }else{
+                    [[NSUserDefaults standardUserDefaults] setObject:@"isNotDemo" forKey:@"isDemo"];
+                }
+
+                
                 [[UserInfo defaultUserInfo] setTelNumber:_dataSource[@"user"][@"phoneNum"]];
                 [[UserInfo defaultUserInfo] setUserID:_dataSource[@"user"][@"id"]];
                 [[UserInfo defaultUserInfo] setEmail:_dataSource[@"user"][@"email"]];

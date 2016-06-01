@@ -94,7 +94,7 @@
 -(void)addButtonPressed{
     //4.根据是否为浏览用户(登录接口返回参数判断)，屏蔽添加电站、添加采集器、修改电站信息功能，给予提示(浏览用户禁止操作)。
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
-        [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
         return;
     }
     NSData *imageData = UIImageJPEGRepresentation(_imageView.image, 0.5);

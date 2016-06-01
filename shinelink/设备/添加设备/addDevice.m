@@ -52,6 +52,13 @@
 
 
 -(void)initUI{
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
     //数据采集器序列号
     UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 50*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
@@ -107,6 +114,13 @@
     [self.view addSubview:QR];
 }
 
+-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+    [_cellectNo resignFirstResponder];
+    [_cellectId resignFirstResponder];
+  
+}
+
+
 -(void)ScanQR{
     // TempViewController *temp = [[TempViewController alloc] init];
     // [self.navigationController pushViewController:temp animated:true];
@@ -130,41 +144,46 @@
     [userCheck setObject:_cellectNo.text forKey:@"validateCode"];
     
     _param1=_stationId;
-    _param2=_cellectNo.text;
-    _param3=_cellectId.text;
+    _param3=_cellectNo.text;
+    _param2=_cellectId.text;
     _param1Name=@"plantId";
     _param2Name=@"datalogSN";
     _param3Name=@"validCode";
     
-    [BaseRequest requestWithMethod:HEAD_URL paramars:@{_param1Name:_param1,_param2Name:_param2,_param3Name:_param3}  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
-        NSLog(@"addDatalog: %@", content);
+ [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{_param1Name:_param1,_param2Name:_param2,_param3Name:_param3}  paramarsSite:@"/newDatalogAPI.do?op=addDatalog" sucessBlock:^(id content) {
+        
         [self hideProgressView];
+        NSLog(@"addDatalog: %@", content);
+     
+        
         if (content) {
-            if ([content[@"success"] integerValue] == 0) {
-                if ([content[@"msg"] integerValue] ==501) {
+                id jsonObj = [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
+            
+            if ([[jsonObj objectForKey:@"success"] integerValue] ==0) {
+                if ([[jsonObj objectForKey:@"msg"]integerValue]==501) {
                     [self showAlertViewWithTitle:nil message:root_tianjia_chucuo cancelButtonTitle:root_Yes];
                 }
-                else if ([content[@"msg"] integerValue] ==502) {
+                else if ([[jsonObj objectForKey:@"msg"]integerValue]==502) {
                     [self showAlertViewWithTitle:nil message:root_meiyou_quanxian cancelButtonTitle:root_Yes];
                 }
-                else if ([content[@"msg"] integerValue] ==503) {
+                else if ([[jsonObj objectForKey:@"msg"]integerValue]==503) {
                     [self showAlertViewWithTitle:nil message:root_xuliehao_cuowu cancelButtonTitle:root_Yes];
-                } else if ([content[@"msg"] integerValue] ==504) {
+                } else if ([[jsonObj objectForKey:@"msg"]integerValue]==504) {
                     [self showAlertViewWithTitle:nil message:root_zongti_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
-                } else if ([content[@"msg"] integerValue] ==505) {
+                } else if ([[jsonObj objectForKey:@"msg"]integerValue]==505) {
                     [self showAlertViewWithTitle:nil message:root_danGe_shuliang_chaochu_xianzhi cancelButtonTitle:root_Yes];
-                } else if ([content[@"msg"] integerValue] ==506) {
+                } else if ([[jsonObj objectForKey:@"msg"]integerValue]==506) {
                     [self showAlertViewWithTitle:nil message:root_xuliehao_yijing_cunzai cancelButtonTitle:root_Yes];
-                } else if ([content[@"msg"] integerValue] ==507) {
+                } else if ([[jsonObj objectForKey:@"msg"]integerValue]==507) {
                     [self showAlertViewWithTitle:nil message:root_xuliehao_jiaoyanMa_bupipei cancelButtonTitle:root_Yes];
                 }
             }else{
-                if ([content[@"msg"] integerValue] ==200){
+                if ([[jsonObj objectForKey:@"msg"]integerValue]==200){
                     [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];}
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"changeName" object:nil];
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                
             }
         }
+        
     }failure:^(NSError *error) {
         [self hideProgressView];
         [self showToastViewWithTitle:root_Networking];
@@ -235,8 +254,8 @@
     [userCheck setObject:[[NSUserDefaults standardUserDefaults]objectForKey:@"plantID"] forKey:@"plantId"];
     
     _param1=_stationId;
-    _param2=_cellectNo.text;
-    _param3=_cellectId.text;
+    _param3=_cellectNo.text;
+    _param2=_cellectId.text;
     _param1Name=@"plantId";
     _param2Name=@"datalogSN";
     _param3Name=@"validCode";

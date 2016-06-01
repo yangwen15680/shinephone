@@ -245,6 +245,7 @@
 #pragma mark - navigationItem
 -(void)selectRightAction{
     addDevice *add=[[addDevice alloc]init];
+    add.stationId=_stationIdOne;
     [self.navigationController pushViewController:add animated:YES];
 }
 
@@ -252,7 +253,14 @@
 {
     DTKDropdownItem *item0 = [DTKDropdownItem itemWithTitle:root_tianJia_sheBei iconName:@"DTK_jiangbei" callBack:^(NSUInteger index, id info) {
         NSLog(@"rightItem%lu",(unsigned long)index);
+        
+        if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
+            [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
+            return;
+        }else{
         [self selectRightAction];
+        }
+        
     }];
     DTKDropdownItem *item1 = [DTKDropdownItem itemWithTitle:root_caiJiQi_leiBiao iconName:@"DTK_renwu" callBack:^(NSUInteger index, id info) {
         NSLog(@"rightItem%lu",(unsigned long)index);
@@ -744,7 +752,7 @@
     
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
         [_editCellect removeFromSuperview];
-        [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
         return;
     }
     if (row==0) {

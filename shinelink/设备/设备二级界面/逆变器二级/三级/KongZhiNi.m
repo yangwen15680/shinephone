@@ -186,6 +186,12 @@
 }
 
 -(void)finishSet{
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
+        return;
+    }
+
+    
     if(_slider){
     NSString *S1=[NSString stringWithFormat:@"%.0f",_slider.value];
         _commandValue=[NSString stringWithString:S1];
@@ -282,6 +288,10 @@
 }
 
 -(void)control{
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
+        return;
+    }
     _Alert1 = [[UIAlertView alloc] initWithTitle:root_ALET message:root_NBQ_shifou_kaiqi delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
     
     [_Alert1 show];
@@ -289,6 +299,10 @@
 }
 
 -(void)controlOff{
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
+        return;
+    }
    _Alert2 = [[UIAlertView alloc] initWithTitle:root_ALET message:root_NBQ_shifou_guanbi delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
     [_Alert2 show];
 }

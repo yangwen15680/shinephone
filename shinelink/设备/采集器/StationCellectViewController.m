@@ -100,7 +100,7 @@
     }
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
         [_editCellect removeFromSuperview];
-        [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
         return;
     }
     if (row==1) {
@@ -208,7 +208,7 @@
 
 -(void)buttonPressed{
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
-        [self showAlertViewWithTitle:nil message:NSLocalizedString(@"Browse user prohibited operation", @"Browse user prohibited operation") cancelButtonTitle:root_Yes];
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
     }else{
         addDevice *addCellect=[[addDevice alloc]init];
         addCellect.stationId=_stationId;

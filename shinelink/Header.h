@@ -35,6 +35,9 @@
 #define windowColor  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2]
 #define KNOTIFICATION_LOGINCHANGE                      @"loginStateChange"
 
+ #define Demo_Name  @"guest"
+ #define Demo_password  @"123456"
+
  #define HEAD_URL_Demo  @"http://test.growatt.com"
 //#define HEAD_URL_Demo  @"http://server.growatt.com"
 #define HEAD_URL  [UserInfo defaultUserInfo].server

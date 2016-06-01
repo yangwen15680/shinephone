@@ -185,13 +185,23 @@
 }
 
 -(void)finishSet1{
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"isDemo"] isEqualToString:@"isDemo"]) {
+        
+        [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
+        return;
+    }
+
+    
 
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
-    NSString *pass=[ud objectForKey:@"userPassword"];
+    NSString *pass=[ud objectForKey:@"userName"];
     _accountName=[NSString stringWithString:pass];
+    NSMutableDictionary *dataAll=[NSMutableDictionary new];
+    
     
     if (_textField) {
-        if (![[_textField text]isEqualToString:[_textField1 text]]) {
+        if (![[_textField text]isEqualToString:[_textField1 text]])
+        {
             [self showToastViewWithTitle:root_xiangTong_miMa];
             return;
         }else{
@@ -201,6 +211,9 @@
             _param2Name=@"passwordNew";
             _param2=[_textField1 text];
         }
+         [dataAll setObject:_accountName forKey:@"accountName"];
+          [dataAll setObject:_param1 forKey:@"passwordOld"];
+          [dataAll setObject:_param2 forKey:@"passwordNew"];
     }
     
     if (_textField2 || _textField3||_textField4) {
@@ -223,9 +236,15 @@
              _param2=@"";
             _param3=[_textField4 text];
         }
+        
+        [dataAll setObject:_accountName forKey:@"accountName"];
+        [dataAll setObject:_param1 forKey:@"PhoneNum"];
+        [dataAll setObject:_param2 forKey:@"email"];
+        [dataAll setObject:_param3 forKey:@"agentCode"];
+        
     }
     
-    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"AccountName":_accountName,_param1Name:_param1,_param2Name:_param2,_param3Name:_param3} paramarsSite:_address sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:dataAll paramarsSite:_address sucessBlock:^(id content) {
         //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];
         id  content1= [NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
         NSLog(@"UserSet: %@", content1);

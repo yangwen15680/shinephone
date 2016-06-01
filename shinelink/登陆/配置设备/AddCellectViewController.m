@@ -50,6 +50,13 @@
 
 
 -(void)initUI{
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardHide:)];
+    //设置成NO表示当前控件响应后会传播到其他控件上，默认为YES。
+    tapGestureRecognizer.cancelsTouchesInView = NO;
+    //将触摸事件添加到当前view
+    [self.view addGestureRecognizer:tapGestureRecognizer];
+    
     //数据采集器序列号
     UIImageView *userBgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE, 50*HEIGHT_SIZE, SCREEN_Width - 80*NOW_SIZE, 45*HEIGHT_SIZE)];
     userBgImageView.userInteractionEnabled = YES;
@@ -86,8 +93,8 @@
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
     goBut.frame=CGRectMake(40*NOW_SIZE,200*HEIGHT_SIZE, 240*NOW_SIZE, 40*HEIGHT_SIZE);
-    [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+    //[goBut.layer setMasksToBounds:YES];
+    //[goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     [goBut setTitle:root_OK forState:UIControlStateNormal];
      goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
@@ -102,6 +109,12 @@
     [QR setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [QR addTarget:self action:@selector(ScanQR) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:QR];
+}
+
+-(void)keyboardHide:(UITapGestureRecognizer*)tap{
+    [_cellectNo resignFirstResponder];
+    [_cellectId resignFirstResponder];
+    
 }
 
 -(void)ScanQR{

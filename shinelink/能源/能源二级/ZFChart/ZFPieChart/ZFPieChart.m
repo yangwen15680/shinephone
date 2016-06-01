@@ -130,19 +130,19 @@
         CGFloat gap = (SCREEN_WIDTH - CGRectGetMaxX(color.frame) - 10*NOW_SIZE - self.frame.size.width * 0.05 - 3 * width) / 2;
         
         //名称
-        UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(color.frame) +10*NOW_SIZE, 0, width+30*NOW_SIZE, 20*HEIGHT_SIZE)];
+        UILabel * name = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(color.frame) +10*NOW_SIZE, 0, width+30*NOW_SIZE, 25*HEIGHT_SIZE)];
         name.text = _nameArray[i];
         name.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:name];
         
         //数值
-        UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(name.frame) + gap+30*NOW_SIZE, 0, width, 20*HEIGHT_SIZE)];
+        UILabel * value = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(name.frame) + gap+30*NOW_SIZE, 0, width, 25*HEIGHT_SIZE)];
         value.text = _valueArray[i];
         value.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:value];
         
         //百分比
-        UILabel * percent = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(value.frame) + gap, 0, width, 20*HEIGHT_SIZE)];
+        UILabel * percent = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(value.frame) + gap, 0, width, 25*HEIGHT_SIZE)];
         percent.text = [self getPercent:i];
         percent.font = [UIFont boldSystemFontOfSize:12*HEIGHT_SIZE];
         [background addSubview:percent];

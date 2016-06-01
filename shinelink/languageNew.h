@@ -32,11 +32,12 @@
 #define root_forget_pwd       NSLocalizedString(@"忘记密码", nil)
 #define root_register       NSLocalizedString(@"注册", nil)
 #define root_log_in      NSLocalizedString(@"登陆", nil)
+#define root_demo_test      NSLocalizedString(@"体验馆", nil)
 #define  root_Alet_user        NSLocalizedString(@"温馨提示 ", nil)
 #define  root_Alet_user_messge        NSLocalizedString(@"请输入用户名 ", nil)
 #define  root_Alet_user_pwd        NSLocalizedString(@"请输入密码 ", nil)
 
-
+#define  root_demo_Alert        NSLocalizedString(@"浏览用户禁止操作", nil)
 
 //注册
 

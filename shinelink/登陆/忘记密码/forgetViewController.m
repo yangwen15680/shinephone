@@ -26,8 +26,8 @@
     
     UIButton *byEmail =  [UIButton buttonWithType:UIButtonTypeCustom];
     byEmail.frame=CGRectMake(60*NOW_SIZE,100*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
-    [byEmail.layer setMasksToBounds:YES];
-    [byEmail.layer setCornerRadius:25.0];
+   // [byEmail.layer setMasksToBounds:YES];
+    //[byEmail.layer setCornerRadius:25.0];
         [byEmail setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
     byEmail.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [byEmail setTitle:root_tongGuo_yonghuMing forState:UIControlStateNormal];
@@ -36,8 +36,8 @@
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
     goBut.frame=CGRectMake(60*NOW_SIZE,180*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
-    [goBut.layer setMasksToBounds:YES];
-    [goBut.layer setCornerRadius:25.0];
+   // [goBut.layer setMasksToBounds:YES];
+    //[goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
         goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut setTitle:root_tongGuo_xuLieHao forState:UIControlStateNormal];
