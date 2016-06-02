@@ -53,13 +53,13 @@
         
         _nameLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 10*HEIGHT_SIZE,150*NOW_SIZE, 15*HEIGHT_SIZE) ];
         _nameLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
-        _nameLabel.textColor = [UIColor blackColor];
+        
         _nameLabel.textAlignment =NSTextAlignmentLeft;
         [self.contentView addSubview:_nameLabel];
         
         _timeLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 32*HEIGHT_SIZE,150*NOW_SIZE, 15*HEIGHT_SIZE) ];
-        _timeLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
-        _timeLabel.textColor = [UIColor blackColor];
+        _timeLabel.font =[UIFont systemFontOfSize:10*HEIGHT_SIZE];
+        _timeLabel.textColor =COLOR(133, 131, 131, 1);
         _timeLabel.textAlignment =NSTextAlignmentLeft;
         [self.contentView addSubview:_timeLabel];
         

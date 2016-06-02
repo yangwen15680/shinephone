@@ -13,5 +13,6 @@
 @property(nonatomic,strong)NSString *qusetionId;
 @property(nonatomic,strong)NSString *qusetionType;
 @property(nonatomic,strong)NSMutableArray *questionPicArray;
+@property(nonatomic,strong)NSString *qusetionContent;
 
 @end

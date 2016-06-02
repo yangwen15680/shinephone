@@ -32,6 +32,7 @@
 @property(nonatomic,strong)NSString *typeString;
 
 @property(nonatomic,strong)NSMutableDictionary *allDic;
+@property(nonatomic,strong)UIView *headerView;
 
 @end
 
@@ -46,12 +47,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self netGet];
+   // [self netGet];
 }
 
 -(void)netGetAgain{
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
+    self.questionAll =[NSMutableArray array];
     
     self.nameArray =[NSMutableArray array];
     self.contentArray =[NSMutableArray array];
@@ -88,7 +90,12 @@
                   [_imageName addObject:PIC];
             }
 //              [self initUI];
-          [self.tableView reloadData];
+            if (_scrollView) {
+                  [self.tableView reloadData];
+            }else{
+             [self initUI];
+            }
+        
             
         }
     } failure:^(NSError *error) {
@@ -146,10 +153,10 @@
     
     for(int i=0;i<_labelArray.count;i++)
     {
-        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 80*NOW_SIZE,28*HEIGHT_SIZE )];
-         PV1Lable.textAlignment=NSTextAlignmentCenter;
+        UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 80*NOW_SIZE,28*HEIGHT_SIZE )];
+         PV1Lable.textAlignment=NSTextAlignmentLeft;
         if (i==2) {
-            PV1Lable.frame=CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 160*NOW_SIZE,28*HEIGHT_SIZE );
+            PV1Lable.frame=CGRectMake(15*NOW_SIZE, 16*HEIGHT_SIZE+Size1*i, 160*NOW_SIZE,28*HEIGHT_SIZE );
             PV1Lable.textAlignment=NSTextAlignmentLeft;
         }
         
@@ -208,6 +215,34 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
        [_scrollView addSubview:_tableView];
     
+    
+    CGRect fcRect = [_qusetionContent boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14 *HEIGHT_SIZE]} context:nil];
+   // return 110*HEIGHT_SIZE+fcRect.size.height;
+    
+    _headerView = [[UIView alloc] initWithFrame:CGRectMake(0,10*HEIGHT_SIZE+Size1*3,300*NOW_SIZE,35*HEIGHT_SIZE+fcRect.size.height)];
+    _tableView.tableHeaderView = _headerView;
+    
+    
+    UILabel *contentLable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 210*NOW_SIZE,20*HEIGHT_SIZE )];
+        contentLable.text=@"问题内容:";
+    contentLable.textAlignment=NSTextAlignmentLeft;
+    contentLable.textColor=[UIColor blackColor];
+    contentLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [_headerView addSubview:contentLable];
+    
+    UILabel *contentLable2=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 28*HEIGHT_SIZE, 290*NOW_SIZE,fcRect.size.height )];
+    contentLable2.text=_qusetionContent;
+    contentLable2.textAlignment=NSTextAlignmentLeft;
+    contentLable2.textColor=[UIColor grayColor];
+    contentLable2.numberOfLines=0;
+    contentLable2.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [_headerView addSubview:contentLable2];
+    
+//    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 35*HEIGHT_SIZE+fcRect.size.height, 290*NOW_SIZE,1*HEIGHT_SIZE)];
+//    line1.backgroundColor=[UIColor grayColor];
+//    [_headerView addSubview:line1];
+    
+    
     UIImageView *image3=[[UIImageView alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 315*HEIGHT_SIZE+Size1*3, 310*NOW_SIZE,30*HEIGHT_SIZE )];
     image3.userInteractionEnabled = YES;
     image3.image = IMAGE(@"frame2@2x.png");
@@ -247,8 +282,10 @@
     
     if ([_nameID[indexPath.row] isEqualToString:@"1"]) {
           cell.image.image = IMAGE(@"server3@3x.png");
+        cell.nameLabel.textColor = COLOR(63, 163, 220, 1);
     }else{
     cell.image.image = IMAGE(@"client@3x.png");
+         cell.nameLabel.textColor =[UIColor blackColor];
     }
       NSMutableArray *PICarray=[NSMutableArray arrayWithArray:_imageName[indexPath.row]];
     

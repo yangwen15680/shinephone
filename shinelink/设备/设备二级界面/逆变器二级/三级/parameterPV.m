@@ -46,19 +46,24 @@
         [self hideProgressView];
         NSLog(@"getInverterParams: %@", content);
         if (content) {
-              NSString *A2=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
-              NSString *A3=[NSString stringWithFormat:@"%@",content[@"nominalPower"]];
-              NSString *B1=[NSString stringWithFormat:@"%@",content[@"alias"]];
-              NSString *B2=[NSString stringWithFormat:@"%@",content[@"fwVersion"]];
-              NSString *B3=[NSString stringWithFormat:@"%@",content[@"innerVersion"]];
-            NSString *B4=[NSString stringWithFormat:@"%@",content[@"model"]];
-            NSString *B5=[NSString stringWithFormat:@"%@",content[@"modelText"]];
+             NSString *A2=[NSString stringWithFormat:@"%@",content[@"inverterType"]];
+             // NSString *A2=[NSString stringWithFormat:@"%@",content[@"dataLogSn"]];
+              NSString *B22=[NSString stringWithFormat:@"%@",content[@"newBean"][@"nominalPower"]];
+              NSString *B1=[NSString stringWithFormat:@"%@",content[@"newBean"][@"dataLogSn"]];
+              NSString *B2=[NSString stringWithFormat:@"%@",content[@"newBean"][@"fwVersion"]];
+              NSString *B3=[NSString stringWithFormat:@"%@",content[@"newBean"][@"innerVersion"]];
+           // NSString *B4=[NSString stringWithFormat:@"%@",content[@"model"]];
+            NSString *B5=[NSString stringWithFormat:@"%@",content[@"newBean"][@"modelText"]];
+            
+              NSString *par=[NSString stringWithFormat:@"%@/%@",B2,B3];
+            
               [_dateN2 addObject:_PvSn];
             [_dateN2 addObject:A2];
-            [_dateN2 addObject:A3];
-            NSString *par=[NSString stringWithFormat:@"%@/%@/%@",B2,B3,B4];
+             [_dateN2 addObject:par];
+           // [_dateN2 addObject:A3];
+          
             [_dateY2 addObject:B1];
-             [_dateY2 addObject:par];
+             [_dateY2 addObject:B22];
              [_dateY2 addObject:B5];
             [self netParameter2];
         }
@@ -168,9 +173,10 @@
 }
 
 -(void)initdata{
-    _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou, root_CNJ_eDing_gonglv,nil];
-  
-    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_shuxing, root_moshi,nil];
+   // _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou, root_CNJ_eDing_gonglv,nil];
+  _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_shuxing,nil];
+    
+    _dateY1=[[NSMutableArray alloc]initWithObjects:root_duankou, root_CNJ_eDing_gonglv, root_moshi,nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt(V)", @"Current(I)", @"Watt(W)",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV1", @"PV2",@"AC1",@"AC2",@"AC3",nil];

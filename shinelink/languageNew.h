@@ -38,6 +38,7 @@
 #define  root_Alet_user_pwd        NSLocalizedString(@"请输入密码 ", nil)
 
 #define  root_demo_Alert        NSLocalizedString(@"浏览用户禁止操作", nil)
+#define  root_huoqu_wufuqi_dizhi        NSLocalizedString(@"获取服务器地址", nil)
 
 //注册
 
@@ -192,6 +193,7 @@
 #define root_Demo_tishi      NSLocalizedString(@"示范设备暂时不开放此功能,请安装真实产品使用此功能.", nil)
 
 
+#define root_xinghao     NSLocalizedString(@"型号", nil)
 #define root_xuleihao      NSLocalizedString(@"序列号", nil)
 #define root_duankou     NSLocalizedString(@"端口", nil)
 #define root_bieming      NSLocalizedString(@"别名", nil)

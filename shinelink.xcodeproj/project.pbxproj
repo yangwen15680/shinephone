@@ -201,6 +201,7 @@
 		335881311CB66E460068EFAD /* qualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335881301CB66E460068EFAD /* qualityCell.m */; };
 		335D2F6B1CC09C3A0019718E /* GetServerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335D2F6A1CC09C3A0019718E /* GetServerViewController.m */; };
 		335D9C4F1CE32583007535BF /* frame_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 335D9C4E1CE32583007535BF /* frame_add.png */; };
+		335DDB231CFFC08700ACA123 /* testDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335DDB221CFFC08700ACA123 /* testDemoViewController.m */; };
 		3363DD1E1C7C48F100D740FB /* registerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3363DD1D1C7C48F100D740FB /* registerViewController.m */; };
 		3363DD221C7C598B00D740FB /* countryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3363DD211C7C598B00D740FB /* countryViewController.m */; };
 		3363DD241C7C610A00D740FB /* 语言.png in Resources */ = {isa = PBXBuildFile; fileRef = 3363DD231C7C610A00D740FB /* 语言.png */; };
@@ -741,6 +742,8 @@
 		335D2F691CC09C3A0019718E /* GetServerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetServerViewController.h; sourceTree = "<group>"; };
 		335D2F6A1CC09C3A0019718E /* GetServerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetServerViewController.m; sourceTree = "<group>"; };
 		335D9C4E1CE32583007535BF /* frame_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frame_add.png; sourceTree = "<group>"; };
+		335DDB211CFFC08700ACA123 /* testDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testDemoViewController.h; sourceTree = "<group>"; };
+		335DDB221CFFC08700ACA123 /* testDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testDemoViewController.m; sourceTree = "<group>"; };
 		3363DD1C1C7C48F100D740FB /* registerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = registerViewController.h; path = ../registerViewController.h; sourceTree = "<group>"; };
 		3363DD1D1C7C48F100D740FB /* registerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = registerViewController.m; path = ../registerViewController.m; sourceTree = "<group>"; };
 		3363DD201C7C598B00D740FB /* countryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = countryViewController.h; path = ../countryViewController.h; sourceTree = "<group>"; };
@@ -1702,6 +1705,7 @@
 		335456CA1C8582A100275478 /* 注册 */ = {
 			isa = PBXGroup;
 			children = (
+				335DDB201CFFC04B00ACA123 /* 体验馆 */,
 				3363DD1C1C7C48F100D740FB /* registerViewController.h */,
 				3363DD1D1C7C48F100D740FB /* registerViewController.m */,
 				3363DD201C7C598B00D740FB /* countryViewController.h */,
@@ -1804,6 +1808,15 @@
 				335881301CB66E460068EFAD /* qualityCell.m */,
 			);
 			path = "质保查询";
+			sourceTree = "<group>";
+		};
+		335DDB201CFFC04B00ACA123 /* 体验馆 */ = {
+			isa = PBXGroup;
+			children = (
+				335DDB211CFFC08700ACA123 /* testDemoViewController.h */,
+				335DDB221CFFC08700ACA123 /* testDemoViewController.m */,
+			);
+			path = "体验馆";
 			sourceTree = "<group>";
 		};
 		3363DD1F1C7C491300D740FB /* 登陆动画 */ = {
@@ -2841,6 +2854,7 @@
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
 				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,
 				3367EB981CD0B22500D2EF67 /* StationSafeViewController.m in Sources */,
+				335DDB231CFFC08700ACA123 /* testDemoViewController.m in Sources */,
 				334FF0AA1CF53C7C001E6716 /* JDStatusBarView.m in Sources */,
 				337F9CC81C71ABFB0016FE43 /* findViewController.m in Sources */,
 				337F9E111C71C4D90016FE43 /* TableViewCell.m in Sources */,

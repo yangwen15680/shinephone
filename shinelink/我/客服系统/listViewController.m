@@ -21,6 +21,7 @@
 @property(nonatomic,strong)NSMutableArray *questionTypeArray;
 @property(nonatomic,strong)NSMutableArray *statusArray;
 @property(nonatomic,strong)NSMutableArray *contentArray;
+@property(nonatomic,strong)NSMutableArray *contentSecondArray;
 @property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *allArray;
 @property(nonatomic,strong)NSMutableArray *questionID;
@@ -55,6 +56,7 @@
     self.questionID=[NSMutableArray array];
     self.questionTypeArray=[NSMutableArray array];
     self.questionPicArray=[NSMutableArray array];
+    self.contentSecondArray=[NSMutableArray array];
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"userId":userID} paramarsSite:@"/questionAPI.do?op=questionList" sucessBlock:^(id content) {
@@ -73,10 +75,25 @@
                 NSString *questionPIC=[NSString stringWithFormat:@"%@",content[i][@"attachment"]];
                 NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
                 
+                if(![content[i][@"serviceQuestionReplyBean"] isEqual:[NSNull null]]){
+                    
+                NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
+                
+                if ([contentS2[0][@"message"] length]>0) {
+                    NSString *contentS3=[NSString stringWithFormat:@"%@",contentS2[0][@"message"]];
+                      [_contentArray addObject:contentS3];
+                }else{
+                  [_contentArray addObject:contentS1];
+                }
+                }else{
+                  [_contentArray addObject:contentS1];
+                }
+                
+                [_contentSecondArray addObject:contentS1];
                 [_questionPicArray addObject:PIC];
                 [_titleArray addObject:title];
                 [_statusArray addObject:status];
-                [_contentArray addObject:contentS1];
+              
                 [_timeArray addObject:time];
                 [_questionID addObject:question];
                 [_questionTypeArray addObject:questiontype];
@@ -125,6 +142,7 @@
         cell.statusLabel.text= root_ME_yi_chuli;
         cell.titleView.backgroundColor=COLOR(201, 201, 201, 1);
     }
+    
     
     cell.titleLabel.text= self.titleArray[indexPath.row];
       // cell.statusLabel.text= self.statusArray[indexPath.row];
@@ -202,6 +220,7 @@
     second.qusetionId=_questionID[indexPath.row];
     second.qusetionType=_questionTypeArray[indexPath.row];
     second.questionPicArray=[NSMutableArray arrayWithArray:_questionPicArray[indexPath.row]];
+    second.qusetionContent=_contentSecondArray[indexPath.row];
     [self.navigationController pushViewController:second animated:NO];
     
     

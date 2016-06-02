@@ -50,11 +50,11 @@ _Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
     
     [_dateN2 addObject:_deviceSN];
     [_dateN2 addObject:A1];
-
+   [_dateN2 addObject:A1];
     
     [_dateY2 addObject:B1];
     [_dateY2 addObject:_normalPower];
-
+    [_dateY2 addObject:_normalPower];
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageInfo" sucessBlock:^(id content) {
@@ -99,9 +99,13 @@ _Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
 }
 
 -(void)initdata{
-_dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
+//_dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
+//    
+//    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_CNJ_eDing_gonglv, nil];
     
-    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_CNJ_eDing_gonglv, nil];
+    _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_shuxing,nil];
+    
+    _dateY1=[[NSMutableArray alloc]initWithObjects:root_duankou, root_CNJ_eDing_gonglv, root_moshi,nil];
     
     _dateName=[[NSMutableArray alloc]initWithObjects:@"Volt(V)", @"Current(I)", @"Watt(W)",nil];
     _pv=[[NSMutableArray alloc]initWithObjects:@"PV", @"Bat", @"Guid",nil];
@@ -109,18 +113,18 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 }
 
 -(void)initUI{
-    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height-100*NOW_SIZE)];
+    _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
     _scrollView.contentSize = CGSizeMake(SCREEN_Width,650*NOW_SIZE);
     [self.view addSubview:_scrollView];
     
-    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 140*HEIGHT_SIZE)];
+    UIView *headView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, 210*HEIGHT_SIZE)];
     //UIImage *bgImage = IMAGE(@"bg4.png");
     headView.backgroundColor=MainColor;
     //headView.layer.contents = (id)bgImage.CGImage;
      [_scrollView addSubview:headView];
     
-    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*HEIGHT_SIZE, 1*NOW_SIZE, 140*HEIGHT_SIZE)];
+    UIView *line1=[[UIView alloc]initWithFrame:CGRectMake(SCREEN_Width/2,10*HEIGHT_SIZE, 1*NOW_SIZE, 210*HEIGHT_SIZE)];
     line1.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:line1];
     
@@ -159,7 +163,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
     
     float Size2=60*NOW_SIZE,Size3=(SCREEN_Width-60*NOW_SIZE)/3;
     for (int j=0; j<_dateName.count; j++) {
-    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 300*HEIGHT_SIZE-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
+    UILabel *Name1=[[UILabel alloc]initWithFrame:CGRectMake(Size2+j*Size3, 225*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
     Name1.text=_dateName[j];
     Name1.textAlignment=NSTextAlignmentCenter;
     Name1.textColor=COLOR(104, 113, 201, 1);
@@ -169,7 +173,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
     
     float size3=50*HEIGHT_SIZE;
    for (int K=0; K<_pv.count; K++) {
-        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+        UILabel *pv=[[UILabel alloc]initWithFrame:CGRectMake(20*NOW_SIZE, 250*HEIGHT_SIZE+size3*K, 60*NOW_SIZE,20*HEIGHT_SIZE )];
         pv.text=_pv[K];
         pv.textAlignment=NSTextAlignmentLeft;
         pv.textColor=[UIColor blackColor];
@@ -183,7 +187,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv1.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv1];
        
-       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
+       UILabel *pv11=[[UILabel alloc]initWithFrame:CGRectMake(Size2+0*Size3, 250*HEIGHT_SIZE+size3*K, Size3,20*HEIGHT_SIZE )];
        pv11.text=_pv12[K];
        pv11.textAlignment=NSTextAlignmentCenter;
        pv11.textColor=[UIColor grayColor];
@@ -197,7 +201,7 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv2.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv2];
        
-       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
+       UILabel *pv21=[[UILabel alloc]initWithFrame:CGRectMake(Size2+1*Size3, 250*HEIGHT_SIZE+size3*K, Size3,20*HEIGHT_SIZE )];
        pv21.text=_pv22[K];
        pv21.textAlignment=NSTextAlignmentCenter;
        pv21.textColor=[UIColor grayColor];
@@ -211,32 +215,32 @@ _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou,nil];
 //       pv3.font = [UIFont systemFontOfSize:12*NOW_SIZE];
 //       [_scrollView addSubview:pv3];
        
-       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 338*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, Size3,20*HEIGHT_SIZE )];
+       UILabel *pv31=[[UILabel alloc]initWithFrame:CGRectMake(Size2+2*Size3, 250*HEIGHT_SIZE+size3*K, Size3,20*HEIGHT_SIZE )];
        pv31.text=_pv32[K];
        pv31.textAlignment=NSTextAlignmentCenter;
        pv31.textColor=[UIColor grayColor];
        pv31.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
        [_scrollView addSubview:pv31];
        
-       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 370*HEIGHT_SIZE+size3*K-140*HEIGHT_SIZE, 300*NOW_SIZE,1*HEIGHT_SIZE )];
+       UIView *line2=[[UIView alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 285*HEIGHT_SIZE+size3*K, 300*NOW_SIZE,1*HEIGHT_SIZE )];
        line2.backgroundColor=COLOR(212, 212, 212, 1);
        [_scrollView addSubview:line2];
        
     }
     
-    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
-    FW.text=root_gujian_banben;
-    FW.textAlignment=NSTextAlignmentCenter;
-    FW.textColor=[UIColor blackColor];
-    FW.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
-    [self.view addSubview:FW];
-    
-    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
-    FW1.text=_Version;
-    FW1.textAlignment=NSTextAlignmentCenter;
-    FW1.textColor=[UIColor grayColor];
-    FW1.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
-    [self.view addSubview:FW1];
+//    UILabel *FW=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-100*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+//    FW.text=root_gujian_banben;
+//    FW.textAlignment=NSTextAlignmentCenter;
+//    FW.textColor=[UIColor blackColor];
+//    FW.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+//    [self.view addSubview:FW];
+//    
+//    UILabel *FW1=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-150*NOW_SIZE)/2, SCREEN_Height-80*HEIGHT_SIZE, 150*NOW_SIZE,20*HEIGHT_SIZE )];
+//    FW1.text=_Version;
+//    FW1.textAlignment=NSTextAlignmentCenter;
+//    FW1.textColor=[UIColor grayColor];
+//    FW1.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
+//    [self.view addSubview:FW1];
     
 }
 

@@ -173,6 +173,7 @@
 "是否确定开启储能机"="Confirm to turn on battery controller";
 "是否确定关闭储能机"="Confirm to turn off battery controller";
 
+"型号"="model";
 "序列号"="SN";
 "端口"="Port";
 "别名"="Alias";
@@ -435,3 +436,4 @@
 
 "体验馆"="Demo";
 "浏览用户禁止操作"="Browse user prohibited operation";
+"获取服务器地址"="Get server address";

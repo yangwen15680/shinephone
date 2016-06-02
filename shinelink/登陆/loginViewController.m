@@ -22,6 +22,7 @@
 #import "LZPageViewController.h"
 #import "energyViewController.h"
 #import "energyDemo.h"
+#import "AddressPickView.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -33,6 +34,8 @@
 @property (nonatomic, strong) UILabel *forgetLable;
 @property (nonatomic, strong) UILabel *demoLable;
 @property (nonatomic, strong) NSDictionary *dataSource;
+@property (nonatomic, strong) NSMutableArray *demoArray;
+@property (nonatomic, strong) NSString *serverDemoAddress;
 
 @end
 
@@ -166,8 +169,8 @@
     
     _demoLable= [[UILabel alloc] initWithFrame:CGRectMake(100*NOW_SIZE, 310*HEIGHT_SIZE+sizeH+90*HEIGHT_SIZE, 120*NOW_SIZE, 40*HEIGHT_SIZE)];
     self.demoLable.text=root_demo_test;
-    self.demoLable.textColor=[UIColor greenColor];
-    self.demoLable.font = [UIFont systemFontOfSize:18*HEIGHT_SIZE];
+    self.demoLable.textColor=COLOR(210, 210, 210, 1);
+    self.demoLable.font = [UIFont systemFontOfSize:20*HEIGHT_SIZE];
     self.demoLable.textAlignment = NSTextAlignmentCenter;
     self.demoLable.userInteractionEnabled=YES;
     UITapGestureRecognizer * demo1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(demoTest)];
@@ -213,6 +216,7 @@
 -(void)demoTest{
 NSLog(@"体验馆");
     
+    
     _userTextField=[[UITextField alloc]init];
     _userTextField.text=Demo_Name;
     _pwdTextField=[[UITextField alloc]init];
@@ -220,8 +224,57 @@ NSLog(@"体验馆");
     
      [[NSUserDefaults standardUserDefaults] setObject:@"isDemo" forKey:@"isDemo"];
     
-    [self netRequest];
+    [self getDemoData];
+  
     
+}
+
+-(void)getDemoData{
+    
+    [self showProgressView];
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL_Demo paramars:@{@"admin":@"admin"} paramarsSite:@"/newLoginAPI.do?op=getServerUrlList" sucessBlock:^(id content) {
+        
+        NSLog(@"getServerUrlList: %@", content);
+        if (content) {
+            
+            _demoArray=[NSMutableArray arrayWithArray:content];
+            
+            if(_demoArray.count>0){
+                AddressPickView *addressPickView = [AddressPickView shareInstance];
+                addressPickView.provinceArray=_demoArray;
+                [self.view addSubview:addressPickView];
+                addressPickView.block = ^(NSString *province){
+                    // [self.dataDic setObject:city forKey:@"regCountry"];
+                    // [self.dataDic setObject:town forKey:@"regCity"];
+                    _serverDemoAddress = [NSString stringWithFormat:@"%@",province] ;
+                    
+                    NSString *server2=@"http://";
+                    NSString *server=[NSString stringWithFormat:@"%@%@",server2,_serverDemoAddress];
+                    
+                      [[UserInfo defaultUserInfo] setServer:server];
+                    
+                     [self netRequest];
+                    
+                };
+            }else{
+                [self showToastViewWithTitle:root_country_huoQu];
+                return;
+                
+            }
+
+            
+            
+            
+        }else{
+            [self hideProgressView];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressView];
+        
+    }];
+
+
 }
 
 
