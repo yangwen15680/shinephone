@@ -102,7 +102,7 @@
 
 - (void)addBtn{
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(SCR_W * 2 + 60*NOW_SIZE,SCR_H - 100*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+    goBut.frame=CGRectMake(SCR_W * 2 + 60*NOW_SIZE,SCR_H - 100*HEIGHT_SIZE, 200*NOW_SIZE, 35*HEIGHT_SIZE);
     //    [goBut.layer setMasksToBounds:YES];
     //    [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"btn1.png") forState:UIControlStateNormal];
