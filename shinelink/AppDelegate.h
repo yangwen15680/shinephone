@@ -10,6 +10,11 @@
 #import <CoreData/CoreData.h>
 #import "Reachability.h"
 
+
+static NSString *appKey = @"e521590c7f41c90ca5640add";
+static NSString *channel = @"Publish channel";
+static BOOL isProduction = FALSE;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
