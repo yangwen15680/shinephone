@@ -70,6 +70,7 @@
     if (reUsername==nil || reUsername==NULL||([reUsername isEqual:@""] )) {
       //  [ [NSNotificationCenter defaultCenter]postNotificationName:@"reroadDemo" object:nil];
         
+             [[UserInfo defaultUserInfo] setServer:HEAD_URL_Demo];
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
         NSString *server=[ud objectForKey:@"server"];
         
@@ -334,7 +335,7 @@ NSLog(@"体验馆");
         [loginBtn ExitAnimationCompletion:^{
             
            
-            [self netRequest];
+            [self netServerInit];
          
         }];
     }
@@ -412,18 +413,24 @@ NSLog(@"体验馆");
         NSLog(@"getUserServerUrl: %@", content);
         if (content) {
             if ([content[@"success"]intValue]==1) {
-                NSString *server=content[@"msg"];
+                NSString *server1=content[@"msg"];
+                NSString *server2=@"http://";
+                NSString *server=[NSString stringWithFormat:@"%@%@",server2,server1];
                 [[UserInfo defaultUserInfo] setServer:server];
-                     [self didPresentControllerButtonTouch];
+                         [self netRequest];
+            }else{
+                [[UserInfo defaultUserInfo] setServer:HEAD_URL_Demo];
+                [self netRequest];
             }
         }else{
-        
-                 [self didPresentControllerButtonTouch];
+           [[UserInfo defaultUserInfo] setServer:HEAD_URL_Demo];
+                 [self netRequest];
         }
         
     } failure:^(NSError *error) {
-        
-             [self didPresentControllerButtonTouch];
+        [[UserInfo defaultUserInfo] setServer:HEAD_URL_Demo];
+
+              [self netRequest];
     }];
     
     

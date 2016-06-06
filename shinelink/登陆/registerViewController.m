@@ -16,6 +16,7 @@
 @property(nonatomic,strong)NSMutableArray *textFieldMutableArray;
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
 @property(nonatomic,strong)UIScrollView *backScroll;
+@property(nonatomic,strong)NSString *customerCodeEnable;
 
 @end
 
@@ -58,17 +59,57 @@
         NSLog(@"getServerUrl: %@", content);
         if (content) {
             if ([content[@"success"]intValue]==1) {
-            NSString *server1=content[@"msg"];
+            NSString *server1=content[@"server"];
                  NSString *server2=@"http://";
                 NSString *server=[NSString stringWithFormat:@"%@%@",server2,server1];
             [[UserInfo defaultUserInfo] setServer:server];
             }
+            if ([content[@"customerCode"] intValue]==1) {
+                _customerCodeEnable=@"1";
+            }else{
+                _customerCodeEnable=@"0";
+            }
+            
+            if ([_customerCodeEnable isEqualToString:@"0"]) {
+                [_textFieldMutableArray[5] removeFromSuperview];
+                  UIImageView *image3=[_backScroll viewWithTag:5];
+                 UILabel *button3=[_backScroll viewWithTag:15];
+                UIView *view3=[_backScroll viewWithTag:25];
+                  [image3 removeFromSuperview];
+                [button3 removeFromSuperview];
+                [view3 removeFromSuperview];
+            }
+            
+        }else{
+        _customerCodeEnable=@"0";
+            if ([_customerCodeEnable isEqualToString:@"0"]) {
+                [_textFieldMutableArray[5] removeFromSuperview];
+                UIImageView *image3=[_backScroll viewWithTag:5];
+                UILabel *button3=[_backScroll viewWithTag:15];
+                UIView *view3=[_backScroll viewWithTag:25];
+                [image3 removeFromSuperview];
+                [button3 removeFromSuperview];
+                [view3 removeFromSuperview];
+
+            }
         }
         
     } failure:^(NSError *error) {
-     
+        _customerCodeEnable=@"0";
+        if ([_customerCodeEnable isEqualToString:@"0"]) {
+            [_textFieldMutableArray[5] removeFromSuperview];
+            UIImageView *image3=[_backScroll viewWithTag:5];
+            UILabel *button3=[_backScroll viewWithTag:15];
+            UIView *view3=[_backScroll viewWithTag:25];
+            [image3 removeFromSuperview];
+            [button3 removeFromSuperview];
+            [view3 removeFromSuperview];
+
+        }
         
     }];
+    
+   
     
 }
 
@@ -92,16 +133,19 @@
         imageView.contentMode=UIViewContentModeScaleAspectFit;
         imageView.clipsToBounds=YES;
         imageView.image=[UIImage imageNamed:imageArray[i]];
+        imageView.tag=i;
         [_backScroll addSubview:imageView];
         
         UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(50*NOW_SIZE,10*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 100*NOW_SIZE, 30*HEIGHT_SIZE)];
         label.text=labelArray[i];
         label.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
         label.textColor=[UIColor whiteColor];
+        label.tag=10+i;
         [_backScroll addSubview:label];
         
         UIView *line=[[UIView alloc]initWithFrame:CGRectMake(30*NOW_SIZE,40*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 260*NOW_SIZE, 0.5*HEIGHT_SIZE)];
         line.backgroundColor=[UIColor whiteColor];
+        line.tag=20+i;
         [_backScroll addSubview:line];
         
         UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(155*NOW_SIZE,10*HEIGHT_SIZE+i*60*HEIGHT_SIZE+moveHeight, 135*NOW_SIZE, 30*HEIGHT_SIZE)];

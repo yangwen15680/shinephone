@@ -11,7 +11,7 @@
 #import "Reachability.h"
 
 
-static NSString *appKey = @"e521590c7f41c90ca5640add";
+static NSString *appKey = @"ce9eba38567ac1eb1260fc39";
 static NSString *channel = @"Publish channel";
 static BOOL isProduction = FALSE;
 

@@ -29,7 +29,7 @@
 "用户名"="Username";
 "密码"="Password";
 "重复密码"="Retype password";
-"重复输入密码"="Please retype password";
+"重复输入密码"="Retype password";
 "电子邮箱"="Email";
 "联系电话"="Phone number";
 
@@ -46,9 +46,9 @@
 "Networking Timeout"="Networking Timeout";
 "Yes"="Yes";
 "请输入采集器序列号"="Input SN of datalog";
-"请输入正确采集器序列号"="Input correct SN of datalog";
-"请输入采集器校验码"="Input verification code of datalog";
-"请输入正确采集器校验码"="Input correct verification code of datalog";
+"请输入正确采集器序列号"="Input correct SN of datalogger";
+"请输入采集器校验码"="Input verification code of datalogger";
+"请输入正确采集器校验码"="Input correct verification code of datalogger";
 "扫描条形码"="Scanning a barcode";
 "位置"="Location";
 
@@ -67,20 +67,20 @@
 "请输入正确的用户名"="Please input correct username";
 "发送邮件失败"="Email sent failed";
 "不能找到用户名"="Username can not be found";
-"配置设备"="Searching device";
+"配置设备"="configure device";
 "校验码错误"="Verification code error";
 
 "设备"="Device";
-"示范电站"="Pilot plant";
+"示范电站"="demo plant";
 "逆变器"="Inverter";
-"储能机"="Storage machine";
+"储能机"="Storage";
 "充电桩"="EV charger";
 "功率调节器"="Power regulator";
 "未连接"="Not connected";
 "添加设备"="Add device";
 "系统错误"="System error";
 "删除成功"="Deleted successfully";
-"采集器列表"="List of datalog";
+"采集器列表"="List of datalogger";
 
 "Add Plant" = "Add Plant";
 "Remove Station" = "Remove Station";
@@ -93,7 +93,7 @@
 "修改成功"="Deleted successfully";
 "已配置设备"="Configured device";
 "未配置设备"="Demo device";
-"日电量:"="Daily electricity:";
+"日电量:"="Energy today:";
 "电池百分比:"="Battery percentage:";
 "编辑"="Edit";
 "置顶 "="Stickied ";
@@ -108,8 +108,8 @@
 "详情 "="Details";
 "功率:"="Power:";
 
-"请输入设备别名"="Please input device alias";
-"修改别名"="Change device alias";
+"请输入设备别名"="Please input device isaue";
+"修改别名"="Change device isaue";
 "修改头像"="Change picture";
 "删除设备"="Delete device";
 
@@ -120,15 +120,15 @@
 
 
 
-"日电量"="Daily electricity";
+"日电量"="Energy today";
 "当前功率"="Current Power";
-"总电量"="Total electricity";
-"日发电量"="Daily electricity";
+"总电量"="Lifetime energy";
+"日发电量"="Energy today";
 "设置有效功率"="Set active power";
 "设置无功功率"="Set reactive power";
 
 "设置PF值"="Set power factor";
-"设置逆变器时间:"="Set operating period of inverter";
+"设置逆变器时间:"="Set time of inverter";
 "是否确定开启逆变器"="Confirm to turn on inverter";
 "是否确定关闭逆变器"="Confirm to turn off inverter";
 "设置逆变器开关机"="Set inverter on/off";
@@ -137,12 +137,12 @@
 "事件号:"="Even No.:";
 "标识:"="Tag:";
 
-"日放电量"="Daily discharging";
-"总放电量"="Total discharging";
-"电池百分比(%)"="Battery capacity(%)";
-"设置储能机开关机"="Set battery controller on/off";
+"日放电量"="Energy today";
+"总放电量"="Lifetime energy";
+"电池百分比(%)"="Battery percentage";
+"设置储能机开关机"="Set storage on/off";
 "锂电池SOC下限设定"="Li-ion battery SOC lower limit setting";
-"设置储能机时间"="Set battery controller time";
+"设置储能机时间"="Set storage time";
 "强制放电使能"="Enable forced-discharging";
 "强制放电时间段"="Forced-discharging time duration";
 "设置输入SP的组串电压"="Set battery controller input string voltage";
@@ -170,8 +170,8 @@
 "参数不在范围内"="Parameter out of range";
 "时间参数不正确"="Time incorrect";
 "参数设置成功"="Parameter set successfully";
-"是否确定开启储能机"="Confirm to turn on battery controller";
-"是否确定关闭储能机"="Confirm to turn off battery controller";
+"是否确定开启储能机"="Confirm to turn on storage";
+"是否确定关闭储能机"="Confirm to turn off storage";
 
 "型号"="model";
 "序列号"="SN";
@@ -305,8 +305,8 @@
 "光伏电量"="Solar energy";
 "储能电量"="Stored energy";
 "月:"="Month:";
-"最省电:"="Saving:";
-"最耗电:"="Consumed:";
+"最省电:"="minimal:";
+"最耗电:"="maximum:";
 "日:"="Day:";
 
 "能源调度优先级设置"="Energy scheduling priority";
@@ -314,7 +314,7 @@
 "峰谷电价设置"="TOU settings";
 "峰谷段动作使能"="Peak hollow action enable";
 "控制优先级设置"="Control priority setting";
-"光伏零功率输出使能"="Solar 0 output enable";
+"光伏零功率输出使能"="Enable solar Zero export";
 "温馨提示"="Notice";
 "智能能源功能后续开放"="Smart energy function coming soon";
 
@@ -335,7 +335,7 @@
 "常见问题"="FAQ";
 "客户服务"="Customer service";
 "质保查询"="Check warranty";
-"增值业务"="Extension services";
+"增值业务"="service promotion";
 "更多产品"="Product promotion";
 
 "提交问题"="Submit questions";
@@ -393,7 +393,7 @@
 "修改手机号"="Change cellphone number";
 "修改邮箱"="Modify the email address";
 "修改代理商编号"="Modify Agent number";
-"注销账号"="Delete account";
+"注销账号"="Sign out";
 "输入手机号"="Input cellphone number";
 "输入邮箱地址"="Input email address";
 "输入代理商编号"="Input agent number";
