@@ -43,18 +43,21 @@
     _pv22=[NSMutableArray array];
     _pv32=[NSMutableArray array];
 
-    NSString *A1=[NSString stringWithFormat:@"%@",_params2Dict[@"dataLogSn"]];
+    NSString *B1=[NSString stringWithFormat:@"%@",_params2Dict[@"dataLogSn"]];
 
-    NSString *B1=[NSString stringWithFormat:@"%@",_params2Dict[@"alias"]];
+    //NSString *B1=[NSString stringWithFormat:@"%@",_params2Dict[@"alias"]];
+    
+     NSString *B3=[NSString stringWithFormat:@"%@",_params2Dict[@"modelText"]];
+    
 _Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
     
     [_dateN2 addObject:_deviceSN];
-    [_dateN2 addObject:A1];
-   [_dateN2 addObject:A1];
+    [_dateN2 addObject:_storageType];
+    [_dateN2 addObject:_Version];
     
     [_dateY2 addObject:B1];
     [_dateY2 addObject:_normalPower];
-    [_dateY2 addObject:_normalPower];
+    [_dateY2 addObject:B3];
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"storageId":_deviceSN} paramarsSite:@"/newStorageAPI.do?op=getStorageInfo" sucessBlock:^(id content) {
@@ -103,7 +106,7 @@ _Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
 //    
 //    _dateY1=[[NSMutableArray alloc]initWithObjects:root_bieming, root_CNJ_eDing_gonglv, nil];
     
-    _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_shuxing,nil];
+    _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_gujian_banben,nil];
     
     _dateY1=[[NSMutableArray alloc]initWithObjects:root_duankou, root_CNJ_eDing_gonglv, root_moshi,nil];
     

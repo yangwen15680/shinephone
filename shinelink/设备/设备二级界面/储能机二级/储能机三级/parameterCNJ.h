@@ -12,4 +12,5 @@
 @property (nonatomic, strong) NSString *deviceSN;
 @property (nonatomic, strong) NSString *normalPower;
 @property (nonatomic, strong) NSMutableDictionary *params2Dict;
+@property (nonatomic, strong) NSString *storageType;
 @end

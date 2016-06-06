@@ -33,6 +33,7 @@
 @property (nonatomic, strong) NSString *normalPower2;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSString *capacity;
+@property (nonatomic, strong) NSString *storageType;
 @end
 
 @implementation secondCNJ
@@ -62,6 +63,7 @@
            NSLog(@"getStorageParams: %@", content);
         if (content) {
         
+            _storageType=[NSString stringWithFormat:@"%@",content[@"storageType"]];
             _paramsDict=[NSMutableDictionary dictionaryWithDictionary:content[@"storageBean"]];
             _dayDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTodayText"]];
             _totalDischarge=[NSString stringWithFormat:@"%@",content[@"storageDetailBean"][@"eDischargeTotalText"]];
@@ -153,6 +155,7 @@
     PC.params2Dict=_paramsDict;
     PC.deviceSN=_deviceSN;
     PC.normalPower=_normalPower2;
+    PC.storageType=_storageType;
     [self.navigationController pushViewController:PC animated:NO];
 }
 
