@@ -174,7 +174,7 @@
 
 -(void)initdata{
    // _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_duankou, root_CNJ_eDing_gonglv,nil];
-  _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_shuxing,nil];
+  _dateN1=[[NSMutableArray alloc]initWithObjects:root_xuleihao, root_xinghao, root_gujian_banben,nil];
     
     _dateY1=[[NSMutableArray alloc]initWithObjects:root_duankou, root_CNJ_eDing_gonglv, root_moshi,nil];
     

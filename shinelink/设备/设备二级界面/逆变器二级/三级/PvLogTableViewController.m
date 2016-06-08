@@ -155,7 +155,7 @@
     CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18 *Width]} context:nil];
     cell.contentLabel.frame =CGRectMake(10*Width, 65*Width, 300*Width, fcRect.size.height);
     cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-210*NOW_SIZE, 105*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
-
+ cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }

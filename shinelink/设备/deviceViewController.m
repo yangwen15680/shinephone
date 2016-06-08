@@ -298,14 +298,14 @@
          [DTK addObject:DTKname];
     }
   
-    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200.f, 44.f) dropdownItems:DTK];
+    DTKDropdownMenuView *menuView = [DTKDropdownMenuView dropdownMenuViewForNavbarTitleViewWithFrame:CGRectMake(0, 0, 200*HEIGHT_SIZE, 44*NOW_SIZE) dropdownItems:DTK];
     menuView.currentNav = self.navigationController;
     menuView.dropWidth = 150.f;
     menuView.titleColor=[UIColor whiteColor];
     menuView.titleFont = [UIFont systemFontOfSize:18.f];
     menuView.textColor =COLOR(17, 183, 243, 1);
     menuView.textFont = [UIFont systemFontOfSize:13.f];
-    menuView.cellSeparatorColor =[UIColor blueColor];;
+    menuView.cellSeparatorColor =COLOR(231, 231, 231, 1);
     menuView.textFont = [UIFont systemFontOfSize:14.f];
     menuView.animationDuration = 0.2f;
     NSString *sel=[[NSUserDefaults standardUserDefaults]objectForKey:@"plantNum"];

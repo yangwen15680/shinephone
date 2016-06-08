@@ -86,12 +86,19 @@
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
     
-    UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"mebg.png"]];
- [headerView setBackgroundColor:color];
+    UIImageView *bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,Kwidth,200*HEIGHT_SIZE)];
+    
+    [bgImgView setImage:[UIImage imageNamed:@"mebg.png"]];
+    [headerView addSubview:bgImgView];
+    
+    [headerView sendSubviewToBack:bgImgView];
+    
+//    UIColor *color=[UIColor colorWithPatternImage:[UIImage imageNamed:@"mebg.png"]];
+// [headerView setBackgroundColor:color];
     
     
     
-    double imageSize=150*HEIGHT_SIZE;
+    double imageSize=120*HEIGHT_SIZE;
     
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSData *pic=[ud objectForKey:@"userPic"];
@@ -102,6 +109,8 @@
     userImage.layer.cornerRadius=imageSize/2.0;
     [userImage setUserInteractionEnabled:YES];
     
+    
+    
     if((pic==nil) || (pic.length==0)){
         [userImage setImage:[UIImage imageNamed:@"touxiang.png"]];
     }else{
@@ -110,10 +119,18 @@
    
     }
     
-    
     UITapGestureRecognizer * longPressGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pickUpImage)];
 //    longPressGesture.minimumPressDuration = 1.0f;
      [userImage addGestureRecognizer:longPressGesture];
+    
+    NSUserDefaults *ud1=[NSUserDefaults standardUserDefaults];
+    NSString *reUsername=[ud1 objectForKey:@"userName"];
+    UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-200*NOW_SIZE)/2, 150*HEIGHT_SIZE, 200*NOW_SIZE, 20*HEIGHT_SIZE)];
+    PV2Lable.text=reUsername;
+    PV2Lable.textAlignment=NSTextAlignmentCenter;
+    PV2Lable.textColor=[UIColor whiteColor];
+    PV2Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
+    [headerView addSubview:PV2Lable];
     
     
     _tableView.tableHeaderView = headerView;

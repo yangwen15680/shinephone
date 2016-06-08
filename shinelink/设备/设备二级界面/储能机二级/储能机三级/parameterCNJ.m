@@ -49,7 +49,7 @@
     
      NSString *B3=[NSString stringWithFormat:@"%@",_params2Dict[@"modelText"]];
     
-_Version=[NSString stringWithFormat:@"%@",_params2Dict[@"fwVersion"]];
+_Version=[NSString stringWithFormat:@"%@/%@",_params2Dict[@"fwVersion"],_params2Dict[@"innerVersion"]];
     
     [_dateN2 addObject:_deviceSN];
     [_dateN2 addObject:_storageType];
