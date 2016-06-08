@@ -75,10 +75,12 @@
                 NSString *questionPIC=[NSString stringWithFormat:@"%@",content[i][@"attachment"]];
                 NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
                 
-                if(![content[i][@"serviceQuestionReplyBean"] isEqual:[NSNull null]]){
+                 NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
+                if(contentS2[0] != nil && ![(NSArray*)contentS2[0] isKindOfClass:[NSNull class]] && ((NSArray*)contentS2[0]).count !=0){
+               // if([contentS2[0] containsObject:@"message"]){
                     
-                NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
-                
+                //NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
+                  
                 if ([contentS2[0][@"message"] length]>0) {
                     NSString *contentS3=[NSString stringWithFormat:@"%@",contentS2[0][@"message"]];
                       [_contentArray addObject:contentS3];

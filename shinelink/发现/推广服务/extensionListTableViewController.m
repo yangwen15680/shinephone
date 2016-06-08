@@ -12,6 +12,7 @@
 @interface extensionListTableViewController ()
 @property(nonatomic,strong)NSMutableArray *idArray;
 @property(nonatomic,strong)NSMutableArray *titleArray;
+@property(nonatomic,strong)NSString *languageValue;
 @end
 
 @implementation extensionListTableViewController
@@ -40,7 +41,19 @@
     
     _idArray=[NSMutableArray array];
     _titleArray=[NSMutableArray array];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newExtensionAPI.do?op=getExtensionList" sucessBlock:^(id content) {
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    
+   
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+    _languageValue=@"3";
+    }
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newExtensionAPI.do?op=getExtensionList" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getExtensionList=: %@", content);
         

@@ -25,6 +25,7 @@
 @property (nonatomic, strong) NSMutableArray *nameArray;
 @property (nonatomic, strong) NSMutableArray *contentArray;
 @property (nonatomic, strong) UIImageView*image;
+@property(nonatomic,strong)NSString *languageValue;
 @end
 
 @implementation ExtensionTwoViewController
@@ -41,7 +42,19 @@
 
 -(void)netExtension{
 
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString} paramarsSite:@"/newExtensionAPI.do?op=getExtensionInfo" sucessBlock:^(id content) {
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"3";
+    }
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString,@"language":_languageValue} paramarsSite:@"/newExtensionAPI.do?op=getExtensionInfo" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getExtensionInfo=: %@", content);
         
