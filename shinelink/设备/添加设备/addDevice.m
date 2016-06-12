@@ -9,6 +9,9 @@
 #import "addDevice.h"
 #import "TempViewController.h"
 #import "SHBQRView.h"
+#import "MainViewController.h"
+#import "AddDeviceViewController.h"
+
 
 @interface addDevice ()<SHBQRViewDelegate>
 @property(nonatomic,strong)UITextField *cellectId;
@@ -20,6 +23,8 @@
 @property(nonatomic,strong)NSString *param1Name;
 @property(nonatomic,strong)NSString *param2Name;
 @property(nonatomic,strong)NSString *param3Name;
+@property (nonatomic, strong) NSString *SetName;
+
 @end
 
 @implementation addDevice
@@ -178,10 +183,32 @@
                     [self showAlertViewWithTitle:nil message:root_xuliehao_jiaoyanMa_bupipei cancelButtonTitle:root_Yes];
                 }
             }else{
-                if ([[jsonObj objectForKey:@"msg"]integerValue]==200){
-                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];}
                 
-            }
+                _SetName=jsonObj[@"datalogType"];
+                NSString *demoName1=@"ShineWIFI";           //新wifi
+                NSString *demoName2=@"ShineLan";            //旧wifi
+                NSString *demoName3=@"ShineWifiBox";          //旧wifi
+                
+                BOOL result1 = [_SetName compare:demoName1 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                BOOL result2 = [_SetName compare:demoName2 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                BOOL result3 = [_SetName compare:demoName3 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                
+                if (result1) {
+                    AddDeviceViewController *rootView = [[AddDeviceViewController alloc]init];
+                    
+                    [self.navigationController pushViewController:rootView animated:YES];
+                }else if (result2){
+                    MainViewController *rootView = [[MainViewController alloc]init];
+                    [self.navigationController pushViewController:rootView animated:YES];
+                    
+                }else if (result3){
+                    MainViewController *rootView = [[MainViewController alloc]init];
+                    [self.navigationController pushViewController:rootView animated:YES];
+                    
+                }else{
+                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];
+                       }
+             }
         }
         
     }failure:^(NSError *error) {
@@ -284,8 +311,31 @@
                     [self showAlertViewWithTitle:nil message:root_xuliehao_jiaoyanMa_bupipei cancelButtonTitle:root_Yes];
                 }
             }else{
-                if ([[jsonObj objectForKey:@"msg"]integerValue]==200){
-                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];}
+                
+                _SetName=jsonObj[@"datalogType"];
+                NSString *demoName1=@"ShineWIFI";           //新wifi
+                NSString *demoName2=@"ShineLan";            //旧wifi
+                NSString *demoName3=@"ShineWifiBox";          //旧wifi
+                
+                BOOL result1 = [_SetName compare:demoName1 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                BOOL result2 = [_SetName compare:demoName2 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                BOOL result3 = [_SetName compare:demoName3 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+                
+                if (result1) {
+                    AddDeviceViewController *rootView = [[AddDeviceViewController alloc]init];
+                    
+                    [self.navigationController pushViewController:rootView animated:YES];
+                }else if (result2){
+                    MainViewController *rootView = [[MainViewController alloc]init];
+                    [self.navigationController pushViewController:rootView animated:YES];
+                    
+                }else if (result3){
+                    MainViewController *rootView = [[MainViewController alloc]init];
+                    [self.navigationController pushViewController:rootView animated:YES];
+                    
+                }else{
+                    [self showAlertViewWithTitle:nil message:root_shebei_tianjia_chenggong cancelButtonTitle:root_Yes];
+                }
                 
             }
         }

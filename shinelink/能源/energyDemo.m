@@ -20,7 +20,7 @@
        self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.tableView.separatorColor=[UIColor whiteColor];
    self.dataArray =[NSMutableArray arrayWithObjects:root_energy_tiaodu_youxian,root_energy_liandong_shezhi,root_energy_dianjia_shezhi,root_energy_dongzuo_shineng,root_energy_kongzhi_youxian,root_energy_lingonglv_shineng,nil];
-     self.ImageArray =[NSMutableArray arrayWithObjects:@"智能调整优先设置.png",@"智能联动设置切图.png",@"峰谷电价设置切图.png",@"峰谷段动作使能切图.png",@"控制优先级设置切图.png",@"光伏零功率输出使能切图.png",nil];
+     self.ImageArray =[NSMutableArray arrayWithObjects:@"智能调整优先设置.png",@"智能联动设置切图.png",@"形状17.png",@"峰谷段动作使能切图.png",@"priority.png",@"enabler.png",nil];
 }
 
 - (void)didReceiveMemoryWarning {

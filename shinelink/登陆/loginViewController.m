@@ -505,6 +505,8 @@ NSLog(@"体验馆");
         Vc4.tabBarItem.image=[UIImage imageNamed:@"mine@2x.png"];
         Vc4.tabBarItem.selectedImage=[UIImage imageNamed:@"mine@2x.png"];
         
+        //Vc1.tabBarController.tabBar.selectedImageTintColor = MainColor;
+        
         NSArray *controllers=[NSArray arrayWithObjects:Vc1,Vc2,Vc3,Vc4,nil];
         UITabBarController *tabbar=[[UITabBarController alloc]init];
         tabbar.viewControllers=controllers;
