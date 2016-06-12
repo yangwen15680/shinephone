@@ -139,6 +139,7 @@
 #define root_rizhi      NSLocalizedString(@"日志", nil)
 
 //逆变器二级
+#define root_ri_gonglv_zoushitu     NSLocalizedString(@"日功率走势图", nil)
 #define root_NBQ_ri_dianliang      NSLocalizedString(@"日电量", nil)
 #define root_dangqian_gonglv     NSLocalizedString(@"当前功率", nil)
 #define root_NBQ_zong_dianliang      NSLocalizedString(@"总电量", nil)

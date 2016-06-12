@@ -105,7 +105,7 @@
     for (int i=0; i<_imageArrayCount.count; i++) {
         
         [self showProgressView];
-        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"Name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
             [self hideProgressView];
             NSLog(@"getAdvertisingImages=: %@", content);
             if (content) {

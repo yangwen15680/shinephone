@@ -10,12 +10,14 @@
 #import "TempViewController.h"
 #import "SHBQRView.h"
 #import "loginViewController.h"
-
+#import "MainViewController.h"
+#import "AddDeviceViewController.h"
 
 @interface AddCellectViewController ()<SHBQRViewDelegate>
 @property(nonatomic,strong)UITextField *cellectId;
 @property(nonatomic,strong)UITextField *cellectNo;
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
+@property (nonatomic, strong) NSString *setDeviceName;
 @end
 
 @implementation AddCellectViewController
@@ -167,6 +169,8 @@
 
                         }
                         else {
+                            
+                            _setDeviceName=content[@"datalogType"];
                             //注册成功
                             [self succeedRegister];
                             [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
@@ -278,6 +282,8 @@
                          
                           }
                 else {
+                    _setDeviceName=content[@"datalogType"];
+                    
                          //注册成功
                          [self succeedRegister];
                          [self showAlertViewWithTitle:nil message:root_zhuCe_chengGong  cancelButtonTitle:root_Yes];
@@ -310,9 +316,36 @@
     NSString *pwd=[_dataDic objectForKey:@"regPassword"];
     [[UserInfo defaultUserInfo] setUserPassword:user];
     [[UserInfo defaultUserInfo] setUserName:pwd];*/
-     
-    loginViewController *goView=[[loginViewController alloc]init];
-    [self.navigationController pushViewController:goView animated:NO];
+    
+    NSString *demoName1=@"ShineWIFI";           //新wifi
+    NSString *demoName2=@"ShineLan";            //旧wifi
+    NSString *demoName3=@"ShineWifiBox";          //旧wifi
+    
+    BOOL result1 = [_setDeviceName compare:demoName1 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+    BOOL result2 = [_setDeviceName compare:demoName2 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+    BOOL result3 = [_setDeviceName compare:demoName3 options:NSCaseInsensitiveSearch | NSNumericSearch]==NSOrderedSame;
+    
+    if (result1) {
+        AddDeviceViewController *rootView = [[AddDeviceViewController alloc]init];
+        
+        [self.navigationController pushViewController:rootView animated:YES];
+    }else if (result2){
+        MainViewController *rootView = [[MainViewController alloc]init];
+        [self.navigationController pushViewController:rootView animated:YES];
+        
+    }else if (result3){
+        MainViewController *rootView = [[MainViewController alloc]init];
+        [self.navigationController pushViewController:rootView animated:YES];
+        
+    }else{
+    
+        loginViewController *goView=[[loginViewController alloc]init];
+        [self.navigationController pushViewController:goView animated:NO];
+    }
+
+    
+    
+    
 
 }
 

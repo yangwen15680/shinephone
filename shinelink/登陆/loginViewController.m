@@ -34,7 +34,7 @@
 @property (nonatomic, strong) UILabel *forgetLable;
 @property (nonatomic, strong) UILabel *demoLable;
 @property (nonatomic, strong) NSDictionary *dataSource;
-@property (nonatomic, strong) NSMutableArray *demoArray;
+@property (nonatomic, strong) NSMutableDictionary *demoArray;
 @property (nonatomic, strong) NSString *serverDemoAddress;
 
 @end
@@ -238,16 +238,16 @@ NSLog(@"体验馆");
         NSLog(@"getServerUrlList: %@", content);
         if (content) {
             
-            _demoArray=[NSMutableArray arrayWithArray:content];
+            _demoArray=[NSMutableDictionary dictionaryWithDictionary:content];
             
             if(_demoArray.count>0){
                 AddressPickView *addressPickView = [AddressPickView shareInstance];
-                addressPickView.provinceArray=_demoArray;
+                addressPickView.provinceArray=[NSMutableArray arrayWithArray:[_demoArray allKeys]];
                 [self.view addSubview:addressPickView];
                 addressPickView.block = ^(NSString *province){
                     // [self.dataDic setObject:city forKey:@"regCountry"];
                     // [self.dataDic setObject:town forKey:@"regCity"];
-                    _serverDemoAddress = [NSString stringWithFormat:@"%@",province] ;
+                    _serverDemoAddress = [_demoArray objectForKey:[NSString stringWithFormat:@"%@",province]] ;
                     
                     NSString *server2=@"http://";
                     NSString *server=[NSString stringWithFormat:@"%@%@",server2,_serverDemoAddress];

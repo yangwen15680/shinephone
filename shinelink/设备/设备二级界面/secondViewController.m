@@ -225,8 +225,8 @@
     rightState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:rightState];
     
-    UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*HEIGHT_SIZE-SizeH-5*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
-    dayDate.text=root_NBQ_ri_fadianliang;
+    UILabel *dayDate=[[UILabel alloc]initWithFrame:CGRectMake(0, 255*HEIGHT_SIZE-SizeH-5*HEIGHT_SIZE, 250*NOW_SIZE,20*HEIGHT_SIZE )];
+    dayDate.text=root_ri_gonglv_zoushitu;
     dayDate.textAlignment=NSTextAlignmentLeft;
     dayDate.textColor=[UIColor blackColor];
     dayDate.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
