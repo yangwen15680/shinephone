@@ -422,8 +422,14 @@
             NSString *TO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
             [totalPowerArray addObject:TO];
             
+         NSString *ST0=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"lost"]];
+            if ([ST0 isEqualToString:@"1"]) {
+                      [statueArray addObject:@"6"];
+            }else{
+            
         NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
              [statueArray addObject:ST];
+            }
 //            NSString *SD;
 //            if([ST isEqualToString:@"-1"])
 //            {SD=@"未连接";
@@ -677,11 +683,16 @@
 
    
     UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 40*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
+   // _head11=@"1999.99999";
+    if ([_head11 length]>6 && [_head11 intValue]>10000) {
+        _head11=[NSString stringWithFormat:@"%.1e",[_head11 floatValue]];
+    }
+    
     Lable1.text=_head11;
     //Lable1.numberOfLines=0;
     Lable1.textAlignment=NSTextAlignmentCenter;
     Lable1.textColor=[UIColor whiteColor];
-    Lable1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    Lable1.font = [UIFont systemFontOfSize:15*HEIGHT_SIZE];
     [_headerView addSubview:Lable1];
     
    
@@ -701,10 +712,16 @@
     [_headerView addSubview:Lable12];
 
     UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
-    Lable7.text=_head21;
+   
+   // _head21=@"1999.99999";
+    if ([_head21 length]>6 && [_head21 intValue]>10000) {
+        _head21=[NSString stringWithFormat:@"%.1e",[_head21 floatValue]];
+    }
+    
+     Lable7.text=_head21;
     Lable7.textAlignment=NSTextAlignmentCenter;
     Lable7.textColor=[UIColor whiteColor];
-    Lable7.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    Lable7.font = [UIFont systemFontOfSize:15*HEIGHT_SIZE];
     [_headerView addSubview:Lable7];
     
     UILabel *Lable9=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
@@ -723,10 +740,15 @@
     
     //_headGet=@"3000";
     UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
-    Lable8.text=_head31;
+  
+    //_head31=@"19999.99999";
+    if ([_head31 length]>6 && [_head31 intValue]>10000) {
+        _head31=[NSString stringWithFormat:@"%.1e",[_head31 floatValue]];
+    }
+      Lable8.text=_head31;
     Lable8.textAlignment=NSTextAlignmentCenter;
     Lable8.textColor=[UIColor whiteColor];
-    Lable8.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    Lable8.font = [UIFont systemFontOfSize:15*HEIGHT_SIZE];
     [_headerView addSubview:Lable8];
     
     UILabel *Lable10=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 138*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
@@ -1044,19 +1066,22 @@ GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
       
         if ([getDevice.type isEqualToString:@"inverter"]) {
             cell.electric.text = root_ri_dianLiang;
-            if ([getDevice.statueData isEqualToString:@"0"]){
+            if ([getDevice.statueData isEqualToString:@"1"]){
                 cell.stateValue.text =root_dengDai ;
                 cell.stateValue.textColor=COLOR(17, 183, 243, 1);
-            }else if ([getDevice.statueData isEqualToString:@"1"]){
+            }else if ([getDevice.statueData isEqualToString:@"2"]){
                 cell.stateValue.text =root_zhengChang ;
                   cell.stateValue.textColor=COLOR(121, 230, 129, 1);
-            }else if ([getDevice.statueData isEqualToString:@"2"]){
+            }else if ([getDevice.statueData isEqualToString:@"4"]){
                 cell.stateValue.text =root_cuoWu ;
                   cell.stateValue.textColor=COLOR(255, 86, 82, 1);
-            }else if ([getDevice.statueData isEqualToString:@"3"]){
+            }else if ([getDevice.statueData isEqualToString:@"5"]){
                 cell.stateValue.text =root_duanKai ;
                   cell.stateValue.textColor=COLOR(163, 163, 163, 1);
             }else if ([getDevice.statueData isEqualToString:@"-1"]){
+                cell.stateValue.text =root_duanKai ;
+                cell.stateValue.textColor=COLOR(163, 163, 163, 1);
+            }else if ([getDevice.statueData isEqualToString:@"6"]){
                 cell.stateValue.text =root_duanKai ;
                 cell.stateValue.textColor=COLOR(163, 163, 163, 1);
             }
@@ -1081,6 +1106,9 @@ GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
                 cell.stateValue.text =root_dengDai ;
                   cell.stateValue.textColor=COLOR(17, 183, 243, 1);
             }else if ([getDevice.statueData isEqualToString:@"-1"]){
+                cell.stateValue.text =root_duanKai ;
+                cell.stateValue.textColor=COLOR(163, 163, 163, 1);
+            }else if ([getDevice.statueData isEqualToString:@"6"]){
                 cell.stateValue.text =root_duanKai ;
                 cell.stateValue.textColor=COLOR(163, 163, 163, 1);
             }
