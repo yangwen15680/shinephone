@@ -23,6 +23,7 @@
 #import "energyViewController.h"
 #import "energyDemo.h"
 #import "AddressPickView.h"
+#import "JPUSHService.h"
 
 @interface loginViewController ()<UINavigationControllerDelegate,UITextFieldDelegate>
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -363,7 +364,23 @@ NSLog(@"体验馆");
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
                     [alertView show];
                 }
+                
+                if (!_scrollView) {
+                        [self addSubViews];
+                }
+             
+                
             } else {
+                
+                NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
+                NSString *reUsername=[ud objectForKey:@"userName"];
+               
+                
+                if (reUsername==nil || reUsername==NULL||([reUsername isEqual:@""] )) {
+                
+                      [self setAlias];
+                }
+                
                 //登陆成功
                 [[UserInfo defaultUserInfo] setUserPassword:_pwdTextField.text];
                 [[UserInfo defaultUserInfo] setUserName:_userTextField.text];
@@ -383,6 +400,8 @@ NSLog(@"体验馆");
                 
                 NSString *ID=[[NSUserDefaults standardUserDefaults] objectForKey:@"userID"];
                 NSLog(@"ID=%@",ID);
+                
+              
                 
                 //获取服务器
               //  [self netServerInit];
@@ -404,6 +423,14 @@ NSLog(@"体验馆");
         [hud hide:YES afterDelay:1.5];
     }];
 
+}
+
+-(void)setAlias{
+    NSString *AliasName=_userTextField.text;
+    
+    [JPUSHService setTags:nil alias:AliasName fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
+        NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+    }];
 }
 
 -(void)netServerInit{

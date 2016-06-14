@@ -22,7 +22,7 @@
 #import <AdSupport/AdSupport.h>
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong) NSString *devicetToken;
 @end
 
 @implementation AppDelegate
@@ -151,12 +151,17 @@
     
 }
 
+
+//获取deviceToken
 - (void)application:(UIApplication *)application
 didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
+    _devicetToken=[NSString stringWithFormat:@"%@",deviceToken];
     /// Required - 注册 DeviceToken
     [JPUSHService registerDeviceToken:deviceToken];
 }
+
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
@@ -164,12 +169,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
+//获取推送内容
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     // IOS 7 Support Required
     [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
+    
 }
+
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     //Optional

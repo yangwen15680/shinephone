@@ -413,6 +413,7 @@
 #define   root_ME        NSLocalizedString(@"我", nil)
 #define   root_WO_zhiliao_guanli        NSLocalizedString(@"资料管理", nil)
 #define   root_WO_xitong_shezhi       NSLocalizedString(@"电站设置", nil)
+#define   root_WO_xiaoxi_zhongxin      NSLocalizedString(@"消息中心", nil)
 #define   root_WO_guanyu        NSLocalizedString(@"关于", nil)
 #define   root_WO_xieyi        NSLocalizedString(@"用户协议", nil)
 #define   root_WO_kefu_dianhua        NSLocalizedString(@"客服电话", nil)

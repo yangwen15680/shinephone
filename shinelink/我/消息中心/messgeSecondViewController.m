@@ -1,53 +1,32 @@
 //
-//  Common2ViewController.m
+//  messgeSecondViewController.m
 //  shinelink
 //
-//  Created by sky on 16/5/12.
+//  Created by sky on 16/6/14.
 //  Copyright © 2016年 sky. All rights reserved.
 //
 
-#import "Common2ViewController.h"
+#import "messgeSecondViewController.h"
 
-@interface Common2ViewController ()
+@interface messgeSecondViewController ()
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UITextView *detail2;
-
 @end
 
-@implementation Common2ViewController
+@implementation messgeSecondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
-    [self netCom2];
-}
-
--(void)netCom2{
     
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString} paramarsSite:@"/questionAPI.do?op=getUsualQuestionInfo" sucessBlock:^(id content) {
-        [self hideProgressView];
-        NSLog(@"getUsualQuestionInfo=: %@", content);
-        
-        if(content){
-            _contentString=content[@"content"];
-            
-             [self initUI];
-        }
-        
-    } failure:^(NSError *error) {
-        [self hideProgressView];
-        
-    }];
-
+      [self initUI];
 }
-
 
 -(void)initUI{
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
-    _scrollView.contentSize = CGSizeMake(SCREEN_Width,SCREEN_Height);
+    _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
     [self.view addSubview:_scrollView];
-
+    
 //    UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE, 80*NOW_SIZE,28*HEIGHT_SIZE )];
 //    PV1Lable.text=root_ME_biaoti;
 //    PV1Lable.textAlignment=NSTextAlignmentCenter;
@@ -60,7 +39,7 @@
     [_scrollView addSubview:image1];
     
     UILabel *PV2Lable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 16*HEIGHT_SIZE, 300*NOW_SIZE,28*HEIGHT_SIZE )];
-        PV2Lable.text=_titleString;
+    PV2Lable.text=_titleString;
     PV2Lable.textAlignment=NSTextAlignmentCenter;
     PV2Lable.textColor=[UIColor blackColor];
     PV2Lable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
@@ -80,6 +59,7 @@
     [_scrollView addSubview:_detail2];
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

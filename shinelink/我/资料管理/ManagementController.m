@@ -9,6 +9,7 @@
 #import "ManagementController.h"
 #import "loginViewController.h"
 #import "changManeger.h"
+#import "JPUSHService.h"
 
 @interface ManagementController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -89,10 +90,19 @@
       [[UserInfo defaultUserInfo] setServer:nil];
     loginViewController *login =[[loginViewController alloc]init];
     
+    [self setAlias];
     self.hidesBottomBarWhenPushed=YES;
     [login.navigationController setNavigationBarHidden:YES];
     [self.navigationController pushViewController:login animated:YES];
     
+}
+
+-(void)setAlias{
+    
+    NSString *Alias=@"none";
+    [JPUSHService setTags:nil alias:Alias fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
+        NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

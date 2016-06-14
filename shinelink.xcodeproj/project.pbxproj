@@ -202,6 +202,11 @@
 		3356782B1CC62A5A00EE4A73 /* controlCNJTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3356782A1CC62A5A00EE4A73 /* controlCNJTable.m */; };
 		3358812E1CB66E250068EFAD /* qualityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3358812D1CB66E250068EFAD /* qualityTableViewController.m */; };
 		335881311CB66E460068EFAD /* qualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 335881301CB66E460068EFAD /* qualityCell.m */; };
+		335BF1E71D100558008EEE99 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 335BF1E61D100558008EEE99 /* message.png */; };
+		335BF1E91D100572008EEE99 /* ziliao.png in Resources */ = {isa = PBXBuildFile; fileRef = 335BF1E81D100572008EEE99 /* ziliao.png */; };
+		335BF1ED1D100761008EEE99 /* MessageCeterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335BF1EC1D100761008EEE99 /* MessageCeterTableViewController.m */; };
+		335BF1F01D1008D5008EEE99 /* messgeSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 335BF1EF1D1008D5008EEE99 /* messgeSecondViewController.m */; };
+		335BF1F21D100EC7008EEE99 /* kuang3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 335BF1F11D100EC7008EEE99 /* kuang3.jpg */; };
 		335C9D171D0117F3008C977A /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 335C9D151D0117F3008C977A /* jpush-ios-2.1.7.a */; };
 		335C9D191D011F2E008C977A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335C9D181D011F2E008C977A /* CFNetwork.framework */; };
 		335C9D1B1D011F3F008C977A /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 335C9D1A1D011F3F008C977A /* CoreFoundation.framework */; };
@@ -757,6 +762,13 @@
 		3358812D1CB66E250068EFAD /* qualityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qualityTableViewController.m; sourceTree = "<group>"; };
 		3358812F1CB66E460068EFAD /* qualityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qualityCell.h; sourceTree = "<group>"; };
 		335881301CB66E460068EFAD /* qualityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = qualityCell.m; sourceTree = "<group>"; };
+		335BF1E61D100558008EEE99 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		335BF1E81D100572008EEE99 /* ziliao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ziliao.png; sourceTree = "<group>"; };
+		335BF1EB1D100761008EEE99 /* MessageCeterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCeterTableViewController.h; sourceTree = "<group>"; };
+		335BF1EC1D100761008EEE99 /* MessageCeterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCeterTableViewController.m; sourceTree = "<group>"; };
+		335BF1EE1D1008D5008EEE99 /* messgeSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messgeSecondViewController.h; sourceTree = "<group>"; };
+		335BF1EF1D1008D5008EEE99 /* messgeSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messgeSecondViewController.m; sourceTree = "<group>"; };
+		335BF1F11D100EC7008EEE99 /* kuang3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kuang3.jpg; sourceTree = "<group>"; };
 		335C9D151D0117F3008C977A /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
 		335C9D161D0117F3008C977A /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		335C9D181D011F2E008C977A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1852,6 +1864,18 @@
 			path = "质保查询";
 			sourceTree = "<group>";
 		};
+		335BF1EA1D1006F8008EEE99 /* 消息中心 */ = {
+			isa = PBXGroup;
+			children = (
+				335BF1F11D100EC7008EEE99 /* kuang3.jpg */,
+				335BF1EB1D100761008EEE99 /* MessageCeterTableViewController.h */,
+				335BF1EC1D100761008EEE99 /* MessageCeterTableViewController.m */,
+				335BF1EE1D1008D5008EEE99 /* messgeSecondViewController.h */,
+				335BF1EF1D1008D5008EEE99 /* messgeSecondViewController.m */,
+			);
+			path = "消息中心";
+			sourceTree = "<group>";
+		};
 		335C9D141D0117F3008C977A /* lib */ = {
 			isa = PBXGroup;
 			children = (
@@ -2043,6 +2067,8 @@
 		337C30511CCDAEDA002B99B7 /* pic */ = {
 			isa = PBXGroup;
 			children = (
+				335BF1E81D100572008EEE99 /* ziliao.png */,
+				335BF1E61D100558008EEE99 /* message.png */,
 				336664E91CB77CD3005573FB /* update@2x.png */,
 				336664EA1CB77CD3005573FB /* update@3x.png */,
 				336664EB1CB77CD3005573FB /* user-agreement@2x.png */,
@@ -2186,6 +2212,7 @@
 		337F9CC41C71ABD80016FE43 /* 我 */ = {
 			isa = PBXGroup;
 			children = (
+				335BF1EA1D1006F8008EEE99 /* 消息中心 */,
 				3367EB921CD0ADE300D2EF67 /* 电站设置 */,
 				3349A7AC1C75A201009172C2 /* 资料管理 */,
 				3355F2651C746983006DDE5A /* 关于 */,
@@ -2684,11 +2711,13 @@
 				33FEFD621C7DB38400324374 /* icon---Username.png in Resources */,
 				334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */,
 				33EFB67C1C99320B003F336F /* logo.png in Resources */,
+				335BF1F21D100EC7008EEE99 /* kuang3.jpg in Resources */,
 				334FF0B91CF53C7C001E6716 /* btn_check_off.png in Resources */,
 				3383F13A1C9FFD3E0075E834 /* 家庭用电设备.png in Resources */,
 				3381ECFB1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png in Resources */,
 				33FEFCD81C7D9DCD00324374 /* 圆角矩形3.png in Resources */,
 				33EFB68A1C9973D2003F336F /* bg3.png in Resources */,
+				335BF1E91D100572008EEE99 /* ziliao.png in Resources */,
 				33FEFD6B1C7DB38400324374 /* iconfont-faxian@2x.png in Resources */,
 				33FEFD5F1C7DB38400324374 /* icon---Password.png in Resources */,
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
@@ -2721,6 +2750,7 @@
 				3367D9871CED6D5700DE7528 /* triangular2.png in Resources */,
 				33FFBD491CEC468F003C56E1 /* powerD.png in Resources */,
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
+				335BF1E71D100558008EEE99 /* message.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
 				33FFBD451CEC4657003C56E1 /* chargeD.png in Resources */,
 				336664F01CB77CD3005573FB /* user-agreement@3x.png in Resources */,
@@ -2944,6 +2974,7 @@
 				334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */,
 				334FF0911CF53C7C001E6716 /* GCDAsyncSocket.m in Sources */,
 				33528FF01C83E41D00D07889 /* listViewController.m in Sources */,
+				335BF1F01D1008D5008EEE99 /* messgeSecondViewController.m in Sources */,
 				3343F3EC1C805BD2009F69BC /* MBProgressHUD.m in Sources */,
 				3355F25A1C74178E006DDE5A /* meTableViewCell.m in Sources */,
 				334FF0A71CF53C7C001E6716 /* EasyTimelineEvent.m in Sources */,
@@ -3033,6 +3064,7 @@
 				334FF0A31CF53C7C001E6716 /* DeviceManageViewController.m in Sources */,
 				334FF0A91CF53C7C001E6716 /* JDStatusBarStyle.m in Sources */,
 				3353B1B61CA1272C00577595 /* CoreDataManager.m in Sources */,
+				335BF1ED1D100761008EEE99 /* MessageCeterTableViewController.m in Sources */,
 				334B8F581C914A6D00798A69 /* README.md in Sources */,
 				3367EB9E1CD0B2A700D2EF67 /* StationEarningsViewController.m in Sources */,
 				338990B51CEB1F9D00A708F8 /* DemoDeviceViewController.m in Sources */,

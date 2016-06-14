@@ -42,12 +42,12 @@
                   moduleName = "shinelink"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E8%AE%BE%E5%A4%87/%E8%AE%BE%E5%A4%87%E4%BA%8C%E7%BA%A7%E7%95%8C%E9%9D%A2/%E5%82%A8%E8%83%BD%E6%9C%BA%E4%BA%8C%E7%BA%A7/%E5%82%A8%E8%83%BD%E6%9C%BA%E4%B8%89%E7%BA%A7/ControlCNJ.m"
-                  timestampString = "487495150.637133"
+                  timestampString = "487591950.028629"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "380"
                   endingLineNumber = "380"
-                  offsetFromSymbolStart = "1400">
+                  offsetFromSymbolStart = "1538">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -57,7 +57,7 @@
                   moduleName = "shinelink"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E8%AE%BE%E5%A4%87/%E8%AE%BE%E5%A4%87%E4%BA%8C%E7%BA%A7%E7%95%8C%E9%9D%A2/%E5%82%A8%E8%83%BD%E6%9C%BA%E4%BA%8C%E7%BA%A7/%E5%82%A8%E8%83%BD%E6%9C%BA%E4%B8%89%E7%BA%A7/ControlCNJ.m"
-                  timestampString = "487495150.637335"
+                  timestampString = "487591950.028781"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "380"
@@ -160,6 +160,86 @@
             startingLineNumber = "196"
             endingLineNumber = "196"
             landmarkName = "-qrView:ScanResult:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/&#x767b;&#x9646;/loginViewController.m"
+            timestampString = "487584351.945713"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "-setAlias"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[loginViewController setAlias]"
+                  moduleName = "shinelink"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E7%99%BB%E9%99%86/loginViewController.m"
+                  timestampString = "487591950.032752"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "431"
+                  endingLineNumber = "431"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__31-[loginViewController setAlias]_block_invoke"
+                  moduleName = "shinelink"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sky/Desktop/shinelink/shinelink/shinelink/%E7%99%BB%E9%99%86/loginViewController.m"
+                  timestampString = "487591950.032885"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "432"
+                  endingLineNumber = "432"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/&#x767b;&#x9646;/loginViewController.m"
+            timestampString = "487584342.096059"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "381"
+            endingLineNumber = "381"
+            landmarkName = "-netRequest"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "shinelink/AppDelegate.m"
+            timestampString = "487591850.943978"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "-application:didReceiveRemoteNotification:fetchCompletionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
