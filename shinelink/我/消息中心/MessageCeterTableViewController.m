@@ -9,9 +9,12 @@
 #import "MessageCeterTableViewController.h"
 #import "messgeSecondViewController.h"
 
-@interface MessageCeterTableViewController ()
+@interface MessageCeterTableViewController ()<UIAlertViewDelegate>
 @property(nonatomic,strong)NSMutableArray *titleArray;
+@property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *contentArray;
+@property (nonatomic, strong) UIAlertView *Alert1;
+
 @end
 
 @implementation MessageCeterTableViewController
@@ -21,8 +24,9 @@
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-   self.titleArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
-       self.contentArray =[NSMutableArray arrayWithObjects:@"123213123213123123",@"sdaasdasdadsasdasdasd",@"sssssssssssssssssssssss",nil];
+//   self.titleArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
+//       self.timeArray =[NSMutableArray arrayWithObjects:@"第一111",@"第二222",@"第三333",nil];
+//       self.contentArray =[NSMutableArray arrayWithObjects:@"123213123213123123",@"sdaasdasdadsasdasdasd",@"sssssssssssssssssssssss",nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         
@@ -35,8 +39,60 @@
         
     }
 
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:root_wo_qingkong_message style:UIBarButtonItemStylePlain target:self action:@selector(clearData)];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
+    [self initData];
     
 }
+
+-(void)clearData{
+
+    _Alert1 = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_wo_qingkong_lishi_shuju delegate:self cancelButtonTitle:root_cancel otherButtonTitles:root_OK, nil];
+    
+    [_Alert1 show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==0) {
+        
+    }else if (buttonIndex==1){
+       
+         NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+        [userDefaultes setObject:nil forKey:@"MessageTitleArray"];
+        [userDefaultes setObject:nil forKey:@"MessageTimeArray"];
+        [userDefaultes setObject:nil forKey:@"MessageContentArray"];
+    }
+    
+}
+
+
+-(void)initData{
+
+ NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    _titleArray =[NSMutableArray arrayWithArray:[userDefaultes arrayForKey:@"MessageTitleArray"]];
+   
+    
+    _timeArray =[NSMutableArray arrayWithArray:[userDefaultes arrayForKey:@"MessageTimeArray"]];
+
+    
+    _contentArray =[NSMutableArray arrayWithArray:[userDefaultes arrayForKey:@"MessageContentArray"]];
+    
+    if (_messageDic.count>0) {
+        [_titleArray addObject:_messageDic[@"title"]];
+        [_timeArray addObject:_messageDic[@"time"]];
+        [_contentArray addObject:_messageDic[@"content"]];
+        
+        [userDefaultes setObject:_titleArray forKey:@"MessageTitleArray"];
+        [userDefaultes setObject:_timeArray forKey:@"MessageTimeArray"];
+        [userDefaultes setObject:_contentArray forKey:@"MessageContentArray"];
+    }
+    
+   
+}
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -79,11 +135,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" ];
     if (cell==nil) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
     cell.textLabel.text=_titleArray[indexPath.row];
+    cell.detailTextLabel.text=_timeArray[indexPath.row];
+    cell.detailTextLabel.textColor=COLOR(113, 113, 113, 1);
+    cell.detailTextLabel.font=[UIFont systemFontOfSize: 10*HEIGHT_SIZE];
     cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.font=[UIFont systemFontOfSize: 14*HEIGHT_SIZE];
+    cell.textLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
+    cell.textLabel.textColor=COLOR(60, 60, 60, 1);
     return cell;
     
   

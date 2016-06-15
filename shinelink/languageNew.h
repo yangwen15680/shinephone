@@ -470,7 +470,9 @@
 #define root_todayPV     NSLocalizedString(@"todayPV", nil)
 #define root_PpvN     NSLocalizedString(@"PpvN", nil)
 
+#define root_wo_qingkong_message     NSLocalizedString(@"清空", nil)
 
+#define root_wo_qingkong_lishi_shuju     NSLocalizedString(@"是否清空历史数据", nil)
 
 
 

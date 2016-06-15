@@ -20,9 +20,13 @@
 #import "JDStatusBarNotification.h"
 #import "JPUSHService.h"
 #import <AdSupport/AdSupport.h>
+#import "listViewController.h"
+#import "MessageCeterTableViewController.h"
+#import "meViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSString *devicetToken;
+@property (nonatomic, strong) NSMutableDictionary *messegeDic;
 @end
 
 @implementation AppDelegate
@@ -171,6 +175,46 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 //获取推送内容
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+   
+    NSDateFormatter *format=[[ NSDateFormatter alloc]init];
+     _messegeDic=[NSMutableDictionary new];
+    
+    if ([userInfo[@"type"] intValue]==0) {
+        format. dateFormat = @"yyyy-MM-dd hh:mm:ss" ;
+        NSDate *date1=[ NSDate date ];
+        NSString *date=[format stringFromDate:date1];
+        
+        
+        [_messegeDic setValue:userInfo[@"content"] forKeyPath:@"content"];
+        [_messegeDic setValue:userInfo[@"title"] forKeyPath:@"title"];
+        [_messegeDic setValue:date forKeyPath:@"time"];
+        
+        MessageCeterTableViewController *center=[[MessageCeterTableViewController alloc]init];
+        center.messageDic=_messegeDic;
+        
+        loginViewController *root=[[loginViewController alloc]init];
+        
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
+        self.window.rootViewController=nav;
+        
+        
+        [nav pushViewController:center animated:NO];
+        
+    }else if ([userInfo[@"type"] intValue]==1){
+    
+        loginViewController *root=[[loginViewController alloc]init];
+        
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
+             self.window.rootViewController=nav;
+        listViewController *list=[[listViewController alloc]init];
+    
+        [nav pushViewController:list animated:NO];
+   
+       
+    }
+    
+    
+   
     
     // IOS 7 Support Required
     [JPUSHService handleRemoteNotification:userInfo];

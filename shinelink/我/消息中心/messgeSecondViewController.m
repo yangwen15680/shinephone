@@ -24,8 +24,9 @@
 -(void)initUI{
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height)];
     _scrollView.scrollEnabled=YES;
-    _scrollView.contentSize = CGSizeMake(SCREEN_Width,600*NOW_SIZE);
+    _scrollView.contentSize = CGSizeMake(SCREEN_Width,SCREEN_Height);
     [self.view addSubview:_scrollView];
+    self.view.backgroundColor=[UIColor whiteColor];
     
 //    UILabel *PV1Lable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 16*HEIGHT_SIZE, 80*NOW_SIZE,28*HEIGHT_SIZE )];
 //    PV1Lable.text=root_ME_biaoti;

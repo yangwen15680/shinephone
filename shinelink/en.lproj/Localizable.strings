@@ -439,3 +439,5 @@
 "获取服务器地址"="Get server address";
 "日功率走势图"="Daily power chart(W)";
 "消息中心"="Message center";
+"清空"="Clear";
+"是否清空历史数据"="是否清空历史数据?";
