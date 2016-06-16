@@ -24,7 +24,20 @@
 
 -(void)netCom2{
     
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString} paramarsSite:@"/questionAPI.do?op=getUsualQuestionInfo" sucessBlock:^(id content) {
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    NSString *_languageValue ;
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString,@"language":_languageValue} paramarsSite:@"/questionAPI.do?op=getUsualQuestionInfo" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getUsualQuestionInfo=: %@", content);
         

@@ -440,4 +440,5 @@
 "日功率走势图"="Daily power chart(W)";
 "消息中心"="Message center";
 "清空"="Clear";
-"是否清空历史数据"="是否清空历史数据?";
+"是否清空历史数据"="Clear historical data?";
+"问题内容:"="Content:";

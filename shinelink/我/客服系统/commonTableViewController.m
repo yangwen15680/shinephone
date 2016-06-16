@@ -39,7 +39,21 @@
 
     _idArray=[NSMutableArray array];
     _titleArray=[NSMutableArray array];
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/questionAPI.do?op=getUsualQuestionList" sucessBlock:^(id content) {
+    
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    NSString *_languageValue ;
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/questionAPI.do?op=getUsualQuestionList" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getUsualQuestionList=: %@", content);
     

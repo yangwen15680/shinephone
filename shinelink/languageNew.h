@@ -473,7 +473,8 @@
 #define root_wo_qingkong_message     NSLocalizedString(@"清空", nil)
 
 #define root_wo_qingkong_lishi_shuju     NSLocalizedString(@"是否清空历史数据", nil)
-
+#define root_wenti_leirong    NSLocalizedString(@"问题内容:", nil)
+\
 
 
 #endif /* languageNew_h */

@@ -51,7 +51,7 @@
     }if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
-        _languageValue=@"3";
+        _languageValue=@"2";
     }
     
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"id":_idString,@"language":_languageValue} paramarsSite:@"/newExtensionAPI.do?op=getExtensionInfo" sucessBlock:^(id content) {

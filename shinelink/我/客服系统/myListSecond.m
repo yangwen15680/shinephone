@@ -224,7 +224,7 @@
     
     
     UILabel *contentLable=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 210*NOW_SIZE,20*HEIGHT_SIZE )];
-        contentLable.text=@"问题内容:";
+        contentLable.text=root_wenti_leirong;
     contentLable.textAlignment=NSTextAlignmentLeft;
     contentLable.textColor=[UIColor blackColor];
     contentLable.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];

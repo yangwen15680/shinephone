@@ -535,11 +535,14 @@ NSLog(@"体验馆");
         //Vc1.tabBarController.tabBar.selectedImageTintColor = MainColor;
         
         NSArray *controllers=[NSArray arrayWithObjects:Vc1,Vc2,Vc3,Vc4,nil];
-        UITabBarController *tabbar=[[UITabBarController alloc]init];
-        tabbar.viewControllers=controllers;
+        _tabbar=[[UITabBarController alloc]init];
+        _tabbar.viewControllers=controllers;
 
-        [self presentViewController:tabbar animated:YES completion:nil];
+        [self presentViewController:_tabbar animated:YES completion:nil];
     }
+
+
+
     - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented
 presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     

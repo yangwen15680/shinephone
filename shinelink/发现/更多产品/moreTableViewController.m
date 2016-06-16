@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSMutableArray *imageName;
 @property (nonatomic, strong) NSMutableArray *imageHead;
 @property (nonatomic, strong) NSMutableArray *identifying;
+  @property (nonatomic, strong)  NSString *languageValue;
 @end
 
 @implementation moreTableViewController
@@ -38,7 +39,20 @@
 
 -(void)initData{
   
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newProductAPI.do?op=getProductList" sucessBlock:^(id content) {
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductList" sucessBlock:^(id content) {
         
         NSLog(@"getMoreProductList: %@", content);
         [self showProgressView];
@@ -61,7 +75,7 @@
                
                 if (productImage.length>0) {
                      [self showProgressView];
-                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
                         
                         [self hideProgressView];
                           NSLog(@"i===: %d", i);

@@ -21,6 +21,7 @@
 @property(nonatomic,strong)NSMutableArray *imageArrayName;
 @property(nonatomic,strong)NSMutableArray *imageArrayCount;
 @property(nonatomic,strong)UIView *headerView;
+@property(nonatomic,strong)NSString *languageValue;
 @end
 
 @implementation findViewController
@@ -75,8 +76,20 @@
     
       //NSMutableArray *dataArray=[NSMutableArray array];
 
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
     
-    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"admin":@"admin"} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingList" sucessBlock:^(id content) {
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    
+    [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingList" sucessBlock:^(id content) {
         
         NSLog(@"getAdvertisingList: %@", content);
         [ _imageArrayCount addObjectsFromArray:content];

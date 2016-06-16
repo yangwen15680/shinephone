@@ -23,6 +23,8 @@
 #import "listViewController.h"
 #import "MessageCeterTableViewController.h"
 #import "meViewController.h"
+#import "LZPageViewController.h"
+#import "energyDemo.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSString *devicetToken;
@@ -189,32 +191,33 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         [_messegeDic setValue:userInfo[@"title"] forKeyPath:@"title"];
         [_messegeDic setValue:date forKeyPath:@"time"];
         
-        MessageCeterTableViewController *center=[[MessageCeterTableViewController alloc]init];
-        center.messageDic=_messegeDic;
+         NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+          [userDefaultes setObject:_messegeDic forKey:@"MessageDic"];
         
-        loginViewController *root=[[loginViewController alloc]init];
-        
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
-        self.window.rootViewController=nav;
-        
-        
-        [nav pushViewController:center animated:NO];
+//        MessageCeterTableViewController *center=[[MessageCeterTableViewController alloc]init];
+//        center.messageDic=_messegeDic;
+//        
+//        loginViewController *root=[[loginViewController alloc]init];
+//        
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
+//        self.window.rootViewController=nav;
+//        
+//        
+//        [nav pushViewController:center animated:NO];
         
     }else if ([userInfo[@"type"] intValue]==1){
     
-        loginViewController *root=[[loginViewController alloc]init];
-        
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
-             self.window.rootViewController=nav;
-        listViewController *list=[[listViewController alloc]init];
-    
-        [nav pushViewController:list animated:NO];
+//        loginViewController *root=[[loginViewController alloc]init];
+//        
+//        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:root];//先将root添加在navigation上
+//             self.window.rootViewController=nav;
+//        listViewController *list=[[listViewController alloc]init];
+//    
+//        [self.window.rootViewController presentViewController:list animated:NO completion:nil];
    
        
     }
     
-    
-   
     
     // IOS 7 Support Required
     [JPUSHService handleRemoteNotification:userInfo];
@@ -344,7 +347,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
                     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"server error" delegate:self cancelButtonTitle:@"Yes" otherButtonTitles:nil];
                     [alertView show];
                 }
-            }
+            }            
+            
         }
         
     } failure:^(NSError *error) {

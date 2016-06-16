@@ -18,4 +18,6 @@
 @property(nonatomic,strong)UIView *view1;
 
 @property(nonatomic,strong)NSString *content;
+@property (nonatomic, strong) UIImageView *coverImageView;
+
 @end

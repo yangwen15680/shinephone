@@ -10,4 +10,5 @@
 
 @interface loginViewController : RootViewController<UITextFieldDelegate,UIViewControllerTransitioningDelegate,UINavigationControllerDelegate, UITabBarControllerDelegate>
 
+@property (nonatomic, strong) UITabBarController *tabbar;
 @end

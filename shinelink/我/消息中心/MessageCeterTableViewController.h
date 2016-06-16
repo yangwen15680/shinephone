@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MessageCeterTableViewController : UITableViewController
-@property(nonatomic,strong)NSMutableDictionary *messageDic;
+
 @end

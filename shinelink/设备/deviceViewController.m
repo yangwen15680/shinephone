@@ -99,37 +99,44 @@
     return self;
 }
 -(void)viewDidAppear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewDidLoad) name:@"changeName" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netRequest) name:@"changeName" object:nil];
     
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+   
+    
   [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
  
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
-    self.navigationItem.rightBarButtonItem = rightButton;
-    _manager=[CoreDataManager sharedCoreDataManager];
-    _managerArray=[NSMutableArray array];
-    _managerNowArray=[NSMutableArray array];
-   // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:@"reroadDemo" object:nil];
-  
-//    if([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]){
-       //self.automaticallyAdjustsScrollViewInsets = YES;
-    NSString *coreEnable=[UserInfo defaultUserInfo].coreDataEnable;
-    if ([coreEnable isEqualToString:@"1"]){
-        [self initCoredata];
+     //self.view=nil;
+    if (!_tableView) {
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd  target:self action:@selector(selectRightAction)];
+        self.navigationItem.rightBarButtonItem = rightButton;
+        _manager=[CoreDataManager sharedCoreDataManager];
+        _managerArray=[NSMutableArray array];
+        _managerNowArray=[NSMutableArray array];
+        // [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refreshData) name:@"reroadDemo" object:nil];
+        
+        //    if([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]){
+        //self.automaticallyAdjustsScrollViewInsets = YES;
+        NSString *coreEnable=[UserInfo defaultUserInfo].coreDataEnable;
+        if ([coreEnable isEqualToString:@"1"]){
+            [self initCoredata];
+        }
+        
+        
+        [self initData];
+        [self addTitleMenu];
+        [self addRightItem];
+        //创建tableView的方法
+        [self _createTableView];
+        //创建tableView的头视图
+
     }
     
     
-    [self initData];
-       [self addTitleMenu];
-    [self addRightItem];
-    //创建tableView的方法
-    [self _createTableView];
-    //创建tableView的头视图
-  
   
 }
 
@@ -237,8 +244,8 @@
     imageArray2=[[NSMutableArray alloc]initWithObjects:@"inverter2.png", @"储能机.png", @"PowerRegulator.png",@"充电桩.png",nil];
     nameArray2=[[NSMutableArray alloc]initWithObjects:root_niBianQi, root_chuNengJi, root_chongDianZhuang, root_gongLvTiaoJieQi,  nil];
     statueArray2=[[NSMutableArray alloc]initWithObjects:root_wei_LianJie, root_wei_LianJie, root_wei_LianJie,root_wei_LianJie,nil];
-    powerArray2=[[NSMutableArray alloc]initWithObjects:@"5000KW", @"5000KW", @"5000KW", @"5000KW",  nil];
-    dayArray2=[[NSMutableArray alloc]initWithObjects:@"500K/h", @"500K/h", @"500K/h",@"500K/h",nil];
+    powerArray2=[[NSMutableArray alloc]initWithObjects:@"50KW", @"50KW", @"5000W", @"5000W",  nil];
+    dayArray2=[[NSMutableArray alloc]initWithObjects:@"500kWh", @"500kWh", @"50kWh",@"50kWh",nil];
     typeArray2=[[NSMutableArray alloc]initWithObjects:@"inverter", @"storage", @"charge",@"powerRegulator",nil];
 }
 
@@ -454,24 +461,57 @@
             
         }
         
+        // _head11=@"88888";_head21=@"88888";_head31=@"88888";
+        
         if ([_typeArr containsObject:@"storage"]) {
             _head13=root_Ppv;
             _head23=root_Puser;
              _head33=root_Pgrid;
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"storageTodayPpv"]];
-            NSArray *headA=[head111 componentsSeparatedByString:@"_"];
-            _head11=[headA objectAtIndex:0];
-            _head12=[headA objectAtIndex:1];
+            _head11=head111;
+            
+           // _head11=@"8888888";
+            _head12=@"W";
             
             NSString *head222=[NSString stringWithFormat:@"%@",content[@"storagePuser"]];
-            NSArray *headB=[head222 componentsSeparatedByString:@"_"];
-            _head21=[headB objectAtIndex:0];
-            _head22=[headB objectAtIndex:1];
+           // NSArray *headB=[head222 componentsSeparatedByString:@"_"];
+            _head21=head222;
+            _head22=@"W";
             
             NSString *head333=[NSString stringWithFormat:@"%@",content[@"storagePgrid"]];
-            NSArray *headC=[head333 componentsSeparatedByString:@"_"];
-            _head31=[headC objectAtIndex:0];
-            _head32=[headC objectAtIndex:1];
+          //  NSArray *headC=[head333 componentsSeparatedByString:@"_"];
+            _head31=head333;
+            _head32=@"W";
+            
+            if ( [_head11 intValue]>1000 &&[_head11 intValue]<1000000) {
+                float KW=(float)[_head11 intValue]/1000;
+                _head12=@"KW";
+                _head11=[NSString stringWithFormat:@"%.1f",KW];
+            }else if([_head11 intValue]>1000000){
+                float MW=(float)[_head11 intValue]/1000000;
+                _head12=@"MW";
+                _head11=[NSString stringWithFormat:@"%.1f",MW];
+            }
+            
+            if ( [_head21 intValue]>1000 &&[_head21 intValue]<1000000) {
+                float KW=(float)[_head21 intValue]/1000;
+                _head22=@"KW";
+                _head21=[NSString stringWithFormat:@"%.1f",KW];
+            }else if([_head21 intValue]>1000000){
+                float MW=(float)[_head21 intValue]/1000000;
+                _head22=@"MW";
+                _head21=[NSString stringWithFormat:@"%.1f",MW];
+            }
+            
+            if ( [_head31 intValue]>1000 &&[_head31 intValue]<1000000) {
+                float KW=(float)[_head31 intValue]/1000;
+                _head32=@"KW";
+                _head31=[NSString stringWithFormat:@"%.1f",KW];
+            }else if([_head31 intValue]>1000000){
+                float MW=(float)[_head31 intValue]/1000000;
+                _head32=@"MW";
+                _head31=[NSString stringWithFormat:@"%.1f",MW];
+            }
             
         }else if ([_typeArr containsObject:@"inverter"]){
             _head13=root_Revenue;
@@ -479,24 +519,39 @@
             _head33=root_todayPV;
               _head23=root_PpvN;
             
-            
-
-            
             NSString *head111=[NSString stringWithFormat:@"%@",content[@"plantMoneyText"]];
             NSArray *headA=[head111 componentsSeparatedByString:@"/"];
             _head11=[headA objectAtIndex:0];
             _head12=[headA objectAtIndex:1];
             
-            NSString *head222=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
-            NSArray *headB=[head222 componentsSeparatedByString:@"_"];
-            _head21=[headB objectAtIndex:0];
-             _head22=[headB objectAtIndex:1];
+            NSString *head222=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
+            //NSArray *headB=[head222 componentsSeparatedByString:@"_"];
+            _head21=head222;
+             _head22=@"W";
             
-            NSString *head333=[NSString stringWithFormat:@"%@",content[@"invTodayPpv"]];
-            NSArray *headC=[head333 componentsSeparatedByString:@"_"];
-            _head31=[headC objectAtIndex:0];
-                _head32=[headC objectAtIndex:1];
+            NSString *head333=[NSString stringWithFormat:@"%@",content[@"todayEnergy"]];
+           // NSArray *headC=[head333 componentsSeparatedByString:@"_"];
+            _head31=head333;
+            //_head31=@"8888";
+                _head32=@"kWh";
+            
+            if ( [_head21 intValue]>1000 &&[_head21 intValue]<1000000) {
+                float KW=(float)[_head21 intValue]/1000;
+                _head22=@"KW";
+                _head21=[NSString stringWithFormat:@"%.1f",KW];
+            }else if([_head21 intValue]>1000000){
+                float MW=(float)[_head21 intValue]/1000000;
+                _head22=@"MW";
+                _head21=[NSString stringWithFormat:@"%.1f",MW];
+            }
+            
+            if ( [_head31 intValue]>1000) {
+                float KW=(float)[_head31 intValue]/1000;
+                _head32=@"MWh";
+                _head31=[NSString stringWithFormat:@"%.1f",KW];
+            }
         }
+        
         
         //创建Head
          [self _createHeaderView];
@@ -683,10 +738,7 @@
 
    
     UILabel *Lable1=[[UILabel alloc]initWithFrame:CGRectMake((Kwidth-60*NOW_SIZE)/2, 40*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
-   // _head11=@"1999.99999";
-    if ([_head11 length]>6 && [_head11 intValue]>10000) {
-        _head11=[NSString stringWithFormat:@"%.1e",[_head11 floatValue]];
-    }
+  
     
     Lable1.text=_head11;
     //Lable1.numberOfLines=0;
@@ -714,9 +766,7 @@
     UILabel *Lable7=[[UILabel alloc]initWithFrame:CGRectMake(30*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
    
    // _head21=@"1999.99999";
-    if ([_head21 length]>6 && [_head21 intValue]>10000) {
-        _head21=[NSString stringWithFormat:@"%.1e",[_head21 floatValue]];
-    }
+   
     
      Lable7.text=_head21;
     Lable7.textAlignment=NSTextAlignmentCenter;
@@ -741,10 +791,7 @@
     //_headGet=@"3000";
     UILabel *Lable8=[[UILabel alloc]initWithFrame:CGRectMake(230*NOW_SIZE, 120*HEIGHT_SIZE, 60*NOW_SIZE,20*HEIGHT_SIZE )];
   
-    //_head31=@"19999.99999";
-    if ([_head31 length]>6 && [_head31 intValue]>10000) {
-        _head31=[NSString stringWithFormat:@"%.1e",[_head31 floatValue]];
-    }
+   
       Lable8.text=_head31;
     Lable8.textAlignment=NSTextAlignmentCenter;
     Lable8.textColor=[UIColor whiteColor];

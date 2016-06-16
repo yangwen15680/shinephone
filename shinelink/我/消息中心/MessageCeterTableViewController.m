@@ -13,6 +13,7 @@
 @property(nonatomic,strong)NSMutableArray *titleArray;
 @property(nonatomic,strong)NSMutableArray *timeArray;
 @property(nonatomic,strong)NSMutableArray *contentArray;
+@property(nonatomic,strong)NSMutableDictionary *messageDic;
 @property (nonatomic, strong) UIAlertView *Alert1;
 
 @end
@@ -63,13 +64,17 @@
         [userDefaultes setObject:nil forKey:@"MessageTimeArray"];
         [userDefaultes setObject:nil forKey:@"MessageContentArray"];
     }
-    
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
 -(void)initData{
 
  NSUserDefaults *userDefaultes = [NSUserDefaults standardUserDefaults];
+    
+      //[userDefaultes setObject:_messegeDic forKey:@"MessageDic"];
+    
+    _messageDic=[NSMutableDictionary dictionaryWithDictionary:[userDefaultes dictionaryForKey:@"MessageDic"]];
     _titleArray =[NSMutableArray arrayWithArray:[userDefaultes arrayForKey:@"MessageTitleArray"]];
    
     
@@ -86,6 +91,7 @@
         [userDefaultes setObject:_titleArray forKey:@"MessageTitleArray"];
         [userDefaultes setObject:_timeArray forKey:@"MessageTimeArray"];
         [userDefaultes setObject:_contentArray forKey:@"MessageContentArray"];
+            [userDefaultes setObject:nil forKey:@"MessageDic"];
     }
     
    

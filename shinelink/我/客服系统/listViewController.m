@@ -26,6 +26,7 @@
 @property(nonatomic,strong)NSMutableArray *allArray;
 @property(nonatomic,strong)NSMutableArray *questionID;
 @property(nonatomic,strong)NSMutableArray *questionPicArray;
+@property(nonatomic,strong)NSMutableArray *answerName;
 @property(nonatomic,strong)NSString *delQuestionID;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 
@@ -41,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+        [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     
 }
 
@@ -57,6 +59,7 @@
     self.questionTypeArray=[NSMutableArray array];
     self.questionPicArray=[NSMutableArray array];
     self.contentSecondArray=[NSMutableArray array];
+    self.answerName=[NSMutableArray array];
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"userId":userID} paramarsSite:@"/questionAPI.do?op=questionList" sucessBlock:^(id content) {
@@ -76,18 +79,22 @@
                 NSArray *PIC = [questionPIC componentsSeparatedByString:@"_"];
                 
                  NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
-                if(contentS2[0] != nil && ![(NSArray*)contentS2[0] isKindOfClass:[NSNull class]] && ((NSArray*)contentS2[0]).count !=0){
-               // if([contentS2[0] containsObject:@"message"]){
+                if(contentS2[0] != nil && ![(NSArray*)contentS2[0] isKindOfClass:[NSNull class]] && ((NSArray*)contentS2[0]).count !=0)
+                {
                     
-                //NSArray *contentS2=[NSArray arrayWithArray:content[i][@"serviceQuestionReplyBean"]];
-                  
+                    
                 if ([contentS2[0][@"message"] length]>0) {
                     NSString *contentS3=[NSString stringWithFormat:@"%@",contentS2[0][@"message"]];
                       [_contentArray addObject:contentS3];
+                  
+                     NSString *contentS4=[NSString stringWithFormat:@"%@",contentS2[0][@"userName"]];
+                       [_answerName addObject:contentS4];
                 }else{
+                         [_answerName addObject:root_wenti_leirong];
                   [_contentArray addObject:contentS1];
                 }
                 }else{
+                     [_answerName addObject:root_wenti_leirong];
                   [_contentArray addObject:contentS1];
                 }
                 
@@ -145,19 +152,25 @@
         cell.titleView.backgroundColor=COLOR(201, 201, 201, 1);
     }
     
+    NSString *contentLabel_1=_answerName[indexPath.row];
+    NSString *contentLabel_2=_contentArray[indexPath.row];
+    NSString *contentLabel_3=[NSString stringWithFormat:@"%@,%@",contentLabel_1,contentLabel_2];
+    
     
     cell.titleLabel.text= self.titleArray[indexPath.row];
       // cell.statusLabel.text= self.statusArray[indexPath.row];
-       cell.contentLabel.text= self.contentArray[indexPath.row];
+       cell.contentLabel.text= contentLabel_3;
     cell.timeLabel.text=self.timeArray[indexPath.row];
-    cell.content=self.contentArray[indexPath.row];
-    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14*HEIGHT_SIZE]} context:nil];
-     cell.contentLabel.frame =CGRectMake(10*NOW_SIZE, 45*HEIGHT_SIZE, 300*NOW_SIZE, fcRect.size.height);
-   cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-210*NOW_SIZE, 80*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
+    //cell.content=self.contentArray[indexPath.row];
+    
+    
+//    CGRect fcRect = [cell.content boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14*HEIGHT_SIZE]} context:nil];
+//     cell.contentLabel.frame =CGRectMake(10*NOW_SIZE, 45*HEIGHT_SIZE, 300*NOW_SIZE, fcRect.size.height);
+//   cell.timeLabel.frame=CGRectMake(SCREEN_WIDTH-210*NOW_SIZE, 80*HEIGHT_SIZE+fcRect.size.height,200*NOW_SIZE, 20*HEIGHT_SIZE );
     cell.selectionStyle=UITableViewCellSelectionStyleGray;
      //NSLog(@"content=%@",cell.content);
   
-    cell.view1.frame=CGRectMake(0, 80*HEIGHT_SIZE+fcRect.size.height+20*HEIGHT_SIZE,SCREEN_Width, 10*HEIGHT_SIZE );
+//    cell.view1.frame=CGRectMake(0, 80*HEIGHT_SIZE+fcRect.size.height+20*HEIGHT_SIZE,SCREEN_Width, 10*HEIGHT_SIZE );
  
     
     UILongPressGestureRecognizer * longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(cellDidLongPressed:)];
@@ -232,9 +245,10 @@
 {
 
     
-    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14 *HEIGHT_SIZE]} context:nil];
-    return 110*HEIGHT_SIZE+fcRect.size.height;
+//    CGRect fcRect = [self.contentArray[indexPath.row] boundingRectWithSize:CGSizeMake(300*Width, 1000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14 *HEIGHT_SIZE]} context:nil];
+//    return 110*HEIGHT_SIZE+fcRect.size.height;
     
+    return 60*HEIGHT_SIZE;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

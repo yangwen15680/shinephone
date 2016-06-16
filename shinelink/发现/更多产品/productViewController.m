@@ -55,7 +55,22 @@
 }
 
 -(void)netProduct{
-    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_paramImage} paramarsSite:@"/newProductAPI.do?op=getProductParamImage" sucessBlock:^(id content2) {
+    
+    
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+      NSString *_languageValue ;
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    
+    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_paramImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductParamImage" sucessBlock:^(id content2) {
         
         [self hideProgressView];
         NSLog(@"getProductParamImage=: %@", content2);
