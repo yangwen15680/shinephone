@@ -269,6 +269,12 @@
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
 		337532EF1D051579009CE66F /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 337532EE1D051579009CE66F /* PushConfig.plist */; };
 		337532F31D051C14009CE66F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 337532F21D051C14009CE66F /* libz.tbd */; };
+		3376ED5E1D12A2EA009526B4 /* 处理中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED5B1D12A2EA009526B4 /* 处理中.png */; };
+		3376ED5F1D12A2EA009526B4 /* 待处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED5C1D12A2EA009526B4 /* 待处理.png */; };
+		3376ED641D12A2F4009526B4 /* Pend-ing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED611D12A2F4009526B4 /* Pend-ing.png */; };
+		3376ED651D12A2F4009526B4 /* Proce-ssed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED621D12A2F4009526B4 /* Proce-ssed.png */; };
+		3376ED661D12A2F4009526B4 /* Proce-ssing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED631D12A2F4009526B4 /* Proce-ssing.png */; };
+		3376ED681D12A4A6009526B4 /* 已处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED671D12A4A6009526B4 /* 已处理.png */; };
 		33793D121CE582B0000D0F9E /* inverter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D111CE582B0000D0F9E /* inverter2.png */; };
 		33793D141CE583AD000D0F9E /* storage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D131CE583AD000D0F9E /* storage4.png */; };
 		33793D161CE583E4000D0F9E /* solar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D151CE583E4000D0F9E /* solar4.png */; };
@@ -869,6 +875,12 @@
 		33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pvLogTableViewCell.m; sourceTree = "<group>"; };
 		337532EE1D051579009CE66F /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		337532F21D051C14009CE66F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		3376ED5B1D12A2EA009526B4 /* 处理中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "处理中.png"; sourceTree = "<group>"; };
+		3376ED5C1D12A2EA009526B4 /* 待处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待处理.png"; sourceTree = "<group>"; };
+		3376ED611D12A2F4009526B4 /* Pend-ing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pend-ing.png"; sourceTree = "<group>"; };
+		3376ED621D12A2F4009526B4 /* Proce-ssed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Proce-ssed.png"; sourceTree = "<group>"; };
+		3376ED631D12A2F4009526B4 /* Proce-ssing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Proce-ssing.png"; sourceTree = "<group>"; };
+		3376ED671D12A4A6009526B4 /* 已处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已处理.png"; sourceTree = "<group>"; };
 		33793D111CE582B0000D0F9E /* inverter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverter2.png; sourceTree = "<group>"; };
 		33793D131CE583AD000D0F9E /* storage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage4.png; sourceTree = "<group>"; };
 		33793D151CE583E4000D0F9E /* solar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solar4.png; sourceTree = "<group>"; };
@@ -2064,6 +2076,19 @@
 			path = "能源二级";
 			sourceTree = "<group>";
 		};
+		3376ED5A1D12A2DD009526B4 /* 图片8 */ = {
+			isa = PBXGroup;
+			children = (
+				3376ED5B1D12A2EA009526B4 /* 处理中.png */,
+				3376ED5C1D12A2EA009526B4 /* 待处理.png */,
+				3376ED671D12A4A6009526B4 /* 已处理.png */,
+				3376ED611D12A2F4009526B4 /* Pend-ing.png */,
+				3376ED621D12A2F4009526B4 /* Proce-ssed.png */,
+				3376ED631D12A2F4009526B4 /* Proce-ssing.png */,
+			);
+			path = "图片8";
+			sourceTree = "<group>";
+		};
 		337C30511CCDAEDA002B99B7 /* pic */ = {
 			isa = PBXGroup;
 			children = (
@@ -2268,6 +2293,7 @@
 		3381ED061CBCE8C300DCF0D2 /* 我的问题 */ = {
 			isa = PBXGroup;
 			children = (
+				3376ED5A1D12A2DD009526B4 /* 图片8 */,
 				33528FEE1C83E41D00D07889 /* listViewController.h */,
 				33528FEF1C83E41D00D07889 /* listViewController.m */,
 				33528FF41C83E95F00D07889 /* listTableViewCell.h */,
@@ -2667,6 +2693,7 @@
 				334FEF8E1CF45AEB001E6716 /* btn1.png in Resources */,
 				334FF0BE1CF53C7C001E6716 /* shinesmart.png in Resources */,
 				33EFB6331C97DAB5003F336F /* 控制.jpg in Resources */,
+				3376ED681D12A4A6009526B4 /* 已处理.png in Resources */,
 				33FEFD5C1C7DB38400324374 /* icon---Name.png in Resources */,
 				334AED601CA3763D007E39F3 /* 资料管理.png in Resources */,
 				335089211C73178100D7AA03 /* btn_cha.png in Resources */,
@@ -2693,6 +2720,7 @@
 				338990AF1CEAB61400A708F8 /* mebg.png in Resources */,
 				335317461CA29E71003F106D /* storage.png in Resources */,
 				3355AD9A1CF6A49400AE6891 /* 222.jpg in Resources */,
+				3376ED641D12A2F4009526B4 /* Pend-ing.png in Resources */,
 				334FF0C01CF53C7C001E6716 /* top.png in Resources */,
 				33FFBD411CEC461A003C56E1 /* powerE.png in Resources */,
 				33238B431CBF7C3B00E82B86 /* server3@3x.png in Resources */,
@@ -2710,6 +2738,7 @@
 				3383F1321C9FF4210075E834 /* TemperatureController.png in Resources */,
 				33FEFD621C7DB38400324374 /* icon---Username.png in Resources */,
 				334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */,
+				3376ED5E1D12A2EA009526B4 /* 处理中.png in Resources */,
 				33EFB67C1C99320B003F336F /* logo.png in Resources */,
 				335BF1F21D100EC7008EEE99 /* kuang3.jpg in Resources */,
 				334FF0B91CF53C7C001E6716 /* btn_check_off.png in Resources */,
@@ -2728,6 +2757,7 @@
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
 				3381ED041CBCDB1500DCF0D2 /* service@2x.png in Resources */,
 				3381ED0B1CBCF70400DCF0D2 /* 更多产品2.png in Resources */,
+				3376ED651D12A2F4009526B4 /* Proce-ssed.png in Resources */,
 				33FFBD431CEC462C003C56E1 /* storageE.png in Resources */,
 				3381ECF91CBCA63000DCF0D2 /* 控制优先级设置切图.png in Resources */,
 				33FEFD591C7DB38400324374 /* icon---Email.png in Resources */,
@@ -2749,6 +2779,7 @@
 				3355AD981CF6A49400AE6891 /* 444.jpg in Resources */,
 				3367D9871CED6D5700DE7528 /* triangular2.png in Resources */,
 				33FFBD491CEC468F003C56E1 /* powerD.png in Resources */,
+				3376ED661D12A2F4009526B4 /* Proce-ssing.png in Resources */,
 				33FEFD671C7DB38400324374 /* iconfont-address@2x.png in Resources */,
 				335BF1E71D100558008EEE99 /* message.png in Resources */,
 				334B8F5E1C914B4E00798A69 /* LICENSE in Resources */,
@@ -2839,6 +2870,7 @@
 				336664FC1CB78CF0005573FB /* bg5.png in Resources */,
 				334AED661CA3774C007E39F3 /* 密码3.png in Resources */,
 				33FEFD6E1C7DB38400324374 /* iconfont-gongsijianjie@3x.png in Resources */,
+				3376ED5F1D12A2EA009526B4 /* 待处理.png in Resources */,
 				334770FE1C9A3E35003A6F13 /* equipment@2x.png in Resources */,
 				337F9C931C71A6710016FE43 /* Assets.xcassets in Resources */,
 				33FFBD4D1CEC6D42003C56E1 /* bg3.jpg in Resources */,

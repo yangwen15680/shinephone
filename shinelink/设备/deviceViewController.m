@@ -445,13 +445,13 @@
            
             if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:@"inverter2.png"];
-                NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"power"]];
+                NSString *PO=[NSString stringWithFormat:@"%@W",content[@"deviceList"][i][@"power"]];
                 [powerArray addObject:PO];
-                NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"eToday"]];
+                NSString *DY=[NSString stringWithFormat:@"%@kWh",content[@"deviceList"][i][@"eToday"]];
                 [dayArray addObject:DY];
             }else if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"storage"]){
              [imageArray addObject:@"storage.png"];
-                NSString *PO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"pCharge"]];
+                NSString *PO=[NSString stringWithFormat:@"%@W",content[@"deviceList"][i][@"pCharge"]];
                 [powerArray addObject:PO];
                 NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"capacity"]];
                 [dayArray addObject:DY];

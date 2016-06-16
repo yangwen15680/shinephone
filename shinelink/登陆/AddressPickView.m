@@ -30,10 +30,10 @@
 + (instancetype)shareInstance
 {
     static AddressPickView *shareInstance = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+   // static dispatch_once_t onceToken;
+    //dispatch_once(&onceToken, ^{
         shareInstance = [[AddressPickView alloc] init];
-    });
+  //  });
     
     [shareInstance showBottomView];
     return shareInstance;

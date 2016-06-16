@@ -26,7 +26,7 @@
     self =[super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 50*HEIGHT_SIZE, 50*HEIGHT_SIZE)];
+        self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7.5*NOW_SIZE, 7.5*HEIGHT_SIZE, 45*HEIGHT_SIZE, 45*HEIGHT_SIZE)];
         
         [self.contentView addSubview:_coverImageView];
         
@@ -35,13 +35,13 @@
 //      //  titleView.backgroundColor=mainColor;
 //        [self addSubview:_titleView];
         
-        _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 5*HEIGHT_SIZE,200*NOW_SIZE, 30*HEIGHT_SIZE) ];
-        _titleLabel.font =[UIFont systemFontOfSize:14*HEIGHT_SIZE];
-        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*NOW_SIZE, 5*HEIGHT_SIZE,180*NOW_SIZE, 30*HEIGHT_SIZE) ];
+        _titleLabel.font =[UIFont systemFontOfSize:16*HEIGHT_SIZE];
+        _titleLabel.textColor = [UIColor blackColor];
         _titleLabel.textAlignment =NSTextAlignmentLeft;
         [self.contentView  addSubview:_titleLabel];
         
-        _timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(260*NOW_SIZE, 5*HEIGHT_SIZE,50*NOW_SIZE, 30*HEIGHT_SIZE) ];
+        _timeLabel=[[UILabel alloc]initWithFrame:CGRectMake(240*NOW_SIZE, 5*HEIGHT_SIZE,70*NOW_SIZE, 30*HEIGHT_SIZE) ];
         _timeLabel.font =[UIFont systemFontOfSize:10*HEIGHT_SIZE];
         _timeLabel.textColor = [UIColor grayColor];
         _timeLabel.textAlignment =NSTextAlignmentRight;
@@ -55,7 +55,7 @@
         
     
         
-        _contentLabel =[[UILabel alloc]initWithFrame:CGRectMake(55*NOW_SIZE, 35*HEIGHT_SIZE,50*NOW_SIZE, 20*HEIGHT_SIZE) ];
+        _contentLabel =[[UILabel alloc]initWithFrame:CGRectMake(60*NOW_SIZE, 35*HEIGHT_SIZE,170*NOW_SIZE, 20*HEIGHT_SIZE) ];
         _contentLabel.font =[UIFont systemFontOfSize:12*HEIGHT_SIZE];
         _contentLabel.textColor = [UIColor grayColor];
         _contentLabel.textAlignment =NSTextAlignmentLeft;

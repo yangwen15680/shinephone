@@ -29,7 +29,7 @@
 @property(nonatomic,strong)NSMutableArray *answerName;
 @property(nonatomic,strong)NSString *delQuestionID;
 @property (nonatomic, strong) NSIndexPath *indexPath;
-
+@property (nonatomic, strong)  NSString *languageValue ;
 @end
 
 @implementation listViewController
@@ -44,10 +44,60 @@
     
         [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+   
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        _languageValue=@"0";
+    }else if ([currentLanguage isEqualToString:@"en-CN"]){
+        _languageValue=@"1";
+    }else{
+        _languageValue=@"2";
+    }
+
+    self.navigationItem.title = root_ME_wenti_liebiao;
+    _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-100*HEIGHT_SIZE)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    // self.tableView.separatorStyle=NO;
+    self.tableView.backgroundColor=COLOR(240, 242, 239, 1);
+    //   self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tableView.scrollEnabled = YES;
+    _tableView.showsVerticalScrollIndicator = YES;
+    [self.view addSubview:_tableView];
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+        
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+        
+    }
 }
 
 -(void)netquestion{
 
+    
     NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
     NSString *userID=[ud objectForKey:@"userID"];
     
@@ -87,8 +137,9 @@
                     NSString *contentS3=[NSString stringWithFormat:@"%@",contentS2[0][@"message"]];
                       [_contentArray addObject:contentS3];
                   
-                     NSString *contentS4=[NSString stringWithFormat:@"%@",contentS2[0][@"userName"]];
+                     NSString *contentS4=[NSString stringWithFormat:@"%@:",contentS2[0][@"userName"]];
                        [_answerName addObject:contentS4];
+                    
                 }else{
                          [_answerName addObject:root_wenti_leirong];
                   [_contentArray addObject:contentS1];
@@ -107,15 +158,8 @@
                 [_questionID addObject:question];
                 [_questionTypeArray addObject:questiontype];
             }
-            
-            self.navigationItem.title = root_ME_wenti_liebiao;
-            _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-40*HEIGHT_SIZE)];
-            _tableView.delegate = self;
-            _tableView.dataSource = self;
-            self.tableView.separatorStyle=NO;
-            self.tableView.backgroundColor=COLOR(240, 242, 239, 1);
-            self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-            [self.view addSubview:_tableView];
+            [self.tableView reloadData];
+           
         }
     } failure:^(NSError *error) {
         [self hideProgressView];
@@ -141,26 +185,41 @@
     
      [cell.contentView setBackgroundColor: [UIColor whiteColor] ];
     
-    if ([_statusArray[indexPath.row] isEqualToString:@"0"]) {
-         cell.statusLabel.text= root_ME_wei_chuli;
-        cell.titleView.backgroundColor=COLOR(244, 147, 147, 1);
-    }else if ([_statusArray[indexPath.row] isEqualToString:@"1"]){
-        cell.statusLabel.text=root_ME_zhengzai_chuli;
-        cell.titleView.backgroundColor=COLOR(144, 211, 112, 1);
-    }else if([_statusArray[indexPath.row] isEqualToString:@"2"]){
-        cell.statusLabel.text= root_ME_yi_chuli;
-        cell.titleView.backgroundColor=COLOR(201, 201, 201, 1);
+    
+    if ([_languageValue isEqualToString:@"0"]) {
+        
+        if ([_statusArray[indexPath.row] isEqualToString:@"0"]) {
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"待处理.png"]];
+        }else if ([_statusArray[indexPath.row] isEqualToString:@"1"]){
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"处理中.png"]];
+        }else if([_statusArray[indexPath.row] isEqualToString:@"2"]){
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"已处理.png"]];
+        }
+    }else{
+        if ([_statusArray[indexPath.row] isEqualToString:@"0"]) {
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"Pend-ing.png"]];
+        }else if ([_statusArray[indexPath.row] isEqualToString:@"1"]){
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"Proce-ssing.png"]];
+        }else if([_statusArray[indexPath.row] isEqualToString:@"2"]){
+            [cell.coverImageView  setImage:[UIImage imageNamed:@"Proce-ssed.png"]];
+        }
+    
     }
+    
+   
     
     NSString *contentLabel_1=_answerName[indexPath.row];
     NSString *contentLabel_2=_contentArray[indexPath.row];
-    NSString *contentLabel_3=[NSString stringWithFormat:@"%@,%@",contentLabel_1,contentLabel_2];
+    NSString *contentLabel_3=[NSString stringWithFormat:@"%@%@",contentLabel_1,contentLabel_2];
     
     
     cell.titleLabel.text= self.titleArray[indexPath.row];
-      // cell.statusLabel.text= self.statusArray[indexPath.row];
-       cell.contentLabel.text= contentLabel_3;
+    cell.contentLabel.text= contentLabel_3;
     cell.timeLabel.text=self.timeArray[indexPath.row];
+    
+    
+      // cell.statusLabel.text= self.statusArray[indexPath.row];
+    
     //cell.content=self.contentArray[indexPath.row];
     
     

@@ -39,12 +39,44 @@
     //获取本地语言
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *regLanguage = [languages objectAtIndex:0];
+    
+    if ([regLanguage isEqualToString:@"en-CN"]) {
+            [_dataDic setObject:@"en" forKey:@"regLanguage"];
+    }else if ([regLanguage isEqualToString:@"zh-Hans-CN"]){
+          [_dataDic setObject:@"zh_cn" forKey:@"regLanguage"];
+    }else if ([regLanguage isEqualToString:@"fr-CN"]){
+        [_dataDic setObject:@"fr" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"ja-CN"]){
+        [_dataDic setObject:@"ja" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"it-CN"]){
+        [_dataDic setObject:@"it" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"nl-CN"]){
+        [_dataDic setObject:@"ho" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"tr-CN"]){
+        [_dataDic setObject:@"tk" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"pl-CN"]){
+        [_dataDic setObject:@"pl" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"el-CN"]){
+        [_dataDic setObject:@"gk" forKey:@"regLanguage"];
+    }
+    else if ([regLanguage isEqualToString:@"de-CN"]){
+        [_dataDic setObject:@"gm" forKey:@"regLanguage"];
+    }else{
+         [_dataDic setObject:@"en" forKey:@"regLanguage"];
+    }
+    
  
      //获取时区
     NSTimeZone *regTimeZone1 = [NSTimeZone systemTimeZone];
     NSInteger regTimeZone = [regTimeZone1 secondsFromGMT]/3600;
    
-     [_dataDic setObject:regLanguage forKey:@"regLanguage"];
+ 
     [_dataDic setObject:[NSNumber numberWithInteger:regTimeZone] forKey:@"regTimeZone"];
     //[NSNumber numberWithInt:i
    

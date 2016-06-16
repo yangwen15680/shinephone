@@ -235,17 +235,17 @@ NSLog(@"体验馆");
     
     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL_Demo paramars:@{@"admin":@"admin"} paramarsSite:@"/newLoginAPI.do?op=getServerUrlList" sucessBlock:^(id content) {
-        
+         [self hideProgressView];
         NSLog(@"getServerUrlList: %@", content);
         if (content) {
             
             _demoArray=[NSMutableDictionary dictionaryWithDictionary:content];
             
             if(_demoArray.count>0){
-                AddressPickView *addressPickView = [AddressPickView shareInstance];
-                addressPickView.provinceArray=[NSMutableArray arrayWithArray:[_demoArray allKeys]];
-                [self.view addSubview:addressPickView];
-                addressPickView.block = ^(NSString *province){
+                AddressPickView *addressPickView1 = [AddressPickView shareInstance];
+                addressPickView1.provinceArray=[NSMutableArray arrayWithArray:[_demoArray allKeys]];
+                [self.view addSubview:addressPickView1];
+                addressPickView1.block = ^(NSString *province){
                     // [self.dataDic setObject:city forKey:@"regCountry"];
                     // [self.dataDic setObject:town forKey:@"regCity"];
                     _serverDemoAddress = [_demoArray objectForKey:[NSString stringWithFormat:@"%@",province]] ;
@@ -259,6 +259,7 @@ NSLog(@"体验馆");
                     
                 };
             }else{
+                   [self hideProgressView];
                 [self showToastViewWithTitle:root_country_huoQu];
                 return;
                 
