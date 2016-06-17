@@ -60,15 +60,15 @@
         
         NSLog(@"getEnergyList: %@", content);
         if (content) {
-            NSString *A1=[NSString stringWithFormat:@"%@",content[@"familyEnergy"][@"monthEnergy"]];
-            NSString *A2=[NSString stringWithFormat:@"%@",content[@"familyDevice"][@"mostEnergy"]];
-             NSString *A3=[NSString stringWithFormat:@"%@",content[@"photovoltaicEnergy"][@"monthEnergy"]];
-             NSString *A4=[NSString stringWithFormat:@"%@",content[@"storageEnergy"][@"monthEnergy"]];
+            NSString *A1=[NSString stringWithFormat:@"%@%@",monthArray[0],content[@"familyEnergy"][@"monthEnergy"]];
+            NSString *A2=[NSString stringWithFormat:@"%@%@",monthArray[1],content[@"familyDevice"][@"mostEnergy"]];
+             NSString *A3=[NSString stringWithFormat:@"%@%@",monthArray[2],content[@"photovoltaicEnergy"][@"monthEnergy"]];
+             NSString *A4=[NSString stringWithFormat:@"%@%@",monthArray[3],content[@"storageEnergy"][@"monthEnergy"]];
             
-            NSString *B1=[NSString stringWithFormat:@"%@",content[@"familyEnergy"][@"todayEnergy"]];
-            NSString *B2=[NSString stringWithFormat:@"%@",content[@"familyDevice"][@"mostPower"]];
-            NSString *B3=[NSString stringWithFormat:@"%@",content[@"photovoltaicEnergy"][@"todayEnergy"]];
-            NSString *B4=[NSString stringWithFormat:@"%@",content[@"storageEnergy"][@"todayEnergy"]];
+            NSString *B1=[NSString stringWithFormat:@"%@%@",dayArray[0],content[@"familyEnergy"][@"todayEnergy"]];
+            NSString *B2=[NSString stringWithFormat:@"%@%@",dayArray[1],content[@"familyDevice"][@"mostPower"]];
+            NSString *B3=[NSString stringWithFormat:@"%@%@",dayArray[2],content[@"photovoltaicEnergy"][@"todayEnergy"]];
+            NSString *B4=[NSString stringWithFormat:@"%@%@",dayArray[3],content[@"storageEnergy"][@"todayEnergy"]];
             
             [monthDateArray replaceObjectAtIndex:0 withObject:A1];
             [monthDateArray replaceObjectAtIndex:1 withObject:A2];

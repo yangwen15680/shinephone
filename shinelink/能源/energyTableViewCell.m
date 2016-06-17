@@ -47,16 +47,17 @@
 //        [self.contentView addSubview:_detail];
         
         
-        self.state = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5, 40*HEIGHT_SIZE, labelWidth1+10*NOW_SIZE, labelHeight)];
+//        self.state = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5, 40*HEIGHT_SIZE, labelWidth1+10*NOW_SIZE, labelHeight)];
+//        
+//        self.state.font=[UIFont systemFontOfSize:fontSize];
+//        self.state.textAlignment = NSTextAlignmentRight;
+//        self.state.textColor = [UIColor labelColor];
+//        [self.contentView addSubview:_state];
         
-        self.state.font=[UIFont systemFontOfSize:fontSize];
-        self.state.textAlignment = NSTextAlignmentRight;
-        self.state.textColor = [UIColor labelColor];
-        [self.contentView addSubview:_state];
-        
-        self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+labelWidth, 40*HEIGHT_SIZE, labelWidth, labelHeight)];
+        float width2=SCREEN_Width-(55*HEIGHT_SIZE+10*NOW_SIZE);
+        self.stateValue = [[UILabel alloc] initWithFrame:CGRectMake( 55*HEIGHT_SIZE+10*NOW_SIZE, 40*HEIGHT_SIZE, width2/2, labelHeight)];
         self.stateValue.font=[UIFont systemFontOfSize:fontSize];
-        self.stateValue.textAlignment = NSTextAlignmentLeft;
+        self.stateValue.textAlignment = NSTextAlignmentCenter;
         self.stateValue.textColor = [UIColor labelColor];
         [self.contentView addSubview:_stateValue];
         
@@ -64,17 +65,17 @@
         
       
         
-        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth-5*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth1+15*NOW_SIZE, labelHeight)];
+//        self.electric = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth-5*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth1+15*NOW_SIZE, labelHeight)];
+//        
+//        self.electric.font=[UIFont systemFontOfSize:fontSize];
+//        self.electric.textAlignment = NSTextAlignmentRight;
+//        self.electric.textColor = [UIColor labelColor];
+//        [self.contentView addSubview:_electric];
         
-        self.electric.font=[UIFont systemFontOfSize:fontSize];
-        self.electric.textAlignment = NSTextAlignmentRight;
-        self.electric.textColor = [UIColor labelColor];
-        [self.contentView addSubview:_electric];
-        
-        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake( SCREEN_Width/5+2*labelWidth+labelWidth, 40*HEIGHT_SIZE, labelWidth, labelHeight)];
+        self.electricValue = [[UILabel alloc] initWithFrame:CGRectMake(55*HEIGHT_SIZE+10*NOW_SIZE+width2/2, 40*HEIGHT_SIZE, width2/2, labelHeight)];
         
         self.electricValue.font=[UIFont systemFontOfSize:fontSize];
-        self.electricValue.textAlignment = NSTextAlignmentLeft;
+        self.electricValue.textAlignment = NSTextAlignmentCenter;
         self.electricValue.textColor = [UIColor labelColor];
         [self.contentView addSubview:_electricValue];
         

@@ -83,7 +83,7 @@
     
     _contentArray =[NSMutableArray arrayWithArray:[userDefaultes arrayForKey:@"MessageContentArray"]];
     
-    if (_messageDic.count>0) {
+    if (_messageDic.count>2) {
         [_titleArray addObject:_messageDic[@"title"]];
         [_timeArray addObject:_messageDic[@"time"]];
         [_contentArray addObject:_messageDic[@"content"]];

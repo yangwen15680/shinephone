@@ -429,6 +429,7 @@ NSLog(@"体验馆");
 -(void)setAlias{
     NSString *AliasName=_userTextField.text;
     
+  //  NSString *AliasName=_userTextField.text;
     [JPUSHService setTags:nil alias:AliasName fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias){
         NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags, iAlias);
     }];
