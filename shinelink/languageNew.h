@@ -474,7 +474,25 @@
 
 #define root_wo_qingkong_lishi_shuju     NSLocalizedString(@"是否清空历史数据", nil)
 #define root_wenti_leirong    NSLocalizedString(@"问题内容:", nil)
-\
+
+//配置WIFI
+#define root_peizhi_shinewifi    NSLocalizedString(@"配置ShineWifi", nil)
+#define root_peizhi_shinewifi_yi    NSLocalizedString(@"ShineWifi提示一", nil)
+#define root_peizhi_shinewifi_er    NSLocalizedString(@"ShineWifi提示二", nil)
+#define root_peizhi_shinewifi_name    NSLocalizedString(@"ShineWifi输入路由器", nil)
+#define root_peizhi_shinewifi_mima    NSLocalizedString(@"ShineWifi密码", nil)
+#define root_peizhi_shinewifi_shuru_mima   NSLocalizedString(@"ShineWifi输入路由器密码", nil)
+#define root_peizhi_shinewifi_xiugai_mima   NSLocalizedString(@"ShineWifi修改密码", nil)
+#define root_peizhi_shinewifi_xin_mima   NSLocalizedString(@"ShineWifi新密码", nil)
+#define root_peizhi_shinewifi_shuru_wifi_mima   NSLocalizedString(@"请输入Wifi密码", nil)
+#define root_peizhi_shinewifi_shuru_chaxun_xinxi   NSLocalizedString(@"查询采集器信息", nil)
+#define root_peizhi_shinewifi_xuliehao   NSLocalizedString(@"序列号", nil)
+#define root_peizhi_shinewifi_jiaoyanma   NSLocalizedString(@"shinewifi校验码", nil)
+
+#define root_peizhi_shinewifi_E_shaomiao   NSLocalizedString(@"扫描设备和设置路由器", nil)
+#define root_peizhi_shinewifi_E_mingzi   NSLocalizedString(@"ShineWifiE名字", nil)
+
+
 
 
 #endif /* languageNew_h */

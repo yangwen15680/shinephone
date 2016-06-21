@@ -29,7 +29,7 @@
     [super viewDidLoad];
  
     self.view.backgroundColor=MainColor;
-    self.title=@"Set ShineWifi";
+    self.title=root_peizhi_shinewifi;
     
     //网络状态
     [self initUI];
@@ -65,7 +65,7 @@
 
     
    _connectWifiLabel=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,50*HEIGHT_SIZE )];
-    _connectWifiLabel.text=@"Please enter the phone system needs to be set on a connection WiFi device";
+    _connectWifiLabel.text=root_peizhi_shinewifi_yi;
     _connectWifiLabel.textAlignment=NSTextAlignmentLeft;
     _connectWifiLabel.textColor=[UIColor whiteColor];
     _connectWifiLabel.numberOfLines=0;
@@ -82,7 +82,7 @@
     
     
     _connectModemLabel=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,40*HEIGHT_SIZE )];
-    _connectModemLabel.text=@"Please enter you need to connect the router name and password";
+    _connectModemLabel.text=root_peizhi_shinewifi_er;
     _connectModemLabel.textAlignment=NSTextAlignmentLeft;
     _connectModemLabel.textColor=[UIColor whiteColor];
     _connectModemLabel.numberOfLines=0;
@@ -101,7 +101,7 @@
     [pwdBgImageView2 addSubview:_ssidLabel];
     
     self.ssidTextField = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 50*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
-    self.ssidTextField.placeholder = @"Enter name of router";
+    self.ssidTextField.placeholder = root_peizhi_shinewifi_name;
     //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.ssidTextField.secureTextEntry = NO;
     self.ssidTextField.textColor = [UIColor whiteColor];
@@ -116,7 +116,7 @@
     [pwdBgImageView2 addSubview:view1];
     
     _wskeyLabel=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 75*HEIGHT_SIZE, 100*NOW_SIZE,20*HEIGHT_SIZE )];
-    _wskeyLabel.text=@"Password:";
+    _wskeyLabel.text=root_peizhi_shinewifi_mima;
     _wskeyLabel.textAlignment=NSTextAlignmentRight;
     _wskeyLabel.textColor=[UIColor whiteColor];
     _wskeyLabel.numberOfLines=0;
@@ -124,7 +124,7 @@
     [pwdBgImageView2 addSubview:_wskeyLabel];
     
     self.wskeyTextField = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 75*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
-    self.wskeyTextField.placeholder = @"Enter password of router";
+    self.wskeyTextField.placeholder = root_peizhi_shinewifi_shuru_mima;
     //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.wskeyTextField.secureTextEntry = NO;
     self.wskeyTextField.textColor = [UIColor whiteColor];
@@ -146,7 +146,7 @@
     
 
     UILabel *wifi=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,25*HEIGHT_SIZE)];
-    wifi.text=@"Modify Wi-Fi Module password:";
+    wifi.text=root_peizhi_shinewifi_xiugai_mima;
     wifi.textAlignment=NSTextAlignmentLeft;
     wifi.textColor=[UIColor whiteColor];
     wifi.numberOfLines=0;
@@ -158,7 +158,7 @@
 
     
     UILabel *wifiName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 35*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
-    wifiName.text=@"New Password:";
+    wifiName.text=root_peizhi_shinewifi_xin_mima;
     wifiName.textAlignment=NSTextAlignmentRight;
     wifiName.textColor=[UIColor whiteColor];
     wifiName.numberOfLines=0;
@@ -166,7 +166,7 @@
     [pwdBgImageView3 addSubview:wifiName];
     
     self.wakeyTextField2 = [[UITextField alloc] initWithFrame:CGRectMake(110*NOW_SIZE, 35*HEIGHT_SIZE, 180*NOW_SIZE,20*HEIGHT_SIZE )];
-    self.wakeyTextField2.placeholder = @"Enter password of wifi";
+    self.wakeyTextField2.placeholder = root_peizhi_shinewifi_shuru_wifi_mima;
     //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.wakeyTextField2.secureTextEntry = NO;
     self.wakeyTextField2.textColor = [UIColor whiteColor];
@@ -186,7 +186,7 @@
     [_scrollView addSubview:pwdBgImageView4];
     
     UILabel *SN=[[UILabel alloc]initWithFrame:CGRectMake(5*NOW_SIZE, 5*HEIGHT_SIZE, 300*NOW_SIZE,25*HEIGHT_SIZE)];
-    SN.text=@"Query Collector Message:";
+    SN.text=root_peizhi_shinewifi_shuru_chaxun_xinxi;
     SN.textAlignment=NSTextAlignmentLeft;
     SN.textColor=[UIColor whiteColor];
     SN.numberOfLines=0;
@@ -198,7 +198,7 @@
     
     
     UILabel *SnName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 35*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
-    SnName.text=@"Serial number:";
+    SnName.text=root_peizhi_shinewifi_xuliehao;
     SnName.textAlignment=NSTextAlignmentRight;
     SnName.textColor=[UIColor whiteColor];
     SnName.numberOfLines=0;
@@ -214,7 +214,7 @@
     [pwdBgImageView4 addSubview:_moduleNameLabel];
     
     UILabel *codeName=[[UILabel alloc]initWithFrame:CGRectMake(2*NOW_SIZE, 60*HEIGHT_SIZE, 105*NOW_SIZE,20*HEIGHT_SIZE )];
-    codeName.text=@"Check code:";
+    codeName.text=root_peizhi_shinewifi_jiaoyanma;
     codeName.textAlignment=NSTextAlignmentRight;
     codeName.textColor=[UIColor whiteColor];
     codeName.numberOfLines=0;

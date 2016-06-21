@@ -442,3 +442,24 @@
 "清空"="Clear";
 "是否清空历史数据"="Clear historical data?";
 "问题内容:"="Content:";
+
+"配置ShineWifi"="Set ShineWifi";
+"ShineWifi提示一"="Please enter the phone system needs to be set on a connection WiFi device";
+"ShineWifi提示二"="Please enter you need to connect the router name and password";
+"ShineWifi输入路由器"="Enter name of router";
+"ShineWifi密码"="password:";
+"ShineWifi输入路由器密码"="Enter password of router";
+"ShineWifi修改密码"="Modify Wi-Fi Module password:";
+"ShineWifi新密码"="password:";
+"请输入Wifi密码"="Enter password of wifi";
+"查询采集器信息"="Query Collector Message:";
+"序列号"="Serial number:";
+"shinewifi校验码"="Check code:";
+"扫描设备和设置路由器"="Scanning device and setting router ";
+"ShineWifiE名字"="Name:";
+
+
+
+
+
+

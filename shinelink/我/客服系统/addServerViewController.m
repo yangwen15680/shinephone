@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSMutableArray *picArray;
 @property (nonatomic, strong) NSMutableDictionary *allDict;
 @property (nonatomic, strong) NSString *typeName;
+@property (nonatomic, strong) NSString *typeNum;
 @property (nonatomic, strong) UIImageView *image1;
 @property (nonatomic, strong) UIImageView *image2;
 @property (nonatomic, strong) UIImageView *image3;
@@ -207,7 +208,7 @@
     NSString *userID=[ud objectForKey:@"userID"];
     
     [_allDict setObject:[_userTextField text] forKey:@"title"];
-   [_allDict setObject:_typeName forKey:@"questionType"];
+   [_allDict setObject:_typeNum forKey:@"questionType"];
     [_allDict setObject:[_SNTextField text] forKey:@"questionDevice"];
     [_allDict setObject:[_contentView text] forKey:@"content"];
        [_allDict setObject:userID forKey:@"userId"];
@@ -396,31 +397,38 @@
     //添加Button
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_nibianqi_guzhan style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
        _typeName=root_ME_nibianqi_guzhan;
+        _typeNum=@"1";
+        
           self.registLable.text=_typeName;
         self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_chunengji_guzhan style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
       _typeName=root_ME_chunengji_guzhan;
+         _typeNum=@"2";
           self.registLable.text=_typeName;
         self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_ruanjian_jianyi style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
     _typeName=root_ME_ruanjian_jianyi;
           self.registLable.text=_typeName;
+         _typeNum=@"3";
         self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_ruanjian_guzhan style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         _typeName=root_ME_ruanjian_guzhan;
+         _typeNum=@"4";
           self.registLable.text=_typeName;
         self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_qita_shebei_guzhan style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         _typeName=root_ME_qita_shebei_guzhan;
+         _typeNum=@"5";
           self.registLable.text=_typeName;
         self.registLable.textColor=[UIColor blackColor];
     }]];
     [alertController addAction: [UIAlertAction actionWithTitle: root_ME_qita_wenti style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         _typeName=root_ME_qita_wenti;
+          _typeNum=@"6";
           self.registLable.text=_typeName;
         self.registLable.textColor=[UIColor blackColor];
     }]];

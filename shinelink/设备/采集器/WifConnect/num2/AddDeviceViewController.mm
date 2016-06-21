@@ -111,7 +111,7 @@ static void *context = NULL;
     
     
     UILabel *noticeLable=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE, 10*HEIGHT_SIZE, 300*NOW_SIZE,40*HEIGHT_SIZE )];
-    noticeLable.text=@"Scanning device and setting router ";
+    noticeLable.text=root_peizhi_shinewifi_E_shaomiao;
     noticeLable.textAlignment=NSTextAlignmentLeft;
     noticeLable.textColor=[UIColor whiteColor];
     noticeLable.numberOfLines=0;
@@ -122,7 +122,7 @@ static void *context = NULL;
     [_scrollView addSubview:noticeLable];
     
      UILabel *wifiName=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 5*HEIGHT_SIZE, 100*NOW_SIZE,50*HEIGHT_SIZE )];
-    wifiName.text=@"Name:";
+    wifiName.text=root_peizhi_shinewifi_E_mingzi;
     wifiName.textAlignment=NSTextAlignmentRight;
     wifiName.textColor=[UIColor whiteColor];
     wifiName.numberOfLines=0;
@@ -130,7 +130,7 @@ static void *context = NULL;
     [pwdBgImageView2 addSubview:wifiName];
     
     self.ipName = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 5*HEIGHT_SIZE, 180*NOW_SIZE,50*HEIGHT_SIZE )];
-    self.ipName.placeholder = @"Enter name of router";
+    self.ipName.placeholder = root_peizhi_shinewifi_name;
     //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.ipName.secureTextEntry = NO;
     self.ipName.textColor = [UIColor whiteColor];
@@ -145,7 +145,7 @@ static void *context = NULL;
     [pwdBgImageView2 addSubview:view1];
     
     UILabel *Password=[[UILabel alloc]initWithFrame:CGRectMake(0*NOW_SIZE, 60*HEIGHT_SIZE, 100*NOW_SIZE,50*HEIGHT_SIZE )];
-    Password.text=@"Password:";
+    Password.text=root_peizhi_shinewifi_mima;
     Password.textAlignment=NSTextAlignmentRight;
     Password.textColor=[UIColor whiteColor];
     Password.numberOfLines=0;
@@ -153,7 +153,7 @@ static void *context = NULL;
     [pwdBgImageView2 addSubview:Password];
     
     self.pswd = [[UITextField alloc] initWithFrame:CGRectMake(105*NOW_SIZE, 60*HEIGHT_SIZE, 180*NOW_SIZE,50*HEIGHT_SIZE )];
-    self.pswd.placeholder = @"Enter password of router";
+    self.pswd.placeholder = root_peizhi_shinewifi_shuru_mima;
     //self.ssidTextField.keyboardType = UIKeyboardTypeASCIICapable;
     self.pswd.secureTextEntry = NO;
     self.pswd.textColor = [UIColor whiteColor];
