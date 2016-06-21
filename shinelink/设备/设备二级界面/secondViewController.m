@@ -33,6 +33,9 @@
 @property (nonatomic, strong) NSString *nominalPower;
 @property (nonatomic, strong) UIScrollView *scrollView;
 
+@property (nonatomic, strong) NSString *dayPower;
+@property (nonatomic, strong) NSString *totalPower;
+
 @end
 
 @implementation secondViewController
@@ -167,6 +170,30 @@
             _nominalPower=[content objectForKey:@"nominalPower"];
           _powerData=[content objectForKey:@"power"];
             
+            NSString *dayA=[NSString stringWithFormat:@"%@",content[@"eToday"]];
+            NSString *dayB=@"kWh";
+            
+            if ( [dayA intValue]>1000) {
+                float KW=(float)[dayA intValue]/1000;
+                dayB=@"MWh";
+                dayA=[NSString stringWithFormat:@"%.2f",KW];
+            }
+
+            _dayPower=[NSString stringWithFormat:@"%@%@",dayA,dayB];
+            
+            
+            NSString *totalA=[NSString stringWithFormat:@"%@",content[@"eTotal"]];
+            NSString *totalB=@"kWh";
+            
+            if ( [totalA intValue]>1000) {
+                float KW=(float)[totalA intValue]/1000;
+                totalB=@"MWh";
+                totalA=[NSString stringWithFormat:@"%.2f",KW];
+            }
+            
+            _totalPower=[NSString stringWithFormat:@"%@%@",totalA,totalB];
+            
+            
            // self.line2View.frameType=@"1";
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             [self addProcess];
@@ -187,7 +214,7 @@
     [self.scrollView addSubview:processView];
     
     UILabel *dayData=[[UILabel alloc]initWithFrame:CGRectMake(15*NOW_SIZE, 180*HEIGHT_SIZE-SizeH, 80*NOW_SIZE,20*HEIGHT_SIZE )];
-    dayData.text=_dayData;
+    dayData.text=_dayPower;
     dayData.textAlignment=NSTextAlignmentCenter;
     dayData.textColor=[UIColor greenColor];
     dayData.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];
@@ -213,7 +240,7 @@
     [self.scrollView addSubview:centState];
     
     UILabel *totalData=[[UILabel alloc]initWithFrame:CGRectMake(kScreenWidth-95*NOW_SIZE, 180*HEIGHT_SIZE-SizeH, 80*NOW_SIZE,20*HEIGHT_SIZE )];
-    totalData.text=_totalData;
+    totalData.text=_totalPower;
     totalData.textAlignment=NSTextAlignmentCenter;
     totalData.textColor=[UIColor greenColor];
     totalData.font = [UIFont systemFontOfSize:14*HEIGHT_SIZE];

@@ -188,9 +188,11 @@ static void *context = NULL;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)onDeviceFindResultNotify:(NSNotification*)notify{
-    [self performSelectorOnMainThread:@selector(doDeviceFindResult:) withObject:notify waitUntilDone:NO];
-}
+
+
+//- (void)onDeviceFindResultNotify:(NSNotification*)notify{
+//    [self performSelectorOnMainThread:@selector(doDeviceFindResult:) withObject:notify waitUntilDone:NO];
+//}
 
 
 
