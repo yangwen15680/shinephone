@@ -12,6 +12,7 @@
 @interface extensionListTableViewController ()
 @property(nonatomic,strong)NSMutableArray *idArray;
 @property(nonatomic,strong)NSMutableArray *titleArray;
+@property(nonatomic,strong)NSMutableArray *imageNameArray;
 @property(nonatomic,strong)NSString *languageValue;
 @end
 
@@ -41,18 +42,20 @@
     
     _idArray=[NSMutableArray array];
     _titleArray=[NSMutableArray array];
+    _imageNameArray=[NSMutableArray array];
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *currentLanguage = [languages objectAtIndex:0];
     
    
     if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
         _languageValue=@"0";
-    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
     _languageValue=@"2";
     }
     
+       [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newExtensionAPI.do?op=getExtensionList" sucessBlock:^(id content) {
         [self hideProgressView];
         NSLog(@"getExtensionList=: %@", content);
@@ -62,6 +65,7 @@
             for (int i=0; i<allDic.count; i++) {
                 [_idArray addObject:allDic[i][@"id"]];
                 [_titleArray addObject:allDic[i][@"title"]];
+                // [_imageNameArray addObject:allDic[i][@"imageName"]];
             }
             
             [self.tableView reloadData];
@@ -122,6 +126,7 @@
     ExtensionTwoViewController *go=[[ExtensionTwoViewController alloc]init];
     go.name2=_titleArray[indexPath.row];
     go.idString=_idArray[indexPath.row];
+   // go.imageName=_imageNameArray[indexPath.row];
     
     [self.navigationController pushViewController:go animated:NO];
 

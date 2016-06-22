@@ -46,7 +46,7 @@
     
     if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
         _languageValue=@"0";
-    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
         _languageValue=@"2";

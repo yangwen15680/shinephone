@@ -45,19 +45,19 @@
     
     if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
         _languageValue=@"0";
-    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
         _languageValue=@"2";
     }
 
-    
+       [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductList" sucessBlock:^(id content) {
         
         NSLog(@"getMoreProductList: %@", content);
-        [self showProgressView];
+        [self hideProgressView];
         if (content) {
-               [self hideProgressView];
+            
             NSArray *allArray=[NSArray arrayWithArray:content];
             for (int i=0; i<allArray.count; i++) {
                 [_name addObject:allArray[i][@"productName"]];
@@ -74,26 +74,76 @@
                 NSString *productImage=[NSString stringWithString:allArray[i][@"productImage"]];
                
                 if (productImage.length>0) {
-                     [self showProgressView];
-                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+                    
+//                    NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
+//                    UIImage * resultImage;
+//                    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+//                    
+//                    if (data) {
+//                        resultImage = [UIImage imageWithData:data];
+//                            [_imageHead addObject:resultImage];
+//                        
+//                        if (_imageHead.count==allArray.count) {
+//                            [self.tableView reloadData];
+//                        }
+//                        
+//                    }else{
+//                            [self.tableView reloadData];
+//                    }
+                    
+
+                    
+                    
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                         
-                        [self hideProgressView];
-                          NSLog(@"i===: %d", i);
-                        NSLog(@"getProductImage=: %@", content2);
-                        if (content2) {
+                        NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
+                                            UIImage * resultImage;
+                                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+                        
+                        if (data!= nil) {
+                            resultImage = [UIImage imageWithData:data];
+                         [_imageHead addObject:resultImage];
                             
-                            [_imageHead addObject:content2];
-                            if (_imageHead.count==allArray.count) {
-                                     [self.tableView reloadData];
-                            }
-                                  }
-                        
-                    } failure:^(NSError *error) {
-                        [self hideProgressView];
-                    }];
+                            
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.tableView reloadData];
+                            });
+                            
+                            
+                        }else{
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                 [self.tableView reloadData];
+                            });
+                            
+                        }
+                    });
+            
+                    
+                    
+                    
+                    
+                    
+//                     [self showProgressView];
+//                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+//                        
+//                        [self hideProgressView];
+//                          NSLog(@"i===: %d", i);
+//                        NSLog(@"getProductImage=: %@", content2);
+//                        if (content2) {
+//                            
+//                            [_imageHead addObject:content2];
+//                            if (_imageHead.count==allArray.count) {
+//                                     [self.tableView reloadData];
+//                            }
+//                                  }
+//                        
+//                    } failure:^(NSError *error) {
+//                        [self hideProgressView];
+//                    }];
+                      }
                 }
-            }
-                   }
+             }
         
     } failure:^(NSError *error) {
           [self hideProgressView];
@@ -134,7 +184,12 @@
         cell = [[moreCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
-    [cell.typeImageView setImage:_imageHead[indexPath.row]];
+    if (_name.count==_imageHead.count) {
+         [cell.typeImageView setImage:_imageHead[indexPath.row]];
+    }
+   
+    
+    
        cell.name.text=_name[indexPath.row];
   NSString *connentText=[NSString stringWithFormat:@"%@",_outline[indexPath.row]];
   // NSString *connentText=@"专为小型商业系统设计\n内置变压器\n隔离电网\n并提供通用的400V输出\n可直接低压并网";
@@ -164,7 +219,11 @@
     page4.name2=_name[indexPath.row];
        page4.feature2=_feature[indexPath.row];
        page4.outline2=_outline[indexPath.row];
+    
+    if (_name.count==_imageHead.count) {
        page4.imageHead2=_imageHead[indexPath.row];
+    }
+    
     page4.paramImage=_paramsName[indexPath.row];
     page4.imageArray=[NSMutableArray arrayWithObject:_imageHead[indexPath.row]];
     [self.navigationController pushViewController:page4 animated:NO];

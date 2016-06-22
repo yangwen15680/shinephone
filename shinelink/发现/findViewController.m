@@ -82,7 +82,7 @@
     
     if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
         _languageValue=@"0";
-    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
         _languageValue=@"2";
@@ -93,6 +93,7 @@
         
         NSLog(@"getAdvertisingList: %@", content);
         [ _imageArrayCount addObjectsFromArray:content];
+        
         if (_imageArrayCount.count>0) {
             for (int i=0; i<_imageArrayCount.count; i++) {
                 [_imageArrayName addObject:content[i][@"name"]];
@@ -117,23 +118,58 @@
         _imageArray=[NSMutableArray array];
     for (int i=0; i<_imageArrayCount.count; i++) {
         
-        [self showProgressView];
-        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
-            [self hideProgressView];
-            NSLog(@"getAdvertisingImages=: %@", content);
-            if (content) {
-                [_imageArray addObject:content];
-                if (_imageArray.count==_imageArrayCount.count) {
-                    [self _createHeaderView];
-                }
-            }
-           
-        } failure:^(NSError *error) {
-            [self hideProgressView];
-             //[_tableView reloadData];
-            [self showToastViewWithTitle:root_Networking];
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            NSURL * url = [NSURL URLWithString:@"http://www.baidu.com"];
+//            NSError * error;
+//            NSString * data = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
+//            if (data != nil) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    NSLog(@"call back, the data is: %@", data);
+//                });
+//            } else {
+//                NSLog(@"error when download:%@", error);
+//            }
+//        }
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,_imageArrayName[i]];
+        UIImage * result;
+        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+        
+        if (data!= nil) {
+            result = [UIImage imageWithData:data];
             
-        }];
+            [_imageArray addObject:result];
+            
+            if (_imageArray.count==_imageArrayCount.count) {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                [self _createHeaderView];
+                 });
+         
+        }
+        }else{
+        
+                [_tableView reloadData];
+        }
+        });
+        
+//        [self showProgressView];
+//        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
+//            [self hideProgressView];
+//            NSLog(@"getAdvertisingImages=: %@", content);
+//            if (content) {
+//                [_imageArray addObject:content];
+//                if (_imageArray.count==_imageArrayCount.count) {
+//                    [self _createHeaderView];
+//                }
+//            }
+//           
+//        } failure:^(NSError *error) {
+//            [self hideProgressView];
+//             //[_tableView reloadData];
+//            [self showToastViewWithTitle:root_Networking];
+//            
+//        }];
       
     }
     

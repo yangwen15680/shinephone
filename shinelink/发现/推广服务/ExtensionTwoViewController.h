@@ -11,4 +11,5 @@
 @interface ExtensionTwoViewController : RootViewController
 @property (nonatomic, strong) NSString *name2;
 @property (nonatomic, strong) NSString *idString;
+@property (nonatomic, strong) NSString *imageName;
 @end

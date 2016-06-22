@@ -48,7 +48,7 @@
     
     if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
         _languageValue=@"0";
-    }if ([currentLanguage isEqualToString:@"en-CN"]) {
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
         _languageValue=@"1";
     }else{
         _languageValue=@"2";
@@ -67,25 +67,78 @@
             _phoneNum=content[@"phoneNum"];
             _reconmend=content[@"recommend"];
             _picName=content[@"imageName"];
+            //_imageName=content[@"imageName"];
             
             [self uiOne];
             
             if (_picName.length>0) {
-                [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_picName} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+                
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                     
-                    [self hideProgressView];
+                    NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,_picName];
+                    UIImage * resultImage;
+                    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
                     
-                    NSLog(@"getProductImage=: %@", content2);
-                    if (content2) {
-                        _picArray=[NSMutableArray arrayWithObject:content2];
+                    if (data!= nil) {
+                    resultImage = [UIImage imageWithData:data];
                         
-                        [self initPic];
-                                            }
-                    
-                } failure:^(NSError *error) {
-                    [self hideProgressView];
-                     [self initContent];
-                }];
+                        _picArray=[NSMutableArray arrayWithObject:resultImage];
+                        
+                  
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                                [self initPic];
+                        });
+ 
+                
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                              [self initContent];
+                        });
+                        
+                    }
+                });
+
+//                
+//                
+//                
+//                
+//                NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,_picName];
+//                UIImage * resultImage;
+//                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+//                
+//                if (data) {
+//                     resultImage = [UIImage imageWithData:data];
+//                    _picArray=[NSMutableArray arrayWithObject:resultImage];
+//                    
+//                    [self initPic];
+//
+//                }else{
+//                   [self initContent];
+//                
+//                }
+               
+
+                
+                
+                
+                
+//                [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":_picName} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
+//                    
+//                    [self hideProgressView];
+//                    
+//                    NSLog(@"getProductImage=: %@", content2);
+//                    if (content2) {
+//                        _picArray=[NSMutableArray arrayWithObject:content2];
+//                        
+//                        [self initPic];
+//                                            }
+//                    
+//                } failure:^(NSError *error) {
+//                    [self hideProgressView];
+//                     [self initContent];
+//                }];
                 
                 
             }else{
