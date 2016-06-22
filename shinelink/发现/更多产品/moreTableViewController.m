@@ -71,7 +71,7 @@
                 
                 
                 [self hideProgressView];
-                NSString *productImage=[NSString stringWithString:allArray[i][@"productName"]];
+                NSString *productImage=[NSString stringWithString:allArray[i][@"productImage"]];
                
                 if (productImage.length>0) {
                      [self showProgressView];

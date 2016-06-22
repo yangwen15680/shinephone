@@ -226,11 +226,14 @@
     leftState.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [self.scrollView addSubview:leftState];
     
-     UILabel *powerData=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2, 120*HEIGHT_SIZE-SizeH, 120*NOW_SIZE,40*HEIGHT_SIZE )];
-    powerData.text=_powerData;
+   // _powerData=@"200000";
+     UILabel *powerData=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-130*NOW_SIZE)/2, 120*HEIGHT_SIZE-SizeH, 130*NOW_SIZE,40*HEIGHT_SIZE )];
+    NSString *powerH=[NSString stringWithFormat:@"%@W",_powerData];
+ 
+    powerData.text=powerH;
     powerData.textAlignment=NSTextAlignmentCenter;
     powerData.textColor=[UIColor redColor];
-    powerData.font = [UIFont systemFontOfSize:25*HEIGHT_SIZE];
+    powerData.font = [UIFont systemFontOfSize:22*HEIGHT_SIZE];
     [self.scrollView addSubview:powerData];
     UILabel *centState=[[UILabel alloc]initWithFrame:CGRectMake((kScreenWidth-120*NOW_SIZE)/2,150*HEIGHT_SIZE-SizeH, 120*NOW_SIZE,20*HEIGHT_SIZE )];
     centState.text=root_dangqian_gonglv;

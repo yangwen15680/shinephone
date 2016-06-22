@@ -10,15 +10,15 @@
 #import "imageBig.h"
 
   #define  headH 200*HEIGHT_SIZE
-  #define  headH2 120*HEIGHT_SIZE
+//  #define  headH2 120*HEIGHT_SIZE
 #define Kwidth [UIScreen mainScreen].bounds.size.width
-@interface productViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+@interface productViewController ()<UIScrollViewDelegate>
 
 @property(nonatomic,strong)NSMutableArray *imageArrayName;
 @property(nonatomic,strong)NSMutableArray *imageArrayCount;
 @property (nonatomic, strong) UILabel *title1;
-@property (nonatomic, strong) UITextView *detail;
-@property (nonatomic, strong) UITextView *detail2;
+@property (nonatomic, strong) UILabel *detail;
+@property (nonatomic, strong) UILabel *detail2;
 @property (nonatomic, strong) UIScrollView *scrollView2;
 @property (nonatomic, strong) NSString *detailText;
 @property (nonatomic, strong) UIButton *dayButton;
@@ -34,6 +34,8 @@
     UIScrollView *_scrollerView;
     NSString *_indenty;
     
+    float  headH2;
+    
     NSArray *arrayImage;
     NSArray *arrayName;
     //全局变量 用来控制偏移量
@@ -42,6 +44,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+     CGRect fcRect = [_feature2 boundingRectWithSize:CGSizeMake(300*NOW_SIZE, 2000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12 *HEIGHT_SIZE]} context:nil];
+    
+    headH2=fcRect.size.height;
+    
     [self initUI];
 }
 
@@ -104,10 +111,13 @@
     line3.backgroundColor=[UIColor grayColor];
     [_scrollView2 addSubview:line3];
     
-    _detail=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*HEIGHT_SIZE+headH, 300*NOW_SIZE,headH2)];
+    
+    
+    _detail=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,50*HEIGHT_SIZE+headH, 300*NOW_SIZE,headH2)];
     _detail.text=_feature2;
-     _detail.editable=NO;
+     //_detail.editable=NO;
     _detail.textAlignment=NSTextAlignmentLeft;
+    _detail.numberOfLines=0;
     _detail.textColor=COLOR(60, 60, 60, 1);
     _detail.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
     [_scrollView2 addSubview:_detail];
@@ -122,21 +132,21 @@
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 60*HEIGHT_SIZE+headH+headH2, SCREEN_Width/2, 20*HEIGHT_SIZE);
     [self.dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
-    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
-    [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
+   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateNormal];
+   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+   [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.dayButton.tag = 1000;
     [self.dayButton setTitle:root_ME_gaisu forState:UIControlStateNormal];
-//    self.dayButton.selected = YES;
+   self.dayButton.selected = YES;
     [self.dayButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView2 addSubview:self.dayButton];
     
     self.monthButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.monthButton.frame = CGRectMake(1 * SCREEN_Width/2, 60*HEIGHT_SIZE+headH+headH2, SCREEN_Width/2, 20*HEIGHT_SIZE);
     [self.monthButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
-    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
+    [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateNormal];
+   [self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
+[self.monthButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/2, 20*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.monthButton.tag = 1001;
     [self.monthButton setTitle:root_ME_canshu forState:UIControlStateNormal];
     [self.monthButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -146,13 +156,20 @@
 - (void)buttonDidClicked:(UIButton *)sender {
 
     if (sender.tag == 1000) {
+        self.dayButton.selected = YES;
+        self.monthButton.selected = NO;
+        
         if (_detail2) {
-            [_detail2 removeFromSuperview];
+            _detail2=nil;
+            
         }
         [self uiThree];
     }else if(sender.tag == 1001){
+        self.dayButton.selected = NO;
+        self.monthButton.selected = YES;
+        
         if (_imageView) {
-            [_imageView removeFromSuperview];
+            _imageView=nil;
         }
         [self uiFour];
     }
@@ -160,9 +177,20 @@
 
 -(void)uiThree{
 
-    _detail2=[[UITextView alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*HEIGHT_SIZE+headH+headH2+25*HEIGHT_SIZE, 300*NOW_SIZE,400*HEIGHT_SIZE)];
+    CGRect fcRect1 = [_outline2 boundingRectWithSize:CGSizeMake(300*NOW_SIZE, 2000*HEIGHT_SIZE) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12 *HEIGHT_SIZE]} context:nil];
+    
+//    if (fcRect1.size.height<400*HEIGHT_SIZE) {
+//        _detail2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*HEIGHT_SIZE+headH+headH2+25*HEIGHT_SIZE, 300*NOW_SIZE,400*HEIGHT_SIZE)];
+//    }else{
+    
+    
+    _detail2=[[UILabel alloc]initWithFrame:CGRectMake(10*NOW_SIZE,60*HEIGHT_SIZE+headH+headH2+25*HEIGHT_SIZE, 300*NOW_SIZE,fcRect1.size.height)];
+    
+    
+    
     _detail2.text=_outline2;
-      _detail2.editable=NO;
+     // _detail2.editable=NO;
+    _detail2.numberOfLines=0;
     _detail2.textAlignment=NSTextAlignmentLeft;
     _detail2.textColor=COLOR(60, 60, 60, 1);
     _detail2.font = [UIFont systemFontOfSize:12*HEIGHT_SIZE];
@@ -194,6 +222,9 @@
   
     _scrollerView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,0,Kwidth,headH)];
     
+    [_imageArray addObject:[UIImage imageNamed:@"www.jpg"]];
+    
+    
     if (_imageArray) {
         for (int i=0; i<_imageArray.count; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
@@ -211,6 +242,9 @@
         for (int i=0; i<imgArray.count; i++) {
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
             imageView.image = [UIImage imageNamed:imgArray[i]];
+            
+            
+            
             [_scrollerView addSubview:imageView];
             
             _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headH);

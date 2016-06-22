@@ -332,6 +332,7 @@
 		338990B51CEB1F9D00A708F8 /* DemoDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */; };
 		338CFE661CF554C1006EFD8B /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 338CFE651CF554C1006EFD8B /* libstdc++.6.0.9.tbd */; };
 		338CFE681CF554D8006EFD8B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 338CFE671CF554D8006EFD8B /* libstdc++.tbd */; };
+		33A438481D1A3B73004E9AB6 /* www.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33A438471D1A3B73004E9AB6 /* www.jpg */; };
 		33ECDCF31CDC9D3400E20AF8 /* deviceCore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 33ECDCF11CDC9D3400E20AF8 /* deviceCore.xcdatamodeld */; };
 		33EFB6011C979B5F003F336F /* StationCellectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5F81C979B5F003F336F /* StationCellectViewController.m */; };
 		33EFB6021C979B5F003F336F /* StationCellectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EFB5FA1C979B5F003F336F /* StationCellectTableViewCell.m */; };
@@ -972,6 +973,7 @@
 		338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDeviceViewController.m; sourceTree = "<group>"; };
 		338CFE651CF554C1006EFD8B /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		338CFE671CF554D8006EFD8B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		33A438471D1A3B73004E9AB6 /* www.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = www.jpg; sourceTree = "<group>"; };
 		33ECDCF21CDC9D3400E20AF8 /* deviceCore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = deviceCore.xcdatamodel; sourceTree = "<group>"; };
 		33EFB5F71C979B5F003F336F /* StationCellectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StationCellectViewController.h; sourceTree = "<group>"; };
 		33EFB5F81C979B5F003F336F /* StationCellectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StationCellectViewController.m; sourceTree = "<group>"; };
@@ -1955,6 +1957,7 @@
 		336664DE1CB751F4005573FB /* 更多产品 */ = {
 			isa = PBXGroup;
 			children = (
+				33A438471D1A3B73004E9AB6 /* www.jpg */,
 				336664DF1CB75213005573FB /* moreTableViewController.h */,
 				336664E01CB75213005573FB /* moreTableViewController.m */,
 				336664E21CB7524C005573FB /* moreCell.h */,
@@ -2641,7 +2644,7 @@
 				TargetAttributes = {
 					337F9C7F1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = GU874P92XV;
+						DevelopmentTeam = PX2V6N98Z6;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2700,6 +2703,7 @@
 				335089251C7323C200D7AA03 /* frag4.png in Resources */,
 				334FF0951CF53C7C001E6716 /* Documentation.html in Resources */,
 				334771001C9A3E57003A6F13 /* mine@2x.png in Resources */,
+				33A438481D1A3B73004E9AB6 /* www.jpg in Resources */,
 				33FEFD651C7DB38400324374 /* icon@2x.png in Resources */,
 				33692BF11C926B4500698375 /* rili.png in Resources */,
 				33EFB63F1C97E875003F336F /* 设备切图.png in Resources */,
@@ -3257,7 +3261,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephonew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3279,7 +3283,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephonew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinephone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

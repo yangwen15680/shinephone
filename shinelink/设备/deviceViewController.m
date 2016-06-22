@@ -1145,7 +1145,7 @@ GetDevice *getDevice=[_managerNowArray objectAtIndex:_indexPath.row];
                   cell.stateValue.textColor=COLOR(121, 230, 129, 1);
             }else if ([getDevice.statueData isEqualToString:@"2"]){
                 cell.stateValue.text =root_fangDian ;
-                  cell.stateValue.textColor=COLOR(28, 111, 235, 1);
+                  cell.stateValue.textColor=COLOR(222, 211, 91, 1);
             }else if ([getDevice.statueData isEqualToString:@"3"]){
                 cell.stateValue.text =root_cuoWu ;
                   cell.stateValue.textColor=COLOR(255, 86, 82, 1);

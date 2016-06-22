@@ -38,13 +38,13 @@
         [self showAlertViewWithTitle:nil message:root_demo_Alert cancelButtonTitle:root_Yes];
         return;
     }
-    if ([sender.title isEqual:NSLocalizedString(@"Edit", @"Edit")]) {
+    if ([sender.title isEqual:root_dianzhan_bianji]) {
         [sender setTitle:root_Cancel];
         [_readView removeFromSuperview];
         _readView=nil;
         [self writeUI];
     }else{
-        [sender setTitle:NSLocalizedString(@"Edit", @"Edit")];
+        [sender setTitle:root_dianzhan_bianji];
         [self readUI];
         [_writeView removeFromSuperview];
         _writeView=nil;
@@ -69,7 +69,7 @@
 }
 
 -(void)initUI{
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:NSLocalizedString(@"Edit", @"Edit") style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:root_dianzhan_bianji style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
     self.navigationItem.rightBarButtonItem=rightItem;
     
     NSArray *array=[[NSArray alloc]initWithObjects:root_WO_zijin,root_WO_jieneng,root_WO_C02,root_WO_SO2, nil];

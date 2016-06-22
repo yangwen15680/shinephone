@@ -95,14 +95,16 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
 
     self.dayButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.dayButton.frame = CGRectMake(0 * SCREEN_Width/4, 0, SCREEN_Width/4, 40*HEIGHT_SIZE);
+    
     [self.dayButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+       [self.dayButton setTitle:root_DAY forState:UIControlStateNormal];
     [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(47, 200, 255, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateNormal];
     [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateHighlighted];
     [self.dayButton setBackgroundImage:[self createImageWithColor:COLOR(17, 183, 243, 1) rect:CGRectMake(0, 0, SCREEN_Width/4, 40*HEIGHT_SIZE)] forState:UIControlStateSelected];
     self.dayButton.tag = 1000;
      _dayButton.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
-    [self.dayButton setTitle:root_DAY forState:UIControlStateNormal];
-    self.dayButton.selected = YES;
+ 
+ self.dayButton.selected = YES;
     [self.dayButton addTarget:self action:@selector(buttonDidClicked:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.dayButton];
     

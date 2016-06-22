@@ -492,7 +492,9 @@
 #define root_peizhi_shinewifi_E_shaomiao   NSLocalizedString(@"扫描设备和设置路由器", nil)
 #define root_peizhi_shinewifi_E_mingzi   NSLocalizedString(@"ShineWifiE名字", nil)
 
+#define root_dianzhan_xuanzhe   NSLocalizedString(@"Choice", nil)
+#define root_dianzhan_bianji   NSLocalizedString(@"编辑", nil)
 
-
+#define root_chuneng_fangdianliang   NSLocalizedString(@"储能放电量", nil)
 
 #endif /* languageNew_h */

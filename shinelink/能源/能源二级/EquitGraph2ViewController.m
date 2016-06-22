@@ -287,10 +287,12 @@ static const NSTimeInterval secondsPerDay = 24 * 60 * 60;
             self.line2View = [[Line3View alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.timeDisplayView.frame), SCREEN_Width, SCREEN_Height - self.tabBarController.tabBar.frame.size.height - CGRectGetMaxY(self.timeDisplayView.frame))];
             self.line2View.flag=@"1";
             self.line2View.frameType=@"2";
+               self.line2View.deviceType=_dicType;
+            
             [_scrollView addSubview:self.line2View];
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
-            self.line2View.energyTitleLabel.text = root_Today_Energy;
-            self.line2View.unitLabel.text = root_Powre;
+         //   self.line2View.energyTitleLabel.text = root_Today_Energy;
+            //self.line2View.unitLabel.text = root_Powre;
 
             _scrollView.contentSize=CGSizeMake(SCREEN_Width, CGRectGetMaxY(_line2View.frame)+20*NOW_SIZE);
         }
@@ -403,6 +405,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
                 }
             }
             
+            self.line2View.deviceType=_dicType;
             [self.line2View refreshLineChartViewWithDataDict:_dayDict];
             [self updataUI:_dayDict];
         }
@@ -457,6 +460,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
                     [_dayDict setValue:value0 forKey:key0];
                 }
             }
+               self.line2View.deviceType=_dicType;
             [self.line2View refreshBarChartViewWithDataDict:self.dayDict chartType:2];
             [self updataUI:_dayDict];
         }
@@ -716,7 +720,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
         if (_dict[@"1"]) {
           //  [_line2View addSubview:_selectButton];
          //   [_selectButton setTitle:_dict[@"1"] forState:0];
-            self.line2View.energyTitleLabel.text = root_Today_Energy;
+            //self.line2View.energyTitleLabel.text = root_Today_Energy;
             self.line2View.unitLabel.text = root_Powre;
         }else{
           //  [_selectButton removeFromSuperview];
@@ -754,6 +758,8 @@ _value2=[NSString stringWithFormat:@"%@",max];
         self.monthButton.selected = YES;
         self.yearButton.selected = NO;
         self.totalButton.selected = NO;
+         self.line2View.unitLabel.text =root_Energy;
+        
         if (_dictMonth[@"1"]) {
         //    [_selectButton setTitle:_dictMonth[@"1"] forState:0];
         }else{
@@ -792,6 +798,8 @@ _value2=[NSString stringWithFormat:@"%@",max];
         self.monthButton.selected = NO;
         self.yearButton.selected = YES;
         self.totalButton.selected = NO;
+        
+        self.line2View.unitLabel.text =root_Energy;
         if (_dictYear[@"1"]) {
            // [_selectButton setTitle:_dictYear[@"1"] forState:0];
         }else{
@@ -830,6 +838,7 @@ _value2=[NSString stringWithFormat:@"%@",max];
         self.monthButton.selected = NO;
         self.yearButton.selected = NO;
         self.totalButton.selected = YES;
+        self.line2View.unitLabel.text =root_Energy;
         if (_dictAll[@"1"]) {
            // [_selectButton setTitle:_dictAll[@"1"] forState:0];
         }else{

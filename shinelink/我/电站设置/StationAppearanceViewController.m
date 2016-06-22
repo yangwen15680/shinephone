@@ -80,7 +80,7 @@
 
 
 -(void)selectImageButtonPressed{
-    self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choice", @"Choice") delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:NSLocalizedString(@"Shooting", @"Shooting"), NSLocalizedString(@"Album", @"Album"), nil];
+    self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:root_dianzhan_xuanzhe delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:root_paiZhao, root_xiangkuang_xuanQu, nil];
     self.uploadImageActionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
     [self.uploadImageActionSheet showInView:self.view];
 }

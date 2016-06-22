@@ -93,19 +93,38 @@
     if (type == 1) {
         self.moneyTitleLabel.text = NSLocalizedString(@"Daily income", @"Daily income");
         self.energyTitleLabel.text = root_Today_Energy;
+        
+        if ([_deviceType isEqualToString:@"3"]) {
+              self.unitLabel.text = root_chuneng_fangdianliang;
+        }else{
         self.unitLabel.text = root_Powre;
+        }
+        
     } else if (type == 2) {
         self.moneyTitleLabel.text = root_Earnings;
         self.energyTitleLabel.text = root_Month_energy;
-        self.unitLabel.text = root_Energy;
+        if ([_deviceType isEqualToString:@"3"]) {
+            self.unitLabel.text = root_chuneng_fangdianliang;
+        }else{
+             self.unitLabel.text = root_Energy;
+        }
+       
     } else if (type == 3) {
         self.moneyTitleLabel.text = root_Earnings;
         self.energyTitleLabel.text = root_Year_energy;
-        self.unitLabel.text = root_Energy;
+        if ([_deviceType isEqualToString:@"3"]) {
+            self.unitLabel.text = root_chuneng_fangdianliang;
+        }else{
+            self.unitLabel.text = root_Energy;
+        }
     } else {
         self.moneyTitleLabel.text = root_Earnings;
         self.energyTitleLabel.text = root_Total_energy;
-        self.unitLabel.text = root_Energy;
+        if ([_deviceType isEqualToString:@"3"]) {
+            self.unitLabel.text = root_chuneng_fangdianliang;
+        }else{
+            self.unitLabel.text = root_Energy;
+        }
     }
 }
 
@@ -239,7 +258,7 @@
     [self setDataDict:dataDict];
     
     //
-    //    [self setType:1];
+    [self setType:1];
     
     if (_barChartView) {
         [_barChartView removeFromSuperview];
@@ -299,6 +318,7 @@
             
             [self.lineChartView addPlot:self.lineChartPlot];
             [self.lineChartView setupTheView];
+            
         }
     }
 }
