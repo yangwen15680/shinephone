@@ -78,11 +78,11 @@ if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     self.power = [[UILabel alloc] initWithFrame:CGRectMake(_coverImageView.bounds.size.width+10*NOW_SIZE, 40*HEIGHT_SIZE, labelWidth1, labelHeight)];
     self.power.text = root_gongLv;
     self.power.font=[UIFont systemFontOfSize:fontSize];
-    self.power.textAlignment = NSTextAlignmentLeft;
+    self.power.textAlignment = NSTextAlignmentRight;
     self.power.textColor = [UIColor labelColor];
     [self.contentView addSubview:_power];
     
-    self.powerValue = [[UILabel alloc] initWithFrame:CGRectMake(_coverImageView.bounds.size.width+10*NOW_SIZE+labelWidth, 40*HEIGHT_SIZE, labelWidth+15*NOW_SIZE, labelHeight)];
+    self.powerValue = [[UILabel alloc] initWithFrame:CGRectMake(_coverImageView.bounds.size.width+10*NOW_SIZE+labelWidth, 40*HEIGHT_SIZE, labelWidth+20*NOW_SIZE, labelHeight)];
     self.powerValue.font=[UIFont systemFontOfSize:fontSize];
     self.powerValue.textAlignment = NSTextAlignmentLeft;
     self.powerValue.textColor = [UIColor labelColor];

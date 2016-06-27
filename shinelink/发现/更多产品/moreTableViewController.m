@@ -18,6 +18,9 @@
 @property (nonatomic, strong) NSMutableArray *imageName;
 @property (nonatomic, strong) NSMutableArray *imageHead;
 @property (nonatomic, strong) NSMutableArray *identifying;
+@property (nonatomic, strong) NSMutableArray *imageNameArray;
+@property (nonatomic, strong) NSMutableArray *imageNameNext;
+
   @property (nonatomic, strong)  NSString *languageValue;
 @end
 
@@ -32,6 +35,9 @@
     _imageName=[NSMutableArray array];
     _imageHead=[NSMutableArray array];
       _identifying=[NSMutableArray array];
+        _imageNameArray=[NSMutableArray array];
+     _imageNameNext=[NSMutableArray array];
+    
           self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self initData];
 }
@@ -51,11 +57,11 @@
         _languageValue=@"2";
     }
 
-       [self showProgressView];
+     [self showProgressView];
     [BaseRequest requestWithMethodResponseJsonByGet:HEAD_URL paramars:@{@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductList" sucessBlock:^(id content) {
         
         NSLog(@"getMoreProductList: %@", content);
-        [self hideProgressView];
+   [self hideProgressView];
         if (content) {
             
             NSArray *allArray=[NSArray arrayWithArray:content];
@@ -65,65 +71,51 @@
                  [_outline addObject:allArray[i][@"outline"]];
                  [_paramsName addObject:allArray[i][@"technologyParams"]];
                  [_imageName addObject:allArray[i][@"productName"]];
+                     [_imageNameNext addObject:allArray[i][@"productImage"]];
                 
                   NSString *C=[NSString stringWithFormat:@"%@",allArray[i][@"identifying"]];
                   [_identifying addObject:C];
-                
-                
-                [self hideProgressView];
+
                 NSString *productImage=[NSString stringWithString:allArray[i][@"productImage"]];
                
-                if (productImage.length>0) {
-                    
-//                    NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
-//                    UIImage * resultImage;
-//                    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-//                    
-//                    if (data) {
-//                        resultImage = [UIImage imageWithData:data];
-//                            [_imageHead addObject:resultImage];
-//                        
-//                        if (_imageHead.count==allArray.count) {
-//                            [self.tableView reloadData];
-//                        }
-//                        
-//                    }else{
-//                            [self.tableView reloadData];
-//                    }
-                    
-
-                    
-                    
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                        
-                        NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
-                                            UIImage * resultImage;
-                                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-                        
-                        if (data!= nil) {
-                            resultImage = [UIImage imageWithData:data];
-                         [_imageHead addObject:resultImage];
-                            
-                            
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.tableView reloadData];
-                            });
-                            
-                            
-                        }else{
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                 [self.tableView reloadData];
-                            });
-                            
-                        }
-                    });
+                   [_imageNameArray addObject:productImage];
+                
+            }
             
+             [self.tableView reloadData];
+            
+         [self getImage];
+            
+            
+            
+        
+//                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//                        
+//                        NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
+//                                            UIImage * resultImage;
+//                                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+//                        
+//                        if (data!= nil) {
+//                            resultImage = [UIImage imageWithData:data];
+//                         [_imageHead addObject:resultImage];
+//                            
+//                            
+//                            
+//                            dispatch_async(dispatch_get_main_queue(), ^{
+//                                [self.tableView reloadData];
+//                            });
+//                            
+//                            
+//                        }else{
+//                            dispatch_async(dispatch_get_main_queue(), ^{
+//                                 [self.tableView reloadData];
+//                            });
+//                            
+//                        }
+//                    });
+//            
                     
-                    
-                    
-                    
-                    
+            
 //                     [self showProgressView];
 //                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
 //                        
@@ -141,17 +133,44 @@
 //                    } failure:^(NSError *error) {
 //                        [self hideProgressView];
 //                    }];
-                      }
-                }
-             }
+         
+            
+        }
         
     } failure:^(NSError *error) {
           [self hideProgressView];
     }];
 
     
+   
 }
 
+
+-(void)getImage{
+    if (_imageNameArray.count==_name.count) {
+        
+        for (int i=0; i<_imageNameArray.count; i++) {
+            NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,_imageNameArray[i]];
+            UIImage * resultImage;
+            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+            
+            if (data!= nil) {
+                resultImage = [UIImage imageWithData:data];
+                [_imageHead addObject:resultImage];
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadData];
+                });
+            }else{
+                [self.tableView reloadData];
+            }
+        }
+    }
+
+
+}
 
 - (void)showProgressView {
     [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -203,6 +222,10 @@
           cell.image.image = IMAGE(@"tuijian@2x.png");
     }
   
+//    if (indexPath.row==1) {
+//        [self getImage];
+//    }
+    
     return cell;
 }
 
@@ -223,7 +246,8 @@
     if (_name.count==_imageHead.count) {
        page4.imageHead2=_imageHead[indexPath.row];
     }
-    
+    page4.imageName=_imageNameNext[indexPath.row];
+  
     page4.paramImage=_paramsName[indexPath.row];
     page4.imageArray=[NSMutableArray arrayWithObject:_imageHead[indexPath.row]];
     [self.navigationController pushViewController:page4 animated:NO];

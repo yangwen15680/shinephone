@@ -39,14 +39,22 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     [self setTitle:root_energy];
     
-    nameArray=[[NSMutableArray alloc]initWithObjects:root_energy_jiating_yongdian,root_energy_jiating_shebei,root_energy_guangfu_dianliang,root_energy_chuneng_dianliang, nil];
-    monthArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_yue,root_energy_chuneng_zuishengdian,root_energy_chuneng_yue,root_energy_chuneng_yue,nil];
-    //monthDateArray=[NSMutableArray array];
-    //dayDateArray=[NSMutableArray array];
+  
+    
+       nameArray=[[NSMutableArray alloc]initWithObjects:root_energy_guangfu_dianliang,root_energy_chuneng_dianliang,root_energy_jiating_yongdian,root_energy_jiating_shebei, nil];
+    
+
+    
+        monthArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_yue,root_energy_chuneng_yue,root_energy_chuneng_yue,root_energy_chuneng_zuishengdian,nil];
+    
+   
     monthDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
     dayDateArray=[[NSMutableArray alloc]initWithObjects:@"",@"",@"",@"",nil];
-    dayArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_ri,root_energy_chuneng_zuihaodian,root_energy_chuneng_ri,root_energy_chuneng_ri, nil];
-    imageArray=[[NSMutableArray alloc]initWithObjects:@"家庭用电量.png",@"家庭用电设备.png",@"solar4.png",@"storage4.png", nil];
+    
+    dayArray=[[NSMutableArray alloc]initWithObjects:root_energy_chuneng_ri,root_energy_chuneng_ri,root_energy_chuneng_ri,root_energy_chuneng_zuihaodian, nil];
+ imageArray=[[NSMutableArray alloc]initWithObjects:@"solar4.png",@"storage4.png",@"家庭用电量.png",@"家庭用电设备.png", nil];
+    
+
     // Do any additional setup after loading the view.
     [self _createTableView];
     [self netEnergy];
@@ -60,25 +68,25 @@
         
         NSLog(@"getEnergyList: %@", content);
         if (content) {
-            NSString *A1=[NSString stringWithFormat:@"%@%@",monthArray[0],content[@"familyEnergy"][@"monthEnergy"]];
-            NSString *A2=[NSString stringWithFormat:@"%@%@",monthArray[1],content[@"familyDevice"][@"mostEnergy"]];
-             NSString *A3=[NSString stringWithFormat:@"%@%@",monthArray[2],content[@"photovoltaicEnergy"][@"monthEnergy"]];
-             NSString *A4=[NSString stringWithFormat:@"%@%@",monthArray[3],content[@"storageEnergy"][@"monthEnergy"]];
+            NSString *A1=[NSString stringWithFormat:@"%@%@",monthArray[2],content[@"familyEnergy"][@"monthEnergy"]];
+            NSString *A2=[NSString stringWithFormat:@"%@%@",monthArray[3],content[@"familyDevice"][@"mostEnergy"]];
+             NSString *A3=[NSString stringWithFormat:@"%@%@",monthArray[0],content[@"photovoltaicEnergy"][@"monthEnergy"]];
+             NSString *A4=[NSString stringWithFormat:@"%@%@",monthArray[1],content[@"storageEnergy"][@"monthEnergy"]];
             
-            NSString *B1=[NSString stringWithFormat:@"%@%@",dayArray[0],content[@"familyEnergy"][@"todayEnergy"]];
-            NSString *B2=[NSString stringWithFormat:@"%@%@",dayArray[1],content[@"familyDevice"][@"mostPower"]];
-            NSString *B3=[NSString stringWithFormat:@"%@%@",dayArray[2],content[@"photovoltaicEnergy"][@"todayEnergy"]];
-            NSString *B4=[NSString stringWithFormat:@"%@%@",dayArray[3],content[@"storageEnergy"][@"todayEnergy"]];
+            NSString *B1=[NSString stringWithFormat:@"%@%@",dayArray[2],content[@"familyEnergy"][@"todayEnergy"]];
+            NSString *B2=[NSString stringWithFormat:@"%@%@",dayArray[3],content[@"familyDevice"][@"mostPower"]];
+            NSString *B3=[NSString stringWithFormat:@"%@%@",dayArray[0],content[@"photovoltaicEnergy"][@"todayEnergy"]];
+            NSString *B4=[NSString stringWithFormat:@"%@%@",dayArray[1],content[@"storageEnergy"][@"todayEnergy"]];
             
-            [monthDateArray replaceObjectAtIndex:0 withObject:A1];
-            [monthDateArray replaceObjectAtIndex:1 withObject:A2];
-            [monthDateArray replaceObjectAtIndex:2 withObject:A3];
-            [monthDateArray replaceObjectAtIndex:3 withObject:A4];
+            [monthDateArray replaceObjectAtIndex:0 withObject:A3];
+            [monthDateArray replaceObjectAtIndex:1 withObject:A4];
+            [monthDateArray replaceObjectAtIndex:2 withObject:A1];
+            [monthDateArray replaceObjectAtIndex:3 withObject:A2];
             
-            [dayDateArray replaceObjectAtIndex:0 withObject:B1];
-            [dayDateArray replaceObjectAtIndex:1 withObject:B2];
-            [dayDateArray replaceObjectAtIndex:2 withObject:B3];
-            [dayDateArray replaceObjectAtIndex:3 withObject:B4];
+            [dayDateArray replaceObjectAtIndex:0 withObject:B3];
+            [dayDateArray replaceObjectAtIndex:1 withObject:B4];
+            [dayDateArray replaceObjectAtIndex:2 withObject:B1];
+            [dayDateArray replaceObjectAtIndex:3 withObject:B2];
             
             [_tableView reloadData];
         }
@@ -142,7 +150,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row==0){
+    if(indexPath.row==2){
         
         if (_PvHome) {
             [_PvHome removeFromParentViewController];
@@ -165,7 +173,7 @@
     }
     
     
-    if (indexPath.row==1) {
+    if (indexPath.row==3) {
         homeDeviceViewController *home=[[homeDeviceViewController alloc]init];
         home.titleString=root_energy_jiating_shebei;
            home.hidesBottomBarWhenPushed=YES;
@@ -173,7 +181,7 @@
         
     }
     
-    if (indexPath.row==2) {
+    if (indexPath.row==0) {
        _PvHome=[[EquitGraph2ViewController alloc]init];
    _PvHome.titleString=root_energy_guangfu_dianliang;
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];
@@ -190,7 +198,7 @@
         
     }
     
-    if (indexPath.row==3) {
+    if (indexPath.row==1) {
         _PvHome=[[EquitGraph2ViewController alloc]init];
           _PvHome.titleString=root_energy_chuneng_dianliang;
         NSUserDefaults *ud=[NSUserDefaults standardUserDefaults];

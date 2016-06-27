@@ -10,11 +10,15 @@
 #import "loginViewController.h"
 #import "changManeger.h"
 #import "JPUSHService.h"
+#import "CoreDataManager.h"
+
 
 @interface ManagementController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *dataArray;
 @property(nonatomic,strong)NSMutableArray *dataArray1;
+@property (nonatomic, strong) CoreDataManager *manager;
+
 @end
 
 @implementation ManagementController
@@ -22,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.view.backgroundColor=MainColor;
+    
+     _manager=[CoreDataManager sharedCoreDataManager];
     [self initUI];
  
 }
@@ -68,6 +74,35 @@
     [self.view addSubview:registerUser];
 }
 
+
+-(void)initCoredata{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"GetDevice" inManagedObjectContext:_manager.managedObjContext];
+    [request setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"deviceSN" ascending:NO];
+    NSArray *sortDescriptions = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptions];
+    NSError *error = nil;
+    NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+    for (NSManagedObject *obj in fetchResult)
+    {
+        [_manager.managedObjContext deleteObject:obj];
+    }
+    BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }else
+    {
+        NSLog(@"Save successFull");
+    }
+    
+}
+
+
+
+
+
+
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -89,6 +124,8 @@
     [[UserInfo defaultUserInfo] setUserName:nil];
       [[UserInfo defaultUserInfo] setServer:nil];
     loginViewController *login =[[loginViewController alloc]init];
+    
+    [self initCoredata];
     
     [self setAlias];
     self.hidesBottomBarWhenPushed=YES;

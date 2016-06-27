@@ -43,6 +43,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
+    _currentVersion = [appInfo objectForKey:@"CFBundleVersion"];
     
     [super viewDidLoad];
     // Do any additional setup after loading the view
@@ -104,11 +106,13 @@
     userImage.layer.cornerRadius=imageSize/4.0;
 //    [userImage setUserInteractionEnabled:YES];
     
+   
+    
     UILabel *version = [[UILabel alloc] initWithFrame:CGRectMake((Kwidth-140*NOW_SIZE)/2, 150*HEIGHT_SIZE, 140*NOW_SIZE,20*HEIGHT_SIZE)];
     version.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
     version.textAlignment = NSTextAlignmentCenter;
     NSString *version1=root_WO_banbenhao;
-    NSString *version2=@"1.6";
+    NSString *version2=_currentVersion;
     NSString *version3=[NSString stringWithFormat:@"%@%@",version1,version2];
     version.text=version3;
     version.textColor = [UIColor blackColor];
@@ -234,14 +238,18 @@
 
 
 -(void)checkUpdate{
-    NSDictionary *appInfo = [[NSBundle mainBundle] infoDictionary];
-    _currentVersion = [appInfo objectForKey:@"CFBundleVersion"];
+
+    
  [self showProgressView];
-    [BaseRequest requestWithMethodResponseJsonByGet:@"http://itunes.apple.com" paramars:@{@"admin":@"admin"} paramarsSite:@"/lookup?id=669936054" sucessBlock:^(id content) {
+    [BaseRequest requestWithMethodResponseJsonByGet:@"http://itunes.apple.com" paramars:@{@"admin":@"admin"} paramarsSite:@"/lookup?id=1128270005" sucessBlock:^(id content) {
         NSLog(@"getServicePhoneNum: %@", content);
         [self hideProgressView];
+        
+        
         if (content) {
             NSArray *resultArray = [content objectForKey:@"results"];
+            
+            if(resultArray.count>1){
             NSDictionary *resultDict = [resultArray objectAtIndex:0];
             //                DLog(@"version is %@",[resultDict objectForKey:@"version"]);
              _appVersion = [resultDict objectForKey:@"version"];
@@ -268,7 +276,7 @@
          UIAlertView *alertView1 = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_WO_pingguo_fuwuqi_shibai delegate:self cancelButtonTitle:nil otherButtonTitles:root_OK, nil];
              [alertView1 show];
         }
-        
+        }
     } failure:^(NSError *error) {
         [self hideProgressView];
         UIAlertView *alertView2 = [[UIAlertView alloc] initWithTitle:root_Alet_user message:root_WO_pingguo_fuwuqi_shibai delegate:self cancelButtonTitle:nil otherButtonTitles:root_OK, nil];

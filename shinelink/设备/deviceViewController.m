@@ -564,6 +564,10 @@
         [request setSortDescriptors:sortDescriptions];
         NSError *error = nil;
         NSArray *fetchResult = [_manager.managedObjContext executeFetchRequest:request error:&error];
+        
+      
+        
+        
         NSMutableArray *SN=[NSMutableArray array];
         for (NSManagedObject *obj in fetchResult)
         {

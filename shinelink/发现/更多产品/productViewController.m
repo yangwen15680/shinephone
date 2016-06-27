@@ -270,31 +270,47 @@
     
     
     if (_imageArray) {
-        for (int i=0; i<_imageArray.count; i++) {
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
-            imageView.image = _imageArray[i];
-            [_scrollerView addSubview:imageView];
-            
-            _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,headH);
-            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headH-20,Kwidth,20)];
-            _pageControl.numberOfPages = _imageArray.count;
-        }
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE,0,240*NOW_SIZE,_scrollerView.bounds.size.height)];
+        imageView.image = _imageArray[0];
+        [_scrollerView addSubview:imageView];
     }else{
-        NSArray *imgArray = @[@"1.jpg",
-                              @"2.jpg"];
-        for (int i=0; i<imgArray.count; i++) {
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
-            imageView.image = [UIImage imageNamed:imgArray[i]];
-            
-            
-            
-            [_scrollerView addSubview:imageView];
-            
-            _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headH);
-            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headH-20,Kwidth,20)];
-            _pageControl.numberOfPages = imgArray.count;
-        }
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40*NOW_SIZE,0,240*NOW_SIZE,_scrollerView.bounds.size.height)];
+        imageView.image =[UIImage imageNamed:@"pic_service.png"];
+        [_scrollerView addSubview:imageView];
+
+    
     }
+    
+    
+    
+    
+    
+//    if (_imageArray) {
+//        for (int i=0; i<_imageArray.count; i++) {
+//            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
+//            imageView.image = _imageArray[i];
+//            [_scrollerView addSubview:imageView];
+//            
+//            _scrollerView.contentSize = CGSizeMake(Kwidth*_imageArray.count,headH);
+//            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headH-20,Kwidth,20)];
+//            _pageControl.numberOfPages = _imageArray.count;
+//        }
+//    }else{
+//        NSArray *imgArray = @[@"1.jpg",
+//                              @"2.jpg"];
+//        for (int i=0; i<imgArray.count; i++) {
+//            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
+//            imageView.image = [UIImage imageNamed:imgArray[i]];
+//            
+//            
+//            
+//            [_scrollerView addSubview:imageView];
+//            
+//            _scrollerView.contentSize = CGSizeMake(Kwidth*imgArray.count,headH);
+//            _pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0,headH-20,Kwidth,20)];
+//            _pageControl.numberOfPages = imgArray.count;
+//        }
+//    }
     
     
     _scrollerView.pagingEnabled = YES;

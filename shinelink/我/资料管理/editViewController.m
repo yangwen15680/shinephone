@@ -124,6 +124,7 @@
     [[UserInfo defaultUserInfo] setUserName:nil];
     loginViewController *login =[[loginViewController alloc]init];
    
+  
     self.hidesBottomBarWhenPushed=YES;
      [login.navigationController setNavigationBarHidden:YES];
     [self.navigationController pushViewController:login animated:YES];

@@ -38,7 +38,36 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCR_W, SCR_H)];
     //设置滚动视图区域
     _scrollView.contentSize = CGSizeMake(SCR_W * 3, SCR_H);
-    NSArray *imageName=[NSArray arrayWithObjects:@"11.png",@"11.png",@"22.png",@"33.png", nil];
+    
+    
+    NSArray *languages = [NSLocale preferredLanguages];
+    NSString *currentLanguage = [languages objectAtIndex:0];
+    
+    NSMutableArray *imageName=[NSMutableArray array];
+    
+    if ([currentLanguage isEqualToString:@"zh-Hans-CN"]) {
+        [imageName addObject:@"111.jpg"];
+        [imageName addObject:@"111.jpg"];
+        [imageName addObject:@"222.png"];
+        [imageName addObject:@"333.png"];
+    }else if ([currentLanguage isEqualToString:@"en-CN"]) {
+        [imageName addObject:@"11.png"];
+         [imageName addObject:@"11.png"];
+         [imageName addObject:@"22.png"];
+         [imageName addObject:@"33.png"];
+      // NSArray *imageName=[NSArray arrayWithObjects:@"11.png",@"11.png",@"22.png",@"33.png", nil];
+    }else{
+        [imageName addObject:@"11.png"];
+        [imageName addObject:@"11.png"];
+        [imageName addObject:@"22.png"];
+        [imageName addObject:@"33.png"];
+    }
+
+    
+    
+   // NSArray *imageName=[NSArray arrayWithObjects:@"11.png",@"11.png",@"22.png",@"33.png", nil];
+    
+    
     for (int i = 1; i < 4; i ++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(SCR_W * (i - 1), 0, SCR_W, SCR_H)];
         imageView.image = [UIImage imageNamed:imageName[i]];

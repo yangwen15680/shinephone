@@ -215,7 +215,7 @@
             _pageControl.numberOfPages = _imageArray.count;
         }
     }else{
-    NSArray *imgArray = @[@"pic_service.png"];
+    NSArray *imgArray = @[@"pic_service.png",@"pic_service.png"];
     for (int i=0; i<imgArray.count; i++) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(Kwidth*i,0,Kwidth,_scrollerView.bounds.size.height)];
         imageView.image = [UIImage imageNamed:imgArray[i]];

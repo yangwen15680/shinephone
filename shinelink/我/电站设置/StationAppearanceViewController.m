@@ -8,7 +8,7 @@
 
 #import "StationAppearanceViewController.h"
 
-@interface StationAppearanceViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface StationAppearanceViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate, UITabBarControllerDelegate>
 @property(nonatomic,strong)UIImageView *imageView;
 @property(nonatomic,strong)NSDictionary *dictData;
 @property (nonatomic, strong) UIActionSheet *uploadImageActionSheet;
@@ -80,9 +80,45 @@
 
 
 -(void)selectImageButtonPressed{
-    self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:root_dianzhan_xuanzhe delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:root_paiZhao, root_xiangkuang_xuanQu, nil];
-    self.uploadImageActionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
-    [self.uploadImageActionSheet showInView:self.view];
+    
+    NSLog(@"取照片");
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle: nil
+                                                                              message: nil
+                                                                       preferredStyle:UIAlertControllerStyleAlert];
+    //添加Button
+    [alertController addAction: [UIAlertAction actionWithTitle: root_paiZhao style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        //处理点击拍照
+        self.cameraImagePicker = [[UIImagePickerController alloc] init];
+        self.cameraImagePicker.allowsEditing = YES;
+        self.cameraImagePicker.delegate = self;
+        self.cameraImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:_cameraImagePicker animated:YES completion:nil];
+        
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_xiangkuang_xuanQu style: UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+        //处理点击从相册选取
+        self.photoLibraryImagePicker = [[UIImagePickerController alloc] init];
+        self.photoLibraryImagePicker.allowsEditing = YES;
+        self.photoLibraryImagePicker.delegate = self;
+        self.photoLibraryImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:_photoLibraryImagePicker animated:YES completion:nil];
+        
+    }]];
+    [alertController addAction: [UIAlertAction actionWithTitle: root_cancel style: UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController: alertController animated: YES completion: nil];
+
+    
+    
+    
+    
+    
+    
+    
+    
+//    self.uploadImageActionSheet = [[UIActionSheet alloc] initWithTitle:root_dianzhan_xuanzhe delegate:self cancelButtonTitle:root_Cancel destructiveButtonTitle:nil otherButtonTitles:root_paiZhao, root_xiangkuang_xuanQu, nil];
+//    self.uploadImageActionSheet.actionSheetStyle = UIActionSheetStyleAutomatic;
+//    [self.uploadImageActionSheet showInView:self.view];
 }
 
 -(void)delButtonPressed{
