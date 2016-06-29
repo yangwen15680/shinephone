@@ -55,7 +55,7 @@ static void *context = NULL;
     
 //    NSString *Setting = NSLocalizedString(@"Setting", nil);
 //    NSString *Back = NSLocalizedString(@"Back", nil);
-            self.title = @"Set ShineWifi-E";
+            self.title = root_peizhi_shinewifi_E;
   
     
 //    UIBarButtonItem *backItem =  [[UIBarButtonItem alloc] initWithTitle:Back
@@ -209,9 +209,9 @@ static void *context = NULL;
         NSLog(@"Countt=%d",count);
           NSLog(@"cellCount0=%ld",(long)self.cellCount0);
         
-        myAlertView.title=@"Setting";
+        myAlertView.title=root_Alet_user;
         
-          myAlertView.message = @"Configuring device, please waitting...";
+          myAlertView.message = root_peizhi_shinewifi_peizhi_tishi;
         //if (count<=_cellCount) {
             
         //    myAlertView.message = [NSString stringWithFormat:@"查找设备中. 发现设备：%d个",count ];
@@ -316,7 +316,7 @@ static void *context = NULL;
    // NSString *A1= NSLocalizedString(@"A1", nil);
     //NSString *A2 = NSLocalizedString(@"A2", nil);
    // NSString *A3= NSLocalizedString(@"A3", nil);
-     myAlertView = [[SIAlertView alloc] initWithTitle:@"Setting" andMessage:@"Configuring device, please waitting..."];
+     myAlertView = [[SIAlertView alloc] initWithTitle:root_Alet_user andMessage:root_peizhi_shinewifi_peizhi_tishi];
     [myAlertView addButtonWithTitle:root_cancel
                                type:SIAlertViewButtonTypeDestructive
                             handler:^(SIAlertView *alertView) {

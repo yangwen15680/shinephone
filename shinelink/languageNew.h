@@ -488,9 +488,12 @@
 #define root_peizhi_shinewifi_shuru_chaxun_xinxi   NSLocalizedString(@"查询采集器信息", nil)
 #define root_peizhi_shinewifi_xuliehao   NSLocalizedString(@"序列号", nil)
 #define root_peizhi_shinewifi_jiaoyanma   NSLocalizedString(@"shinewifi校验码", nil)
+#define root_peizhi_shinewifi_E  NSLocalizedString(@"配置ShineWifiE", nil)
 
 #define root_peizhi_shinewifi_E_shaomiao   NSLocalizedString(@"扫描设备和设置路由器", nil)
 #define root_peizhi_shinewifi_E_mingzi   NSLocalizedString(@"ShineWifiE名字", nil)
+#define root_peizhi_shinewifi_peizhi_tishi   NSLocalizedString(@"配置提示", nil)
+
 
 #define root_dianzhan_xuanzhe   NSLocalizedString(@"Choice", nil)
 #define root_dianzhan_bianji   NSLocalizedString(@"编辑", nil)

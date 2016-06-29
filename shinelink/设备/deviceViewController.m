@@ -485,7 +485,7 @@
             
             if ( [_head11 intValue]>1000 &&[_head11 intValue]<1000000) {
                 float KW=(float)[_head11 intValue]/1000;
-                _head12=@"KW";
+                _head12=@"kW";
                 _head11=[NSString stringWithFormat:@"%.1f",KW];
             }else if([_head11 intValue]>1000000){
                 float MW=(float)[_head11 intValue]/1000000;
@@ -495,7 +495,7 @@
             
             if ( [_head21 intValue]>1000 &&[_head21 intValue]<1000000) {
                 float KW=(float)[_head21 intValue]/1000;
-                _head22=@"KW";
+                _head22=@"kW";
                 _head21=[NSString stringWithFormat:@"%.1f",KW];
             }else if([_head21 intValue]>1000000){
                 float MW=(float)[_head21 intValue]/1000000;
@@ -505,7 +505,7 @@
             
             if ( [_head31 intValue]>1000 &&[_head31 intValue]<1000000) {
                 float KW=(float)[_head31 intValue]/1000;
-                _head32=@"KW";
+                _head32=@"kW";
                 _head31=[NSString stringWithFormat:@"%.1f",KW];
             }else if([_head31 intValue]>1000000){
                 float MW=(float)[_head31 intValue]/1000000;
@@ -537,7 +537,7 @@
             
             if ( [_head21 intValue]>1000 &&[_head21 intValue]<1000000) {
                 float KW=(float)[_head21 intValue]/1000;
-                _head22=@"KW";
+                _head22=@"kW";
                 _head21=[NSString stringWithFormat:@"%.1f",KW];
             }else if([_head21 intValue]>1000000){
                 float MW=(float)[_head21 intValue]/1000000;

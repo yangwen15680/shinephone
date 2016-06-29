@@ -458,6 +458,8 @@
 "扫描设备和设置路由器"="Scanning device and setting router ";
 "ShineWifiE名字"="Name:";
 "Choice"="Choice";
+"配置ShineWifiE"="Set ShineWifi-E";
+"配置提示"="Plesa check the device blue led beside the key, it means configure ok when the blue led flashing slow(one time every second) changed from flashing fast(five times every second)";
 
 "编辑"="Edit";
 "储能放电量"="Discharge(kWh)";
