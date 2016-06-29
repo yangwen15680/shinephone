@@ -419,29 +419,31 @@
        // id jsonObj=[NSJSONSerialization JSONObjectWithData:content options:NSJSONReadingAllowFragments error:nil];
          self.dataArr = [NSMutableArray arrayWithArray:content[@"deviceList"]];
         for (int i=0; i<_dataArr.count; i++) {
-            [_typeArr addObject:content[@"deviceList"][i][@"deviceType"]];
-            [SNArray addObject:content[@"deviceList"][i][@"deviceSn"]];
-            if ([content[@"deviceList"][i][@"deviceAilas"]isEqualToString:@""]) {
-                [nameArray addObject:content[@"deviceList"][i][@"deviceType"]];
-            }else{
-                [nameArray addObject:content[@"deviceList"][i][@"deviceAilas"]];}
-           
-            NSString *TO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
-            [totalPowerArray addObject:TO];
-            
-         NSString *ST0=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"lost"]];
-            if ([ST0 isEqualToString:@"1"]) {
-                      [statueArray addObject:@"6"];
-            }else{
-            
-        NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
-             [statueArray addObject:ST];
-            }
+//            [_typeArr addObject:content[@"deviceList"][i][@"deviceType"]];
+//            [SNArray addObject:content[@"deviceList"][i][@"deviceSn"]];
+//            if ([content[@"deviceList"][i][@"deviceAilas"]isEqualToString:@""]) {
+//                [nameArray addObject:content[@"deviceList"][i][@"deviceType"]];
+//            }else{
+//                [nameArray addObject:content[@"deviceList"][i][@"deviceAilas"]];}
+//           
+//            NSString *TO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
+//            [totalPowerArray addObject:TO];
+//            
+//         NSString *ST0=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"lost"]];
+//            if ([ST0 isEqualToString:@"1"]) {
+//                      [statueArray addObject:@"6"];
+//            }else{
+//            
+//        NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
+//             [statueArray addObject:ST];
+//            }
 //            NSString *SD;
 //            if([ST isEqualToString:@"-1"])
 //            {SD=@"未连接";
-             [imageStatueArray addObject:@"disconnect@2x.png"];
+            
 //            else{SD=@"已连接";[imageStatueArray addObject:@"connected@2x.png"];}
+            
+             [imageStatueArray addObject:@"disconnect@2x.png"];
            
             if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"inverter"]) {
                  [imageArray addObject:@"inverter2.png"];
@@ -449,16 +451,56 @@
                 [powerArray addObject:PO];
                 NSString *DY=[NSString stringWithFormat:@"%@kWh",content[@"deviceList"][i][@"eToday"]];
                 [dayArray addObject:DY];
+                
+                [_typeArr addObject:content[@"deviceList"][i][@"deviceType"]];
+                [SNArray addObject:content[@"deviceList"][i][@"deviceSn"]];
+                if ([content[@"deviceList"][i][@"deviceAilas"]isEqualToString:@""]) {
+                    [nameArray addObject:content[@"deviceList"][i][@"deviceType"]];
+                }else{
+                    [nameArray addObject:content[@"deviceList"][i][@"deviceAilas"]];}
+                
+                NSString *TO=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
+                [totalPowerArray addObject:TO];
+                
+                NSString *ST0=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"lost"]];
+                if ([ST0 isEqualToString:@"1"]) {
+                    [statueArray addObject:@"6"];
+                }else{
+                    
+                    NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
+                    [statueArray addObject:ST];
+                }
+
             }else if ([content[@"deviceList"][i][@"deviceType"]isEqualToString:@"storage"]){
              [imageArray addObject:@"storage.png"];
                 NSString *PO=[NSString stringWithFormat:@"%@W",content[@"deviceList"][i][@"pCharge"]];
                 [powerArray addObject:PO];
                 NSString *DY=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"capacity"]];
                 [dayArray addObject:DY];
-            }else{
-            [imageArray addObject:@"Plug.png"];
+                
+                [_typeArr addObject:content[@"deviceList"][i][@"deviceType"]];
+                [SNArray addObject:content[@"deviceList"][i][@"deviceSn"]];
+                if ([content[@"deviceList"][i][@"deviceAilas"]isEqualToString:@""]) {
+                    [nameArray addObject:content[@"deviceList"][i][@"deviceType"]];
+                }else{
+                    [nameArray addObject:content[@"deviceList"][i][@"deviceAilas"]];}
+                
+                NSString *TO2=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"energy"]];
+                [totalPowerArray addObject:TO2];
+                
+                NSString *ST02=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"lost"]];
+                if ([ST02 isEqualToString:@"1"]) {
+                    [statueArray addObject:@"6"];
+                }else{
+                    
+                    NSString *ST=[NSString stringWithFormat:@"%@",content[@"deviceList"][i][@"deviceStatus"]];
+                    [statueArray addObject:ST];
+                }
+
+                
             }
             
+           
         }
         
         // _head11=@"88888";_head21=@"88888";_head31=@"88888";
