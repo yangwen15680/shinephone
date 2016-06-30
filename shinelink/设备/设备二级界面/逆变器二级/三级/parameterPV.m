@@ -157,7 +157,29 @@
             [self initUI];
         }
     } failure:^(NSError *error) {
-        [self hideProgressView];
+     
+        
+        [_pv12 addObject:@"0"];
+        [_pv12 addObject:@"0"];
+        [_pv12 addObject:@"0"];
+        [_pv12 addObject:@"0"];
+        [_pv12 addObject:@"0"];
+        
+        [_pv22 addObject:@"0"];
+        [_pv22 addObject:@"0"];
+        [_pv22 addObject:@"0"];
+        [_pv22 addObject:@"0"];
+        [_pv22 addObject:@"0"];
+        
+        [_pv32 addObject:@"0"];
+        [_pv32 addObject:@"0"];
+        [_pv32 addObject:@"0"];
+        [_pv32 addObject:@"0"];
+        [_pv32 addObject:@"0"];
+        
+        
+        [self initUI];
+
     }];
 
 
