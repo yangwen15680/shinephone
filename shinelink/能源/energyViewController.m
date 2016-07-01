@@ -30,6 +30,15 @@
     NSMutableArray *dayDateArray;
 
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+
+       [self netEnergy];
+    
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
@@ -57,7 +66,7 @@
 
     // Do any additional setup after loading the view.
     [self _createTableView];
-    [self netEnergy];
+ 
 }
 
 -(void)netEnergy{

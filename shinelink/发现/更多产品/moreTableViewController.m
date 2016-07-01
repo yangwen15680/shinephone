@@ -214,12 +214,21 @@
   // NSString *connentText=@"专为小型商业系统设计\n内置变压器\n隔离电网\n并提供通用的400V输出\n可直接低压并网";
      cell.connent.text=connentText;
     
+   // _identifying[indexPath.row]=@"1";
+    
     if ([_identifying[indexPath.row]isEqualToString:@"1"]) {
-        cell.image.frame=CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*HEIGHT_SIZE, 20*NOW_SIZE,20*HEIGHT_SIZE );
-       cell.image.image = IMAGE(@"更多产品2.png");
+        cell.image.frame=CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*HEIGHT_SIZE, 30*NOW_SIZE,30*HEIGHT_SIZE );
+       cell.image.image = IMAGE(@"product2.jpg");
+        cell.imageLog.frame=CGRectMake(SCREEN_Width-30*NOW_SIZE, 10*HEIGHT_SIZE, 30*NOW_SIZE,30*HEIGHT_SIZE );
+        cell.imageLog.text=root_new;
+        cell.imageLog.font=[UIFont systemFontOfSize:10*HEIGHT_SIZE];
+        
     }else if(([_identifying[indexPath.row]isEqualToString:@"0"])){
     cell.image.frame=CGRectMake(SCREEN_Width-45*NOW_SIZE, 10*HEIGHT_SIZE, 35*NOW_SIZE,20*HEIGHT_SIZE );
-          cell.image.image = IMAGE(@"tuijian@2x.png");
+          cell.image.image = IMAGE(@"product.jpg");
+         cell.imageLog.frame=CGRectMake(SCREEN_Width-45*NOW_SIZE, 10*HEIGHT_SIZE, 35*NOW_SIZE,20*HEIGHT_SIZE );
+         cell.imageLog.text=root_tuijian;
+        
     }
   
 //    if (indexPath.row==1) {

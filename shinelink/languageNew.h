@@ -500,4 +500,8 @@
 
 #define root_chuneng_fangdianliang   NSLocalizedString(@"储能放电量", nil)
 
+#define root_new   NSLocalizedString(@"新", nil)
+#define root_tuijian  NSLocalizedString(@"推荐", nil)
+
+
 #endif /* languageNew_h */

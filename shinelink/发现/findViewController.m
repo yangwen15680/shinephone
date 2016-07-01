@@ -68,7 +68,7 @@
     [self _createHeaderView];
    
     
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:4 target:self selector:@selector(circulate:) userInfo:nil repeats:YES];
 
 }
 
@@ -273,7 +273,7 @@
     [_scrollerView setContentOffset:CGPointMake(Kwidth*pageName, 0) animated:YES];
     _pageControl.currentPage = pageName;
     
-    if (pageName == 2) {
+    if (pageName == (_imageArray.count-1)) {
         pageName = -1;
     }
     

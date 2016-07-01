@@ -157,9 +157,9 @@
         
         if([_flag isEqualToString:@"2"])
         {
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*HEIGHT_SIZE, 315*NOW_SIZE, 300*HEIGHT_SIZE)];
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 135*HEIGHT_SIZE, 320*NOW_SIZE, 300*HEIGHT_SIZE)];
         }else{
-            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 165*HEIGHT_SIZE, 315*NOW_SIZE, 230*HEIGHT_SIZE)];}
+            self.lineChartView = [[SHLineGraphView alloc] initWithFrame:CGRectMake(0, 165*HEIGHT_SIZE, 320*NOW_SIZE, 230*HEIGHT_SIZE)];}
         NSDictionary *_themeAttributes = @{
                                            kXAxisLabelColorKey : [UIColor blackColor],
                                            kXAxisLabelFontKey : [UIFont fontWithName:@"TrebuchetMS" size:10*HEIGHT_SIZE],

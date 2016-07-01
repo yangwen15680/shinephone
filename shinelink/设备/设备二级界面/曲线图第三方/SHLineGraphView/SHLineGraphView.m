@@ -307,19 +307,19 @@
     [self.layer addSublayer:circleLayer];
     [self.layer addSublayer:backgroundLayer];
     
-    NSUInteger count2 = _xAxisValues.count;
-    for(int i=0; i< count2; i++){
-        CGPoint point = plot.xPoints[i];
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        
-        btn.backgroundColor = [UIColor clearColor];
-        btn.tag = i;
-        btn.frame = CGRectMake(point.x - 20, point.y - 20, 40, 40);
-        [btn addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
-        objc_setAssociatedObject(btn, kAssociatedPlotObject, plot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-        
-        [self addSubview:btn];
-    }
+// NSUInteger count2 = _xAxisValues.count;
+//    for(int i=0; i< count2; i++){
+//        CGPoint point = plot.xPoints[i];
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        
+//        btn.backgroundColor = [UIColor clearColor];
+//        btn.tag = i;
+//        btn.frame = CGRectMake(point.x - 20, point.y - 20, 40, 40);
+//        [btn addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+//        objc_setAssociatedObject(btn, kAssociatedPlotObject, plot, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+//        
+//        [self addSubview:btn];
+//    }
 }
 
 - (void)drawXLabels:(SHPlot *)plot {

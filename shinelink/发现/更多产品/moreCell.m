@@ -29,8 +29,17 @@
         [self.contentView addSubview:_name];
         
         _image=[[UIImageView alloc]init];
-       
         [self.contentView addSubview:_image];
+        
+        
+        self.imageLog = [[UILabel alloc] init];
+        self.imageLog.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];
+        self.imageLog.textAlignment = NSTextAlignmentCenter;
+        self.imageLog.textColor = [UIColor whiteColor];
+        [self.contentView addSubview:_imageLog];
+
+        
+        
         
         self.connent = [[UILabel alloc] initWithFrame:CGRectMake(size2+imageSize+kongXi, size1+20*HEIGHT_SIZE, 200*NOW_SIZE, 60*HEIGHT_SIZE)];
         self.connent.font=[UIFont systemFontOfSize:12*HEIGHT_SIZE];

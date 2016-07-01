@@ -269,6 +269,8 @@
 		33744DE41CAE597A0065DC01 /* pvLogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */; };
 		337532EF1D051579009CE66F /* PushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 337532EE1D051579009CE66F /* PushConfig.plist */; };
 		337532F31D051C14009CE66F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 337532F21D051C14009CE66F /* libz.tbd */; };
+		337584431D267D12006AC140 /* product.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 337584421D267D12006AC140 /* product.jpg */; };
+		337584451D267E2A006AC140 /* product2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 337584441D267E2A006AC140 /* product2.jpg */; };
 		3376ED5E1D12A2EA009526B4 /* 处理中.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED5B1D12A2EA009526B4 /* 处理中.png */; };
 		3376ED5F1D12A2EA009526B4 /* 待处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED5C1D12A2EA009526B4 /* 待处理.png */; };
 		3376ED641D12A2F4009526B4 /* Pend-ing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED611D12A2F4009526B4 /* Pend-ing.png */; };
@@ -879,6 +881,8 @@
 		33744DE31CAE597A0065DC01 /* pvLogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pvLogTableViewCell.m; sourceTree = "<group>"; };
 		337532EE1D051579009CE66F /* PushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PushConfig.plist; sourceTree = "<group>"; };
 		337532F21D051C14009CE66F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		337584421D267D12006AC140 /* product.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = product.jpg; sourceTree = "<group>"; };
+		337584441D267E2A006AC140 /* product2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = product2.jpg; sourceTree = "<group>"; };
 		3376ED5B1D12A2EA009526B4 /* 处理中.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "处理中.png"; sourceTree = "<group>"; };
 		3376ED5C1D12A2EA009526B4 /* 待处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待处理.png"; sourceTree = "<group>"; };
 		3376ED611D12A2F4009526B4 /* Pend-ing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pend-ing.png"; sourceTree = "<group>"; };
@@ -1981,6 +1985,8 @@
 				3367EBA31CD0C11800D2EF67 /* productViewController.m */,
 				335239011CD1B74E00287EA9 /* imageBig.h */,
 				335239021CD1B74E00287EA9 /* imageBig.m */,
+				337584421D267D12006AC140 /* product.jpg */,
+				337584441D267E2A006AC140 /* product2.jpg */,
 			);
 			path = "更多产品";
 			sourceTree = "<group>";
@@ -2660,7 +2666,7 @@
 				TargetAttributes = {
 					337F9C7F1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = GU874P92XV;
+						DevelopmentTeam = PX2V6N98Z6;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2735,6 +2741,7 @@
 				33FEFD531C7DB38400324374 /* icon_arrow.png in Resources */,
 				33FEFD731C7DB38400324374 /* iconfont-nengyuanlei@2x.png in Resources */,
 				330E3DEF1D0D6D2100DF75AE /* priority.png in Resources */,
+				337584451D267E2A006AC140 /* product2.jpg in Resources */,
 				334AED641CA3765A007E39F3 /* 关于.png in Resources */,
 				3381ECF31CBCA60C00DCF0D2 /* 智能调整优先设置.png in Resources */,
 				33FEFD551C7DB38400324374 /* icon_press@2x.png in Resources */,
@@ -2860,6 +2867,7 @@
 				334FF0AD1CF53C7C001E6716 /* SIAlertView.bundle in Resources */,
 				33652A241CEC0621004EBAE5 /* inverterE.png in Resources */,
 				334FF0B71CF53C7C001E6716 /* about.png in Resources */,
+				337584431D267D12006AC140 /* product.jpg in Resources */,
 				3349BB411C7EFD8500E6E34B /* 3.jpg in Resources */,
 				33FEFD771C7DB38400324374 /* iconfont-shouji@3x.png in Resources */,
 				33652A221CEC023C004EBAE5 /* inverterD.png in Resources */,
@@ -3294,7 +3302,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelinkw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3316,7 +3324,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelinkw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

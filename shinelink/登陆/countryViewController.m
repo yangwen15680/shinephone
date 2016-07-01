@@ -21,6 +21,7 @@
 @property(nonatomic,strong)NSString *longitude;
 @property(nonatomic,strong)NSString *city;
 @property(nonatomic,strong)NSString *country;
+@property(nonatomic,strong)NSString *countryGet;
 @property(nonatomic,strong)NSMutableArray *provinceArray;
 
 @end
@@ -148,6 +149,7 @@
         _longitude=[NSString stringWithFormat:@"%.2f", location.coordinate.longitude];
         _latitude=[NSString stringWithFormat:@"%.2f", location.coordinate.latitude];
         _city=placemark.locality;
+        _countryGet=placemark.country;
         
         NSString *lableText=[NSString stringWithFormat:@"%@(%@,%@)",_city,_longitude,_latitude];
         _label2.text =lableText;
