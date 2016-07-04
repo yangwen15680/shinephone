@@ -235,7 +235,7 @@
     //    [goBut.layer setMasksToBounds:YES];
     //    [goBut.layer setCornerRadius:25.0];
     [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
-    [goBut setTitle:root_finish forState:UIControlStateNormal];
+    [goBut setTitle:root_set forState:UIControlStateNormal];
     goBut.titleLabel.font=[UIFont systemFontOfSize: 16*HEIGHT_SIZE];
     [goBut addTarget:self action:@selector(clickSetButton:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:goBut];

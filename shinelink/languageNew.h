@@ -23,7 +23,7 @@
 #define  root_OK        NSLocalizedString(@"确定", nil)
 #define  root_del        NSLocalizedString(@"删除", nil)
 #define  root_saomiao_jieguo       NSLocalizedString(@"扫描结果", nil)
-
+#define  root_set       NSLocalizedString(@"配置", nil)
 
 
 //登陆

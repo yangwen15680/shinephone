@@ -473,3 +473,4 @@
 "配置提示"="Plesa check the device blue led beside the key, it means configure ok when the blue led flashing slow(one time every second) changed from flashing fast(five times every second)";
 "新"="New";
 "推荐"="Hot";
+"配置"="Set";
