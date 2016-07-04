@@ -103,7 +103,7 @@
         _productData.feature=_feature[i];
         _productData.outline=_outline[i];
         _productData.productName=_name[i];
-        _productData.productName=_paramsName[i];
+        _productData.technologyParams=_paramsName[i];
          _productData.productImage=_imageNameNext[i];
          _productData.identifying=_identifying[i];
          _productData.imageData=_imageDataArray[i];

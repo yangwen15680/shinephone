@@ -25,7 +25,7 @@
     <entity name="ProductData" representedClassName="ProductData" syncable="YES">
         <attribute name="feature" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifying" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageData" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="outline" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productImage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
