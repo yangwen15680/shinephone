@@ -334,6 +334,8 @@
 		338990B51CEB1F9D00A708F8 /* DemoDeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */; };
 		338CFE661CF554C1006EFD8B /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 338CFE651CF554C1006EFD8B /* libstdc++.6.0.9.tbd */; };
 		338CFE681CF554D8006EFD8B /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 338CFE671CF554D8006EFD8B /* libstdc++.tbd */; };
+		338DCD9E1D2A00DF00C8B775 /* ProductData+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 338DCD9B1D2A00DF00C8B775 /* ProductData+CoreDataProperties.m */; };
+		338DCD9F1D2A00DF00C8B775 /* ProductData.m in Sources */ = {isa = PBXBuildFile; fileRef = 338DCD9D1D2A00DF00C8B775 /* ProductData.m */; };
 		338FD9841D1D2065009A128F /* 222.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FD9831D1D2065009A128F /* 222.png */; };
 		338FD9861D1D20F9009A128F /* 333.png in Resources */ = {isa = PBXBuildFile; fileRef = 338FD9851D1D20F9009A128F /* 333.png */; };
 		338FD9881D1D25A8009A128F /* 111.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 338FD9871D1D25A8009A128F /* 111.jpg */; };
@@ -980,6 +982,10 @@
 		338990B41CEB1F9D00A708F8 /* DemoDeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoDeviceViewController.m; sourceTree = "<group>"; };
 		338CFE651CF554C1006EFD8B /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		338CFE671CF554D8006EFD8B /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		338DCD9A1D2A00DF00C8B775 /* ProductData+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ProductData+CoreDataProperties.h"; sourceTree = "<group>"; };
+		338DCD9B1D2A00DF00C8B775 /* ProductData+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ProductData+CoreDataProperties.m"; sourceTree = "<group>"; };
+		338DCD9C1D2A00DF00C8B775 /* ProductData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductData.h; sourceTree = "<group>"; };
+		338DCD9D1D2A00DF00C8B775 /* ProductData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductData.m; sourceTree = "<group>"; };
 		338FD9831D1D2065009A128F /* 222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 222.png; sourceTree = "<group>"; };
 		338FD9851D1D20F9009A128F /* 333.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 333.png; sourceTree = "<group>"; };
 		338FD9871D1D25A8009A128F /* 111.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111.jpg; sourceTree = "<group>"; };
@@ -1768,6 +1774,10 @@
 				335317401CA2423D003F106D /* GetDevice+CoreDataProperties.m */,
 				335317411CA2423D003F106D /* GetDevice.h */,
 				335317421CA2423D003F106D /* GetDevice.m */,
+				338DCD9A1D2A00DF00C8B775 /* ProductData+CoreDataProperties.h */,
+				338DCD9B1D2A00DF00C8B775 /* ProductData+CoreDataProperties.m */,
+				338DCD9C1D2A00DF00C8B775 /* ProductData.h */,
+				338DCD9D1D2A00DF00C8B775 /* ProductData.m */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -2972,6 +2982,7 @@
 				3383EFA21C9F8A6F0075E834 /* MJRefreshLegendHeader.m in Sources */,
 				334B8F561C914A6D00798A69 /* PNScatterChartData.m in Sources */,
 				335239061CD2067E00287EA9 /* RootPickerView.m in Sources */,
+				338DCD9E1D2A00DF00C8B775 /* ProductData+CoreDataProperties.m in Sources */,
 				334B8F4E1C914A6D00798A69 /* PNColor.m in Sources */,
 				3381ECEE1CBCA3ED00DCF0D2 /* energyDemo.m in Sources */,
 				33FEFCD31C7D8A9500324374 /* AddressPickView.m in Sources */,
@@ -3030,6 +3041,7 @@
 				33692BE91C92527500698375 /* threeViewController.m in Sources */,
 				337F9CCB1C71AC200016FE43 /* energyViewController.m in Sources */,
 				3356782B1CC62A5A00EE4A73 /* controlCNJTable.m in Sources */,
+				338DCD9F1D2A00DF00C8B775 /* ProductData.m in Sources */,
 				336664F31CB784EC005573FB /* EquipGraphViewController.m in Sources */,
 				3343F3DE1C80405D009F69BC /* UIImageView+AFNetworking.m in Sources */,
 				33EFB6681C98F9B1003F336F /* ZFConst.m in Sources */,

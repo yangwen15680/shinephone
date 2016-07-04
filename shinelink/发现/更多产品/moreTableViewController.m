@@ -9,6 +9,7 @@
 #import "moreTableViewController.h"
 #import "moreCell.h"
 #import "productViewController.h"
+#import "ProductData.h"
 
 @interface moreTableViewController ()
 @property (nonatomic, strong) NSMutableArray *name;
@@ -20,6 +21,10 @@
 @property (nonatomic, strong) NSMutableArray *identifying;
 @property (nonatomic, strong) NSMutableArray *imageNameArray;
 @property (nonatomic, strong) NSMutableArray *imageNameNext;
+@property (nonatomic, strong) NSMutableArray *imageDataArray;
+@property (nonatomic, strong) NSArray *allArray;
+@property (nonatomic, strong) CoreDataManager *manager;
+@property (nonatomic, strong) ProductData *productData;
 
   @property (nonatomic, strong)  NSString *languageValue;
 @end
@@ -37,8 +42,12 @@
       _identifying=[NSMutableArray array];
         _imageNameArray=[NSMutableArray array];
      _imageNameNext=[NSMutableArray array];
+       _imageDataArray=[NSMutableArray array];
     
           self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
+     _manager=[CoreDataManager sharedCoreDataManager];
+    
     [self initData];
 }
 
@@ -64,77 +73,18 @@
    [self hideProgressView];
         if (content) {
             
-            NSArray *allArray=[NSArray arrayWithArray:content];
-            for (int i=0; i<allArray.count; i++) {
-                [_name addObject:allArray[i][@"productName"]];
-                 [_feature addObject:allArray[i][@"feature"]];
-                 [_outline addObject:allArray[i][@"outline"]];
-                 [_paramsName addObject:allArray[i][@"technologyParams"]];
-                 [_imageName addObject:allArray[i][@"productName"]];
-                     [_imageNameNext addObject:allArray[i][@"productImage"]];
-                
-                  NSString *C=[NSString stringWithFormat:@"%@",allArray[i][@"identifying"]];
-                  [_identifying addObject:C];
-
-                NSString *productImage=[NSString stringWithString:allArray[i][@"productImage"]];
-               
-                   [_imageNameArray addObject:productImage];
-                
+            _allArray=[NSArray arrayWithArray:content];
+            
+            for (int i=0; i<_allArray.count; i++) {
+                NSString *productImage=[NSString stringWithString:_allArray[i][@"productImage"]];
+                [_imageNameArray addObject:productImage];
             }
             
-             [self.tableView reloadData];
             
-         [self getImage];
-            
-            
+            [self getData];
+    
             
         
-//                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//                        
-//                        NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,productImage];
-//                                            UIImage * resultImage;
-//                                NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
-//                        
-//                        if (data!= nil) {
-//                            resultImage = [UIImage imageWithData:data];
-//                         [_imageHead addObject:resultImage];
-//                            
-//                            
-//                            
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                [self.tableView reloadData];
-//                            });
-//                            
-//                            
-//                        }else{
-//                            dispatch_async(dispatch_get_main_queue(), ^{
-//                                 [self.tableView reloadData];
-//                            });
-//                            
-//                        }
-//                    });
-//            
-                    
-            
-//                     [self showProgressView];
-//                    [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"imageName":productImage,@"language":_languageValue} paramarsSite:@"/newProductAPI.do?op=getProductImage" sucessBlock:^(id content2) {
-//                        
-//                        [self hideProgressView];
-//                          NSLog(@"i===: %d", i);
-//                        NSLog(@"getProductImage=: %@", content2);
-//                        if (content2) {
-//                            
-//                            [_imageHead addObject:content2];
-//                            if (_imageHead.count==allArray.count) {
-//                                     [self.tableView reloadData];
-//                            }
-//                                  }
-//                        
-//                    } failure:^(NSError *error) {
-//                        [self hideProgressView];
-//                    }];
-         
-            
         }
         
     } failure:^(NSError *error) {
@@ -146,6 +96,121 @@
 }
 
 
+-(void)getAllData{
+
+    for (int i=0; i<_name.count; i++) {
+         _productData=[NSEntityDescription insertNewObjectForEntityForName:@"ProductData" inManagedObjectContext:[CoreDataManager sharedCoreDataManager].managedObjContext];
+        _productData.feature=_feature[i];
+        _productData.outline=_outline[i];
+        _productData.productName=_name[i];
+        _productData.productName=_paramsName[i];
+         _productData.productImage=_imageNameNext[i];
+         _productData.identifying=_identifying[i];
+         _productData.imageData=_imageDataArray[i];
+        
+    }
+    
+ NSError *error = nil;
+    BOOL isSaveSuccess = [_manager.managedObjContext save:&error];
+    if (!isSaveSuccess) {
+        NSLog(@"Error: %@,%@",error,[error userInfo]);
+    }else
+    {
+        NSLog(@"Save successFull");
+    }
+
+    
+    
+
+}
+
+
+
+-(void)getData{
+    
+    
+ NSError *error = nil;
+    NSFetchRequest *request2 = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity2 = [NSEntityDescription entityForName:@"ProductData" inManagedObjectContext:_manager.managedObjContext];
+    [request2 setEntity:entity2];
+    NSSortDescriptor *sortDescriptor2 = [[NSSortDescriptor alloc] initWithKey:@"productName" ascending:NO];
+    NSArray *sortDescriptions2 = [[NSArray alloc] initWithObjects:sortDescriptor2, nil];
+    [request2 setSortDescriptors:sortDescriptions2];
+
+    NSArray *ProductDataAll = [_manager.managedObjContext executeFetchRequest:request2 error:&error];
+    
+        NSMutableArray *sameArray=[NSMutableArray array];
+    
+    for (int i=0; i<ProductDataAll.count; i++) {
+    ProductData *AllData1=ProductDataAll[i];
+     [sameArray addObject:AllData1.productImage];
+    }
+    
+       NSString *getSame;
+    
+    for (int i=0; i<sameArray.count; i++) {
+        
+        if ( ![sameArray containsObject:_imageNameArray[i]]) {
+            getSame=@"0";
+        }
+    }
+    
+    if (sameArray.count==0) {
+         getSame=@"0";
+    }
+    _imageNameArray=[NSMutableArray new];
+    
+    if ([getSame isEqualToString:@"0"]) {
+        for (int i=0; i<_allArray.count; i++) {
+            [_name addObject:_allArray[i][@"productName"]];
+            [_feature addObject:_allArray[i][@"feature"]];
+            [_outline addObject:_allArray[i][@"outline"]];
+            [_paramsName addObject:_allArray[i][@"technologyParams"]];
+            [_imageName addObject:_allArray[i][@"productName"]];
+            [_imageNameNext addObject:_allArray[i][@"productImage"]];
+            
+            NSString *C=[NSString stringWithFormat:@"%@",_allArray[i][@"identifying"]];
+            [_identifying addObject:C];
+            
+            NSString *productImage=[NSString stringWithString:_allArray[i][@"productImage"]];
+            
+            [_imageNameArray addObject:productImage];
+        }
+
+        [self.tableView reloadData];
+        [self getImage];
+        
+    }else{
+    
+    
+    
+    for (int i=0; i<ProductDataAll.count; i++) {
+        
+        ProductData *AllData=ProductDataAll[i];
+        [_name addObject:AllData.productName];
+        [_feature addObject:AllData.feature];
+        [_outline addObject:AllData.outline];
+        [_paramsName addObject:AllData.technologyParams];
+        [_imageName addObject:AllData.productName];
+        [_imageNameNext addObject:AllData.productImage];
+        
+        [_identifying addObject:AllData.identifying];
+        
+        [_imageNameArray addObject:AllData.productImage];
+        
+          UIImage * resultImage;
+        resultImage = [UIImage imageWithData:(NSData*)AllData.imageData];
+        [_imageHead addObject:resultImage];
+    }
+    
+    [self.tableView reloadData];
+    }
+
+}
+
+
+
+
 -(void)getImage{
     if (_imageNameArray.count==_name.count) {
         
@@ -154,11 +219,15 @@
             UIImage * resultImage;
             NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
             
+            
             if (data!= nil) {
                 resultImage = [UIImage imageWithData:data];
                 [_imageHead addObject:resultImage];
+                [_imageDataArray addObject:data];
                 
-                
+                if (_imageNameArray.count==_imageHead.count) {
+                    [self getAllData];
+                }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
@@ -169,8 +238,13 @@
         }
     }
 
-
 }
+
+
+
+
+
+
 
 - (void)showProgressView {
     [MBProgressHUD hideHUDForView:self.view animated:YES];

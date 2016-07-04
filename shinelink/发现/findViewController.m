@@ -18,6 +18,7 @@
 
 @interface findViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
 @property(nonatomic,strong)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *imageDataArray;
 @property(nonatomic,strong)NSMutableArray *imageArrayName;
 @property(nonatomic,strong)NSMutableArray *imageArrayCount;
 @property(nonatomic,strong)UIView *headerView;
@@ -58,6 +59,7 @@
 
     _imageArrayName=[NSMutableArray array];
       _imageArrayCount=[NSMutableArray array];
+     _imageDataArray=[NSMutableArray array];
     
     if(!_headerView){
        [self netFind];
@@ -116,20 +118,25 @@
 -(void)netFind2{
 
         _imageArray=[NSMutableArray array];
-    for (int i=0; i<_imageArrayCount.count; i++) {
+
+    NSString *getSame;
+    NSArray * imageName = [NSArray arrayWithArray:_imageArrayName];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    
+     NSMutableArray *getImageName = [NSMutableArray arrayWithArray:[user objectForKey:@"AdPicName"]];
+    
+    for (int j=0; j<_imageArrayName.count; j++) {
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            NSURL * url = [NSURL URLWithString:@"http://www.baidu.com"];
-//            NSError * error;
-//            NSString * data = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:&error];
-//            if (data != nil) {
-//                dispatch_async(dispatch_get_main_queue(), ^{
-//                    NSLog(@"call back, the data is: %@", data);
-//                });
-//            } else {
-//                NSLog(@"error when download:%@", error);
-//            }
-//        }
+        if ( ![getImageName containsObject:_imageArrayName[j]]) {
+            getSame=@"0";
+        }
+    }
+    
+    if ([getSame isEqualToString:@"0"]) {
+        
+    [user setObject:imageName forKey:@"AdPicName"];
+    
+    for (int i=0; i<_imageArrayCount.count; i++) {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSString *imageURL=[NSString stringWithFormat:@"%@/%@",HEAD_URL,_imageArrayName[i]];
@@ -140,8 +147,13 @@
             result = [UIImage imageWithData:data];
             
             [_imageArray addObject:result];
+            [_imageDataArray addObject:data];
             
             if (_imageArray.count==_imageArrayCount.count) {
+                
+                NSArray * imageDataName = [NSArray arrayWithArray:_imageDataArray];
+                 [user setObject:imageDataName forKey:@"AdPicData"];
+                
                  dispatch_async(dispatch_get_main_queue(), ^{
                 [self _createHeaderView];
                  });
@@ -152,26 +164,32 @@
                 [_tableView reloadData];
         }
         });
+       }
+    }else{
+    
+      NSMutableArray *getImageData = [NSMutableArray arrayWithArray:[user objectForKey:@"AdPicData"]];
         
-//        [self showProgressView];
-//        [BaseRequest requestImageWithMethodByGet:HEAD_URL paramars:@{@"name":_imageArrayName[i]} paramarsSite:@"/newPlantAPI.do?op=getAdvertisingImages" sucessBlock:^(id content) {
-//            [self hideProgressView];
-//            NSLog(@"getAdvertisingImages=: %@", content);
-//            if (content) {
-//                [_imageArray addObject:content];
-//                if (_imageArray.count==_imageArrayCount.count) {
-//                    [self _createHeaderView];
-//                }
-//            }
-//           
-//        } failure:^(NSError *error) {
-//            [self hideProgressView];
-//             //[_tableView reloadData];
-//            [self showToastViewWithTitle:root_Networking];
-//            
-//        }];
-      
+        for (int k=0; k<getImageData.count; k++) {
+             UIImage * result1;
+                  result1 = [UIImage imageWithData:getImageData[k]];
+               [_imageArray addObject:result1];
+            
+            if (_imageArray.count==getImageData.count) {
+                    [self _createHeaderView];
+            }
+
+            
+            
+        }
+        
+    
     }
+    
+    
+    
+    
+    
+    
     
 }
 
