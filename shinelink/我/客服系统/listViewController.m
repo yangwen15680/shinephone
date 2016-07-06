@@ -44,6 +44,7 @@
     
         [self.navigationController.navigationBar setBarTintColor:COLOR(17, 183, 243, 1)];
     
+    
     NSArray *languages = [NSLocale preferredLanguages];
     NSString *currentLanguage = [languages objectAtIndex:0];
    

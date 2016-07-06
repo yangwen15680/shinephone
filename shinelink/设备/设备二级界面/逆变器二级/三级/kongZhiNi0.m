@@ -8,6 +8,9 @@
 
 #import "kongZhiNi0.h"
 #import "KongZhiNi.h"
+#import "RKAlertView.h"
+
+#define AlertContent @"Growatt"
 
 @interface kongZhiNi0 ()
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -25,7 +28,7 @@
     
     self.tableView.separatorColor=[UIColor whiteColor];
     
-     self.dataArray =[NSMutableArray arrayWithObjects:root_NBQ_kaiguan,root_NBQ_youxiao_gonglv,root_NBQ_wuxiao_gonglv,root_NBQ_PF,root_NBQ_shijian,nil];
+     self.dataArray =[NSMutableArray arrayWithObjects:root_NBQ_kaiguan,root_NBQ_youxiao_gonglv,root_NBQ_wuxiao_gonglv,root_NBQ_PF,root_NBQ_shijian,root_NBQ_shidian_dianya,nil];
     
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
         [self.tableView setSeparatorInset:UIEdgeInsetsMake(0,0,0,0)];
@@ -99,8 +102,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     KongZhiNi *go=[[KongZhiNi alloc]init];
+     go.PvSn=_PvSn;
     if (indexPath.row==0) {
         go.type=@"0";
+        
     }else if (indexPath.row==1){
     go.type=@"1";
     }else if (indexPath.row==2){
@@ -109,9 +114,35 @@
         go.type=@"3";
     }else if (indexPath.row==4){
         go.type=@"4";
+    }else if (indexPath.row==5){
+        go.type=@"5";
     }
-    go.PvSn=_PvSn;
-    [self.navigationController pushViewController:go animated:YES];
+   
+   
+    if ((indexPath.row==0)||(indexPath.row==1)||(indexPath.row==2)||(indexPath.row==3)) {
+        
+        [RKAlertView showAlertPlainTextWithTitle:root_Alet_user message:root_kongzhi_Alert cancelTitle:root_cancel confirmTitle:root_OK alertViewStyle:UIAlertViewStylePlainTextInput confrimBlock:^(UIAlertView *alertView) {
+            NSLog(@"确认了输入：%@",[alertView textFieldAtIndex:0].text);
+            NSString *alert1=[alertView textFieldAtIndex:0].text;
+            
+            if ([alert1 isEqualToString:AlertContent]) {
+                [self.navigationController pushViewController:go animated:YES];
+            }else{
+                [RKAlertView showNoCancelBtnAlertWithTitle:root_Alet_user message:root_kongzhi_mima confirmTitle:root_OK confrimBlock:^{
+                
+                }];
+                
+            }
+            
+        } cancelBlock:^{
+            NSLog(@"取消了");
+        }];
+        
+    }else if ((indexPath.row==4)||(indexPath.row==5)){
+    
+         [self.navigationController pushViewController:go animated:YES];
+       }
+    
 
 }
 

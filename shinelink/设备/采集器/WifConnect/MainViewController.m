@@ -59,7 +59,7 @@
     float sizeH1=10*HEIGHT_SIZE;
     
     UIImageView *pwdBgImageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 15*HEIGHT_SIZE, 300*NOW_SIZE,60*HEIGHT_SIZE )];
-    pwdBgImageView1.image = IMAGE(@"111.jpg");
+    pwdBgImageView1.image = IMAGE(@"main1.jpg");
     pwdBgImageView1.userInteractionEnabled = YES;
     [_scrollView addSubview:pwdBgImageView1];
 

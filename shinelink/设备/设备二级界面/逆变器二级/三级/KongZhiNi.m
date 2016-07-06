@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSString *commandValue;
 @property (nonatomic, strong) UIAlertView *Alert1;
 @property (nonatomic, strong) UIAlertView *Alert2;
+@property (nonatomic, strong)UITextField *textField1;
 @end
 
 @implementation KongZhiNi
@@ -172,6 +173,28 @@
     [_scrollView addSubview:_datePickerButton];
     }
     
+    if([_type isEqualToString:@"5"]){
+        
+        UILabel *PVData=[[UILabel alloc]initWithFrame:CGRectMake((SCREEN_Width-250*NOW_SIZE)/2,  65*HEIGHT_SIZE, 250*NOW_SIZE,30*HEIGHT_SIZE )];
+        PVData.text=root_NBQ_shidian_dianya;
+        PVData.textAlignment=NSTextAlignmentCenter;
+        PVData.textColor=[UIColor whiteColor];
+        PVData.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+        [_scrollView addSubview:PVData];
+    
+        _textField1 = [[UITextField alloc] initWithFrame:CGRectMake((SCREEN_Width-180*NOW_SIZE)/2, 85*HEIGHT_SIZE+30*HEIGHT_SIZE, 180*NOW_SIZE, 40*HEIGHT_SIZE)];
+        _textField1.layer.borderWidth=1;
+        _textField1.layer.cornerRadius=5;
+        _textField1.layer.borderColor=[UIColor whiteColor].CGColor;
+        _textField1.textColor = [UIColor whiteColor];
+        _textField1.tintColor = [UIColor whiteColor];
+         _textField1.textAlignment=NSTextAlignmentCenter;
+        _textField1.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+        [_scrollView addSubview:_textField1];
+    
+    }
+    
+    
     if(![_type isEqualToString:@"0"]){
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
     goBut.frame=CGRectMake(60*NOW_SIZE,200*HEIGHT_SIZE, 200*NOW_SIZE, 40*HEIGHT_SIZE);
@@ -205,6 +228,15 @@
          _commandValue=[NSString stringWithString:S3];
          _paramId=@"pv_power_factor";
     }
+    
+    if (_textField1) {
+        NSString *textValue= [NSString stringWithFormat:@"%.1f",[[_textField1 text] floatValue]];
+        
+        _commandValue=textValue;
+        
+        _paramId=@"pv_grid_voltage_high";
+    }
+    
      [self showProgressView];
     [BaseRequest requestWithMethodResponseStringResult:HEAD_URL paramars:@{@"serialNum":_PvSn,@"paramId":_paramId,@"command_1":_commandValue,@"command_2":@""} paramarsSite:@"/newTcpsetAPI.do?op=inverterSet" sucessBlock:^(id content) {
         //NSString *res = [[NSString alloc] initWithData:content encoding:NSUTF8StringEncoding];

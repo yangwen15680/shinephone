@@ -10,6 +10,8 @@
 		330E3DED1D0D6CF300DF75AE /* enabler.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E3DEC1D0D6CF300DF75AE /* enabler.png */; };
 		330E3DEF1D0D6D2100DF75AE /* priority.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E3DEE1D0D6D2100DF75AE /* priority.png */; };
 		330E3DF11D0D6D4B00DF75AE /* 形状17.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E3DF01D0D6D4B00DF75AE /* 形状17.png */; };
+		33209FCF1D2A54AB00186893 /* addDevice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33209FCE1D2A54AB00186893 /* addDevice.jpg */; };
+		33209FD11D2A553E00186893 /* main1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33209FD01D2A553E00186893 /* main1.jpg */; };
 		33238B421CBF7C3B00E82B86 /* server3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B401CBF7C3B00E82B86 /* server3@2x.png */; };
 		33238B431CBF7C3B00E82B86 /* server3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B411CBF7C3B00E82B86 /* server3@3x.png */; };
 		33238B461CBF7C4200E82B86 /* client@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B441CBF7C4200E82B86 /* client@2x.png */; };
@@ -277,6 +279,7 @@
 		3376ED651D12A2F4009526B4 /* Proce-ssed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED621D12A2F4009526B4 /* Proce-ssed.png */; };
 		3376ED661D12A2F4009526B4 /* Proce-ssing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED631D12A2F4009526B4 /* Proce-ssing.png */; };
 		3376ED681D12A4A6009526B4 /* 已处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED671D12A4A6009526B4 /* 已处理.png */; };
+		33775AD91D2CD7520070742E /* RKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33775AD81D2CD7520070742E /* RKAlertView.m */; };
 		33793D121CE582B0000D0F9E /* inverter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D111CE582B0000D0F9E /* inverter2.png */; };
 		33793D141CE583AD000D0F9E /* storage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D131CE583AD000D0F9E /* storage4.png */; };
 		33793D161CE583E4000D0F9E /* solar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D151CE583E4000D0F9E /* solar4.png */; };
@@ -451,6 +454,8 @@
 		330E3DEC1D0D6CF300DF75AE /* enabler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enabler.png; sourceTree = "<group>"; };
 		330E3DEE1D0D6D2100DF75AE /* priority.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = priority.png; sourceTree = "<group>"; };
 		330E3DF01D0D6D4B00DF75AE /* 形状17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状17.png"; sourceTree = "<group>"; };
+		33209FCE1D2A54AB00186893 /* addDevice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addDevice.jpg; sourceTree = "<group>"; };
+		33209FD01D2A553E00186893 /* main1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = main1.jpg; path = AsyncSocket/main1.jpg; sourceTree = "<group>"; };
 		33238B401CBF7C3B00E82B86 /* server3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "server3@2x.png"; path = "../../我/客服系统/我的问题/server3@2x.png"; sourceTree = "<group>"; };
 		33238B411CBF7C3B00E82B86 /* server3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "server3@3x.png"; path = "../../我/客服系统/我的问题/server3@3x.png"; sourceTree = "<group>"; };
 		33238B441CBF7C4200E82B86 /* client@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client@2x.png"; path = "../../我/客服系统/我的问题/client@2x.png"; sourceTree = "<group>"; };
@@ -891,6 +896,8 @@
 		3376ED621D12A2F4009526B4 /* Proce-ssed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Proce-ssed.png"; sourceTree = "<group>"; };
 		3376ED631D12A2F4009526B4 /* Proce-ssing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Proce-ssing.png"; sourceTree = "<group>"; };
 		3376ED671D12A4A6009526B4 /* 已处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已处理.png"; sourceTree = "<group>"; };
+		33775AD71D2CD7520070742E /* RKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKAlertView.h; sourceTree = "<group>"; };
+		33775AD81D2CD7520070742E /* RKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKAlertView.m; sourceTree = "<group>"; };
 		33793D111CE582B0000D0F9E /* inverter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverter2.png; sourceTree = "<group>"; };
 		33793D131CE583AD000D0F9E /* storage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage4.png; sourceTree = "<group>"; };
 		33793D151CE583E4000D0F9E /* solar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solar4.png; sourceTree = "<group>"; };
@@ -1295,6 +1302,7 @@
 		334AED6B1CA381BF007E39F3 /* 滑块第三方 */ = {
 			isa = PBXGroup;
 			children = (
+				33775AD61D2CD7520070742E /* RKAlertView */,
 				334AED721CA384F4007E39F3 /* open@2x.png */,
 				334AED6C1CA381D0007E39F3 /* ASValuePopUpView.h */,
 				334AED6D1CA381D0007E39F3 /* ASValuePopUpView.m */,
@@ -1475,6 +1483,7 @@
 				334FF03C1CF53C7C001E6716 /* deviceRootViewController.m */,
 				334FF03D1CF53C7C001E6716 /* InfoSend.h */,
 				334FF03E1CF53C7C001E6716 /* InfoSend.m */,
+				33209FD01D2A553E00186893 /* main1.jpg */,
 				334FF0401CF53C7C001E6716 /* MainViewController.h */,
 				334FF0411CF53C7C001E6716 /* MainViewController.m */,
 				334FF0421CF53C7C001E6716 /* ModuleInfo.h */,
@@ -1524,6 +1533,7 @@
 		334FF0451CF53C7C001E6716 /* num2 */ = {
 			isa = PBXGroup;
 			children = (
+				33209FCE1D2A54AB00186893 /* addDevice.jpg */,
 				334FF0461CF53C7C001E6716 /* AddDeviceViewController.h */,
 				334FF0471CF53C7C001E6716 /* AddDeviceViewController.mm */,
 				334FF04B1CF53C7C001E6716 /* DeviceManageViewController.h */,
@@ -2123,6 +2133,15 @@
 			path = "图片8";
 			sourceTree = "<group>";
 		};
+		33775AD61D2CD7520070742E /* RKAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				33775AD71D2CD7520070742E /* RKAlertView.h */,
+				33775AD81D2CD7520070742E /* RKAlertView.m */,
+			);
+			path = RKAlertView;
+			sourceTree = "<group>";
+		};
 		337C30511CCDAEDA002B99B7 /* pic */ = {
 			isa = PBXGroup;
 			children = (
@@ -2676,7 +2695,7 @@
 				TargetAttributes = {
 					337F9C7F1C71A6710016FE43 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = GU874P92XV;
+						DevelopmentTeam = PX2V6N98Z6;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
 								enabled = 0;
@@ -2797,6 +2816,7 @@
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33238B461CBF7C4200E82B86 /* client@2x.png in Resources */,
+				33209FCF1D2A54AB00186893 /* addDevice.jpg in Resources */,
 				334FF0BF1CF53C7C001E6716 /* text_bg.png in Resources */,
 				334FF0901CF53C7C001E6716 /* Documentation.html in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
@@ -2863,6 +2883,7 @@
 				336664E81CB77CC2005573FB /* service@3x.png in Resources */,
 				33FFBD551CEC813D003C56E1 /* content4.jpg in Resources */,
 				3381ECF51CBCA61200DCF0D2 /* 智能联动设置切图.png in Resources */,
+				33209FD11D2A553E00186893 /* main1.jpg in Resources */,
 				338990B11CEAB73400A708F8 /* logo3.png in Resources */,
 				334FF0B81CF53C7C001E6716 /* bottombg.png in Resources */,
 				33FEFD711C7DB38400324374 /* iconfont-nengyuanlei_press@2x.png in Resources */,
@@ -3068,6 +3089,7 @@
 				334FF0AB1CF53C7C001E6716 /* NSTimer+EasyTimeline.m in Sources */,
 				3343F3DC1C80405D009F69BC /* UIAlertView+AFNetworking.m in Sources */,
 				337F9CC51C71ABD80016FE43 /* deviceViewController.m in Sources */,
+				33775AD91D2CD7520070742E /* RKAlertView.m in Sources */,
 				334B8F571C914A6D00798A69 /* PNScatterChartDataItem.m in Sources */,
 				3381ED091CBCE94200DCF0D2 /* AnswerViewController.m in Sources */,
 				337F9C851C71A6710016FE43 /* main.m in Sources */,
@@ -3303,8 +3325,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiangti meng (CUTR5RZYQT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiangti meng (CUTR5RZYQT)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3314,7 +3336,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelinkw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -3325,8 +3347,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiangti meng (CUTR5RZYQT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiangti meng (CUTR5RZYQT)";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/shinelink/PrefixHeader.pch";
 				INFOPLIST_FILE = shinelink/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -3336,7 +3358,7 @@
 					"$(PROJECT_DIR)/shinelink/设备/采集器/WifConnect/num2/OtherThing/cloudServices/libelian/ios",
 					"$(PROJECT_DIR)/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelinkw;
+				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

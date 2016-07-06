@@ -249,7 +249,7 @@
         if (content) {
             NSArray *resultArray = [content objectForKey:@"results"];
             
-            if(resultArray.count>1){
+            if(resultArray.count>0){
             NSDictionary *resultDict = [resultArray objectAtIndex:0];
             //                DLog(@"version is %@",[resultDict objectForKey:@"version"]);
              _appVersion = [resultDict objectForKey:@"version"];

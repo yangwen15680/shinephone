@@ -105,7 +105,7 @@ static void *context = NULL;
        float sizeH1=10*HEIGHT_SIZE;
     
     UIImageView *pwdBgImageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(10*NOW_SIZE, 85*HEIGHT_SIZE, 300*NOW_SIZE,110*HEIGHT_SIZE+sizeH1 )];
-    pwdBgImageView2.image = IMAGE(@"222.jpg");
+    pwdBgImageView2.image = IMAGE(@"addDevice.jpg");
     pwdBgImageView2.userInteractionEnabled = YES;
     [_scrollView addSubview:pwdBgImageView2];
     

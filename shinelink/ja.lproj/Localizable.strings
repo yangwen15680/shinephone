@@ -474,4 +474,7 @@
 "新"="New";
 "推荐"="Hot";
 "配置"="Set";
-
+"市电电压"="Set grid voltage high";
+"控制提示"="Please operate the device under the professional guidance,otherwise it cannot function well.Please enter the password of controlling";
+"添加问题提示"="Only Chinese and English are available in the service system";
+"控制密码"="Please enter the correct password of controlling";

@@ -8,6 +8,8 @@
 
 #import "controlCNJTable.h"
 #import "ControlCNJ.h"
+#import "RKAlertView.h"
+#define AlertContent @"Growatt"
 
 @interface controlCNJTable ()
 @property(nonatomic,strong)NSMutableArray *dataArray;
@@ -106,7 +108,37 @@
         go.type=@"5";
     }
     go.CnjSN=_CnjSn;
-    [self.navigationController pushViewController:go animated:YES];
+    
+    
+    if ((indexPath.row==0)||(indexPath.row==1)||(indexPath.row==3)||(indexPath.row==5)) {
+        
+        [RKAlertView showAlertPlainTextWithTitle:root_Alet_user message:root_kongzhi_Alert cancelTitle:root_cancel confirmTitle:root_OK alertViewStyle:UIAlertViewStylePlainTextInput confrimBlock:^(UIAlertView *alertView) {
+            NSLog(@"确认了输入：%@",[alertView textFieldAtIndex:0].text);
+            NSString *alert1=[alertView textFieldAtIndex:0].text;
+            
+            if ([alert1 isEqualToString:AlertContent]) {
+                [self.navigationController pushViewController:go animated:YES];
+            }else{
+                [RKAlertView showNoCancelBtnAlertWithTitle:root_Alet_user message:root_kongzhi_mima confirmTitle:root_OK confrimBlock:^{
+                    
+                }];
+                
+            }
+            
+        } cancelBlock:^{
+            NSLog(@"取消了");
+        }];
+
+        
+    }else  if ((indexPath.row==2)||(indexPath.row==4)) {
+    
+     [self.navigationController pushViewController:go animated:YES];
+    }
+    
+    
+    
+    
+   
     
 }
 

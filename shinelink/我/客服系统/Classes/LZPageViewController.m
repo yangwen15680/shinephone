@@ -10,6 +10,7 @@
 #import "LZPageContentView.h"
 #import "LZPageMainCell.h"
 #import "addServerViewController.h"
+#import "RKAlertView.h"
 
 @interface LZPageViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,LZPageContentViewDelegate>
 @property (nonatomic, assign) CGFloat pageBarHeight;
@@ -90,8 +91,13 @@ static NSString *mainCell = @"mainCellmainCell";
 }
 
 - (void)doAdd{
-    addServerViewController *add=[[addServerViewController alloc]init];
-    [self.navigationController pushViewController:add animated:NO];
+    
+    [RKAlertView showNoCancelBtnAlertWithTitle:root_Alet_user message:root_tianjia_wenti_Alert confirmTitle:root_OK confrimBlock:^{
+        addServerViewController *add=[[addServerViewController alloc]init];
+        [self.navigationController pushViewController:add animated:NO];
+    }];
+    
+  
 
 }
 

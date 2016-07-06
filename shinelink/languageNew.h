@@ -24,7 +24,9 @@
 #define  root_del        NSLocalizedString(@"删除", nil)
 #define  root_saomiao_jieguo       NSLocalizedString(@"扫描结果", nil)
 #define  root_set       NSLocalizedString(@"配置", nil)
-
+#define  root_kongzhi_Alert      NSLocalizedString(@"控制提示", nil)
+#define  root_tianjia_wenti_Alert      NSLocalizedString(@"添加问题提示", nil)
+#define  root_kongzhi_mima      NSLocalizedString(@"控制密码", nil)
 
 //登陆
 #define root_Enter_your_username       NSLocalizedString(@"Enter your username", @"Enter your username")
@@ -502,6 +504,8 @@
 
 #define root_new   NSLocalizedString(@"新", nil)
 #define root_tuijian  NSLocalizedString(@"推荐", nil)
+
+#define root_NBQ_shidian_dianya  NSLocalizedString(@"市电电压", nil)
 
 
 #endif /* languageNew_h */
