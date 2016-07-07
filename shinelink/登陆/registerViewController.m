@@ -10,6 +10,7 @@
 #import "loginViewController.h"
 #import "countryViewController.h"
 #import "AddCellectViewController.h"
+#import "protocol.h"
 
 @interface registerViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong) UILabel *name;
@@ -17,7 +18,7 @@
 @property (nonatomic, strong) NSMutableDictionary *dataDic;
 @property(nonatomic,strong)UIScrollView *backScroll;
 @property(nonatomic,strong)NSString *customerCodeEnable;
-
+@property(nonatomic,strong)NSString *userEnable;
 @end
 
 @implementation registerViewController
@@ -102,6 +103,8 @@
                 _customerCodeEnable=@"0";
             }
             
+           // _customerCodeEnable=@"1";
+            
             if ([_customerCodeEnable isEqualToString:@"0"]) {
                 [_textFieldMutableArray[5] removeFromSuperview];
                   UIImageView *image3=[_backScroll viewWithTag:5];
@@ -153,7 +156,7 @@
      self.automaticallyAdjustsScrollViewInsets = NO;
     _backScroll=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_Width, SCREEN_Height+60*NOW_SIZE)];
     _backScroll.scrollEnabled=YES;
-       _backScroll.contentSize = CGSizeMake(SCREEN_Width,750*NOW_SIZE);
+       _backScroll.contentSize = CGSizeMake(SCREEN_Width,850*HEIGHT_SIZE);
     [self.view addSubview:_backScroll];
     
     NSArray *imageArray=[NSArray arrayWithObjects:@"icon---Name.png", @"icon---Password.png", @"icon---Password.png", @"icon---Email.png", @"iconfont-shouji.png",@"bianhao.png",nil];
@@ -204,9 +207,31 @@
     }
     
     
+    UIButton *selectButton= [UIButton buttonWithType:UIButtonTypeCustom];
+    
+      selectButton.frame=CGRectMake(40*NOW_SIZE,362*HEIGHT_SIZE+moveHeight, 20*HEIGHT_SIZE, 20*HEIGHT_SIZE);
+    
+     [selectButton setBackgroundImage:IMAGE(@"未打勾.png") forState:UIControlStateNormal];
+    [selectButton setBackgroundImage:IMAGE(@"打勾.png") forState:UIControlStateSelected];
+    [selectButton addTarget:self action:@selector(selectGo:) forControlEvents:UIControlEventTouchUpInside];
+     [_backScroll addSubview:selectButton];
+    
+    UILabel *userOk= [[UILabel alloc] initWithFrame:CGRectMake(80*NOW_SIZE,360*HEIGHT_SIZE+moveHeight, 200*HEIGHT_SIZE, 20*HEIGHT_SIZE)];
+    userOk.text=root_yonghu_xieyi;
+   userOk.textColor=[UIColor whiteColor];
+    userOk.font = [UIFont systemFontOfSize:16*HEIGHT_SIZE];
+    userOk.textAlignment = NSTextAlignmentCenter;
+    userOk.userInteractionEnabled=YES;
+    UITapGestureRecognizer * demo1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(GoUsert)];
+    [userOk addGestureRecognizer:demo1];
+    [_backScroll addSubview:userOk];
+    
+    UIView *userView= [[UIView alloc] initWithFrame:CGRectMake(80*NOW_SIZE,360*HEIGHT_SIZE+moveHeight+20*HEIGHT_SIZE, 200*HEIGHT_SIZE, 1*HEIGHT_SIZE)];
+    userView.backgroundColor=[UIColor whiteColor];
+    [_backScroll addSubview:userView];
     
     UIButton *goBut =  [UIButton buttonWithType:UIButtonTypeCustom];
-    goBut.frame=CGRectMake(60*NOW_SIZE,360*HEIGHT_SIZE+moveHeight, 200*NOW_SIZE, 40*HEIGHT_SIZE);
+    goBut.frame=CGRectMake(60*NOW_SIZE,400*HEIGHT_SIZE+moveHeight, 200*NOW_SIZE, 40*HEIGHT_SIZE);
 //    [goBut.layer setMasksToBounds:YES];
 //    [goBut.layer setCornerRadius:25.0];
      [goBut setBackgroundImage:IMAGE(@"按钮2.png") forState:UIControlStateNormal];
@@ -215,6 +240,34 @@
     [goBut addTarget:self action:@selector(PresentGo) forControlEvents:UIControlEventTouchUpInside];
   //  goBut.highlighted=[UIColor grayColor];
     [_backScroll addSubview:goBut];
+    
+
+}
+
+
+-(void)GoUsert{
+
+    protocol *go=[[protocol alloc]init];
+    [self.navigationController pushViewController:go animated:YES];
+
+}
+
+-(void)selectGo:(UIButton*)sender{
+    
+    if (sender.selected) {
+        [sender setSelected:NO];
+        _userEnable=@"no";
+        
+        [sender setImage:[UIImage imageNamed:@"打勾.png"] forState:UIControlStateHighlighted];
+        [sender setImage:[UIImage imageNamed:@"没打勾.png"] forState:UIControlStateNormal];
+    }else{
+        [sender setSelected:YES];
+        
+        _userEnable=@"ok";
+        [sender setImage:[UIImage imageNamed:@"没打勾.png"] forState:UIControlStateHighlighted];
+        [sender setImage:[UIImage imageNamed:@"打勾.png"] forState:UIControlStateNormal];
+    
+    }
     
 
 }
@@ -263,6 +316,11 @@
             [self showToastViewWithTitle:array[i]];
             return;
         }
+    }
+    
+    if (![_userEnable isEqualToString:@"ok"]) {
+        [self showToastViewWithTitle:root_xuanze_yonghu_xieyi];
+        return;
     }
     
     if (![[_textFieldMutableArray[1] text] isEqual:[_textFieldMutableArray[2] text] ]) {

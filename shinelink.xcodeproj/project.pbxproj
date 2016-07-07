@@ -280,6 +280,9 @@
 		3376ED661D12A2F4009526B4 /* Proce-ssing.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED631D12A2F4009526B4 /* Proce-ssing.png */; };
 		3376ED681D12A4A6009526B4 /* 已处理.png in Resources */ = {isa = PBXBuildFile; fileRef = 3376ED671D12A4A6009526B4 /* 已处理.png */; };
 		33775AD91D2CD7520070742E /* RKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33775AD81D2CD7520070742E /* RKAlertView.m */; };
+		33775ADB1D2E03B40070742E /* 质保.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775ADA1D2E03B40070742E /* 质保.png */; };
+		33775AED1D2E3BAF0070742E /* 未打勾.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AEC1D2E3BAF0070742E /* 未打勾.png */; };
+		33775AEF1D2E3BC00070742E /* 打勾.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AEE1D2E3BC00070742E /* 打勾.png */; };
 		33793D121CE582B0000D0F9E /* inverter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D111CE582B0000D0F9E /* inverter2.png */; };
 		33793D141CE583AD000D0F9E /* storage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D131CE583AD000D0F9E /* storage4.png */; };
 		33793D161CE583E4000D0F9E /* solar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D151CE583E4000D0F9E /* solar4.png */; };
@@ -898,6 +901,9 @@
 		3376ED671D12A4A6009526B4 /* 已处理.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已处理.png"; sourceTree = "<group>"; };
 		33775AD71D2CD7520070742E /* RKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKAlertView.h; sourceTree = "<group>"; };
 		33775AD81D2CD7520070742E /* RKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKAlertView.m; sourceTree = "<group>"; };
+		33775ADA1D2E03B40070742E /* 质保.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "质保.png"; sourceTree = "<group>"; };
+		33775AEC1D2E3BAF0070742E /* 未打勾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未打勾.png"; sourceTree = "<group>"; };
+		33775AEE1D2E3BC00070742E /* 打勾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "打勾.png"; sourceTree = "<group>"; };
 		33793D111CE582B0000D0F9E /* inverter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverter2.png; sourceTree = "<group>"; };
 		33793D131CE583AD000D0F9E /* storage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage4.png; sourceTree = "<group>"; };
 		33793D151CE583E4000D0F9E /* solar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solar4.png; sourceTree = "<group>"; };
@@ -1964,6 +1970,8 @@
 		335DDB201CFFC04B00ACA123 /* 体验馆 */ = {
 			isa = PBXGroup;
 			children = (
+				33775AEC1D2E3BAF0070742E /* 未打勾.png */,
+				33775AEE1D2E3BC00070742E /* 打勾.png */,
 				335DDB211CFFC08700ACA123 /* testDemoViewController.h */,
 				335DDB221CFFC08700ACA123 /* testDemoViewController.m */,
 			);
@@ -2248,6 +2256,7 @@
 				337F9CC71C71ABFB0016FE43 /* findViewController.m */,
 				335089261C73267A00D7AA03 /* findTableViewCell.h */,
 				335089271C73267A00D7AA03 /* findTableViewCell.m */,
+				33775ADA1D2E03B40070742E /* 质保.png */,
 			);
 			name = "服务";
 			path = "发现";
@@ -2789,6 +2798,7 @@
 				33238B431CBF7C3B00E82B86 /* server3@3x.png in Resources */,
 				336664EF1CB77CD3005573FB /* user-agreement@2x.png in Resources */,
 				33692BF31C926B4B00698375 /* shang.png in Resources */,
+				33775AED1D2E3BAF0070742E /* 未打勾.png in Resources */,
 				3349BB401C7EFD8500E6E34B /* 2.jpg in Resources */,
 				33FEFD7B1C7DB38400324374 /* shebei@2x.png in Resources */,
 				33FEFD641C7DB38400324374 /* icon---Username@3x.png in Resources */,
@@ -2814,7 +2824,9 @@
 				33FEFD6B1C7DB38400324374 /* iconfont-faxian@2x.png in Resources */,
 				33FEFD5F1C7DB38400324374 /* icon---Password.png in Resources */,
 				335089231C73179400D7AA03 /* bg_list_popver.png in Resources */,
+				33775ADB1D2E03B40070742E /* 质保.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
+				33775AEF1D2E3BC00070742E /* 打勾.png in Resources */,
 				33238B461CBF7C4200E82B86 /* client@2x.png in Resources */,
 				33209FCF1D2A54AB00186893 /* addDevice.jpg in Resources */,
 				334FF0BF1CF53C7C001E6716 /* text_bg.png in Resources */,
