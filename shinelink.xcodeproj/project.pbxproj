@@ -12,10 +12,6 @@
 		330E3DF11D0D6D4B00DF75AE /* 形状17.png in Resources */ = {isa = PBXBuildFile; fileRef = 330E3DF01D0D6D4B00DF75AE /* 形状17.png */; };
 		33209FCF1D2A54AB00186893 /* addDevice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33209FCE1D2A54AB00186893 /* addDevice.jpg */; };
 		33209FD11D2A553E00186893 /* main1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 33209FD01D2A553E00186893 /* main1.jpg */; };
-		33238B421CBF7C3B00E82B86 /* server3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B401CBF7C3B00E82B86 /* server3@2x.png */; };
-		33238B431CBF7C3B00E82B86 /* server3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B411CBF7C3B00E82B86 /* server3@3x.png */; };
-		33238B461CBF7C4200E82B86 /* client@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B441CBF7C4200E82B86 /* client@2x.png */; };
-		33238B471CBF7C4200E82B86 /* client@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B451CBF7C4200E82B86 /* client@3x.png */; };
 		33238B491CBF816400E82B86 /* 外框@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 33238B481CBF816400E82B86 /* 外框@3x.png */; };
 		3343F3A71C7FDD5A009F69BC /* editViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3A61C7FDD5A009F69BC /* editViewController.m */; };
 		3343F3AA1C803DC9009F69BC /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3343F3A91C803DC9009F69BC /* BaseRequest.m */; };
@@ -103,7 +99,6 @@
 		334ED7011C9028BB0095FFBC /* secondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7001C9028BB0095FFBC /* secondViewController.m */; };
 		334ED7041C902AE60095FFBC /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 334ED7031C902AE60095FFBC /* CircleView.m */; };
 		334ED7061C9039270095FFBC /* DTK_bi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334ED7051C9039270095FFBC /* DTK_bi@2x.png */; };
-		334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */; };
 		334FEF841CF45264001E6716 /* LZQStratViewController_25.m in Sources */ = {isa = PBXBuildFile; fileRef = 334FEF831CF45264001E6716 /* LZQStratViewController_25.m */; };
 		334FEF861CF453D2001E6716 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF851CF453D2001E6716 /* 11.png */; };
 		334FEF881CF453E1001E6716 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = 334FEF871CF453E1001E6716 /* 22.png */; };
@@ -283,6 +278,8 @@
 		33775ADB1D2E03B40070742E /* 质保.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775ADA1D2E03B40070742E /* 质保.png */; };
 		33775AED1D2E3BAF0070742E /* 未打勾.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AEC1D2E3BAF0070742E /* 未打勾.png */; };
 		33775AEF1D2E3BC00070742E /* 打勾.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AEE1D2E3BC00070742E /* 打勾.png */; };
+		33775AF11D2E40290070742E /* 客服.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AF01D2E40290070742E /* 客服.png */; };
+		33775AF31D2E404D0070742E /* 客户.png in Resources */ = {isa = PBXBuildFile; fileRef = 33775AF21D2E404D0070742E /* 客户.png */; };
 		33793D121CE582B0000D0F9E /* inverter2.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D111CE582B0000D0F9E /* inverter2.png */; };
 		33793D141CE583AD000D0F9E /* storage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D131CE583AD000D0F9E /* storage4.png */; };
 		33793D161CE583E4000D0F9E /* solar4.png in Resources */ = {isa = PBXBuildFile; fileRef = 33793D151CE583E4000D0F9E /* solar4.png */; };
@@ -309,10 +306,7 @@
 		3381ECFB1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ECFA1CBCA63A00DCF0D2 /* 光伏零功率输出使能切图.png */; };
 		3381ECFE1CBCCADB00DCF0D2 /* myListSecond.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */; };
 		3381ED011CBCD85700DCF0D2 /* myListSecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ED001CBCD85700DCF0D2 /* myListSecondTableViewCell.m */; };
-		3381ED041CBCDB1500DCF0D2 /* service@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED021CBCDB1500DCF0D2 /* service@2x.png */; };
-		3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED031CBCDB1500DCF0D2 /* service@3x.png */; };
 		3381ED091CBCE94200DCF0D2 /* AnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */; };
-		3381ED0B1CBCF70400DCF0D2 /* 更多产品2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */; };
 		3383EF9A1C9F8A6F0075E834 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3383EF821C9F8A6F0075E834 /* MJRefresh.bundle */; };
 		3383EF9B1C9F8A6F0075E834 /* MJRefreshComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF851C9F8A6F0075E834 /* MJRefreshComponent.m */; };
 		3383EF9C1C9F8A6F0075E834 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3383EF871C9F8A6F0075E834 /* MJRefreshConst.m */; };
@@ -459,10 +453,6 @@
 		330E3DF01D0D6D4B00DF75AE /* 形状17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "形状17.png"; sourceTree = "<group>"; };
 		33209FCE1D2A54AB00186893 /* addDevice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addDevice.jpg; sourceTree = "<group>"; };
 		33209FD01D2A553E00186893 /* main1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = main1.jpg; path = AsyncSocket/main1.jpg; sourceTree = "<group>"; };
-		33238B401CBF7C3B00E82B86 /* server3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "server3@2x.png"; path = "../../我/客服系统/我的问题/server3@2x.png"; sourceTree = "<group>"; };
-		33238B411CBF7C3B00E82B86 /* server3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "server3@3x.png"; path = "../../我/客服系统/我的问题/server3@3x.png"; sourceTree = "<group>"; };
-		33238B441CBF7C4200E82B86 /* client@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client@2x.png"; path = "../../我/客服系统/我的问题/client@2x.png"; sourceTree = "<group>"; };
-		33238B451CBF7C4200E82B86 /* client@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "client@3x.png"; path = "../../我/客服系统/我的问题/client@3x.png"; sourceTree = "<group>"; };
 		33238B481CBF816400E82B86 /* 外框@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "外框@3x.png"; path = "../../我/客服系统/我的问题/外框@3x.png"; sourceTree = "<group>"; };
 		3343F3A51C7FDD5A009F69BC /* editViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = editViewController.h; path = ../editViewController.h; sourceTree = "<group>"; };
 		3343F3A61C7FDD5A009F69BC /* editViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = editViewController.m; path = ../editViewController.m; sourceTree = "<group>"; };
@@ -616,7 +606,6 @@
 		334ED7021C902AE60095FFBC /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircleView.h; path = ../CircleView.h; sourceTree = "<group>"; };
 		334ED7031C902AE60095FFBC /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircleView.m; path = ../CircleView.m; sourceTree = "<group>"; };
 		334ED7051C9039270095FFBC /* DTK_bi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "DTK_bi@2x.png"; path = "../设备二级界面/DTK_bi@2x.png"; sourceTree = "<group>"; };
-		334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuijian@2x.png"; sourceTree = "<group>"; };
 		334FEF821CF45264001E6716 /* LZQStratViewController_25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZQStratViewController_25.h; sourceTree = "<group>"; };
 		334FEF831CF45264001E6716 /* LZQStratViewController_25.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZQStratViewController_25.m; sourceTree = "<group>"; };
 		334FEF851CF453D2001E6716 /* 11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 11.png; sourceTree = "<group>"; };
@@ -904,22 +893,24 @@
 		33775ADA1D2E03B40070742E /* 质保.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "质保.png"; sourceTree = "<group>"; };
 		33775AEC1D2E3BAF0070742E /* 未打勾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未打勾.png"; sourceTree = "<group>"; };
 		33775AEE1D2E3BC00070742E /* 打勾.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "打勾.png"; sourceTree = "<group>"; };
+		33775AF01D2E40290070742E /* 客服.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "客服.png"; sourceTree = "<group>"; };
+		33775AF21D2E404D0070742E /* 客户.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "客户.png"; sourceTree = "<group>"; };
 		33793D111CE582B0000D0F9E /* inverter2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inverter2.png; sourceTree = "<group>"; };
 		33793D131CE583AD000D0F9E /* storage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storage4.png; sourceTree = "<group>"; };
 		33793D151CE583E4000D0F9E /* solar4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = solar4.png; sourceTree = "<group>"; };
 		337C10E81CE02A160053361F /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = head.png; sourceTree = "<group>"; };
 		337C30521CCDAF3C002B99B7 /* protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = protocol.h; sourceTree = "<group>"; };
 		337C30531CCDAF3C002B99B7 /* protocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = protocol.m; sourceTree = "<group>"; };
-		337F9C801C71A6710016FE43 /* shinelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shinelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		337F9C801C71A6710016FE43 /* ShineLink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShineLink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9C841C71A6710016FE43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		337F9C861C71A6710016FE43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		337F9C871C71A6710016FE43 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		337F9C921C71A6710016FE43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		337F9C971C71A6710016FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		337F9C9C1C71A6710016FE43 /* shinelinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shinelinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		337F9C9C1C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShineLink.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9CA01C71A6710016FE43 /* shinelinkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shinelinkTests.m; sourceTree = "<group>"; };
 		337F9CA21C71A6710016FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		337F9CA71C71A6710016FE43 /* shinelinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shinelinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		337F9CA71C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShineLink.temp_caseinsensitive_rename.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		337F9CAB1C71A6710016FE43 /* shinelinkUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shinelinkUITests.m; sourceTree = "<group>"; };
 		337F9CAD1C71A6720016FE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		337F9CC21C71ABD80016FE43 /* deviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deviceViewController.h; sourceTree = "<group>"; };
@@ -950,11 +941,8 @@
 		3381ECFD1CBCCADB00DCF0D2 /* myListSecond.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myListSecond.m; path = ../myListSecond.m; sourceTree = "<group>"; };
 		3381ECFF1CBCD85700DCF0D2 /* myListSecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = myListSecondTableViewCell.h; path = ../Classes/myListSecondTableViewCell.h; sourceTree = "<group>"; };
 		3381ED001CBCD85700DCF0D2 /* myListSecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = myListSecondTableViewCell.m; path = ../Classes/myListSecondTableViewCell.m; sourceTree = "<group>"; };
-		3381ED021CBCDB1500DCF0D2 /* service@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@2x.png"; sourceTree = "<group>"; };
-		3381ED031CBCDB1500DCF0D2 /* service@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "service@3x.png"; sourceTree = "<group>"; };
 		3381ED071CBCE94200DCF0D2 /* AnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerViewController.h; sourceTree = "<group>"; };
 		3381ED081CBCE94200DCF0D2 /* AnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerViewController.m; sourceTree = "<group>"; };
-		3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "更多产品2.png"; path = "../../发现/更多产品/更多产品2.png"; sourceTree = "<group>"; };
 		3383EF821C9F8A6F0075E834 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
 		3383EF831C9F8A6F0075E834 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
 		3383EF841C9F8A6F0075E834 /* MJRefreshComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshComponent.h; sourceTree = "<group>"; };
@@ -1898,8 +1886,6 @@
 			children = (
 				33FFBD541CEC813D003C56E1 /* content4.jpg */,
 				33FFBD521CEC7A8E003C56E1 /* content3.jpg */,
-				3381ED021CBCDB1500DCF0D2 /* service@2x.png */,
-				3381ED031CBCDB1500DCF0D2 /* service@3x.png */,
 				335614A31CB3E0210071BAC9 /* frame4@2x.png */,
 				3356149F1CB3B8E90071BAC9 /* frame2@2x.png */,
 				335D9C4E1CE32583007535BF /* frame_add.png */,
@@ -2131,6 +2117,8 @@
 		3376ED5A1D12A2DD009526B4 /* 图片8 */ = {
 			isa = PBXGroup;
 			children = (
+				33775AF01D2E40290070742E /* 客服.png */,
+				33775AF21D2E404D0070742E /* 客户.png */,
 				3376ED5B1D12A2EA009526B4 /* 处理中.png */,
 				3376ED5C1D12A2EA009526B4 /* 待处理.png */,
 				3376ED671D12A4A6009526B4 /* 已处理.png */,
@@ -2179,9 +2167,9 @@
 		337F9C811C71A6710016FE43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				337F9C801C71A6710016FE43 /* shinelink.app */,
-				337F9C9C1C71A6710016FE43 /* shinelinkTests.xctest */,
-				337F9CA71C71A6710016FE43 /* shinelinkUITests.xctest */,
+				337F9C801C71A6710016FE43 /* ShineLink.app */,
+				337F9C9C1C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */,
+				337F9CA71C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2440,15 +2428,9 @@
 				338990B01CEAB73400A708F8 /* logo3.png */,
 				338990AE1CEAB61300A708F8 /* mebg.png */,
 				338990AC1CEAB58100A708F8 /* bianhao.png */,
-				3381ED0A1CBCF70400DCF0D2 /* 更多产品2.png */,
-				33238B401CBF7C3B00E82B86 /* server3@2x.png */,
-				33238B411CBF7C3B00E82B86 /* server3@3x.png */,
-				33238B441CBF7C4200E82B86 /* client@2x.png */,
-				33238B451CBF7C4200E82B86 /* client@3x.png */,
 				33238B481CBF816400E82B86 /* 外框@3x.png */,
 				334AED651CA3774C007E39F3 /* 密码3.png */,
 				3349A7B71C75BCDB009172C2 /* 账号3.png */,
-				334FEF7D1CF3ED0A001E6716 /* tuijian@2x.png */,
 			);
 			path = pic1;
 			sourceTree = "<group>";
@@ -2640,9 +2622,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		337F9C7F1C71A6710016FE43 /* shinelink */ = {
+		337F9C7F1C71A6710016FE43 /* ShineLink */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 337F9CB01C71A6720016FE43 /* Build configuration list for PBXNativeTarget "shinelink" */;
+			buildConfigurationList = 337F9CB01C71A6720016FE43 /* Build configuration list for PBXNativeTarget "ShineLink" */;
 			buildPhases = (
 				337F9C7C1C71A6710016FE43 /* Sources */,
 				337F9C7D1C71A6710016FE43 /* Frameworks */,
@@ -2652,9 +2634,9 @@
 			);
 			dependencies = (
 			);
-			name = shinelink;
+			name = ShineLink;
 			productName = shinelink;
-			productReference = 337F9C801C71A6710016FE43 /* shinelink.app */;
+			productReference = 337F9C801C71A6710016FE43 /* ShineLink.app */;
 			productType = "com.apple.product-type.application";
 		};
 		337F9C9B1C71A6710016FE43 /* shinelinkTests */ = {
@@ -2672,7 +2654,7 @@
 			);
 			name = shinelinkTests;
 			productName = shinelinkTests;
-			productReference = 337F9C9C1C71A6710016FE43 /* shinelinkTests.xctest */;
+			productReference = 337F9C9C1C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		337F9CA61C71A6710016FE43 /* shinelinkUITests */ = {
@@ -2690,7 +2672,7 @@
 			);
 			name = shinelinkUITests;
 			productName = shinelinkUITests;
-			productReference = 337F9CA71C71A6710016FE43 /* shinelinkUITests.xctest */;
+			productReference = 337F9CA71C71A6710016FE43 /* ShineLink.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -2724,7 +2706,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 337F9C7B1C71A6710016FE43 /* Build configuration list for PBXProject "shinelink" */;
+			buildConfigurationList = 337F9C7B1C71A6710016FE43 /* Build configuration list for PBXProject "ShineLink" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -2745,7 +2727,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				337F9C7F1C71A6710016FE43 /* shinelink */,
+				337F9C7F1C71A6710016FE43 /* ShineLink */,
 				337F9C9B1C71A6710016FE43 /* shinelinkTests */,
 				337F9CA61C71A6710016FE43 /* shinelinkUITests */,
 			);
@@ -2758,7 +2740,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				335456C31C85301200275478 /* 圆角矩形.png in Resources */,
-				334FEF7E1CF3ED0A001E6716 /* tuijian@2x.png in Resources */,
 				33FEFD5B1C7DB38400324374 /* icon---Email@3x.png in Resources */,
 				334FEF8E1CF45AEB001E6716 /* btn1.png in Resources */,
 				334FF0BE1CF53C7C001E6716 /* shinesmart.png in Resources */,
@@ -2775,7 +2756,6 @@
 				33EFB63F1C97E875003F336F /* 设备切图.png in Resources */,
 				334AED751CA386B8007E39F3 /* bg4.png in Resources */,
 				337532EF1D051579009CE66F /* PushConfig.plist in Resources */,
-				33238B471CBF7C4200E82B86 /* client@3x.png in Resources */,
 				33FEFD531C7DB38400324374 /* icon_arrow.png in Resources */,
 				33FEFD731C7DB38400324374 /* iconfont-nengyuanlei@2x.png in Resources */,
 				330E3DEF1D0D6D2100DF75AE /* priority.png in Resources */,
@@ -2795,7 +2775,6 @@
 				3376ED641D12A2F4009526B4 /* Pend-ing.png in Resources */,
 				334FF0C01CF53C7C001E6716 /* top.png in Resources */,
 				33FFBD411CEC461A003C56E1 /* powerE.png in Resources */,
-				33238B431CBF7C3B00E82B86 /* server3@3x.png in Resources */,
 				336664EF1CB77CD3005573FB /* user-agreement@2x.png in Resources */,
 				33692BF31C926B4B00698375 /* shang.png in Resources */,
 				33775AED1D2E3BAF0070742E /* 未打勾.png in Resources */,
@@ -2827,13 +2806,10 @@
 				33775ADB1D2E03B40070742E /* 质保.png in Resources */,
 				33FEFD7A1C7DB38400324374 /* shebei_press@3x.png in Resources */,
 				33775AEF1D2E3BC00070742E /* 打勾.png in Resources */,
-				33238B461CBF7C4200E82B86 /* client@2x.png in Resources */,
 				33209FCF1D2A54AB00186893 /* addDevice.jpg in Resources */,
 				334FF0BF1CF53C7C001E6716 /* text_bg.png in Resources */,
 				334FF0901CF53C7C001E6716 /* Documentation.html in Resources */,
 				33EFB67A1C9931D2003F336F /* 按钮2.png in Resources */,
-				3381ED041CBCDB1500DCF0D2 /* service@2x.png in Resources */,
-				3381ED0B1CBCF70400DCF0D2 /* 更多产品2.png in Resources */,
 				3376ED651D12A2F4009526B4 /* Proce-ssed.png in Resources */,
 				33FFBD431CEC462C003C56E1 /* storageE.png in Resources */,
 				3381ECF91CBCA63000DCF0D2 /* 控制优先级设置切图.png in Resources */,
@@ -2850,8 +2826,6 @@
 				330E3DF11D0D6D4B00DF75AE /* 形状17.png in Resources */,
 				33FEFD691C7DB38400324374 /* iconfont-faxian_press@2x.png in Resources */,
 				3355AD9B1CF6A49400AE6891 /* 111.jpg in Resources */,
-				33238B421CBF7C3B00E82B86 /* server3@2x.png in Resources */,
-				3381ED051CBCDB1500DCF0D2 /* service@3x.png in Resources */,
 				33238B491CBF816400E82B86 /* 外框@3x.png in Resources */,
 				3355AD981CF6A49400AE6891 /* 444.jpg in Resources */,
 				3367D9871CED6D5700DE7528 /* triangular2.png in Resources */,
@@ -2920,6 +2894,7 @@
 				33FEFD661C7DB38400324374 /* icon@3x.png in Resources */,
 				33FEFCD21C7D8A9500324374 /* Address.plist in Resources */,
 				334AED581CA37569007E39F3 /* 客户服务.png in Resources */,
+				33775AF11D2E40290070742E /* 客服.png in Resources */,
 				3383F1341C9FF7370075E834 /* connected@2x.png in Resources */,
 				334AED5A1CA37577007E39F3 /* 质保查询.png in Resources */,
 				335456C91C853C2F00275478 /* scanscanBg.png in Resources */,
@@ -2946,6 +2921,7 @@
 				334FEF8C1CF45423001E6716 /* 33.png in Resources */,
 				3363DD241C7C610A00D740FB /* 语言.png in Resources */,
 				33FEFD581C7DB38400324374 /* icon---Email---Full@3x.png in Resources */,
+				33775AF31D2E404D0070742E /* 客户.png in Resources */,
 				33793D121CE582B0000D0F9E /* inverter2.png in Resources */,
 				3381ECF71CBCA62700DCF0D2 /* 峰谷段动作使能切图.png in Resources */,
 				336664FC1CB78CF0005573FB /* bg5.png in Resources */,
@@ -3215,12 +3191,12 @@
 /* Begin PBXTargetDependency section */
 		337F9C9E1C71A6710016FE43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 337F9C7F1C71A6710016FE43 /* shinelink */;
+			target = 337F9C7F1C71A6710016FE43 /* ShineLink */;
 			targetProxy = 337F9C9D1C71A6710016FE43 /* PBXContainerItemProxy */;
 		};
 		337F9CA91C71A6710016FE43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 337F9C7F1C71A6710016FE43 /* shinelink */;
+			target = 337F9C7F1C71A6710016FE43 /* ShineLink */;
 			targetProxy = 337F9CA81C71A6710016FE43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -3349,7 +3325,7 @@
 					"$(PROJECT_DIR)/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShineLink;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -3371,7 +3347,7 @@
 					"$(PROJECT_DIR)/lib",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.growatt.shinelink;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShineLink;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -3383,8 +3359,8 @@
 				INFOPLIST_FILE = shinelinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelinkTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shinelink.app/shinelink";
+				PRODUCT_NAME = ShineLink.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShineLink.temp_caseinsensitive_rename.app/ShineLink.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -3395,8 +3371,8 @@
 				INFOPLIST_FILE = shinelinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelinkTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shinelink.app/shinelink";
+				PRODUCT_NAME = ShineLink.temp_caseinsensitive_rename;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ShineLink.temp_caseinsensitive_rename.app/ShineLink.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -3406,7 +3382,7 @@
 				INFOPLIST_FILE = shinelinkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelinkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShineLink.temp_caseinsensitive_rename;
 				TEST_TARGET_NAME = shinelink;
 				USES_XCTRUNNER = YES;
 			};
@@ -3418,7 +3394,7 @@
 				INFOPLIST_FILE = shinelinkUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YD.shinelinkUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ShineLink.temp_caseinsensitive_rename;
 				TEST_TARGET_NAME = shinelink;
 				USES_XCTRUNNER = YES;
 			};
@@ -3427,7 +3403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		337F9C7B1C71A6710016FE43 /* Build configuration list for PBXProject "shinelink" */ = {
+		337F9C7B1C71A6710016FE43 /* Build configuration list for PBXProject "ShineLink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				337F9CAE1C71A6720016FE43 /* Debug */,
@@ -3436,7 +3412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		337F9CB01C71A6720016FE43 /* Build configuration list for PBXNativeTarget "shinelink" */ = {
+		337F9CB01C71A6720016FE43 /* Build configuration list for PBXNativeTarget "ShineLink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				337F9CB11C71A6720016FE43 /* Debug */,
